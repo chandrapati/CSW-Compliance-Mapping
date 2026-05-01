@@ -42,32 +42,96 @@ process-level telemetry, software inventory, vulnerability awareness,
 forensic flow data, and policy-as-code enforcement — and explain how that
 capability produces auditor-grade evidence.
 
-### Use them to start a different conversation
+### Use them to start a different conversation — with yourself
 
-Most compliance conversations focus on checkbox status. Use these
-documents to escalate the conversation past "do you have a firewall?"
-toward questions that genuinely separate posture from theater:
+Compliance frameworks were originally written to capture lessons from
+real breaches. Over time the conversation around them has narrowed to
+checkbox status — *do you have a firewall, do you have an EDR, do you
+have a SIEM* — and the connection back to actual loss prevention has
+gotten thinner. Walk through the questions below about *your own*
+environment and notice that each one shows up in a compliance standard
+**and** in nearly every major incident retrospective of the last five
+years. They are the same questions, asked twice, by two very different
+people.
 
-- *Can you enumerate, right now, every process on every workload that talks
-  to your cardholder data environment — and prove the list hasn't drifted
-  in the last 30 days?* (PCI DSS 1.2, 11.5)
-- *When a CVE drops on a library inside a container, how long until you
-  know which production workloads are exposed and which paths attackers
-  could traverse to reach them?* (NIST RA-5, CM-7, ISO A.8.8)
-- *If an auditor asks you to demonstrate least-privilege between two
-  applications, what artifact do you hand them?* (SOC 2 CC6.1, 800-53 AC-3)
-- *Your zero-trust architecture diagram shows a Policy Decision Point and
-  a Policy Enforcement Point — where do they actually live in your stack
-  today, and what data feeds them?* (NIST 800-207 §3.2, 800-207A PDP/PEP)
-- *Could you withstand a lateral-movement-based ransomware event without
-  network reorchitecture, or only with it?* (CISA ZTMM "Optimal" tier)
+- **Can you enumerate, right now, every process on every workload that
+  talks to your cardholder data environment — and prove the list
+  hasn't drifted in the last 30 days?** *(PCI DSS Req 1.2, 11.5)* Your
+  QSA asks a version of this once a year. An attacker who has just
+  landed an initial foothold asks a far more dangerous version every
+  minute: *what else can I reach from here?* If the answer to the
+  auditor takes a week of spreadsheet work to assemble, the answer to
+  the attacker is *"everything you want."*
 
-CSW is built specifically to give defensible answers to these questions
-because it operates at the workload itself — every process, every flow,
-every package — rather than inferring posture from network telemetry or
-periodic scans. The frameworks are how regulators describe the goal;
-CSW is one of the few engines that produces continuous, machine-verifiable
-evidence that the goal is being met.
+- **When a CVE drops on a library inside one of your containers, how
+  long until you know which production workloads are exposed and which
+  paths attackers could traverse to reach them?** *(NIST RA-5, CM-7,
+  ISO A.8.8)* Your vulnerability scanner tells you *who is
+  vulnerable*. It does not tell you *who is reachable from the
+  internet*, *who can pivot to your crown jewels*, or *who would still
+  be reachable if you isolated workload A*. That second question is
+  what decides whether a CVE is a Tuesday-morning patch or a board
+  call at 2 a.m.
+
+- **If an auditor asks you to demonstrate least-privilege between two
+  applications, what artefact do you hand them?** *(SOC 2 CC6.1,
+  800-53 AC-3)* Now ask exactly the same question with different
+  words: *if app A is compromised, what stops it from talking to app
+  B?* — and notice the answer should be the same artefact. If your
+  "least privilege" lives in a network-design document and not in
+  something the workload actually enforces, then you have least-
+  privilege as a policy, not as a property of your environment.
+
+- **Your zero-trust architecture diagram shows a Policy Decision Point
+  and a Policy Enforcement Point — where do they actually live in
+  your stack today, and what data feeds them?** *(NIST 800-207 §3.2,
+  800-207A PDP/PEP)* For most organisations the honest answer is
+  *"the PDP is a wiki page and the PEP is a firewall rule from 2021."*
+  Zero trust isn't a slide; it's the question of which component, on
+  which packet, makes which decision — and you should be able to
+  point at it.
+
+- **Could you withstand a lateral-movement-based ransomware event
+  without network re-architecture, or only with it?** *(CISA ZTMM
+  "Optimal" tier)* This is the question your CFO will ask the morning
+  after the next high-profile incident in your industry. The honest
+  answer for most organisations today is *"only with it"* — meaning,
+  the controls that would have constrained the blast radius are the
+  same controls that have been deferred as a six-month project for the
+  last three years. The peers who can answer *"without it"* did not
+  deploy magic; they deployed workload-resident segmentation before
+  they needed it.
+
+#### Notice the pattern
+
+Each of those questions appears in a compliance framework *because*
+the framework's authors knew it was the question that decides whether
+a foothold becomes an incident, or an incident becomes a breach.
+**Compliance is the lagging indicator; blast radius is the leading
+one.** And micro-segmentation at the workload — every process, every
+flow, every package — is one of the very few controls where the
+artefact you hand the auditor is the same artefact that bounds your
+worst day. A QSA inspects it once a year; an attacker tests it the
+moment they land. Both should get the same answer.
+
+That reframes what micro-segmentation is *for*. It is not a
+compliance project that happens to limit blast radius as a side
+effect — it is a blast-radius control that happens to satisfy the
+compliance requirement at the same time. PCI Req 1, HIPAA §164.312,
+NIST AC-4, ISO A.8.22, DORA Art. 9, NIS2 Art. 21(2)(j) — they all
+exist because the regulator already knows that an unsegmented
+workload is one phishing email away from front-page news. Treating
+micro-segmentation purely as a checkbox is a fairly expensive way to
+miss the point of why the checkbox is there.
+
+CSW is built to give defensible answers to both readers continuously
+— the auditor *and* the incident commander — because it operates at
+the workload itself rather than inferring posture from network
+telemetry or periodic scans. The frameworks below describe what
+"good" looks like on paper. The runbooks show you how to get to a
+state where your segmentation, your audit evidence, and your incident
+response are all the same artefact — instead of three different
+programmes doing 30% of each other's work.
 
 ### Audience guide
 
