@@ -22,13 +22,34 @@ Kubernetes, gives you four things continuously and from one place:
   baseline, ready to feed your SIEM and your incident-response
   process.
 
+**CSW is built AI-native and ML-native** — machine learning is core
+to the platform, not a feature bolted on. Three places where that
+matters in practice:
+
+- **Application discovery (ADM).** Unsupervised clustering on observed
+  process and flow behaviour identifies application boundaries and
+  proposes the segmentation policy *for you*, instead of asking you
+  to draw an architecture diagram from memory. The policy is
+  recomputed as the application changes.
+- **Behavioural detection.** Process-execution baselines and
+  conversation-graph models flag anomalous workload behaviour —
+  unusual processes, new edges in the dependency graph, drift in
+  port/protocol distribution — without you having to author every
+  signature.
+- **Vulnerability prioritisation.** ML-derived signals (exploitability
+  prediction, reachability, business-context scoring) collapse a list
+  of thousands of CVEs into the small set that is actually attackable
+  in *your* environment today.
+
 In practical terms, CSW collapses several things organisations
 typically run as separate programmes — segmentation reviews, change
 attestation, drift tracking, application-flow documentation,
 vulnerability prioritisation, lateral-movement detection — into a
-single, query-able, evidence-producing system. The same data answers
-the auditor's question this quarter and the incident commander's
-question on a bad afternoon.
+single, query-able, evidence-producing system. Because the discovery
+and detection layers learn from your environment continuously, the
+evidence stays current as the environment changes — which is what
+turns the same data into both *the auditor's answer this quarter*
+and *the incident commander's answer on a bad afternoon*.
 
 This repository explains, framework-by-framework, exactly which
 auditor questions and which incident-response questions that data
