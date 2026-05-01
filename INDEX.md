@@ -5,11 +5,6 @@ Use it to jump from a specific control / requirement / article to the
 runbook section that explains how Cisco Secure Workload (CSW)
 supports evidence for it.
 
-> **Guidelines.** The tables below summarise typical ways teams discuss
-> Cisco Secure Workload alongside each control. They are reference
-> points, not prescriptions—use professional judgment in your environment
-> and with your assessors.
-
 > **Linking convention.** Most links point to the runbook root rather
 > than a specific anchor — section anchors aren't stable across
 > renderers. Once on the page, your browser's *Find* (Ctrl/Cmd+F) on
@@ -26,12 +21,12 @@ supports evidence for it.
 
 | If you're asking… | Start here |
 |---|---|
-| "How do I prove my segmentation actually works?" | [PCI Req 1](./PCI-DSS-v4/pci-runbook.md), [HIPAA §164.312(a)(1)](./HIPAA/CSW-HIPAA-Technical-Runbook.md), [NIST AC-4](./NIST-800-53/nist-runbook.md), [DORA Art. 9](./DORA/CSW-DORA-Technical-Runbook.md) |
-| "How do I demonstrate continuous monitoring?" | [NIST CA-7 / SI-4](./NIST-800-53/nist-runbook.md), [PCI Req 11](./PCI-DSS-v4/pci-runbook.md), [SOC 2 CC7.2](./SOC2/soc2-runbook.md), [NIS2 Art. 21(2)(b)](./NIS2/CSW-NIS2-Technical-Runbook.md) |
+| "How do I prove my segmentation actually works?" | [PCI Req 1](./PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.md), [HIPAA §164.312(a)(1)](./HIPAA/CSW-HIPAA-Technical-Runbook.md), [NIST AC-4](./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md), [DORA Art. 9](./DORA/CSW-DORA-Technical-Runbook.md) |
+| "How do I demonstrate continuous monitoring?" | [NIST CA-7 / SI-4](./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md), [PCI Req 11](./PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.md), [SOC 2 CC7.2](./SOC2/CSW-SOC2-Technical-Runbook.md), [NIS2 Art. 21(2)(b)](./NIS2/CSW-NIS2-Technical-Runbook.md) |
 | "How do I produce an incident-reporting evidence pack?" | [DORA Art. 19](./DORA/CSW-DORA-Technical-Runbook.md), [NIS2 Art. 23](./NIS2/CSW-NIS2-Technical-Runbook.md), [HIPAA §164.308(a)(6)](./HIPAA/CSW-HIPAA-Technical-Runbook.md) |
-| "How do I show my supply chain / third-party exposure?" | [DORA Art. 28](./DORA/CSW-DORA-Technical-Runbook.md), [NIS2 Art. 21(2)(d)](./NIS2/CSW-NIS2-Technical-Runbook.md), [ISO A.5.19–A.5.22](./ISO-27001-2022/iso27001-runbook.md) |
-| "Where does CSW fit in a Zero Trust architecture?" | [NIST 800-207 Tenets](./NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md), [NIST 800-207A PDP/PEP/PA/PIP](./NIST-800-207A/CSW-NIST-800-207A-Technical-Runbook.md), [CISA ZTMM](./CISA-ZeroTrust/cisa-ztmm-runbook.md) |
-| "How do I evidence vulnerability management?" | [PCI Req 6, 11.3](./PCI-DSS-v4/pci-runbook.md), [NIST RA-5](./NIST-800-53/nist-runbook.md), [ISO A.8.8](./ISO-27001-2022/iso27001-runbook.md), [NIS2 Art. 21(2)(e)](./NIS2/CSW-NIS2-Technical-Runbook.md) |
+| "How do I show my supply chain / third-party exposure?" | [DORA Art. 28](./DORA/CSW-DORA-Technical-Runbook.md), [NIS2 Art. 21(2)(d)](./NIS2/CSW-NIS2-Technical-Runbook.md), [ISO A.5.19–A.5.22](./ISO-27001-2022/CSW-ISO27001-Technical-Runbook.md) |
+| "Where does CSW fit in a Zero Trust architecture?" | [NIST 800-207 Tenets](./NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md), [NIST 800-207A PDP/PEP/PA/PIP](./NIST-800-207A/CSW-NIST-800-207A-Technical-Runbook.md), [CISA ZTMM](./CISA-ZeroTrust/CSW-CISA-ZTMM-Technical-Runbook.md) |
+| "How do I evidence vulnerability management?" | [PCI Req 6, 11.3](./PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.md), [NIST RA-5](./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md), [ISO A.8.8](./ISO-27001-2022/CSW-ISO27001-Technical-Runbook.md), [NIS2 Art. 21(2)(e)](./NIS2/CSW-NIS2-Technical-Runbook.md) |
 
 ---
 
@@ -57,7 +52,7 @@ Source: [`HIPAA/CSW-HIPAA-Technical-Runbook.md`](./HIPAA/CSW-HIPAA-Technical-Run
 
 ## SOC 2 — Trust Services Criteria
 
-Source: [`SOC2/soc2-runbook.md`](./SOC2/soc2-runbook.md)
+Source: [`SOC2/CSW-SOC2-Technical-Runbook.md`](./SOC2/CSW-SOC2-Technical-Runbook.md)
 
 | Criterion | Topic | CSW can support evidence for |
 |---|---|---|
@@ -75,7 +70,7 @@ Source: [`SOC2/soc2-runbook.md`](./SOC2/soc2-runbook.md)
 
 ## PCI DSS v4.0
 
-Source: [`PCI-DSS-v4/pci-runbook.md`](./PCI-DSS-v4/pci-runbook.md)
+Source: [`PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.md`](./PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.md)
 
 | Requirement | Topic | CSW can support evidence for |
 |---|---|---|
@@ -87,7 +82,7 @@ Source: [`PCI-DSS-v4/pci-runbook.md`](./PCI-DSS-v4/pci-runbook.md)
 | Req 7 | Restrict access by need-to-know | Identity-based workload segmentation |
 | Req 10 | Log and monitor all access | Flow + process telemetry, SIEM export |
 | Req 10.7.2 | Detect failures of critical controls | Sensor offline + enforcement gap alerts |
-| Req 11.3 | Vulnerability scanning | Exposure insight from CSW-supported assessments—align with Req 11 internal / ASV modalities your QSA expects |
+| Req 11.3 | Vulnerability scanning | Exposure insight from CSW-supported assessments — align with the Req 11 internal / ASV modalities your QSA expects |
 | Req 11.4 | Network intrusion detection | Behavioural rules + conversation-graph anomaly |
 | Req 11.5 | Detect changes/alterations | Process / package / configuration drift |
 | Req 12.3.2 | Targeted risk analysis | CSW vulnerability + ADM data feeds risk analysis |
@@ -96,7 +91,7 @@ Source: [`PCI-DSS-v4/pci-runbook.md`](./PCI-DSS-v4/pci-runbook.md)
 
 ## NIST SP 800-53 Rev 5
 
-Source: [`NIST-800-53/nist-runbook.md`](./NIST-800-53/nist-runbook.md)
+Source: [`NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md`](./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md)
 
 | Control | Topic | CSW can support evidence for |
 |---|---|---|
@@ -122,7 +117,7 @@ Source: [`NIST-800-53/nist-runbook.md`](./NIST-800-53/nist-runbook.md)
 
 ## ISO/IEC 27001:2022 — Annex A
 
-Source: [`ISO-27001-2022/iso27001-runbook.md`](./ISO-27001-2022/iso27001-runbook.md)
+Source: [`ISO-27001-2022/CSW-ISO27001-Technical-Runbook.md`](./ISO-27001-2022/CSW-ISO27001-Technical-Runbook.md)
 
 | Annex A | Topic | CSW can support evidence for |
 |---|---|---|
@@ -144,7 +139,7 @@ Source: [`ISO-27001-2022/iso27001-runbook.md`](./ISO-27001-2022/iso27001-runbook
 
 ## CISA Zero Trust Maturity Model v2.0
 
-Source: [`CISA-ZeroTrust/cisa-ztmm-runbook.md`](./CISA-ZeroTrust/cisa-ztmm-runbook.md)
+Source: [`CISA-ZeroTrust/CSW-CISA-ZTMM-Technical-Runbook.md`](./CISA-ZeroTrust/CSW-CISA-ZTMM-Technical-Runbook.md)
 
 | Pillar | Example maturity path (varies by deployment) | CSW can support evidence for |
 |---|---|---|
@@ -163,7 +158,7 @@ pillars describe outcomes, not a guarantee of maturity tier.
 
 ## FIPS 140 (140-2 / 140-3)
 
-Source: [`FIPS-140/fips-runbook.md`](./FIPS-140/fips-runbook.md)
+Source: [`FIPS-140/CSW-FIPS-Technical-Runbook.md`](./FIPS-140/CSW-FIPS-Technical-Runbook.md)
 
 CSW is **not a FIPS-validated cryptographic module**. The runbook
 describes how CSW can support elements of an organisation's posture
@@ -278,10 +273,6 @@ Source: [`NIS2/CSW-NIS2-Technical-Runbook.md`](./NIS2/CSW-NIS2-Technical-Runbook
 
 ## Reverse Lookup — common CSW capabilities → frameworks
 
-> **Guidelines.** *Continuous*, *always-on*, or similar shorthand in mappings
-> reflects typical operating rhythm—calendar it and prioritise refreshes using
-> your team's judgment.
-
 | CSW capability | Frameworks it often supports (apply judgment per deployment) |
 |---|---|
 | Workload inventory views | HIPAA §164.308(a)(1)(ii)(A) · PCI Req 2 · NIST CM-8 · ISO A.8.1 · CISA ZTMM Devices · 800-207 Tenet 1 · DORA Art. 8 · NIS2 Art. 21(2)(i) |
@@ -307,3 +298,10 @@ obligations.
 Consult each framework runbook plus the disclaimer in [`README.md`](./README.md)
 for supervisory reporting expectations, product coverage considerations,
 and out-of-scope notes.
+
+**Guidelines.** The tables above summarise typical ways teams discuss
+Cisco Secure Workload alongside each control. They are reference points,
+not prescriptions—use professional judgment in your environment and with
+your assessors. Where mappings use language like *continuous*, *always-on*,
+or similar shorthand, that reflects typical operating rhythm—calendar it
+and prioritise refreshes using your team's judgment.

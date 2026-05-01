@@ -10,7 +10,7 @@
 **Who this is for.** US federal agencies and federal contractors
 required to use FIPS-validated cryptographic modules, regulated
 industries with FIPS obligations (DoD supply chain, healthcare, some
-financial), FIPS lab consultants, and the Cisco SAs supporting them.
+financial), and FIPS lab consultants advising them.
 
 > **Read this first:** CSW is **not itself a FIPS-validated
 > cryptographic module**. It does not encrypt your data. CSW's role
@@ -176,9 +176,9 @@ FIPS 140-3 (based on ISO/IEC 19790:2012) replaces 140-2. CSW supports the transi
 
 ## Related Frameworks
 
-- [NIST SP 800-53 Rev 5](../NIST-800-53/nist-runbook.md) — SC-13 and the broader cryptographic-control family that requires FIPS-validated modules.
+- [NIST SP 800-53 Rev 5](../NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md) — SC-13 and the broader cryptographic-control family that requires FIPS-validated modules.
 - [NIST SP 800-207](../NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md) — Tenet 4 (encryption regardless of network location) sits on the same crypto foundation.
-- [ISO/IEC 27001:2022](../ISO-27001-2022/iso27001-runbook.md) — Annex A.8.24 cryptographic controls map to FIPS-validated module use.
+- [ISO/IEC 27001:2022](../ISO-27001-2022/CSW-ISO27001-Technical-Runbook.md) — Annex A.8.24 cryptographic controls map to FIPS-validated module use.
 
 ---
 

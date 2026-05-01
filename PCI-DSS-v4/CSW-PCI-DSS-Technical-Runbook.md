@@ -9,8 +9,8 @@
 
 **Who this is for.** Merchants and service providers with a Cardholder
 Data Environment (CDE) preparing for QSA assessment, AOCs, or
-self-assessment under PCI DSS v4.0; QSAs cross-checking technical
-evidence; Cisco SAs scoping a deployment.
+self-assessment under PCI DSS v4.0; and QSAs cross-checking technical
+evidence.
 
 **Questions this runbook helps you answer:**
 
@@ -202,8 +202,8 @@ CSW captures per CDE workload:
 
 ## Related Frameworks
 
-- [ISO/IEC 27001:2022](../ISO-27001-2022/iso27001-runbook.md) — most PCI-attested organisations also operate an ISO 27001 ISMS.
-- [NIST SP 800-53 Rev 5](../NIST-800-53/nist-runbook.md) — useful when PCI evidence is being reused across a federal control programme.
+- [ISO/IEC 27001:2022](../ISO-27001-2022/CSW-ISO27001-Technical-Runbook.md) — most PCI-attested organisations also operate an ISO 27001 ISMS.
+- [NIST SP 800-53 Rev 5](../NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md) — useful when PCI evidence is being reused across a federal control programme.
 - [DORA (EU 2022/2554)](../DORA/CSW-DORA-Technical-Runbook.md) — for EU payment-services entities, PCI scope and DORA Pillar 1 share substantial evidence.
 - [NIST SP 800-207](../NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md) — the segmentation pattern underneath PCI Reqs 1, 7, 11.
 

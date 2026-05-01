@@ -13,8 +13,8 @@ market infrastructure, health, drinking water, waste water, digital
 infrastructure, ICT service management (B2B), public administration,
 space, postal/courier, waste management, chemicals, food, manufacture
 of critical products, digital providers, research — together with the
-CISOs, security architects, and Cisco SAs preparing those entities
-for their national competent authority's review.
+CISOs and security architects preparing those entities for their
+national competent authority's review.
 
 **Questions this runbook helps you answer:**
 
@@ -469,13 +469,13 @@ NIS2 overlaps materially with:
   *lex specialis* over NIS2 for the same control surface (see
   [DORA runbook](../DORA/CSW-DORA-Technical-Runbook.md)).
 - **ISO/IEC 27001:2022** — Annex A controls map closely to Art. 21(2)
-  measures (see [ISO 27001 runbook](../ISO-27001-2022/iso27001-runbook.md)).
+  measures (see [ISO 27001 runbook](../ISO-27001-2022/CSW-ISO27001-Technical-Runbook.md)).
 - **NIST SP 800-207** — segmentation and continuous-monitoring
   expectations align with the seven ZTA tenets (see
   [800-207 runbook](../NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md)).
 - **NIST SP 800-53** — for cross-jurisdiction programmes, 800-53
   controls give a useful detailed mapping for Article 21(2)(e), (f),
-  (i) (see [800-53 runbook](../NIST-800-53/nist-runbook.md)).
+  (i) (see [800-53 runbook](../NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md)).
 
 ---
 

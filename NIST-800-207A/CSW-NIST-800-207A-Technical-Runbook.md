@@ -3,7 +3,6 @@
 
 **Version:** 1.0  
 **Standard:** NIST SP 800-207A (Public Draft) — ZTA Model for Access Control in Cloud-Native & Multi-Cloud Environments  
-**Audience:** Solutions Architects, Security Engineers, GRC Practitioners  
 **Environment:** Hybrid (On-Premises + AWS / Azure / GCP)
 
 > ⚠ **Draft Notice:** NIST SP 800-207A is in public draft / comment stage. This runbook is anchored to the stable PDP/PEP/PA/PIP logical component model, which is consistent with SP 800-207 and unlikely to change materially. Sections derived from draft-specific content are marked **[DRAFT REF]**. Verify against the final published standard before use in formal audit submissions.
@@ -14,8 +13,8 @@
 
 **Who this is for.** Enterprises extending zero-trust principles
 across satellite locations, multi-cloud environments, and partner
-boundaries; security architects who already have an 800-207 baseline
-and need to operationalize it; and Cisco SAs supporting them.
+boundaries; and security architects who already have an 800-207
+baseline and need to operationalize it.
 
 > If you haven't read the [800-207 runbook](../NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md)
 > yet, start there. 800-207A assumes you understand the seven tenets
@@ -498,8 +497,8 @@ Partner access model:
 ## Related Frameworks
 
 - [NIST SP 800-207 — ZTA Seven Tenets](../NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md) — the architectural prerequisite for 800-207A.
-- [CISA Zero Trust Maturity Model v2.0](../CISA-ZeroTrust/cisa-ztmm-runbook.md) — the maturity-tier view that maps onto the same logical components.
-- [NIST SP 800-53 Rev 5](../NIST-800-53/nist-runbook.md) — AC, SI, SC families that the PDP/PEP/PA/PIP architecture operationalises.
+- [CISA Zero Trust Maturity Model v2.0](../CISA-ZeroTrust/CSW-CISA-ZTMM-Technical-Runbook.md) — the maturity-tier view that maps onto the same logical components.
+- [NIST SP 800-53 Rev 5](../NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md) — AC, SI, SC families that the PDP/PEP/PA/PIP architecture operationalises.
 
 ---
 

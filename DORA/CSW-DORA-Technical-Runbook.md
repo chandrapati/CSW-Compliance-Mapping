@@ -11,9 +11,9 @@
 institutions, payment & e-money institutions, investment firms, CCPs,
 trading venues, insurers, crypto-asset service providers, crowdfunding
 service providers — and the critical ICT third-party providers (CTPPs)
-that serve them. Also useful for the security architects, ICT risk
-officers, and Cisco SAs preparing those organisations for their
-competent-authority engagement.
+that serve them. Also useful for the security architects and ICT risk
+officers preparing those organisations for their competent-authority
+engagement.
 
 **Questions this runbook helps you answer:**
 
@@ -484,13 +484,13 @@ DORA shares substantial control surface with:
 - **NIS2** — many of the Article 21(2) measures overlap with DORA
   Pillars 1–2 (see [NIS2 runbook](../NIS2/CSW-NIS2-Technical-Runbook.md)).
 - **ISO/IEC 27001:2022** — Annex A controls map cleanly to DORA
-  Pillar 1 (see [ISO 27001 runbook](../ISO-27001-2022/iso27001-runbook.md)).
+  Pillar 1 (see [ISO 27001 runbook](../ISO-27001-2022/CSW-ISO27001-Technical-Runbook.md)).
 - **NIST SP 800-207** — DORA's segmentation and continuous-monitoring
   expectations align with the seven ZTA tenets (see
   [800-207 runbook](../NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md)).
 - **PCI DSS v4.0** — for payment-services entities, DORA Pillar 1 and
   PCI Reqs 1, 7, 10, 11 share evidence (see
-  [PCI runbook](../PCI-DSS-v4/pci-runbook.md)).
+  [PCI runbook](../PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.md)).
 
 ---
 

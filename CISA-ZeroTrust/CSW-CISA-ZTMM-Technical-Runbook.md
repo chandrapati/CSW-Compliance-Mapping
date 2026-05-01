@@ -9,8 +9,7 @@
 
 **Who this is for.** Federal civilian agencies executing on
 EO 14028 / OMB M-22-09, federal contractors with parallel obligations,
-enterprises that have adopted CISA's maturity model voluntarily, and
-the Cisco SAs supporting them.
+enterprises that have adopted CISA's maturity model voluntarily.
 
 **Questions this runbook helps you answer:**
 
@@ -182,7 +181,7 @@ Ongoing:    Maturity assessment vs ZTMM scorecard
 
 - [NIST SP 800-207 — ZTA Seven Tenets](../NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md) — the architectural foundation underneath the maturity model.
 - [NIST SP 800-207A — PDP/PEP/PA/PIP](../NIST-800-207A/CSW-NIST-800-207A-Technical-Runbook.md) — the logical-component view that aligns with the ZTMM "Optimal" tier.
-- [NIST SP 800-53 Rev 5](../NIST-800-53/nist-runbook.md) — when CISA ZTMM is being mapped to a federal control baseline.
+- [NIST SP 800-53 Rev 5](../NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md) — when CISA ZTMM is being mapped to a federal control baseline.
 
 ---
 

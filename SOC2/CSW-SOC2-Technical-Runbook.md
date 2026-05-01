@@ -8,8 +8,8 @@
 ## Reader's Guide
 
 **Who this is for.** Service organizations preparing for or maintaining
-an annual SOC 2 Type II attestation, the security/GRC teams who own
-the report, and Cisco SAs supporting them.
+an annual SOC 2 Type II attestation, and the security or GRC teams who
+own the report.
 
 **Questions this runbook helps you answer:**
 
@@ -176,8 +176,8 @@ CSW UI → Defend → Alerts
 
 ## Related Frameworks
 
-- [ISO/IEC 27001:2022](../ISO-27001-2022/iso27001-runbook.md) — the international ISMS counterpart; many organisations pursue SOC 2 + ISO 27001 jointly.
-- [NIST SP 800-53 Rev 5](../NIST-800-53/nist-runbook.md) — for cross-mapping CC-series criteria to a federal control catalogue.
+- [ISO/IEC 27001:2022](../ISO-27001-2022/CSW-ISO27001-Technical-Runbook.md) — the international ISMS counterpart; many organisations pursue SOC 2 + ISO 27001 jointly.
+- [NIST SP 800-53 Rev 5](../NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md) — for cross-mapping CC-series criteria to a federal control catalogue.
 - [NIST SP 800-207](../NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md) — the ZTA pattern underneath CC6 logical access and CC7 system operations.
 
 ---

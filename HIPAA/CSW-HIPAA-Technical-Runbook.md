@@ -2,7 +2,6 @@
 ## Technical Runbook | Healthcare Accounts
 
 **Version:** 1.0  
-**Audience:** Solutions Architects, Security Engineers  
 **Use Case:** Fresh Install, Hybrid Environment (On-Prem + Cloud)
 
 ---
@@ -11,8 +10,7 @@
 
 **Who this is for.** Covered entities and business associates handling
 electronic Protected Health Information (ePHI), and the security teams
-or Cisco SAs preparing for an OCR review or proactive HIPAA risk
-analysis.
+preparing for an OCR review or proactive HIPAA risk analysis.
 
 **Questions this runbook helps you answer:**
 
@@ -395,8 +393,8 @@ Retain forensic exports for minimum **6 years** per HIPAA documentation requirem
 
 ## Related Frameworks
 
-- [NIST SP 800-53 Rev 5](../NIST-800-53/nist-runbook.md) — HHS recognises 800-53 as a basis for satisfying §164.306(a) administrative, physical, and technical safeguards.
-- [ISO/IEC 27001:2022](../ISO-27001-2022/iso27001-runbook.md) — for healthcare entities operating under both HIPAA and ISO 27001.
+- [NIST SP 800-53 Rev 5](../NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md) — HHS recognises 800-53 as a basis for satisfying §164.306(a) administrative, physical, and technical safeguards.
+- [ISO/IEC 27001:2022](../ISO-27001-2022/CSW-ISO27001-Technical-Runbook.md) — for healthcare entities operating under both HIPAA and ISO 27001.
 - [NIS2 (EU 2022/2555)](../NIS2/CSW-NIS2-Technical-Runbook.md) — for healthcare entities with EU operations; healthcare is an essential sector under NIS2.
 - [NIST SP 800-207](../NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md) — the ZTA pattern that underpins many of the technical safeguards above.
 

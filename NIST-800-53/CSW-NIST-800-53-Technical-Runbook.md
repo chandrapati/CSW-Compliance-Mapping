@@ -9,7 +9,7 @@
 
 **Who this is for.** Federal agencies (civilian and DoD), FedRAMP
 applicants, and enterprises that have adopted 800-53 as a security
-overlay, plus the assessors and Cisco SAs supporting them.
+overlay, plus the assessors supporting them.
 
 **Questions this runbook helps you answer:**
 
@@ -174,10 +174,10 @@ CSW UI → Investigate → ADM
 
 ## Related Frameworks
 
-- [ISO/IEC 27001:2022](../ISO-27001-2022/iso27001-runbook.md) — the international counterpart for organisations cross-mapping 800-53 to ISO Annex A.
+- [ISO/IEC 27001:2022](../ISO-27001-2022/CSW-ISO27001-Technical-Runbook.md) — the international counterpart for organisations cross-mapping 800-53 to ISO Annex A.
 - [NIST SP 800-207](../NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md) — the ZTA architectural overlay on top of the 800-53 control catalogue.
 - [NIST SP 800-207A](../NIST-800-207A/CSW-NIST-800-207A-Technical-Runbook.md) — the logical-component view that operationalises AC, SI, SC families.
-- [FIPS 140](../FIPS-140/fips-runbook.md) — SC-13 cryptographic-protection requirement for the 800-53 baselines.
+- [FIPS 140](../FIPS-140/CSW-FIPS-Technical-Runbook.md) — SC-13 cryptographic-protection requirement for the 800-53 baselines.
 - [HIPAA](../HIPAA/CSW-HIPAA-Technical-Runbook.md) — for healthcare entities that satisfy §164.306 via 800-53 mapping.
 
 ---
