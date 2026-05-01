@@ -15,6 +15,8 @@ CSW Incubation Team.
 | ISO/IEC 27001:2022 | [pdf](./ISO-27001-2022/CSW-ISO27001-Compliance-Report.pdf) | [docx](./ISO-27001-2022/CSW-ISO27001-Compliance-Report.docx) | [runbook](./ISO-27001-2022/iso27001-runbook.md) |
 | CISA Zero Trust Maturity Model | [pdf](./CISA-ZeroTrust/CSW-CISA-ZTMM-Compliance-Report.pdf) | [docx](./CISA-ZeroTrust/CSW-CISA-ZTMM-Compliance-Report.docx) | [runbook](./CISA-ZeroTrust/cisa-ztmm-runbook.md) |
 | FIPS 140 | [pdf](./FIPS-140/CSW-FIPS-Compliance-Report.pdf) | [docx](./FIPS-140/CSW-FIPS-Compliance-Report.docx) | [runbook](./FIPS-140/fips-runbook.md) |
+| NIST SP 800-207 (ZTA Seven Tenets) | [pdf](./NIST-800-207/CSW-NIST-800-207-Compliance-Report.pdf) | [docx](./NIST-800-207/CSW-NIST-800-207-Compliance-Report.docx) | [runbook](./NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md) |
+| NIST SP 800-207A (PDP/PEP/PA/PIP) | [pdf](./NIST-800-207A/CSW-NIST-800-207A-Compliance-Report.pdf) | [docx](./NIST-800-207A/CSW-NIST-800-207A-Compliance-Report.docx) | [runbook](./NIST-800-207A/CSW-NIST-800-207A-Technical-Runbook.md) |
 
 ## How to Use
 
@@ -37,7 +39,9 @@ CSW-Compliance-Mapping/
 ├── NIST-800-53/
 ├── ISO-27001-2022/
 ├── CISA-ZeroTrust/
-└── FIPS-140/
+├── FIPS-140/
+├── NIST-800-207/
+└── NIST-800-207A/
 ```
 
 ## Contact
