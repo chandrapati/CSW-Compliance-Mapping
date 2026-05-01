@@ -10,6 +10,48 @@
 
 ---
 
+## Reader's Guide
+
+**Who this is for.** Enterprises extending zero-trust principles
+across satellite locations, multi-cloud environments, and partner
+boundaries; security architects who already have an 800-207 baseline
+and need to operationalize it; and Cisco SAs supporting them.
+
+> If you haven't read the [800-207 runbook](../NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md)
+> yet, start there. 800-207A assumes you understand the seven tenets
+> and is concerned with *how the components actually wire together*.
+
+**Questions this runbook helps you answer:**
+
+- *Where in my stack do the Policy Decision Point (PDP), Policy
+  Enforcement Point (PEP), Policy Administrator (PA), and Policy
+  Information Point (PIP) physically live today? Are any of these
+  roles unimplemented or implicit?*
+- *Can I trace a single access transaction end-to-end through these
+  four components and produce a timeline of what each one decided?*
+- *In a multi-cloud environment, do I have a single PDP that brokers
+  decisions across clouds, or one PDP per cloud? What are the
+  trade-offs for my use cases?*
+- *What evidence proves that my PEP is actually enforcing what the
+  PDP decided, rather than silently failing open or stale?*
+- *For my use case (satellite office, multi-cloud, cross-enterprise
+  collaboration), which 800-207A reference architecture is closest
+  and where does CSW fit?*
+
+**What you'll need.** Solid familiarity with NIST SP 800-207, an
+inventory of your cloud environments and their identity boundaries,
+your current policy decision and enforcement tooling map (CSPM,
+SASE, EDR, identity), and a sense of which use cases (sections 7.1 –
+7.3) match your environment.
+
+**Where to start.** Section 1 if you need the 800-207A vs. 800-207
+delta first; sections 2–5 walk PDP, PEP, PA, PIP one at a time;
+section 6 demonstrates an end-to-end access transaction trace; section
+7 maps your use case to a reference architecture; section 9 if
+you're packaging evidence.
+
+---
+
 ## 1. Overview — 800-207A vs. 800-207
 
 | | SP 800-207 | SP 800-207A |

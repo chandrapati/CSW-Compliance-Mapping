@@ -5,6 +5,40 @@
 
 ---
 
+## Reader's Guide
+
+**Who this is for.** Federal civilian agencies executing on
+EO 14028 / OMB M-22-09, federal contractors with parallel obligations,
+enterprises that have adopted CISA's maturity model voluntarily, and
+the Cisco SAs supporting them.
+
+**Questions this runbook helps you answer:**
+
+- *Across the 5 ZTMM pillars (Identity, Devices, Networks,
+  Applications & Workloads, Data), where am I today on the
+  Traditional → Initial → Advanced → Optimal scale, and where is the
+  evidence?*
+- *What's the smallest set of changes that moves my Networks pillar
+  and my Applications & Workloads pillar from Initial to Advanced?*
+- *For OMB M-22-09 progress reporting, what artifacts can I produce
+  on a quarterly basis without rerunning manual assessments?*
+- *Reaching "Optimal" on a pillar implies continuous validation. What
+  does that look like as a daily operational signal, not an annual
+  audit one?*
+- *Where do I depend on other Cisco portfolio products (Identity,
+  Endpoint, Cloud, Data) to reach Optimal across all five pillars?*
+
+**What you'll need.** Your current ZTMM self-assessment (or a
+willingness to do one), a prioritized list of pillars by business
+risk, and visibility into your existing IdP, EDR, and CSPM tooling.
+
+**Where to start.** Sections 2–4 for pillar-by-pillar capability
+mapping; section 5 for the coverage summary across all pillars;
+section 6 for a phased deployment plan; section 8 if your team uses a
+scorecard format.
+
+---
+
 ## 1. Overview
 
 The CISA Zero Trust Maturity Model (ZTMM) v2.0 defines maturity across **5 pillars**: Identity, Devices, Networks, Applications & Workloads, and Data. CSW is the primary Cisco platform addressing the **Networks** pillar and makes significant contributions to **Applications & Workloads** and **Data** pillars. Each pillar has 4 maturity stages: Traditional → Initial → Advanced → Optimal.

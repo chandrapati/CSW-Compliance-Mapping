@@ -7,6 +7,38 @@
 
 ---
 
+## Reader's Guide
+
+**Who this is for.** Covered entities and business associates handling
+electronic Protected Health Information (ePHI), and the security teams
+or Cisco SAs preparing for an OCR review or proactive HIPAA risk
+analysis.
+
+**Questions this runbook helps you answer:**
+
+- *Can I prove ePHI workloads are isolated from non-ePHI systems and
+  that the boundary hasn't drifted since the last attestation?*
+  (§164.312(a)(1), §164.308(a)(1)(ii)(B))
+- *When a clinical or billing application is patched, can I show what
+  network conversations changed as a result?* (§164.308(a)(1)(ii)(D))
+- *If an OCR investigator asks for ePHI access logs over a specific
+  window, what artifact do I hand over?* (§164.312(b))
+- *If a clinician's workstation is compromised, can I demonstrate that
+  lateral movement to ePHI systems was structurally prevented, not just
+  that it didn't happen to occur?* (§164.308(a)(6), §164.312(a)(1))
+- *Are my Business Associate Agreements backed by an actual technical
+  boundary, or by trust alone?* (§164.314(a))
+
+**What you'll need.** A current ePHI system inventory, your most recent
+§164.308(a)(1)(ii)(A) risk analysis, and either CSW already deployed or
+scope decisions for a planned deployment.
+
+**Where to start.** Sections 1–4 if you're scoping; 5–7 if you're ready
+to design policy; 9–10 if you're preparing for an audit within the
+next quarter.
+
+---
+
 ## 1. Overview
 
 This runbook guides deployment of Cisco Secure Workload (CSW) in healthcare environments to satisfy HIPAA Security Rule requirements. CSW provides workload-level visibility, micro-segmentation, vulnerability detection, and forensic telemetry — all directly mappable to HIPAA Technical Safeguard controls.

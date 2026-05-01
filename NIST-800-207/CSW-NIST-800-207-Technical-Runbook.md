@@ -5,6 +5,44 @@
 
 ---
 
+## Reader's Guide
+
+**Who this is for.** Any organization adopting Zero Trust
+Architecture — federal agencies executing on EO 14028, federal
+contractors, enterprises with a strategic ZT initiative — plus the
+security architects and Cisco SAs working with them.
+
+**Questions this runbook helps you answer:**
+
+- *For each of the seven tenets, where do I have a real working
+  implementation today vs. a slide that says "we do this"?*
+- *Tenet 1 says "all data sources and computing services are
+  resources" — what's my live inventory of those resources, and how
+  current is it?*
+- *Tenet 2 (all communication is secured regardless of network
+  location) — can I prove that every workload-to-workload conversation
+  is policy-allowed, not just network-reachable?*
+- *Tenet 5 says the enterprise monitors and measures "integrity and
+  security posture of all assets" — what does that look like as a
+  daily artifact, not an annual audit?*
+- *In my deployment model (agent-based, enclave-based, resource
+  portal), which CSW components live where in the architecture?*
+- *When my architect asks "where's the Policy Enforcement Point?",
+  what's my answer?*
+
+**What you'll need.** A current zero-trust strategy document or
+charter, your existing architecture diagram (even if aspirational),
+your identity provider integration map, and a sense of which
+deployment model best fits your environment.
+
+**Where to start.** Section 1 to align on terminology; section 2 to
+walk tenet-by-tenet; section 3 for the logical-component mapping
+(this is where most architectural discussions live); section 4 if
+you're committing to a deployment model; section 5 to see how CSW
+fits Cisco's broader ZT portfolio.
+
+---
+
 ## 1. Overview
 
 NIST SP 800-207 defines Zero Trust Architecture (ZTA) through seven foundational tenets. Unlike maturity models (e.g., CISA ZTMM), 800-207 focuses on architectural requirements and logical components — the Policy Engine (PE), Policy Administrator (PA), and Policy Enforcement Point (PEP).

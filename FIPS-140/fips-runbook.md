@@ -5,6 +5,46 @@
 
 ---
 
+## Reader's Guide
+
+**Who this is for.** US federal agencies and federal contractors
+required to use FIPS-validated cryptographic modules, regulated
+industries with FIPS obligations (DoD supply chain, healthcare, some
+financial), FIPS lab consultants, and the Cisco SAs supporting them.
+
+> **Read this first:** CSW is **not itself a FIPS-validated
+> cryptographic module**. It does not encrypt your data. CSW's role
+> in a FIPS program is *enforcement and detection* — proving that
+> your applications use only validated crypto and surfacing it when
+> they don't. Read section 1 carefully before going further.
+
+**Questions this runbook helps you answer:**
+
+- *Where in my environment is non-FIPS cryptography still in active
+  use today? (TLS 1.0/1.1, SSHv1, MD5-HMAC, RC4, custom protocols.)*
+- *Can I detect at runtime when a service silently falls back to a
+  non-validated algorithm — before an auditor or pen tester finds it?*
+- *For my crypto boundary documentation, what process-level evidence
+  supports the claim that "only the validated module is performing
+  cryptographic operations"?*
+- *During the FIPS 140-2 → 140-3 transition window, which workloads
+  are still relying on now-deprecated 140-2 modules and represent
+  procurement or audit exposure?*
+- *What does CSW explicitly **not** cover, so I know what other
+  controls I still need?* (See section 6.)
+
+**What you'll need.** A list of systems with FIPS obligations
+(typically derived from contract or regulatory scope), your current
+cryptographic inventory (or willingness to discover one), and your
+crypto boundary documentation.
+
+**Where to start.** Section 1 to set realistic expectations;
+sections 2–3 for what CSW actually does; section 4 if you're inside
+the 140-2→140-3 transition; sections 5–6 for evidence and explicit
+non-coverage.
+
+---
+
 ## 1. Overview & CSW Role
 
 FIPS 140-2/3 is a US federal standard for cryptographic module validation. **CSW is not itself a cryptographic module** — it does not encrypt data at rest or in transit. However, CSW plays a critical **enforcement and detection** role in FIPS compliance programs by:

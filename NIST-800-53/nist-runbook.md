@@ -5,6 +5,38 @@
 
 ---
 
+## Reader's Guide
+
+**Who this is for.** Federal agencies (civilian and DoD), FedRAMP
+applicants, and enterprises that have adopted 800-53 as a security
+overlay, plus the assessors and Cisco SAs supporting them.
+
+**Questions this runbook helps you answer:**
+
+- *For my system's impact level (LOW / MODERATE / HIGH), which AC, AU,
+  CM, and SC controls become continuous monitoring rather than
+  periodic-assessment items?* (CA-7)
+- *Can my POA&M be partially burned down through automated CSW
+  evidence rather than manual remediation tracking?* (CA-5, RA-5)
+- *For SC-7 boundary protection, what is my evidence at the workload
+  tier — distinct from perimeter firewalls and CSPM?*
+- *For SI-4 system monitoring, can I show end-to-end visibility from
+  process initiation through network conversation to data store?*
+- *If my assessor wants machine-readable artifacts (OSCAL-adjacent),
+  what does CSW produce vs. what still requires narrative
+  documentation?*
+
+**What you'll need.** Your system's FIPS 199 categorization, a current
+or draft System Security Plan (SSP), your control overlay if any
+(e.g., HIGH baseline, FedRAMP Mod), and your assessor's evidence
+format expectations.
+
+**Where to start.** Section 2 walks the seven control families CSW
+addresses most directly; section 3 maps coverage by impact level; go
+to section 4 if you're building the evidence package now.
+
+---
+
 ## 1. Overview
 
 NIST SP 800-53 Rev 5 provides a comprehensive catalog of security and privacy controls for federal information systems. CSW directly addresses controls across seven key families: **AC** (Access Control), **AU** (Audit & Accountability), **CM** (Configuration Management), **IR** (Incident Response), **RA** (Risk Assessment), **SC** (System & Communications Protection), and **SI** (System & Information Integrity).

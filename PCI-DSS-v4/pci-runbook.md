@@ -5,6 +5,38 @@
 
 ---
 
+## Reader's Guide
+
+**Who this is for.** Merchants and service providers with a Cardholder
+Data Environment (CDE) preparing for QSA assessment, AOCs, or
+self-assessment under PCI DSS v4.0; QSAs cross-checking technical
+evidence; Cisco SAs scoping a deployment.
+
+**Questions this runbook helps you answer:**
+
+- *Can I prove every system component currently "in scope" for PCI is
+  actually in scope today, with no scope drift since last assessment?*
+  (Req 12.5.2)
+- *Req 1.2.1 calls for a current network diagram of CDE flows. What is
+  the live, machine-generated artifact form of that diagram?*
+- *Req 11.5.2 (change-detection on critical files) — what is my signal
+  that nothing was added to the CDE between assessments?*
+- *Req 10.2 logging — am I capturing audit-relevant events at the
+  workload tier, not just at the network or SIEM layer?*
+- *PCI DSS v4.0 introduced "in place and operating effectively"
+  language and the customized approach. What does my continuous
+  evidence story look like, vs. annual snapshots?* (Req 12.4.2)
+
+**What you'll need.** A defined and documented CDE, your current PCI
+scope document, and your QSA's evidence request template (or last
+year's RoC sections).
+
+**Where to start.** Sections 1–2 if scope is in motion; section 3 to
+walk requirement-by-requirement; sections 4–5 if you're inside the
+assessment window or preparing v4.0 transition evidence.
+
+---
+
 ## 1. Overview
 
 PCI DSS v4.0 introduces customized implementation approaches and strengthens network segmentation requirements. CSW is uniquely positioned to satisfy PCI DSS Requirements 1 (network controls), 6 (vulnerability management), 10 (logging/monitoring), and 11 (security testing) through workload-level visibility and enforcement.

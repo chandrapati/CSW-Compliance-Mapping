@@ -5,6 +5,39 @@
 
 ---
 
+## Reader's Guide
+
+**Who this is for.** Organizations pursuing or maintaining ISO/IEC
+27001 certification (or transitioning their existing 27001:2013
+certification to the 2022 revision), ISMS owners, internal auditors,
+and Cisco SAs supporting them.
+
+**Questions this runbook helps you answer:**
+
+- *For each Annex A.8 (Technological) control, what specific artifact
+  lands on the certification auditor's desk?*
+- *Can my Statement of Applicability reference live, query-able
+  evidence rather than annual screenshots and policy documents?*
+- *For the new 2022 controls (A.8.9 configuration management, A.8.16
+  monitoring activities, A.8.23 web filtering, A.8.28 secure coding),
+  how does workload-resident telemetry contribute?*
+- *During a stage-2 certification audit, what part of CSW can I
+  demonstrate live to the auditor — and what's the script for that
+  demo?*
+- *For the A.5 Organizational controls around risk and incident
+  management, what does workload telemetry add that policy alone
+  doesn't?*
+
+**What you'll need.** Defined ISMS scope, a current or draft Statement
+of Applicability (SoA), your risk treatment plan, and your
+certification body's stage-2 evidence template if available.
+
+**Where to start.** Section 2 maps Annex A controls to CSW
+capabilities; section 3 covers ISMS deployment patterns; sections 4–5
+if you're approaching stage-2 audit or recertification.
+
+---
+
 ## 1. Overview
 
 ISO 27001:2022 restructured Annex A from 114 controls across 14 domains to **93 controls across 4 themes**: Organizational, People, Physical, and Technological. CSW addresses the Technological theme controls most directly, with strong contributions to Organizational controls around risk and incident management.

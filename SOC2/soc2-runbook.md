@@ -5,6 +5,38 @@
 
 ---
 
+## Reader's Guide
+
+**Who this is for.** Service organizations preparing for or maintaining
+an annual SOC 2 Type II attestation, the security/GRC teams who own
+the report, and Cisco SAs supporting them.
+
+**Questions this runbook helps you answer:**
+
+- *Which Common Criteria controls can I evidence with continuous data
+  rather than point-in-time samples? Type II auditors increasingly
+  prefer the former.* (CC6.1, CC6.6, CC7.2)
+- *When my auditor asks me to prove a segmentation control "operated
+  effectively throughout the period", what does the artifact look
+  like?* (CC6.1, CC6.6)
+- *When a customer in due diligence asks "is workload X isolated from
+  workload Y?", can I prove it from live data instead of a network
+  diagram?* (CC6.1, CC6.7)
+- *Are my privileged access changes producing the artifact format my
+  auditor's evidence template expects?* (CC6.2, CC6.3)
+- *For my Availability or Confidentiality TSC additions, what do I gain
+  from workload-level telemetry that I don't get today?*
+
+**What you'll need.** A defined trust boundary (system description),
+your current TSC selection, and your auditor's evidence request list
+or last year's PBC list.
+
+**Where to start.** Section 1 for the TSC↔CSW capability map; sections
+2–3 to design evidence collection; sections 4–5 if you're inside the
+audit window.
+
+---
+
 ## 1. Overview
 
 SOC 2 Type II audits evaluate whether security controls operated effectively over a defined period (typically 6–12 months). Cisco Secure Workload (CSW) directly addresses the **Security** Trust Services Criteria (TSC) and contributes to **Availability**, **Confidentiality**, and **Processing Integrity** criteria through workload visibility, micro-segmentation, vulnerability detection, and forensic telemetry.
