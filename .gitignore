@@ -1,0 +1,14 @@
+# macOS metadata
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Microsoft Office lock files (open-document markers)
+~$*
+
+# Editor scratch / swap files
+*.swp
+*~
+.idea/
+.vscode/
