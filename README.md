@@ -78,7 +78,7 @@ into the runbook section that addresses it.
 | CISA Zero Trust Maturity Model | [pdf](./CISA-ZeroTrust/CSW-CISA-ZTMM-Compliance-Report.pdf) | [docx](./CISA-ZeroTrust/CSW-CISA-ZTMM-Compliance-Report.docx) | [runbook](./CISA-ZeroTrust/cisa-ztmm-runbook.md) |
 | FIPS 140 | [pdf](./FIPS-140/CSW-FIPS-Compliance-Report.pdf) | [docx](./FIPS-140/CSW-FIPS-Compliance-Report.docx) | [runbook](./FIPS-140/fips-runbook.md) |
 | NIST SP 800-207 (ZTA Seven Tenets) | [pdf](./NIST-800-207/CSW-NIST-800-207-Compliance-Report.pdf) | [docx](./NIST-800-207/CSW-NIST-800-207-Compliance-Report.docx) | [runbook](./NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md) |
-| NIST SP 800-207A (PDP/PEP/PA/PIP) | [pdf](./NIST-800-207A/CSW-NIST-800-207A-Compliance-Report.pdf) | [docx](./NIST-800-207A/CSW-NIST-800-207A-Compliance-Report.docx) | [runbook](./NIST-800-207A/CSW-NIST-800-207A-Technical-Runbook.md) |
+| NIST SP 800-207A (PDP/PEP/PA/PIP, draft-derived) | [pdf](./NIST-800-207A/CSW-NIST-800-207A-Compliance-Report.pdf) | [docx](./NIST-800-207A/CSW-NIST-800-207A-Compliance-Report.docx) | [runbook](./NIST-800-207A/CSW-NIST-800-207A-Technical-Runbook.md) |
 | DORA (EU 2022/2554) | [pdf](./DORA/CSW-DORA-Compliance-Report.pdf) | [docx](./DORA/CSW-DORA-Compliance-Report.docx) | [runbook](./DORA/CSW-DORA-Technical-Runbook.md) |
 | NIS2 (EU 2022/2555) | [pdf](./NIS2/CSW-NIS2-Compliance-Report.pdf) | [docx](./NIS2/CSW-NIS2-Compliance-Report.docx) | [runbook](./NIS2/CSW-NIS2-Technical-Runbook.md) |
 

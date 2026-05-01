@@ -503,6 +503,6 @@ Partner access model:
 
 ---
 
-*Cisco Confidential — Internal SA/SE Use. Replace [Customer Name] before customer delivery.*  
-*For full NIST 800-207A ZTA coverage, pair CSW with Cisco Secure Access, Cisco ISE, Cisco XDR, and Cisco Talos.*  
+*Customer-facing guidance. Tailor examples and scope notes to your environment before formal audit submission.*  
+*For full NIST 800-207A ZTA coverage, pair CSW with complementary identity, access, and detection controls (for example: Cisco Secure Access, Cisco ISE, Cisco XDR, and Cisco Talos).*  
 *[DRAFT REF] sections based on NIST SP 800-207A public draft — verify against final publication.*
