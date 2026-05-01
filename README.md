@@ -44,11 +44,24 @@ CSW-Compliance-Mapping/
 └── NIST-800-207A/
 ```
 
-## Contact
+## Disclaimer
 
-Created by the CSW Incubation Team. Questions or feedback → reach out via
-Webex.
+The compliance mappings in this repository are derived from public
+standards and regulatory framework documents (HIPAA, SOC 2, PCI DSS,
+NIST SP 800-series, ISO/IEC 27001, CISA ZTMM, and FIPS 140) cross-
+referenced against documented Cisco Secure Workload (CSW) product
+capabilities at the time of authoring.
 
----
-*Cisco Confidential — Internal Use. Customer-facing documents require
-`[Customer Name]` substitution before external sharing.*
+These materials are provided for **informational and reference purposes
+only**. They do not constitute legal, regulatory, or audit advice, are
+not warranted to be complete, current, or fit for any specific
+compliance program, and should not be relied upon as a substitute for
+review by your own qualified compliance, legal, and audit professionals.
+
+Standards evolve, product capabilities change, and the applicability of
+any specific control depends on each organization's environment,
+deployment, and risk posture. Always validate against the latest
+official source documents before formal use.
+
+For questions, scoping discussions, or to validate how these mappings
+apply to your environment, please contact your **Cisco account team**.
