@@ -80,37 +80,44 @@ organisation.
 ## Asset Library
 
 **Coverage** highlights what the framework section addresses so the whole
-library can be scanned in one view. **Report** and **Runbook** each open a
-format chooser — pick PDF, DOCX, HTML, or Markdown depending on how you
-want to read or share the asset.
+library can be scanned in one view. The **Runbook** column comes first
+because the runbook is what proves the mapping is real and not marketing —
+it shows the actual configuration steps, sample policies, and evidence
+collection. The **Report** column is the customer-facing narrative built on
+top of that work. Both open a format chooser — pick PDF, DOCX, HTML, or
+Markdown depending on how you want to read or share the asset.
 
-| Framework | Coverage | Report | Runbook |
+| Framework | Coverage | Runbook | Report |
 |---|---|---|---|
-| HIPAA Security Rule | ePHI workload isolation; OCR-investigation audit trail; BAA technical boundary evidence | <details><summary>Choose format</summary><br>[PDF](./HIPAA/CSW-HIPAA-Compliance-Report.pdf) · [DOCX](./HIPAA/CSW-HIPAA-Compliance-Report.docx) · [HTML](./HIPAA/CSW-HIPAA-Compliance-Report.html)</details> | <details><summary>Choose format</summary><br>[Markdown](./HIPAA/CSW-HIPAA-Technical-Runbook.md) · [HTML](./HIPAA/CSW-HIPAA-Technical-Runbook.html)</details> |
-| SOC 2 Type II | Continuous CC6.x evidence (vs point-in-time samples); CC7 incident artefacts; customer due-diligence proofs | <details><summary>Choose format</summary><br>[PDF](./SOC2/CSW-SOC2-Compliance-Report.pdf) · [DOCX](./SOC2/CSW-SOC2-Compliance-Report.docx) · [HTML](./SOC2/CSW-SOC2-Compliance-Report.html)</details> | <details><summary>Choose format</summary><br>[Markdown](./SOC2/CSW-SOC2-Technical-Runbook.md) · [HTML](./SOC2/CSW-SOC2-Technical-Runbook.html)</details> |
-| PCI DSS v4.0 | CDE segmentation simulation→enforce; QSA-ready Req 1/11 evidence; CVE + EPSS + reachability prioritisation | <details><summary>Choose format</summary><br>[PDF](./PCI-DSS-v4/CSW-PCI-DSS-Compliance-Report.pdf) · [DOCX](./PCI-DSS-v4/CSW-PCI-DSS-Compliance-Report.docx) · [HTML](./PCI-DSS-v4/CSW-PCI-DSS-Compliance-Report.html)</details> | <details><summary>Choose format</summary><br>[Markdown](./PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.md) · [HTML](./PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.html)</details> |
-| NIST SP 800-53 Rev 5 | AC-4 information-flow enforcement; CA-7 continuous monitoring; CM-2/3/8 baseline + change tracking | <details><summary>Choose format</summary><br>[PDF](./NIST-800-53/CSW-NIST-800-53-Compliance-Report.pdf) · [DOCX](./NIST-800-53/CSW-NIST-800-53-Compliance-Report.docx) · [HTML](./NIST-800-53/CSW-NIST-800-53-Compliance-Report.html)</details> | <details><summary>Choose format</summary><br>[Markdown](./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md) · [HTML](./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.html)</details> |
-| ISO/IEC 27001:2022 | A.8.20–A.8.22 network segregation; A.5.19–A.5.22 supplier egress reconciliation; A.8.16 monitoring evidence | <details><summary>Choose format</summary><br>[PDF](./ISO-27001-2022/CSW-ISO27001-Compliance-Report.pdf) · [DOCX](./ISO-27001-2022/CSW-ISO27001-Compliance-Report.docx) · [HTML](./ISO-27001-2022/CSW-ISO27001-Compliance-Report.html)</details> | <details><summary>Choose format</summary><br>[Markdown](./ISO-27001-2022/CSW-ISO27001-Technical-Runbook.md) · [HTML](./ISO-27001-2022/CSW-ISO27001-Technical-Runbook.html)</details> |
-| CISA Zero Trust Maturity Model | Networks pillar Initial→Advanced path; Applications & Workloads policy enforcement; observable maturity progression | <details><summary>Choose format</summary><br>[PDF](./CISA-ZeroTrust/CSW-CISA-ZTMM-Compliance-Report.pdf) · [DOCX](./CISA-ZeroTrust/CSW-CISA-ZTMM-Compliance-Report.docx) · [HTML](./CISA-ZeroTrust/CSW-CISA-ZTMM-Compliance-Report.html)</details> | <details><summary>Choose format</summary><br>[Markdown](./CISA-ZeroTrust/CSW-CISA-ZTMM-Technical-Runbook.md) · [HTML](./CISA-ZeroTrust/CSW-CISA-ZTMM-Technical-Runbook.html)</details> |
-| FIPS 140 | Plaintext-protocol DENY enforcement; programme-level FIPS posture (cryptographic modules out of scope); 140-2→140-3 transition visibility | <details><summary>Choose format</summary><br>[PDF](./FIPS-140/CSW-FIPS-Compliance-Report.pdf) · [DOCX](./FIPS-140/CSW-FIPS-Compliance-Report.docx) · [HTML](./FIPS-140/CSW-FIPS-Compliance-Report.html)</details> | <details><summary>Choose format</summary><br>[Markdown](./FIPS-140/CSW-FIPS-Technical-Runbook.md) · [HTML](./FIPS-140/CSW-FIPS-Technical-Runbook.html)</details> |
-| NIST SP 800-207 (ZTA Seven Tenets) | Workload-side evidence for Tenets 2/3/5/6; ZTA architecture mapping; clear PEP placement at the workload | <details><summary>Choose format</summary><br>[PDF](./NIST-800-207/CSW-NIST-800-207-Compliance-Report.pdf) · [DOCX](./NIST-800-207/CSW-NIST-800-207-Compliance-Report.docx) · [HTML](./NIST-800-207/CSW-NIST-800-207-Compliance-Report.html)</details> | <details><summary>Choose format</summary><br>[Markdown](./NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md) · [HTML](./NIST-800-207/CSW-NIST-800-207-Technical-Runbook.html)</details> |
-| NIST SP 800-207A (PDP/PEP/PA/PIP, draft-derived) | CSW Defend as PDP/PEP; telemetry as PIP; logical-component traceability for cloud-native ZTA | <details><summary>Choose format</summary><br>[PDF](./NIST-800-207A/CSW-NIST-800-207A-Compliance-Report.pdf) · [DOCX](./NIST-800-207A/CSW-NIST-800-207A-Compliance-Report.docx) · [HTML](./NIST-800-207A/CSW-NIST-800-207A-Compliance-Report.html)</details> | <details><summary>Choose format</summary><br>[Markdown](./NIST-800-207A/CSW-NIST-800-207A-Technical-Runbook.md) · [HTML](./NIST-800-207A/CSW-NIST-800-207A-Technical-Runbook.html)</details> |
-| DORA (EU 2022/2554) | Art. 8/9 segmentation + inventory; Art. 19 incident dossier templates; Art. 28 third-party egress reconciliation | <details><summary>Choose format</summary><br>[PDF](./DORA/CSW-DORA-Compliance-Report.pdf) · [DOCX](./DORA/CSW-DORA-Compliance-Report.docx) · [HTML](./DORA/CSW-DORA-Compliance-Report.html)</details> | <details><summary>Choose format</summary><br>[Markdown](./DORA/CSW-DORA-Technical-Runbook.md) · [HTML](./DORA/CSW-DORA-Technical-Runbook.html)</details> |
-| NIS2 (EU 2022/2555) | Art. 21(2)(a–j) risk-management mapping; Art. 23 24 h / 72 h / 1-month dossier; Art. 21(2)(d) supply-chain egress | <details><summary>Choose format</summary><br>[PDF](./NIS2/CSW-NIS2-Compliance-Report.pdf) · [DOCX](./NIS2/CSW-NIS2-Compliance-Report.docx) · [HTML](./NIS2/CSW-NIS2-Compliance-Report.html)</details> | <details><summary>Choose format</summary><br>[Markdown](./NIS2/CSW-NIS2-Technical-Runbook.md) · [HTML](./NIS2/CSW-NIS2-Technical-Runbook.html)</details> |
+| HIPAA Security Rule | ePHI workload isolation; OCR-investigation audit trail; BAA technical boundary evidence | <details><summary>Choose format</summary><br>[Markdown](./HIPAA/CSW-HIPAA-Technical-Runbook.md) · [HTML](./HIPAA/CSW-HIPAA-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./HIPAA/CSW-HIPAA-Compliance-Report.pdf) · [DOCX](./HIPAA/CSW-HIPAA-Compliance-Report.docx) · [HTML](./HIPAA/CSW-HIPAA-Compliance-Report.html)</details> |
+| SOC 2 Type II | Continuous CC6.x evidence (vs point-in-time samples); CC7 incident artefacts; customer due-diligence proofs | <details><summary>Choose format</summary><br>[Markdown](./SOC2/CSW-SOC2-Technical-Runbook.md) · [HTML](./SOC2/CSW-SOC2-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./SOC2/CSW-SOC2-Compliance-Report.pdf) · [DOCX](./SOC2/CSW-SOC2-Compliance-Report.docx) · [HTML](./SOC2/CSW-SOC2-Compliance-Report.html)</details> |
+| PCI DSS v4.0 | CDE segmentation simulation→enforce; QSA-ready Req 1/11 evidence; CVE + EPSS + reachability prioritisation | <details><summary>Choose format</summary><br>[Markdown](./PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.md) · [HTML](./PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./PCI-DSS-v4/CSW-PCI-DSS-Compliance-Report.pdf) · [DOCX](./PCI-DSS-v4/CSW-PCI-DSS-Compliance-Report.docx) · [HTML](./PCI-DSS-v4/CSW-PCI-DSS-Compliance-Report.html)</details> |
+| NIST SP 800-53 Rev 5 | AC-4 information-flow enforcement; CA-7 continuous monitoring; CM-2/3/8 baseline + change tracking | <details><summary>Choose format</summary><br>[Markdown](./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md) · [HTML](./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./NIST-800-53/CSW-NIST-800-53-Compliance-Report.pdf) · [DOCX](./NIST-800-53/CSW-NIST-800-53-Compliance-Report.docx) · [HTML](./NIST-800-53/CSW-NIST-800-53-Compliance-Report.html)</details> |
+| ISO/IEC 27001:2022 | A.8.20–A.8.22 network segregation; A.5.19–A.5.22 supplier egress reconciliation; A.8.16 monitoring evidence | <details><summary>Choose format</summary><br>[Markdown](./ISO-27001-2022/CSW-ISO27001-Technical-Runbook.md) · [HTML](./ISO-27001-2022/CSW-ISO27001-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./ISO-27001-2022/CSW-ISO27001-Compliance-Report.pdf) · [DOCX](./ISO-27001-2022/CSW-ISO27001-Compliance-Report.docx) · [HTML](./ISO-27001-2022/CSW-ISO27001-Compliance-Report.html)</details> |
+| CISA Zero Trust Maturity Model | Networks pillar Initial→Advanced path; Applications & Workloads policy enforcement; observable maturity progression | <details><summary>Choose format</summary><br>[Markdown](./CISA-ZeroTrust/CSW-CISA-ZTMM-Technical-Runbook.md) · [HTML](./CISA-ZeroTrust/CSW-CISA-ZTMM-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./CISA-ZeroTrust/CSW-CISA-ZTMM-Compliance-Report.pdf) · [DOCX](./CISA-ZeroTrust/CSW-CISA-ZTMM-Compliance-Report.docx) · [HTML](./CISA-ZeroTrust/CSW-CISA-ZTMM-Compliance-Report.html)</details> |
+| FIPS 140 | Plaintext-protocol DENY enforcement; programme-level FIPS posture (cryptographic modules out of scope); 140-2→140-3 transition visibility | <details><summary>Choose format</summary><br>[Markdown](./FIPS-140/CSW-FIPS-Technical-Runbook.md) · [HTML](./FIPS-140/CSW-FIPS-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./FIPS-140/CSW-FIPS-Compliance-Report.pdf) · [DOCX](./FIPS-140/CSW-FIPS-Compliance-Report.docx) · [HTML](./FIPS-140/CSW-FIPS-Compliance-Report.html)</details> |
+| NIST SP 800-207 (ZTA Seven Tenets) | Workload-side evidence for Tenets 2/3/5/6; ZTA architecture mapping; clear PEP placement at the workload | <details><summary>Choose format</summary><br>[Markdown](./NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md) · [HTML](./NIST-800-207/CSW-NIST-800-207-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./NIST-800-207/CSW-NIST-800-207-Compliance-Report.pdf) · [DOCX](./NIST-800-207/CSW-NIST-800-207-Compliance-Report.docx) · [HTML](./NIST-800-207/CSW-NIST-800-207-Compliance-Report.html)</details> |
+| NIST SP 800-207A (PDP/PEP/PA/PIP, draft-derived) | CSW Defend as PDP/PEP; telemetry as PIP; logical-component traceability for cloud-native ZTA | <details><summary>Choose format</summary><br>[Markdown](./NIST-800-207A/CSW-NIST-800-207A-Technical-Runbook.md) · [HTML](./NIST-800-207A/CSW-NIST-800-207A-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./NIST-800-207A/CSW-NIST-800-207A-Compliance-Report.pdf) · [DOCX](./NIST-800-207A/CSW-NIST-800-207A-Compliance-Report.docx) · [HTML](./NIST-800-207A/CSW-NIST-800-207A-Compliance-Report.html)</details> |
+| DORA (EU 2022/2554) | Art. 8/9 segmentation + inventory; Art. 19 incident dossier templates; Art. 28 third-party egress reconciliation | <details><summary>Choose format</summary><br>[Markdown](./DORA/CSW-DORA-Technical-Runbook.md) · [HTML](./DORA/CSW-DORA-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./DORA/CSW-DORA-Compliance-Report.pdf) · [DOCX](./DORA/CSW-DORA-Compliance-Report.docx) · [HTML](./DORA/CSW-DORA-Compliance-Report.html)</details> |
+| NIS2 (EU 2022/2555) | Art. 21(2)(a–j) risk-management mapping; Art. 23 24 h / 72 h / 1-month dossier; Art. 21(2)(d) supply-chain egress | <details><summary>Choose format</summary><br>[Markdown](./NIS2/CSW-NIS2-Technical-Runbook.md) · [HTML](./NIS2/CSW-NIS2-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./NIS2/CSW-NIS2-Compliance-Report.pdf) · [DOCX](./NIS2/CSW-NIS2-Compliance-Report.docx) · [HTML](./NIS2/CSW-NIS2-Compliance-Report.html)</details> |
 
-**Report vs. Runbook — when to use which.**
+**Runbook vs. Report — when to use which.**
 
-- **Report** is for **leaders, auditors, customers in due diligence, and
-  procurement**. It's the customer-facing narrative that explains how Cisco
-  Secure Workload supports the framework, the artefacts produced, and where
-  the boundaries are. Use **PDF** for review meetings, **DOCX** when you need
-  to tailor placeholders before sharing externally, **HTML** for a link you can
-  drop into Slack/email or read on a phone.
-- **Runbook** is for the **security engineers and platform owners doing the
-  work**. It contains deployment playbooks, CSW configuration steps, sample
+- **Runbook** is the technical foundation everything else rests on. It's
+  written for the **security engineers and platform owners actually doing
+  the work**: deployment playbooks, CSW configuration steps, sample
   policies, evidence-collection commands, and the auditor-response guidance
-  referenced from the report. Use **Markdown** when editing or diff-reviewing
-  in a code editor, **HTML** when reading through it in a browser.
+  the report cites. If a customer wants to know whether a mapping is real
+  or just slideware, the runbook is where they look. Use **Markdown** when
+  editing or diff-reviewing in a code editor, **HTML** when reading through
+  it in a browser.
+- **Report** is the customer-facing narrative built on top of the runbook.
+  It's for **leaders, auditors, customers in due diligence, and
+  procurement** — explaining how Cisco Secure Workload supports the
+  framework, the artefacts produced, and where the boundaries are. Use
+  **PDF** for review meetings, **DOCX** when you need to tailor placeholders
+  before sharing externally, **HTML** for a link you can drop into
+  Slack/email or read on a phone.
 
 The **HTML** option in each chooser is the browseable, mobile-friendly view.
 Once GitHub Pages is enabled, the same HTML is also at
@@ -254,21 +261,21 @@ time:
 
 1. **Open the framework that's actually on your roadmap.** The one tied
    to a current audit, a customer contractual ask, or board-level
-   pressure. Read only that PDF first — every report stands on its own,
-   and skimming all eleven will dilute the signal.
-2. **Read the executive summary, then jump to the *Compliance Posture
-   Summary* table.** It tells you in one page which control families
-   CSW addresses fully, which it addresses partially, and where you'll
-   need complementary controls. If the table doesn't match your
-   environment, you've already learned something useful — talk to your
-   account team about scope.
-3. **Then look at the matching technical runbook (`*-runbook.md` or
-   `*-Technical-Runbook.md` in the same folder).** It shows the *how*:
-   sensor deployment phases, policy patterns, evidence collection
-   cadence, and what an auditor will actually accept as proof. If the
-   runbook's level of detail looks plausible for your environment,
-   that's the strongest signal that the mapping is real and not
-   marketing.
+   pressure. Skimming all eleven will dilute the signal — pick one and
+   stay with it.
+2. **Start with the technical runbook (`*-Technical-Runbook.md` in the
+   same folder).** It shows the *how*: sensor deployment phases, policy
+   patterns, evidence collection cadence, and what an auditor will
+   actually accept as proof. If the runbook's level of detail looks
+   plausible for your environment, that's the strongest signal that the
+   mapping is real and not marketing — and it's the right place to
+   stress-test scope before investing in a wider read.
+3. **Then read the matching report.** Open the executive summary in the
+   PDF and jump to the *Compliance Posture Summary* table. It tells you
+   in one page which control families CSW addresses fully, which it
+   addresses partially, and where you'll need complementary controls.
+   With the runbook fresh in your head, the report reads as the
+   evidence story for work you've already verified is real.
 4. **Once you've grounded the conversation in compliance language, read
    the NIST 800-207 and 800-207A reports.** These shift the lens from
    *"what do we have to do?"* to *"what does a defensible zero-trust
@@ -327,18 +334,19 @@ your Cisco account team rather than accumulating more slideware diagrams.
 
 ### File formats
 
-- **PDF reports** — Render natively in the GitHub web UI. Use these for
-  customer review and audit conversations. Generated from the DOCX
-  sources via LibreOffice; treat the DOCX as the editable master and
-  re-generate the PDF after any edits.
-- **DOCX reports** — Customer-facing editable master. Replace
-  `[Customer Name]` and `[Month Year]` placeholders, and tailor the
-  Compliance Posture Summary table to the customer's specific scope and
-  deployment stage before sharing externally.
-- **Markdown runbooks** — Technical reference for the security
-  engineers and platform owners doing the work. Includes deployment
+- **Markdown runbooks** — The technical foundation. Reference for the
+  security engineers and platform owners doing the work: deployment
   playbooks, CSW configuration steps, sample policies, and the
-  auditor-response guidance referenced from the report.
+  auditor-response guidance the report cites. Markdown for editing or
+  diff-reviewing in a code editor; HTML for reading in a browser.
+- **DOCX reports** — Customer-facing editable master built on top of the
+  runbook. Replace `[Customer Name]` and `[Month Year]` placeholders, and
+  tailor the Compliance Posture Summary table to the customer's specific
+  scope and deployment stage before sharing externally.
+- **PDF reports** — Render of the DOCX for customer review and audit
+  conversations; renders natively in the GitHub web UI. Generated from
+  the DOCX via LibreOffice; treat the DOCX as the editable master and
+  re-generate the PDF after any edits.
 
 ## Folder Structure
 

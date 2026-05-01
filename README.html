@@ -375,10 +375,13 @@ repo root — read before redistributing, forking commercially, or
 building derivative artefacts outside your organisation.</p>
 <h2 id="asset-library">Asset Library</h2>
 <p><strong>Coverage</strong> highlights what the framework section
-addresses so the whole library can be scanned in one view.
-<strong>Report</strong> and <strong>Runbook</strong> each open a format
-chooser — pick PDF, DOCX, HTML, or Markdown depending on how you want to
-read or share the asset.</p>
+addresses so the whole library can be scanned in one view. The
+<strong>Runbook</strong> column comes first because the runbook is what
+proves the mapping is real and not marketing — it shows the actual
+configuration steps, sample policies, and evidence collection. The
+<strong>Report</strong> column is the customer-facing narrative built on
+top of that work. Both open a format chooser — pick PDF, DOCX, HTML, or
+Markdown depending on how you want to read or share the asset.</p>
 <table>
 <colgroup>
 <col style="width: 25%" />
@@ -390,8 +393,8 @@ read or share the asset.</p>
 <tr>
 <th>Framework</th>
 <th>Coverage</th>
-<th>Report</th>
 <th>Runbook</th>
+<th>Report</th>
 </tr>
 </thead>
 <tbody>
@@ -475,22 +478,25 @@ templates; Art. 28 third-party egress reconciliation</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Report vs. Runbook — when to use which.</strong></p>
+<p><strong>Runbook vs. Report — when to use which.</strong></p>
 <ul>
-<li><strong>Report</strong> is for <strong>leaders, auditors, customers
-in due diligence, and procurement</strong>. It’s the customer-facing
-narrative that explains how Cisco Secure Workload supports the
-framework, the artefacts produced, and where the boundaries are. Use
-<strong>PDF</strong> for review meetings, <strong>DOCX</strong> when you
-need to tailor placeholders before sharing externally,
-<strong>HTML</strong> for a link you can drop into Slack/email or read
-on a phone.</li>
-<li><strong>Runbook</strong> is for the <strong>security engineers and
-platform owners doing the work</strong>. It contains deployment
-playbooks, CSW configuration steps, sample policies, evidence-collection
-commands, and the auditor-response guidance referenced from the report.
-Use <strong>Markdown</strong> when editing or diff-reviewing in a code
-editor, <strong>HTML</strong> when reading through it in a browser.</li>
+<li><strong>Runbook</strong> is the technical foundation everything else
+rests on. It’s written for the <strong>security engineers and platform
+owners actually doing the work</strong>: deployment playbooks, CSW
+configuration steps, sample policies, evidence-collection commands, and
+the auditor-response guidance the report cites. If a customer wants to
+know whether a mapping is real or just slideware, the runbook is where
+they look. Use <strong>Markdown</strong> when editing or diff-reviewing
+in a code editor, <strong>HTML</strong> when reading through it in a
+browser.</li>
+<li><strong>Report</strong> is the customer-facing narrative built on
+top of the runbook. It’s for <strong>leaders, auditors, customers in due
+diligence, and procurement</strong> — explaining how Cisco Secure
+Workload supports the framework, the artefacts produced, and where the
+boundaries are. Use <strong>PDF</strong> for review meetings,
+<strong>DOCX</strong> when you need to tailor placeholders before
+sharing externally, <strong>HTML</strong> for a link you can drop into
+Slack/email or read on a phone.</li>
 </ul>
 <p>The <strong>HTML</strong> option in each chooser is the browseable,
 mobile-friendly view. Once GitHub Pages is enabled, the same HTML is
@@ -674,21 +680,22 @@ time:</p>
 <ol type="1">
 <li><strong>Open the framework that’s actually on your roadmap.</strong>
 The one tied to a current audit, a customer contractual ask, or
-board-level pressure. Read only that PDF first — every report stands on
-its own, and skimming all eleven will dilute the signal.</li>
-<li><strong>Read the executive summary, then jump to the <em>Compliance
-Posture Summary</em> table.</strong> It tells you in one page which
-control families CSW addresses fully, which it addresses partially, and
-where you’ll need complementary controls. If the table doesn’t match
-your environment, you’ve already learned something useful — talk to your
-account team about scope.</li>
-<li><strong>Then look at the matching technical runbook
-(<code>*-runbook.md</code> or <code>*-Technical-Runbook.md</code> in the
-same folder).</strong> It shows the <em>how</em>: sensor deployment
-phases, policy patterns, evidence collection cadence, and what an
-auditor will actually accept as proof. If the runbook’s level of detail
-looks plausible for your environment, that’s the strongest signal that
-the mapping is real and not marketing.</li>
+board-level pressure. Skimming all eleven will dilute the signal — pick
+one and stay with it.</li>
+<li><strong>Start with the technical runbook
+(<code>*-Technical-Runbook.md</code> in the same folder).</strong> It
+shows the <em>how</em>: sensor deployment phases, policy patterns,
+evidence collection cadence, and what an auditor will actually accept as
+proof. If the runbook’s level of detail looks plausible for your
+environment, that’s the strongest signal that the mapping is real and
+not marketing — and it’s the right place to stress-test scope before
+investing in a wider read.</li>
+<li><strong>Then read the matching report.</strong> Open the executive
+summary in the PDF and jump to the <em>Compliance Posture Summary</em>
+table. It tells you in one page which control families CSW addresses
+fully, which it addresses partially, and where you’ll need complementary
+controls. With the runbook fresh in your head, the report reads as the
+evidence story for work you’ve already verified is real.</li>
 <li><strong>Once you’ve grounded the conversation in compliance
 language, read the NIST 800-207 and 800-207A reports.</strong> These
 shift the lens from <em>“what do we have to do?”</em> to <em>“what does
@@ -749,19 +756,20 @@ the conversation with your Cisco account team rather than accumulating
 more slideware diagrams.</p>
 <h3 id="file-formats">File formats</h3>
 <ul>
-<li><strong>PDF reports</strong> — Render natively in the GitHub web UI.
-Use these for customer review and audit conversations. Generated from
-the DOCX sources via LibreOffice; treat the DOCX as the editable master
-and re-generate the PDF after any edits.</li>
-<li><strong>DOCX reports</strong> — Customer-facing editable master.
-Replace <code>[Customer Name]</code> and <code>[Month Year]</code>
-placeholders, and tailor the Compliance Posture Summary table to the
-customer’s specific scope and deployment stage before sharing
-externally.</li>
-<li><strong>Markdown runbooks</strong> — Technical reference for the
-security engineers and platform owners doing the work. Includes
+<li><strong>Markdown runbooks</strong> — The technical foundation.
+Reference for the security engineers and platform owners doing the work:
 deployment playbooks, CSW configuration steps, sample policies, and the
-auditor-response guidance referenced from the report.</li>
+auditor-response guidance the report cites. Markdown for editing or
+diff-reviewing in a code editor; HTML for reading in a browser.</li>
+<li><strong>DOCX reports</strong> — Customer-facing editable master
+built on top of the runbook. Replace <code>[Customer Name]</code> and
+<code>[Month Year]</code> placeholders, and tailor the Compliance
+Posture Summary table to the customer’s specific scope and deployment
+stage before sharing externally.</li>
+<li><strong>PDF reports</strong> — Render of the DOCX for customer
+review and audit conversations; renders natively in the GitHub web UI.
+Generated from the DOCX via LibreOffice; treat the DOCX as the editable
+master and re-generate the PDF after any edits.</li>
 </ul>
 <h2 id="folder-structure">Folder Structure</h2>
 <pre><code>CSW-Compliance-Mapping/
