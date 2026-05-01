@@ -374,11 +374,11 @@ standard terms in <a href="./LICENSE"><code>LICENSE</code></a> at the
 repo root — read before redistributing, forking commercially, or
 building derivative artefacts outside your organisation.</p>
 <h2 id="asset-library">Asset Library</h2>
-<p>Each row exposes the <strong>Report</strong> (customer-facing) and
-<strong>Runbook</strong> (technical) for the framework. Click the
-<strong>format chooser</strong> to pick PDF, DOCX, HTML, or Markdown.
-The third column highlights what makes the framework distinctive so you
-can scan the whole library in one view.</p>
+<p><strong>Coverage</strong> highlights what the framework section
+addresses so the whole library can be scanned in one view.
+<strong>Report</strong> and <strong>Runbook</strong> each open a format
+chooser — pick PDF, DOCX, HTML, or Markdown depending on how you want to
+read or share the asset.</p>
 <table>
 <colgroup>
 <col style="width: 25%" />
@@ -389,92 +389,109 @@ can scan the whole library in one view.</p>
 <thead>
 <tr>
 <th>Framework</th>
+<th>Coverage</th>
 <th>Report</th>
 <th>Runbook</th>
-<th>What stands out</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>HIPAA Security Rule</td>
-<td></td>
-<td></td>
 <td>ePHI workload isolation; OCR-investigation audit trail; BAA
 technical boundary evidence</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>SOC 2 Type II</td>
-<td></td>
-<td></td>
 <td>Continuous CC6.x evidence (vs point-in-time samples); CC7 incident
 artefacts; customer due-diligence proofs</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>PCI DSS v4.0</td>
-<td></td>
-<td></td>
 <td>CDE segmentation simulation→enforce; QSA-ready Req 1/11 evidence;
 CVE + EPSS + reachability prioritisation</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>NIST SP 800-53 Rev 5</td>
-<td></td>
-<td></td>
 <td>AC-4 information-flow enforcement; CA-7 continuous monitoring;
 CM-2/3/8 baseline + change tracking</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>ISO/IEC 27001:2022</td>
-<td></td>
-<td></td>
 <td>A.8.20–A.8.22 network segregation; A.5.19–A.5.22 supplier egress
 reconciliation; A.8.16 monitoring evidence</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>CISA Zero Trust Maturity Model</td>
-<td></td>
-<td></td>
 <td>Networks pillar Initial→Advanced path; Applications &amp; Workloads
 policy enforcement; observable maturity progression</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>FIPS 140</td>
-<td></td>
-<td></td>
 <td>Plaintext-protocol DENY enforcement; programme-level FIPS posture
 (cryptographic modules out of scope); 140-2→140-3 transition
 visibility</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>NIST SP 800-207 (ZTA Seven Tenets)</td>
-<td></td>
-<td></td>
 <td>Workload-side evidence for Tenets 2/3/5/6; ZTA architecture mapping;
 clear PEP placement at the workload</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>NIST SP 800-207A (PDP/PEP/PA/PIP, draft-derived)</td>
-<td></td>
-<td></td>
 <td>CSW Defend as PDP/PEP; telemetry as PIP; logical-component
 traceability for cloud-native ZTA</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>DORA (EU 2022/2554)</td>
-<td></td>
-<td></td>
 <td>Art. 8/9 segmentation + inventory; Art. 19 incident dossier
 templates; Art. 28 third-party egress reconciliation</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>NIS2 (EU 2022/2555)</td>
-<td></td>
-<td></td>
 <td>Art. 21(2)(a–j) risk-management mapping; Art. 23 24 h / 72 h /
 1-month dossier; Art. 21(2)(d) supply-chain egress</td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
+<p><strong>Report vs. Runbook — when to use which.</strong></p>
+<ul>
+<li><strong>Report</strong> is for <strong>leaders, auditors, customers
+in due diligence, and procurement</strong>. It’s the customer-facing
+narrative that explains how Cisco Secure Workload supports the
+framework, the artefacts produced, and where the boundaries are. Use
+<strong>PDF</strong> for review meetings, <strong>DOCX</strong> when you
+need to tailor placeholders before sharing externally,
+<strong>HTML</strong> for a link you can drop into Slack/email or read
+on a phone.</li>
+<li><strong>Runbook</strong> is for the <strong>security engineers and
+platform owners doing the work</strong>. It contains deployment
+playbooks, CSW configuration steps, sample policies, evidence-collection
+commands, and the auditor-response guidance referenced from the report.
+Use <strong>Markdown</strong> when editing or diff-reviewing in a code
+editor, <strong>HTML</strong> when reading through it in a browser.</li>
+</ul>
 <p>The <strong>HTML</strong> option in each chooser is the browseable,
 mobile-friendly view. Once GitHub Pages is enabled, the same HTML is
 also at
