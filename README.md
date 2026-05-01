@@ -20,14 +20,88 @@ CSW Incubation Team.
 
 ## How to Use
 
-- **PDF reports** — Render natively in the GitHub web UI. Generated from
-  the DOCX sources via LibreOffice; treat the DOCX as the editable master
-  and re-generate the PDF after any edits.
+### Why these mappings exist
+
+Compliance frameworks were written by humans trying to describe what
+"good security" looks like for a class of risk. They are *outcomes*, not
+products. The hardest question a customer faces is not *"what does the
+standard require?"* — it's *"can I actually prove the control is in place,
+on every workload, every day, in evidence an auditor will accept?"*
+
+These mappings exist to close that gap. For each framework, they trace
+specific controls (e.g. PCI DSS Req 1.2.1, HIPAA §164.312(a)(1), NIST AC-4)
+to concrete Cisco Secure Workload (CSW) capabilities — micro-segmentation,
+process-level telemetry, software inventory, vulnerability awareness,
+forensic flow data, and policy-as-code enforcement — and explain how that
+capability produces auditor-grade evidence.
+
+### Use them to start a different conversation
+
+Most compliance conversations focus on checkbox status. Use these
+documents to escalate the conversation past "do you have a firewall?"
+toward questions that genuinely separate posture from theater:
+
+- *Can you enumerate, right now, every process on every workload that talks
+  to your cardholder data environment — and prove the list hasn't drifted
+  in the last 30 days?* (PCI DSS 1.2, 11.5)
+- *When a CVE drops on a library inside a container, how long until you
+  know which production workloads are exposed and which paths attackers
+  could traverse to reach them?* (NIST RA-5, CM-7, ISO A.8.8)
+- *If an auditor asks you to demonstrate least-privilege between two
+  applications, what artifact do you hand them?* (SOC 2 CC6.1, 800-53 AC-3)
+- *Your zero-trust architecture diagram shows a Policy Decision Point and
+  a Policy Enforcement Point — where do they actually live in your stack
+  today, and what data feeds them?* (NIST 800-207 §3.2, 800-207A PDP/PEP)
+- *Could you withstand a lateral-movement-based ransomware event without
+  network reorchitecture, or only with it?* (CISA ZTMM "Optimal" tier)
+
+CSW is built specifically to give defensible answers to these questions
+because it operates at the workload itself — every process, every flow,
+every package — rather than inferring posture from network telemetry or
+periodic scans. The frameworks are how regulators describe the goal;
+CSW is one of the few engines that produces continuous, machine-verifiable
+evidence that the goal is being met.
+
+### Audience guide
+
+| Audience | Lead with | Key takeaway |
+|---|---|---|
+| **CISO / Security leadership** | The PDF report's executive summary and the *Compliance Posture Summary* table | CSW collapses several manual evidence-gathering programs (segmentation reviews, change attestation, drift tracking) into continuous, query-able state. |
+| **Security architect** | The full PDF report's control-by-control mapping | Where each control is satisfied (agent telemetry, policy enforcement, conversation graph, forensic flows) and what gaps remain to be designed around. |
+| **Compliance / GRC team** | The *Audit Evidence* and *Gap Analysis* sections in the PDF | Which CSW reports, exports, and dashboards are auditor-ready as-is, and what supplementary attestation language to use. |
+| **Operations / SRE / DevSecOps** | The Markdown technical runbook | Concrete configuration steps, policy patterns, and "what to show the auditor on day 1" playbooks. |
+| **The customer's incumbent firewall / EDR vendor** | The runbooks and the 800-207 / 207A reports | Why workload-resident telemetry and identity-based segmentation are not duplicative of perimeter or endpoint controls — they answer questions those tools structurally cannot. |
+
+### Suggested customer-engagement flow
+
+1. **Start with their highest-pressure framework** (the one tied to a real
+   audit or a contractual obligation). Hand them only that PDF.
+2. **Walk the executive summary together** to align on what CSW
+   demonstrably covers vs. what still requires complementary controls.
+   Honesty here builds far more trust than over-claiming.
+3. **Pivot to NIST 800-207 / 207A** once compliance language is
+   established. This reframes the discussion from *"what do we have to
+   do?"* to *"what would a defensible architecture look like?"* — and
+   positions CSW as the workload-tier component of a zero-trust design,
+   not just a control checkbox.
+4. **Finish with a concrete artifact ask**: "Could we run a 30-day
+   discovery in your environment and produce the same evidence tables we
+   just looked at, populated with your real workloads?" That converts
+   abstract mappings into a defensible PoV scope.
+
+### File formats
+
+- **PDF reports** — Render natively in the GitHub web UI. Use these for
+  customer review and audit conversations. Generated from the DOCX
+  sources via LibreOffice; treat the DOCX as the editable master and
+  re-generate the PDF after any edits.
 - **DOCX reports** — Customer-facing editable master. Replace
-  `[Customer Name]` and `[Month Year]` placeholders before sharing
-  externally.
-- **MD runbooks** — Internal SA/SE reference. Includes deployment
-  playbooks, CSW configuration steps, and auditor response guidance.
+  `[Customer Name]` and `[Month Year]` placeholders, and tailor the
+  Compliance Posture Summary table to the customer's specific scope and
+  deployment stage before sharing externally.
+- **Markdown runbooks** — Technical reference for SA/SE engineers and
+  customer practitioners. Includes deployment playbooks, CSW
+  configuration steps, sample policies, and auditor response guidance.
 
 ## Folder Structure
 
