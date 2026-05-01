@@ -6,20 +6,24 @@ CSW Incubation Team.
 
 ## Asset Library
 
-| Framework | Compliance Report | Technical Runbook |
-|---|---|---|
-| HIPAA Security Rule | [docx](./HIPAA/CSW-HIPAA-Compliance-Report.docx) | [runbook](./HIPAA/CSW-HIPAA-Technical-Runbook.md) |
-| SOC 2 Type II | [docx](./SOC2/CSW-SOC2-Compliance-Report.docx) | [runbook](./SOC2/soc2-runbook.md) |
-| PCI DSS v4.0 | [docx](./PCI-DSS-v4/CSW-PCI-DSS-Compliance-Report.docx) | [runbook](./PCI-DSS-v4/pci-runbook.md) |
-| NIST SP 800-53 Rev 5 | [docx](./NIST-800-53/CSW-NIST-800-53-Compliance-Report.docx) | [runbook](./NIST-800-53/nist-runbook.md) |
-| ISO/IEC 27001:2022 | [docx](./ISO-27001-2022/CSW-ISO27001-Compliance-Report.docx) | [runbook](./ISO-27001-2022/iso27001-runbook.md) |
-| CISA Zero Trust Maturity Model | [docx](./CISA-ZeroTrust/CSW-CISA-ZTMM-Compliance-Report.docx) | [runbook](./CISA-ZeroTrust/cisa-ztmm-runbook.md) |
-| FIPS 140 | [docx](./FIPS-140/CSW-FIPS-Compliance-Report.docx) | [runbook](./FIPS-140/fips-runbook.md) |
+| Framework | PDF Report | DOCX Report | Technical Runbook |
+|---|---|---|---|
+| HIPAA Security Rule | [pdf](./HIPAA/CSW-HIPAA-Compliance-Report.pdf) | [docx](./HIPAA/CSW-HIPAA-Compliance-Report.docx) | [runbook](./HIPAA/CSW-HIPAA-Technical-Runbook.md) |
+| SOC 2 Type II | [pdf](./SOC2/CSW-SOC2-Compliance-Report.pdf) | [docx](./SOC2/CSW-SOC2-Compliance-Report.docx) | [runbook](./SOC2/soc2-runbook.md) |
+| PCI DSS v4.0 | [pdf](./PCI-DSS-v4/CSW-PCI-DSS-Compliance-Report.pdf) | [docx](./PCI-DSS-v4/CSW-PCI-DSS-Compliance-Report.docx) | [runbook](./PCI-DSS-v4/pci-runbook.md) |
+| NIST SP 800-53 Rev 5 | [pdf](./NIST-800-53/CSW-NIST-800-53-Compliance-Report.pdf) | [docx](./NIST-800-53/CSW-NIST-800-53-Compliance-Report.docx) | [runbook](./NIST-800-53/nist-runbook.md) |
+| ISO/IEC 27001:2022 | [pdf](./ISO-27001-2022/CSW-ISO27001-Compliance-Report.pdf) | [docx](./ISO-27001-2022/CSW-ISO27001-Compliance-Report.docx) | [runbook](./ISO-27001-2022/iso27001-runbook.md) |
+| CISA Zero Trust Maturity Model | [pdf](./CISA-ZeroTrust/CSW-CISA-ZTMM-Compliance-Report.pdf) | [docx](./CISA-ZeroTrust/CSW-CISA-ZTMM-Compliance-Report.docx) | [runbook](./CISA-ZeroTrust/cisa-ztmm-runbook.md) |
+| FIPS 140 | [pdf](./FIPS-140/CSW-FIPS-Compliance-Report.pdf) | [docx](./FIPS-140/CSW-FIPS-Compliance-Report.docx) | [runbook](./FIPS-140/fips-runbook.md) |
 
 ## How to Use
 
-- **DOCX reports** — Customer-facing. Replace `[Customer Name]` and
-  `[Month Year]` placeholders before sharing externally.
+- **PDF reports** — Render natively in the GitHub web UI. Generated from
+  the DOCX sources via LibreOffice; treat the DOCX as the editable master
+  and re-generate the PDF after any edits.
+- **DOCX reports** — Customer-facing editable master. Replace
+  `[Customer Name]` and `[Month Year]` placeholders before sharing
+  externally.
 - **MD runbooks** — Internal SA/SE reference. Includes deployment
   playbooks, CSW configuration steps, and auditor response guidance.
 
