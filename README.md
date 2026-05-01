@@ -70,24 +70,85 @@ evidence that the goal is being met.
 | **Security architect** | The full PDF report's control-by-control mapping | Where each control is satisfied (agent telemetry, policy enforcement, conversation graph, forensic flows) and what gaps remain to be designed around. |
 | **Compliance / GRC team** | The *Audit Evidence* and *Gap Analysis* sections in the PDF | Which CSW reports, exports, and dashboards are auditor-ready as-is, and what supplementary attestation language to use. |
 | **Operations / SRE / DevSecOps** | The Markdown technical runbook | Concrete configuration steps, policy patterns, and "what to show the auditor on day 1" playbooks. |
-| **The customer's incumbent firewall / EDR vendor** | The runbooks and the 800-207 / 207A reports | Why workload-resident telemetry and identity-based segmentation are not duplicative of perimeter or endpoint controls — they answer questions those tools structurally cannot. |
+| **You already have firewalls and EDR** | The runbooks and the 800-207 / 207A reports | Workload-resident telemetry and identity-based segmentation answer evidence questions that perimeter and endpoint tools structurally can't — process-to-process flows, intra-host conversations, drift over time. The frameworks below show you exactly which controls land in that gap. |
 
-### Suggested customer-engagement flow
+### How to get the most out of this repo
 
-1. **Start with their highest-pressure framework** (the one tied to a real
-   audit or a contractual obligation). Hand them only that PDF.
-2. **Walk the executive summary together** to align on what CSW
-   demonstrably covers vs. what still requires complementary controls.
-   Honesty here builds far more trust than over-claiming.
-3. **Pivot to NIST 800-207 / 207A** once compliance language is
-   established. This reframes the discussion from *"what do we have to
-   do?"* to *"what would a defensible architecture look like?"* — and
-   positions CSW as the workload-tier component of a zero-trust design,
-   not just a control checkbox.
-4. **Finish with a concrete artifact ask**: "Could we run a 30-day
-   discovery in your environment and produce the same evidence tables we
-   just looked at, populated with your real workloads?" That converts
-   abstract mappings into a defensible PoV scope.
+Whether you found this from a search for a specific control, were
+pointed here by your Cisco account team, or are doing a broader
+evaluation, here's a way to navigate the material that respects your
+time:
+
+1. **Open the framework that's actually on your roadmap.** The one tied
+   to a current audit, a customer contractual ask, or board-level
+   pressure. Read only that PDF first — every report stands on its own,
+   and skimming all nine will dilute the signal.
+2. **Read the executive summary, then jump to the *Compliance Posture
+   Summary* table.** It tells you in one page which control families
+   CSW addresses fully, which it addresses partially, and where you'll
+   need complementary controls. If the table doesn't match your
+   environment, you've already learned something useful — talk to your
+   account team about scope.
+3. **Then look at the matching technical runbook (`*-runbook.md` or
+   `*-Technical-Runbook.md` in the same folder).** It shows the *how*:
+   sensor deployment phases, policy patterns, evidence collection
+   cadence, and what an auditor will actually accept as proof. If the
+   runbook's level of detail looks plausible for your environment,
+   that's the strongest signal that the mapping is real and not
+   marketing.
+4. **Once you've grounded the conversation in compliance language, read
+   the NIST 800-207 and 800-207A reports.** These shift the lens from
+   *"what do we have to do?"* to *"what does a defensible zero-trust
+   architecture actually look like at the workload tier?"* — useful
+   even if zero trust isn't your stated initiative, because the same
+   patterns underlie most modern compliance frameworks.
+5. **When you're ready, ask your Cisco account team for a discovery
+   exercise.** Specifically: a short engagement where CSW is deployed
+   in a representative slice of your environment and the same evidence
+   tables in these reports are populated with *your real workloads,
+   your real flows, your real CVEs*. That converts these documents from
+   abstract mappings into something you can actually defend in front of
+   your auditors and your board.
+
+### Why look at CSW at all?
+
+Be honest about the question. There are many security tools competing
+for attention; the case for evaluating CSW specifically rests on a few
+things these mappings demonstrate concretely:
+
+- **It operates where the workload lives.** Not at the perimeter, not on
+  the endpoint console — on every server, VM, and container, watching
+  every process and every flow. Many compliance evidence questions
+  ("prove this process never talks to that one") are *only* answerable
+  with telemetry at that layer.
+- **Segmentation that survives change.** Most environments have
+  segmentation controls that were correct on the day they were designed
+  and have drifted ever since. CSW's policy model is computed from
+  observed application behavior and continuously verified, which is
+  what auditors increasingly want to see (PCI DSS v4.0's "in place and
+  operating effectively" language, NIST CA-7 continuous monitoring).
+- **One source of truth across hybrid and multi-cloud.** AWS, Azure,
+  GCP, on-prem, bare metal, containers — same agent, same policy
+  language, same evidence format. Frameworks like NIST 800-53 and ISO
+  27001 don't care where your workload runs; your evidence shouldn't
+  either.
+- **Forensic depth without a separate tool.** Process-level conversation
+  graphs, package inventory, vulnerability exposure, and historical flow
+  records are all in one platform — which collapses several manual
+  evidence-gathering programs (segmentation reviews, change attestation,
+  drift tracking) into continuous, query-able state.
+- **It complements, not replaces, what you have.** CSW is built to live
+  alongside firewalls, EDR, SIEM, and CSPM. The frameworks here show
+  exactly which evidence questions land in the gap those tools leave —
+  not as a replacement argument, but as a "here's what's still missing"
+  argument.
+
+If after reading any one framework you can answer *"yes, my current
+stack already gives me the artifacts on page X with this much
+fidelity, on every workload, every day"* — you may not need CSW for
+that control. If the answer is *"I'm not sure"* or *"only with
+significant manual effort"* — that's the conversation worth having
+with your Cisco account team.
 
 ### File formats
 
