@@ -79,19 +79,24 @@ organisation.
 
 ## Asset Library
 
-| Framework | PDF Report | DOCX Report | Technical Runbook |
-|---|---|---|---|
-| HIPAA Security Rule | [pdf](./HIPAA/CSW-HIPAA-Compliance-Report.pdf) | [docx](./HIPAA/CSW-HIPAA-Compliance-Report.docx) | [runbook](./HIPAA/CSW-HIPAA-Technical-Runbook.md) |
-| SOC 2 Type II | [pdf](./SOC2/CSW-SOC2-Compliance-Report.pdf) | [docx](./SOC2/CSW-SOC2-Compliance-Report.docx) | [runbook](./SOC2/CSW-SOC2-Technical-Runbook.md) |
-| PCI DSS v4.0 | [pdf](./PCI-DSS-v4/CSW-PCI-DSS-Compliance-Report.pdf) | [docx](./PCI-DSS-v4/CSW-PCI-DSS-Compliance-Report.docx) | [runbook](./PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.md) |
-| NIST SP 800-53 Rev 5 | [pdf](./NIST-800-53/CSW-NIST-800-53-Compliance-Report.pdf) | [docx](./NIST-800-53/CSW-NIST-800-53-Compliance-Report.docx) | [runbook](./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md) |
-| ISO/IEC 27001:2022 | [pdf](./ISO-27001-2022/CSW-ISO27001-Compliance-Report.pdf) | [docx](./ISO-27001-2022/CSW-ISO27001-Compliance-Report.docx) | [runbook](./ISO-27001-2022/CSW-ISO27001-Technical-Runbook.md) |
-| CISA Zero Trust Maturity Model | [pdf](./CISA-ZeroTrust/CSW-CISA-ZTMM-Compliance-Report.pdf) | [docx](./CISA-ZeroTrust/CSW-CISA-ZTMM-Compliance-Report.docx) | [runbook](./CISA-ZeroTrust/CSW-CISA-ZTMM-Technical-Runbook.md) |
-| FIPS 140 | [pdf](./FIPS-140/CSW-FIPS-Compliance-Report.pdf) | [docx](./FIPS-140/CSW-FIPS-Compliance-Report.docx) | [runbook](./FIPS-140/CSW-FIPS-Technical-Runbook.md) |
-| NIST SP 800-207 (ZTA Seven Tenets) | [pdf](./NIST-800-207/CSW-NIST-800-207-Compliance-Report.pdf) | [docx](./NIST-800-207/CSW-NIST-800-207-Compliance-Report.docx) | [runbook](./NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md) |
-| NIST SP 800-207A (PDP/PEP/PA/PIP, draft-derived) | [pdf](./NIST-800-207A/CSW-NIST-800-207A-Compliance-Report.pdf) | [docx](./NIST-800-207A/CSW-NIST-800-207A-Compliance-Report.docx) | [runbook](./NIST-800-207A/CSW-NIST-800-207A-Technical-Runbook.md) |
-| DORA (EU 2022/2554) | [pdf](./DORA/CSW-DORA-Compliance-Report.pdf) | [docx](./DORA/CSW-DORA-Compliance-Report.docx) | [runbook](./DORA/CSW-DORA-Technical-Runbook.md) |
-| NIS2 (EU 2022/2555) | [pdf](./NIS2/CSW-NIS2-Compliance-Report.pdf) | [docx](./NIS2/CSW-NIS2-Compliance-Report.docx) | [runbook](./NIS2/CSW-NIS2-Technical-Runbook.md) |
+| Framework | Report (PDF) | Report (DOCX) | Report (HTML) | Runbook (Markdown) | Runbook (HTML) |
+|---|---|---|---|---|---|
+| HIPAA Security Rule | [pdf](./HIPAA/CSW-HIPAA-Compliance-Report.pdf) | [docx](./HIPAA/CSW-HIPAA-Compliance-Report.docx) | [html](./HIPAA/CSW-HIPAA-Compliance-Report.html) | [md](./HIPAA/CSW-HIPAA-Technical-Runbook.md) | [html](./HIPAA/CSW-HIPAA-Technical-Runbook.html) |
+| SOC 2 Type II | [pdf](./SOC2/CSW-SOC2-Compliance-Report.pdf) | [docx](./SOC2/CSW-SOC2-Compliance-Report.docx) | [html](./SOC2/CSW-SOC2-Compliance-Report.html) | [md](./SOC2/CSW-SOC2-Technical-Runbook.md) | [html](./SOC2/CSW-SOC2-Technical-Runbook.html) |
+| PCI DSS v4.0 | [pdf](./PCI-DSS-v4/CSW-PCI-DSS-Compliance-Report.pdf) | [docx](./PCI-DSS-v4/CSW-PCI-DSS-Compliance-Report.docx) | [html](./PCI-DSS-v4/CSW-PCI-DSS-Compliance-Report.html) | [md](./PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.md) | [html](./PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.html) |
+| NIST SP 800-53 Rev 5 | [pdf](./NIST-800-53/CSW-NIST-800-53-Compliance-Report.pdf) | [docx](./NIST-800-53/CSW-NIST-800-53-Compliance-Report.docx) | [html](./NIST-800-53/CSW-NIST-800-53-Compliance-Report.html) | [md](./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md) | [html](./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.html) |
+| ISO/IEC 27001:2022 | [pdf](./ISO-27001-2022/CSW-ISO27001-Compliance-Report.pdf) | [docx](./ISO-27001-2022/CSW-ISO27001-Compliance-Report.docx) | [html](./ISO-27001-2022/CSW-ISO27001-Compliance-Report.html) | [md](./ISO-27001-2022/CSW-ISO27001-Technical-Runbook.md) | [html](./ISO-27001-2022/CSW-ISO27001-Technical-Runbook.html) |
+| CISA Zero Trust Maturity Model | [pdf](./CISA-ZeroTrust/CSW-CISA-ZTMM-Compliance-Report.pdf) | [docx](./CISA-ZeroTrust/CSW-CISA-ZTMM-Compliance-Report.docx) | [html](./CISA-ZeroTrust/CSW-CISA-ZTMM-Compliance-Report.html) | [md](./CISA-ZeroTrust/CSW-CISA-ZTMM-Technical-Runbook.md) | [html](./CISA-ZeroTrust/CSW-CISA-ZTMM-Technical-Runbook.html) |
+| FIPS 140 | [pdf](./FIPS-140/CSW-FIPS-Compliance-Report.pdf) | [docx](./FIPS-140/CSW-FIPS-Compliance-Report.docx) | [html](./FIPS-140/CSW-FIPS-Compliance-Report.html) | [md](./FIPS-140/CSW-FIPS-Technical-Runbook.md) | [html](./FIPS-140/CSW-FIPS-Technical-Runbook.html) |
+| NIST SP 800-207 (ZTA Seven Tenets) | [pdf](./NIST-800-207/CSW-NIST-800-207-Compliance-Report.pdf) | [docx](./NIST-800-207/CSW-NIST-800-207-Compliance-Report.docx) | [html](./NIST-800-207/CSW-NIST-800-207-Compliance-Report.html) | [md](./NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md) | [html](./NIST-800-207/CSW-NIST-800-207-Technical-Runbook.html) |
+| NIST SP 800-207A (PDP/PEP/PA/PIP, draft-derived) | [pdf](./NIST-800-207A/CSW-NIST-800-207A-Compliance-Report.pdf) | [docx](./NIST-800-207A/CSW-NIST-800-207A-Compliance-Report.docx) | [html](./NIST-800-207A/CSW-NIST-800-207A-Compliance-Report.html) | [md](./NIST-800-207A/CSW-NIST-800-207A-Technical-Runbook.md) | [html](./NIST-800-207A/CSW-NIST-800-207A-Technical-Runbook.html) |
+| DORA (EU 2022/2554) | [pdf](./DORA/CSW-DORA-Compliance-Report.pdf) | [docx](./DORA/CSW-DORA-Compliance-Report.docx) | [html](./DORA/CSW-DORA-Compliance-Report.html) | [md](./DORA/CSW-DORA-Technical-Runbook.md) | [html](./DORA/CSW-DORA-Technical-Runbook.html) |
+| NIS2 (EU 2022/2555) | [pdf](./NIS2/CSW-NIS2-Compliance-Report.pdf) | [docx](./NIS2/CSW-NIS2-Compliance-Report.docx) | [html](./NIS2/CSW-NIS2-Compliance-Report.html) | [md](./NIS2/CSW-NIS2-Technical-Runbook.md) | [html](./NIS2/CSW-NIS2-Technical-Runbook.html) |
+
+The **HTML** column links host a browseable, mobile-friendly version of every
+report and runbook. Once GitHub Pages is enabled for this repository, those
+same files are also available at `https://chandrapati.github.io/CSW-Compliance-Mapping/`
+(start at [`index.html`](./index.html) for a landing page).
 
 > **Quickly find a control?** See [`INDEX.md`](./INDEX.md) for a
 > control-ID-keyed index across all eleven frameworks (e.g. *PCI Req

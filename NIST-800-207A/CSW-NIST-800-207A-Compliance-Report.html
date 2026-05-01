@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>NIST SP 800-207A (PDP/PEP/PA/PIP) — Compliance Report</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+:root {
+--fg: #1f2328;
+--fg-muted: #59636e;
+--bg: #ffffff;
+--bg-muted: #f6f8fa;
+--border: #d1d9e0;
+--link: #0969da;
+--link-hover: #0349b4;
+--code-bg: #f6f8fa;
+--accent: #cf222e;
+--max-width: 920px;
+}
+@media (prefers-color-scheme: dark) {
+:root {
+--fg: #e6edf3;
+--fg-muted: #9198a1;
+--bg: #0d1117;
+--bg-muted: #151b23;
+--border: #3d444d;
+--link: #4493f8;
+--link-hover: #6cb6ff;
+--code-bg: #151b23;
+--accent: #ff7b72;
+}
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+margin: 0 auto;
+max-width: var(--max-width);
+padding: 2rem 1.25rem 4rem;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+font-size: 16px;
+line-height: 1.6;
+color: var(--fg);
+background: var(--bg);
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 2rem;
+margin-bottom: 1rem;
+font-weight: 600;
+line-height: 1.25;
+}
+h1 { font-size: 2rem; border-bottom: 1px solid var(--border); padding-bottom: .35rem; }
+h2 { font-size: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: .3rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1rem; }
+h5, h6 { font-size: .875rem; color: var(--fg-muted); }
+p, ul, ol, blockquote, pre, table { margin: 0 0 1rem; }
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+ul, ol { padding-left: 1.6rem; }
+li + li { margin-top: .15rem; }
+blockquote {
+margin: 0 0 1rem;
+padding: .5rem 1rem;
+color: var(--fg-muted);
+border-left: .25rem solid var(--border);
+background: var(--bg-muted);
+border-radius: 0 6px 6px 0;
+}
+code, pre, kbd, samp {
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+font-size: .9em;
+}
+code {
+background: var(--code-bg);
+padding: .15rem .35rem;
+border-radius: 4px;
+}
+pre {
+background: var(--code-bg);
+padding: 1rem;
+border-radius: 6px;
+overflow: auto;
+font-size: .85rem;
+line-height: 1.45;
+}
+pre code { background: transparent; padding: 0; font-size: inherit; }
+table {
+display: block;
+width: 100%;
+overflow: auto;
+border-collapse: collapse;
+}
+th, td {
+border: 1px solid var(--border);
+padding: .5rem .75rem;
+vertical-align: top;
+text-align: left;
+}
+th {
+background: var(--bg-muted);
+font-weight: 600;
+}
+tbody tr:nth-child(2n) { background: var(--bg-muted); }
+hr {
+border: 0;
+height: 1px;
+background: var(--border);
+margin: 2rem 0;
+}
+img { max-width: 100%; height: auto; }
+
+.doc-meta {
+margin: 0 0 2rem;
+padding: .75rem 1rem;
+border: 1px solid var(--border);
+border-radius: 6px;
+background: var(--bg-muted);
+font-size: .9rem;
+color: var(--fg-muted);
+}
+.doc-meta a { font-weight: 500; }
+
+@media print {
+body { max-width: none; padding: 0; color: #000; background: #fff; }
+a { color: #000; text-decoration: underline; }
+pre, code, blockquote { background: #f5f5f5; }
+}
+</style>
+</head>
+<body>
+<div class="doc-meta">Source: <a href="CSW-NIST-800-207A-Compliance-Report.docx">CSW-NIST-800-207A-Compliance-Report.docx</a> · <a href="../index.html">repository index</a></div>
+<header id="title-block-header">
+<h1 class="title">NIST SP 800-207A (PDP/PEP/PA/PIP) — Compliance
+Report</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#executive-summary" id="toc-executive-summary"><strong>Executive Summary</strong></a>
+<ul>
+<li><a href="#a-vs.-800-207-key-distinction" id="toc-a-vs.-800-207-key-distinction"><strong>800-207A vs. 800-207 —
+Key Distinction</strong></a></li>
+<li><a href="#logical-component-coverage-summary" id="toc-logical-component-coverage-summary"><strong>Logical Component
+Coverage Summary</strong></a></li>
+</ul></li>
+<li><a href="#pdppeppapip-component-by-component-mapping" id="toc-pdppeppapip-component-by-component-mapping"><strong>PDP/PEP/PA/PIP
+— Component-by-Component Mapping</strong></a>
+<ul>
+<li><a href="#policy-decision-point-pdp" id="toc-policy-decision-point-pdp"><strong>1. Policy Decision Point
+(PDP)</strong></a></li>
+<li><a href="#policy-enforcement-point-pep" id="toc-policy-enforcement-point-pep"><strong>2. Policy Enforcement
+Point (PEP)</strong></a></li>
+<li><a href="#policy-administrator-pa" id="toc-policy-administrator-pa"><strong>3. Policy Administrator
+(PA)</strong></a></li>
+<li><a href="#policy-information-point-pip" id="toc-policy-information-point-pip"><strong>4. Policy Information
+Point (PIP)</strong></a></li>
+</ul></li>
+<li><a href="#a-access-transaction-model-csw-walkthrough" id="toc-a-access-transaction-model-csw-walkthrough"><strong>800-207A
+Access Transaction Model — CSW Walkthrough</strong></a></li>
+<li><a href="#a-zta-use-cases-csw-coverage" id="toc-a-zta-use-cases-csw-coverage"><strong>800-207A ZTA Use Cases —
+CSW Coverage</strong></a>
+<ul>
+<li><a href="#use-case-1-enterprise-with-satellite-facilities" id="toc-use-case-1-enterprise-with-satellite-facilities"><strong>Use
+Case 1 — Enterprise with Satellite Facilities</strong></a></li>
+<li><a href="#use-case-2-multi-cloud-enterprise" id="toc-use-case-2-multi-cloud-enterprise"><strong>Use Case 2 —
+Multi-Cloud Enterprise</strong></a></li>
+<li><a href="#use-case-3-collaboration-across-enterprise-boundaries" id="toc-use-case-3-collaboration-across-enterprise-boundaries"><strong>Use
+Case 3 — Collaboration Across Enterprise Boundaries</strong></a></li>
+</ul></li>
+<li><a href="#gap-analysis-complementary-controls-for-full-800-207a-coverage" id="toc-gap-analysis-complementary-controls-for-full-800-207a-coverage"><strong>Gap
+Analysis — Complementary Controls for Full 800-207A
+Coverage</strong></a></li>
+<li><a href="#evidence-package-for-800-207a-assessment" id="toc-evidence-package-for-800-207a-assessment"><strong>Evidence
+Package for 800-207A Assessment</strong></a></li>
+</ul>
+</nav>
+<p><strong>CISCO SECURE WORKLOAD</strong></p>
+<p><strong>NIST SP 800-207A</strong></p>
+<p>ZTA Logical Components — PDP/PEP/PA/PIP Mapping</p>
+<p>Prepared for: [Customer Name]</p>
+<p>Prepared by: Cisco Systems, Inc.</p>
+<p>Date: [Month Year] | Version 1.0 | Cisco Confidential</p>
+<table style="width:60%;">
+<colgroup>
+<col style="width: 59%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><p><strong>Regulatory Standard: NIST SP
+800-207A (Public Draft) — ZTA Model for Access Control in Cloud-Native
+&amp; Multi-Cloud Environments</strong></p>
+<p>Environment: Hybrid (On-Premises + AWS / Azure / GCP)</p>
+<p>Deployment Stage: Fresh Installation</p></td>
+</tr>
+</tbody>
+</table>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 92%" />
+</colgroup>
+<tbody>
+<tr>
+<td><em>DRAFT DOCUMENT NOTICE: NIST SP 800-207A is currently in public
+draft / comment stage. This report is based on the stable logical
+component model (PDP, PEP, PA, PIP) which is architecturally consistent
+with SP 800-207 and unlikely to change materially. Sections derived from
+draft-specific content are marked [DRAFT REF]. Verify against the final
+published standard before use in formal audit submissions.</em></td>
+</tr>
+</tbody>
+</table>
+<h1 id="executive-summary"><strong>Executive Summary</strong></h1>
+<p>NIST SP 800-207A extends the foundational Zero Trust Architecture
+standard (SP 800-207) by providing a concrete implementation model
+focused on cloud-native and multi-cloud environments. Where 800-207
+defines the seven tenets and logical architecture, 800-207A
+operationalizes the Policy Decision Point (PDP), Policy Enforcement
+Point (PEP), Policy Administrator (PA), and Policy Information Point
+(PIP) into deployment workflows, use cases, and access transaction
+models.</p>
+<p>Cisco Secure Workload (CSW) maps directly onto the 800-207A logical
+component model. CSW&#39;s software sensor functions as the PEP at the
+workload level. Its policy workspace is the PA. Its telemetry and
+vulnerability data feed the PIP. And its policy engine evaluates access
+decisions as the PDP — making CSW one of the most complete
+single-product implementations of the 800-207A access control model for
+workload and east-west traffic protection.</p>
+<h2 id="a-vs.-800-207-key-distinction"><strong>800-207A vs. 800-207 —
+Key Distinction</strong></h2>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 31%" />
+<col style="width: 19%" />
+<col style="width: 28%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Standard</strong></td>
+<td style="text-align: center;"><strong>Focus</strong></td>
+<td style="text-align: center;"><strong>Primary Audience</strong></td>
+<td style="text-align: center;"><strong>CSW Relevance</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>NIST SP 800-207</strong></td>
+<td style="text-align: center;">Seven ZTA tenets, logical architecture,
+deployment models</td>
+<td style="text-align: center;">CISOs, architects</td>
+<td style="text-align: center;">Tenet-level mapping (see companion
+doc)</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>NIST SP 800-207A</strong></td>
+<td style="text-align: center;">PDP/PEP/PA/PIP component model, access
+transaction flow, cloud-native ZTA implementation</td>
+<td style="text-align: center;">GRC, security engineers, cloud
+architects</td>
+<td style="text-align: center;">Component-level mapping (this
+document)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="logical-component-coverage-summary"><strong>Logical Component
+Coverage Summary</strong></h2>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 51%" />
+<col style="width: 17%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>800-207A Component</strong></td>
+<td style="text-align: center;"><strong>CSW Implementation</strong></td>
+<td style="text-align: center;"><strong>Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Policy Decision Point (PDP)</td>
+<td style="text-align: center;">CSW policy engine evaluates every
+workload-to-workload access request against allowlist rules derived from
+ADM and operator policy</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Policy Enforcement Point (PEP)</td>
+<td style="text-align: center;">CSW software sensor enforces allow/deny
+decisions at the workload level — inline, before connection is
+established</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Policy Administrator (PA)</td>
+<td style="text-align: center;">CSW policy workspace authors, versions,
+deploys, and audits all policy decisions with full change history</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Policy Information Point (PIP)</td>
+<td style="text-align: center;">CSW telemetry (flow, process,
+vulnerability, ADM baseline) provides the asset posture data that
+informs PDP decisions</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Subject (Requesting Entity)</td>
+<td style="text-align: center;">CSW captures process-user context per
+access request. Non-person entities identified by process hash +
+workload identity</td>
+<td style="text-align: center;"><strong>Partial Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Enterprise Resource</td>
+<td style="text-align: center;">CSW manages and enforces access to every
+monitored workload as an individual enterprise resource</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Control Plane</td>
+<td style="text-align: center;">CSW cluster (SaaS or on-prem) operates
+as the ZTA control plane — policy authoring, distribution, and telemetry
+aggregation</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Data Plane</td>
+<td style="text-align: center;">CSW software sensor on each workload
+operates as the data plane enforcement layer</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+</tbody>
+</table>
+<h1 id="pdppeppapip-component-by-component-mapping"><strong>PDP/PEP/PA/PIP —
+Component-by-Component Mapping</strong></h1>
+<h2 id="policy-decision-point-pdp"><strong>1. Policy Decision Point
+(PDP)</strong></h2>
+<p>800-207A Definition: The PDP evaluates access requests and produces a
+decision — allow, deny, or redirect. It consumes input from the PIP and
+applies policy authored by the PA. In 800-207A, the PDP operates on
+every access transaction, not just on session establishment.</p>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 69%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>CSW PDP
+Implementation</strong></td>
+<td style="text-align: center;"><strong>Detail</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Policy Engine</strong></td>
+<td style="text-align: center;">CSW&#39;s policy engine evaluates every
+network flow against the active allowlist policy workspace. Each
+connection attempt is a discrete access transaction — evaluated in real
+time against source workload identity, destination workload, port, and
+protocol.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>ADM-Derived Policy
+Input</strong></td>
+<td style="text-align: center;">PDP decisions are informed by
+ADM-established baseline: approved source-destination pairs, approved
+ports, and approved protocols. The ADM output is the primary policy
+input — not manually authored static rules.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Vulnerability-Aware
+Decisions</strong></td>
+<td style="text-align: center;">CSW PDP can incorporate workload
+vulnerability state into access decisions via compensating control
+policies. A workload with a critical unpatched CVE triggers a more
+restrictive policy set — posture-aware PDP evaluation consistent with
+800-207A&#39;s dynamic policy model.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Real-Time
+Evaluation</strong></td>
+<td style="text-align: center;">Every access transaction is evaluated in
+real time — not cached from prior sessions. This satisfies 800-207A&#39;s
+requirement that PDP decisions be continuous rather than
+session-establishment-only.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Decision Logging</strong></td>
+<td style="text-align: center;">Every PDP decision (allow or deny) is
+logged in CSW forensic telemetry with full context: timestamp,
+requesting workload, target resource, policy rule matched, and
+outcome.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Evidence generated: Policy decision log (allow/deny per flow),
+policy workspace export, ADM-to-policy traceability report.</em></p>
+<h2 id="policy-enforcement-point-pep"><strong>2. Policy Enforcement
+Point (PEP)</strong></h2>
+<p>800-207A Definition: The PEP grants, monitors, and can terminate
+connections between a subject and an enterprise resource. It acts on PDP
+decisions and sits inline between the requesting subject and the target
+resource. In 800-207A, the PEP must operate at the resource level — not
+just at network perimeters.</p>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 69%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>CSW PEP
+Implementation</strong></td>
+<td style="text-align: center;"><strong>Detail</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Workload-Level Inline
+Enforcement</strong></td>
+<td style="text-align: center;">CSW software sensor (tetd) operates
+inline on every monitored workload — not at a network gateway. This
+satisfies 800-207A&#39;s requirement for PEP enforcement at the resource
+level, enabling per-workload access control independent of network
+topology.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Pre-Connection
+Enforcement</strong></td>
+<td style="text-align: center;">CSW enforces allow/deny decisions before
+a connection is established at the workload level. Denied connections
+never reach the target application — the PEP blocks at the network stack
+layer.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Connection
+Termination</strong></td>
+<td style="text-align: center;">CSW can terminate existing connections
+when policy changes (e.g., a workload is isolated via API during
+incident response). This satisfies 800-207A&#39;s requirement that PEPs can
+terminate as well as prevent connections.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Multi-Environment PEP
+Consistency</strong></td>
+<td style="text-align: center;">CSW PEP operates identically on
+on-premises Linux/Windows workloads and cloud VMs (AWS EC2, Azure VM,
+GCP instance). A uniform enforcement layer across all environments — a
+specific 800-207A cloud-native requirement.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Agentless PEP via Cloud
+Connectors</strong></td>
+<td style="text-align: center;">For cloud workloads where agent
+installation is not feasible, CSW cloud connectors provide agentless
+PEP-equivalent enforcement via cloud-native security group/NSG policy
+push.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Evidence generated: PEP enforcement log (connections
+blocked/allowed per workload), sensor deployment inventory, connection
+termination log.</em></p>
+<h2 id="policy-administrator-pa"><strong>3. Policy Administrator
+(PA)</strong></h2>
+<p>800-207A Definition: The PA establishes and/or shuts down
+communication paths between subjects and resources. It translates PDP
+decisions into specific policy configurations deployed to PEPs. The PA
+must maintain a complete, auditable record of all policy changes.</p>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 69%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>CSW PA
+Implementation</strong></td>
+<td style="text-align: center;"><strong>Detail</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Policy Workspace</strong></td>
+<td style="text-align: center;">CSW policy workspace is the PA
+implementation — where operators author allowlist rules, organize
+policies by scope, set enforcement priorities, and deploy to the PEP
+layer (sensors). The workspace is the authoritative source of all active
+policy.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>ADM-to-Policy
+Translation</strong></td>
+<td style="text-align: center;">The PA function includes translating
+ADM-discovered application flows into deployable policy rules. CSW
+automates this: ADM output is imported directly into the policy
+workspace as a proposed policy set for operator review and
+approval.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Simulation Mode (PA Safety
+Function)</strong></td>
+<td style="text-align: center;">Before deploying policy to PEPs, CSW PA
+runs in Simulation mode — validating that new policy decisions do not
+break approved application flows. No policy is enforced without
+simulation validation.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Version History &amp; Audit
+Trail</strong></td>
+<td style="text-align: center;">Every policy change in the CSW workspace
+is timestamped, attributed to the operator, and retained in version
+history. This is the PA change audit trail required by 800-207A for
+governance and forensic review.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Policy Lifecycle
+Management</strong></td>
+<td style="text-align: center;">CSW PA manages the full policy
+lifecycle: Draft → Simulation → Enforcement → Retired. Policies can be
+rolled back to prior versions. Stale rules are identified and flagged
+for retirement after ADM re-runs.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>API-Driven PA
+Automation</strong></td>
+<td style="text-align: center;">The PA function can be automated via CSW
+REST API — enabling SOAR platforms, CMDB systems, and orchestration
+tools to push policy changes programmatically, enabling the dynamic PA
+behavior required by 800-207A.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Evidence generated: Policy workspace version history, simulation
+run log, operator change attribution log, API-driven policy change
+log.</em></p>
+<h2 id="policy-information-point-pip"><strong>4. Policy Information
+Point (PIP)</strong></h2>
+<p>800-207A Definition: The PIP is the source of attribute information
+used by the PDP to make access decisions. In 800-207A, the PIP must
+provide continuous, real-time signals across three domains: identity
+attributes, device/workload posture, and environmental context.</p>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 69%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>CSW PIP
+Implementation</strong></td>
+<td style="text-align: center;"><strong>Detail</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Workload Posture (Device
+PIP)</strong></td>
+<td style="text-align: center;">CSW provides continuous workload posture
+data: CVE presence and severity (CVSS), patch status, running process
+inventory, process hash integrity, and listening port baseline — the
+device/workload posture PIP feed required by 800-207A.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Network Context (Environmental
+PIP)</strong></td>
+<td style="text-align: center;">CSW ADM provides environmental context:
+current communication patterns, newly observed flows, protocol
+compliance state, and lateral movement indicators — informs PDP
+decisions about whether current access patterns are normal or
+anomalous.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Process-Identity Context
+(Subject PIP)</strong></td>
+<td style="text-align: center;">CSW captures the requesting process
+identity per access transaction: process name, hash, parent process, and
+user context — the non-person entity (NPE) subject attribute required by
+800-207A&#39;s service-to-service access model.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>SIEM Integration (Aggregated
+PIP)</strong></td>
+<td style="text-align: center;">CSW streams all PIP signals to SIEM via
+Kafka/Syslog — enabling the enterprise-wide PIP aggregation model
+described in 800-207A, where the PDP consumes signals from multiple PIPs
+(identity, device, network, threat intelligence).</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Complementary PIP
+Sources</strong></td>
+<td style="text-align: center;">CSW PIP covers workload posture and
+network context. For complete 800-207A PIP coverage, pair with: identity
+provider (user attributes), EDR (endpoint behavioral signals), and
+threat intelligence platform (external threat context).</td>
+</tr>
+</tbody>
+</table>
+<p><em>Evidence generated: Vulnerability posture feed (continuous),
+process inventory export, ADM environmental context report, SIEM
+integration telemetry.</em></p>
+<h1 id="a-access-transaction-model-csw-walkthrough"><strong>800-207A
+Access Transaction Model — CSW Walkthrough</strong></h1>
+<p>NIST 800-207A defines a specific access transaction flow that every
+ZTA implementation must support. The following traces a
+workload-to-workload access transaction through CSW&#39;s implementation of
+the 800-207A model.</p>
+<p><em>[DRAFT REF] — Access transaction model from 800-207A public
+draft. Component sequence reflects the stable logical model; specific
+details may evolve in final publication.</em></p>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 33%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Step</strong></td>
+<td style="text-align: center;"><strong>800-207A Event</strong></td>
+<td style="text-align: center;"><strong>CSW Implementation</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: center;">Subject initiates access request to
+enterprise resource</td>
+<td style="text-align: center;">Service A (workload) initiates TCP
+connection to Service B (workload) on port 443</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>2</strong></td>
+<td style="text-align: center;">PEP intercepts the access request</td>
+<td style="text-align: center;">CSW sensor on Service B intercepts the
+inbound connection attempt before it reaches the application</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>3</strong></td>
+<td style="text-align: center;">PEP requests access decision from
+PDP</td>
+<td style="text-align: center;">CSW sensor queries the local policy
+engine (distributed PDP) with: source IP, source workload identity,
+destination port, protocol</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>4</strong></td>
+<td style="text-align: center;">PDP queries PIP for subject and resource
+attributes</td>
+<td style="text-align: center;">Policy engine queries: workload labels
+(scope membership), vulnerability state, process baseline (known
+process?), ADM baseline (approved flow?)</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>5</strong></td>
+<td style="text-align: center;">PDP evaluates policy and issues
+decision</td>
+<td style="text-align: center;">Policy engine evaluates connection
+against active allowlist workspace: match found → ALLOW; no match →
+DENY</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>6</strong></td>
+<td style="text-align: center;">PA is notified of decision for
+enforcement</td>
+<td style="text-align: center;">Decision is logged in CSW telemetry with
+full context. If DENY: policy violation alert fired to SIEM/SOAR</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>7</strong></td>
+<td style="text-align: center;">PEP enforces decision — allow or deny
+connection</td>
+<td style="text-align: center;">CSW sensor allows TCP handshake to
+complete (ALLOW) or drops the packet (DENY) before application
+layer</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>8</strong></td>
+<td style="text-align: center;">Continuous monitoring during
+session</td>
+<td style="text-align: center;">CSW monitors the active connection for
+duration, bytes transferred, and behavioral deviation from ADM baseline
+throughout session lifetime</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>9</strong></td>
+<td style="text-align: center;">PEP terminates connection if policy
+changes mid-session</td>
+<td style="text-align: center;">If an isolation policy is pushed via API
+during the session, CSW sensor terminates the active connection
+immediately</td>
+</tr>
+</tbody>
+</table>
+<h1 id="a-zta-use-cases-csw-coverage"><strong>800-207A ZTA Use Cases —
+CSW Coverage</strong></h1>
+<p><em>[DRAFT REF] — The following use cases are drawn from the public
+draft of 800-207A. CSW coverage is assessed against stable architectural
+requirements within each use case.</em></p>
+<h2 id="use-case-1-enterprise-with-satellite-facilities"><strong>Use
+Case 1 — Enterprise with Satellite Facilities</strong></h2>
+<p>An enterprise with headquarters and multiple branch/satellite
+facilities implementing ZTA to eliminate implicit trust for branch-to-HQ
+and branch-to-branch traffic.</p>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 23%" />
+<col style="width: 34%" />
+<col style="width: 17%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Requirement</strong></td>
+<td style="text-align: center;"><strong>800-207A
+Expectation</strong></td>
+<td style="text-align: center;"><strong>CSW Implementation</strong></td>
+<td style="text-align: center;"><strong>Status</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Branch workload isolation</td>
+<td style="text-align: center;">Branch resources treated as untrusted —
+no implicit access to HQ resources</td>
+<td style="text-align: center;">CSW scopes segment branch workloads.
+Default-deny prevents branch-to-HQ lateral access without explicit
+policy.</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Per-resource access control</td>
+<td style="text-align: center;">Access to individual HQ resources
+granted per-session, not per-network</td>
+<td style="text-align: center;">CSW workload-level allowlist: branch
+workloads can only reach specifically approved HQ workloads on approved
+ports.</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Consistent PEP across locations</td>
+<td style="text-align: center;">PEP enforcement must be consistent
+regardless of physical location</td>
+<td style="text-align: center;">CSW software sensor deployed identically
+at HQ and all branch sites. Same policy workspace governs all
+sensors.</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">East-west visibility</td>
+<td style="text-align: center;">All inter-facility traffic must be
+visible and policy-governed</td>
+<td style="text-align: center;">CSW ADM maps all cross-facility flows.
+Policy workspace governs all east-west traffic — no unmonitored
+paths.</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="use-case-2-multi-cloud-enterprise"><strong>Use Case 2 —
+Multi-Cloud Enterprise</strong></h2>
+<p>An enterprise operating workloads across multiple cloud providers
+implementing ZTA to enforce consistent access policy across cloud
+boundaries and eliminate implicit cloud-internal trust.</p>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 23%" />
+<col style="width: 34%" />
+<col style="width: 17%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Requirement</strong></td>
+<td style="text-align: center;"><strong>800-207A
+Expectation</strong></td>
+<td style="text-align: center;"><strong>CSW Implementation</strong></td>
+<td style="text-align: center;"><strong>Status</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Unified policy across clouds</td>
+<td style="text-align: center;">Single policy model governs access
+regardless of cloud provider</td>
+<td style="text-align: center;">CSW single policy workspace governs
+workloads on AWS, Azure, GCP, and on-prem. No per-cloud policy
+fragmentation.</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Cloud workload PEP</td>
+<td style="text-align: center;">PEP must enforce at workload level — not
+just cloud security groups/NSGs</td>
+<td style="text-align: center;">CSW software sensor on cloud VMs
+provides workload-level PEP. More granular than security group
+enforcement alone.</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Cross-cloud flow visibility</td>
+<td style="text-align: center;">All cross-cloud traffic must be visible
+and policy-controlled</td>
+<td style="text-align: center;">CSW ADM maps cross-cloud flows. Cloud
+connectors provide VPC/VNET flow visibility and reveal unexpected
+cross-cloud dependencies.</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Cloud identity integration</td>
+<td style="text-align: center;">Cloud workload identity must be
+incorporated into access decisions</td>
+<td style="text-align: center;">CSW uses cloud provider tags (AWS,
+Azure, GCP labels) to drive scope membership and policy — cloud identity
+informs PDP.</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Agentless cloud coverage</td>
+<td style="text-align: center;">Not all cloud workloads support agent
+installation</td>
+<td style="text-align: center;">CSW cloud connectors provide agentless
+coverage via VPC Flow Logs. Visibility coverage; enforcement via
+cloud-native controls.</td>
+<td style="text-align: center;"><strong>Partial Coverage</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="use-case-3-collaboration-across-enterprise-boundaries"><strong>Use
+Case 3 — Collaboration Across Enterprise Boundaries</strong></h2>
+<p>An enterprise enabling controlled collaboration with external
+partners implementing ZTA to provide scoped, audited access to specific
+internal resources without granting broad network access.</p>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 23%" />
+<col style="width: 34%" />
+<col style="width: 17%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Requirement</strong></td>
+<td style="text-align: center;"><strong>800-207A
+Expectation</strong></td>
+<td style="text-align: center;"><strong>CSW Implementation</strong></td>
+<td style="text-align: center;"><strong>Status</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">External partner isolation</td>
+<td style="text-align: center;">Partner access strictly scoped to
+specific resources — no lateral movement</td>
+<td style="text-align: center;">CSW External-Partners scope enforces
+isolation. Partners can only reach explicitly allowlisted resources. No
+lateral access possible.</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Per-partner audit trail</td>
+<td style="text-align: center;">All partner access must be individually
+auditable</td>
+<td style="text-align: center;">CSW flow telemetry captures all
+partner-initiated connections with full context. Per-partner flow export
+available for audit.</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Dynamic partner policy</td>
+<td style="text-align: center;">Partner access can be granted and
+revoked dynamically</td>
+<td style="text-align: center;">CSW API enables real-time policy
+updates: grant access by adding allowlist rule, revoke by removing it —
+no network reconfiguration needed.</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Minimum necessary access</td>
+<td style="text-align: center;">Partners receive access only to what
+their role requires</td>
+<td style="text-align: center;">CSW workload-level allowlist: partner X
+can reach Resource A on port 443 only. No access to any other
+workload.</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Identity-aware partner access</td>
+<td style="text-align: center;">Partner identity must be verified, not
+just network location</td>
+<td style="text-align: center;">CSW enforces the network path to
+authentication. Full identity verification requires complementary
+IdP/ZTNA integration.</td>
+<td style="text-align: center;"><strong>Partial Coverage</strong></td>
+</tr>
+</tbody>
+</table>
+<h1 id="gap-analysis-complementary-controls-for-full-800-207a-coverage"><strong>Gap
+Analysis — Complementary Controls for Full 800-207A
+Coverage</strong></h1>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 14%" />
+<col style="width: 21%" />
+<col style="width: 35%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>800-207A
+Requirement</strong></td>
+<td style="text-align: center;"><strong>CSW Coverage</strong></td>
+<td style="text-align: center;"><strong>Gap</strong></td>
+<td style="text-align: center;"><strong>Complementary
+Control</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">User identity attributes for PDP</td>
+<td style="text-align: center;">Partial — process/NPE identity only</td>
+<td style="text-align: center;">Human user identity, MFA state, and role
+attributes not natively in CSW</td>
+<td style="text-align: center;"><strong>Cisco Secure Access (SSE/ZTNA) +
+Okta/Azure AD</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Continuous session re-evaluation for
+users</td>
+<td style="text-align: center;">Partial — workload sessions
+monitored</td>
+<td style="text-align: center;">User session re-evaluation (step-up
+auth, session revocation) not in CSW scope</td>
+<td style="text-align: center;"><strong>Cisco Secure Access, Duo
+Security</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Device certificate / 802.1X
+authentication</td>
+<td style="text-align: center;">Partial — network path enforced</td>
+<td style="text-align: center;">Certificate-based device authentication
+is not a CSW function</td>
+<td style="text-align: center;"><strong>Cisco ISE, Cisco Secure
+Client</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Threat intelligence PIP feed</td>
+<td style="text-align: center;">Partial — internal telemetry only</td>
+<td style="text-align: center;">External threat intel (IOCs, threat
+actor TTPs) not natively ingested by CSW</td>
+<td style="text-align: center;"><strong>Cisco XDR, Cisco
+Talos</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">North-south user-to-app access
+control</td>
+<td style="text-align: center;">Partial — east-west primary</td>
+<td style="text-align: center;">CSW is optimized for east-west.
+North-south user access needs ZTNA</td>
+<td style="text-align: center;"><strong>Cisco Secure Access
+(ZTNA/SWG)</strong></td>
+</tr>
+</tbody>
+</table>
+<h1 id="evidence-package-for-800-207a-assessment"><strong>Evidence
+Package for 800-207A Assessment</strong></h1>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 26%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Component</strong></td>
+<td style="text-align: center;"><strong>Evidence Artifact</strong></td>
+<td style="text-align: center;"><strong>CSW Source</strong></td>
+<td style="text-align: center;"><strong>Frequency</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">PDP</td>
+<td style="text-align: center;">Policy decision log (allow/deny per
+flow)</td>
+<td style="text-align: center;">Investigate → Flow Search</td>
+<td style="text-align: center;"><strong>Continuous</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">PDP</td>
+<td style="text-align: center;">ADM-to-policy traceability report</td>
+<td style="text-align: center;">ADM Workspace + Policy Workspace</td>
+<td style="text-align: center;"><strong>Quarterly</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">PEP</td>
+<td style="text-align: center;">Sensor deployment inventory</td>
+<td style="text-align: center;">Manage → Agents</td>
+<td style="text-align: center;"><strong>Monthly</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">PEP</td>
+<td style="text-align: center;">Connection enforcement log (blocks)</td>
+<td style="text-align: center;">Alerts → Policy Violations</td>
+<td style="text-align: center;"><strong>Real-time</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">PA</td>
+<td style="text-align: center;">Policy workspace version history</td>
+<td style="text-align: center;">Defend → Workspace History</td>
+<td style="text-align: center;"><strong>Per change</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">PA</td>
+<td style="text-align: center;">Simulation run validation log</td>
+<td style="text-align: center;">Defend → Simulation Mode</td>
+<td style="text-align: center;"><strong>Per policy change</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">PIP</td>
+<td style="text-align: center;">Vulnerability posture report
+(workload)</td>
+<td style="text-align: center;">Investigate → Vulnerability</td>
+<td style="text-align: center;"><strong>Weekly</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">PIP</td>
+<td style="text-align: center;">Process baseline + anomaly log</td>
+<td style="text-align: center;">Alerts → Process Anomaly</td>
+<td style="text-align: center;"><strong>Real-time</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">PIP</td>
+<td style="text-align: center;">ADM environmental context report</td>
+<td style="text-align: center;">Investigate → ADM</td>
+<td style="text-align: center;"><strong>Quarterly</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">All</td>
+<td style="text-align: center;">SIEM telemetry integration config</td>
+<td style="text-align: center;">Platform → Data Export</td>
+<td style="text-align: center;"><strong>Continuous</strong></td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

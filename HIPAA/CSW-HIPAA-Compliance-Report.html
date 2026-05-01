@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>HIPAA Security Rule — Compliance Report</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+:root {
+--fg: #1f2328;
+--fg-muted: #59636e;
+--bg: #ffffff;
+--bg-muted: #f6f8fa;
+--border: #d1d9e0;
+--link: #0969da;
+--link-hover: #0349b4;
+--code-bg: #f6f8fa;
+--accent: #cf222e;
+--max-width: 920px;
+}
+@media (prefers-color-scheme: dark) {
+:root {
+--fg: #e6edf3;
+--fg-muted: #9198a1;
+--bg: #0d1117;
+--bg-muted: #151b23;
+--border: #3d444d;
+--link: #4493f8;
+--link-hover: #6cb6ff;
+--code-bg: #151b23;
+--accent: #ff7b72;
+}
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+margin: 0 auto;
+max-width: var(--max-width);
+padding: 2rem 1.25rem 4rem;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+font-size: 16px;
+line-height: 1.6;
+color: var(--fg);
+background: var(--bg);
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 2rem;
+margin-bottom: 1rem;
+font-weight: 600;
+line-height: 1.25;
+}
+h1 { font-size: 2rem; border-bottom: 1px solid var(--border); padding-bottom: .35rem; }
+h2 { font-size: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: .3rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1rem; }
+h5, h6 { font-size: .875rem; color: var(--fg-muted); }
+p, ul, ol, blockquote, pre, table { margin: 0 0 1rem; }
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+ul, ol { padding-left: 1.6rem; }
+li + li { margin-top: .15rem; }
+blockquote {
+margin: 0 0 1rem;
+padding: .5rem 1rem;
+color: var(--fg-muted);
+border-left: .25rem solid var(--border);
+background: var(--bg-muted);
+border-radius: 0 6px 6px 0;
+}
+code, pre, kbd, samp {
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+font-size: .9em;
+}
+code {
+background: var(--code-bg);
+padding: .15rem .35rem;
+border-radius: 4px;
+}
+pre {
+background: var(--code-bg);
+padding: 1rem;
+border-radius: 6px;
+overflow: auto;
+font-size: .85rem;
+line-height: 1.45;
+}
+pre code { background: transparent; padding: 0; font-size: inherit; }
+table {
+display: block;
+width: 100%;
+overflow: auto;
+border-collapse: collapse;
+}
+th, td {
+border: 1px solid var(--border);
+padding: .5rem .75rem;
+vertical-align: top;
+text-align: left;
+}
+th {
+background: var(--bg-muted);
+font-weight: 600;
+}
+tbody tr:nth-child(2n) { background: var(--bg-muted); }
+hr {
+border: 0;
+height: 1px;
+background: var(--border);
+margin: 2rem 0;
+}
+img { max-width: 100%; height: auto; }
+
+.doc-meta {
+margin: 0 0 2rem;
+padding: .75rem 1rem;
+border: 1px solid var(--border);
+border-radius: 6px;
+background: var(--bg-muted);
+font-size: .9rem;
+color: var(--fg-muted);
+}
+.doc-meta a { font-weight: 500; }
+
+@media print {
+body { max-width: none; padding: 0; color: #000; background: #fff; }
+a { color: #000; text-decoration: underline; }
+pre, code, blockquote { background: #f5f5f5; }
+}
+</style>
+</head>
+<body>
+<div class="doc-meta">Source: <a href="CSW-HIPAA-Compliance-Report.docx">CSW-HIPAA-Compliance-Report.docx</a> · <a href="../index.html">repository index</a></div>
+<header id="title-block-header">
+<h1 class="title">HIPAA Security Rule — Compliance Report</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#executive-summary" id="toc-executive-summary"><strong>Executive Summary</strong></a>
+<ul>
+<li><a href="#compliance-posture-summary" id="toc-compliance-posture-summary"><strong>Compliance Posture
+Summary</strong></a></li>
+</ul></li>
+<li><a href="#csw-capabilities-hipaa-alignment" id="toc-csw-capabilities-hipaa-alignment"><strong>CSW Capabilities &amp;
+HIPAA Alignment</strong></a></li>
+<li><a href="#hipaa-control-mapping-detail" id="toc-hipaa-control-mapping-detail"><strong>HIPAA Control Mapping
+Detail</strong></a></li>
+<li><a href="#recommended-deployment-architecture" id="toc-recommended-deployment-architecture"><strong>Recommended
+Deployment Architecture</strong></a>
+<ul>
+<li><a href="#phi-zone-segmentation-model" id="toc-phi-zone-segmentation-model"><strong>PHI Zone Segmentation
+Model</strong></a></li>
+<li><a href="#hybrid-environment-coverage" id="toc-hybrid-environment-coverage"><strong>Hybrid Environment
+Coverage</strong></a></li>
+</ul></li>
+<li><a href="#evidence-collection-audit-readiness" id="toc-evidence-collection-audit-readiness"><strong>Evidence Collection
+&amp; Audit Readiness</strong></a>
+<ul>
+<li><a href="#documentation-retention" id="toc-documentation-retention"><strong>Documentation
+Retention</strong></a></li>
+</ul></li>
+<li><a href="#recommended-next-steps" id="toc-recommended-next-steps"><strong>Recommended Next
+Steps</strong></a>
+<ul>
+<li><a href="#about-cisco-secure-workload" id="toc-about-cisco-secure-workload"><strong>About Cisco Secure
+Workload</strong></a></li>
+</ul></li>
+</ul>
+</nav>
+<p><strong>CISCO SECURE WORKLOAD</strong></p>
+<p><strong>HIPAA Compliance Framework</strong></p>
+<p>Prepared for: [Customer Name]</p>
+<p>Prepared by: Cisco Systems, Inc.</p>
+<p>Date: [Month Year] | Version 1.0 | Cisco Confidential</p>
+<table style="width:60%;">
+<colgroup>
+<col style="width: 59%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><p><strong>Regulatory Standard: HIPAA
+Security Rule (45 CFR Part 164)</strong></p>
+<p>Environment: Hybrid (On-Premises + AWS / Azure / GCP)</p>
+<p>Deployment Stage: Fresh Installation</p></td>
+</tr>
+</tbody>
+</table>
+<h1 id="executive-summary"><strong>Executive Summary</strong></h1>
+<p>Healthcare organizations face escalating regulatory obligations under
+the HIPAA Security Rule to protect electronic Protected Health
+Information (ePHI). This report documents how Cisco Secure Workload
+(CSW) enables [Customer Name] to satisfy HIPAA Security Rule
+requirements through workload-level visibility, micro-segmentation,
+real-time monitoring, and forensic telemetry.</p>
+<p>CSW provides the technical foundation for a defense-in-depth approach
+to ePHI protection — ensuring that access to sensitive clinical and
+billing data is continuously authorized, monitored, and auditable across
+on-premises and cloud environments.</p>
+<h2 id="compliance-posture-summary"><strong>Compliance Posture
+Summary</strong></h2>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 37%" />
+<col style="width: 17%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Safeguard Category</strong></td>
+<td style="text-align: center;"><strong>Controls Addressed</strong></td>
+<td style="text-align: center;"><strong>Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Administrative Safeguards
+§164.308</strong></td>
+<td style="text-align: center;">Risk analysis, access management,
+incident response, contingency planning, evaluation</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Physical Safeguards
+§164.310</strong></td>
+<td style="text-align: center;">Workload isolation and access boundary
+enforcement</td>
+<td style="text-align: center;"><strong>Partial Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Technical Safeguards
+§164.312</strong></td>
+<td style="text-align: center;">Access controls, audit controls,
+integrity, authentication, encryption in transit</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Organizational Requirements
+§164.314</strong></td>
+<td style="text-align: center;">Business Associate scope definition,
+third-party access control</td>
+<td style="text-align: center;"><strong>Evidence Required</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>Note: Physical Safeguards relate to physical facility controls
+(locks, cameras, workstation policies) which are outside CSW scope. CSW
+directly complements these controls through workload isolation and
+logical access enforcement.</em></p>
+<h1 id="csw-capabilities-hipaa-alignment"><strong>CSW Capabilities &amp;
+HIPAA Alignment</strong></h1>
+<p>Cisco Secure Workload delivers four core capability pillars that
+directly address HIPAA Security Rule requirements:</p>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 35%" />
+<col style="width: 35%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>CSW Capability</strong></td>
+<td style="text-align: center;"><strong>What It Does</strong></td>
+<td style="text-align: center;"><strong>HIPAA Controls
+Satisfied</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Application Dependency Mapping
+(ADM)</strong></td>
+<td style="text-align: center;">Discovers all workload-to-workload
+communication flows, processes, and users. Identifies ePHI application
+boundaries without prior knowledge.</td>
+<td style="text-align: center;"><p>§164.308(a)(1) Risk Analysis</p>
+<p>§164.312(a) Access Control</p>
+<p>§164.308(a)(3) Workforce Access</p></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Micro-Segmentation</strong></td>
+<td style="text-align: center;">Enforces allowlist policies at the
+workload level — not just perimeter firewalls. Isolates ePHI systems
+from unauthorized lateral access.</td>
+<td style="text-align: center;"><p>§164.312(a)(1) Access Control</p>
+<p>§164.312(e) Encryption/Isolation</p>
+<p>§164.308(a)(6) Incident Response</p></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Vulnerability
+Detection</strong></td>
+<td style="text-align: center;">Continuously scans workloads for CVEs
+with CVSS scoring. Prioritizes risk remediation on ePHI-bearing
+systems.</td>
+<td style="text-align: center;"><p>§164.308(a)(1) Risk Analysis</p>
+<p>§164.308(a)(8) Evaluation</p></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Forensic Telemetry</strong></td>
+<td style="text-align: center;">Retains network flow and process-level
+audit trail across all monitored workloads for breach investigation and
+compliance reporting.</td>
+<td style="text-align: center;"><p>§164.312(b) Audit Controls</p>
+<p>§164.308(a)(6) Incident Response</p>
+<p>§164.308(a)(1) Risk Analysis</p></td>
+</tr>
+</tbody>
+</table>
+<h1 id="hipaa-control-mapping-detail"><strong>HIPAA Control Mapping
+Detail</strong></h1>
+<p>The following table maps each applicable HIPAA Security Rule control
+to the corresponding CSW capability and implementation approach.</p>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 11%" />
+<col style="width: 16%" />
+<col style="width: 20%" />
+<col style="width: 23%" />
+<col style="width: 6%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Safeguard</strong></td>
+<td style="text-align: center;"><strong>Ref</strong></td>
+<td style="text-align: center;"><strong>Control</strong></td>
+<td style="text-align: center;"><strong>HIPAA Requirement</strong></td>
+<td style="text-align: center;"><strong>CSW Implementation</strong></td>
+<td style="text-align: center;"><strong>Status</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Technical</td>
+<td style="text-align: center;">§164.312(a)(2)(i)</td>
+<td style="text-align: center;"><strong>Unique User
+Identification</strong></td>
+<td style="text-align: center;">Assign unique name or number for
+identifying and tracking user identity.</td>
+<td style="text-align: center;">CSW ADM captures process-user context
+per workload. Anomaly detection alerts on shared or generic credential
+usage patterns.</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Technical</td>
+<td style="text-align: center;">§164.312(a)(2)(ii)</td>
+<td style="text-align: center;"><strong>Emergency Access
+Procedure</strong></td>
+<td style="text-align: center;">Establish procedures for obtaining
+necessary ePHI during an emergency.</td>
+<td style="text-align: center;">Break-glass policy workspace configured
+in CSW with alert-only mode. Emergency IP ranges defined with expanded
+but audited access.</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Technical</td>
+<td style="text-align: center;">§164.312(b)</td>
+<td style="text-align: center;"><strong>Audit Controls</strong></td>
+<td style="text-align: center;">Implement mechanisms to record and
+examine activity in systems containing ePHI.</td>
+<td style="text-align: center;">CSW retains full network flow and
+process telemetry. Flow search enables retrospective audit of any ePHI
+workload interaction.</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Technical</td>
+<td style="text-align: center;">§164.312(c)(1)</td>
+<td style="text-align: center;"><strong>Integrity Controls</strong></td>
+<td style="text-align: center;">Protect ePHI from improper alteration or
+destruction.</td>
+<td style="text-align: center;">CSW policy enforcement blocks
+unauthorized write-path access. Process hash verification detects
+workload tampering.</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Technical</td>
+<td style="text-align: center;">§164.312(d)</td>
+<td style="text-align: center;"><strong>Authentication</strong></td>
+<td style="text-align: center;">Verify that a person or entity seeking
+access to ePHI is the one claimed.</td>
+<td style="text-align: center;">CSW enforces LDAPS/Kerberos-only paths
+to ePHI systems. Unencrypted LDAP (port 389) blocked via policy.</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Technical</td>
+<td style="text-align: center;">§164.312(e)(2)(ii)</td>
+<td style="text-align: center;"><strong>Encryption in
+Transit</strong></td>
+<td style="text-align: center;">Implement a mechanism to encrypt ePHI in
+transit when appropriate.</td>
+<td style="text-align: center;">CSW detects unencrypted protocols (HTTP,
+FTP, plain LDAP) on PHI-Zone workloads. Policy enforces
+HTTPS/SFTP/LDAPS.</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Administrative</td>
+<td style="text-align: center;">§164.308(a)(1)</td>
+<td style="text-align: center;"><strong>Risk Analysis</strong></td>
+<td style="text-align: center;">Conduct an accurate and thorough
+assessment of the potential risks and vulnerabilities to ePHI.</td>
+<td style="text-align: center;">CSW vulnerability detection provides
+continuous CVE assessment on all PHI-Zone workloads. CVSS-scored reports
+exportable for risk register input.</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Administrative</td>
+<td style="text-align: center;">§164.308(a)(3)</td>
+<td style="text-align: center;"><strong>Workforce Access
+Management</strong></td>
+<td style="text-align: center;">Implement procedures for authorizing
+access to ePHI.</td>
+<td style="text-align: center;">CSW scope-based policies define which
+workloads can access ePHI systems. Policy changes require approved
+workflow.</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Administrative</td>
+<td style="text-align: center;">§164.308(a)(6)</td>
+<td style="text-align: center;"><strong>Security Incident
+Procedures</strong></td>
+<td style="text-align: center;">Implement policies to address security
+incidents, including identifying and responding to suspected
+incidents.</td>
+<td style="text-align: center;">CSW anomaly detection and policy
+violation alerts provide real-time incident detection. Forensic
+telemetry supports full incident reconstruction.</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Administrative</td>
+<td style="text-align: center;">§164.308(a)(7)</td>
+<td style="text-align: center;"><strong>Contingency Plan</strong></td>
+<td style="text-align: center;">Establish policies for responding to
+emergencies that damage systems containing ePHI.</td>
+<td style="text-align: center;">CSW policy workspaces exportable for DR
+purposes. Backup policy sets maintained for recovery scenarios.</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Administrative</td>
+<td style="text-align: center;">§164.308(a)(8)</td>
+<td style="text-align: center;"><strong>Evaluation</strong></td>
+<td style="text-align: center;">Perform periodic technical and
+nontechnical evaluation of implemented security measures.</td>
+<td style="text-align: center;">CSW compliance dashboard provides
+ongoing posture evaluation. Quarterly ADM re-runs detect policy
+drift.</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Organizational</td>
+<td style="text-align: center;">§164.314(a)</td>
+<td style="text-align: center;"><strong>Business Associate
+Contracts</strong></td>
+<td style="text-align: center;">Document satisfactory assurances from
+business associates that they will appropriately safeguard ePHI.</td>
+<td style="text-align: center;">CSW defines External-Partners scope with
+restricted policy. All BA network access flows through audited,
+policy-enforced paths.</td>
+<td style="text-align: center;"><strong>Evidence Required</strong></td>
+</tr>
+</tbody>
+</table>
+<h1 id="recommended-deployment-architecture"><strong>Recommended
+Deployment Architecture</strong></h1>
+<h2 id="phi-zone-segmentation-model"><strong>PHI Zone Segmentation
+Model</strong></h2>
+<p>CSW organizes workloads into policy scopes that map directly to HIPAA
+data classification requirements. The following architecture is
+recommended for hybrid healthcare environments:</p>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 23%" />
+<col style="width: 23%" />
+<col style="width: 23%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>PHI Zone (Strict)</strong></td>
+<td style="text-align: center;"><strong>Clinical Support
+(Moderate)</strong></td>
+<td style="text-align: center;"><strong>Corporate IT
+(Standard)</strong></td>
+<td style="text-align: center;"><strong>External Partners
+(BAA)</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><p>EHR / EMR Servers</p>
+<p>Billing Systems</p>
+<p>Medical Imaging (PACS)</p>
+<p>HL7 Integration</p>
+<p>Clinical Databases</p></td>
+<td style="text-align: center;"><p>Clinical Workstations</p>
+<p>Lab Systems</p>
+<p>Pharmacy Apps</p>
+<p>Diagnostic Tools</p></td>
+<td style="text-align: center;"><p>Active Directory</p>
+<p>Email / Collaboration</p>
+<p>File Servers</p>
+<p>IT Management</p></td>
+<td style="text-align: center;"><p>Clearinghouses</p>
+<p>Third-Party Apps</p>
+<p>Health Plans</p>
+<p>Vendor Portals</p></td>
+</tr>
+<tr>
+<td style="text-align: center;"><p>Default DENY all inbound</p>
+<p>Encrypted paths only</p>
+<p>Full forensic logging</p></td>
+<td style="text-align: center;"><p>Restricted to defined PHI-Zone
+flows</p>
+<p>ADM-validated policies</p></td>
+<td style="text-align: center;"><p>No direct PHI access</p>
+<p>Jump-host controlled admin paths</p></td>
+<td style="text-align: center;"><p>BAA-documented access only</p>
+<p>Full flow audit per partner</p></td>
+</tr>
+</tbody>
+</table>
+<h2 id="hybrid-environment-coverage"><strong>Hybrid Environment
+Coverage</strong></h2>
+<p>CSW provides unified policy and visibility across on-premises and
+cloud workloads:</p>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 37%" />
+<col style="width: 37%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Environment</strong></td>
+<td style="text-align: center;"><strong>CSW Deployment
+Method</strong></td>
+<td style="text-align: center;"><strong>Capabilities</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>On-Premises</strong></td>
+<td style="text-align: center;"><p>Software agent (Linux/Windows
+sensor)</p>
+<p>Direct CSW cluster registration</p></td>
+<td style="text-align: center;">Full telemetry, policy enforcement,
+vulnerability scan, process context</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>AWS</strong></td>
+<td style="text-align: center;"><p>Software agent on EC2</p>
+<p>Cloud connector (VPC Flow Logs)</p>
+<p>Tag-based scope inheritance</p></td>
+<td style="text-align: center;">Flow visibility, security group mapping,
+instance inventory, policy enforcement</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Azure</strong></td>
+<td style="text-align: center;"><p>Software agent on VMs</p>
+<p>Cloud connector (NSG Flow Logs)</p>
+<p>Azure tag synchronization</p></td>
+<td style="text-align: center;">Flow visibility, NSG mapping, VM
+inventory, policy enforcement</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>GCP</strong></td>
+<td style="text-align: center;"><p>Software agent on GCE</p>
+<p>Cloud connector (VPC Flow Logs)</p>
+<p>Label-based scope inheritance</p></td>
+<td style="text-align: center;">Flow visibility, firewall rule mapping,
+instance inventory</td>
+</tr>
+</tbody>
+</table>
+<h1 id="evidence-collection-audit-readiness"><strong>Evidence Collection
+&amp; Audit Readiness</strong></h1>
+<p>CSW generates and retains the evidence required to demonstrate HIPAA
+compliance to auditors. The following evidence artifacts are available
+from CSW:</p>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 24%" />
+<col style="width: 19%" />
+<col style="width: 23%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Evidence Artifact</strong></td>
+<td style="text-align: center;"><strong>CSW Source</strong></td>
+<td style="text-align: center;"><strong>HIPAA Control</strong></td>
+<td style="text-align: center;"><strong>Recommended
+Frequency</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Policy Enforcement
+Log</strong></td>
+<td style="text-align: center;"><em>Defend &gt; Policy
+Analysis</em></td>
+<td style="text-align: center;">§164.312(a)</td>
+<td style="text-align: center;">Continuous / Monthly export</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Vulnerability Scan
+Report</strong></td>
+<td style="text-align: center;"><em>Investigate &gt;
+Vulnerability</em></td>
+<td style="text-align: center;">§164.308(a)(1)</td>
+<td style="text-align: center;">Weekly</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Network Flow Audit Log
+(PHI-Zone)</strong></td>
+<td style="text-align: center;"><em>Investigate &gt; Flow
+Search</em></td>
+<td style="text-align: center;">§164.312(b)</td>
+<td style="text-align: center;">Continuous / Quarterly export</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Policy Violation
+Report</strong></td>
+<td style="text-align: center;"><em>Alerts &gt; Triggered
+Events</em></td>
+<td style="text-align: center;">§164.308(a)(6)</td>
+<td style="text-align: center;">Real-time / Monthly summary</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Scope Membership
+Snapshot</strong></td>
+<td style="text-align: center;"><em>Inventory &gt; Export</em></td>
+<td style="text-align: center;">§164.308(a)(3)</td>
+<td style="text-align: center;">Monthly</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Encryption Compliance
+Report</strong></td>
+<td style="text-align: center;"><em>Flow analysis (protocol
+filter)</em></td>
+<td style="text-align: center;">§164.312(e)</td>
+<td style="text-align: center;">Quarterly</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Application Dependency
+Map</strong></td>
+<td style="text-align: center;"><em>Investigate &gt; ADM</em></td>
+<td style="text-align: center;">§164.308(a)(1)</td>
+<td style="text-align: center;">Quarterly re-run</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Forensic Incident
+Timeline</strong></td>
+<td style="text-align: center;"><em>Investigate &gt; Flow/Process
+Search</em></td>
+<td style="text-align: center;">§164.308(a)(6)</td>
+<td style="text-align: center;">On-demand (post-incident)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="documentation-retention"><strong>Documentation
+Retention</strong></h2>
+<p>HIPAA requires documentation to be retained for a minimum of 6 years
+from the date of creation or the date it was last in effect. CSW
+supports this through:</p>
+<ul>
+<li><p>Configurable telemetry retention periods (recommend 6-year
+minimum for audit logs)</p></li>
+</ul>
+<ul>
+<li><p>Policy workspace version history — tracks all policy changes with
+timestamps</p></li>
+<li><p>Exportable evidence packages in PDF/CSV format for long-term
+archival</p></li>
+<li><p>API-based integration with SIEM/SOAR platforms for centralized
+log management</p></li>
+</ul>
+<h1 id="recommended-next-steps"><strong>Recommended Next
+Steps</strong></h1>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 20%" />
+<col style="width: 46%" />
+<col style="width: 20%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>#</strong></td>
+<td style="text-align: center;"><strong>Phase</strong></td>
+<td style="text-align: center;"><strong>Action</strong></td>
+<td style="text-align: center;"><strong>Timeline</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: center;"><strong>Sensor Deployment</strong></td>
+<td style="text-align: center;">Install CSW software sensors on all
+on-prem PHI workloads. Connect cloud accounts via CSW cloud
+connectors.</td>
+<td style="text-align: center;">Days 1-5</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>2</strong></td>
+<td style="text-align: center;"><strong>Scope &amp; Inventory
+Design</strong></td>
+<td style="text-align: center;">Create PHI-Zone scope hierarchy. Apply
+HIPAA labels (env, compliance, data) across all workloads.</td>
+<td style="text-align: center;">Days 6-10</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>3</strong></td>
+<td style="text-align: center;"><strong>Application Dependency
+Mapping</strong></td>
+<td style="text-align: center;">Run 2-4 week ADM to discover all ePHI
+application flows. Identify and tag ePHI apps from ADM output.</td>
+<td style="text-align: center;">Days 11-28</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>4</strong></td>
+<td style="text-align: center;"><strong>Policy Development</strong></td>
+<td style="text-align: center;">Build allowlist policies from ADM
+baseline. Configure default-deny for PHI-Zone. Run in Simulation
+mode.</td>
+<td style="text-align: center;">Days 29-42</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>5</strong></td>
+<td style="text-align: center;"><strong>Enforcement
+Go-Live</strong></td>
+<td style="text-align: center;">Progress from Simulation to Enforcement.
+Validate no clinical workflow disruption. Enable full alerting.</td>
+<td style="text-align: center;">Days 43-56</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>6</strong></td>
+<td style="text-align: center;"><strong>Compliance
+Reporting</strong></td>
+<td style="text-align: center;">Generate first HIPAA evidence package.
+Schedule quarterly review cycle. Deliver compliance dashboard to
+CISO.</td>
+<td style="text-align: center;">Day 60+</td>
+</tr>
+</tbody>
+</table>
+<h2 id="about-cisco-secure-workload"><strong>About Cisco Secure
+Workload</strong></h2>
+<p>Cisco Secure Workload (CSW) is a workload protection platform that
+provides application micro-segmentation, real-time vulnerability
+assessment, and forensic telemetry across hybrid and multi-cloud
+environments. CSW is deployed by leading healthcare, financial services,
+and critical infrastructure organizations to satisfy regulatory
+compliance requirements and accelerate zero trust adoption.</p>
+<p>For more information or to schedule a technical deep-dive, contact
+your Cisco account team.</p>
+</body>
+</html>

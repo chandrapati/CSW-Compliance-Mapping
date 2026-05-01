@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Cisco Secure Workload — Compliance Mapping Series" />
+  <title>DORA (EU 2022/2554) — Compliance Report</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+:root {
+--fg: #1f2328;
+--fg-muted: #59636e;
+--bg: #ffffff;
+--bg-muted: #f6f8fa;
+--border: #d1d9e0;
+--link: #0969da;
+--link-hover: #0349b4;
+--code-bg: #f6f8fa;
+--accent: #cf222e;
+--max-width: 920px;
+}
+@media (prefers-color-scheme: dark) {
+:root {
+--fg: #e6edf3;
+--fg-muted: #9198a1;
+--bg: #0d1117;
+--bg-muted: #151b23;
+--border: #3d444d;
+--link: #4493f8;
+--link-hover: #6cb6ff;
+--code-bg: #151b23;
+--accent: #ff7b72;
+}
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+margin: 0 auto;
+max-width: var(--max-width);
+padding: 2rem 1.25rem 4rem;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+font-size: 16px;
+line-height: 1.6;
+color: var(--fg);
+background: var(--bg);
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 2rem;
+margin-bottom: 1rem;
+font-weight: 600;
+line-height: 1.25;
+}
+h1 { font-size: 2rem; border-bottom: 1px solid var(--border); padding-bottom: .35rem; }
+h2 { font-size: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: .3rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1rem; }
+h5, h6 { font-size: .875rem; color: var(--fg-muted); }
+p, ul, ol, blockquote, pre, table { margin: 0 0 1rem; }
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+ul, ol { padding-left: 1.6rem; }
+li + li { margin-top: .15rem; }
+blockquote {
+margin: 0 0 1rem;
+padding: .5rem 1rem;
+color: var(--fg-muted);
+border-left: .25rem solid var(--border);
+background: var(--bg-muted);
+border-radius: 0 6px 6px 0;
+}
+code, pre, kbd, samp {
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+font-size: .9em;
+}
+code {
+background: var(--code-bg);
+padding: .15rem .35rem;
+border-radius: 4px;
+}
+pre {
+background: var(--code-bg);
+padding: 1rem;
+border-radius: 6px;
+overflow: auto;
+font-size: .85rem;
+line-height: 1.45;
+}
+pre code { background: transparent; padding: 0; font-size: inherit; }
+table {
+display: block;
+width: 100%;
+overflow: auto;
+border-collapse: collapse;
+}
+th, td {
+border: 1px solid var(--border);
+padding: .5rem .75rem;
+vertical-align: top;
+text-align: left;
+}
+th {
+background: var(--bg-muted);
+font-weight: 600;
+}
+tbody tr:nth-child(2n) { background: var(--bg-muted); }
+hr {
+border: 0;
+height: 1px;
+background: var(--border);
+margin: 2rem 0;
+}
+img { max-width: 100%; height: auto; }
+
+.doc-meta {
+margin: 0 0 2rem;
+padding: .75rem 1rem;
+border: 1px solid var(--border);
+border-radius: 6px;
+background: var(--bg-muted);
+font-size: .9rem;
+color: var(--fg-muted);
+}
+.doc-meta a { font-weight: 500; }
+
+@media print {
+body { max-width: none; padding: 0; color: #000; background: #fff; }
+a { color: #000; text-decoration: underline; }
+pre, code, blockquote { background: #f5f5f5; }
+}
+</style>
+</head>
+<body>
+<div class="doc-meta">Source: <a href="CSW-DORA-Compliance-Report.docx">CSW-DORA-Compliance-Report.docx</a> · <a href="../index.html">repository index</a></div>
+<header id="title-block-header">
+<h1 class="title">DORA (EU 2022/2554) — Compliance Report</h1>
+<p class="subtitle">Customer Compliance Report</p>
+<p class="author">Cisco Secure Workload — Compliance Mapping Series</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#table-of-contents" id="toc-table-of-contents">Table of
+Contents</a></li>
+<li><a href="#cisco-secure-workload-dora-compliance-mapping" id="toc-cisco-secure-workload-dora-compliance-mapping">Cisco Secure
+Workload — DORA Compliance Mapping</a>
+<ul>
+<li><a href="#how-to-read-this-report" id="toc-how-to-read-this-report">How to read this report</a></li>
+<li><a href="#executive-summary" id="toc-executive-summary">1. Executive
+Summary</a></li>
+<li><a href="#compliance-posture-summary" id="toc-compliance-posture-summary">2. Compliance Posture
+Summary</a></li>
+<li><a href="#mapping-table-dora-article-csw-capability-evidence-artefact" id="toc-mapping-table-dora-article-csw-capability-evidence-artefact">3.
+Mapping Table — DORA Article → CSW Capability → Evidence
+Artefact</a></li>
+<li><a href="#out-of-scope-and-complementary-controls" id="toc-out-of-scope-and-complementary-controls">4. Out-of-Scope and
+Complementary Controls</a></li>
+<li><a href="#suggested-next-steps" id="toc-suggested-next-steps">5.
+Suggested Next Steps</a></li>
+<li><a href="#disclaimer" id="toc-disclaimer">6. Disclaimer</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 class="TOC-Heading" id="table-of-contents">Table of Contents</h1>
+<h1 id="cisco-secure-workload-dora-compliance-mapping">Cisco Secure
+Workload — DORA Compliance Mapping</h1>
+<p><strong>Customer:</strong> [Customer Name] <strong>Prepared:</strong>
+[Month Year] <strong>Standard:</strong> Regulation (EU) 2022/2554 —
+Digital Operational Resilience Act (DORA) <strong>Effective:</strong> 17
+January 2025 <strong>Document type:</strong> Customer-facing compliance
+mapping</p>
+<h2 id="how-to-read-this-report">How to read this report</h2>
+<p>This is a <em>control mapping</em>, not a certification. For each
+DORA pillar relevant to ICT operational risk, the report identifies how
+Cisco Secure Workload (CSW) capabilities can be used to produce evidence
+of the underlying control, what that evidence looks like in practice,
+and where complementary controls or governance work remain the
+responsibility of the financial entity.</p>
+<p><strong>Three pages to anchor on:</strong></p>
+<ol type="1">
+<li><strong>Executive Summary</strong> — what DORA expects, where CSW
+fits, where it does not.</li>
+</ol>
+<ol type="1">
+<li><strong>Compliance Posture Summary</strong> — the at-a-glance
+pillar-by-pillar table. Replace the “Status” column with your own scope
+before sharing externally.</li>
+<li><strong>Mapping Table</strong> — Article-by-Article view linking
+DORA requirements to specific CSW capabilities and the artefact that
+demonstrates each.</li>
+</ol>
+<p>For implementation steps, sample policies, and the auditor response
+playbook, see the companion <a href="CSW-DORA-Technical-Runbook.html">Technical
+Runbook</a>.</p>
+<h2 id="executive-summary">1. Executive Summary</h2>
+<p>DORA establishes harmonised ICT operational resilience requirements
+across the EU financial sector. It applies from <strong>17 January
+2025</strong> to financial entities (banks, payment institutions,
+investment firms, CCPs, insurers, crypto-asset and crowdfunding service
+providers) and imposes oversight obligations on critical ICT third-party
+providers (CTPPs).</p>
+<p><strong>Where CSW is most relevant.</strong> CSW provides
+workload-resident telemetry and segmentation that directly supports:</p>
+<ul>
+<li><strong>Pillar 1 — ICT Risk Management:</strong> continuous asset
+inventory (Art. 8), segmentation enforcement (Art. 9), behavioural
+detection (Art. 10), and forensic data for response and learning (Arts.
+11, 13).</li>
+<li><strong>Pillar 2 — Incident Management &amp; Reporting:</strong>
+time-anchored process and flow data supporting the Article 19 reporting
+cadence (initial / 72-hour / 1-month).</li>
+<li><strong>Pillar 3 — Digital Operational Resilience Testing:</strong>
+vulnerability inventory and reachability evidence for Article 25
+baseline tests; workload-level reconstruction for Article 26 TLPT.</li>
+</ul>
+<p><strong>Where CSW supports but does not solve.</strong> Pillar 4 (ICT
+third-party risk) is largely contractual; CSW provides the technical
+companion view — <em>what is my IBF actually talking to</em> — that lets
+the Register of Information be reconciled against observed behaviour.
+Pillar 5 (information sharing) and the governance obligations under
+Article 5 remain the responsibility of the management body.</p>
+<h2 id="compliance-posture-summary">2. Compliance Posture Summary</h2>
+<blockquote>
+<p>Replace the <em>Status</em> column with the customer’s own scope and
+deployment stage before sharing externally. The default reflects a
+mid-stage CSW deployment with most IBFs labelled and at least one IBF in
+enforced segmentation.</p>
+</blockquote>
+<table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>DORA Pillar</th>
+<th>DORA Articles</th>
+<th>CSW Coverage</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. ICT Risk Management — Inventory</td>
+<td>Art. 8</td>
+<td>Continuous workload inventory + ADM dependency graph</td>
+<td><strong>Fully addressed</strong></td>
+</tr>
+<tr>
+<td>1. ICT Risk Management — Protection</td>
+<td>Art. 9</td>
+<td>Per-IBF segmentation, simulation→enforce workflow</td>
+<td><strong>Fully addressed (with policy authoring effort)</strong></td>
+</tr>
+<tr>
+<td>1. ICT Risk Management — Detection</td>
+<td>Art. 10</td>
+<td>Behavioural rules, conversation-graph anomaly, SIEM forwarding</td>
+<td><strong>Fully addressed</strong></td>
+</tr>
+<tr>
+<td>1. ICT Risk Management — Response</td>
+<td>Art. 11</td>
+<td>Quarantine policy, forensic export bundle</td>
+<td><strong>Fully addressed</strong></td>
+</tr>
+<tr>
+<td>1. ICT Risk Management — Learning</td>
+<td>Art. 13</td>
+<td>Quarterly metrics pack</td>
+<td><strong>Supports</strong> (process is customer-owned)</td>
+</tr>
+<tr>
+<td>2. Incident Management</td>
+<td>Arts. 17–19</td>
+<td>6-artefact dossier supporting 4h / 72h / 1mo cadence</td>
+<td><strong>Fully addressed (technical evidence)</strong></td>
+</tr>
+<tr>
+<td>3. Resilience Testing — Baseline</td>
+<td>Art. 25</td>
+<td>CVE dashboard + reachability queries</td>
+<td><strong>Fully addressed</strong></td>
+</tr>
+<tr>
+<td>3. Resilience Testing — TLPT</td>
+<td>Art. 26</td>
+<td>Red-team reconstruction + segmentation gap analysis</td>
+<td><strong>Fully addressed</strong></td>
+</tr>
+<tr>
+<td>4. Third-Party Risk — Technical view</td>
+<td>Arts. 28(3), 28(4), 30(2)(c)</td>
+<td>Egress observation + Register reconciliation</td>
+<td><strong>Supports</strong> (contractual flow is customer-owned)</td>
+</tr>
+<tr>
+<td>4. Third-Party Risk — CTPP internal posture</td>
+<td>Arts. 31–44</td>
+<td>n/a (out of CSW scope unless CTPP runs CSW)</td>
+<td><strong>Out of scope</strong></td>
+</tr>
+<tr>
+<td>5. Information Sharing</td>
+<td>Art. 45</td>
+<td>Provides IOCs / behavioural signatures as input</td>
+<td><strong>Supports</strong></td>
+</tr>
+<tr>
+<td>Governance</td>
+<td>Art. 5</td>
+<td>Provides evidence to management body</td>
+<td><strong>Supports</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="mapping-table-dora-article-csw-capability-evidence-artefact">3.
+Mapping Table — DORA Article → CSW Capability → Evidence Artefact</h2>
+<table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Article</th>
+<th>Requirement (summary)</th>
+<th>CSW capability</th>
+<th>Evidence artefact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Art. 5</td>
+<td>Management body accountability</td>
+<td>Quarterly evidence pack feeds the management body</td>
+<td>Quarterly DORA pack (PDF/CSV)</td>
+</tr>
+<tr>
+<td>Art. 6</td>
+<td>ICT risk management framework</td>
+<td>Centralised inventory, policy and detection state</td>
+<td>CSW dashboard exports</td>
+</tr>
+<tr>
+<td>Art. 8(1)</td>
+<td>Inventory of ICT assets</td>
+<td>Continuous sensor-based inventory</td>
+<td><code>inventory.csv</code> per IBF</td>
+</tr>
+<tr>
+<td>Art. 8(4)</td>
+<td>Identify IBF-supporting assets</td>
+<td>IBF labels + Scopes</td>
+<td>Per-IBF scope export</td>
+</tr>
+<tr>
+<td>Art. 8(6)</td>
+<td>Update on every significant change</td>
+<td>Daily snapshot + weekly delta</td>
+<td>Drift report</td>
+</tr>
+<tr>
+<td>Art. 9(2)(a)</td>
+<td>Segregation of ICT systems</td>
+<td>Per-IBF segmentation workspace</td>
+<td>Workspace export (policy + clusters)</td>
+</tr>
+<tr>
+<td>Art. 9(2)(b)</td>
+<td>Identify unauthorised activity</td>
+<td>ADM drift + flow anomalies</td>
+<td>Drift detection report</td>
+</tr>
+<tr>
+<td>Art. 9(4)(g)</td>
+<td>Continuous review of segmentation</td>
+<td>Quarterly policy diff</td>
+<td>Diff report</td>
+</tr>
+<tr>
+<td>Art. 10</td>
+<td>Detection of anomalies</td>
+<td>Behavioural rules + SIEM forwarding</td>
+<td>Rule catalogue + SIEM config</td>
+</tr>
+<tr>
+<td>Art. 11(2)</td>
+<td>BCP, containment, recovery</td>
+<td>Quarantine policy + forensic export</td>
+<td>Quarantine evidence + export</td>
+</tr>
+<tr>
+<td>Art. 13</td>
+<td>Learning loop</td>
+<td>Quarterly metrics pack</td>
+<td>Metrics PDF</td>
+</tr>
+<tr>
+<td>Art. 17</td>
+<td>Incident management process</td>
+<td>Forensic timeline reconstruction</td>
+<td>Incident timeline export</td>
+</tr>
+<tr>
+<td>Art. 18</td>
+<td>Incident classification</td>
+<td>IBF labels inform classification</td>
+<td>Incident dossier with IBF context</td>
+</tr>
+<tr>
+<td>Art. 19</td>
+<td>Reporting deadlines (4h/72h/1mo)</td>
+<td>6-artefact dossier</td>
+<td>Time-stamped evidence bundle</td>
+</tr>
+<tr>
+<td>Art. 24</td>
+<td>Testing programme</td>
+<td>Vulnerability + reachability evidence</td>
+<td>Test catalogue with results</td>
+</tr>
+<tr>
+<td>Art. 25(1)</td>
+<td>Baseline tests</td>
+<td>CVE dashboard + scenario reachability</td>
+<td>Per-IBF test reports</td>
+</tr>
+<tr>
+<td>Art. 26</td>
+<td>TLPT (every 3 years for significant entities)</td>
+<td>Red-team activity reconstruction</td>
+<td>TLPT engagement reconstruction package</td>
+</tr>
+<tr>
+<td>Art. 28(3)</td>
+<td>Register of Information</td>
+<td>Egress reconciliation feed</td>
+<td>Register-vs-observed delta report</td>
+</tr>
+<tr>
+<td>Art. 28(4)</td>
+<td>Third-party risk monitoring</td>
+<td>Continuous outbound flow monitoring</td>
+<td>Egress trend report</td>
+</tr>
+<tr>
+<td>Art. 30(2)(c)</td>
+<td>Right to monitor third party</td>
+<td>Technical evidence supporting contractual right</td>
+<td>Per-CTPP egress dossier</td>
+</tr>
+</tbody>
+</table>
+<h2 id="out-of-scope-and-complementary-controls">4. Out-of-Scope and
+Complementary Controls</h2>
+<p>The following DORA areas are intentionally not addressed by CSW. They
+are listed here so the customer’s compliance programme can confirm
+coverage from other tools or processes:</p>
+<ul>
+<li><strong>Article 5 governance and management-body sign-off</strong> —
+process and documentation outside CSW.</li>
+<li><strong>Articles 28(7)–30 contractual provisions with CTPPs</strong>
+— legal function, supported by CSW egress evidence.</li>
+<li><strong>Articles 31–44 ESA oversight of CTPPs</strong> —
+competent-authority process; CSW does not interact with ESAs.</li>
+<li><strong>Article 45 information-sharing arrangements</strong> —
+sectoral agreements; CSW telemetry can be an <em>input</em>, not the
+arrangement itself.</li>
+<li><strong>Identity, authentication and IAM controls under Articles
+9(4)(c) and 9(4)(d)</strong> — addressed by Cisco Duo, ISE, and the
+customer’s IAM stack; CSW segmentation is identity-aware where labels
+carry identity context but is not an IAM solution.</li>
+</ul>
+<h2 id="suggested-next-steps">5. Suggested Next Steps</h2>
+<ol type="1">
+<li>Confirm the management-body-approved IBF list and its CSW label
+mapping.</li>
+</ol>
+<ol start="3" type="1">
+<li>Pick one IBF to take through the full simulation→enforce cycle and
+produce a worked example of the §3 evidence artefacts.</li>
+<li>Schedule the quarterly DORA evidence pack so it precedes the
+management body’s risk review meeting (Art. 5(2)).</li>
+<li>For significant entities, align the CSW evidence model with the TLPT
+cycle scheduled by your competent authority under Art. 26.</li>
+<li>Engage the Cisco account team for a scoping discussion if any of the
+<em>Status</em> column entries above need adjustment for the customer’s
+actual deployment stage.</li>
+</ol>
+<h2 id="disclaimer">6. Disclaimer</h2>
+<p>This document describes how Cisco Secure Workload product
+capabilities can support a DORA programme. It is <strong>not</strong>
+legal, regulatory, or audit advice. DORA applicability, classification
+of “important business functions,” classification of incidents under the
+RTS, TLPT scoping, and contractual obligations under Articles 28–30 are
+the responsibility of the financial entity’s management body and its
+qualified legal, compliance, and audit professionals, working with the
+relevant competent and lead authorities. Always validate against the
+latest published Regulatory Technical Standards (RTS) and Implementing
+Technical Standards (ITS), and any guidance issued by your lead
+overseer.</p>
+<p>For questions or to validate how this mapping applies to your
+specific environment, contact your <strong>Cisco account
+team</strong>.</p>
+</body>
+</html>

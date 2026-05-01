@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>CISA Zero Trust Maturity Model — Technical Runbook</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+:root {
+--fg: #1f2328;
+--fg-muted: #59636e;
+--bg: #ffffff;
+--bg-muted: #f6f8fa;
+--border: #d1d9e0;
+--link: #0969da;
+--link-hover: #0349b4;
+--code-bg: #f6f8fa;
+--accent: #cf222e;
+--max-width: 920px;
+}
+@media (prefers-color-scheme: dark) {
+:root {
+--fg: #e6edf3;
+--fg-muted: #9198a1;
+--bg: #0d1117;
+--bg-muted: #151b23;
+--border: #3d444d;
+--link: #4493f8;
+--link-hover: #6cb6ff;
+--code-bg: #151b23;
+--accent: #ff7b72;
+}
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+margin: 0 auto;
+max-width: var(--max-width);
+padding: 2rem 1.25rem 4rem;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+font-size: 16px;
+line-height: 1.6;
+color: var(--fg);
+background: var(--bg);
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 2rem;
+margin-bottom: 1rem;
+font-weight: 600;
+line-height: 1.25;
+}
+h1 { font-size: 2rem; border-bottom: 1px solid var(--border); padding-bottom: .35rem; }
+h2 { font-size: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: .3rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1rem; }
+h5, h6 { font-size: .875rem; color: var(--fg-muted); }
+p, ul, ol, blockquote, pre, table { margin: 0 0 1rem; }
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+ul, ol { padding-left: 1.6rem; }
+li + li { margin-top: .15rem; }
+blockquote {
+margin: 0 0 1rem;
+padding: .5rem 1rem;
+color: var(--fg-muted);
+border-left: .25rem solid var(--border);
+background: var(--bg-muted);
+border-radius: 0 6px 6px 0;
+}
+code, pre, kbd, samp {
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+font-size: .9em;
+}
+code {
+background: var(--code-bg);
+padding: .15rem .35rem;
+border-radius: 4px;
+}
+pre {
+background: var(--code-bg);
+padding: 1rem;
+border-radius: 6px;
+overflow: auto;
+font-size: .85rem;
+line-height: 1.45;
+}
+pre code { background: transparent; padding: 0; font-size: inherit; }
+table {
+display: block;
+width: 100%;
+overflow: auto;
+border-collapse: collapse;
+}
+th, td {
+border: 1px solid var(--border);
+padding: .5rem .75rem;
+vertical-align: top;
+text-align: left;
+}
+th {
+background: var(--bg-muted);
+font-weight: 600;
+}
+tbody tr:nth-child(2n) { background: var(--bg-muted); }
+hr {
+border: 0;
+height: 1px;
+background: var(--border);
+margin: 2rem 0;
+}
+img { max-width: 100%; height: auto; }
+
+.doc-meta {
+margin: 0 0 2rem;
+padding: .75rem 1rem;
+border: 1px solid var(--border);
+border-radius: 6px;
+background: var(--bg-muted);
+font-size: .9rem;
+color: var(--fg-muted);
+}
+.doc-meta a { font-weight: 500; }
+
+@media print {
+body { max-width: none; padding: 0; color: #000; background: #fff; }
+a { color: #000; text-decoration: underline; }
+pre, code, blockquote { background: #f5f5f5; }
+}
+</style>
+</head>
+<body>
+<div class="doc-meta">Source: <a href="CSW-CISA-ZTMM-Technical-Runbook.html">CSW-CISA-ZTMM-Technical-Runbook.md</a> · <a href="../index.html">repository index</a></div>
+<header id="title-block-header">
+<h1 class="title">CISA Zero Trust Maturity Model — Technical
+Runbook</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#cisco-secure-workload-cisa-zero-trust-maturity-model" id="toc-cisco-secure-workload-cisa-zero-trust-maturity-model">Cisco
+Secure Workload — CISA Zero Trust Maturity Model</a>
+<ul>
+<li><a href="#technical-runbook-federal-enterprise-accounts" id="toc-technical-runbook-federal-enterprise-accounts">Technical Runbook
+| Federal &amp; Enterprise Accounts</a></li>
+<li><a href="#readers-guide" id="toc-readers-guide">Reader’s
+Guide</a></li>
+<li><a href="#overview" id="toc-overview">1. Overview</a></li>
+<li><a href="#csw-maturity-mapping-networks-pillar-primary" id="toc-csw-maturity-mapping-networks-pillar-primary">2. CSW Maturity
+Mapping — Networks Pillar (Primary)</a>
+<ul>
+<li><a href="#achieving-advanced-maturity-networks" id="toc-achieving-advanced-maturity-networks">Achieving Advanced
+Maturity (Networks)</a></li>
+</ul></li>
+<li><a href="#csw-maturity-mapping-applications-workloads-pillar" id="toc-csw-maturity-mapping-applications-workloads-pillar">3. CSW
+Maturity Mapping — Applications &amp; Workloads Pillar</a></li>
+<li><a href="#csw-maturity-mapping-data-pillar-supporting" id="toc-csw-maturity-mapping-data-pillar-supporting">4. CSW Maturity
+Mapping — Data Pillar (Supporting)</a></li>
+<li><a href="#cisa-ztmm-pillar-coverage-summary" id="toc-cisa-ztmm-pillar-coverage-summary">5. CISA ZTMM Pillar Coverage
+Summary</a></li>
+<li><a href="#csw-deployment-phases-for-ztmm" id="toc-csw-deployment-phases-for-ztmm">6. CSW Deployment Phases for
+ZTMM</a>
+<ul>
+<li><a href="#phase-1-establish-visibility-traditional-initial" id="toc-phase-1-establish-visibility-traditional-initial">Phase 1 —
+Establish Visibility (Traditional → Initial)</a></li>
+<li><a href="#phase-2-enforce-least-privilege-initial-advanced" id="toc-phase-2-enforce-least-privilege-initial-advanced">Phase 2 —
+Enforce Least Privilege (Initial → Advanced)</a></li>
+<li><a href="#phase-3-continuous-validation-advanced-optimal" id="toc-phase-3-continuous-validation-advanced-optimal">Phase 3 —
+Continuous Validation (Advanced → Optimal)</a></li>
+</ul></li>
+<li><a href="#ztmm-assessment-evidence-package" id="toc-ztmm-assessment-evidence-package">7. ZTMM Assessment Evidence
+Package</a></li>
+<li><a href="#ztmm-scorecard-template" id="toc-ztmm-scorecard-template">8. ZTMM Scorecard Template</a></li>
+<li><a href="#related-frameworks" id="toc-related-frameworks">Related
+Frameworks</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="cisco-secure-workload-cisa-zero-trust-maturity-model">Cisco
+Secure Workload — CISA Zero Trust Maturity Model</h1>
+<h2 id="technical-runbook-federal-enterprise-accounts">Technical Runbook
+| Federal &amp; Enterprise Accounts</h2>
+<p><strong>Version:</strong> 1.0 | <strong>Standard:</strong> CISA Zero
+Trust Maturity Model v2.0 (2023)</p>
+<hr />
+<h2 id="readers-guide">Reader’s Guide</h2>
+<p><strong>Who this is for.</strong> Federal civilian agencies executing
+on EO 14028 / OMB M-22-09, federal contractors with parallel
+obligations, enterprises that have adopted CISA’s maturity model
+voluntarily.</p>
+<p><strong>Questions this runbook helps you answer:</strong></p>
+<ul>
+<li><em>Across the 5 ZTMM pillars (Identity, Devices, Networks,
+Applications &amp; Workloads, Data), where am I today on the Traditional
+→ Initial → Advanced → Optimal scale, and where is the
+evidence?</em></li>
+<li><em>What’s the smallest set of changes that moves my Networks pillar
+and my Applications &amp; Workloads pillar from Initial to
+Advanced?</em></li>
+<li><em>For OMB M-22-09 progress reporting, what artifacts can I produce
+on a quarterly basis without rerunning manual assessments?</em></li>
+<li><em>Reaching “Optimal” on a pillar implies continuous validation.
+What does that look like as a daily operational signal, not an annual
+audit one?</em></li>
+<li><em>Where do I depend on other Cisco portfolio products (Identity,
+Endpoint, Cloud, Data) to reach Optimal across all five
+pillars?</em></li>
+</ul>
+<p><strong>What you’ll need.</strong> Your current ZTMM self-assessment
+(or a willingness to do one), a prioritized list of pillars by business
+risk, and visibility into your existing IdP, EDR, and CSPM tooling.</p>
+<p><strong>Where to start.</strong> Sections 2–4 for pillar-by-pillar
+capability mapping; section 5 for the coverage summary across all
+pillars; section 6 for a phased deployment plan; section 8 if your team
+uses a scorecard format.</p>
+<hr />
+<h2 id="overview">1. Overview</h2>
+<p>The CISA Zero Trust Maturity Model (ZTMM) v2.0 defines maturity
+across <strong>5 pillars</strong>: Identity, Devices, Networks,
+Applications &amp; Workloads, and Data. CSW is the primary Cisco
+platform addressing the <strong>Networks</strong> pillar and makes
+significant contributions to <strong>Applications &amp;
+Workloads</strong> and <strong>Data</strong> pillars. Each pillar has 4
+maturity stages: Traditional → Initial → Advanced → Optimal.</p>
+<hr />
+<h2 id="csw-maturity-mapping-networks-pillar-primary">2. CSW Maturity
+Mapping — Networks Pillar (Primary)</h2>
+<p>The Networks pillar focuses on macro/micro-segmentation, encryption,
+and network traffic management.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Maturity Stage</th>
+<th>Networks Pillar Requirement</th>
+<th>CSW Capability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Traditional</strong></td>
+<td>Coarse perimeter-based segmentation</td>
+<td>CSW ADM reveals actual traffic — baseline for improvement</td>
+</tr>
+<tr>
+<td><strong>Initial</strong></td>
+<td>Basic internal segmentation; some visibility</td>
+<td>CSW ADM deployed; monitoring mode; scopes defined</td>
+</tr>
+<tr>
+<td><strong>Advanced</strong></td>
+<td>Micro-segmentation enforced; encrypted traffic</td>
+<td>CSW enforcement active; allowlist policies; encryption
+detection</td>
+</tr>
+<tr>
+<td><strong>Optimal</strong></td>
+<td>Dynamic policy; continuous validation; full automation</td>
+<td>CSW ADM continuous re-run; API-driven policy updates; ML anomaly
+detection</td>
+</tr>
+</tbody>
+</table>
+<h3 id="achieving-advanced-maturity-networks">Achieving Advanced
+Maturity (Networks)</h3>
+<pre><code>Phase 1 — Initial (Weeks 1-4):
+  ✓ Deploy CSW sensors across all workloads
+  ✓ Run ADM — document all traffic flows
+  ✓ Define scope hierarchy (environment, sensitivity, function)
+  ✓ Enable flow telemetry and alerting
+
+Phase 2 — Advanced (Weeks 5-12):
+  ✓ Build allowlist policies from ADM baseline
+  ✓ Enable enforcement mode on sensitive scopes
+  ✓ Detect and block unencrypted flows (HTTP, Telnet, FTP)
+  ✓ Isolate workloads into least-privilege network segments
+  ✓ Configure anomaly detection on production scopes
+
+Phase 3 — Optimal (Ongoing):
+  ✓ Continuous ADM re-runs (90-day cycles)
+  ✓ API integration with SOAR for automated policy response
+  ✓ ML-based behavioral baseline deviation detection
+  ✓ Dynamic policy adjustment based on workload risk score</code></pre>
+<hr />
+<h2 id="csw-maturity-mapping-applications-workloads-pillar">3. CSW
+Maturity Mapping — Applications &amp; Workloads Pillar</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Maturity Stage</th>
+<th>Requirement</th>
+<th>CSW Capability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Traditional</strong></td>
+<td>No workload-level visibility</td>
+<td>ADM provides first-ever workload communication map</td>
+</tr>
+<tr>
+<td><strong>Initial</strong></td>
+<td>Basic application inventory; some access controls</td>
+<td>CSW inventory + scope-based access policies</td>
+</tr>
+<tr>
+<td><strong>Advanced</strong></td>
+<td>Workload identity-based access; continuous monitoring</td>
+<td>Process-level identity; policy enforcement; anomaly detection</td>
+</tr>
+<tr>
+<td><strong>Optimal</strong></td>
+<td>Automated workload security; continuous validation</td>
+<td>API-driven policy; vulnerability-triggered policy updates</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key CSW Contributions:</strong> - <strong>Workload
+Identity:</strong> CSW uses process hash, OS fingerprint, and network
+identity — not just IP - <strong>Least Privilege Workload
+Access:</strong> Each workload allowed only its documented communication
+paths - <strong>Continuous Validation:</strong> ADM re-runs validate
+workloads haven’t expanded their access footprint -
+<strong>Vulnerability-Aware Policy:</strong> Critical CVEs on a workload
+can trigger automatic policy tightening</p>
+<hr />
+<h2 id="csw-maturity-mapping-data-pillar-supporting">4. CSW Maturity
+Mapping — Data Pillar (Supporting)</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Maturity Stage</th>
+<th>Requirement</th>
+<th>CSW Capability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Traditional</strong></td>
+<td>No data flow visibility</td>
+<td>ADM reveals all data movement paths</td>
+</tr>
+<tr>
+<td><strong>Initial</strong></td>
+<td>Data categorized; basic access controls</td>
+<td>Scope-based isolation for sensitive data workloads</td>
+</tr>
+<tr>
+<td><strong>Advanced</strong></td>
+<td>Data access logged; encryption enforced</td>
+<td>Full flow telemetry; encryption compliance enforcement</td>
+</tr>
+<tr>
+<td><strong>Optimal</strong></td>
+<td>Automated data protection response</td>
+<td>Alert-triggered policy updates on data access violations</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="cisa-ztmm-pillar-coverage-summary">5. CISA ZTMM Pillar Coverage
+Summary</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Pillar</th>
+<th>CSW Role</th>
+<th>Maturity Achievable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Identity</td>
+<td>Supporting (enforces identity-verified access paths)</td>
+<td>Initial → Advanced</td>
+</tr>
+<tr>
+<td>Devices</td>
+<td>Supporting (process + OS-level workload fingerprinting)</td>
+<td>Initial → Advanced</td>
+</tr>
+<tr>
+<td>Networks</td>
+<td><strong>Primary</strong> (micro-segmentation, encryption,
+monitoring)</td>
+<td>Advanced → Optimal</td>
+</tr>
+<tr>
+<td>Applications &amp; Workloads</td>
+<td><strong>Primary</strong> (workload identity, policy,
+vulnerability)</td>
+<td>Advanced → Optimal</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>Supporting (data flow visibility, encryption enforcement)</td>
+<td>Initial → Advanced</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="csw-deployment-phases-for-ztmm">6. CSW Deployment Phases for
+ZTMM</h2>
+<h3 id="phase-1-establish-visibility-traditional-initial">Phase 1 —
+Establish Visibility (Traditional → Initial)</h3>
+<pre><code>Week 1-2:   Deploy sensors (on-prem + cloud connectors)
+Week 3-4:   Run ADM — generate traffic baseline
+Week 4:     Define scope hierarchy
+Week 4:     Enable flow telemetry retention (12 months)</code></pre>
+<h3 id="phase-2-enforce-least-privilege-initial-advanced">Phase 2 —
+Enforce Least Privilege (Initial → Advanced)</h3>
+<pre><code>Week 5-6:   Build allowlist policies from ADM
+Week 7-8:   Simulation mode — validate no false positives
+Week 9-10:  Enforcement mode — sensitive scopes first
+Week 11-12: Encryption enforcement; block non-compliant protocols
+Week 12:    Full alerting and SIEM integration</code></pre>
+<h3 id="phase-3-continuous-validation-advanced-optimal">Phase 3 —
+Continuous Validation (Advanced → Optimal)</h3>
+<pre><code>Month 4+:   90-day ADM re-run cycles
+Month 4+:   Vulnerability-triggered policy review
+Month 6+:   API integration with SOAR
+Month 6+:   Automated policy tightening on critical CVEs
+Ongoing:    Maturity assessment vs ZTMM scorecard</code></pre>
+<hr />
+<h2 id="ztmm-assessment-evidence-package">7. ZTMM Assessment Evidence
+Package</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Evidence Item</th>
+<th>CSW Source</th>
+<th>ZTMM Pillar</th>
+<th>Maturity Stage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ADM traffic baseline</td>
+<td>Investigate → ADM</td>
+<td>Networks, Apps</td>
+<td>Initial</td>
+</tr>
+<tr>
+<td>Enforcement policy export</td>
+<td>Defend → Policy Workspaces</td>
+<td>Networks, Apps</td>
+<td>Advanced</td>
+</tr>
+<tr>
+<td>Encryption compliance report</td>
+<td>Flow Search (protocol filter)</td>
+<td>Networks, Data</td>
+<td>Advanced</td>
+</tr>
+<tr>
+<td>Anomaly detection log</td>
+<td>Alerts → Dashboard</td>
+<td>Networks</td>
+<td>Advanced</td>
+</tr>
+<tr>
+<td>Vulnerability report</td>
+<td>Investigate → Vulnerability</td>
+<td>Apps</td>
+<td>Advanced</td>
+</tr>
+<tr>
+<td>Continuous ADM comparison</td>
+<td>ADM re-run vs baseline</td>
+<td>Networks, Apps</td>
+<td>Optimal</td>
+</tr>
+<tr>
+<td>API policy automation evidence</td>
+<td>CSW API audit log</td>
+<td>Networks</td>
+<td>Optimal</td>
+</tr>
+<tr>
+<td>Workload inventory</td>
+<td>Manage → Inventory</td>
+<td>Devices, Apps</td>
+<td>Initial</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="ztmm-scorecard-template">8. ZTMM Scorecard Template</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Pillar</th>
+<th>Current Stage</th>
+<th>Target Stage</th>
+<th>CSW Actions Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Identity</td>
+<td>Traditional</td>
+<td>Advanced</td>
+<td>Enforce identity-verified access paths via CSW</td>
+</tr>
+<tr>
+<td>Devices</td>
+<td>Initial</td>
+<td>Advanced</td>
+<td>Process-level workload fingerprinting; anomaly detection</td>
+</tr>
+<tr>
+<td>Networks</td>
+<td>Initial</td>
+<td>Optimal</td>
+<td>Full enforcement; encryption; continuous ADM</td>
+</tr>
+<tr>
+<td>Applications</td>
+<td>Traditional</td>
+<td>Advanced</td>
+<td>Workload-level policy; vulnerability management</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>Traditional</td>
+<td>Advanced</td>
+<td>Data flow visibility; encryption enforcement</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="related-frameworks">Related Frameworks</h2>
+<ul>
+<li><a href="../NIST-800-207/CSW-NIST-800-207-Technical-Runbook.html">NIST
+SP 800-207 — ZTA Seven Tenets</a> — the architectural foundation
+underneath the maturity model.</li>
+<li><a href="../NIST-800-207A/CSW-NIST-800-207A-Technical-Runbook.html">NIST SP
+800-207A — PDP/PEP/PA/PIP</a> — the logical-component view that aligns
+with the ZTMM “Optimal” tier.</li>
+<li><a href="../NIST-800-53/CSW-NIST-800-53-Technical-Runbook.html">NIST
+SP 800-53 Rev 5</a> — when CISA ZTMM is being mapped to a federal
+control baseline.</li>
+</ul>
+<hr />
+<p><em>Replace [Customer Name] and bracketed fields before customer
+delivery.</em></p>
+</body>
+</html>

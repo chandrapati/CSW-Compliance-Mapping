@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>NIST SP 800-207 (ZTA Seven Tenets) — Compliance Report</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+:root {
+--fg: #1f2328;
+--fg-muted: #59636e;
+--bg: #ffffff;
+--bg-muted: #f6f8fa;
+--border: #d1d9e0;
+--link: #0969da;
+--link-hover: #0349b4;
+--code-bg: #f6f8fa;
+--accent: #cf222e;
+--max-width: 920px;
+}
+@media (prefers-color-scheme: dark) {
+:root {
+--fg: #e6edf3;
+--fg-muted: #9198a1;
+--bg: #0d1117;
+--bg-muted: #151b23;
+--border: #3d444d;
+--link: #4493f8;
+--link-hover: #6cb6ff;
+--code-bg: #151b23;
+--accent: #ff7b72;
+}
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+margin: 0 auto;
+max-width: var(--max-width);
+padding: 2rem 1.25rem 4rem;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+font-size: 16px;
+line-height: 1.6;
+color: var(--fg);
+background: var(--bg);
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 2rem;
+margin-bottom: 1rem;
+font-weight: 600;
+line-height: 1.25;
+}
+h1 { font-size: 2rem; border-bottom: 1px solid var(--border); padding-bottom: .35rem; }
+h2 { font-size: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: .3rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1rem; }
+h5, h6 { font-size: .875rem; color: var(--fg-muted); }
+p, ul, ol, blockquote, pre, table { margin: 0 0 1rem; }
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+ul, ol { padding-left: 1.6rem; }
+li + li { margin-top: .15rem; }
+blockquote {
+margin: 0 0 1rem;
+padding: .5rem 1rem;
+color: var(--fg-muted);
+border-left: .25rem solid var(--border);
+background: var(--bg-muted);
+border-radius: 0 6px 6px 0;
+}
+code, pre, kbd, samp {
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+font-size: .9em;
+}
+code {
+background: var(--code-bg);
+padding: .15rem .35rem;
+border-radius: 4px;
+}
+pre {
+background: var(--code-bg);
+padding: 1rem;
+border-radius: 6px;
+overflow: auto;
+font-size: .85rem;
+line-height: 1.45;
+}
+pre code { background: transparent; padding: 0; font-size: inherit; }
+table {
+display: block;
+width: 100%;
+overflow: auto;
+border-collapse: collapse;
+}
+th, td {
+border: 1px solid var(--border);
+padding: .5rem .75rem;
+vertical-align: top;
+text-align: left;
+}
+th {
+background: var(--bg-muted);
+font-weight: 600;
+}
+tbody tr:nth-child(2n) { background: var(--bg-muted); }
+hr {
+border: 0;
+height: 1px;
+background: var(--border);
+margin: 2rem 0;
+}
+img { max-width: 100%; height: auto; }
+
+.doc-meta {
+margin: 0 0 2rem;
+padding: .75rem 1rem;
+border: 1px solid var(--border);
+border-radius: 6px;
+background: var(--bg-muted);
+font-size: .9rem;
+color: var(--fg-muted);
+}
+.doc-meta a { font-weight: 500; }
+
+@media print {
+body { max-width: none; padding: 0; color: #000; background: #fff; }
+a { color: #000; text-decoration: underline; }
+pre, code, blockquote { background: #f5f5f5; }
+}
+</style>
+</head>
+<body>
+<div class="doc-meta">Source: <a href="CSW-NIST-800-207-Compliance-Report.docx">CSW-NIST-800-207-Compliance-Report.docx</a> · <a href="../index.html">repository index</a></div>
+<header id="title-block-header">
+<h1 class="title">NIST SP 800-207 (ZTA Seven Tenets) — Compliance
+Report</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#executive-summary" id="toc-executive-summary"><strong>Executive Summary</strong></a>
+<ul>
+<li><a href="#zta-tenet-coverage-summary" id="toc-zta-tenet-coverage-summary"><strong>ZTA Tenet Coverage
+Summary</strong></a></li>
+</ul></li>
+<li><a href="#nist-800-207-tenet-by-tenet-mapping" id="toc-nist-800-207-tenet-by-tenet-mapping"><strong>NIST 800-207
+Tenet-by-Tenet Mapping</strong></a>
+<ul>
+<li><a href="#tenet-1-all-data-sources-and-computing-services-are-resources" id="toc-tenet-1-all-data-sources-and-computing-services-are-resources"><strong>Tenet
+1 — All Data Sources and Computing Services Are
+Resources</strong></a></li>
+<li><a href="#tenet-2-all-communication-is-secured-regardless-of-network-location" id="toc-tenet-2-all-communication-is-secured-regardless-of-network-location"><strong>Tenet
+2 — All Communication Is Secured Regardless of Network
+Location</strong></a></li>
+<li><a href="#tenet-3-access-to-individual-resources-is-granted-per-session" id="toc-tenet-3-access-to-individual-resources-is-granted-per-session"><strong>Tenet
+3 — Access to Individual Resources Is Granted
+Per-Session</strong></a></li>
+<li><a href="#tenet-4-access-is-determined-by-dynamic-policy" id="toc-tenet-4-access-is-determined-by-dynamic-policy"><strong>Tenet 4
+— Access Is Determined by Dynamic Policy</strong></a></li>
+<li><a href="#tenet-5-enterprise-monitors-and-measures-integrity-and-security-posture-of-all-assets" id="toc-tenet-5-enterprise-monitors-and-measures-integrity-and-security-posture-of-all-assets"><strong>Tenet
+5 — Enterprise Monitors and Measures Integrity and Security Posture of
+All Assets</strong></a></li>
+<li><a href="#tenet-6-authentication-and-authorization-are-dynamic-and-strictly-enforced" id="toc-tenet-6-authentication-and-authorization-are-dynamic-and-strictly-enforced"><strong>Tenet
+6 — Authentication and Authorization Are Dynamic and Strictly
+Enforced</strong></a></li>
+<li><a href="#tenet-7-enterprise-collects-information-and-uses-it-to-improve-security-posture" id="toc-tenet-7-enterprise-collects-information-and-uses-it-to-improve-security-posture"><strong>Tenet
+7 — Enterprise Collects Information and Uses It to Improve Security
+Posture</strong></a></li>
+</ul></li>
+<li><a href="#nist-800-207-deployment-models-csw-positioning" id="toc-nist-800-207-deployment-models-csw-positioning"><strong>NIST
+800-207 Deployment Models — CSW Positioning</strong></a></li>
+<li><a href="#evidence-collection-for-nist-800-207-compliance" id="toc-evidence-collection-for-nist-800-207-compliance"><strong>Evidence
+Collection for NIST 800-207 Compliance</strong></a></li>
+<li><a href="#recommended-deployment-roadmap" id="toc-recommended-deployment-roadmap"><strong>Recommended Deployment
+Roadmap</strong></a></li>
+</ul>
+</nav>
+<p><strong>CISCO SECURE WORKLOAD</strong></p>
+<p><strong>NIST SP 800-207 Zero Trust Architecture</strong></p>
+<p>Zero Trust Tenets &amp; Deployment Model Alignment</p>
+<p>Prepared for: [Customer Name]</p>
+<p>Prepared by: Cisco Systems, Inc.</p>
+<p>Date: [Month Year] | Version 1.0 | Cisco Confidential</p>
+<table style="width:60%;">
+<colgroup>
+<col style="width: 59%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><p><strong>Regulatory Standard: NIST SP
+800-207 (Zero Trust Architecture — Seven Tenets)</strong></p>
+<p>Environment: Hybrid (On-Premises + AWS / Azure / GCP)</p>
+<p>Deployment Stage: Fresh Installation</p></td>
+</tr>
+</tbody>
+</table>
+<h1 id="executive-summary"><strong>Executive Summary</strong></h1>
+<p>NIST SP 800-207 defines Zero Trust Architecture (ZTA) as a set of
+cybersecurity paradigms that move defenses from static, network-based
+perimeters to focus on users, assets, and resources. The standard
+defines seven foundational tenets that any ZTA implementation must
+satisfy, along with three deployment models: Agent-Based, Enclave-Based,
+and Resource Portal-Based.</p>
+<p>Cisco Secure Workload (CSW) is a foundational ZTA technology that
+directly satisfies NIST 800-207 tenets related to resource protection,
+communication integrity, dynamic policy enforcement, and continuous
+monitoring. CSW&#39;s workload-level micro-segmentation, Application
+Dependency Mapping (ADM), vulnerability detection, and forensic
+telemetry make it the enforcement and visibility layer of a
+NIST-compliant ZTA implementation.</p>
+<h2 id="zta-tenet-coverage-summary"><strong>ZTA Tenet Coverage
+Summary</strong></h2>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 41%" />
+<col style="width: 33%" />
+<col style="width: 17%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>NIST 800-207 Tenet</strong></td>
+<td style="text-align: center;"><strong>CSW Role</strong></td>
+<td style="text-align: center;"><strong>Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Tenet 1 — All data sources and computing
+services are resources</td>
+<td style="text-align: center;">Workload discovery and inventory across
+hybrid environments</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Tenet 2 — All communication is secured
+regardless of network location</td>
+<td style="text-align: center;">Encrypted protocol enforcement,
+unencrypted flow detection</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Tenet 3 — Access to individual
+enterprise resources is granted on a per-session basis</td>
+<td style="text-align: center;">Workload-level allowlist policies,
+session-scoped access enforcement</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Tenet 4 — Access to resources is
+determined by dynamic policy</td>
+<td style="text-align: center;">ADM-derived policies, API-driven dynamic
+policy updates</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Tenet 5 — Enterprise monitors and
+measures integrity and security posture of all assets</td>
+<td style="text-align: center;">Continuous vulnerability scanning,
+process hash verification, telemetry</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Tenet 6 — All resource authentication
+and authorization is dynamic and strictly enforced</td>
+<td style="text-align: center;">Encrypted auth path enforcement
+(LDAPS/Kerberos), unauthenticated access blocking</td>
+<td style="text-align: center;"><strong>Partial Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Tenet 7 — Enterprise collects
+information about current state of assets and uses it to improve
+security posture</td>
+<td style="text-align: center;">Full flow + process telemetry, ADM
+baseline, SIEM integration</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+</tbody>
+</table>
+<h1 id="nist-800-207-tenet-by-tenet-mapping"><strong>NIST 800-207
+Tenet-by-Tenet Mapping</strong></h1>
+<h2 id="tenet-1-all-data-sources-and-computing-services-are-resources"><strong>Tenet
+1 — All Data Sources and Computing Services Are Resources</strong></h2>
+<p>NIST Requirement: Every device, service, and data source — regardless
+of ownership or location — must be treated as a resource and managed
+accordingly.</p>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 69%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>CSW Implementation</strong></td>
+<td style="text-align: center;"><strong>Detail</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Workload Discovery</strong></td>
+<td style="text-align: center;">CSW software sensors auto-register every
+monitored workload as a managed resource. Cloud connectors extend this
+to AWS EC2, Azure VMs, and GCP instances via agentless discovery.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Universal
+Inventory</strong></td>
+<td style="text-align: center;">ADM builds a real-time inventory of all
+computing resources — hostname, OS, processes, open ports, network
+interfaces, and communication partners.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Label-Based
+Classification</strong></td>
+<td style="text-align: center;">Every resource is labeled by
+environment, data classification, application, and owner — establishing
+the resource identity required by NIST 800-207.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Cloud Resource
+Parity</strong></td>
+<td style="text-align: center;">Cloud workloads are managed under the
+same policy framework as on-prem. No implicit trust for cloud-hosted
+resources — all treated as untrusted until verified.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Evidence generated: Workload inventory export, ADM resource map,
+cloud connector inventory report.</em></p>
+<h2 id="tenet-2-all-communication-is-secured-regardless-of-network-location"><strong>Tenet
+2 — All Communication Is Secured Regardless of Network
+Location</strong></h2>
+<p>NIST Requirement: All traffic — including traffic on internal
+networks — must be protected. Network location alone does not grant
+implicit trust. Communications must be authenticated and encrypted.</p>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 69%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>CSW Implementation</strong></td>
+<td style="text-align: center;"><strong>Detail</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Unencrypted Flow
+Detection</strong></td>
+<td style="text-align: center;">CSW continuously monitors all workload
+communications and flags unencrypted protocols: HTTP (port 80), FTP
+(port 21), Telnet (port 23), plain LDAP (port 389), and legacy TLS
+versions (1.0/1.1).</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Encrypted Path
+Enforcement</strong></td>
+<td style="text-align: center;">CSW policies enforce HTTPS, SFTP, LDAPS,
+and SSH as the only permitted protocols for sensitive workloads.
+Non-compliant connections are blocked and alerted.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Internal Traffic
+Visibility</strong></td>
+<td style="text-align: center;">ADM captures all east-west (internal)
+traffic — eliminating the assumption that internal network communication
+is safe. Every internal flow is validated against the approved policy
+baseline.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>No Implicit Internal
+Trust</strong></td>
+<td style="text-align: center;">CSW default-deny policies treat internal
+traffic identically to external traffic. All connections must match an
+explicit allowlist rule regardless of source network location.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Evidence generated: Protocol compliance report (unencrypted flow
+detection), policy enforcement log, ADM east-west flow map.</em></p>
+<h2 id="tenet-3-access-to-individual-resources-is-granted-per-session"><strong>Tenet
+3 — Access to Individual Resources Is Granted Per-Session</strong></h2>
+<p>NIST Requirement: Access must be granted to specific individual
+resources — not broad network segments — and must be evaluated per
+connection or session.</p>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 69%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>CSW Implementation</strong></td>
+<td style="text-align: center;"><strong>Detail</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Workload-Level
+Allowlist</strong></td>
+<td style="text-align: center;">CSW policies operate at the individual
+workload level — not subnet or VLAN. Each workload has its own explicit
+allowlist. Access to Workload A does not imply access to Workload B,
+even if they share a subnet.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Per-Flow Policy
+Evaluation</strong></td>
+<td style="text-align: center;">Every network connection is evaluated
+against the policy engine in real time. ADM-baseline policies define
+exactly which source workloads can reach which destination workloads on
+which ports.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Micro-Segmentation</strong></td>
+<td style="text-align: center;">CSW enforces microsegmentation between
+every workload pair. Lateral movement — a resource reaching a workload
+it has no approved flow to — is blocked automatically.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Session Audit
+Trail</strong></td>
+<td style="text-align: center;">Every connection attempt (approved or
+denied) is recorded in CSW forensic telemetry with full context: source,
+destination, process, user, timestamp, and policy decision.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Evidence generated: Per-session flow log, policy denial log,
+micro-segmentation policy workspace export.</em></p>
+<h2 id="tenet-4-access-is-determined-by-dynamic-policy"><strong>Tenet 4
+— Access Is Determined by Dynamic Policy</strong></h2>
+<p>NIST Requirement: Access policy must be dynamic — incorporating
+observable state of the requesting resource, user behavioral attributes,
+and environmental conditions. Static firewall rules are
+insufficient.</p>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 69%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>CSW Implementation</strong></td>
+<td style="text-align: center;"><strong>Detail</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>ADM-Derived Policy
+Baseline</strong></td>
+<td style="text-align: center;">CSW policies are derived from actual
+observed application behavior (ADM) — not manually authored static
+rules. The baseline reflects real traffic patterns and is updated as
+applications evolve.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Label-Driven Dynamic
+Scoping</strong></td>
+<td style="text-align: center;">As workload labels change (e.g., a
+workload is classified as PHI-bearing), CSW scope membership — and
+therefore the policies applied to it — updates automatically without
+manual rule changes.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>API-Driven Policy
+Updates</strong></td>
+<td style="text-align: center;">CSW REST API allows SOAR platforms, CMDB
+systems, and orchestration tools to push policy updates in real time. A
+workload flagged as compromised by EDR triggers an automatic CSW
+isolation policy via API.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Vulnerability-Informed
+Policy</strong></td>
+<td style="text-align: center;">CSW vulnerability data drives
+compensating control policies: a workload with a critical unpatched CVE
+can be automatically restricted to admin-only access until patched —
+posture-aware access control.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Anomaly-Triggered
+Adjustment</strong></td>
+<td style="text-align: center;">CSW anomaly detection identifies
+behavioral deviations from the ADM baseline. These signals trigger
+SOAR-mediated policy tightening — moving access decisions from static to
+continuously adaptive.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Evidence generated: ADM policy workspace, API audit log, anomaly
+alert-to-policy-change correlation log.</em></p>
+<h2 id="tenet-5-enterprise-monitors-and-measures-integrity-and-security-posture-of-all-assets"><strong>Tenet
+5 — Enterprise Monitors and Measures Integrity and Security Posture of
+All Assets</strong></h2>
+<p>NIST Requirement: The enterprise must continuously monitor the
+security posture of all owned and associated assets. No asset is assumed
+healthy without verification.</p>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 69%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>CSW Implementation</strong></td>
+<td style="text-align: center;"><strong>Detail</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Continuous Vulnerability
+Scanning</strong></td>
+<td style="text-align: center;">CSW continuously scans all monitored
+workloads for CVEs without requiring a separate scanning tool. Results
+are CVSS-scored, workload-attributed, and exportable for risk register
+input.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Process Hash
+Verification</strong></td>
+<td style="text-align: center;">CSW monitors the hash of all running
+processes per workload. Deviations from the approved process baseline —
+new or modified executables — are flagged immediately as integrity
+violations.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Configuration Drift
+Detection</strong></td>
+<td style="text-align: center;">CSW detects new listening ports, new
+processes, and new network connections that deviate from the
+ADM-established baseline. Any drift from approved configuration triggers
+an alert.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Real-Time Posture
+Feed</strong></td>
+<td style="text-align: center;">CSW posture data (vulnerability state,
+process baseline, network compliance) is continuously streamed to SIEM —
+providing the asset health data feed that NIST 800-207 requires for
+dynamic policy decisions.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Evidence generated: Vulnerability scan report (continuous),
+process anomaly alert log, configuration drift report, SIEM posture
+feed.</em></p>
+<h2 id="tenet-6-authentication-and-authorization-are-dynamic-and-strictly-enforced"><strong>Tenet
+6 — Authentication and Authorization Are Dynamic and Strictly
+Enforced</strong></h2>
+<p>NIST Requirement: Authentication and authorization must be performed
+before access is granted and must be re-evaluated continuously. This
+applies to both human users and non-person entities (NPEs).</p>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 69%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>CSW Implementation</strong></td>
+<td style="text-align: center;"><strong>Detail</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Encrypted Auth Path
+Enforcement</strong></td>
+<td style="text-align: center;">CSW enforces LDAPS (port 636) and
+Kerberos as the only permitted authentication paths to sensitive
+workloads. Plain LDAP (port 389) and unauthenticated access attempts are
+blocked by policy.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Non-Person Entity (NPE)
+Authentication</strong></td>
+<td style="text-align: center;">CSW captures process-identity context
+per workload connection — identifying which service or application
+initiated each flow. Unrecognized process-to-resource connections
+trigger alerts.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Unauthenticated Access
+Detection</strong></td>
+<td style="text-align: center;">CSW forensic telemetry identifies
+connections that bypass the approved authentication path — a direct
+indicator of credential compromise or lateral movement.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Complementary Controls
+Required</strong></td>
+<td style="text-align: center;">Full dynamic authentication (MFA
+re-evaluation, continuous session validation, IdP integration) requires
+pairing CSW with an Identity Provider (IdP), SSO platform, and/or Cisco
+Secure Access (ZTNA).</td>
+</tr>
+</tbody>
+</table>
+<p><em>Evidence generated: Authentication path enforcement log (LDAPS
+policy), unauthenticated access alert log, process-identity flow
+report.</em></p>
+<p><em>Note: Tenet 6 is Partial Coverage because CSW enforces the
+network path to authentication systems but does not itself perform
+identity provider functions. Pair with Cisco Secure Access or equivalent
+ZTNA for full coverage.</em></p>
+<h2 id="tenet-7-enterprise-collects-information-and-uses-it-to-improve-security-posture"><strong>Tenet
+7 — Enterprise Collects Information and Uses It to Improve Security
+Posture</strong></h2>
+<p>NIST Requirement: The enterprise must collect, aggregate, and analyze
+data about the current state of assets, network traffic, and access
+requests, and use it to improve security posture over time.</p>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 69%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>CSW Implementation</strong></td>
+<td style="text-align: center;"><strong>Detail</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Full Flow &amp; Process
+Telemetry</strong></td>
+<td style="text-align: center;">CSW collects comprehensive telemetry:
+every network flow (source, destination, port, protocol, bytes,
+duration), every process (name, hash, parent, user), and every policy
+decision across all monitored workloads.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>ADM Behavioral
+Baseline</strong></td>
+<td style="text-align: center;">Quarterly ADM re-runs establish an
+evolving behavioral baseline. Delta analysis between ADM runs reveals
+new application dependencies, removed flows, and emerging attack surface
+— enabling proactive posture improvement.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Vulnerability Trend
+Analysis</strong></td>
+<td style="text-align: center;">CSW tracks CVE emergence and remediation
+over time per workload. Trending data shows whether the organization&#39;s
+patch posture is improving, stable, or degrading.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>SIEM Integration for
+Analytics</strong></td>
+<td style="text-align: center;">All CSW telemetry streams to SIEM via
+Kafka/Syslog — enabling the enterprise analytics platform required by
+NIST 800-207 to correlate CSW data with identity, endpoint, and cloud
+signals.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Compliance Reporting
+Loop</strong></td>
+<td style="text-align: center;">CSW compliance reports feed the security
+governance process. Control mapping evidence, vulnerability trends, and
+policy drift reports provide the data loop required by 800-207&#39;s
+continuous improvement model.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Evidence generated: SIEM telemetry feed, ADM delta report
+(quarterly), vulnerability trend report, compliance posture
+report.</em></p>
+<h1 id="nist-800-207-deployment-models-csw-positioning"><strong>NIST
+800-207 Deployment Models — CSW Positioning</strong></h1>
+<p>NIST 800-207 defines three ZTA deployment models. CSW plays a role in
+all three:</p>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 25%" />
+<col style="width: 31%" />
+<col style="width: 17%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Deployment Model</strong></td>
+<td style="text-align: center;"><strong>NIST 800-207
+Description</strong></td>
+<td style="text-align: center;"><strong>CSW Role</strong></td>
+<td style="text-align: center;"><strong>Status</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Agent/Device-Based ZTA</td>
+<td style="text-align: center;">Policy enforcement agent on each device
+evaluates access requests based on device posture and identity.</td>
+<td style="text-align: center;">CSW software sensor on each workload
+enforces network policy and collects posture data. Primary CSW
+deployment model.</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Enclave-Based ZTA</td>
+<td style="text-align: center;">Resources are grouped into enclaves.
+Access controlled at the gateway. Intra-enclave traffic is implicitly
+trusted.</td>
+<td style="text-align: center;">CSW replaces implicit intra-enclave
+trust with workload-level micro-segmentation. ADM validates all
+intra-enclave flows — no assumed trust within zones.</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Resource Portal-Based ZTA</td>
+<td style="text-align: center;">A resource portal mediates all access.
+Users connect to the portal which proxies requests to backend
+resources.</td>
+<td style="text-align: center;">CSW protects backend resources behind
+the portal. Enforces that only the portal can reach backend workloads.
+Detects any bypass of the portal path.</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+</tbody>
+</table>
+<h1 id="evidence-collection-for-nist-800-207-compliance"><strong>Evidence
+Collection for NIST 800-207 Compliance</strong></h1>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 24%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Evidence Artifact</strong></td>
+<td style="text-align: center;"><strong>CSW Source</strong></td>
+<td style="text-align: center;"><strong>NIST 800-207 Tenet</strong></td>
+<td style="text-align: center;"><strong>Frequency</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Workload inventory &amp; resource
+map</td>
+<td style="text-align: center;">Inventory → Export + ADM</td>
+<td style="text-align: center;">Tenet 1</td>
+<td style="text-align: center;"><strong>Monthly</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Protocol compliance report (unencrypted
+flows)</td>
+<td style="text-align: center;">Flow Search (protocol filter)</td>
+<td style="text-align: center;">Tenet 2</td>
+<td style="text-align: center;"><strong>Quarterly</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Per-session flow &amp; policy decision
+log</td>
+<td style="text-align: center;">Investigate → Flow Search</td>
+<td style="text-align: center;">Tenet 3</td>
+<td style="text-align: center;"><strong>Continuous</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">ADM policy workspace + change log</td>
+<td style="text-align: center;">Defend → Workspace History</td>
+<td style="text-align: center;">Tenet 4</td>
+<td style="text-align: center;"><strong>Per change</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Vulnerability scan report (trend)</td>
+<td style="text-align: center;">Investigate → Vulnerability</td>
+<td style="text-align: center;">Tenet 5</td>
+<td style="text-align: center;"><strong>Weekly</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Process baseline + anomaly alert
+log</td>
+<td style="text-align: center;">Alerts → Triggered Events</td>
+<td style="text-align: center;">Tenet 5</td>
+<td style="text-align: center;"><strong>Real-time</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Authentication path enforcement log</td>
+<td style="text-align: center;">Policy Analysis (LDAPS rules)</td>
+<td style="text-align: center;">Tenet 6</td>
+<td style="text-align: center;"><strong>Continuous</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">SIEM telemetry feed + ADM delta
+report</td>
+<td style="text-align: center;">Platform → Data Export + ADM</td>
+<td style="text-align: center;">Tenet 7</td>
+<td style="text-align: center;"><strong>Continuous /
+Quarterly</strong></td>
+</tr>
+</tbody>
+</table>
+<h1 id="recommended-deployment-roadmap"><strong>Recommended Deployment
+Roadmap</strong></h1>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 19%" />
+<col style="width: 50%" />
+<col style="width: 19%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>#</strong></td>
+<td style="text-align: center;"><strong>Phase</strong></td>
+<td style="text-align: center;"><strong>Action</strong></td>
+<td style="text-align: center;"><strong>Timeline</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">Resource Enumeration</td>
+<td style="text-align: center;">Deploy CSW sensors on all workloads.
+Connect cloud accounts. Build complete resource inventory with labels.
+(Tenet 1)</td>
+<td style="text-align: center;"><strong>Days 1–10</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">Communication Visibility</td>
+<td style="text-align: center;">Run ADM for 2–4 weeks. Map all east-west
+flows. Identify unencrypted communications. (Tenet 2, 7)</td>
+<td style="text-align: center;"><strong>Days 11–35</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">Per-Resource Policy</td>
+<td style="text-align: center;">Build workload-level allowlist policies
+from ADM. Deploy default-deny for all sensitive scopes. (Tenet 3)</td>
+<td style="text-align: center;"><strong>Days 36–50</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">Dynamic Policy Enablement</td>
+<td style="text-align: center;">Integrate CSW API with SOAR. Enable
+label-driven dynamic scoping. Configure vulnerability-informed
+compensating controls. (Tenet 4)</td>
+<td style="text-align: center;"><strong>Days 51–65</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">Continuous Posture Monitoring</td>
+<td style="text-align: center;">Enable SIEM integration. Configure
+anomaly detection alerts. Establish weekly vulnerability reporting
+cadence. (Tenet 5, 7)</td>
+<td style="text-align: center;"><strong>Days 66–75</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">Auth Path Enforcement</td>
+<td style="text-align: center;">Enforce LDAPS-only paths. Block plain
+LDAP, Telnet, FTP to sensitive scopes. Pair with IdP/ZTNA for full Tenet
+6 coverage. (Tenet 6)</td>
+<td style="text-align: center;"><strong>Days 76–90</strong></td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

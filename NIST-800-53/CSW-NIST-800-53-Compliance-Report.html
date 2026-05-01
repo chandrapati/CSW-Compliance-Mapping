@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>NIST SP 800-53 Rev 5 — Compliance Report</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+:root {
+--fg: #1f2328;
+--fg-muted: #59636e;
+--bg: #ffffff;
+--bg-muted: #f6f8fa;
+--border: #d1d9e0;
+--link: #0969da;
+--link-hover: #0349b4;
+--code-bg: #f6f8fa;
+--accent: #cf222e;
+--max-width: 920px;
+}
+@media (prefers-color-scheme: dark) {
+:root {
+--fg: #e6edf3;
+--fg-muted: #9198a1;
+--bg: #0d1117;
+--bg-muted: #151b23;
+--border: #3d444d;
+--link: #4493f8;
+--link-hover: #6cb6ff;
+--code-bg: #151b23;
+--accent: #ff7b72;
+}
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+margin: 0 auto;
+max-width: var(--max-width);
+padding: 2rem 1.25rem 4rem;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+font-size: 16px;
+line-height: 1.6;
+color: var(--fg);
+background: var(--bg);
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 2rem;
+margin-bottom: 1rem;
+font-weight: 600;
+line-height: 1.25;
+}
+h1 { font-size: 2rem; border-bottom: 1px solid var(--border); padding-bottom: .35rem; }
+h2 { font-size: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: .3rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1rem; }
+h5, h6 { font-size: .875rem; color: var(--fg-muted); }
+p, ul, ol, blockquote, pre, table { margin: 0 0 1rem; }
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+ul, ol { padding-left: 1.6rem; }
+li + li { margin-top: .15rem; }
+blockquote {
+margin: 0 0 1rem;
+padding: .5rem 1rem;
+color: var(--fg-muted);
+border-left: .25rem solid var(--border);
+background: var(--bg-muted);
+border-radius: 0 6px 6px 0;
+}
+code, pre, kbd, samp {
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+font-size: .9em;
+}
+code {
+background: var(--code-bg);
+padding: .15rem .35rem;
+border-radius: 4px;
+}
+pre {
+background: var(--code-bg);
+padding: 1rem;
+border-radius: 6px;
+overflow: auto;
+font-size: .85rem;
+line-height: 1.45;
+}
+pre code { background: transparent; padding: 0; font-size: inherit; }
+table {
+display: block;
+width: 100%;
+overflow: auto;
+border-collapse: collapse;
+}
+th, td {
+border: 1px solid var(--border);
+padding: .5rem .75rem;
+vertical-align: top;
+text-align: left;
+}
+th {
+background: var(--bg-muted);
+font-weight: 600;
+}
+tbody tr:nth-child(2n) { background: var(--bg-muted); }
+hr {
+border: 0;
+height: 1px;
+background: var(--border);
+margin: 2rem 0;
+}
+img { max-width: 100%; height: auto; }
+
+.doc-meta {
+margin: 0 0 2rem;
+padding: .75rem 1rem;
+border: 1px solid var(--border);
+border-radius: 6px;
+background: var(--bg-muted);
+font-size: .9rem;
+color: var(--fg-muted);
+}
+.doc-meta a { font-weight: 500; }
+
+@media print {
+body { max-width: none; padding: 0; color: #000; background: #fff; }
+a { color: #000; text-decoration: underline; }
+pre, code, blockquote { background: #f5f5f5; }
+}
+</style>
+</head>
+<body>
+<div class="doc-meta">Source: <a href="CSW-NIST-800-53-Compliance-Report.docx">CSW-NIST-800-53-Compliance-Report.docx</a> · <a href="../index.html">repository index</a></div>
+<header id="title-block-header">
+<h1 class="title">NIST SP 800-53 Rev 5 — Compliance Report</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#executive-summary" id="toc-executive-summary"><strong>Executive Summary</strong></a>
+<ul>
+<li><a href="#control-coverage-by-family" id="toc-control-coverage-by-family"><strong>Control Coverage by
+Family</strong></a></li>
+</ul></li>
+<li><a href="#nist-impact-level-configuration-guide" id="toc-nist-impact-level-configuration-guide"><strong>NIST Impact Level
+Configuration Guide</strong></a></li>
+<li><a href="#federal-evidence-package" id="toc-federal-evidence-package"><strong>Federal Evidence
+Package</strong></a></li>
+</ul>
+</nav>
+<p><strong>CISCO SECURE WORKLOAD</strong></p>
+<p><strong>NIST 800-53 Rev 5 Compliance Framework</strong></p>
+<p>Security &amp; Privacy Controls — CSW-Relevant Families</p>
+<p>Prepared for: [Customer Name]</p>
+<p>Prepared by: Cisco Systems, Inc.</p>
+<p>Date: [Month Year] | Version 1.0 | Cisco Confidential</p>
+<table style="width:60%;">
+<colgroup>
+<col style="width: 59%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><p><strong>Regulatory Standard: NIST SP
+800-53 Rev 5 (AC, AU, CM, IR, RA, SC, SI Families)</strong></p>
+<p>Environment: Hybrid (On-Premises + Cloud)</p>
+<p>Deployment Stage: Fresh Installation</p></td>
+</tr>
+</tbody>
+</table>
+<h1 id="executive-summary"><strong>Executive Summary</strong></h1>
+<p>NIST SP 800-53 Rev 5 provides the comprehensive security control
+catalog for federal information systems and is widely adopted in
+regulated commercial environments. This report maps Cisco Secure
+Workload (CSW) capabilities to the seven control families most directly
+addressed: Access Control (AC), Audit &amp; Accountability (AU),
+Configuration Management (CM), Incident Response (IR), Risk Assessment
+(RA), System &amp; Communications Protection (SC), and System &amp;
+Information Integrity (SI).</p>
+<p>CSW achieves Full Coverage across all 18 mapped controls through
+workload-level policy enforcement, continuous telemetry, vulnerability
+management, and forensic investigation capabilities.</p>
+<h2 id="control-coverage-by-family"><strong>Control Coverage by
+Family</strong></h2>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 6%" />
+<col style="width: 14%" />
+<col style="width: 18%" />
+<col style="width: 28%" />
+<col style="width: 17%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Family</strong></td>
+<td style="text-align: center;"><strong>Control</strong></td>
+<td style="text-align: center;"><strong>Name</strong></td>
+<td style="text-align: center;"><strong>NIST Requirement</strong></td>
+<td style="text-align: center;"><strong>CSW Implementation</strong></td>
+<td style="text-align: center;"><strong>Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>AC</strong></td>
+<td style="text-align: center;">AC-3</td>
+<td style="text-align: center;">Access Enforcement</td>
+<td style="text-align: center;">Enforce approved authorizations for
+logical access</td>
+<td style="text-align: center;">Micro-segmentation enforces allowlist
+policies at workload level; default deny</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>AC</strong></td>
+<td style="text-align: center;">AC-4</td>
+<td style="text-align: center;">Information Flow Enforcement</td>
+<td style="text-align: center;">Control information flows between
+systems</td>
+<td style="text-align: center;">ADM maps all flows; policy blocks
+unauthorized data paths across all environments</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>AC</strong></td>
+<td style="text-align: center;">AC-6</td>
+<td style="text-align: center;">Least Privilege</td>
+<td style="text-align: center;">Employ least privilege for access to
+system resources</td>
+<td style="text-align: center;">Workload-scoped policies grant minimum
+required network access per service</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>AC</strong></td>
+<td style="text-align: center;">AC-17</td>
+<td style="text-align: center;">Remote Access</td>
+<td style="text-align: center;">Establish usage restrictions for remote
+access</td>
+<td style="text-align: center;">Jump-host enforcement; remote admin
+paths explicitly defined and logged</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>AU</strong></td>
+<td style="text-align: center;">AU-2</td>
+<td style="text-align: center;">Event Logging</td>
+<td style="text-align: center;">Identify the types of events the system
+is capable of logging</td>
+<td style="text-align: center;">Full network flow + process telemetry on
+all monitored workloads</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>AU</strong></td>
+<td style="text-align: center;">AU-3</td>
+<td style="text-align: center;">Audit Record Content</td>
+<td style="text-align: center;">Ensure audit records contain sufficient
+information</td>
+<td style="text-align: center;">5-tuple flows + process name + user
+context + timestamp + policy action</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>AU</strong></td>
+<td style="text-align: center;">AU-6</td>
+<td style="text-align: center;">Audit Record Review</td>
+<td style="text-align: center;">Review and analyze system audit
+records</td>
+<td style="text-align: center;">Alert export to SIEM; anomaly detection
+for automated review</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>AU</strong></td>
+<td style="text-align: center;">AU-12</td>
+<td style="text-align: center;">Audit Record Generation</td>
+<td style="text-align: center;">Provide audit record generation
+capability</td>
+<td style="text-align: center;">Continuous logging; configurable
+retention (recommend 3 years for federal)</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>CM</strong></td>
+<td style="text-align: center;">CM-2</td>
+<td style="text-align: center;">Baseline Configuration</td>
+<td style="text-align: center;">Develop and maintain baseline
+configurations</td>
+<td style="text-align: center;">ADM establishes approved communication
+baseline per application cluster</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>CM</strong></td>
+<td style="text-align: center;">CM-7</td>
+<td style="text-align: center;">Least Functionality</td>
+<td style="text-align: center;">Configure the system to provide only
+essential capabilities</td>
+<td style="text-align: center;">Block non-approved services via
+port-level policy enforcement</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>CM</strong></td>
+<td style="text-align: center;">CM-8</td>
+<td style="text-align: center;">System Inventory</td>
+<td style="text-align: center;">Develop and maintain an inventory of
+system components</td>
+<td style="text-align: center;">CSW inventory provides real-time
+workload asset catalog across hybrid environments</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>IR</strong></td>
+<td style="text-align: center;">IR-4</td>
+<td style="text-align: center;">Incident Handling</td>
+<td style="text-align: center;">Implement an incident handling
+capability</td>
+<td style="text-align: center;">Forensic telemetry enables full incident
+reconstruction; process + network context</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>IR</strong></td>
+<td style="text-align: center;">IR-5</td>
+<td style="text-align: center;">Incident Monitoring</td>
+<td style="text-align: center;">Track and document security
+incidents</td>
+<td style="text-align: center;">Real-time anomaly alerts; policy
+violation events; SIEM integration</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>RA</strong></td>
+<td style="text-align: center;">RA-5</td>
+<td style="text-align: center;">Vulnerability Monitoring</td>
+<td style="text-align: center;">Monitor and scan for vulnerabilities in
+the system</td>
+<td style="text-align: center;">Continuous CVE scanning with CVSS
+scoring on all workloads</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>SC</strong></td>
+<td style="text-align: center;">SC-7</td>
+<td style="text-align: center;">Boundary Protection</td>
+<td style="text-align: center;">Monitor and control communications at
+system boundaries</td>
+<td style="text-align: center;">Micro-segmentation enforces east-west
+boundaries; ADM validates boundary integrity</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>SC</strong></td>
+<td style="text-align: center;">SC-8</td>
+<td style="text-align: center;">Transmission Confidentiality</td>
+<td style="text-align: center;">Implement cryptographic mechanisms to
+protect transmissions</td>
+<td style="text-align: center;">Detect and block unencrypted sensitive
+data flows; enforce encrypted protocols</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>SI</strong></td>
+<td style="text-align: center;">SI-2</td>
+<td style="text-align: center;">Flaw Remediation</td>
+<td style="text-align: center;">Identify, report, and correct
+information system flaws</td>
+<td style="text-align: center;">Continuous vulnerability scan;
+prioritized remediation + compensating controls</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>SI</strong></td>
+<td style="text-align: center;">SI-4</td>
+<td style="text-align: center;">System Monitoring</td>
+<td style="text-align: center;">Monitor the system to detect attacks and
+unauthorized access</td>
+<td style="text-align: center;">Full telemetry with anomaly detection;
+behavioral baseline deviation alerting</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+</tbody>
+</table>
+<h1 id="nist-impact-level-configuration-guide"><strong>NIST Impact Level
+Configuration Guide</strong></h1>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 0%" />
+<col style="width: 29%" />
+<col style="width: 0%" />
+<col style="width: 15%" />
+<col style="width: 16%" />
+<col style="width: 15%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Impact Level</strong></td>
+<td colspan="2" style="text-align: center;"><strong>CSW
+Configuration</strong></td>
+<td colspan="2" style="text-align: center;"><strong>Telemetry
+Retention</strong></td>
+<td colspan="2" style="text-align: center;"><strong>Enforcement
+Mode</strong></td>
+</tr>
+<tr>
+<td colspan="2" style="text-align: center;"><strong>Low</strong></td>
+<td colspan="2" style="text-align: center;">ADM + monitoring; simulation
+policies</td>
+<td style="text-align: center;">6 months</td>
+<td style="text-align: center;">Simulation (alert-only)</td>
+<td style="text-align: center;"><strong>Partial Coverage</strong></td>
+</tr>
+<tr>
+<td colspan="2" style="text-align: center;"><strong>Moderate</strong></td>
+<td colspan="2" style="text-align: center;">ADM + enforcement on
+sensitive scopes; full alerting</td>
+<td style="text-align: center;">1 year</td>
+<td style="text-align: center;">Enforcement on sensitive scopes</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td colspan="2" style="text-align: center;"><strong>High</strong></td>
+<td colspan="2" style="text-align: center;">ADM + full enforcement;
+process-level monitoring; SIEM integration</td>
+<td style="text-align: center;">3 years</td>
+<td style="text-align: center;">Full enforcement all scopes</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+</tbody>
+</table>
+<h1 id="federal-evidence-package"><strong>Federal Evidence
+Package</strong></h1>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 24%" />
+<col style="width: 15%" />
+<col style="width: 24%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Evidence Item</strong></td>
+<td style="text-align: center;"><strong>CSW Source</strong></td>
+<td style="text-align: center;"><strong>Control Family</strong></td>
+<td style="text-align: center;"><strong>Frequency</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Policy enforcement
+log</strong></td>
+<td style="text-align: center;">Defend → Policy Workspaces</td>
+<td style="text-align: center;">AC</td>
+<td style="text-align: center;"><strong>Per audit</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Network flow audit
+log</strong></td>
+<td style="text-align: center;">Investigate → Flow Search</td>
+<td style="text-align: center;">AU</td>
+<td style="text-align: center;"><strong>Continuous</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Vulnerability
+report</strong></td>
+<td style="text-align: center;">Investigate → Vulnerability</td>
+<td style="text-align: center;">RA, SI</td>
+<td style="text-align: center;"><strong>Weekly</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>ADM baseline map</strong></td>
+<td style="text-align: center;">Investigate → ADM</td>
+<td style="text-align: center;">CM</td>
+<td style="text-align: center;"><strong>Quarterly</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Alert/incident log</strong></td>
+<td style="text-align: center;">Alerts → Dashboard</td>
+<td style="text-align: center;">IR</td>
+<td style="text-align: center;"><strong>Monthly</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Workload inventory</strong></td>
+<td style="text-align: center;">Manage → Inventory</td>
+<td style="text-align: center;">CM</td>
+<td style="text-align: center;"><strong>Monthly</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Process anomaly
+report</strong></td>
+<td style="text-align: center;">Investigate → Process Search</td>
+<td style="text-align: center;">SI</td>
+<td style="text-align: center;"><strong>On-demand</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Encryption compliance
+report</strong></td>
+<td style="text-align: center;">Flow Search (protocol filter)</td>
+<td style="text-align: center;">SC</td>
+<td style="text-align: center;"><strong>Quarterly</strong></td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

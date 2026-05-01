@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>ISO/IEC 27001:2022 — Compliance Report</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+:root {
+--fg: #1f2328;
+--fg-muted: #59636e;
+--bg: #ffffff;
+--bg-muted: #f6f8fa;
+--border: #d1d9e0;
+--link: #0969da;
+--link-hover: #0349b4;
+--code-bg: #f6f8fa;
+--accent: #cf222e;
+--max-width: 920px;
+}
+@media (prefers-color-scheme: dark) {
+:root {
+--fg: #e6edf3;
+--fg-muted: #9198a1;
+--bg: #0d1117;
+--bg-muted: #151b23;
+--border: #3d444d;
+--link: #4493f8;
+--link-hover: #6cb6ff;
+--code-bg: #151b23;
+--accent: #ff7b72;
+}
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+margin: 0 auto;
+max-width: var(--max-width);
+padding: 2rem 1.25rem 4rem;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+font-size: 16px;
+line-height: 1.6;
+color: var(--fg);
+background: var(--bg);
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 2rem;
+margin-bottom: 1rem;
+font-weight: 600;
+line-height: 1.25;
+}
+h1 { font-size: 2rem; border-bottom: 1px solid var(--border); padding-bottom: .35rem; }
+h2 { font-size: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: .3rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1rem; }
+h5, h6 { font-size: .875rem; color: var(--fg-muted); }
+p, ul, ol, blockquote, pre, table { margin: 0 0 1rem; }
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+ul, ol { padding-left: 1.6rem; }
+li + li { margin-top: .15rem; }
+blockquote {
+margin: 0 0 1rem;
+padding: .5rem 1rem;
+color: var(--fg-muted);
+border-left: .25rem solid var(--border);
+background: var(--bg-muted);
+border-radius: 0 6px 6px 0;
+}
+code, pre, kbd, samp {
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+font-size: .9em;
+}
+code {
+background: var(--code-bg);
+padding: .15rem .35rem;
+border-radius: 4px;
+}
+pre {
+background: var(--code-bg);
+padding: 1rem;
+border-radius: 6px;
+overflow: auto;
+font-size: .85rem;
+line-height: 1.45;
+}
+pre code { background: transparent; padding: 0; font-size: inherit; }
+table {
+display: block;
+width: 100%;
+overflow: auto;
+border-collapse: collapse;
+}
+th, td {
+border: 1px solid var(--border);
+padding: .5rem .75rem;
+vertical-align: top;
+text-align: left;
+}
+th {
+background: var(--bg-muted);
+font-weight: 600;
+}
+tbody tr:nth-child(2n) { background: var(--bg-muted); }
+hr {
+border: 0;
+height: 1px;
+background: var(--border);
+margin: 2rem 0;
+}
+img { max-width: 100%; height: auto; }
+
+.doc-meta {
+margin: 0 0 2rem;
+padding: .75rem 1rem;
+border: 1px solid var(--border);
+border-radius: 6px;
+background: var(--bg-muted);
+font-size: .9rem;
+color: var(--fg-muted);
+}
+.doc-meta a { font-weight: 500; }
+
+@media print {
+body { max-width: none; padding: 0; color: #000; background: #fff; }
+a { color: #000; text-decoration: underline; }
+pre, code, blockquote { background: #f5f5f5; }
+}
+</style>
+</head>
+<body>
+<div class="doc-meta">Source: <a href="CSW-ISO27001-Compliance-Report.docx">CSW-ISO27001-Compliance-Report.docx</a> · <a href="../index.html">repository index</a></div>
+<header id="title-block-header">
+<h1 class="title">ISO/IEC 27001:2022 — Compliance Report</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#executive-summary" id="toc-executive-summary"><strong>Executive Summary</strong></a>
+<ul>
+<li><a href="#annex-a-control-coverage" id="toc-annex-a-control-coverage"><strong>Annex A Control
+Coverage</strong></a></li>
+</ul></li>
+<li><a href="#new-iso-270012022-controls-csw-alignment" id="toc-new-iso-270012022-controls-csw-alignment"><strong>New ISO
+27001:2022 Controls — CSW Alignment</strong></a></li>
+<li><a href="#isms-evidence-package" id="toc-isms-evidence-package"><strong>ISMS Evidence
+Package</strong></a></li>
+</ul>
+</nav>
+<p><strong>CISCO SECURE WORKLOAD</strong></p>
+<p><strong>ISO 27001:2022 Compliance Framework</strong></p>
+<p>Information Security Management System — Annex A Controls</p>
+<p>Prepared for: [Customer Name]</p>
+<p>Prepared by: Cisco Systems, Inc.</p>
+<p>Date: [Month Year] | Version 1.0 | Cisco Confidential</p>
+<table style="width:60%;">
+<colgroup>
+<col style="width: 59%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><p><strong>Regulatory Standard: ISO/IEC
+27001:2022</strong></p>
+<p>Environment: Hybrid (On-Premises + Cloud)</p>
+<p>Deployment Stage: Fresh Installation</p></td>
+</tr>
+</tbody>
+</table>
+<h1 id="executive-summary"><strong>Executive Summary</strong></h1>
+<p>ISO/IEC 27001:2022 restructured Annex A from 114 controls to 93
+controls across four themes: Organizational, People, Physical, and
+Technological. Cisco Secure Workload (CSW) primarily addresses
+Technological theme controls (A.8) and contributes significantly to
+Organizational controls (A.5) around threat intelligence, incident
+management, and cloud security — including several controls new in the
+2022 revision.</p>
+<p>CSW&#39;s continuous visibility, enforcement, and forensic capabilities
+enable organizations to achieve and maintain ISO 27001:2022
+certification with documented, auditable evidence for each applicable
+control.</p>
+<h2 id="annex-a-control-coverage"><strong>Annex A Control
+Coverage</strong></h2>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 6%" />
+<col style="width: 14%" />
+<col style="width: 17%" />
+<col style="width: 24%" />
+<col style="width: 14%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Theme</strong></td>
+<td style="text-align: center;"><strong>Ref</strong></td>
+<td style="text-align: center;"><strong>Control</strong></td>
+<td style="text-align: center;"><strong>ISO 27001
+Requirement</strong></td>
+<td style="text-align: center;"><strong>CSW Implementation</strong></td>
+<td style="text-align: center;"><strong>Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>A.5 Organizational</strong></td>
+<td style="text-align: center;">A.5.7</td>
+<td style="text-align: center;">Threat Intelligence</td>
+<td style="text-align: center;">Collect and analyze information about
+threats</td>
+<td style="text-align: center;">CVE vulnerability data provides
+threat-informed risk posture across all workloads</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>A.5 Organizational</strong></td>
+<td style="text-align: center;">A.5.23</td>
+<td style="text-align: center;">Cloud Services Security</td>
+<td style="text-align: center;">Establish controls for cloud service
+security</td>
+<td style="text-align: center;">Cloud connectors enforce unified policy
+across AWS, Azure, and GCP workloads</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>A.5 Organizational</strong></td>
+<td style="text-align: center;">A.5.25</td>
+<td style="text-align: center;">Incident Management</td>
+<td style="text-align: center;">Manage information security
+incidents</td>
+<td style="text-align: center;">Forensic telemetry supports root cause
+analysis and incident timeline reconstruction</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>A.5 Organizational</strong></td>
+<td style="text-align: center;">A.5.30</td>
+<td style="text-align: center;">ICT Readiness</td>
+<td style="text-align: center;">Prepare ICT systems for business
+continuity</td>
+<td style="text-align: center;">Policy workspace backup; simulation mode
+for DR testing; redundant sensor architecture</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>A.5 Organizational</strong></td>
+<td style="text-align: center;">A.5.37</td>
+<td style="text-align: center;">Documented Procedures</td>
+<td style="text-align: center;">Document operating procedures for
+information processing</td>
+<td style="text-align: center;">ADM-generated dependency maps serve as
+documented network operating procedures</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>A.8 Technological</strong></td>
+<td style="text-align: center;">A.8.15</td>
+<td style="text-align: center;">Logging</td>
+<td style="text-align: center;">Record events and generate evidence</td>
+<td style="text-align: center;">Full network + process telemetry;
+configurable retention; tamper-resistant storage</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>A.8 Technological</strong></td>
+<td style="text-align: center;">A.8.16</td>
+<td style="text-align: center;">Monitoring Activities</td>
+<td style="text-align: center;">Monitor networks and systems for
+anomalous behavior</td>
+<td style="text-align: center;">Real-time anomaly detection; policy
+violation alerting; SIEM integration</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>A.8 Technological</strong></td>
+<td style="text-align: center;">A.8.19</td>
+<td style="text-align: center;">Software Installation</td>
+<td style="text-align: center;">Control software installation on
+operational systems</td>
+<td style="text-align: center;">Process hash monitoring detects
+unauthorized software installations</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>A.8 Technological</strong></td>
+<td style="text-align: center;">A.8.20</td>
+<td style="text-align: center;">Network Security</td>
+<td style="text-align: center;">Protect networks and network
+devices</td>
+<td style="text-align: center;">Micro-segmentation enforces network
+security at workload level across hybrid environments</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>A.8 Technological</strong></td>
+<td style="text-align: center;">A.8.21</td>
+<td style="text-align: center;">Network Service Security</td>
+<td style="text-align: center;">Secure network services</td>
+<td style="text-align: center;">ADM maps all network services; policy
+enforces approved services only</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>A.8 Technological</strong></td>
+<td style="text-align: center;">A.8.22</td>
+<td style="text-align: center;">Network Segregation</td>
+<td style="text-align: center;">Segregate networks based on information
+classification</td>
+<td style="text-align: center;">Scope-based isolation: PHI, CDE,
+production, development, partner environments</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>A.8 Technological</strong></td>
+<td style="text-align: center;">A.8.23</td>
+<td style="text-align: center;">Web Filtering</td>
+<td style="text-align: center;">Filter access to external websites</td>
+<td style="text-align: center;">Block unauthorized outbound web access
+from sensitive scopes</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>A.8 Technological</strong></td>
+<td style="text-align: center;">A.8.29</td>
+<td style="text-align: center;">Security Testing</td>
+<td style="text-align: center;">Test security during development and
+acceptance</td>
+<td style="text-align: center;">ADM baseline comparison pre/post
+deployment detects new communication paths</td>
+<td style="text-align: center;"><strong>Partial Coverage</strong></td>
+</tr>
+</tbody>
+</table>
+<h1 id="new-iso-270012022-controls-csw-alignment"><strong>New ISO
+27001:2022 Controls — CSW Alignment</strong></h1>
+<p>The following controls are new in the 2022 revision and are directly
+addressed by CSW:</p>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 7%" />
+<col style="width: 36%" />
+<col style="width: 29%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>New Control</strong></td>
+<td style="text-align: center;"><strong>Ref</strong></td>
+<td style="text-align: center;"><strong>CSW Capability</strong></td>
+<td style="text-align: center;"><strong>Maturity
+Contribution</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Threat
+Intelligence</strong></td>
+<td style="text-align: center;">A.5.7</td>
+<td style="text-align: center;">Continuous CVE scanning provides
+workload-level threat intelligence</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Cloud Services
+Security</strong></td>
+<td style="text-align: center;">A.5.23</td>
+<td style="text-align: center;">Cloud connectors enforce policy on
+AWS/Azure/GCP workloads</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>ICT Readiness for
+BC</strong></td>
+<td style="text-align: center;">A.5.30</td>
+<td style="text-align: center;">Policy workspace export for DR;
+simulation mode for BC testing</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Web Filtering</strong></td>
+<td style="text-align: center;">A.8.23</td>
+<td style="text-align: center;">Block unauthorized outbound from
+sensitive scopes</td>
+<td style="text-align: center;"><strong>Full Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Secure Coding</strong></td>
+<td style="text-align: center;">A.8.28</td>
+<td style="text-align: center;">Process hash monitoring detects
+unexpected code execution</td>
+<td style="text-align: center;"><strong>Partial Coverage</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Data Masking</strong></td>
+<td style="text-align: center;">A.8.11</td>
+<td style="text-align: center;">Enforce encrypted paths; detect
+plaintext sensitive data flows</td>
+<td style="text-align: center;"><strong>Partial Coverage</strong></td>
+</tr>
+</tbody>
+</table>
+<h1 id="isms-evidence-package"><strong>ISMS Evidence
+Package</strong></h1>
+<table style="width:93%;">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 24%" />
+<col style="width: 15%" />
+<col style="width: 24%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Evidence Item</strong></td>
+<td style="text-align: center;"><strong>CSW Source</strong></td>
+<td style="text-align: center;"><strong>Annex A Control</strong></td>
+<td style="text-align: center;"><strong>Frequency</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Network security policy
+export</strong></td>
+<td style="text-align: center;">Defend → Policy Workspaces</td>
+<td style="text-align: center;">A.8.20, A.8.22</td>
+<td style="text-align: center;"><strong>Per audit</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Flow telemetry log</strong></td>
+<td style="text-align: center;">Investigate → Flow Search</td>
+<td style="text-align: center;">A.8.15, A.8.16</td>
+<td style="text-align: center;"><strong>Continuous</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Vulnerability / threat
+intelligence</strong></td>
+<td style="text-align: center;">Investigate → Vulnerability</td>
+<td style="text-align: center;">A.5.7</td>
+<td style="text-align: center;"><strong>Weekly</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Anomaly / alert
+log</strong></td>
+<td style="text-align: center;">Alerts → Dashboard</td>
+<td style="text-align: center;">A.8.16</td>
+<td style="text-align: center;"><strong>Monthly</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>ADM application dependency
+map</strong></td>
+<td style="text-align: center;">Investigate → ADM</td>
+<td style="text-align: center;">A.8.21, A.5.37</td>
+<td style="text-align: center;"><strong>Quarterly</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Incident forensic
+export</strong></td>
+<td style="text-align: center;">Investigate → Flow/Process Search</td>
+<td style="text-align: center;">A.5.25</td>
+<td style="text-align: center;"><strong>On-demand</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Cloud workload
+inventory</strong></td>
+<td style="text-align: center;">Manage → Inventory</td>
+<td style="text-align: center;">A.5.23</td>
+<td style="text-align: center;"><strong>Monthly</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Policy change audit
+trail</strong></td>
+<td style="text-align: center;">Policy workspace history</td>
+<td style="text-align: center;">A.8.20</td>
+<td style="text-align: center;"><strong>Per change</strong></td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
