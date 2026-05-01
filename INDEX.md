@@ -5,11 +5,10 @@ Use it to jump from a specific control / requirement / article to the
 runbook section that explains how Cisco Secure Workload (CSW)
 supports evidence for it.
 
-> **Instrumented-workloads caveat.** The tables below summarise what CSW
-> *can* contribute where agents/connectors cover the workload and
-> policies/workflows are authored and enforced as described in each
-> runbook. Rows are not promises of universal visibility (unmanaged hosts,
-> unsupported platforms, and traffic sensors never see remain gaps).
+> **Guidelines.** The tables below summarise typical ways teams discuss
+> Cisco Secure Workload alongside each control. They are reference
+> points, not prescriptions—use professional judgment in your environment
+> and with your assessors.
 
 > **Linking convention.** Most links point to the runbook root rather
 > than a specific anchor — section anchors aren't stable across
@@ -42,7 +41,7 @@ Source: [`HIPAA/CSW-HIPAA-Technical-Runbook.md`](./HIPAA/CSW-HIPAA-Technical-Run
 
 | Citation | Topic | CSW can support evidence for |
 |---|---|---|
-| §164.306(a) | General requirements (admin, physical, technical safeguards) | Inventory (instrumented workloads), segmentation, telemetry baseline |
+| §164.306(a) | General requirements (admin, physical, technical safeguards) | Workload inventory, segmentation, telemetry baseline |
 | §164.308(a)(1)(ii)(A) | Risk analysis | Workload inventory + ADM dependency graph (where monitored) |
 | §164.308(a)(1)(ii)(B) | Risk management | Label/scope segmentation + drift detection |
 | §164.308(a)(1)(ii)(D) | Information system activity review | Flow + process telemetry (exported to SIEM where integrated) |
@@ -66,7 +65,7 @@ Source: [`SOC2/soc2-runbook.md`](./SOC2/soc2-runbook.md)
 | CC6.6 | Restricting access to system resources | Per-process / per-port enforcement |
 | CC6.7 | Restricting movement of information | Egress allow-listing |
 | CC6.8 | Detecting unauthorised software | Process inventory, anomaly rules |
-| CC7.1 | System operations — vulnerability management | CVE / exposure backlog with prioritisation signals (instrumented workloads) |
+| CC7.1 | System operations — vulnerability management | CVE / exposure backlog with prioritisation signals |
 | CC7.2 | System monitoring | Flow + process telemetry, SIEM forwarding |
 | CC7.3 | Incident response | Forensic export + quarantine policy |
 | CC7.4 | Recovery from incidents | Containment evidence + post-recovery diff |
@@ -88,7 +87,7 @@ Source: [`PCI-DSS-v4/pci-runbook.md`](./PCI-DSS-v4/pci-runbook.md)
 | Req 7 | Restrict access by need-to-know | Identity-based workload segmentation |
 | Req 10 | Log and monitor all access | Flow + process telemetry, SIEM export |
 | Req 10.7.2 | Detect failures of critical controls | Sensor offline + enforcement gap alerts |
-| Req 11.3 | Vulnerability scanning | Exposure insight on enrolled workloads — align with Req 11 internal / ASV modalities your QSA expects |
+| Req 11.3 | Vulnerability scanning | Exposure insight from CSW-supported assessments—align with Req 11 internal / ASV modalities your QSA expects |
 | Req 11.4 | Network intrusion detection | Behavioural rules + conversation-graph anomaly |
 | Req 11.5 | Detect changes/alterations | Process / package / configuration drift |
 | Req 12.3.2 | Targeted risk analysis | CSW vulnerability + ADM data feeds risk analysis |
@@ -105,11 +104,11 @@ Source: [`NIST-800-53/nist-runbook.md`](./NIST-800-53/nist-runbook.md)
 | AC-4 | Information flow enforcement | Segmentation by label/scope |
 | AC-6 | Least privilege | Deny-by-default policy + minimal allow |
 | AU-2 / AU-12 | Auditable events | Process + flow telemetry |
-| CA-7 | Continuous monitoring | Recurring enrolment-aligned inventory snapshots + ADM drift signals |
+| CA-7 | Continuous monitoring | Inventory snapshots + ADM drift signalling on whatever cadence you operate |
 | CM-2 | Baseline configuration | Process / package baseline |
 | CM-3 | Configuration change control | Policy diff history |
 | CM-7 | Least functionality | Process + port allow-listing |
-| CM-8 | System component inventory | Instrumented workload inventory (still reconcile with authoritative CMDB / cloud inventories) |
+| CM-8 | System component inventory | Workload inventory reconciled with authoritative CMDB / cloud registers |
 | IR-4 | Incident handling | Quarantine policy + forensic export |
 | RA-5 | Vulnerability monitoring & scanning | Exposure monitoring backlog for workloads CSW observes |
 | SA-11 | Developer testing & evaluation (technical evidence) | Pre-deploy vulnerability gating |
@@ -131,7 +130,7 @@ Source: [`ISO-27001-2022/iso27001-runbook.md`](./ISO-27001-2022/iso27001-runbook
 | A.5.19–A.5.22 | Supplier relationships (technical) | Supplier egress reconciliation |
 | A.5.23 | Information security for cloud services | Cloud-account inventory + segmentation |
 | A.5.30 | ICT readiness for business continuity (technical) | Containment + segmentation evidence |
-| A.8.1 | User endpoint devices (workload portion) | Instrumented server / workload inventory baseline |
+| A.8.1 | User endpoint devices (workload portion) | Server / workload inventory baseline |
 | A.8.8 | Management of technical vulnerabilities | CVE remediation tracking for workloads under observation |
 | A.8.9 | Configuration management | Process / package baseline |
 | A.8.16 | Monitoring activities | Behavioural rules + SIEM forwarding |
@@ -191,11 +190,11 @@ Source: [`NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md`](./NIST-800-207/CS
 
 | Tenet | CSW can support evidence for |
 |---|---|
-| Tenet 1 — All data sources & computing services are resources | Workload/asset inventory where instrumented + cloud connectors authorised |
+| Tenet 1 — All data sources & computing services are resources | Workload/asset inventory plus cloud-account context (configured per your rollout) |
 | Tenet 2 — All communication is secured regardless of network location | Plaintext-protocol DENY as one layer — TLS validation / crypto still owned elsewhere |
 | Tenet 3 — Access to individual resources is granted on a per-session basis | Identity- and label-based segmentation per scope |
 | Tenet 4 — Access is determined by dynamic policy | ADM-informed policy intents + drift/change signals (with human approvals) |
-| Tenet 5 — Enterprise monitors integrity & posture of all assets | Posture telemetry for monitored workloads (packages, CVE, flows — coverage depends on enrolment) |
+| Tenet 5 — Enterprise monitors integrity & posture of all assets | Posture telemetry (packages, CVE, flows)—interpret coverage with judgment |
 | Tenet 6 — All resource authentication & authorisation is dynamic & strictly enforced | Identity-aware segmentation and enforcement at the workload (authn stacks still complementary) |
 | Tenet 7 — Enterprise collects posture information & uses it to improve security | Evidence feeds into SIEM / metrics packs on a cadence you configure |
 
@@ -228,7 +227,7 @@ Source: [`DORA/CSW-DORA-Technical-Runbook.md`](./DORA/CSW-DORA-Technical-Runbook
 |---|---|---|
 | Art. 5 | Management body accountability | Quarterly evidence pack to management body |
 | Art. 6 | ICT risk management framework | Centralised inventory, policy and detection state |
-| Art. 8(1)–(6) | ICT asset inventory | Instrumented workload inventory + ADM dependency graph (reconciled with authoritative registers) |
+| Art. 8(1)–(6) | ICT asset inventory | Workload inventory + ADM dependency graph reconciled with authoritative registers |
 | Art. 9(2)(a) | Network segmentation | Important-business-function scopes, simulation→enforce |
 | Art. 9(2)(b) | Identification of unauthorised activities | ADM drift, conversation-graph anomalies |
 | Art. 9(4)(g) | Continuous review of segmentation | Policy diff reports on an agreed supervisory cadence |
@@ -268,7 +267,7 @@ Source: [`NIS2/CSW-NIS2-Technical-Runbook.md`](./NIS2/CSW-NIS2-Technical-Runbook
 | Art. 21(2)(f) | Effectiveness assessment | Quarterly effectiveness pack |
 | Art. 21(2)(g) | Cyber hygiene + training | Patch & process telemetry (training out of scope) |
 | Art. 21(2)(h) | Cryptography / encryption | Plaintext-protocol DENY (no crypto primitives) |
-| Art. 21(2)(i) | HR sec / access control / asset management | Instrumented inventory + label discipline (asset-mgmt portion) |
+| Art. 21(2)(i) | HR sec / access control / asset management | Inventory + label discipline supporting asset-management evidence |
 | Art. 21(2)(j) | MFA / secured comms | Identity-based segmentation (workload-to-workload analogue) |
 | Art. 23(1) | 24-h early warning | 6-artefact dossier (initial pass) |
 | Art. 23(2) | 72-h notification | Same dossier, progressively complete |
@@ -279,13 +278,13 @@ Source: [`NIS2/CSW-NIS2-Technical-Runbook.md`](./NIS2/CSW-NIS2-Technical-Runbook
 
 ## Reverse Lookup — common CSW capabilities → frameworks
 
-> **“Continuous”.** Rows below use shorthand for tooling that refreshes as
-> often as enrolment + connectors + SOC/SIEM ingestion allow — not literal
-> universality across every host you own.
+> **Guidelines.** *Continuous*, *always-on*, or similar shorthand in mappings
+> reflects typical operating rhythm—calendar it and prioritise refreshes using
+> your team's judgment.
 
-| CSW capability | Frameworks it often supports (with instrumentation / process maturity) |
+| CSW capability | Frameworks it often supports (apply judgment per deployment) |
 |---|---|
-| Instrumented workload inventory | HIPAA §164.308(a)(1)(ii)(A) · PCI Req 2 · NIST CM-8 · ISO A.8.1 · CISA ZTMM Devices · 800-207 Tenet 1 · DORA Art. 8 · NIS2 Art. 21(2)(i) |
+| Workload inventory views | HIPAA §164.308(a)(1)(ii)(A) · PCI Req 2 · NIST CM-8 · ISO A.8.1 · CISA ZTMM Devices · 800-207 Tenet 1 · DORA Art. 8 · NIS2 Art. 21(2)(i) |
 | Workload-level segmentation (allow-list / deny-by-default) | HIPAA §164.312(a)(1) · SOC 2 CC6.1 · PCI Req 1, 7 · NIST AC-3, AC-4, SC-7 · ISO A.8.20–A.8.22 · CISA ZTMM Networks · 800-207 Tenets 3, 6 · 800-207A PEP · DORA Art. 9 · NIS2 Art. 21(2)(a), (j) |
 | ADM (application dependency mapping) | PCI Req 1.2.1 · NIST CA-7, CM-2 · ISO A.8.16 · DORA Art. 8(6) · NIS2 Art. 21(2)(a) |
 | Exposure / vulnerability views + conversational reachability | PCI Req 6.3.3, 11.3 · NIST RA-5, SI-5 · ISO A.8.8 · DORA Art. 25(1) · NIS2 Art. 21(2)(e) |
@@ -306,5 +305,5 @@ by itself constitute compliance with that control or satisfy supervisory filing
 obligations.
 
 Consult each framework runbook plus the disclaimer in [`README.md`](./README.md)
-for supervisory caveats (especially incident-reporting timelines), product
-coverage limits, and out-of-scope notes.
+for supervisory reporting expectations, product coverage considerations,
+and out-of-scope notes.
