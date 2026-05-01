@@ -17,6 +17,13 @@ CSW Incubation Team.
 | FIPS 140 | [pdf](./FIPS-140/CSW-FIPS-Compliance-Report.pdf) | [docx](./FIPS-140/CSW-FIPS-Compliance-Report.docx) | [runbook](./FIPS-140/fips-runbook.md) |
 | NIST SP 800-207 (ZTA Seven Tenets) | [pdf](./NIST-800-207/CSW-NIST-800-207-Compliance-Report.pdf) | [docx](./NIST-800-207/CSW-NIST-800-207-Compliance-Report.docx) | [runbook](./NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md) |
 | NIST SP 800-207A (PDP/PEP/PA/PIP) | [pdf](./NIST-800-207A/CSW-NIST-800-207A-Compliance-Report.pdf) | [docx](./NIST-800-207A/CSW-NIST-800-207A-Compliance-Report.docx) | [runbook](./NIST-800-207A/CSW-NIST-800-207A-Technical-Runbook.md) |
+| DORA (EU 2022/2554) | [pdf](./DORA/CSW-DORA-Compliance-Report.pdf) | [docx](./DORA/CSW-DORA-Compliance-Report.docx) | [runbook](./DORA/CSW-DORA-Technical-Runbook.md) |
+| NIS2 (EU 2022/2555) | [pdf](./NIS2/CSW-NIS2-Compliance-Report.pdf) | [docx](./NIS2/CSW-NIS2-Compliance-Report.docx) | [runbook](./NIS2/CSW-NIS2-Technical-Runbook.md) |
+
+> **Quickly find a control?** See [`INDEX.md`](./INDEX.md) for a
+> control-ID-keyed index across all eleven frameworks (e.g. *PCI Req
+> 1.2*, *HIPAA §164.312(a)(1)*, *DORA Art. 9*, *NIS2 Art. 21(2)(d)*,
+> *NIST AC-4*).
 
 ## How to Use
 
@@ -168,6 +175,7 @@ with your Cisco account team.
 
 ```
 CSW-Compliance-Mapping/
+├── INDEX.md             ← control-ID lookup across all frameworks
 ├── HIPAA/
 ├── SOC2/
 ├── PCI-DSS-v4/
@@ -176,16 +184,18 @@ CSW-Compliance-Mapping/
 ├── CISA-ZeroTrust/
 ├── FIPS-140/
 ├── NIST-800-207/
-└── NIST-800-207A/
+├── NIST-800-207A/
+├── DORA/                ← EU financial sector
+└── NIS2/                ← EU essential & important entities
 ```
 
 ## Disclaimer
 
 The compliance mappings in this repository are derived from public
 standards and regulatory framework documents (HIPAA, SOC 2, PCI DSS,
-NIST SP 800-series, ISO/IEC 27001, CISA ZTMM, and FIPS 140) cross-
-referenced against documented Cisco Secure Workload (CSW) product
-capabilities at the time of authoring.
+NIST SP 800-series, ISO/IEC 27001, CISA ZTMM, FIPS 140, EU DORA, and
+EU NIS2) cross-referenced against documented Cisco Secure Workload
+(CSW) product capabilities at the time of authoring.
 
 These materials are provided for **informational and reference purposes
 only**. They do not constitute legal, regulatory, or audit advice, are

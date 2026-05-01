@@ -172,4 +172,14 @@ CSW UI → Investigate → ADM
 
 ---
 
+## Related Frameworks
+
+- [ISO/IEC 27001:2022](../ISO-27001-2022/iso27001-runbook.md) — the international counterpart for organisations cross-mapping 800-53 to ISO Annex A.
+- [NIST SP 800-207](../NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md) — the ZTA architectural overlay on top of the 800-53 control catalogue.
+- [NIST SP 800-207A](../NIST-800-207A/CSW-NIST-800-207A-Technical-Runbook.md) — the logical-component view that operationalises AC, SI, SC families.
+- [FIPS 140](../FIPS-140/fips-runbook.md) — SC-13 cryptographic-protection requirement for the 800-53 baselines.
+- [HIPAA](../HIPAA/CSW-HIPAA-Technical-Runbook.md) — for healthcare entities that satisfy §164.306 via 800-53 mapping.
+
+---
+
 *Replace [Customer Name] and bracketed fields before customer delivery.*

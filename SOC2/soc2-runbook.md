@@ -174,4 +174,12 @@ CSW UI → Defend → Alerts
 
 ---
 
+## Related Frameworks
+
+- [ISO/IEC 27001:2022](../ISO-27001-2022/iso27001-runbook.md) — the international ISMS counterpart; many organisations pursue SOC 2 + ISO 27001 jointly.
+- [NIST SP 800-53 Rev 5](../NIST-800-53/nist-runbook.md) — for cross-mapping CC-series criteria to a federal control catalogue.
+- [NIST SP 800-207](../NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md) — the ZTA pattern underneath CC6 logical access and CC7 system operations.
+
+---
+
 *Replace [Customer Name] and bracketed fields before customer delivery.*

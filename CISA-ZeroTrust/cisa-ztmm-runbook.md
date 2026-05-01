@@ -178,4 +178,12 @@ Ongoing:    Maturity assessment vs ZTMM scorecard
 
 ---
 
+## Related Frameworks
+
+- [NIST SP 800-207 — ZTA Seven Tenets](../NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md) — the architectural foundation underneath the maturity model.
+- [NIST SP 800-207A — PDP/PEP/PA/PIP](../NIST-800-207A/CSW-NIST-800-207A-Technical-Runbook.md) — the logical-component view that aligns with the ZTMM "Optimal" tier.
+- [NIST SP 800-53 Rev 5](../NIST-800-53/nist-runbook.md) — when CISA ZTMM is being mapped to a federal control baseline.
+
+---
+
 *Replace [Customer Name] and bracketed fields before customer delivery.*

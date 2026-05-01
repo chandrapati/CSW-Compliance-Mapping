@@ -174,4 +174,12 @@ FIPS 140-3 (based on ISO/IEC 19790:2012) replaces 140-2. CSW supports the transi
 
 ---
 
+## Related Frameworks
+
+- [NIST SP 800-53 Rev 5](../NIST-800-53/nist-runbook.md) — SC-13 and the broader cryptographic-control family that requires FIPS-validated modules.
+- [NIST SP 800-207](../NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md) — Tenet 4 (encryption regardless of network location) sits on the same crypto foundation.
+- [ISO/IEC 27001:2022](../ISO-27001-2022/iso27001-runbook.md) — Annex A.8.24 cryptographic controls map to FIPS-validated module use.
+
+---
+
 *Replace [Customer Name] and bracketed fields before customer delivery.*

@@ -380,5 +380,15 @@ For full NIST 800-207 coverage, CSW operates alongside:
 | Continuous improvement | ADM delta report + SIEM feed config | PDF/Config | Quarterly |
 
 ---
+
+## Related Frameworks
+
+- [NIST SP 800-207A — PDP/PEP/PA/PIP](../NIST-800-207A/CSW-NIST-800-207A-Technical-Runbook.md) — the logical-component view that operationalises the seven tenets.
+- [CISA Zero Trust Maturity Model v2.0](../CISA-ZeroTrust/cisa-ztmm-runbook.md) — the maturity-tier view that plots progress against the same architecture.
+- [NIST SP 800-53 Rev 5](../NIST-800-53/nist-runbook.md) — the federal control catalogue most often paired with 800-207 in agency programmes.
+- [DORA (EU 2022/2554)](../DORA/CSW-DORA-Technical-Runbook.md) — DORA's segmentation and continuous-monitoring expectations sit on the same ZTA foundation.
+- [NIS2 (EU 2022/2555)](../NIS2/CSW-NIS2-Technical-Runbook.md) — for EU essential/important entities, ZTA principles directly inform Article 21(2)(a), (b), (j).
+
+---
 *Cisco Confidential — Internal SA/SE Use. Replace [Customer Name] before customer delivery.*
 *For full NIST 800-207 ZTA coverage, pair CSW with Cisco Secure Access, Cisco ISE, and Cisco XDR.*

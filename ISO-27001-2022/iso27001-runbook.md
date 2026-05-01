@@ -157,4 +157,13 @@ ISO 27001 requires a risk treatment plan. CSW data feeds directly into this:
 
 ---
 
+## Related Frameworks
+
+- [NIST SP 800-53 Rev 5](../NIST-800-53/nist-runbook.md) — for organisations cross-mapping ISO 27001 to a US federal control catalogue.
+- [NIS2 (EU 2022/2555)](../NIS2/CSW-NIS2-Technical-Runbook.md) — Article 21(2) measures map closely to ISO 27001 Annex A controls.
+- [DORA (EU 2022/2554)](../DORA/CSW-DORA-Technical-Runbook.md) — financial-sector entities typically certify to ISO 27001 *and* report under DORA.
+- [NIST SP 800-207](../NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md) — the segmentation pattern underneath A.8.20–A.8.23.
+
+---
+
 *Replace [Customer Name] and bracketed fields before customer delivery.*

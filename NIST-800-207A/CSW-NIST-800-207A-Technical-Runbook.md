@@ -495,6 +495,14 @@ Partner access model:
 
 ---
 
+## Related Frameworks
+
+- [NIST SP 800-207 — ZTA Seven Tenets](../NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md) — the architectural prerequisite for 800-207A.
+- [CISA Zero Trust Maturity Model v2.0](../CISA-ZeroTrust/cisa-ztmm-runbook.md) — the maturity-tier view that maps onto the same logical components.
+- [NIST SP 800-53 Rev 5](../NIST-800-53/nist-runbook.md) — AC, SI, SC families that the PDP/PEP/PA/PIP architecture operationalises.
+
+---
+
 *Cisco Confidential — Internal SA/SE Use. Replace [Customer Name] before customer delivery.*  
 *For full NIST 800-207A ZTA coverage, pair CSW with Cisco Secure Access, Cisco ISE, Cisco XDR, and Cisco Talos.*  
 *[DRAFT REF] sections based on NIST SP 800-207A public draft — verify against final publication.*
