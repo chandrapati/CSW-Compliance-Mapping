@@ -1,8 +1,49 @@
 # Cisco Secure Workload — Compliance Mapping Assets
 
-Customer-facing reports and SA/SE technical runbooks mapping Cisco Secure
-Workload (CSW) controls to common compliance frameworks. Created by the
-CSW Incubation Team.
+## What is Cisco Secure Workload?
+
+Cisco Secure Workload (CSW) is a workload-protection and micro-
+segmentation platform that runs *on* your servers, virtual machines
+and containers — wherever they live. A lightweight agent on each
+workload, paired with agentless connectors for AWS, Azure, GCP and
+Kubernetes, gives you four things continuously and from one place:
+
+- **A complete, current inventory** of every workload, every running
+  process, every installed package, and every network conversation —
+  on-prem, in the cloud, and in containers.
+- **An application dependency map** built from observed behaviour, not
+  guessed from a network diagram, so you can see exactly which
+  workloads talk to which, on which ports, with which processes.
+- **Workload-level micro-segmentation** that enforces deny-by-default
+  policy at the workload itself — close to the resource, identity-
+  aware, and consistent across cloud providers.
+- **Continuous vulnerability and behavioural awareness** — every CVE
+  on every workload, every anomalous flow, every drift from the
+  baseline, ready to feed your SIEM and your incident-response
+  process.
+
+In practical terms, CSW collapses several things organisations
+typically run as separate programmes — segmentation reviews, change
+attestation, drift tracking, application-flow documentation,
+vulnerability prioritisation, lateral-movement detection — into a
+single, query-able, evidence-producing system. The same data answers
+the auditor's question this quarter and the incident commander's
+question on a bad afternoon.
+
+This repository explains, framework-by-framework, exactly which
+auditor questions and which incident-response questions that data
+answers — and what artefact you'd hand over in each case.
+
+## About this repository
+
+Customer-facing reports and matching technical runbooks mapping
+Cisco Secure Workload controls to eleven common compliance and
+zero-trust frameworks. Each framework folder contains the same three
+assets: a PDF report (for executive review), a DOCX report (the
+editable master), and a Markdown technical runbook (concrete
+configuration steps and the auditor-response playbook). A single
+`INDEX.md` at the root lets you jump straight from any control ID
+into the runbook section that addresses it.
 
 ## Asset Library
 
@@ -231,9 +272,10 @@ with your Cisco account team.
   `[Customer Name]` and `[Month Year]` placeholders, and tailor the
   Compliance Posture Summary table to the customer's specific scope and
   deployment stage before sharing externally.
-- **Markdown runbooks** — Technical reference for SA/SE engineers and
-  customer practitioners. Includes deployment playbooks, CSW
-  configuration steps, sample policies, and auditor response guidance.
+- **Markdown runbooks** — Technical reference for the security
+  engineers and platform owners doing the work. Includes deployment
+  playbooks, CSW configuration steps, sample policies, and the
+  auditor-response guidance referenced from the report.
 
 ## Folder Structure
 
