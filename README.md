@@ -8,11 +8,6 @@ and containers — wherever they live. A lightweight agent on each
 workload, paired with agentless connectors for AWS, Azure, GCP and
 Kubernetes, gives you four things continuously and from one place:
 
-**Guidelines.** The bullets below describe how teams commonly use Cisco
-Secure Workload. They are not a completeness check for your estate—apply
-professional judgment, align with your assessors, and tailor to how you
-run operations.
-
 - **A complete, current inventory** across hosts and workloads—observed
   processes and packages where the platform surfaces them—and the network
   conversations those workloads participate in across on‑prem and
@@ -357,6 +352,11 @@ Standards evolve, product capabilities change, and the applicability of
 any specific control depends on each organization's environment,
 deployment, and risk posture. Always validate against the latest
 official source documents before formal use.
+
+**Guidelines.** The capability bullets earlier in **What is Cisco Secure
+Workload?** describe how teams commonly use Cisco Secure Workload. They are
+not a completeness check for your estate—apply professional judgment,
+align with your assessors, and tailor to how you run operations.
 
 For questions, scoping discussions, or to validate how these mappings
 apply to your environment, please contact your **Cisco account team**.
