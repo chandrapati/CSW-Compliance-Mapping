@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Cisco Secure Workload — Compliance Mapping Series" />
+  <title>TSA Pipeline Security Directive — Compliance Report</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+:root {
+--fg: #1f2328;
+--fg-muted: #59636e;
+--bg: #ffffff;
+--bg-muted: #f6f8fa;
+--border: #d1d9e0;
+--link: #0969da;
+--link-hover: #0349b4;
+--code-bg: #f6f8fa;
+--accent: #cf222e;
+--max-width: 920px;
+}
+@media (prefers-color-scheme: dark) {
+:root {
+--fg: #e6edf3;
+--fg-muted: #9198a1;
+--bg: #0d1117;
+--bg-muted: #151b23;
+--border: #3d444d;
+--link: #4493f8;
+--link-hover: #6cb6ff;
+--code-bg: #151b23;
+--accent: #ff7b72;
+}
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+margin: 0 auto;
+max-width: var(--max-width);
+padding: 2rem 1.25rem 4rem;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+font-size: 16px;
+line-height: 1.6;
+color: var(--fg);
+background: var(--bg);
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 2rem;
+margin-bottom: 1rem;
+font-weight: 600;
+line-height: 1.25;
+}
+h1 { font-size: 2rem; border-bottom: 1px solid var(--border); padding-bottom: .35rem; }
+h2 { font-size: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: .3rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1rem; }
+h5, h6 { font-size: .875rem; color: var(--fg-muted); }
+p, ul, ol, blockquote, pre, table { margin: 0 0 1rem; }
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+ul, ol { padding-left: 1.6rem; }
+li + li { margin-top: .15rem; }
+blockquote {
+margin: 0 0 1rem;
+padding: .5rem 1rem;
+color: var(--fg-muted);
+border-left: .25rem solid var(--border);
+background: var(--bg-muted);
+border-radius: 0 6px 6px 0;
+}
+code, pre, kbd, samp {
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+font-size: .9em;
+}
+code {
+background: var(--code-bg);
+padding: .15rem .35rem;
+border-radius: 4px;
+}
+pre {
+background: var(--code-bg);
+padding: 1rem;
+border-radius: 6px;
+overflow: auto;
+font-size: .85rem;
+line-height: 1.45;
+}
+pre code { background: transparent; padding: 0; font-size: inherit; }
+table {
+display: block;
+width: 100%;
+overflow: auto;
+border-collapse: collapse;
+}
+th, td {
+border: 1px solid var(--border);
+padding: .5rem .75rem;
+vertical-align: top;
+text-align: left;
+}
+th {
+background: var(--bg-muted);
+font-weight: 600;
+}
+tbody tr:nth-child(2n) { background: var(--bg-muted); }
+hr {
+border: 0;
+height: 1px;
+background: var(--border);
+margin: 2rem 0;
+}
+img { max-width: 100%; height: auto; }
+
+.doc-meta {
+margin: 0 0 2rem;
+padding: .75rem 1rem;
+border: 1px solid var(--border);
+border-radius: 6px;
+background: var(--bg-muted);
+font-size: .9rem;
+color: var(--fg-muted);
+}
+.doc-meta a { font-weight: 500; }
+
+@media print {
+body { max-width: none; padding: 0; color: #000; background: #fff; }
+a { color: #000; text-decoration: underline; }
+pre, code, blockquote { background: #f5f5f5; }
+}
+</style>
+</head>
+<body>
+<div class="doc-meta">Source: <a href="CSW-TSA-Pipeline-Compliance-Report.docx">CSW-TSA-Pipeline-Compliance-Report.docx</a> · <a href="../index.html">repository index</a></div>
+<header id="title-block-header">
+<h1 class="title">TSA Pipeline Security Directive — Compliance
+Report</h1>
+<p class="subtitle">Cisco Secure Workload | IT-Side Mapping for Natural
+Gas and Oil Pipeline Operators</p>
+<p class="author">Cisco Secure Workload — Compliance Mapping Series</p>
+<p class="date">Version 1.0 (draft — pending SME review)</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#table-of-contents" id="toc-table-of-contents">Table of
+Contents</a></li>
+<li><a href="#cisco-secure-workload-tsa-pipeline-security-compliance-mapping" id="toc-cisco-secure-workload-tsa-pipeline-security-compliance-mapping">Cisco
+Secure Workload — TSA Pipeline Security Compliance Mapping</a>
+<ul>
+<li><a href="#how-to-read-this-report" id="toc-how-to-read-this-report">How to read this report</a></li>
+<li><a href="#executive-summary" id="toc-executive-summary">1. Executive
+Summary</a></li>
+<li><a href="#compliance-posture-summary" id="toc-compliance-posture-summary">2. Compliance Posture
+Summary</a></li>
+<li><a href="#mapping-table-tsa-sd-requirement-csw-capability-evidence-artefact" id="toc-mapping-table-tsa-sd-requirement-csw-capability-evidence-artefact">3.
+Mapping Table — TSA SD Requirement → CSW Capability → Evidence
+Artefact</a></li>
+<li><a href="#out-of-scope-and-complementary-controls" id="toc-out-of-scope-and-complementary-controls">4. Out-of-Scope and
+Complementary Controls</a></li>
+<li><a href="#suggested-next-steps" id="toc-suggested-next-steps">5.
+Suggested Next Steps</a></li>
+<li><a href="#disclaimer" id="toc-disclaimer">6. Disclaimer</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 class="TOC-Heading" id="table-of-contents">Table of Contents</h1>
+<h1 id="cisco-secure-workload-tsa-pipeline-security-compliance-mapping">Cisco
+Secure Workload — TSA Pipeline Security Compliance Mapping</h1>
+<h2 id="how-to-read-this-report">How to read this report</h2>
+<p>This report describes how Cisco Secure Workload (CSW) supports a
+TSA-designated pipeline owner/operator’s compliance posture against the
+TSA Security Directive Pipeline-2021-02 series cybersecurity
+requirements on the <strong>IT side</strong> of the IT/OT boundary.</p>
+<p><strong>Scope statement up front.</strong> CSW is a
+workload-protection and segmentation platform for IT estate — servers,
+virtual machines, containers, and cloud workloads. CSW does
+<strong>not</strong> enforce policy on RTUs, flow computers, PLCs, valve
+actuators, or any other Level 0–2 OT device on the pipeline itself.
+CSW’s TSA SD contribution is at the <strong>IT-side of the IT/OT
+boundary</strong> and within the IT systems that support pipeline
+operations — engineering workstations, SCADA jump servers, historian
+databases, MES/EAM systems, vendor remote- access hosts, identity/PKI
+services, and the corporate IT systems that touch Critical Cyber Systems
+on the IT side.</p>
+<p><strong>Companion document.</strong> The accompanying <em>TSA
+Pipeline Technical Runbook</em> walks through deployment, scoping, IT/OT
+segmentation design, access control, continuous monitoring,
+vulnerability management on the IT side, the Cybersecurity Incident
+Response Plan evidence pack, and the Cybersecurity Assessment Plan
+inputs. Read this report for the audit-narrative view; read the runbook
+for the deployment view.</p>
+<p><strong>Note on revision letters.</strong> TSA has revised SD
+Pipeline-2021-02 multiple times (02, 02A, 02B, 02C, 02D, …). The
+substantive controls in the III.A–III.D sections have been stable in
+shape but have been refined in detail. This report is written
+generically to the current effective revision; reconcile against the
+active version on the TSA web site before relying on this document in an
+inspection response.</p>
+<h2 id="executive-summary">1. Executive Summary</h2>
+<p>The TSA Pipeline Security Directive 2021-02 series imposes mandatory
+cybersecurity requirements on TSA-designated Critical Pipeline
+owner/operators in the United States. The directive’s substantive
+cybersecurity content sits in four sections (III.A through III.D) that
+line up cleanly with the IT-side capabilities of a workload- protection
+platform: segmentation, access control, continuous monitoring, and
+reduction of unpatched-system risk.</p>
+<p><strong>What CSW changes for a TSA SD programme:</strong></p>
+<ul>
+<li><strong>Section III.A — IT/OT segmentation evidence.</strong> The
+IT/OT firewall remains your boundary, but CSW enforces deny-by-default
+<em>up to</em> that boundary on the IT side. Undocumented IT pivots
+toward the IT/OT boundary are structurally removed.</li>
+<li><strong>Section III.A — Documented data flows.</strong> CSW provides
+the observed-vs-documented IT→OT flow inventory that lets architecture
+reviews focus on gaps and changes rather than rebuilding the as-is
+picture.</li>
+<li><strong>Section III.B — Access control evidence.</strong>
+Workload-level least- privilege with quarterly access review and sunset
+logs for unused rules.</li>
+<li><strong>Section III.C — Continuous monitoring.</strong> Behavioural
+detections, conversation-graph anomalies, and per-flow telemetry to your
+SIEM, paired with your OT-aware sensor stack for end-to-end
+coverage.</li>
+<li><strong>Section III.D — Unpatched-system risk reduction.</strong>
+Continuous CVE inventory per workload with CVSS, exploit availability,
+and EPSS context; compensating controls registered for delayed
+patches.</li>
+<li><strong>CIRP and CAP evidence.</strong> Six-artefact incident
+reconstruction bundles for your Cybersecurity Incident Response Plan;
+per-section evidence pack supporting the annual Cybersecurity Assessment
+Plan self-assessment.</li>
+</ul>
+<p><strong>What CSW does not change.</strong> CSW does not perform
+Critical Cyber System designation, does not enforce on OT devices, does
+not perform deep packet inspection of OT protocols (DNP3, IEC 61850,
+Modbus, OPC-UA), and does not author the Cybersecurity Architecture
+Design Review or the CIRP. It is the IT-side evidence engine that those
+governance artefacts depend on.</p>
+<h2 id="compliance-posture-summary">2. Compliance Posture Summary</h2>
+<p>The following table summarises CSW’s contribution to each in-scope
+TSA SD requirement. Coverage is rated as:</p>
+<ul>
+<li><strong>Direct</strong> — CSW is the primary technical control or
+evidence source for the requirement on the IT side.</li>
+<li><strong>Supporting</strong> — CSW supplements another control with
+evidence or enforcement that strengthens the inspection response.</li>
+<li><strong>Out of scope</strong> — CSW does not address the
+requirement; relies on other parts of the cyber programme (HR, physical,
+governance, OT controls).</li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>SD Section</th>
+<th>Topic</th>
+<th>Coverage</th>
+<th>CSW contribution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Section I</td>
+<td>Applicability + definitions</td>
+<td>Out of scope</td>
+<td>Regulatory determination</td>
+</tr>
+<tr>
+<td>Section II</td>
+<td>Critical Cyber System identification</td>
+<td>Supporting</td>
+<td>Inventory + scope labelling for CSW-managed workloads supporting
+CCS; cross-reference to your CCS register</td>
+</tr>
+<tr>
+<td>Section II</td>
+<td>Cybersecurity Coordinator role</td>
+<td>Supporting</td>
+<td>Quarterly evidence pack to the Coordinator</td>
+</tr>
+<tr>
+<td>Section III.A</td>
+<td>Network segmentation (IT/OT)</td>
+<td>Direct (IT-side)</td>
+<td>Per-site IT-side enclave segmentation; deny-by-default to IT/OT
+boundary firewall</td>
+</tr>
+<tr>
+<td>Section III.A</td>
+<td>Documented data flows</td>
+<td>Direct (IT-side)</td>
+<td>Observed IT→OT flow inventory + reconciliation against
+architecture</td>
+</tr>
+<tr>
+<td>Section III.B</td>
+<td>Access control measures</td>
+<td>Direct (IT-side)</td>
+<td>Workload-level least-privilege; quarterly access review with sunset
+log</td>
+</tr>
+<tr>
+<td>Section III.C</td>
+<td>Continuous monitoring &amp; detection</td>
+<td>Direct (IT-side)</td>
+<td>Behavioural rules + flow telemetry to SIEM; conversation-graph
+anomalies</td>
+</tr>
+<tr>
+<td>Section III.D</td>
+<td>Unpatched-system risk reduction</td>
+<td>Direct (IT-side)</td>
+<td>Continuous CVE inventory + compensating-control register for delayed
+patches</td>
+</tr>
+<tr>
+<td>Cybersecurity Incident Response Plan</td>
+<td>Plan, test, 24-hour CISA reporting</td>
+<td>Direct (evidence)</td>
+<td>Six-artefact incident reconstruction bundle</td>
+</tr>
+<tr>
+<td>Cybersecurity Assessment Plan (CAP)</td>
+<td>Annual implementation assessment</td>
+<td>Direct (evidence)</td>
+<td>Per-SD-section evidence pack with prior-period delta</td>
+</tr>
+<tr>
+<td>Cybersecurity Architecture Design Review</td>
+<td>Periodic architecture review</td>
+<td>Supporting</td>
+<td>Workload inventory + dependency graph + flow inventory as inputs to
+the review</td>
+</tr>
+<tr>
+<td>Physical security</td>
+<td>Physical access controls</td>
+<td>Out of scope</td>
+<td>Facility / PACS process</td>
+</tr>
+<tr>
+<td>Personnel &amp; training</td>
+<td>HR + training</td>
+<td>Out of scope</td>
+<td>HR / training process</td>
+</tr>
+<tr>
+<td>OT device-layer controls</td>
+<td>RTUs, flow computers, PLCs, IEDs, HMIs</td>
+<td>Out of scope</td>
+<td>OT-aware monitoring stack (Cisco Cyber Vision, Claroty, Nozomi,
+Dragos, etc.)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Posture takeaway.</strong> CSW provides direct IT-side
+coverage for all four substantive cybersecurity sections (III.A through
+III.D), the Cybersecurity Incident Response Plan evidence requirement,
+and the Cybersecurity Assessment Plan self-assessment. It is supporting
+on Section II inventory and architecture review inputs, and explicitly
+out of scope for OT-device-layer controls and physical/HR scope. This is
+consistent with CSW’s positioning as a workload-protection platform: the
+IT side of the SD is where it earns its place.</p>
+<h2 id="mapping-table-tsa-sd-requirement-csw-capability-evidence-artefact">3.
+Mapping Table — TSA SD Requirement → CSW Capability → Evidence
+Artefact</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>CSW capability</th>
+<th>Evidence artefact (audit-ready)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Section II: Critical Cyber System identification</td>
+<td>Workload labelling: <code>ccs_id</code>, <code>ccs_function</code>,
+<code>ot_facing</code>, <code>site</code></td>
+<td>Per-scope inventory CSV with workload identity, OS, owner, CCS
+reference, OT-facing flag, site, last-seen timestamp</td>
+</tr>
+<tr>
+<td>Section II: Cybersecurity Coordinator</td>
+<td>Quarterly evidence pack to the Coordinator</td>
+<td>Standing quarterly report covering §3–§9</td>
+</tr>
+<tr>
+<td>Section III.A: Segmentation policy</td>
+<td>Per-site policy workspace; documented exception list;
+deny-by-default to boundary firewall</td>
+<td>Workspace export per site with simulation→enforcement transition
+log</td>
+</tr>
+<tr>
+<td>Section III.A: IT/OT boundary</td>
+<td>Workload-level deny-by-default for OT-Facing-IT zone</td>
+<td>Quarterly enforcement diff report</td>
+</tr>
+<tr>
+<td>Section III.A: Documented data flows</td>
+<td>Observed IT→OT flow inventory + reconciliation against
+architecture</td>
+<td>IT→OT flow inventory CSV + delta report</td>
+</tr>
+<tr>
+<td>Section III.A: New-flow change control</td>
+<td>Continuous monitoring for new IT→OT edges</td>
+<td>Alert log with disposition column</td>
+</tr>
+<tr>
+<td>Section III.B: Least privilege</td>
+<td>Workload-level identity-aware policy with rule provenance</td>
+<td>Policy export with provenance + last-flow timestamp per rule</td>
+</tr>
+<tr>
+<td>Section III.B: Cadence-based access review</td>
+<td>Quarterly review of allow ruleset; sunset log for stale rules</td>
+<td>Quarterly access review minutes + sunset log</td>
+</tr>
+<tr>
+<td>Section III.C: Behavioural detection</td>
+<td>Out-of-the-box + custom forensic rules tied to CCS function</td>
+<td>Detection rule catalogue with last-modified dates and SD coverage
+mapping</td>
+</tr>
+<tr>
+<td>Section III.C: Anomaly detection</td>
+<td>Conversation-graph anomalies (new edges, port/protocol distribution
+change)</td>
+<td>Anomaly alert log with investigation outcome</td>
+</tr>
+<tr>
+<td>Section III.C: SIEM integration</td>
+<td>Forwarding configuration to Splunk / QRadar / Sentinel / Cisco
+XDR</td>
+<td>SIEM forwarding configuration + sample alert with full forensic
+context</td>
+</tr>
+<tr>
+<td>Section III.C: Detection latency</td>
+<td>Per-CCS-function MTTD report</td>
+<td>Quarterly MTTD trend report</td>
+</tr>
+<tr>
+<td>Section III.D: CVE inventory</td>
+<td>Per-workload CVE list with CVSS, exploit availability, EPSS</td>
+<td>CVE export dated to assessment period, prioritised by CCS
+function</td>
+</tr>
+<tr>
+<td>Section III.D: Compensating controls</td>
+<td>Documented in workload workspace notes; enforced via CSW policy</td>
+<td>Compensating-control register for unpatched-but-mitigated
+workloads</td>
+</tr>
+<tr>
+<td>Section III.D: Patch verification</td>
+<td>Package inventory updates within snapshot cycle after patch</td>
+<td>Diff report showing patched version + automatic CVE drop</td>
+</tr>
+<tr>
+<td>CIRP: Detection and response</td>
+<td>Behavioural rules + quarantine policy + forensic export</td>
+<td>Quarantine policy applied (timestamped) + six-artefact dossier</td>
+</tr>
+<tr>
+<td>CIRP: 24-hour CISA reporting</td>
+<td>Standard incident dossier template</td>
+<td>Per-incident dossier ready to feed CISA submission</td>
+</tr>
+<tr>
+<td>CAP: Annual self-assessment</td>
+<td>Per-SD-section evidence pack with prior-period delta</td>
+<td>Annual CAP binder organised by SD section + Senior Cybersecurity
+Officer sign-off summary</td>
+</tr>
+<tr>
+<td>Cybersecurity Architecture Design Review</td>
+<td>Workload inventory + dependency graph + observed flow inventory</td>
+<td>Pre-review evidence pack feeding the architecture review</td>
+</tr>
+</tbody>
+</table>
+<h2 id="out-of-scope-and-complementary-controls">4. Out-of-Scope and
+Complementary Controls</h2>
+<p>CSW does <strong>not</strong> address the following SD requirements;
+reference the noted complementary controls.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Owner</th>
+<th>Complementary control</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Critical Pipeline designation</td>
+<td>TSA</td>
+<td>Regulatory determination</td>
+</tr>
+<tr>
+<td>Critical Cyber System designation</td>
+<td>Operations Risk + Senior Cybersecurity Officer</td>
+<td>Operational impact analysis</td>
+</tr>
+<tr>
+<td>Cybersecurity Coordinator appointment</td>
+<td>Senior Cybersecurity Officer</td>
+<td>Organisational role assignment</td>
+</tr>
+<tr>
+<td>Physical security at compressor and pump stations</td>
+<td>Facilities + Physical Security</td>
+<td>Site hardening, perimeter, CCTV</td>
+</tr>
+<tr>
+<td>Personnel &amp; background checks</td>
+<td>HR + Senior Cybersecurity Officer</td>
+<td>Background investigation, role-based training</td>
+</tr>
+<tr>
+<td>IT/OT boundary firewall</td>
+<td>Network/Firewall team</td>
+<td>Boundary firewall pair (Cisco Firepower, Palo Alto, Fortinet,
+etc.)</td>
+</tr>
+<tr>
+<td>OT device-layer enforcement (RTUs, flow computers, PLCs, IEDs,
+HMIs)</td>
+<td>OT/Operations</td>
+<td>OT-aware monitoring (Cyber Vision, Claroty, Nozomi, Dragos)</td>
+</tr>
+<tr>
+<td>OT-protocol deep packet inspection (DNP3, IEC 61850, Modbus,
+OPC-UA)</td>
+<td>OT/Operations</td>
+<td>OT-aware sensors at the protocol layer</td>
+</tr>
+<tr>
+<td>Physical-to-cyber blast radius modelling</td>
+<td>Engineering + Operations</td>
+<td>Process safety + cyber-physical risk analysis</td>
+</tr>
+<tr>
+<td>Pipeline operational continuity planning</td>
+<td>Operations + Senior Cybersecurity Officer</td>
+<td>Operational continuity plan execution</td>
+</tr>
+</tbody>
+</table>
+<p>CSW’s role in a complete TSA SD programme is the IT-side
+segmentation, monitoring, and continuous evidence engine. It explicitly
+defers the OT device-layer scope to the appropriate specialised stack
+and the governance / HR / physical scope to the appropriate owners.</p>
+<h2 id="suggested-next-steps">5. Suggested Next Steps</h2>
+<p>For TSA-designated pipeline owner/operators considering CSW within
+their SD programme:</p>
+<ol type="1">
+<li><strong>Confirm CCS inputs.</strong> Validate the Critical Cyber
+System list and the OT-facing IT tier definition before starting CSW
+scope design. CSW labels mirror this taxonomy; bad inputs produce bad
+evidence.</li>
+</ol>
+<ol type="1">
+<li><strong>Pilot on the OT-facing IT tier first.</strong> SCADA jump
+servers, historian/MES, engineering workstations, and vendor-access
+hosts give the highest-value wins (Section III.A IT/OT segmentation,
+Section III.B access control, Section III.C continuous monitoring) with
+the lowest deployment friction.</li>
+<li><strong>Pair with the existing IT/OT firewall.</strong> CSW does not
+replace the IT/OT firewall. Position CSW as the IT-side hardening <em>up
+to</em> the firewall, with the firewall remaining the boundary control
+of record under Section III.A.</li>
+<li><strong>Wire the observed-vs-documented IT→OT flow report into the
+architecture review cycle.</strong> This is the artefact most likely to
+surface stale documentation and undocumented operational flows.</li>
+<li><strong>Tie the compensating-control register to the patch programme
+day one.</strong> The Section III.D requirement is most often missed
+when patches are delayed for operational reasons; the CSW
+compensating-control register is the audit-ready evidence that risk has
+been <em>reduced</em>, not just deferred.</li>
+<li><strong>Use the CAP evidence pack to drive the annual
+self-assessment.</strong> The pack is structured per SD section and
+produces a prior- period delta automatically, which simplifies the
+annual review.</li>
+<li><strong>Plan SME review.</strong> This document is a v1 mapping.
+Before being relied upon in a formal compliance engagement, route to a
+TSA Pipeline cybersecurity specialist for regulatory accuracy and to a
+current Cisco Secure Workload SE for product-capability accuracy.</li>
+</ol>
+<h2 id="disclaimer">6. Disclaimer</h2>
+<p>This report and its companion runbook describe how Cisco Secure
+Workload capabilities can support a TSA Pipeline Security Directive
+cybersecurity programme on the <strong>IT side</strong> of the IT/OT
+boundary. They are <strong>not</strong> legal or regulatory advice and
+do not constitute a finding of compliance.</p>
+<p>Specifically:</p>
+<ul>
+<li>TSA Security Directives are issued and revised by the Transportation
+Security Administration; the active revision letter (02, 02A, 02B, 02C,
+02D, …) and the substantive requirements evolve. Always validate against
+the <strong>current effective revision</strong> available from TSA,
+against your inspector’s current guidance, and against any subsequent
+rulemaking that supersedes the SD.</li>
+<li>Designation as a Critical Pipeline owner/operator is a TSA
+determination. Identification of Critical Cyber Systems, designation of
+the Cybersecurity Coordinator, the design of the Cybersecurity Incident
+Response Plan and the Cybersecurity Assessment Plan, Cybersecurity
+Architecture Design Review decisions, and incident reporting decisions
+remain the responsibility of the owner/ operator’s Senior Cybersecurity
+Officer and qualified compliance counsel.</li>
+<li>CSW does not enforce policy on RTUs, flow computers, PLCs, IEDs,
+HMIs, or any other OT device, and is not certified as an OT- protocol
+deep-packet-inspection or architecture review tool.</li>
+</ul>
+<p>This document should receive subject-matter-expert review for both
+TSA SD regulatory accuracy and current Cisco product capability before
+being used in a customer engagement.</p>
+</body>
+</html>

@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Cisco Secure Workload — Compliance Mapping Series" />
+  <title>NERC CIP (Bulk Electric System) — Compliance Report</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+:root {
+--fg: #1f2328;
+--fg-muted: #59636e;
+--bg: #ffffff;
+--bg-muted: #f6f8fa;
+--border: #d1d9e0;
+--link: #0969da;
+--link-hover: #0349b4;
+--code-bg: #f6f8fa;
+--accent: #cf222e;
+--max-width: 920px;
+}
+@media (prefers-color-scheme: dark) {
+:root {
+--fg: #e6edf3;
+--fg-muted: #9198a1;
+--bg: #0d1117;
+--bg-muted: #151b23;
+--border: #3d444d;
+--link: #4493f8;
+--link-hover: #6cb6ff;
+--code-bg: #151b23;
+--accent: #ff7b72;
+}
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+margin: 0 auto;
+max-width: var(--max-width);
+padding: 2rem 1.25rem 4rem;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+font-size: 16px;
+line-height: 1.6;
+color: var(--fg);
+background: var(--bg);
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 2rem;
+margin-bottom: 1rem;
+font-weight: 600;
+line-height: 1.25;
+}
+h1 { font-size: 2rem; border-bottom: 1px solid var(--border); padding-bottom: .35rem; }
+h2 { font-size: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: .3rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1rem; }
+h5, h6 { font-size: .875rem; color: var(--fg-muted); }
+p, ul, ol, blockquote, pre, table { margin: 0 0 1rem; }
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+ul, ol { padding-left: 1.6rem; }
+li + li { margin-top: .15rem; }
+blockquote {
+margin: 0 0 1rem;
+padding: .5rem 1rem;
+color: var(--fg-muted);
+border-left: .25rem solid var(--border);
+background: var(--bg-muted);
+border-radius: 0 6px 6px 0;
+}
+code, pre, kbd, samp {
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+font-size: .9em;
+}
+code {
+background: var(--code-bg);
+padding: .15rem .35rem;
+border-radius: 4px;
+}
+pre {
+background: var(--code-bg);
+padding: 1rem;
+border-radius: 6px;
+overflow: auto;
+font-size: .85rem;
+line-height: 1.45;
+}
+pre code { background: transparent; padding: 0; font-size: inherit; }
+table {
+display: block;
+width: 100%;
+overflow: auto;
+border-collapse: collapse;
+}
+th, td {
+border: 1px solid var(--border);
+padding: .5rem .75rem;
+vertical-align: top;
+text-align: left;
+}
+th {
+background: var(--bg-muted);
+font-weight: 600;
+}
+tbody tr:nth-child(2n) { background: var(--bg-muted); }
+hr {
+border: 0;
+height: 1px;
+background: var(--border);
+margin: 2rem 0;
+}
+img { max-width: 100%; height: auto; }
+
+.doc-meta {
+margin: 0 0 2rem;
+padding: .75rem 1rem;
+border: 1px solid var(--border);
+border-radius: 6px;
+background: var(--bg-muted);
+font-size: .9rem;
+color: var(--fg-muted);
+}
+.doc-meta a { font-weight: 500; }
+
+@media print {
+body { max-width: none; padding: 0; color: #000; background: #fff; }
+a { color: #000; text-decoration: underline; }
+pre, code, blockquote { background: #f5f5f5; }
+}
+</style>
+</head>
+<body>
+<div class="doc-meta">Source: <a href="CSW-NERC-CIP-Compliance-Report.docx">CSW-NERC-CIP-Compliance-Report.docx</a> · <a href="../index.html">repository index</a></div>
+<header id="title-block-header">
+<h1 class="title">NERC CIP (Bulk Electric System) — Compliance
+Report</h1>
+<p class="subtitle">Cisco Secure Workload | IT-Side Mapping for the Bulk
+Electric System</p>
+<p class="author">Cisco Secure Workload — Compliance Mapping Series</p>
+<p class="date">Version 1.0 (draft — pending SME review)</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#table-of-contents" id="toc-table-of-contents">Table of
+Contents</a></li>
+<li><a href="#cisco-secure-workload-nerc-cip-compliance-mapping" id="toc-cisco-secure-workload-nerc-cip-compliance-mapping">Cisco Secure
+Workload — NERC CIP Compliance Mapping</a>
+<ul>
+<li><a href="#how-to-read-this-report" id="toc-how-to-read-this-report">How to read this report</a></li>
+<li><a href="#executive-summary" id="toc-executive-summary">1. Executive
+Summary</a></li>
+<li><a href="#compliance-posture-summary" id="toc-compliance-posture-summary">2. Compliance Posture
+Summary</a></li>
+<li><a href="#mapping-table-nerc-cip-requirement-csw-capability-evidence-artefact" id="toc-mapping-table-nerc-cip-requirement-csw-capability-evidence-artefact">3.
+Mapping Table — NERC CIP Requirement → CSW Capability → Evidence
+Artefact</a></li>
+<li><a href="#out-of-scope-and-complementary-controls" id="toc-out-of-scope-and-complementary-controls">4. Out-of-Scope and
+Complementary Controls</a></li>
+<li><a href="#suggested-next-steps" id="toc-suggested-next-steps">5.
+Suggested Next Steps</a></li>
+<li><a href="#disclaimer" id="toc-disclaimer">6. Disclaimer</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 class="TOC-Heading" id="table-of-contents">Table of Contents</h1>
+<h1 id="cisco-secure-workload-nerc-cip-compliance-mapping">Cisco Secure
+Workload — NERC CIP Compliance Mapping</h1>
+<h2 id="how-to-read-this-report">How to read this report</h2>
+<p>This report describes how Cisco Secure Workload (CSW) supports a
+Registered Entity’s compliance posture against the NERC Critical
+Infrastructure Protection (CIP) Reliability Standards on the <strong>IT
+side</strong> of the IT/OT boundary.</p>
+<p><strong>Scope statement up front.</strong> CSW is a
+workload-protection and segmentation platform for IT estate — servers,
+virtual machines, containers, and cloud workloads. CSW does
+<strong>not</strong> enforce policy on PLCs, RTUs, relays, IEDs, HMIs,
+or any other Level 0–2 OT device. CSW’s NERC CIP contribution is at the
+<strong>IT-side of the ESP boundary and within the Electronic Access
+Control or Monitoring Systems (EACMS) and Physical Access Control
+Systems (PACS) supporting infrastructure</strong> — jump hosts,
+identity/PKI servers, vendor-access hosts, patch repositories,
+engineering workstations, historian/MES databases, and the corporate IT
+systems that touch BES Cyber System Information (BCSI). For controls
+inside the ESP at the OT device layer, your ICS/SCADA security stack and
+your ESP-boundary firewall arrangement remain the controlling
+artefacts.</p>
+<p><strong>Companion document.</strong> The accompanying <em>NERC CIP
+Technical Runbook</em> walks through deployment, scoping, ESP-boundary
+design, IRA enforcement, CIP-007/010 evidence collection, and CIP-013
+supply- chain visibility on the IT side. Read this report for the audit-
+narrative view; read the runbook for the deployment view.</p>
+<h2 id="executive-summary">1. Executive Summary</h2>
+<p>NERC CIP cybersecurity requirements apply to Registered Entities
+operating the Bulk Electric System in North America. The standards have
+moved decisively since 2020 toward continuous evidence, automated
+configuration baselining, and supply-chain visibility — all areas where
+workload-level segmentation and telemetry produce materially better RSAW
+responses than network-firewall logs alone.</p>
+<p><strong>What CSW changes for a NERC CIP programme:</strong></p>
+<ul>
+<li><strong>CIP-005 R1 IT-side hardening.</strong> The ESP boundary
+firewall remains your EAP, but CSW enforces deny-by-default <em>up
+to</em> that boundary from the corporate IT side. The undocumented-pivot
+risk that has driven several past enforcement actions is structurally
+removed.</li>
+<li><strong>CIP-005 R2 Interactive Remote Access evidence.</strong>
+Per-session flow attribution from the Intermediate System out to the BES
+Cyber Asset, retained for the audit window, with no forensic gaps.</li>
+<li><strong>CIP-007 R1 Ports and Services evidence.</strong>
+Per-workload listening- port inventory with last-observed-flow
+timestamp, cross-referenced to the documented baseline, dated
+quarterly.</li>
+<li><strong>CIP-010 R1.5 Configuration Change Management.</strong> Daily
+diff of installed software and listening ports, with disposition column
+tying back to your change-management ticketing system. Orphan changes
+(CSW-detected but ticket-absent) become unauthorised- change
+candidates.</li>
+<li><strong>CIP-010 R3 Vulnerability Assessments.</strong> Continuous
+CVE inventory per workload with CVSS, exploit-availability, and EPSS
+context; cadence-based exports satisfy R3.1 active VA evidence for High-
+impact assets.</li>
+<li><strong>CIP-013 R1 Supply Chain Risk Management.</strong>
+Vendor-egress observation against your vendor register, with allowlist
+enforcement on EACMS and immediate alerting on new external
+destinations.</li>
+</ul>
+<p><strong>What CSW does not change.</strong> CSW does not perform
+CIP-002 categorisation, does not act as an EAP, does not enforce on OT
+devices, and does not replace the CIP Senior Manager’s accountability
+under CIP-003. It is the IT-side evidence engine that those governance
+artefacts depend on.</p>
+<h2 id="compliance-posture-summary">2. Compliance Posture Summary</h2>
+<p>The following table summarises CSW’s contribution to each in-scope
+NERC CIP standard. Coverage is rated as:</p>
+<ul>
+<li><strong>Direct</strong> — CSW is the primary technical control or
+evidence source for the requirement on the IT side.</li>
+<li><strong>Supporting</strong> — CSW supplements another control with
+evidence or enforcement that strengthens the audit response.</li>
+<li><strong>Out of scope</strong> — CSW does not address the
+requirement; relies on other parts of the cyber programme (HR, physical,
+governance, OT controls).</li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Standard</th>
+<th>Topic</th>
+<th>Coverage</th>
+<th>CSW contribution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CIP-002</td>
+<td>BES Cyber System Categorisation</td>
+<td>Supporting</td>
+<td>Inventory + scope labelling for CSW-managed workloads in the EACMS /
+PACS-supporting / BCSI-host tier; cross-reference to your CIP-002
+register</td>
+</tr>
+<tr>
+<td>CIP-003</td>
+<td>Security Management Controls</td>
+<td>Supporting</td>
+<td>Quarterly evidence pack to the CIP Senior Manager covering
+CIP-005/007/010/013 IT-side outputs</td>
+</tr>
+<tr>
+<td>CIP-004</td>
+<td>Personnel &amp; Training</td>
+<td>Out of scope</td>
+<td>HR/training process</td>
+</tr>
+<tr>
+<td>CIP-005 R1</td>
+<td>Electronic Security Perimeter</td>
+<td>Direct (IT-side)</td>
+<td>Per-facility IT-side enclave segmentation; deny-by-default from
+corporate IT to EAP-IP set; documented exception list</td>
+</tr>
+<tr>
+<td>CIP-005 R2</td>
+<td>Interactive Remote Access</td>
+<td>Direct (IT-side)</td>
+<td>Intermediate-system enforcement; per-session flow telemetry; weekly
+IRA-pattern report</td>
+</tr>
+<tr>
+<td>CIP-006</td>
+<td>Physical Security</td>
+<td>Out of scope</td>
+<td>Physical / PACS process</td>
+</tr>
+<tr>
+<td>CIP-007 R1</td>
+<td>Ports and Services</td>
+<td>Direct</td>
+<td>Per-workload listening-port inventory with last-flow timestamp;
+quarterly evidence pack</td>
+</tr>
+<tr>
+<td>CIP-007 R2</td>
+<td>Patch Management</td>
+<td>Supporting</td>
+<td>Continuous CVE inventory feeds the patch programme; CSW does not
+deploy patches</td>
+</tr>
+<tr>
+<td>CIP-007 R3</td>
+<td>Malicious Code Prevention</td>
+<td>Direct (IT-side)</td>
+<td>Behavioural rules + simulation→enforcement progression; layered with
+endpoint AV</td>
+</tr>
+<tr>
+<td>CIP-007 R4</td>
+<td>Security Event Monitoring</td>
+<td>Direct (IT-side)</td>
+<td>Process + flow telemetry to SIEM with documented retention</td>
+</tr>
+<tr>
+<td>CIP-008</td>
+<td>Incident Reporting and Response</td>
+<td>Direct (evidence)</td>
+<td>Six-artefact reconstruction bundle for every incident; supports
+E-ISAC notification under R4</td>
+</tr>
+<tr>
+<td>CIP-009</td>
+<td>Recovery Plans</td>
+<td>Supporting</td>
+<td>Policy and baseline export for DR; not the recovery executor
+itself</td>
+</tr>
+<tr>
+<td>CIP-010 R1</td>
+<td>Configuration Baseline</td>
+<td>Direct</td>
+<td>Daily software + listening-port baseline with diff and
+disposition</td>
+</tr>
+<tr>
+<td>CIP-010 R3</td>
+<td>Vulnerability Assessments</td>
+<td>Direct</td>
+<td>Continuous CVE inventory; cadence-based active-VA evidence for
+High-impact assets</td>
+</tr>
+<tr>
+<td>CIP-011</td>
+<td>Information Protection (BCSI)</td>
+<td>Supporting</td>
+<td>Egress and access pattern monitoring on BCSI-host workloads; layered
+with DLP and identity controls</td>
+</tr>
+<tr>
+<td>CIP-013</td>
+<td>Supply Chain Risk Management</td>
+<td>Direct (technical lens)</td>
+<td>Vendor-egress observation, register reconciliation, EACMS
+allowlisting</td>
+</tr>
+<tr>
+<td>CIP-014</td>
+<td>Physical Security (transmission)</td>
+<td>Out of scope</td>
+<td>Physical / CCTV scope</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Posture takeaway.</strong> CSW provides direct coverage on
+six of the fourteen standards (CIP-005, CIP-007, CIP-008, CIP-010,
+CIP-013) on the IT side, supporting evidence on three more, and is
+structurally out of scope on the remaining five (HR, physical,
+OT-device-layer controls). This is consistent with CSW’s positioning as
+a workload- protection platform: it does the IT-side jobs well and
+explicitly defers OT-device and physical/HR scope to the appropriate
+owners.</p>
+<h2 id="mapping-table-nerc-cip-requirement-csw-capability-evidence-artefact">3.
+Mapping Table — NERC CIP Requirement → CSW Capability → Evidence
+Artefact</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>CSW capability</th>
+<th>Evidence artefact (audit-ready)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CIP-002 R1 (BCS identification)</td>
+<td>Workload labelling: <code>bes_impact</code>, <code>bes_role</code>,
+<code>bcs_id</code>, <code>esp_member</code>, <code>facility</code></td>
+<td>Per-scope inventory CSV with workload identity, OS, owner, BCS
+reference, ESP membership flag, last-seen timestamp</td>
+</tr>
+<tr>
+<td>CIP-005 R1.1 (ESP boundary documentation)</td>
+<td>Per-facility policy workspace; documented exception list;
+deny-by-default to EAP-IP set</td>
+<td>Workspace export per facility with simulation→enforcement transition
+log</td>
+</tr>
+<tr>
+<td>CIP-005 R1.2 (ESP applicability)</td>
+<td>Scope membership snapshot for each ESP</td>
+<td>Dated CSV of every workload tagged <code>esp_member=true</code></td>
+</tr>
+<tr>
+<td>CIP-005 R1.5 (boundary control review)</td>
+<td>Quarterly enforcement diff report</td>
+<td>Diff PDF/CSV delivered to the CIP Senior Manager</td>
+</tr>
+<tr>
+<td>CIP-005 R2 (Interactive Remote Access)</td>
+<td>Intermediate-system enforcement policy; weekly IRA-flow report</td>
+<td>Per-session flow telemetry export; IRA-pattern report dated within
+audit window</td>
+</tr>
+<tr>
+<td>CIP-007 R1.1 (Ports and Services baseline)</td>
+<td>Per-workload listening-port inventory with process attribution and
+last-flow timestamp</td>
+<td>Quarterly listening-port inventory export per workload</td>
+</tr>
+<tr>
+<td>CIP-007 R1.2 (CIP Exceptional Circumstances)</td>
+<td>Documented exceptions in the workspace notes; flow-log evidence of
+exception usage</td>
+<td>Exception register with CSW-observed enforcement evidence</td>
+</tr>
+<tr>
+<td>CIP-007 R3 (Malicious Code Prevention)</td>
+<td>Behavioural rule catalogue; simulation→enforce progression</td>
+<td>Rule catalogue with last-modified dates and CIP coverage
+mapping</td>
+</tr>
+<tr>
+<td>CIP-007 R4 (Security Event Monitoring)</td>
+<td>Process + flow telemetry forwarded to SIEM with retention</td>
+<td>SIEM forwarding configuration; sample alert with full forensic
+context</td>
+</tr>
+<tr>
+<td>CIP-008 R1 (Incident response plan)</td>
+<td>Standard six-artefact reconstruction bundle template</td>
+<td>Sample dossier from the audit window</td>
+</tr>
+<tr>
+<td>CIP-008 R2 (Implementation testing)</td>
+<td>CSW-driven tabletop reachability queries</td>
+<td>Pre/post reachability reports for each test</td>
+</tr>
+<tr>
+<td>CIP-010 R1.1.1 (OS/firmware baseline)</td>
+<td>Daily OS + kernel snapshot per workload</td>
+<td>Baseline export dated to the period</td>
+</tr>
+<tr>
+<td>CIP-010 R1.1.2–R1.1.3 (software baseline)</td>
+<td>Daily package list snapshot per workload</td>
+<td>Baseline export with package + version</td>
+</tr>
+<tr>
+<td>CIP-010 R1.1.4 (network-accessible ports baseline)</td>
+<td>Daily listening-port snapshot</td>
+<td>Baseline export with port + bound process</td>
+</tr>
+<tr>
+<td>CIP-010 R1.1.5 (security patches)</td>
+<td>Continuous CVE inventory tied to package versions</td>
+<td>CVE export with patch-applied-by date</td>
+</tr>
+<tr>
+<td>CIP-010 R1.5 (unauthorised change monitoring)</td>
+<td>Daily diff vs. previous day with disposition column</td>
+<td>Diff log with authorised/unauthorised flag tied to change
+ticket</td>
+</tr>
+<tr>
+<td>CIP-010 R3.1 (active vulnerability assessment)</td>
+<td>Per-workload CVE list with CVSS, exploit availability, EPSS</td>
+<td>Cadence-based export per impact rating</td>
+</tr>
+<tr>
+<td>CIP-010 R3.2 (pre-commissioning VA)</td>
+<td>First-sighting CVE inventory before ESP connection</td>
+<td>Pre-commissioning VA report per new asset</td>
+</tr>
+<tr>
+<td>CIP-011 R1.1 (BCSI access controls)</td>
+<td>Egress and access pattern monitoring on
+<code>bes_role=bcsi-host</code> workloads</td>
+<td>BCSI-host inventory + anomaly alert log with disposition</td>
+</tr>
+<tr>
+<td>CIP-011 R1.2 (BCSI in third-party storage)</td>
+<td>CSW Cloud Connector coverage of cloud BCSI targets</td>
+<td>Cloud inventory + access pattern report</td>
+</tr>
+<tr>
+<td>CIP-013 R1.2.5 (vendor remote access)</td>
+<td>EACMS egress allowlist scoped to vendor register</td>
+<td>Allowlist policy export + observed-vs-register delta</td>
+</tr>
+<tr>
+<td>CIP-013 R1.2.6 (vendor incident coordination)</td>
+<td>Vendor-egress flow record for any incident window</td>
+<td>Per-incident vendor flow extract</td>
+</tr>
+</tbody>
+</table>
+<h2 id="out-of-scope-and-complementary-controls">4. Out-of-Scope and
+Complementary Controls</h2>
+<p>CSW does <strong>not</strong> address the following CIP requirements;
+reference the noted complementary controls.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Owner</th>
+<th>Complementary control</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CIP-002 categorisation decision</td>
+<td>CIP Senior Manager + Asset Owners</td>
+<td>Risk + engineering analysis against Attachment 1 thresholds</td>
+</tr>
+<tr>
+<td>CIP-003 governance</td>
+<td>CIP Senior Manager</td>
+<td>Programme charter, policy library, training records</td>
+</tr>
+<tr>
+<td>CIP-004 personnel</td>
+<td>HR + CIP Senior Manager</td>
+<td>Background checks, role-based training, access reviews</td>
+</tr>
+<tr>
+<td>CIP-005 EAP enforcement</td>
+<td>Network/Firewall team</td>
+<td>Boundary firewall pair (Cisco Firepower, Palo Alto, Fortinet,
+etc.)</td>
+</tr>
+<tr>
+<td>CIP-006 physical security</td>
+<td>Facilities + Physical Security</td>
+<td>PSP enclosure, badge access, CCTV</td>
+</tr>
+<tr>
+<td>CIP-007 R5 system access controls</td>
+<td>Identity/PAM team</td>
+<td>AD/LDAP, PAM (CyberArk, BeyondTrust), MFA</td>
+</tr>
+<tr>
+<td>CIP-009 active recovery</td>
+<td>Backup + DR team</td>
+<td>Backup product, DR plan execution</td>
+</tr>
+<tr>
+<td>CIP-014 transmission physical security</td>
+<td>Physical Security</td>
+<td>Site hardening, vehicle barriers, hardened control house</td>
+</tr>
+<tr>
+<td>OT device-layer enforcement (PLCs, IEDs, HMIs)</td>
+<td>OT/ICS team</td>
+<td>OT-aware monitoring (Cyber Vision, Claroty, Nozomi, Dragos)</td>
+</tr>
+<tr>
+<td>OT-protocol deep packet inspection (DNP3, IEC 61850, Modbus)</td>
+<td>OT/ICS team</td>
+<td>OT-aware sensors at the protocol layer</td>
+</tr>
+</tbody>
+</table>
+<p>CSW’s role in a complete NERC CIP programme is the IT-side
+segmentation, EACMS hardening, and continuous evidence engine. It
+explicitly defers the OT device-layer scope to the appropriate
+specialised stack and the governance / HR / physical scope to the
+appropriate owners.</p>
+<h2 id="suggested-next-steps">5. Suggested Next Steps</h2>
+<p>For Registered Entities considering CSW within their NERC CIP
+programme:</p>
+<ol type="1">
+<li><strong>Confirm CIP-002 inputs.</strong> Validate the BCS impact
+ratings and the EACMS / PACS-supporting / BCSI-host tier definition
+before starting CSW scope design. CSW labels mirror this taxonomy; bad
+inputs produce bad evidence.</li>
+</ol>
+<ol type="1">
+<li><strong>Pilot on the EACMS tier first.</strong> Jump hosts,
+vendor-access hosts, AD, PKI, and patch repositories give the
+highest-value wins (CIP-005 R1 IT-side, CIP-005 R2 IRA evidence, CIP-007
+R1 ports inventory) with the lowest deployment friction.</li>
+<li><strong>Pair with the existing EAP firewall pair.</strong> CSW does
+not replace the EAP. Position CSW as the IT-side hardening <em>up
+to</em> the EAP, with the EAP itself remaining the boundary control of
+record under CIP-005 R1.</li>
+<li><strong>Wire the CIP-010 R1.5 unauthorised-change feed into your
+ticketing system day one.</strong> The orphan-change report is one of
+the most asked-for artefacts during RSAW evidence requests, and CSW
+produces it automatically.</li>
+<li><strong>Tie the CIP-013 vendor-egress allowlist to your supplier
+onboarding workflow.</strong> Adding CSW allowlist updates as a step in
+vendor onboarding closes the most common audit gap (vendor endpoint
+observed but not in the register).</li>
+<li><strong>Plan SME review.</strong> This document is a v1 mapping.
+Before being relied upon in a formal compliance engagement, route to a
+NERC CIP compliance specialist for regulatory accuracy and to a current
+Cisco Secure Workload SE for product-capability accuracy.</li>
+</ol>
+<h2 id="disclaimer">6. Disclaimer</h2>
+<p>This report and its companion runbook describe how Cisco Secure
+Workload capabilities can support a NERC CIP cybersecurity programme on
+the <strong>IT side</strong> of the IT/OT boundary. They are
+<strong>not</strong> legal or regulatory advice and do not constitute a
+finding of compliance.</p>
+<p>Specifically:</p>
+<ul>
+<li>Final identification and categorisation of BES Cyber Systems
+(CIP-002), the design of ESP and EAP arrangements (CIP-005),
+determination of impact ratings (Attachment 1), CIP-008 reportable Cyber
+Security Incident decisions (R4), and the formal RSAW audit response
+remain the responsibility of the Registered Entity’s CIP Senior Manager
+and qualified compliance counsel, working with the applicable Regional
+Entity (WECC, NPCC, RF, SERC, TRE, MRO).</li>
+<li>CSW does not enforce policy on PLCs, RTUs, IEDs, HMIs, or any other
+Level 0–2 OT device, and is not certified as an Electronic Access Point
+(EAP).</li>
+<li>Cisco product capabilities, NERC standards effective revisions, and
+Regional Entity audit guidance evolve. Always validate against the
+current effective revision of each CIP standard published on the NERC
+web site, against your Regional Entity’s current audit guidance, and
+against any FERC orders amending applicability or compliance dates.</li>
+</ul>
+<p>This document should receive subject-matter-expert review for both
+NERC CIP regulatory accuracy and current Cisco product capability before
+being used in a customer engagement.</p>
+</body>
+</html>

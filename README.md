@@ -64,13 +64,13 @@ answers — and what artefact you'd hand over in each case.
 ## About this repository
 
 Customer-facing reports and matching technical runbooks mapping
-Cisco Secure Workload controls to eleven common compliance and
-zero-trust frameworks. Each framework folder contains the same three
-assets: a PDF report (for executive review), a DOCX report (the
-editable master), and a Markdown technical runbook (concrete
-configuration steps and the auditor-response playbook). A single
-`INDEX.md` at the root lets you jump straight from any control ID
-into the runbook section that addresses it.
+Cisco Secure Workload controls to thirteen common compliance,
+sector, and zero-trust frameworks. Each framework folder contains
+the same three assets: a PDF report (for executive review), a DOCX
+report (the editable master), and a Markdown technical runbook
+(concrete configuration steps and the auditor-response playbook). A
+single `INDEX.md` at the root lets you jump straight from any
+control ID into the runbook section that addresses it.
 
 **Licensing.** This repository ships with Cisco's standard terms in
 [`LICENSE`](./LICENSE) at the repo root — read before redistributing,
@@ -100,6 +100,23 @@ Markdown depending on how you want to read or share the asset.
 | NIST SP 800-207A (PDP/PEP/PA/PIP, draft-derived) | CSW Defend as PDP/PEP; telemetry as PIP; logical-component traceability for cloud-native ZTA | <details><summary>Choose format</summary><br>[Markdown](./NIST-800-207A/CSW-NIST-800-207A-Technical-Runbook.md) · [HTML](./NIST-800-207A/CSW-NIST-800-207A-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./NIST-800-207A/CSW-NIST-800-207A-Compliance-Report.pdf) · [DOCX](./NIST-800-207A/CSW-NIST-800-207A-Compliance-Report.docx) · [HTML](./NIST-800-207A/CSW-NIST-800-207A-Compliance-Report.html)</details> |
 | DORA (EU 2022/2554) | Art. 8/9 segmentation + inventory; Art. 19 incident dossier templates; Art. 28 third-party egress reconciliation | <details><summary>Choose format</summary><br>[Markdown](./DORA/CSW-DORA-Technical-Runbook.md) · [HTML](./DORA/CSW-DORA-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./DORA/CSW-DORA-Compliance-Report.pdf) · [DOCX](./DORA/CSW-DORA-Compliance-Report.docx) · [HTML](./DORA/CSW-DORA-Compliance-Report.html)</details> |
 | NIS2 (EU 2022/2555) | Art. 21(2)(a–j) risk-management mapping; Art. 23 24 h / 72 h / 1-month dossier; Art. 21(2)(d) supply-chain egress | <details><summary>Choose format</summary><br>[Markdown](./NIS2/CSW-NIS2-Technical-Runbook.md) · [HTML](./NIS2/CSW-NIS2-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./NIS2/CSW-NIS2-Compliance-Report.pdf) · [DOCX](./NIS2/CSW-NIS2-Compliance-Report.docx) · [HTML](./NIS2/CSW-NIS2-Compliance-Report.html)</details> |
+| NERC CIP (Bulk Electric System) | IT-side ESP boundary hardening (CIP-005 R1); IRA evidence (CIP-005 R2); CIP-007/010 ports + baseline + VA evidence; CIP-013 vendor-egress reconciliation. *IT-side scope; OT device layer out of scope.* | <details><summary>Choose format</summary><br>[Markdown](./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.md) · [HTML](./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./NERC-CIP/CSW-NERC-CIP-Compliance-Report.pdf) · [DOCX](./NERC-CIP/CSW-NERC-CIP-Compliance-Report.docx) · [HTML](./NERC-CIP/CSW-NERC-CIP-Compliance-Report.html)</details> |
+| TSA Pipeline Security Directive | IT-side IT/OT segmentation (Section III.A); access control + monitoring (III.B/III.C); unpatched-system risk reduction (III.D); CIRP + CAP evidence packs. *IT-side scope; OT device layer out of scope.* | <details><summary>Choose format</summary><br>[Markdown](./TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.md) · [HTML](./TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./TSA-Pipeline/CSW-TSA-Pipeline-Compliance-Report.pdf) · [DOCX](./TSA-Pipeline/CSW-TSA-Pipeline-Compliance-Report.docx) · [HTML](./TSA-Pipeline/CSW-TSA-Pipeline-Compliance-Report.html)</details> |
+
+> **Sector frameworks scope note (NERC CIP, TSA Pipeline).** Both
+> frameworks are sector overlays whose substantive controls overlap
+> heavily with the NIST families already in this library. The CSW
+> mapping is on the **IT side** of the IT/OT boundary — EACMS, jump
+> hosts, vendor-access servers, engineering workstations, historians,
+> identity/PKI, and the corporate IT systems that touch BES Cyber
+> System Information or pipeline Critical Cyber Systems. CSW does
+> **not** enforce on PLCs/RTUs/IEDs/HMIs and is not certified as an
+> Electronic Access Point (NERC) or as an OT-protocol DPI tool;
+> pair with your boundary firewall and your OT-aware monitoring
+> stack (Cisco Cyber Vision, Claroty, Nozomi, Dragos) for end-to-end
+> coverage. Both runbooks and reports are **draft v1** and require
+> SME review before being relied upon in a formal compliance
+> engagement.
 
 **Runbook vs. Report — when to use which.**
 
@@ -125,9 +142,9 @@ Once GitHub Pages is enabled, the same HTML is also at
 [`index.html`](./index.html)).
 
 > **Quickly find a control?** See [`INDEX.md`](./INDEX.md) for a
-> control-ID-keyed index across all eleven frameworks (e.g. *PCI Req
-> 1.2*, *HIPAA §164.312(a)(1)*, *DORA Art. 9*, *NIS2 Art. 21(2)(d)*,
-> *NIST AC-4*).
+> control-ID-keyed index across all thirteen frameworks (e.g. *PCI
+> Req 1.2*, *HIPAA §164.312(a)(1)*, *DORA Art. 9*, *NIS2 Art.
+> 21(2)(d)*, *NIST AC-4*, *NERC CIP-005 R1*, *TSA SD Section III.A*).
 
 ## How to Use
 
@@ -261,8 +278,8 @@ time:
 
 1. **Open the framework that's actually on your roadmap.** The one tied
    to a current audit, a customer contractual ask, or board-level
-   pressure. Skimming all eleven will dilute the signal — pick one and
-   stay with it.
+   pressure. Skimming all thirteen will dilute the signal — pick one
+   and stay with it.
 2. **Start with the technical runbook (`*-Technical-Runbook.md` in the
    same folder).** It shows the *how*: sensor deployment phases, policy
    patterns, evidence collection cadence, and what an auditor will
@@ -363,16 +380,27 @@ CSW-Compliance-Mapping/
 ├── NIST-800-207/
 ├── NIST-800-207A/
 ├── DORA/                ← EU financial sector
-└── NIS2/                ← EU essential & important entities
+├── NIS2/                ← EU essential & important entities
+├── NERC-CIP/            ← North American bulk electric system (IT side)
+└── TSA-Pipeline/        ← TSA-designated natural gas / oil pipelines (IT side)
 ```
 
 ## Disclaimer
 
 The compliance mappings in this repository are derived from public
 standards and regulatory framework documents (HIPAA, SOC 2, PCI DSS,
-NIST SP 800-series, ISO/IEC 27001, CISA ZTMM, FIPS 140, EU DORA, and
-EU NIS2) cross-referenced against documented Cisco Secure Workload
-(CSW) product capabilities at the time of authoring.
+NIST SP 800-series, ISO/IEC 27001, CISA ZTMM, FIPS 140, EU DORA,
+EU NIS2, NERC CIP, and TSA Pipeline Security Directives) cross-
+referenced against documented Cisco Secure Workload (CSW) product
+capabilities at the time of authoring.
+
+The **NERC CIP** and **TSA Pipeline** mappings are explicitly scoped
+to the **IT side of the IT/OT boundary** and are issued as **draft
+v1**. They require subject-matter-expert review for both regulatory
+accuracy and current Cisco product capability before being relied
+upon in a formal compliance engagement. Treat them as sector
+overlays on the underlying NIST family rather than as standalone
+audit references.
 
 These materials are provided for **informational and reference purposes
 only**. They do not constitute legal, regulatory, or audit advice, are

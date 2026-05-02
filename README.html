@@ -362,13 +362,13 @@ auditor questions and which incident-response questions that data
 answers — and what artefact you’d hand over in each case.</p>
 <h2 id="about-this-repository">About this repository</h2>
 <p>Customer-facing reports and matching technical runbooks mapping Cisco
-Secure Workload controls to eleven common compliance and zero-trust
-frameworks. Each framework folder contains the same three assets: a PDF
-report (for executive review), a DOCX report (the editable master), and
-a Markdown technical runbook (concrete configuration steps and the
-auditor-response playbook). A single <code>INDEX.md</code> at the root
-lets you jump straight from any control ID into the runbook section that
-addresses it.</p>
+Secure Workload controls to thirteen common compliance, sector, and
+zero-trust frameworks. Each framework folder contains the same three
+assets: a PDF report (for executive review), a DOCX report (the editable
+master), and a Markdown technical runbook (concrete configuration steps
+and the auditor-response playbook). A single <code>INDEX.md</code> at
+the root lets you jump straight from any control ID into the runbook
+section that addresses it.</p>
 <p><strong>Licensing.</strong> This repository ships with Cisco’s
 standard terms in <a href="./LICENSE"><code>LICENSE</code></a> at the
 repo root — read before redistributing, forking commercially, or
@@ -476,8 +476,42 @@ templates; Art. 28 third-party egress reconciliation</td>
 <td></td>
 <td></td>
 </tr>
+<tr>
+<td>NERC CIP (Bulk Electric System)</td>
+<td>IT-side ESP boundary hardening (CIP-005 R1); IRA evidence (CIP-005
+R2); CIP-007/010 ports + baseline + VA evidence; CIP-013 vendor-egress
+reconciliation. <em>IT-side scope; OT device layer out of
+scope.</em></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>TSA Pipeline Security Directive</td>
+<td>IT-side IT/OT segmentation (Section III.A); access control +
+monitoring (III.B/III.C); unpatched-system risk reduction (III.D); CIRP
++ CAP evidence packs. <em>IT-side scope; OT device layer out of
+scope.</em></td>
+<td></td>
+<td></td>
+</tr>
 </tbody>
 </table>
+<blockquote>
+<p><strong>Sector frameworks scope note (NERC CIP, TSA
+Pipeline).</strong> Both frameworks are sector overlays whose
+substantive controls overlap heavily with the NIST families already in
+this library. The CSW mapping is on the <strong>IT side</strong> of the
+IT/OT boundary — EACMS, jump hosts, vendor-access servers, engineering
+workstations, historians, identity/PKI, and the corporate IT systems
+that touch BES Cyber System Information or pipeline Critical Cyber
+Systems. CSW does <strong>not</strong> enforce on PLCs/RTUs/IEDs/HMIs
+and is not certified as an Electronic Access Point (NERC) or as an
+OT-protocol DPI tool; pair with your boundary firewall and your OT-aware
+monitoring stack (Cisco Cyber Vision, Claroty, Nozomi, Dragos) for
+end-to-end coverage. Both runbooks and reports are <strong>draft
+v1</strong> and require SME review before being relied upon in a formal
+compliance engagement.</p>
+</blockquote>
 <p><strong>Runbook vs. Report — when to use which.</strong></p>
 <ul>
 <li><strong>Runbook</strong> is the technical foundation everything else
@@ -505,9 +539,10 @@ also at
 (landing page: <a href="./index.html"><code>index.html</code></a>).</p>
 <blockquote>
 <p><strong>Quickly find a control?</strong> See <a href="./INDEX.html"><code>INDEX.md</code></a> for a control-ID-keyed index
-across all eleven frameworks (e.g. <em>PCI Req 1.2</em>, <em>HIPAA
+across all thirteen frameworks (e.g. <em>PCI Req 1.2</em>, <em>HIPAA
 §164.312(a)(1)</em>, <em>DORA Art. 9</em>, <em>NIS2 Art. 21(2)(d)</em>,
-<em>NIST AC-4</em>).</p>
+<em>NIST AC-4</em>, <em>NERC CIP-005 R1</em>, <em>TSA SD Section
+III.A</em>).</p>
 </blockquote>
 <h2 id="how-to-use">How to Use</h2>
 <h3 id="why-these-mappings-exist">Why these mappings exist</h3>
@@ -680,8 +715,8 @@ time:</p>
 <ol type="1">
 <li><strong>Open the framework that’s actually on your roadmap.</strong>
 The one tied to a current audit, a customer contractual ask, or
-board-level pressure. Skimming all eleven will dilute the signal — pick
-one and stay with it.</li>
+board-level pressure. Skimming all thirteen will dilute the signal —
+pick one and stay with it.</li>
 <li><strong>Start with the technical runbook
 (<code>*-Technical-Runbook.md</code> in the same folder).</strong> It
 shows the <em>how</em>: sensor deployment phases, policy patterns,
@@ -784,13 +819,23 @@ master and re-generate the PDF after any edits.</li>
 ├── NIST-800-207/
 ├── NIST-800-207A/
 ├── DORA/                ← EU financial sector
-└── NIS2/                ← EU essential &amp; important entities</code></pre>
+├── NIS2/                ← EU essential &amp; important entities
+├── NERC-CIP/            ← North American bulk electric system (IT side)
+└── TSA-Pipeline/        ← TSA-designated natural gas / oil pipelines (IT side)</code></pre>
 <h2 id="disclaimer">Disclaimer</h2>
 <p>The compliance mappings in this repository are derived from public
 standards and regulatory framework documents (HIPAA, SOC 2, PCI DSS,
-NIST SP 800-series, ISO/IEC 27001, CISA ZTMM, FIPS 140, EU DORA, and EU
-NIS2) cross-referenced against documented Cisco Secure Workload (CSW)
-product capabilities at the time of authoring.</p>
+NIST SP 800-series, ISO/IEC 27001, CISA ZTMM, FIPS 140, EU DORA, EU
+NIS2, NERC CIP, and TSA Pipeline Security Directives) cross- referenced
+against documented Cisco Secure Workload (CSW) product capabilities at
+the time of authoring.</p>
+<p>The <strong>NERC CIP</strong> and <strong>TSA Pipeline</strong>
+mappings are explicitly scoped to the <strong>IT side of the IT/OT
+boundary</strong> and are issued as <strong>draft v1</strong>. They
+require subject-matter-expert review for both regulatory accuracy and
+current Cisco product capability before being relied upon in a formal
+compliance engagement. Treat them as sector overlays on the underlying
+NIST family rather than as standalone audit references.</p>
 <p>These materials are provided for <strong>informational and reference
 purposes only</strong>. They do not constitute legal, regulatory, or
 audit advice, are not warranted to be complete, current, or fit for any
