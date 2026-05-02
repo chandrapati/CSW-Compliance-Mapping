@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Cisco Secure Workload — Compliance Mapping Series" />
+  <title>NIST Cybersecurity Framework 2.0 — Compliance Report</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+:root {
+--fg: #1f2328;
+--fg-muted: #59636e;
+--bg: #ffffff;
+--bg-muted: #f6f8fa;
+--border: #d1d9e0;
+--link: #0969da;
+--link-hover: #0349b4;
+--code-bg: #f6f8fa;
+--accent: #cf222e;
+--max-width: 920px;
+}
+@media (prefers-color-scheme: dark) {
+:root {
+--fg: #e6edf3;
+--fg-muted: #9198a1;
+--bg: #0d1117;
+--bg-muted: #151b23;
+--border: #3d444d;
+--link: #4493f8;
+--link-hover: #6cb6ff;
+--code-bg: #151b23;
+--accent: #ff7b72;
+}
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+margin: 0 auto;
+max-width: var(--max-width);
+padding: 2rem 1.25rem 4rem;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+font-size: 16px;
+line-height: 1.6;
+color: var(--fg);
+background: var(--bg);
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 2rem;
+margin-bottom: 1rem;
+font-weight: 600;
+line-height: 1.25;
+}
+h1 { font-size: 2rem; border-bottom: 1px solid var(--border); padding-bottom: .35rem; }
+h2 { font-size: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: .3rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1rem; }
+h5, h6 { font-size: .875rem; color: var(--fg-muted); }
+p, ul, ol, blockquote, pre, table { margin: 0 0 1rem; }
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+ul, ol { padding-left: 1.6rem; }
+li + li { margin-top: .15rem; }
+blockquote {
+margin: 0 0 1rem;
+padding: .5rem 1rem;
+color: var(--fg-muted);
+border-left: .25rem solid var(--border);
+background: var(--bg-muted);
+border-radius: 0 6px 6px 0;
+}
+code, pre, kbd, samp {
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+font-size: .9em;
+}
+code {
+background: var(--code-bg);
+padding: .15rem .35rem;
+border-radius: 4px;
+}
+pre {
+background: var(--code-bg);
+padding: 1rem;
+border-radius: 6px;
+overflow: auto;
+font-size: .85rem;
+line-height: 1.45;
+}
+pre code { background: transparent; padding: 0; font-size: inherit; }
+table {
+display: block;
+width: 100%;
+overflow: auto;
+border-collapse: collapse;
+}
+th, td {
+border: 1px solid var(--border);
+padding: .5rem .75rem;
+vertical-align: top;
+text-align: left;
+}
+th {
+background: var(--bg-muted);
+font-weight: 600;
+}
+tbody tr:nth-child(2n) { background: var(--bg-muted); }
+hr {
+border: 0;
+height: 1px;
+background: var(--border);
+margin: 2rem 0;
+}
+img { max-width: 100%; height: auto; }
+
+.doc-meta {
+margin: 0 0 2rem;
+padding: .75rem 1rem;
+border: 1px solid var(--border);
+border-radius: 6px;
+background: var(--bg-muted);
+font-size: .9rem;
+color: var(--fg-muted);
+}
+.doc-meta a { font-weight: 500; }
+
+@media print {
+body { max-width: none; padding: 0; color: #000; background: #fff; }
+a { color: #000; text-decoration: underline; }
+pre, code, blockquote { background: #f5f5f5; }
+}
+</style>
+</head>
+<body>
+<div class="doc-meta">Source: <a href="CSW-CSF-Compliance-Report.docx">CSW-CSF-Compliance-Report.docx</a> · <a href="../index.html">repository index</a></div>
+<header id="title-block-header">
+<h1 class="title">NIST Cybersecurity Framework 2.0 — Compliance
+Report</h1>
+<p class="subtitle">Cisco Secure Workload | Govern, Identify, Protect,
+Detect, Respond, Recover</p>
+<p class="author">Cisco Secure Workload — Compliance Mapping Series</p>
+<p class="date">Version 1.0 (draft — pending SME review)</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#table-of-contents" id="toc-table-of-contents">Table of
+Contents</a></li>
+<li><a href="#cisco-secure-workload-nist-csf-2.0-compliance-mapping" id="toc-cisco-secure-workload-nist-csf-2.0-compliance-mapping">Cisco
+Secure Workload — NIST CSF 2.0 Compliance Mapping</a>
+<ul>
+<li><a href="#how-to-read-this-report" id="toc-how-to-read-this-report">How to read this report</a></li>
+<li><a href="#executive-summary" id="toc-executive-summary">1. Executive
+Summary</a></li>
+<li><a href="#compliance-posture-summary" id="toc-compliance-posture-summary">2. Compliance Posture
+Summary</a></li>
+<li><a href="#mapping-table-csf-2.0-subcategory-csw-capability-evidence-artefact" id="toc-mapping-table-csf-2.0-subcategory-csw-capability-evidence-artefact">3.
+Mapping Table — CSF 2.0 Subcategory → CSW Capability → Evidence
+Artefact</a></li>
+<li><a href="#out-of-scope-and-complementary-controls" id="toc-out-of-scope-and-complementary-controls">4. Out-of-Scope and
+Complementary Controls</a></li>
+<li><a href="#suggested-next-steps" id="toc-suggested-next-steps">5.
+Suggested Next Steps</a></li>
+<li><a href="#disclaimer" id="toc-disclaimer">6. Disclaimer</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 class="TOC-Heading" id="table-of-contents">Table of Contents</h1>
+<h1 id="cisco-secure-workload-nist-csf-2.0-compliance-mapping">Cisco
+Secure Workload — NIST CSF 2.0 Compliance Mapping</h1>
+<h2 id="how-to-read-this-report">How to read this report</h2>
+<p>This report describes how Cisco Secure Workload (CSW) supports an
+organisation’s posture against the <strong>NIST Cybersecurity Framework
+2.0</strong> (released February 2024). CSF 2.0 is not a control
+catalogue — it’s an outcomes framework that <strong>wraps</strong>
+control catalogues like NIST 800-53, ISO 27001, CIS Controls, and others
+through Informative References. The right way to read this report is as
+the “where does CSW evidence land in the CSF 2.0 narrative” view.</p>
+<p><strong>What changed in CSF 2.0.</strong> A sixth Function —
+<strong>Govern (GV)</strong> — was added above Identify, Protect,
+Detect, Respond, Recover. Govern formalises expectations around
+organisational context, risk strategy, roles and responsibilities,
+policy, oversight, and cybersecurity supply chain risk management.
+Several Categories and Subcategories within the existing five Functions
+were reorganised and refined.</p>
+<p><strong>Companion document.</strong> The accompanying <em>CSF 2.0
+Technical Runbook</em> walks through CSW deployment per Profile / Tier,
+and the Subcategory-by-Subcategory implementation steps. Read this
+report for the audit-narrative view; read the runbook for the deployment
+view.</p>
+<h2 id="executive-summary">1. Executive Summary</h2>
+<p>CSF 2.0 organises cybersecurity outcomes across six Functions, 22
+Categories, and 106 Subcategories. CSW is the workload-tier evidence
+engine for the technical Subcategories under Identify (asset management,
+risk assessment), Protect (platform security, infrastructure
+resilience), Detect (continuous monitoring, adverse event analysis), and
+Respond (analysis, mitigation). Govern and Recover are
+organisational/process Functions where CSW supplies inputs but is not
+the primary control.</p>
+<p><strong>What CSW changes for a CSF 2.0 programme:</strong></p>
+<ul>
+<li><strong>GV.OV / GV.SC — Oversight and Supply Chain.</strong>
+Standing quarterly evidence pack to the management body covering the six
+CSF Functions with technical detail (workload inventory drift,
+vulnerability backlog, segmentation diff, detection trends, incident
+summary, vendor-egress drift). Governance gets ground- truth, not
+green-yellow-red dashboards.</li>
+<li><strong>ID.AM / ID.RA — Asset Management and Risk
+Assessment.</strong> Continuous workload inventory + ADM dependency
+graph + per- workload CVE inventory with reachability-aware
+prioritisation.</li>
+<li><strong>PR.IR / PR.PS — Infrastructure Resilience and Platform
+Security.</strong> Workload-level deny-by-default segmentation
+enforcement (PR.IR-01); daily configuration baseline with drift
+detection (PR.PS-01); software lifecycle including vendor-EOL tagging
+(PR.PS-02); SIEM forwarding (PR.PS-04).</li>
+<li><strong>DE.CM / DE.AE — Continuous Monitoring and Adverse Event
+Analysis.</strong> The densest CSW alignment in CSF. Per-workload
+process + flow telemetry; behavioural rules; conversation-graph anomaly
+detection; SIEM correlation.</li>
+<li><strong>RS.AN / RS.MI — Incident Analysis and Mitigation.</strong>
+Six- artefact reconstruction bundle for every declared incident;
+quarantine policy templates pre-built per scope.</li>
+</ul>
+<p><strong>What CSW does not change.</strong> CSW does not address
+physical/ environmental Subcategories (<code>PR.IR-02</code>,
+<code>DE.CM-02</code>), backup/ recovery Subcategories
+(<code>RC.RP-02/03</code>), or training/HR-style Subcategories. Identity
+is upstream (PR.AA is supporting; CSW enforces workload-side outcomes of
+upstream identity decisions).</p>
+<h2 id="compliance-posture-summary">2. Compliance Posture Summary</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Function</th>
+<th>Coverage</th>
+<th>CSW contribution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Govern (GV)</td>
+<td>Supporting</td>
+<td>Quarterly evidence pack; vendor-egress observation feeding
+GV.SC</td>
+</tr>
+<tr>
+<td>Identify (ID)</td>
+<td>Direct</td>
+<td>ID.AM: continuous workload + flow + software inventory. ID.RA:
+continuous CVE + reachability + drift evidence</td>
+</tr>
+<tr>
+<td>Protect (PR)</td>
+<td>Direct</td>
+<td>PR.IR: segmentation enforcement. PR.PS: baseline + drift + SIEM +
+behavioural rules. PR.AA / PR.DS: supporting (workload-side enforcement
+of upstream identity, plaintext DENY)</td>
+</tr>
+<tr>
+<td>Detect (DE)</td>
+<td>Direct</td>
+<td>DE.CM: workload telemetry + behavioural rules + anomaly detection.
+DE.AE: forensic timeline + SIEM correlation + threat intel</td>
+</tr>
+<tr>
+<td>Respond (RS)</td>
+<td>Direct</td>
+<td>RS.MA / RS.AN: six-artefact dossier + severity routing + magnitude
+estimate. RS.MI: quarantine policy templates</td>
+</tr>
+<tr>
+<td>Recover (RC)</td>
+<td>Supporting</td>
+<td>Pre-incident segmentation export available for re-application;
+post-recovery diff = evidence of new normal</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Posture takeaway.</strong> Direct on Identify, Protect,
+Detect, Respond (the technical core of the framework). Supporting on
+Govern (where CSW supplies evidence the management body uses) and on
+Recover (where CSW supplies pre/post-incident state diffs but is not the
+recovery executor itself). This is consistent with CSW’s positioning as
+a workload-protection platform: it is the evidence engine for the
+operational Functions and the input source for the governance
+Function.</p>
+<h2 id="mapping-table-csf-2.0-subcategory-csw-capability-evidence-artefact">3.
+Mapping Table — CSF 2.0 Subcategory → CSW Capability → Evidence
+Artefact</h2>
+<table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Subcategory</th>
+<th>Topic</th>
+<th>CSW capability</th>
+<th>Evidence artefact (audit-ready)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GV.OV-01/02/03</td>
+<td>Oversight</td>
+<td>Quarterly evidence pack</td>
+<td>Standing quarterly pack with management-body sign-off</td>
+</tr>
+<tr>
+<td>GV.SC-04</td>
+<td>Suppliers known and prioritised</td>
+<td>Vendor-egress inventory per scope</td>
+<td>Vendor-egress CSV per scope</td>
+</tr>
+<tr>
+<td>GV.SC-07</td>
+<td>Risks of suppliers monitored</td>
+<td>Vendor-egress drift report</td>
+<td>Drift report tied to contract register</td>
+</tr>
+<tr>
+<td>GV.SC-09</td>
+<td>Supply chain security practices integrated</td>
+<td>Egress allowlist + reconciliation</td>
+<td>Allowlist policy export + delta report</td>
+</tr>
+<tr>
+<td>GV.SC-10</td>
+<td>Supply chain plans address EOL</td>
+<td>Software inventory with vendor-EOL flags</td>
+<td>EOL software register</td>
+</tr>
+<tr>
+<td>ID.AM-01</td>
+<td>Hardware inventory</td>
+<td>Continuous workload + cloud asset metadata</td>
+<td>Inventory CSV per scope</td>
+</tr>
+<tr>
+<td>ID.AM-02</td>
+<td>Software inventory</td>
+<td>Per-workload package + service inventory</td>
+<td>Package inventory dated to cadence</td>
+</tr>
+<tr>
+<td>ID.AM-03</td>
+<td>Network communication &amp; flow representations</td>
+<td>ADM dependency graph; observed flow inventory</td>
+<td>ADM export + observed-flow CSV</td>
+</tr>
+<tr>
+<td>ID.AM-04</td>
+<td>Supplier service inventory</td>
+<td>Vendor-egress observation + reconciliation</td>
+<td>Vendor-egress CSV + register reconciliation</td>
+</tr>
+<tr>
+<td>ID.AM-05</td>
+<td>Asset prioritisation</td>
+<td><code>crit_band</code> labels drive scope-based prioritisation</td>
+<td>Scope-tagged inventory CSV</td>
+</tr>
+<tr>
+<td>ID.AM-07</td>
+<td>Data inventory metadata</td>
+<td>Workload labels (<code>data_class</code>)</td>
+<td>Data-class-labelled inventory CSV</td>
+</tr>
+<tr>
+<td>ID.AM-08</td>
+<td>Asset lifecycle</td>
+<td>Vendor-EOL flags in software inventory</td>
+<td>EOL register</td>
+</tr>
+<tr>
+<td>ID.RA-01</td>
+<td>Vulnerabilities identified</td>
+<td>Continuous CVE inventory per workload</td>
+<td>CVE list per workload</td>
+</tr>
+<tr>
+<td>ID.RA-02</td>
+<td>Cyber threat intelligence received</td>
+<td>CSW threat-intel feeds enrich CVE prioritisation</td>
+<td>Threat-intel-enriched CVE export</td>
+</tr>
+<tr>
+<td>ID.RA-03</td>
+<td>Threats identified and recorded</td>
+<td>Behavioural detection rule catalogue</td>
+<td>Rule catalogue with last-modified dates</td>
+</tr>
+<tr>
+<td>ID.RA-05</td>
+<td>Risk inherent + response prioritisation</td>
+<td>Reachability-aware CVE prioritisation</td>
+<td>CVE list with reachability + EPSS scoring</td>
+</tr>
+<tr>
+<td>ID.RA-06</td>
+<td>Risk responses chosen + tracked</td>
+<td>CVE backlog + remediation tracking</td>
+<td>Patch SLA compliance trend + compensating-control register</td>
+</tr>
+<tr>
+<td>ID.RA-07</td>
+<td>Changes &amp; exceptions managed</td>
+<td>Configuration drift report + change-ticket attribution</td>
+<td>Daily diff log with ticket linkage</td>
+</tr>
+<tr>
+<td>PR.AA-01/05</td>
+<td>Identity &amp; access enforcement</td>
+<td>Workload-side enforcement (identity upstream)</td>
+<td>Policy export with rule provenance</td>
+</tr>
+<tr>
+<td>PR.DS-02</td>
+<td>Data-in-transit protected</td>
+<td>Plaintext-protocol DENY enforcement</td>
+<td>Plaintext-flow alert log + DENY policy</td>
+</tr>
+<tr>
+<td>PR.IR-01</td>
+<td>Networks protected from unauthorised access</td>
+<td>Workload-level deny-by-default segmentation</td>
+<td>Workspace export per scope</td>
+</tr>
+<tr>
+<td>PR.IR-03</td>
+<td>Resilience requirements achieved</td>
+<td>Quarantine policy + segmentation under change control</td>
+<td>Quarantine policy templates + change history</td>
+</tr>
+<tr>
+<td>PR.PS-01</td>
+<td>Configuration management</td>
+<td>Daily baseline + drift detection</td>
+<td>Baseline export + diff log</td>
+</tr>
+<tr>
+<td>PR.PS-02</td>
+<td>Software maintained</td>
+<td>Per-workload software inventory + EOL tagging</td>
+<td>Software inventory + EOL register</td>
+</tr>
+<tr>
+<td>PR.PS-04</td>
+<td>Log records generated</td>
+<td>Per-flow + per-process telemetry to SIEM</td>
+<td>SIEM forwarding configuration</td>
+</tr>
+<tr>
+<td>PR.PS-05</td>
+<td>Unauthorised software prevented</td>
+<td>Behavioural rules + (IG3) allow-list block</td>
+<td>Behavioural rule catalogue + alert log</td>
+</tr>
+<tr>
+<td>PR.PS-06</td>
+<td>Secure software development</td>
+<td>CVE inventory feeds SDLC</td>
+<td>CVE feed + reachability for triage</td>
+</tr>
+<tr>
+<td>DE.CM-01</td>
+<td>Networks monitored</td>
+<td>CSW flow telemetry + behavioural rules + SIEM</td>
+<td>Flow log retention + sample retrieval</td>
+</tr>
+<tr>
+<td>DE.CM-03</td>
+<td>Personnel activity monitored</td>
+<td>Process telemetry + identity-aware policy</td>
+<td>Process event sample with attribution</td>
+</tr>
+<tr>
+<td>DE.CM-06</td>
+<td>External service provider activities monitored</td>
+<td>Vendor-egress observation + drift alerting</td>
+<td>Vendor-egress alert log</td>
+</tr>
+<tr>
+<td>DE.CM-09</td>
+<td>Computing hardware/software/runtime monitored</td>
+<td>Per-workload process + package + flow telemetry</td>
+<td>Per-workload telemetry retention configuration</td>
+</tr>
+<tr>
+<td>DE.AE-02</td>
+<td>Adverse events analysed</td>
+<td>Forensic flow + process timeline reconstruction</td>
+<td>Sample reconstruction per quarter</td>
+</tr>
+<tr>
+<td>DE.AE-03</td>
+<td>Information correlated from multiple sources</td>
+<td>CSW telemetry forwarded to SIEM</td>
+<td>SIEM forwarding + correlation rules</td>
+</tr>
+<tr>
+<td>DE.AE-04</td>
+<td>Impact and scope understood</td>
+<td>Reachability + crit_band labels inform impact</td>
+<td>Impact report per significant event</td>
+</tr>
+<tr>
+<td>DE.AE-06</td>
+<td>Information provided to authorised staff/tools</td>
+<td>SIEM forwarding + alert routing per scope</td>
+<td>Alert routing configuration</td>
+</tr>
+<tr>
+<td>DE.AE-07</td>
+<td>Threat intel + contextual info integrated</td>
+<td>Threat-intel-enriched detections</td>
+<td>Enrichment configuration</td>
+</tr>
+<tr>
+<td>DE.AE-08</td>
+<td>Incidents declared per criteria</td>
+<td>Severity-based alert routing → IR ticket</td>
+<td>Severity threshold configuration + sample ticket</td>
+</tr>
+<tr>
+<td>RS.MA-01 to 05</td>
+<td>Incident management</td>
+<td>Six-artefact dossier + severity routing</td>
+<td>Sample dossier + severity routing config</td>
+</tr>
+<tr>
+<td>RS.AN-03</td>
+<td>Analysis to establish root cause</td>
+<td>Process + flow timeline reconstruction</td>
+<td>Sample analysis output</td>
+</tr>
+<tr>
+<td>RS.AN-06</td>
+<td>Investigation actions recorded</td>
+<td>CSW retains queries and exports; SIEM hashing</td>
+<td>Query audit log + chain-of-custody documentation</td>
+</tr>
+<tr>
+<td>RS.AN-07</td>
+<td>Incident data and metadata collected</td>
+<td>Six-artefact dossier with timestamped exports</td>
+<td>Sample dossier</td>
+</tr>
+<tr>
+<td>RS.AN-08</td>
+<td>Magnitude estimated and validated</td>
+<td>Reachability + scope membership inform magnitude</td>
+<td>Magnitude analysis per significant incident</td>
+</tr>
+<tr>
+<td>RS.MI-01</td>
+<td>Incidents contained</td>
+<td>Quarantine policy applied per workload</td>
+<td>Quarantine event log</td>
+</tr>
+<tr>
+<td>RS.MI-02</td>
+<td>Incidents eradicated</td>
+<td>Compensating-control register; sustained policy</td>
+<td>Compensating-control register + post-eradication policy</td>
+</tr>
+<tr>
+<td>RC.RP-04</td>
+<td>Post-incident operational norms</td>
+<td>Post-recovery segmentation diff</td>
+<td>Diff report per recovered incident</td>
+</tr>
+<tr>
+<td>RC.RP-05</td>
+<td>Restored asset integrity verified</td>
+<td>CSW re-baseline after recovery</td>
+<td>Post-recovery baseline export</td>
+</tr>
+<tr>
+<td>RC.RP-06</td>
+<td>End of recovery declared</td>
+<td>Final dossier inclusion of post-recovery diff</td>
+<td>Closed-incident dossier with diff</td>
+</tr>
+</tbody>
+</table>
+<h2 id="out-of-scope-and-complementary-controls">4. Out-of-Scope and
+Complementary Controls</h2>
+<p>CSW does <strong>not</strong> address the following Subcategories;
+reference the noted complementary controls.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Subcategory</th>
+<th>Owner</th>
+<th>Complementary control</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GV.RR — Roles, Responsibilities, Authorities</td>
+<td>Security leadership</td>
+<td>Programme charter, RACI, escalation paths</td>
+</tr>
+<tr>
+<td>GV.PO — Policy</td>
+<td>Security leadership</td>
+<td>Policy library</td>
+</tr>
+<tr>
+<td>PR.AT — Awareness and Training</td>
+<td>HR + Security training</td>
+<td>LMS + phishing simulation</td>
+</tr>
+<tr>
+<td>PR.IR-02</td>
+<td>Facilities</td>
+<td>Physical / environmental controls</td>
+</tr>
+<tr>
+<td>PR.DS-01</td>
+<td>Identity / Crypto SME</td>
+<td>Encryption-at-rest configuration</td>
+</tr>
+<tr>
+<td>DE.CM-02</td>
+<td>Facilities + Physical Security</td>
+<td>Physical environment monitoring</td>
+</tr>
+<tr>
+<td>RC.RP-02 / RC.RP-03</td>
+<td>Backup / DR team</td>
+<td>Backup product + integrity testing</td>
+</tr>
+<tr>
+<td>RC.CO — Recovery Communications</td>
+<td>Communications + IR leadership</td>
+<td>Stakeholder communications process</td>
+</tr>
+</tbody>
+</table>
+<p>CSW’s role in a complete CSF 2.0 programme is the workload-tier
+evidence engine for the technical Functions (ID, PR, DE, RS) and the
+input source for the governance Function (GV) and the operational
+evidence layer for Recover (RC). Identity, physical, backup, training,
+and crypto-at-rest are explicitly upstream.</p>
+<h2 id="suggested-next-steps">5. Suggested Next Steps</h2>
+<p>For organisations adopting or maturing CSF 2.0 posture with CSW:</p>
+<ol type="1">
+<li><strong>Confirm your Profile.</strong> CSF 2.0 expects Current
+Profile, Target Profile, and progress measurement between them. Get
+security leadership to sign off the Profile before scoping CSW labels
+and scopes — CSW evidence aggregates per Subcategory and per scope, so
+the Profile structure determines the report structure.</li>
+</ol>
+<ol type="1">
+<li><strong>Pilot on ID.AM, PR.IR, DE.CM.</strong> These are the densest
+CSW alignment in CSF and produce the fastest visible wins. Inventory and
+ADM are the foundation; PR.IR is where the segmentation work lives;
+DE.CM is where the daily detection work lives.</li>
+<li><strong>Build the GV evidence pack early.</strong> CSF 2.0’s new
+Govern Function expects management-body engagement. The quarterly
+evidence pack (workload inventory drift, vulnerability backlog,
+segmentation diff, detection trends, incident summary, vendor- egress
+drift) is the artefact governance asks for once and reuses every
+cycle.</li>
+<li><strong>Wire CSW telemetry into the SIEM you already have.</strong>
+CSF <code>DE.CM</code> and <code>DE.AE</code> rely on correlation across
+data sources; CSW is one source among many. The uplift comes from richer
+workload-tier data, not from replacing the SIEM.</li>
+<li><strong>Standardise the RS.AN-07 incident dossier template.</strong>
+The six-artefact bundle is the artefact RS subcategories converge on;
+build it once and reuse.</li>
+<li><strong>Plan SME review.</strong> This document is a v1 mapping.
+Before being relied upon in a formal compliance engagement, route to a
+CSF specialist for currency (CSF Quick-Start Guides and Implementation
+Examples evolve) and to a current Cisco Secure Workload SE for
+product-capability accuracy.</li>
+</ol>
+<h2 id="disclaimer">6. Disclaimer</h2>
+<p>This report and its companion runbook describe how Cisco Secure
+Workload capabilities can support a NIST Cybersecurity Framework 2.0
+programme. They are <strong>not</strong> legal or compliance advice and
+do not constitute a finding of compliance.</p>
+<p>Specifically:</p>
+<ul>
+<li>NIST publishes the authoritative CSF 2.0 text and Subcategory list
+at https://www.nist.gov/cyberframework. Always validate against the
+<strong>current effective version</strong> of CSF, including any
+released Quick-Start Guides, Profiles, Implementation Examples, and
+Informative References mappings.</li>
+<li>CSF 2.0 is an outcomes framework and does not prescribe specific
+controls. Mapping a CSW capability to a Subcategory does not by itself
+satisfy the Subcategory — the organisation’s Profile, Tier, and
+accompanying control set determine the depth of work expected.</li>
+<li>CSW does not address physical/environmental Subcategories, backup/
+recovery Subcategories, or training/HR-style Subcategories. Reference
+the appropriate parts of your programme for those.</li>
+</ul>
+<p>This document should receive subject-matter-expert review for both
+CSF 2.0 currency and current Cisco product capability before being used
+in a customer engagement.</p>
+</body>
+</html>

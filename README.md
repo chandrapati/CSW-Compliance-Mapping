@@ -64,7 +64,7 @@ answers — and what artefact you'd hand over in each case.
 ## About this repository
 
 Customer-facing reports and matching technical runbooks mapping
-Cisco Secure Workload controls to thirteen common compliance,
+Cisco Secure Workload controls to sixteen common compliance,
 sector, and zero-trust frameworks. Each framework folder contains
 the same three assets: a PDF report (for executive review), a DOCX
 report (the editable master), and a Markdown technical runbook
@@ -102,6 +102,24 @@ Markdown depending on how you want to read or share the asset.
 | NIS2 (EU 2022/2555) | Art. 21(2)(a–j) risk-management mapping; Art. 23 24 h / 72 h / 1-month dossier; Art. 21(2)(d) supply-chain egress | <details><summary>Choose format</summary><br>[Markdown](./NIS2/CSW-NIS2-Technical-Runbook.md) · [HTML](./NIS2/CSW-NIS2-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./NIS2/CSW-NIS2-Compliance-Report.pdf) · [DOCX](./NIS2/CSW-NIS2-Compliance-Report.docx) · [HTML](./NIS2/CSW-NIS2-Compliance-Report.html)</details> |
 | NERC CIP (Bulk Electric System) | IT-side ESP boundary hardening (CIP-005 R1); IRA evidence (CIP-005 R2); CIP-007/010 ports + baseline + VA evidence; CIP-013 vendor-egress reconciliation. *IT-side scope; OT device layer out of scope.* | <details><summary>Choose format</summary><br>[Markdown](./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.md) · [HTML](./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./NERC-CIP/CSW-NERC-CIP-Compliance-Report.pdf) · [DOCX](./NERC-CIP/CSW-NERC-CIP-Compliance-Report.docx) · [HTML](./NERC-CIP/CSW-NERC-CIP-Compliance-Report.html)</details> |
 | TSA Pipeline Security Directive | IT-side IT/OT segmentation (Section III.A); access control + monitoring (III.B/III.C); unpatched-system risk reduction (III.D); CIRP + CAP evidence packs. *IT-side scope; OT device layer out of scope.* | <details><summary>Choose format</summary><br>[Markdown](./TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.md) · [HTML](./TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./TSA-Pipeline/CSW-TSA-Pipeline-Compliance-Report.pdf) · [DOCX](./TSA-Pipeline/CSW-TSA-Pipeline-Compliance-Report.docx) · [HTML](./TSA-Pipeline/CSW-TSA-Pipeline-Compliance-Report.html)</details> |
+| CIS Critical Security Controls v8.1 | Direct on Controls 1, 2, 4, 7, 8, 13 (asset & software inventory, secure config, vuln mgmt, audit logs, network monitoring); IG2 lead with IG1/IG3 deltas called out | <details><summary>Choose format</summary><br>[Markdown](./CIS-Controls-v8/CSW-CIS-Technical-Runbook.md) · [HTML](./CIS-Controls-v8/CSW-CIS-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./CIS-Controls-v8/CSW-CIS-Compliance-Report.pdf) · [DOCX](./CIS-Controls-v8/CSW-CIS-Compliance-Report.docx) · [HTML](./CIS-Controls-v8/CSW-CIS-Compliance-Report.html)</details> |
+| NIST Cybersecurity Framework 2.0 | Govern (GV.OV/GV.SC) evidence pack; direct coverage of ID.AM, ID.RA, PR.IR, PR.PS, DE.CM, DE.AE, RS.AN, RS.MI Subcategories | <details><summary>Choose format</summary><br>[Markdown](./NIST-CSF-2/CSW-CSF-Technical-Runbook.md) · [HTML](./NIST-CSF-2/CSW-CSF-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./NIST-CSF-2/CSW-CSF-Compliance-Report.pdf) · [DOCX](./NIST-CSF-2/CSW-CSF-Compliance-Report.docx) · [HTML](./NIST-CSF-2/CSW-CSF-Compliance-Report.html)</details> |
+| CMMC 2.0 (DoD / DIB) | Level 2 lead (110 controls = NIST 800-171 Rev 2): direct on AC, AU, CM, RA, SC, SI families; CUI-scope labelling pattern; L1 (FCI) and L3 (800-172) deltas | <details><summary>Choose format</summary><br>[Markdown](./CMMC-2/CSW-CMMC-Technical-Runbook.md) · [HTML](./CMMC-2/CSW-CMMC-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./CMMC-2/CSW-CMMC-Compliance-Report.pdf) · [DOCX](./CMMC-2/CSW-CMMC-Compliance-Report.docx) · [HTML](./CMMC-2/CSW-CMMC-Compliance-Report.html)</details> |
+
+> **Cross-cutting frameworks scope note (CIS, CSF, CMMC).** These
+> three frameworks are *cross-mapping* / certification frameworks
+> that intentionally overlap with the underlying NIST families
+> already in this library. CIS Controls v8.1 is a prioritised
+> subset of NIST 800-53; CSF 2.0 is an outcomes wrapper that cites
+> 800-53 (and others) as Informative References; CMMC 2.0 Level 2
+> *is* NIST 800-171, which is itself a tailored subset of 800-53.
+> Read the standalone runbook when you need the framework-native
+> narrative (assessor language, IG/Level/Profile structure, format
+> evidence comes in); cross-reference the [800-53](./NIST-800-53/)
+> and [800-207](./NIST-800-207/) runbooks for the deeper control
+> rationale. All three are **draft v1** and require SME review
+> before being relied upon in a formal compliance engagement
+> (CMMC L2 specifically requires a C3PAO assessment regardless).
 
 > **Sector frameworks scope note (NERC CIP, TSA Pipeline).** Both
 > frameworks are sector overlays whose substantive controls overlap
@@ -142,9 +160,10 @@ Once GitHub Pages is enabled, the same HTML is also at
 [`index.html`](./index.html)).
 
 > **Quickly find a control?** See [`INDEX.md`](./INDEX.md) for a
-> control-ID-keyed index across all thirteen frameworks (e.g. *PCI
+> control-ID-keyed index across all sixteen frameworks (e.g. *PCI
 > Req 1.2*, *HIPAA §164.312(a)(1)*, *DORA Art. 9*, *NIS2 Art.
-> 21(2)(d)*, *NIST AC-4*, *NERC CIP-005 R1*, *TSA SD Section III.A*).
+> 21(2)(d)*, *NIST AC-4*, *NERC CIP-005 R1*, *TSA SD Section
+> III.A*, *CIS Safeguard 13.4*, *CSF PR.IR-01*, *CMMC AC.L2-3.1.1*).
 
 ## How to Use
 
@@ -278,7 +297,7 @@ time:
 
 1. **Open the framework that's actually on your roadmap.** The one tied
    to a current audit, a customer contractual ask, or board-level
-   pressure. Skimming all thirteen will dilute the signal — pick one
+   pressure. Skimming all sixteen will dilute the signal — pick one
    and stay with it.
 2. **Start with the technical runbook (`*-Technical-Runbook.md` in the
    same folder).** It shows the *how*: sensor deployment phases, policy
@@ -382,7 +401,10 @@ CSW-Compliance-Mapping/
 ├── DORA/                ← EU financial sector
 ├── NIS2/                ← EU essential & important entities
 ├── NERC-CIP/            ← North American bulk electric system (IT side)
-└── TSA-Pipeline/        ← TSA-designated natural gas / oil pipelines (IT side)
+├── TSA-Pipeline/        ← TSA-designated natural gas / oil pipelines (IT side)
+├── CIS-Controls-v8/     ← CIS Critical Security Controls v8.1 (IG2 lead)
+├── NIST-CSF-2/          ← NIST Cybersecurity Framework 2.0 (Govern + 5 functions)
+└── CMMC-2/              ← CMMC 2.0 (Level 2 lead, with L1 / L3 deltas)
 ```
 
 ## Disclaimer
@@ -390,17 +412,27 @@ CSW-Compliance-Mapping/
 The compliance mappings in this repository are derived from public
 standards and regulatory framework documents (HIPAA, SOC 2, PCI DSS,
 NIST SP 800-series, ISO/IEC 27001, CISA ZTMM, FIPS 140, EU DORA,
-EU NIS2, NERC CIP, and TSA Pipeline Security Directives) cross-
-referenced against documented Cisco Secure Workload (CSW) product
-capabilities at the time of authoring.
+EU NIS2, NERC CIP, TSA Pipeline Security Directives, CIS Critical
+Security Controls v8.1, NIST Cybersecurity Framework 2.0, and CMMC
+2.0) cross-referenced against documented Cisco Secure Workload (CSW)
+product capabilities at the time of authoring.
 
 The **NERC CIP** and **TSA Pipeline** mappings are explicitly scoped
 to the **IT side of the IT/OT boundary** and are issued as **draft
-v1**. They require subject-matter-expert review for both regulatory
-accuracy and current Cisco product capability before being relied
-upon in a formal compliance engagement. Treat them as sector
-overlays on the underlying NIST family rather than as standalone
-audit references.
+v1**. Treat them as sector overlays on the underlying NIST family
+rather than as standalone audit references.
+
+The **CIS Controls v8.1**, **NIST CSF 2.0**, and **CMMC 2.0**
+mappings are issued as **draft v1** and are *cross-mapping*
+frameworks that intentionally overlap with the underlying NIST
+families already in this library. CMMC Level 2 assessment is
+performed by a Certified Third-Party Assessor Organisation (C3PAO);
+nothing in this repository substitutes for the System Security Plan
+(SSP), Plan of Action & Milestones (POA&M), or the C3PAO engagement.
+
+All mappings require subject-matter-expert review for both
+regulatory / framework accuracy and current Cisco product capability
+before being relied upon in a formal compliance engagement.
 
 These materials are provided for **informational and reference purposes
 only**. They do not constitute legal, regulatory, or audit advice, are

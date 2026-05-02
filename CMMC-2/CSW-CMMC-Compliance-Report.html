@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Cisco Secure Workload — Compliance Mapping Series" />
+  <title>CMMC 2.0 — Compliance Report</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+:root {
+--fg: #1f2328;
+--fg-muted: #59636e;
+--bg: #ffffff;
+--bg-muted: #f6f8fa;
+--border: #d1d9e0;
+--link: #0969da;
+--link-hover: #0349b4;
+--code-bg: #f6f8fa;
+--accent: #cf222e;
+--max-width: 920px;
+}
+@media (prefers-color-scheme: dark) {
+:root {
+--fg: #e6edf3;
+--fg-muted: #9198a1;
+--bg: #0d1117;
+--bg-muted: #151b23;
+--border: #3d444d;
+--link: #4493f8;
+--link-hover: #6cb6ff;
+--code-bg: #151b23;
+--accent: #ff7b72;
+}
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+margin: 0 auto;
+max-width: var(--max-width);
+padding: 2rem 1.25rem 4rem;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+font-size: 16px;
+line-height: 1.6;
+color: var(--fg);
+background: var(--bg);
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 2rem;
+margin-bottom: 1rem;
+font-weight: 600;
+line-height: 1.25;
+}
+h1 { font-size: 2rem; border-bottom: 1px solid var(--border); padding-bottom: .35rem; }
+h2 { font-size: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: .3rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1rem; }
+h5, h6 { font-size: .875rem; color: var(--fg-muted); }
+p, ul, ol, blockquote, pre, table { margin: 0 0 1rem; }
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+ul, ol { padding-left: 1.6rem; }
+li + li { margin-top: .15rem; }
+blockquote {
+margin: 0 0 1rem;
+padding: .5rem 1rem;
+color: var(--fg-muted);
+border-left: .25rem solid var(--border);
+background: var(--bg-muted);
+border-radius: 0 6px 6px 0;
+}
+code, pre, kbd, samp {
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+font-size: .9em;
+}
+code {
+background: var(--code-bg);
+padding: .15rem .35rem;
+border-radius: 4px;
+}
+pre {
+background: var(--code-bg);
+padding: 1rem;
+border-radius: 6px;
+overflow: auto;
+font-size: .85rem;
+line-height: 1.45;
+}
+pre code { background: transparent; padding: 0; font-size: inherit; }
+table {
+display: block;
+width: 100%;
+overflow: auto;
+border-collapse: collapse;
+}
+th, td {
+border: 1px solid var(--border);
+padding: .5rem .75rem;
+vertical-align: top;
+text-align: left;
+}
+th {
+background: var(--bg-muted);
+font-weight: 600;
+}
+tbody tr:nth-child(2n) { background: var(--bg-muted); }
+hr {
+border: 0;
+height: 1px;
+background: var(--border);
+margin: 2rem 0;
+}
+img { max-width: 100%; height: auto; }
+
+.doc-meta {
+margin: 0 0 2rem;
+padding: .75rem 1rem;
+border: 1px solid var(--border);
+border-radius: 6px;
+background: var(--bg-muted);
+font-size: .9rem;
+color: var(--fg-muted);
+}
+.doc-meta a { font-weight: 500; }
+
+@media print {
+body { max-width: none; padding: 0; color: #000; background: #fff; }
+a { color: #000; text-decoration: underline; }
+pre, code, blockquote { background: #f5f5f5; }
+}
+</style>
+</head>
+<body>
+<div class="doc-meta">Source: <a href="CSW-CMMC-Compliance-Report.docx">CSW-CMMC-Compliance-Report.docx</a> · <a href="../index.html">repository index</a></div>
+<header id="title-block-header">
+<h1 class="title">CMMC 2.0 — Compliance Report</h1>
+<p class="subtitle">Cisco Secure Workload | Level 2 Lead with Level 1 /
+Level 3 Deltas</p>
+<p class="author">Cisco Secure Workload — Compliance Mapping Series</p>
+<p class="date">Version 1.0 (draft — pending SME review)</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#table-of-contents" id="toc-table-of-contents">Table of
+Contents</a></li>
+<li><a href="#cisco-secure-workload-cmmc-2.0-compliance-mapping" id="toc-cisco-secure-workload-cmmc-2.0-compliance-mapping">Cisco Secure
+Workload — CMMC 2.0 Compliance Mapping</a>
+<ul>
+<li><a href="#how-to-read-this-report" id="toc-how-to-read-this-report">How to read this report</a></li>
+<li><a href="#executive-summary" id="toc-executive-summary">1. Executive
+Summary</a></li>
+<li><a href="#compliance-posture-summary" id="toc-compliance-posture-summary">2. Compliance Posture
+Summary</a></li>
+<li><a href="#mapping-table-cmmc-l2-practice-csw-capability-evidence-artefact" id="toc-mapping-table-cmmc-l2-practice-csw-capability-evidence-artefact">3.
+Mapping Table — CMMC L2 Practice → CSW Capability → Evidence
+Artefact</a></li>
+<li><a href="#out-of-scope-and-complementary-controls" id="toc-out-of-scope-and-complementary-controls">4. Out-of-Scope and
+Complementary Controls</a></li>
+<li><a href="#suggested-next-steps" id="toc-suggested-next-steps">5.
+Suggested Next Steps</a></li>
+<li><a href="#disclaimer" id="toc-disclaimer">6. Disclaimer</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 class="TOC-Heading" id="table-of-contents">Table of Contents</h1>
+<h1 id="cisco-secure-workload-cmmc-2.0-compliance-mapping">Cisco Secure
+Workload — CMMC 2.0 Compliance Mapping</h1>
+<h2 id="how-to-read-this-report">How to read this report</h2>
+<p>This report describes how Cisco Secure Workload (CSW) supports a
+Defense Industrial Base (DIB) organisation’s posture against
+<strong>CMMC 2.0</strong> (Cybersecurity Maturity Model Certification).
+Default depth is written for <strong>Level 2</strong> because that’s
+where the technical substance — and the bulk of CSW alignment — lives.
+Level 1 and Level 3 deltas are called out where the work materially
+changes.</p>
+<p><strong>Why CMMC and not just NIST 800-171?</strong> CMMC 2.0 doesn’t
+invent new controls. It is the DoD’s <em>certification</em> mechanism
+that your organisation has implemented the controls already required
+under DFARS 252.204-7012:</p>
+<ul>
+<li><strong>Level 1 (Foundational, 15 safeguards)</strong> — implements
+FAR 52.204-21. Self-attested annually. Required for FCI.</li>
+<li><strong>Level 2 (Advanced, 110 controls)</strong> — implements all
+110 controls of NIST SP 800-171 Rev 2. Self-assessed (some contracts) or
+third-party-assessed via a C3PAO every 3 years. Required for CUI.</li>
+<li><strong>Level 3 (Expert, ~134 controls)</strong> — Level 2 plus
+selected NIST SP 800-172 enhancements. Government-led assessment.</li>
+</ul>
+<p><strong>Companion document.</strong> The accompanying <em>CMMC 2.0
+Technical Runbook</em> walks through CUI scope labelling, per-family
+implementation steps for Level 2, and the Level 1 / Level 3 deltas. Read
+this report for the audit-narrative view; read the runbook for the
+deployment view.</p>
+<p><strong>Important.</strong> CMMC Level 2 assessment is performed by a
+Certified Third-Party Assessor Organisation (C3PAO). Nothing in this
+report substitutes for the System Security Plan (SSP), Plan of Action
+&amp; Milestones (POA&amp;M), or the C3PAO engagement. CSW supplies the
+technical evidence the assessment depends on; the SSP documents the
+process around that evidence.</p>
+<h2 id="executive-summary">1. Executive Summary</h2>
+<p>CMMC 2.0 final rule (DFARS 252.204-7021 / 32 CFR Part 170) became
+effective December 16, 2024. DoD contracts will phase in CMMC
+requirements over the subsequent three years. For the bulk of the DIB,
+the operative target is <strong>Level 2</strong>, which implements all
+110 controls of NIST SP 800-171 Rev 2.</p>
+<p>CSW provides direct technical coverage for six of NIST 800-171’s
+fourteen control families (AC, AU, CM, RA, SC, SI), supports four more
+(CA, IA, IR evidence, MA), and is explicitly out of scope for four (AT,
+MP, PE, PS).</p>
+<p><strong>What CSW changes for a CMMC Level 2 programme:</strong></p>
+<ul>
+<li><strong>CUI Scope Boundary (foundational).</strong> Per-enclave
+segmentation with deny-by-default at the workload identity layer.
+Workload labels (<code>cui_scope</code>, <code>cui_role</code>,
+<code>contract_id</code>, <code>enclave</code>) make the boundary
+enforceable and auditable.</li>
+<li><strong>AC family.</strong> Workload-level access enforcement
+(3.1.1), inter-enclave information-flow control (3.1.3), external
+connection verification (3.1.20), publicly-accessible system inventory
+(3.1.22).</li>
+<li><strong>AU family.</strong> Per-flow + per-process telemetry
+forwarded to SIEM (3.3.1), action traceability via process attribution +
+SIEM identity correlation (3.3.2).</li>
+<li><strong>CM family.</strong> Daily configuration baseline per
+workload (3.4.1), drift detection with change-ticket attribution (3.4.3
+/ 3.4.4), least-functionality review via 90-day-no-flow port reports
+(3.4.6).</li>
+<li><strong>RA family.</strong> Continuous CVE inventory per CUI
+workload (3.11.2), patch SLA tracking and POA&amp;M linkage (3.11.3),
+compensating- control register for deferred patches.</li>
+<li><strong>SC family.</strong> Per-enclave segmentation with
+deny-by-default (3.13.1, 3.13.6), public-component scope isolation
+(3.13.5), ADM-derived as-observed architecture diagrams (3.13.2).</li>
+<li><strong>SI family.</strong> Behavioural detection rules (3.14.2,
+3.14.6), conversation-graph anomaly detection (3.14.6), threat-intel-
+enriched CVE prioritisation (3.14.3), unauthorised-use detection
+(3.14.7).</li>
+</ul>
+<p><strong>What CSW does not change.</strong> CSW does not author the
+SSP or POA&amp;M, does not perform the C3PAO assessment, does not
+address AT (training), MP (media), PE (physical), or PS (personnel).
+Identity is upstream. CSW is the technical evidence engine the SSP
+documents around.</p>
+<h2 id="compliance-posture-summary">2. Compliance Posture Summary</h2>
+<table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Family</th>
+<th>Title</th>
+<th>Coverage</th>
+<th>CSW contribution (Level 2)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AC</td>
+<td>Access Control</td>
+<td>Direct</td>
+<td>Workload-level enforcement; inter-enclave flow control</td>
+</tr>
+<tr>
+<td>AT</td>
+<td>Awareness and Training</td>
+<td>Out of scope</td>
+<td>HR / training</td>
+</tr>
+<tr>
+<td>AU</td>
+<td>Audit and Accountability</td>
+<td>Direct</td>
+<td>Per-flow + per-process telemetry to SIEM</td>
+</tr>
+<tr>
+<td>CA</td>
+<td>Security Assessment</td>
+<td>Supporting</td>
+<td>Continuous monitoring evidence</td>
+</tr>
+<tr>
+<td>CM</td>
+<td>Configuration Management</td>
+<td>Direct</td>
+<td>Baseline + drift + least-functionality review</td>
+</tr>
+<tr>
+<td>IA</td>
+<td>Identification and Authentication</td>
+<td>Supporting</td>
+<td>Workload-side enforcement; identity upstream</td>
+</tr>
+<tr>
+<td>IR</td>
+<td>Incident Response</td>
+<td>Direct (evidence)</td>
+<td>Six-artefact reconstruction bundle</td>
+</tr>
+<tr>
+<td>MA</td>
+<td>Maintenance</td>
+<td>Supporting</td>
+<td>Limited</td>
+</tr>
+<tr>
+<td>MP</td>
+<td>Media Protection</td>
+<td>Out of scope</td>
+<td>Media-handling process</td>
+</tr>
+<tr>
+<td>PE</td>
+<td>Physical Protection</td>
+<td>Out of scope</td>
+<td>Facilities</td>
+</tr>
+<tr>
+<td>PS</td>
+<td>Personnel Security</td>
+<td>Out of scope</td>
+<td>HR</td>
+</tr>
+<tr>
+<td>RA</td>
+<td>Risk Assessment</td>
+<td>Direct</td>
+<td>Continuous CVE + reachability + POA&amp;M linkage</td>
+</tr>
+<tr>
+<td>SC</td>
+<td>System and Communications Protection</td>
+<td>Direct</td>
+<td>Per-enclave boundary + segmentation + deny-by-default</td>
+</tr>
+<tr>
+<td>SI</td>
+<td>System and Information Integrity</td>
+<td>Direct</td>
+<td>Detection rules + anomaly detection + threat intel</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Posture takeaway.</strong> Direct on six of fourteen families
+(AC, AU, CM, RA, SC, SI), supporting on four (CA, IA, IR evidence, MA),
+out of scope on four (AT, MP, PE, PS). This is consistent with CSW’s
+positioning as a workload-protection platform: it does the workload-tier
+jobs well and explicitly defers identity, media, physical, and personnel
+scope to the appropriate owners.</p>
+<h2 id="mapping-table-cmmc-l2-practice-csw-capability-evidence-artefact">3.
+Mapping Table — CMMC L2 Practice → CSW Capability → Evidence
+Artefact</h2>
+<table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Practice</th>
+<th>Topic</th>
+<th>CSW capability</th>
+<th>Evidence artefact (audit-ready)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AC.L1/L2-3.1.1</td>
+<td>Limit system access to authorised users / processes / devices</td>
+<td>Workload-level deny-by-default segmentation per enclave</td>
+<td>Workspace export per enclave + simulation→enforcement log</td>
+</tr>
+<tr>
+<td>AC.L1/L2-3.1.2</td>
+<td>Limit access to authorised functions / transactions</td>
+<td>Allow-list per documented system function</td>
+<td>Per-enclave allow-list with rule provenance</td>
+</tr>
+<tr>
+<td>AC.L2-3.1.3</td>
+<td>Control flow of CUI</td>
+<td>Inter-enclave flow allow-list + reconciliation against SSP</td>
+<td>Inter-enclave flow CSV + delta vs. SSP</td>
+</tr>
+<tr>
+<td>AC.L2-3.1.20</td>
+<td>Verify and control external connections</td>
+<td>Egress allowlist + alert on net-new external destinations</td>
+<td>Egress allowlist + alert log</td>
+</tr>
+<tr>
+<td>AC.L2-3.1.22</td>
+<td>Control CUI on publicly-accessible systems</td>
+<td>Internet-reachability query + scope review</td>
+<td>Internet-exposure inventory</td>
+</tr>
+<tr>
+<td>AU.L2-3.3.1</td>
+<td>Create audit records</td>
+<td>Per-flow + per-process telemetry to SIEM</td>
+<td>SIEM forwarding configuration + sample audit record</td>
+</tr>
+<tr>
+<td>AU.L2-3.3.2</td>
+<td>Action traceability to individual users</td>
+<td>Process attribution + SIEM identity correlation</td>
+<td>Sample event with process + identity attribution</td>
+</tr>
+<tr>
+<td>AU.L2-3.3.4/5</td>
+<td>Alert on audit failure; correlate audit data</td>
+<td>Forwarder health alert + SIEM correlation rules</td>
+<td>Alert configuration + correlation rule export</td>
+</tr>
+<tr>
+<td>AU.L2-3.3.8</td>
+<td>Protect audit information</td>
+<td>SIEM-side immutable storage; CSW RBAC</td>
+<td>SIEM retention configuration + CSW RBAC export</td>
+</tr>
+<tr>
+<td>AU.L2-3.3.9</td>
+<td>Limit audit-log management functionality</td>
+<td>CSW RBAC for audit-management roles</td>
+<td>Role definition export</td>
+</tr>
+<tr>
+<td>CM.L2-3.4.1</td>
+<td>Establish configuration baselines</td>
+<td>Daily snapshot per workload (OS, packages, ports, processes)</td>
+<td>Baseline export per workload</td>
+</tr>
+<tr>
+<td>CM.L2-3.4.2</td>
+<td>Establish security configuration settings</td>
+<td>(Hardening upstream; CSW verifies via baseline)</td>
+<td>Baseline + drift report</td>
+</tr>
+<tr>
+<td>CM.L2-3.4.3/4</td>
+<td>Track and approve changes</td>
+<td>Daily diff + change-ticket attribution</td>
+<td>Diff log with disposition column</td>
+</tr>
+<tr>
+<td>CM.L2-3.4.6</td>
+<td>Employ principle of least functionality</td>
+<td>Listening-port + service inventory + 90-day-no-flow review</td>
+<td>Quarterly least-functionality review</td>
+</tr>
+<tr>
+<td>CM.L2-3.4.7</td>
+<td>Restrict use of nonessential programs / functions</td>
+<td>Software allow-list + (L3) behavioural prevention</td>
+<td>Allow-list deviation log</td>
+</tr>
+<tr>
+<td>RA.L2-3.11.2</td>
+<td>Scan for vulnerabilities</td>
+<td>Continuous CVE inventory per CUI workload</td>
+<td>Per-CUI-workload CVE list dated to scan cadence</td>
+</tr>
+<tr>
+<td>RA.L2-3.11.3</td>
+<td>Remediate vulnerabilities</td>
+<td>Patch SLA tracking + compensating-control register + POA&amp;M
+linkage</td>
+<td>Patch SLA trend + compensating-control register + POA&amp;M
+cross-reference</td>
+</tr>
+<tr>
+<td>SC.L2-3.13.1</td>
+<td>Boundary protection</td>
+<td>Per-enclave segmentation enforcement</td>
+<td>Workspace export per enclave</td>
+</tr>
+<tr>
+<td>SC.L2-3.13.2</td>
+<td>Architectural designs supporting effective security</td>
+<td>ADM-derived as-observed architecture</td>
+<td>ADM dependency graph per enclave</td>
+</tr>
+<tr>
+<td>SC.L2-3.13.5</td>
+<td>Subnetworks for publicly-accessible components</td>
+<td>Public-component scope isolation</td>
+<td>Public-component scope documentation + policy export</td>
+</tr>
+<tr>
+<td>SC.L2-3.13.6</td>
+<td>Deny by default; permit by exception</td>
+<td>Workload-level deny-by-default (native CSW posture)</td>
+<td>Per-enclave policy export</td>
+</tr>
+<tr>
+<td>SC.L2-3.13.7</td>
+<td>Prevent split tunneling on remote devices</td>
+<td>Detective alert on split-tunnel patterns</td>
+<td>Split-tunnel alert log</td>
+</tr>
+<tr>
+<td>SI.L2-3.14.1</td>
+<td>Identify, report, and correct system flaws</td>
+<td>CVE inventory + drift + SIEM routing</td>
+<td>CVE list + drift log + SIEM forwarding</td>
+</tr>
+<tr>
+<td>SI.L2-3.14.2</td>
+<td>Provide protection from malicious code</td>
+<td>Behavioural rules layered with endpoint AV</td>
+<td>Behavioural rule catalogue + sample alert</td>
+</tr>
+<tr>
+<td>SI.L2-3.14.3</td>
+<td>Monitor system security alerts and advisories</td>
+<td>Threat-intel-enriched CVE prioritisation</td>
+<td>Enrichment configuration + sample enriched CVE</td>
+</tr>
+<tr>
+<td>SI.L2-3.14.6</td>
+<td>Monitor organisational systems for attacks</td>
+<td>Per-workload flow telemetry + behavioural rules + anomaly
+detection</td>
+<td>Detection rule catalogue + anomaly alert log</td>
+</tr>
+<tr>
+<td>SI.L2-3.14.7</td>
+<td>Identify unauthorised use</td>
+<td>Process telemetry + identity-aware policy</td>
+<td>Sample unauthorised-use detection</td>
+</tr>
+<tr>
+<td>IR.L2-3.6.1/2/3</td>
+<td>Incident response process</td>
+<td>Six-artefact incident dossier</td>
+<td>Sample dossier per CUI-scope incident</td>
+</tr>
+</tbody>
+</table>
+<h2 id="out-of-scope-and-complementary-controls">4. Out-of-Scope and
+Complementary Controls</h2>
+<p>CSW does <strong>not</strong> address the following families /
+practices; reference the noted complementary controls.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Family / Practice</th>
+<th>Owner</th>
+<th>Complementary control</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AT — Awareness and Training</td>
+<td>HR + Security training</td>
+<td>LMS + phishing simulation</td>
+</tr>
+<tr>
+<td>IA — Identification and Authentication</td>
+<td>Identity / PAM team</td>
+<td>AD/LDAP, PAM (CyberArk, BeyondTrust), MFA</td>
+</tr>
+<tr>
+<td>MA — Maintenance</td>
+<td>Operations</td>
+<td>Maintenance procedures and approval process</td>
+</tr>
+<tr>
+<td>MP — Media Protection</td>
+<td>Operations</td>
+<td>Media-handling, sanitisation, transport</td>
+</tr>
+<tr>
+<td>PE — Physical Protection</td>
+<td>Facilities</td>
+<td>PSP enclosure, badge access, visitor escort</td>
+</tr>
+<tr>
+<td>PS — Personnel Security</td>
+<td>HR</td>
+<td>Background investigation, screening, termination</td>
+</tr>
+<tr>
+<td>AT.L2-3.2.x training-related practices</td>
+<td>HR + Security training</td>
+<td>LMS + role-based training</td>
+</tr>
+<tr>
+<td>IA.L2-3.5.x credential management</td>
+<td>Identity / PAM team</td>
+<td>Credential vault, MFA enforcement</td>
+</tr>
+<tr>
+<td>SC.L2-3.13.16 protect CUI confidentiality at rest</td>
+<td>Crypto / Storage SME</td>
+<td>Encryption-at-rest configuration</td>
+</tr>
+</tbody>
+</table>
+<p>CSW’s role in a complete CMMC programme is the workload-tier evidence
+engine for the technical families. The SSP and POA&amp;M document the
+process around that evidence; identity, media, physical, and personnel
+are explicitly upstream.</p>
+<h2 id="suggested-next-steps">5. Suggested Next Steps</h2>
+<p>For DIB organisations targeting CMMC Level 2 with CSW:</p>
+<ol type="1">
+<li><strong>Confirm CUI scope first.</strong> The CUI scope
+determination is the single most consequential decision in a CMMC
+engagement. The wider the scope, the larger the assessment. Get the
+CUI-handling owner to sign off the scope before deploying CSW
+labels.</li>
+</ol>
+<ol type="1">
+<li><strong>Pilot on the AC + SC families.</strong> Workload-level
+segmentation per enclave is the foundation everything else builds on.
+The simulation→enforcement workflow gives you weeks to refine without
+breaking systems.</li>
+<li><strong>Wire CSW telemetry into the SIEM you already have.</strong>
+AU.L2- 3.3.1 / 3.3.2 expect logs in your SIEM with action traceability.
+CSW supplies the workload-tier feed; the SIEM is where correlation and
+retention live.</li>
+<li><strong>Tie drift detection to your change-management ticketing day
+one.</strong> CM.L2-3.4.3 / 3.4.4 expect change tracking; orphan changes
+(CSW-detected, ticket-absent) become unauthorised-change candidates that
+the C3PAO will ask about.</li>
+<li><strong>Link CSW vuln IDs to POA&amp;M items.</strong> RA.L2-3.11.3
+expects a tracked remediation programme; the POA&amp;M is the artefact.
+CSW produces the per-workload CVE feed; cross-reference into POA&amp;M
+so the assessment trail is contiguous.</li>
+<li><strong>Build the SSP appendix once.</strong> The SSP describes how
+each practice is implemented; CSW evidence (workspace exports, baseline
+exports, CVE lists, dossier templates) sits in the appendix referenced
+from each practice section. Build the appendix structure once and
+refresh per cycle.</li>
+<li><strong>Plan SME review.</strong> This document is a v1 mapping.
+Before being relied upon in a formal C3PAO engagement, route to a CMMC
+Registered Practitioner Organisation (RPO) for assessment guidance
+currency and to a current Cisco Secure Workload SE for
+product-capability accuracy.</li>
+</ol>
+<h2 id="disclaimer">6. Disclaimer</h2>
+<p>This report and its companion runbook describe how Cisco Secure
+Workload capabilities can support a CMMC 2.0 programme at Level 2 (with
+Level 1 and Level 3 deltas). They are <strong>not</strong> legal or
+compliance advice and do not constitute a finding of compliance.</p>
+<p>Specifically:</p>
+<ul>
+<li>The DoD publishes the authoritative CMMC 2.0 text at
+https://dodcio.defense.gov/CMMC/. The DCMA Defense Industrial Base
+Cybersecurity Assessment Center (DIBCAC) and the Cyber AB publish
+authoritative assessment guidance. Always validate against the
+<strong>current effective rule</strong> (DFARS 252.204-7021 / 32 CFR
+Part 170) and against any DoD class deviations.</li>
+<li>CMMC Level 2 assessment is performed by a Certified Third-Party
+Assessor Organisation (C3PAO) or, for limited contracts, by
+self-assessment. Nothing in this document substitutes for the SSP,
+POA&amp;M, or the C3PAO engagement.</li>
+<li>Mapping a CSW capability to a 800-171 practice does not by itself
+satisfy the practice. The C3PAO will look for documented process,
+evidence cadence, and management review behind the technical
+implementation.</li>
+<li>CSW does not address AT, MP, PE, or PS families. Reference your HR,
+media-handling, physical-protection, and personnel-security programmes
+for those.</li>
+</ul>
+<p>This document should receive subject-matter-expert review for both
+CMMC 2.0 currency and current Cisco product capability before being used
+in a customer engagement.</p>
+</body>
+</html>

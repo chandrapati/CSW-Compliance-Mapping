@@ -33,6 +33,9 @@ FRAMEWORKS = [
     ("NIS2",          "NIS2 (EU 2022/2555)",                        "NIS2/CSW-NIS2-Compliance-Report",            "NIS2/CSW-NIS2-Technical-Runbook"),
     ("NERC-CIP",      "NERC CIP (Bulk Electric System)",            "NERC-CIP/CSW-NERC-CIP-Compliance-Report",    "NERC-CIP/CSW-NERC-CIP-Technical-Runbook"),
     ("TSA-Pipeline",  "TSA Pipeline Security Directive",            "TSA-Pipeline/CSW-TSA-Pipeline-Compliance-Report","TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook"),
+    ("CIS-Controls-v8","CIS Critical Security Controls v8.1",       "CIS-Controls-v8/CSW-CIS-Compliance-Report",  "CIS-Controls-v8/CSW-CIS-Technical-Runbook"),
+    ("NIST-CSF-2",    "NIST Cybersecurity Framework 2.0",           "NIST-CSF-2/CSW-CSF-Compliance-Report",       "NIST-CSF-2/CSW-CSF-Technical-Runbook"),
+    ("CMMC-2",        "CMMC 2.0",                                   "CMMC-2/CSW-CMMC-Compliance-Report",          "CMMC-2/CSW-CMMC-Technical-Runbook"),
 ]
 
 
@@ -121,7 +124,7 @@ def build_index(report_html_paths: list[tuple[str, str, str]]) -> None:
         "</head>\n<body>\n"
         "<h1>Cisco Secure Workload &mdash; Compliance Mapping Assets</h1>\n"
         "<p>Browseable HTML renderings of the customer-facing reports and the matching "
-        "technical runbooks for thirteen compliance, sector, and zero-trust frameworks. "
+        "technical runbooks for sixteen compliance, sector, and zero-trust frameworks. "
         "DOCX (editable master), PDF (review copy), and Markdown (runbook source) "
         "remain in the repository and on each framework's GitHub folder page.</p>\n"
         '<p><strong>Repository:</strong> '
@@ -136,9 +139,10 @@ def build_index(report_html_paths: list[tuple[str, str, str]]) -> None:
         '<h2>Cross-framework navigation</h2>\n'
         '<ul>\n'
         '  <li><a href="INDEX.html">Control-ID Index</a> &mdash; '
-        "lookup across all thirteen frameworks (PCI Req 1.2, HIPAA \u00a7164.312(a)(1), "
+        "lookup across all sixteen frameworks (PCI Req 1.2, HIPAA \u00a7164.312(a)(1), "
         "DORA Art. 9, NIS2 Art. 21(2)(d), NIST AC-4, NERC CIP-005 R1, "
-        "TSA SD Section III.A, etc.).</li>\n"
+        "TSA SD Section III.A, CIS Safeguard 13.4, CSF PR.IR-01, "
+        "CMMC AC.L2-3.1.1, etc.).</li>\n"
         '  <li><a href="README.html">Repository README</a> &mdash; '
         "narrative overview, asset library, and disclaimer.</li>\n"
         "</ul>\n"
