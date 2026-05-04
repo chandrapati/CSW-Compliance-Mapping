@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Background — What is Cisco Secure Workload?</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+:root {
+--fg: #1f2328;
+--fg-muted: #59636e;
+--bg: #ffffff;
+--bg-muted: #f6f8fa;
+--border: #d1d9e0;
+--link: #0969da;
+--link-hover: #0349b4;
+--code-bg: #f6f8fa;
+--accent: #cf222e;
+--max-width: 920px;
+}
+@media (prefers-color-scheme: dark) {
+:root {
+--fg: #e6edf3;
+--fg-muted: #9198a1;
+--bg: #0d1117;
+--bg-muted: #151b23;
+--border: #3d444d;
+--link: #4493f8;
+--link-hover: #6cb6ff;
+--code-bg: #151b23;
+--accent: #ff7b72;
+}
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+margin: 0 auto;
+max-width: var(--max-width);
+padding: 2rem 1.25rem 4rem;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+font-size: 16px;
+line-height: 1.6;
+color: var(--fg);
+background: var(--bg);
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 2rem;
+margin-bottom: 1rem;
+font-weight: 600;
+line-height: 1.25;
+}
+h1 { font-size: 2rem; border-bottom: 1px solid var(--border); padding-bottom: .35rem; }
+h2 { font-size: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: .3rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1rem; }
+h5, h6 { font-size: .875rem; color: var(--fg-muted); }
+p, ul, ol, blockquote, pre, table { margin: 0 0 1rem; }
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+ul, ol { padding-left: 1.6rem; }
+li + li { margin-top: .15rem; }
+blockquote {
+margin: 0 0 1rem;
+padding: .5rem 1rem;
+color: var(--fg-muted);
+border-left: .25rem solid var(--border);
+background: var(--bg-muted);
+border-radius: 0 6px 6px 0;
+}
+code, pre, kbd, samp {
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+font-size: .9em;
+}
+code {
+background: var(--code-bg);
+padding: .15rem .35rem;
+border-radius: 4px;
+}
+pre {
+background: var(--code-bg);
+padding: 1rem;
+border-radius: 6px;
+overflow: auto;
+font-size: .85rem;
+line-height: 1.45;
+}
+pre code { background: transparent; padding: 0; font-size: inherit; }
+table {
+display: block;
+width: 100%;
+overflow: auto;
+border-collapse: collapse;
+}
+th, td {
+border: 1px solid var(--border);
+padding: .5rem .75rem;
+vertical-align: top;
+text-align: left;
+}
+th {
+background: var(--bg-muted);
+font-weight: 600;
+}
+tbody tr:nth-child(2n) { background: var(--bg-muted); }
+hr {
+border: 0;
+height: 1px;
+background: var(--border);
+margin: 2rem 0;
+}
+img { max-width: 100%; height: auto; }
+
+.doc-meta {
+margin: 0 0 2rem;
+padding: .75rem 1rem;
+border: 1px solid var(--border);
+border-radius: 6px;
+background: var(--bg-muted);
+font-size: .9rem;
+color: var(--fg-muted);
+}
+.doc-meta a { font-weight: 500; }
+
+@media print {
+body { max-width: none; padding: 0; color: #000; background: #fff; }
+a { color: #000; text-decoration: underline; }
+pre, code, blockquote { background: #f5f5f5; }
+}
+</style>
+</head>
+<body>
+<div class="doc-meta">Source: <a href="about-csw.html">about-csw.md</a> · <a href="../index.html">repository index</a></div>
+<header id="title-block-header">
+<h1 class="title">Background — What is Cisco Secure Workload?</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#background-what-is-cisco-secure-workload" id="toc-background-what-is-cisco-secure-workload">Background — What is
+Cisco Secure Workload?</a>
+<ul>
+<li><a href="#machine-learning-in-practical-terms" id="toc-machine-learning-in-practical-terms">Machine learning, in
+practical terms</a></li>
+<li><a href="#why-that-matters-for-compliance" id="toc-why-that-matters-for-compliance">Why that matters for
+compliance</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="background-what-is-cisco-secure-workload">Background — What is
+Cisco Secure Workload?</h1>
+<blockquote>
+<p>Background page for the <a href="../README.html">CSW Compliance Mapping
+repository</a>. Read this if you want context on the platform itself
+before working through the framework mappings.</p>
+</blockquote>
+<p>Cisco Secure Workload (CSW) is a workload-protection and micro-
+segmentation platform that runs <em>on</em> your servers, virtual
+machines and containers — wherever they live. A lightweight agent on
+each workload, paired with agentless connectors for AWS, Azure, GCP and
+Kubernetes, gives you four things continuously and from one place:</p>
+<ul>
+<li><strong>A complete, current inventory</strong> across hosts and
+workloads—observed processes and packages where the platform surfaces
+them—and the network conversations those workloads participate in across
+on‑prem and supported cloud footprints. Best practice is to reconcile
+this view with your authoritative CMDB or cloud asset records.</li>
+<li><strong>An application dependency map</strong> built from observed
+behaviour, not guessed from a network diagram, so you can see exactly
+which workloads talk to which, on which ports, with which
+processes.</li>
+<li><strong>Workload-level micro-segmentation</strong> that enforces
+deny-by-default policy at the workload itself — close to the resource,
+identity- aware, and consistent across cloud providers.</li>
+<li><strong>Vulnerability and behavioural awareness</strong> —
+CVE/exposure posture, behavioural signals, and drift versus baselines,
+with export paths into your SIEM and incident-response workflows
+designed the way your programme prefers.</li>
+</ul>
+<h2 id="machine-learning-in-practical-terms">Machine learning, in
+practical terms</h2>
+<p><strong>CSW makes extensive use of machine learning</strong>
+alongside classical signals (rules, baselines, graph edges you can
+inspect). Exactly which models and features ship in a given release are
+documented in official product materials and release notes — treat this
+repository as mapping those capabilities to frameworks,
+<strong>not</strong> as the authoritative ML architecture spec. Below is
+the <em>intent</em> practitioners care about:</p>
+<ul>
+<li><strong>Application discovery (ADM).</strong> Observed processes and
+flows are grouped to propose application/service boundaries and
+<em>starting-point</em> policy candidates for human review — not
+carte-blanche automation that bypasses governance. Outputs should be
+iterated and gated like any other security change programme.</li>
+<li><strong>Behavioural detection.</strong> Baselines over process
+execution and graph structure can highlight unusual workloads,
+workload-to-workload edges, and drift in conversational patterns; expect
+tuning to reduce noisy detections as with any behavioural product.</li>
+<li><strong>Vulnerability prioritisation.</strong> Risk rankings can
+combine CVE metadata, exploit intelligence, topology/reachability
+context, and business metadata to focus remediation — they
+<strong>prioritise</strong> work; human validation still matters for
+irreversible containment decisions.</li>
+</ul>
+<h2 id="why-that-matters-for-compliance">Why that matters for
+compliance</h2>
+<p>In practical terms, CSW collapses several things organisations
+typically run as separate programmes — segmentation reviews, change
+attestation, drift tracking, application-flow documentation,
+vulnerability prioritisation, lateral-movement detection — into a
+single, query-able, evidence-producing system. Because discovery and
+detection reconcile against live workload behaviour rather than relying
+purely on static diagrams, evidence can stay materially aligned with how
+applications actually run — supporting both <em>audit-style
+questions</em> (what changed, what’s allowed?) and <em>incident-response
+questions</em> (what was talking to what, across which process?) far
+more cleanly than periodic reviews alone usually achieve.</p>
+<p>The <a href="../README.html">main repository README</a> explains,
+framework-by-framework, exactly which auditor questions and which
+incident-response questions that data answers — and what artefact you’d
+hand over in each case.</p>
+<hr />
+<p><strong>See also</strong></p>
+<ul>
+<li><a href="./why-these-mappings-matter.html">Why these mappings
+matter</a> — the conversation prompts that explain why segmentation and
+workload evidence are leading indicators, not just compliance
+checkboxes.</li>
+<li><a href="./audience-and-usage.html">Audience and usage guide</a> — who
+should read what, file format choices, and folder layout.</li>
+<li><a href="../README.html">Repository README</a> — asset library, scope
+notes, and disclaimer.</li>
+</ul>
+</body>
+</html>

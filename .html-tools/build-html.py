@@ -19,6 +19,12 @@ ROOT = Path(__file__).resolve().parent.parent
 TOOLS = ROOT / ".html-tools"
 CSS = TOOLS / "style.css"
 
+DOCS_PAGES = [
+    ("docs/about-csw",                 "Background — What is Cisco Secure Workload?"),
+    ("docs/why-these-mappings-matter", "Why these mappings matter"),
+    ("docs/audience-and-usage",        "Audience and usage guide"),
+]
+
 FRAMEWORKS = [
     ("HIPAA",         "HIPAA Security Rule",                        "HIPAA/CSW-HIPAA-Compliance-Report",          "HIPAA/CSW-HIPAA-Technical-Runbook"),
     ("SOC2",          "SOC 2 Type II",                              "SOC2/CSW-SOC2-Compliance-Report",            "SOC2/CSW-SOC2-Technical-Runbook"),
@@ -130,22 +136,28 @@ def build_index(report_html_paths: list[tuple[str, str, str]]) -> None:
         '<p><strong>Repository:</strong> '
         '<a href="https://github.com/chandrapati/CSW-Compliance-Mapping">'
         "chandrapati/CSW-Compliance-Mapping</a></p>\n"
+        '<h2>Start here</h2>\n'
+        '<ul>\n'
+        '  <li><a href="README.html">Repository README</a> &mdash; '
+        "compliance-mapping focus, asset library, scope notes, and disclaimer.</li>\n"
+        '  <li><a href="docs/about-csw.html">Background &mdash; What is Cisco Secure Workload?</a>'
+        " &mdash; one-page intro to the platform.</li>\n"
+        '  <li><a href="docs/why-these-mappings-matter.html">Why these mappings matter</a>'
+        " &mdash; conversation-starter questions to ask about your own environment.</li>\n"
+        '  <li><a href="docs/audience-and-usage.html">Audience and usage guide</a>'
+        " &mdash; who reads what, runbook-vs-report, file formats, and folder layout.</li>\n"
+        '  <li><a href="INDEX.html">Control-ID Index</a> &mdash; '
+        "lookup across all sixteen frameworks (PCI Req 1.2, HIPAA \u00a7164.312(a)(1), "
+        "DORA Art. 9, NIS2 Art. 21(2)(d), NIST AC-4, NERC CIP-005 R1, "
+        "TSA SD Section III.A, CIS Safeguard 13.4, CSF PR.IR-01, "
+        "CMMC AC.L2-3.1.1, etc.).</li>\n"
+        "</ul>\n"
         '<h2>Frameworks</h2>\n'
         '<table>\n'
         '<thead><tr><th>Framework</th><th>Customer report</th><th>Technical runbook</th></tr></thead>\n'
         '<tbody>\n'
         + "\n".join(rows)
         + "\n</tbody>\n</table>\n"
-        '<h2>Cross-framework navigation</h2>\n'
-        '<ul>\n'
-        '  <li><a href="INDEX.html">Control-ID Index</a> &mdash; '
-        "lookup across all sixteen frameworks (PCI Req 1.2, HIPAA \u00a7164.312(a)(1), "
-        "DORA Art. 9, NIS2 Art. 21(2)(d), NIST AC-4, NERC CIP-005 R1, "
-        "TSA SD Section III.A, CIS Safeguard 13.4, CSF PR.IR-01, "
-        "CMMC AC.L2-3.1.1, etc.).</li>\n"
-        '  <li><a href="README.html">Repository README</a> &mdash; '
-        "narrative overview, asset library, and disclaimer.</li>\n"
-        "</ul>\n"
         "<hr>\n"
         '<p style="font-size:.85rem;color:var(--fg-muted);">Rendered with pandoc; '
         "see <code>.html-tools/build-html.py</code> in the repository to regenerate.</p>\n"
@@ -187,6 +199,19 @@ def main() -> int:
             str(report_html.relative_to(ROOT)),
             str(runbook_html.relative_to(ROOT)),
         ))
+
+    # docs/ background pages (rendered into docs/*.html alongside the source).
+    # These live one folder deep so they reuse run_pandoc(), which already
+    # writes a "../index.html" link in the doc-meta banner.
+    for stem, title in DOCS_PAGES:
+        src = ROOT / f"{stem}.md"
+        out = ROOT / f"{stem}.html"
+        if not src.exists():
+            print(f"SKIP docs (missing): {src}")
+            continue
+        print(f"  docs    -> {out.relative_to(ROOT)}")
+        run_pandoc(src, out, title, src.name, src.name)
+        rewrite_links(out)
 
     # Top-level docs (INDEX.md, README.md)
     for src_name in ("INDEX.md", "README.md"):

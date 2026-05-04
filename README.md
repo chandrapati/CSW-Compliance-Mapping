@@ -1,125 +1,98 @@
 # Cisco Secure Workload — Compliance Mapping Assets
 
-## What is Cisco Secure Workload?
+Customer-facing reports and matching technical runbooks that map Cisco
+Secure Workload (CSW) controls to **sixteen** compliance, sector, and
+zero-trust frameworks. Every framework folder ships the same set of
+assets: a Markdown technical runbook (the engineering view), a DOCX
+report (the editable customer master), a PDF render of that report,
+and HTML versions of both for browser/mobile reading.
 
-Cisco Secure Workload (CSW) is a workload-protection and micro-
-segmentation platform that runs *on* your servers, virtual machines
-and containers — wherever they live. A lightweight agent on each
-workload, paired with agentless connectors for AWS, Azure, GCP and
-Kubernetes, gives you four things continuously and from one place:
+> **New here?** Read [Background — What is Cisco Secure Workload?](./docs/about-csw.md)
+> for a one-page intro to the platform itself, then come back to pick a
+> framework.
 
-- **A complete, current inventory** across hosts and workloads—observed
-  processes and packages where the platform surfaces them—and the network
-  conversations those workloads participate in across on‑prem and
-  supported cloud footprints. Best practice is to reconcile this view with
-  your authoritative CMDB or cloud asset records.
-- **An application dependency map** built from observed behaviour, not
-  guessed from a network diagram, so you can see exactly which
-  workloads talk to which, on which ports, with which processes.
-- **Workload-level micro-segmentation** that enforces deny-by-default
-  policy at the workload itself — close to the resource, identity-
-  aware, and consistent across cloud providers.
-- **Vulnerability and behavioural awareness** — CVE/exposure posture,
-  behavioural signals, and drift versus baselines, with export paths into
-  your SIEM and incident-response workflows designed the way your
-  programme prefers.
+## Why these mappings exist
 
-**CSW makes extensive use of machine learning** alongside classical
-signals (rules, baselines, graph edges you can inspect). Exactly which
-models and features ship in a given release are documented in official
-product materials and release notes — treat this repository as mapping
-those capabilities to frameworks, **not** as the authoritative ML
-architecture spec. Below is the *intent* practitioners care about:
+Compliance frameworks were written by humans trying to describe what
+"good security" looks like for a class of risk. They are *outcomes*,
+not products. The hardest question a customer faces is not *"what does
+the standard require?"* — it's *"for the workloads I actually defend,
+can I actually prove — with evidence that survives scrutiny — that the
+control still holds tomorrow, not just on audit day?"*
 
-- **Application discovery (ADM).** Observed processes and flows are
-  grouped to propose application/service boundaries and *starting-point*
-  policy candidates for human review — not carte-blanche automation that
-  bypasses governance. Outputs should be iterated and gated like any
-  other security change programme.
-- **Behavioural detection.** Baselines over process execution and graph
-  structure can highlight unusual workloads, workload-to-workload edges,
-  and drift in conversational patterns; expect tuning to reduce noisy
-  detections as with any behavioural product.
-- **Vulnerability prioritisation.** Risk rankings can combine CVE
-  metadata, exploit intelligence, topology/reachability context, and
-  business metadata to focus remediation — they **prioritise** work;
-  human validation still matters for irreversible containment decisions.
+These mappings exist to close that gap. For each framework, they trace
+specific controls (e.g. PCI DSS Req 1.2.1, HIPAA §164.312(a)(1), NIST
+AC-4) to concrete CSW capabilities — micro-segmentation, process-level
+telemetry, software inventory, vulnerability awareness, forensic flow
+data, and policy-as-code enforcement — and explain how that capability
+produces auditor-grade evidence.
 
-In practical terms, CSW collapses several things organisations
-typically run as separate programmes — segmentation reviews, change
-attestation, drift tracking, application-flow documentation,
-vulnerability prioritisation, lateral-movement detection — into a
-single, query-able, evidence-producing system. Because discovery and
-detection reconcile against live workload behaviour rather than relying
-purely on static diagrams, evidence can stay materially aligned with how
-applications actually run — supporting both *audit-style questions*
-(what changed, what's allowed?) and *incident-response questions* (what
-was talking to what, across which process?) far more cleanly than periodic
-reviews alone usually achieve.
+The same workload-resident evidence that satisfies an auditor also
+shortens the questions defenders ask under pressure: *what was talking
+to what, on which port, via which process, and what changed?* That
+overlap is not a coincidence — it's why segmentation, lateral-movement
+visibility, and patching priority show up across PCI Req 1, HIPAA
+§164.312, NIST AC-4, ISO A.8.22, DORA Art. 9, NIS2 Art. 21(2)(j) and the
+zero-trust frameworks. Standards writers captured the failure modes
+people keep living through; treating those obligations as audit
+busywork forfeits blast-radius containment while still paying for the
+programme.
 
-This repository explains, framework-by-framework, exactly which
-auditor questions and which incident-response questions that data
-answers — and what artefact you'd hand over in each case.
+For the longer argument — including the five conversation-starter
+questions worth walking through against your own environment — see
+[Why these mappings matter](./docs/why-these-mappings-matter.md).
 
-## About this repository
+## Asset library
 
-Customer-facing reports and matching technical runbooks mapping
-Cisco Secure Workload controls to sixteen common compliance,
-sector, and zero-trust frameworks. Each framework folder contains
-the same three assets: a PDF report (for executive review), a DOCX
-report (the editable master), and a Markdown technical runbook
-(concrete configuration steps and the auditor-response playbook). A
-single `INDEX.md` at the root lets you jump straight from any
-control ID into the runbook section that addresses it.
-
-**Licensing.** This repository ships with Cisco's standard terms in
-[`LICENSE`](./LICENSE) at the repo root — read before redistributing,
-forking commercially, or building derivative artefacts outside your
-organisation.
-
-## Asset Library
-
-**Coverage** highlights what the framework section addresses so the whole
-library can be scanned in one view. The **Runbook** column comes first
-because the runbook is what proves the mapping is real and not marketing —
-it shows the actual configuration steps, sample policies, and evidence
-collection. The **Report** column is the customer-facing narrative built on
-top of that work. Both open a format chooser — pick PDF, DOCX, HTML, or
-Markdown depending on how you want to read or share the asset.
+**Coverage** highlights what each framework section addresses so the
+whole library can be scanned in one view. The **Runbook** column comes
+first because the runbook is what proves the mapping is real and not
+marketing — it shows the actual configuration steps, sample policies,
+and evidence collection. The **Report** column is the customer-facing
+narrative built on top of that work. Format links open the asset
+directly; pick whichever fits the conversation you're in (see the
+[audience and usage guide](./docs/audience-and-usage.md) for when to
+reach for the runbook vs. the report).
 
 | Framework | Coverage | Runbook | Report |
 |---|---|---|---|
-| HIPAA Security Rule | ePHI workload isolation; OCR-investigation audit trail; BAA technical boundary evidence | <details><summary>Choose format</summary><br>[Markdown](./HIPAA/CSW-HIPAA-Technical-Runbook.md) · [HTML](./HIPAA/CSW-HIPAA-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./HIPAA/CSW-HIPAA-Compliance-Report.pdf) · [DOCX](./HIPAA/CSW-HIPAA-Compliance-Report.docx) · [HTML](./HIPAA/CSW-HIPAA-Compliance-Report.html)</details> |
-| SOC 2 Type II | Continuous CC6.x evidence (vs point-in-time samples); CC7 incident artefacts; customer due-diligence proofs | <details><summary>Choose format</summary><br>[Markdown](./SOC2/CSW-SOC2-Technical-Runbook.md) · [HTML](./SOC2/CSW-SOC2-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./SOC2/CSW-SOC2-Compliance-Report.pdf) · [DOCX](./SOC2/CSW-SOC2-Compliance-Report.docx) · [HTML](./SOC2/CSW-SOC2-Compliance-Report.html)</details> |
-| PCI DSS v4.0 | CDE segmentation simulation→enforce; QSA-ready Req 1/11 evidence; CVE + EPSS + reachability prioritisation | <details><summary>Choose format</summary><br>[Markdown](./PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.md) · [HTML](./PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./PCI-DSS-v4/CSW-PCI-DSS-Compliance-Report.pdf) · [DOCX](./PCI-DSS-v4/CSW-PCI-DSS-Compliance-Report.docx) · [HTML](./PCI-DSS-v4/CSW-PCI-DSS-Compliance-Report.html)</details> |
-| NIST SP 800-53 Rev 5 | AC-4 information-flow enforcement; CA-7 continuous monitoring; CM-2/3/8 baseline + change tracking | <details><summary>Choose format</summary><br>[Markdown](./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md) · [HTML](./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./NIST-800-53/CSW-NIST-800-53-Compliance-Report.pdf) · [DOCX](./NIST-800-53/CSW-NIST-800-53-Compliance-Report.docx) · [HTML](./NIST-800-53/CSW-NIST-800-53-Compliance-Report.html)</details> |
-| ISO/IEC 27001:2022 | A.8.20–A.8.22 network segregation; A.5.19–A.5.22 supplier egress reconciliation; A.8.16 monitoring evidence | <details><summary>Choose format</summary><br>[Markdown](./ISO-27001-2022/CSW-ISO27001-Technical-Runbook.md) · [HTML](./ISO-27001-2022/CSW-ISO27001-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./ISO-27001-2022/CSW-ISO27001-Compliance-Report.pdf) · [DOCX](./ISO-27001-2022/CSW-ISO27001-Compliance-Report.docx) · [HTML](./ISO-27001-2022/CSW-ISO27001-Compliance-Report.html)</details> |
-| CISA Zero Trust Maturity Model | Networks pillar Initial→Advanced path; Applications & Workloads policy enforcement; observable maturity progression | <details><summary>Choose format</summary><br>[Markdown](./CISA-ZeroTrust/CSW-CISA-ZTMM-Technical-Runbook.md) · [HTML](./CISA-ZeroTrust/CSW-CISA-ZTMM-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./CISA-ZeroTrust/CSW-CISA-ZTMM-Compliance-Report.pdf) · [DOCX](./CISA-ZeroTrust/CSW-CISA-ZTMM-Compliance-Report.docx) · [HTML](./CISA-ZeroTrust/CSW-CISA-ZTMM-Compliance-Report.html)</details> |
-| FIPS 140 | Plaintext-protocol DENY enforcement; programme-level FIPS posture (cryptographic modules out of scope); 140-2→140-3 transition visibility | <details><summary>Choose format</summary><br>[Markdown](./FIPS-140/CSW-FIPS-Technical-Runbook.md) · [HTML](./FIPS-140/CSW-FIPS-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./FIPS-140/CSW-FIPS-Compliance-Report.pdf) · [DOCX](./FIPS-140/CSW-FIPS-Compliance-Report.docx) · [HTML](./FIPS-140/CSW-FIPS-Compliance-Report.html)</details> |
-| NIST SP 800-207 (ZTA Seven Tenets) | Workload-side evidence for Tenets 2/3/5/6; ZTA architecture mapping; clear PEP placement at the workload | <details><summary>Choose format</summary><br>[Markdown](./NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md) · [HTML](./NIST-800-207/CSW-NIST-800-207-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./NIST-800-207/CSW-NIST-800-207-Compliance-Report.pdf) · [DOCX](./NIST-800-207/CSW-NIST-800-207-Compliance-Report.docx) · [HTML](./NIST-800-207/CSW-NIST-800-207-Compliance-Report.html)</details> |
-| NIST SP 800-207A (PDP/PEP/PA/PIP, draft-derived) | CSW Defend as PDP/PEP; telemetry as PIP; logical-component traceability for cloud-native ZTA | <details><summary>Choose format</summary><br>[Markdown](./NIST-800-207A/CSW-NIST-800-207A-Technical-Runbook.md) · [HTML](./NIST-800-207A/CSW-NIST-800-207A-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./NIST-800-207A/CSW-NIST-800-207A-Compliance-Report.pdf) · [DOCX](./NIST-800-207A/CSW-NIST-800-207A-Compliance-Report.docx) · [HTML](./NIST-800-207A/CSW-NIST-800-207A-Compliance-Report.html)</details> |
-| DORA (EU 2022/2554) | Art. 8/9 segmentation + inventory; Art. 19 incident dossier templates; Art. 28 third-party egress reconciliation | <details><summary>Choose format</summary><br>[Markdown](./DORA/CSW-DORA-Technical-Runbook.md) · [HTML](./DORA/CSW-DORA-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./DORA/CSW-DORA-Compliance-Report.pdf) · [DOCX](./DORA/CSW-DORA-Compliance-Report.docx) · [HTML](./DORA/CSW-DORA-Compliance-Report.html)</details> |
-| NIS2 (EU 2022/2555) | Art. 21(2)(a–j) risk-management mapping; Art. 23 24 h / 72 h / 1-month dossier; Art. 21(2)(d) supply-chain egress | <details><summary>Choose format</summary><br>[Markdown](./NIS2/CSW-NIS2-Technical-Runbook.md) · [HTML](./NIS2/CSW-NIS2-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./NIS2/CSW-NIS2-Compliance-Report.pdf) · [DOCX](./NIS2/CSW-NIS2-Compliance-Report.docx) · [HTML](./NIS2/CSW-NIS2-Compliance-Report.html)</details> |
-| NERC CIP (Bulk Electric System) | IT-side ESP boundary hardening (CIP-005 R1); IRA evidence (CIP-005 R2); CIP-007/010 ports + baseline + VA evidence; CIP-013 vendor-egress reconciliation. *IT-side scope; OT device layer out of scope.* | <details><summary>Choose format</summary><br>[Markdown](./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.md) · [HTML](./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./NERC-CIP/CSW-NERC-CIP-Compliance-Report.pdf) · [DOCX](./NERC-CIP/CSW-NERC-CIP-Compliance-Report.docx) · [HTML](./NERC-CIP/CSW-NERC-CIP-Compliance-Report.html)</details> |
-| TSA Pipeline Security Directive | IT-side IT/OT segmentation (Section III.A); access control + monitoring (III.B/III.C); unpatched-system risk reduction (III.D); CIRP + CAP evidence packs. *IT-side scope; OT device layer out of scope.* | <details><summary>Choose format</summary><br>[Markdown](./TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.md) · [HTML](./TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./TSA-Pipeline/CSW-TSA-Pipeline-Compliance-Report.pdf) · [DOCX](./TSA-Pipeline/CSW-TSA-Pipeline-Compliance-Report.docx) · [HTML](./TSA-Pipeline/CSW-TSA-Pipeline-Compliance-Report.html)</details> |
-| CIS Critical Security Controls v8.1 | Direct on Controls 1, 2, 4, 7, 8, 13 (asset & software inventory, secure config, vuln mgmt, audit logs, network monitoring); IG2 lead with IG1/IG3 deltas called out | <details><summary>Choose format</summary><br>[Markdown](./CIS-Controls-v8/CSW-CIS-Technical-Runbook.md) · [HTML](./CIS-Controls-v8/CSW-CIS-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./CIS-Controls-v8/CSW-CIS-Compliance-Report.pdf) · [DOCX](./CIS-Controls-v8/CSW-CIS-Compliance-Report.docx) · [HTML](./CIS-Controls-v8/CSW-CIS-Compliance-Report.html)</details> |
-| NIST Cybersecurity Framework 2.0 | Govern (GV.OV/GV.SC) evidence pack; direct coverage of ID.AM, ID.RA, PR.IR, PR.PS, DE.CM, DE.AE, RS.AN, RS.MI Subcategories | <details><summary>Choose format</summary><br>[Markdown](./NIST-CSF-2/CSW-CSF-Technical-Runbook.md) · [HTML](./NIST-CSF-2/CSW-CSF-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./NIST-CSF-2/CSW-CSF-Compliance-Report.pdf) · [DOCX](./NIST-CSF-2/CSW-CSF-Compliance-Report.docx) · [HTML](./NIST-CSF-2/CSW-CSF-Compliance-Report.html)</details> |
-| CMMC 2.0 (DoD / DIB) | Level 2 lead (110 controls = NIST 800-171 Rev 2): direct on AC, AU, CM, RA, SC, SI families; CUI-scope labelling pattern; L1 (FCI) and L3 (800-172) deltas | <details><summary>Choose format</summary><br>[Markdown](./CMMC-2/CSW-CMMC-Technical-Runbook.md) · [HTML](./CMMC-2/CSW-CMMC-Technical-Runbook.html)</details> | <details><summary>Choose format</summary><br>[PDF](./CMMC-2/CSW-CMMC-Compliance-Report.pdf) · [DOCX](./CMMC-2/CSW-CMMC-Compliance-Report.docx) · [HTML](./CMMC-2/CSW-CMMC-Compliance-Report.html)</details> |
+| HIPAA Security Rule | ePHI workload isolation; OCR-investigation audit trail; BAA technical boundary evidence | [MD](./HIPAA/CSW-HIPAA-Technical-Runbook.md) · [HTML](./HIPAA/CSW-HIPAA-Technical-Runbook.html) | [PDF](./HIPAA/CSW-HIPAA-Compliance-Report.pdf) · [DOCX](./HIPAA/CSW-HIPAA-Compliance-Report.docx) · [HTML](./HIPAA/CSW-HIPAA-Compliance-Report.html) |
+| SOC 2 Type II | Continuous CC6.x evidence (vs point-in-time samples); CC7 incident artefacts; customer due-diligence proofs | [MD](./SOC2/CSW-SOC2-Technical-Runbook.md) · [HTML](./SOC2/CSW-SOC2-Technical-Runbook.html) | [PDF](./SOC2/CSW-SOC2-Compliance-Report.pdf) · [DOCX](./SOC2/CSW-SOC2-Compliance-Report.docx) · [HTML](./SOC2/CSW-SOC2-Compliance-Report.html) |
+| PCI DSS v4.0 | CDE segmentation simulation→enforce; QSA-ready Req 1/11 evidence; CVE + EPSS + reachability prioritisation | [MD](./PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.md) · [HTML](./PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.html) | [PDF](./PCI-DSS-v4/CSW-PCI-DSS-Compliance-Report.pdf) · [DOCX](./PCI-DSS-v4/CSW-PCI-DSS-Compliance-Report.docx) · [HTML](./PCI-DSS-v4/CSW-PCI-DSS-Compliance-Report.html) |
+| NIST SP 800-53 Rev 5 | AC-4 information-flow enforcement; CA-7 continuous monitoring; CM-2/3/8 baseline + change tracking | [MD](./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md) · [HTML](./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.html) | [PDF](./NIST-800-53/CSW-NIST-800-53-Compliance-Report.pdf) · [DOCX](./NIST-800-53/CSW-NIST-800-53-Compliance-Report.docx) · [HTML](./NIST-800-53/CSW-NIST-800-53-Compliance-Report.html) |
+| ISO/IEC 27001:2022 | A.8.20–A.8.22 network segregation; A.5.19–A.5.22 supplier egress reconciliation; A.8.16 monitoring evidence | [MD](./ISO-27001-2022/CSW-ISO27001-Technical-Runbook.md) · [HTML](./ISO-27001-2022/CSW-ISO27001-Technical-Runbook.html) | [PDF](./ISO-27001-2022/CSW-ISO27001-Compliance-Report.pdf) · [DOCX](./ISO-27001-2022/CSW-ISO27001-Compliance-Report.docx) · [HTML](./ISO-27001-2022/CSW-ISO27001-Compliance-Report.html) |
+| CISA Zero Trust Maturity Model | Networks pillar Initial→Advanced path; Applications & Workloads policy enforcement; observable maturity progression | [MD](./CISA-ZeroTrust/CSW-CISA-ZTMM-Technical-Runbook.md) · [HTML](./CISA-ZeroTrust/CSW-CISA-ZTMM-Technical-Runbook.html) | [PDF](./CISA-ZeroTrust/CSW-CISA-ZTMM-Compliance-Report.pdf) · [DOCX](./CISA-ZeroTrust/CSW-CISA-ZTMM-Compliance-Report.docx) · [HTML](./CISA-ZeroTrust/CSW-CISA-ZTMM-Compliance-Report.html) |
+| FIPS 140 | Plaintext-protocol DENY enforcement; programme-level FIPS posture (cryptographic modules out of scope); 140-2→140-3 transition visibility | [MD](./FIPS-140/CSW-FIPS-Technical-Runbook.md) · [HTML](./FIPS-140/CSW-FIPS-Technical-Runbook.html) | [PDF](./FIPS-140/CSW-FIPS-Compliance-Report.pdf) · [DOCX](./FIPS-140/CSW-FIPS-Compliance-Report.docx) · [HTML](./FIPS-140/CSW-FIPS-Compliance-Report.html) |
+| NIST SP 800-207 (ZTA Seven Tenets) | Workload-side evidence for Tenets 2/3/5/6; ZTA architecture mapping; clear PEP placement at the workload | [MD](./NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md) · [HTML](./NIST-800-207/CSW-NIST-800-207-Technical-Runbook.html) | [PDF](./NIST-800-207/CSW-NIST-800-207-Compliance-Report.pdf) · [DOCX](./NIST-800-207/CSW-NIST-800-207-Compliance-Report.docx) · [HTML](./NIST-800-207/CSW-NIST-800-207-Compliance-Report.html) |
+| NIST SP 800-207A (PDP/PEP/PA/PIP, draft-derived) | CSW Defend as PDP/PEP; telemetry as PIP; logical-component traceability for cloud-native ZTA | [MD](./NIST-800-207A/CSW-NIST-800-207A-Technical-Runbook.md) · [HTML](./NIST-800-207A/CSW-NIST-800-207A-Technical-Runbook.html) | [PDF](./NIST-800-207A/CSW-NIST-800-207A-Compliance-Report.pdf) · [DOCX](./NIST-800-207A/CSW-NIST-800-207A-Compliance-Report.docx) · [HTML](./NIST-800-207A/CSW-NIST-800-207A-Compliance-Report.html) |
+| DORA (EU 2022/2554) | Art. 8/9 segmentation + inventory; Art. 19 incident dossier templates; Art. 28 third-party egress reconciliation | [MD](./DORA/CSW-DORA-Technical-Runbook.md) · [HTML](./DORA/CSW-DORA-Technical-Runbook.html) | [PDF](./DORA/CSW-DORA-Compliance-Report.pdf) · [DOCX](./DORA/CSW-DORA-Compliance-Report.docx) · [HTML](./DORA/CSW-DORA-Compliance-Report.html) |
+| NIS2 (EU 2022/2555) | Art. 21(2)(a–j) risk-management mapping; Art. 23 24 h / 72 h / 1-month dossier; Art. 21(2)(d) supply-chain egress | [MD](./NIS2/CSW-NIS2-Technical-Runbook.md) · [HTML](./NIS2/CSW-NIS2-Technical-Runbook.html) | [PDF](./NIS2/CSW-NIS2-Compliance-Report.pdf) · [DOCX](./NIS2/CSW-NIS2-Compliance-Report.docx) · [HTML](./NIS2/CSW-NIS2-Compliance-Report.html) |
+| NERC CIP (Bulk Electric System) | IT-side ESP boundary hardening (CIP-005 R1); IRA evidence (CIP-005 R2); CIP-007/010 ports + baseline + VA evidence; CIP-013 vendor-egress reconciliation. *IT-side scope; OT device layer out of scope.* | [MD](./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.md) · [HTML](./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.html) | [PDF](./NERC-CIP/CSW-NERC-CIP-Compliance-Report.pdf) · [DOCX](./NERC-CIP/CSW-NERC-CIP-Compliance-Report.docx) · [HTML](./NERC-CIP/CSW-NERC-CIP-Compliance-Report.html) |
+| TSA Pipeline Security Directive | IT-side IT/OT segmentation (Section III.A); access control + monitoring (III.B/III.C); unpatched-system risk reduction (III.D); CIRP + CAP evidence packs. *IT-side scope; OT device layer out of scope.* | [MD](./TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.md) · [HTML](./TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.html) | [PDF](./TSA-Pipeline/CSW-TSA-Pipeline-Compliance-Report.pdf) · [DOCX](./TSA-Pipeline/CSW-TSA-Pipeline-Compliance-Report.docx) · [HTML](./TSA-Pipeline/CSW-TSA-Pipeline-Compliance-Report.html) |
+| CIS Critical Security Controls v8.1 | Direct on Controls 1, 2, 4, 7, 8, 13 (asset & software inventory, secure config, vuln mgmt, audit logs, network monitoring); IG2 lead with IG1/IG3 deltas called out | [MD](./CIS-Controls-v8/CSW-CIS-Technical-Runbook.md) · [HTML](./CIS-Controls-v8/CSW-CIS-Technical-Runbook.html) | [PDF](./CIS-Controls-v8/CSW-CIS-Compliance-Report.pdf) · [DOCX](./CIS-Controls-v8/CSW-CIS-Compliance-Report.docx) · [HTML](./CIS-Controls-v8/CSW-CIS-Compliance-Report.html) |
+| NIST Cybersecurity Framework 2.0 | Govern (GV.OV/GV.SC) evidence pack; direct coverage of ID.AM, ID.RA, PR.IR, PR.PS, DE.CM, DE.AE, RS.AN, RS.MI Subcategories | [MD](./NIST-CSF-2/CSW-CSF-Technical-Runbook.md) · [HTML](./NIST-CSF-2/CSW-CSF-Technical-Runbook.html) | [PDF](./NIST-CSF-2/CSW-CSF-Compliance-Report.pdf) · [DOCX](./NIST-CSF-2/CSW-CSF-Compliance-Report.docx) · [HTML](./NIST-CSF-2/CSW-CSF-Compliance-Report.html) |
+| CMMC 2.0 (DoD / DIB) | Level 2 lead (110 controls = NIST 800-171 Rev 2): direct on AC, AU, CM, RA, SC, SI families; CUI-scope labelling pattern; L1 (FCI) and L3 (800-172) deltas | [MD](./CMMC-2/CSW-CMMC-Technical-Runbook.md) · [HTML](./CMMC-2/CSW-CMMC-Technical-Runbook.html) | [PDF](./CMMC-2/CSW-CMMC-Compliance-Report.pdf) · [DOCX](./CMMC-2/CSW-CMMC-Compliance-Report.docx) · [HTML](./CMMC-2/CSW-CMMC-Compliance-Report.html) |
 
-> **Cross-cutting frameworks scope note (CIS, CSF, CMMC).** These
-> three frameworks are *cross-mapping* / certification frameworks
-> that intentionally overlap with the underlying NIST families
-> already in this library. CIS Controls v8.1 is a prioritised
-> subset of NIST 800-53; CSF 2.0 is an outcomes wrapper that cites
-> 800-53 (and others) as Informative References; CMMC 2.0 Level 2
-> *is* NIST 800-171, which is itself a tailored subset of 800-53.
-> Read the standalone runbook when you need the framework-native
-> narrative (assessor language, IG/Level/Profile structure, format
-> evidence comes in); cross-reference the [800-53](./NIST-800-53/)
-> and [800-207](./NIST-800-207/) runbooks for the deeper control
-> rationale. All three are **draft v1** and require SME review
-> before being relied upon in a formal compliance engagement
-> (CMMC L2 specifically requires a C3PAO assessment regardless).
+> **Quickly find a control?** See [`INDEX.md`](./INDEX.md) for a
+> control-ID-keyed index across all sixteen frameworks (e.g. *PCI Req
+> 1.2*, *HIPAA §164.312(a)(1)*, *DORA Art. 9*, *NIS2 Art. 21(2)(d)*,
+> *NIST AC-4*, *NERC CIP-005 R1*, *TSA SD Section III.A*, *CIS
+> Safeguard 13.4*, *CSF PR.IR-01*, *CMMC AC.L2-3.1.1*).
+
+> **Cross-cutting frameworks scope note (CIS, CSF, CMMC).** These three
+> frameworks are *cross-mapping* / certification frameworks that
+> intentionally overlap with the underlying NIST families already in
+> this library. CIS Controls v8.1 is a prioritised subset of NIST
+> 800-53; CSF 2.0 is an outcomes wrapper that cites 800-53 (and others)
+> as Informative References; CMMC 2.0 Level 2 *is* NIST 800-171, which
+> is itself a tailored subset of 800-53. Read the standalone runbook
+> when you need the framework-native narrative (assessor language,
+> IG/Level/Profile structure, format evidence comes in);
+> cross-reference the [800-53](./NIST-800-53/) and
+> [800-207](./NIST-800-207/) runbooks for the deeper control rationale.
+> All three are **draft v1** and require SME review before being relied
+> upon in a formal compliance engagement (CMMC L2 specifically requires
+> a C3PAO assessment regardless).
 
 > **Sector frameworks scope note (NERC CIP, TSA Pipeline).** Both
 > frameworks are sector overlays whose substantive controls overlap
@@ -129,283 +102,36 @@ Markdown depending on how you want to read or share the asset.
 > identity/PKI, and the corporate IT systems that touch BES Cyber
 > System Information or pipeline Critical Cyber Systems. CSW does
 > **not** enforce on PLCs/RTUs/IEDs/HMIs and is not certified as an
-> Electronic Access Point (NERC) or as an OT-protocol DPI tool;
-> pair with your boundary firewall and your OT-aware monitoring
-> stack (Cisco Cyber Vision, Claroty, Nozomi, Dragos) for end-to-end
-> coverage. Both runbooks and reports are **draft v1** and require
-> SME review before being relied upon in a formal compliance
-> engagement.
+> Electronic Access Point (NERC) or as an OT-protocol DPI tool; pair
+> with your boundary firewall and your OT-aware monitoring stack
+> (Cisco Cyber Vision, Claroty, Nozomi, Dragos) for end-to-end
+> coverage. Both runbooks and reports are **draft v1** and require SME
+> review before being relied upon in a formal compliance engagement.
 
-**Runbook vs. Report — when to use which.**
+## Read next
 
-- **Runbook** is the technical foundation everything else rests on. It's
-  written for the **security engineers and platform owners actually doing
-  the work**: deployment playbooks, CSW configuration steps, sample
-  policies, evidence-collection commands, and the auditor-response guidance
-  the report cites. If a customer wants to know whether a mapping is real
-  or just slideware, the runbook is where they look. Use **Markdown** when
-  editing or diff-reviewing in a code editor, **HTML** when reading through
-  it in a browser.
-- **Report** is the customer-facing narrative built on top of the runbook.
-  It's for **leaders, auditors, customers in due diligence, and
-  procurement** — explaining how Cisco Secure Workload supports the
-  framework, the artefacts produced, and where the boundaries are. Use
-  **PDF** for review meetings, **DOCX** when you need to tailor placeholders
-  before sharing externally, **HTML** for a link you can drop into
-  Slack/email or read on a phone.
+- **[Background — What is Cisco Secure Workload?](./docs/about-csw.md)** —
+  one-page intro to the platform, its agent + connector model, and the
+  ML capabilities relevant to this repository.
+- **[Why these mappings matter](./docs/why-these-mappings-matter.md)** —
+  five conversation-starter questions to ask about your own environment,
+  plus the case for evaluating CSW alongside what you already run.
+- **[Audience and usage guide](./docs/audience-and-usage.md)** — who
+  should lead with which document, runbook-vs-report guidance, file
+  format guidance, and the full folder layout.
+- **[`INDEX.md`](./INDEX.md)** — control-ID lookup across all sixteen
+  frameworks.
 
-The **HTML** option in each chooser is the browseable, mobile-friendly view.
-Once GitHub Pages is enabled, the same HTML is also at
-`https://chandrapati.github.io/CSW-Compliance-Mapping/` (landing page:
+Once GitHub Pages is enabled, the same content is also browseable at
+`https://chandrapati.github.io/CSW-Compliance-Mapping/` (landing page
 [`index.html`](./index.html)).
 
-> **Quickly find a control?** See [`INDEX.md`](./INDEX.md) for a
-> control-ID-keyed index across all sixteen frameworks (e.g. *PCI
-> Req 1.2*, *HIPAA §164.312(a)(1)*, *DORA Art. 9*, *NIS2 Art.
-> 21(2)(d)*, *NIST AC-4*, *NERC CIP-005 R1*, *TSA SD Section
-> III.A*, *CIS Safeguard 13.4*, *CSF PR.IR-01*, *CMMC AC.L2-3.1.1*).
+## Licensing
 
-## How to Use
-
-### Why these mappings exist
-
-Compliance frameworks were written by humans trying to describe what
-"good security" looks like for a class of risk. They are *outcomes*, not
-products. The hardest question a customer faces is not *"what does the
-standard require?"* — it's *"for the workloads I actually defend, can I
-actually prove — with evidence that survives scrutiny — that the control
-still holds tomorrow, not just on audit day?"*
-
-These mappings exist to close that gap. For each framework, they trace
-specific controls (e.g. PCI DSS Req 1.2.1, HIPAA §164.312(a)(1), NIST AC-4)
-to concrete Cisco Secure Workload (CSW) capabilities — micro-segmentation,
-process-level telemetry, software inventory, vulnerability awareness,
-forensic flow data, and policy-as-code enforcement — and explain how that
-capability produces auditor-grade evidence.
-
-### Use them to start a different conversation — with yourself
-
-Compliance frameworks were originally written to capture lessons from
-real breaches. Over time the conversation around them has narrowed to
-checkbox status — *do you have a firewall, do you have an EDR, do you
-have a SIEM* — and the connection back to actual loss prevention has
-gotten thinner. Walk through the questions below about *your own*
-environment and compare how each lands in compliance language versus
-during an incident retrospective — organisations that triage breaches
-almost always converge on segmentation, lateral movement, patching
-priorities, visibility gaps, or drift across "what's supposed to happen"
-versus "what's actually happening." They are overlapping views of similar
-underlying risk.
-
-- **Can you enumerate, right now—at the fidelity your monitoring stack
-  actually provides—every process talking to your cardholder data
-  environment, and reason about how that picture changed over roughly the
-  last 30 days without a rebuild-the-world project?** *(PCI DSS Req 1.2,
-  11.5)* Your QSA asks something in this neighbourhood once per assessment
-  cycle.
-  Immediately after credential theft or initial foothold, defenders ask a
-  related question repeatedly: *what new paths opened from this pivot?*
-  If assembling the authoritative answer reliably takes heroic effort,
-  defenders are improvising faster than attackers during the decisive
-  early hours.
-
-- **When a CVE drops on a library inside one of your containers, how
-  long until you know which production workloads are exposed and which
-  paths attackers could traverse to reach them?** *(NIST RA-5, CM-7,
-  ISO A.8.8)* Many vulnerability scanners and programmes answer *whether
-  a CVE exists on an asset*. They often omit or under-weight the richer
-  question CSW specialises in: given how this workload actually converses —
-  ingress, egress and lateral paths — what's the practical blast radius?
-  Separate tools partially answer pieces of this; assembling a coherent,
-  repeatable picture organisation-wide commonly remains brittle without
-  workload-resident conversational context.
-
-- **If an auditor asks you to demonstrate least-privilege between two
-  applications, what artefact do you hand them?** *(SOC 2 CC6.1,
-  800-53 AC-3)* Now ask exactly the same question with different
-  words: *if app A is compromised, what stops it from talking to app
-  B?* — and notice the answer should be the same artefact. If your
-  "least privilege" lives in a network-design document and not in
-  something the workload actually enforces, then you have least-
-  privilege as a policy, not as a property of your environment.
-
-- **Your zero-trust architecture diagram shows a Policy Decision Point
-  and a Policy Enforcement Point — where do they actually live in
-  your stack today, and what data feeds them?** *(NIST 800-207 §3.2,
-  800-207A PDP/PEP)* If you paused right now — without opening a wiki —
-  where does an allow vs deny verdict *actually get applied* for lateral
-  workload‑to‑workload flows you care most about defending, which engine
-  emitted it last, what attributes did it ingest, and can you replay a
-  decision historically? Architectural diagrams clarify intent; answering
-  those factual questions cleanly for production traffic is harder for
-  many organisations than decks suggest.
-
-- **If a lateral-movement or ransomware tabletop asked *"how fast can we
-  change who can talk to whom"* — would the answer be *continuous,
-  policy-driven reachability* tied to live workload behaviour, or mainly
-  *project-driven network redesigns*?** *(CISA ZTMM treats "Optimal"
-  maturity as an aspiration; use it that way, not as a guarantee.)* Not
-  every incident involves ransomware, yet exercises still surface the same
-  axis: does blast-radius containment ride on everyday operations, or wait
-  for the next big architectural push?
-
-#### Notice the pattern
-
-Each of those questions appears in a compliance framework *because*
-the framework's authors knew it was the question that decides whether
-a foothold becomes an incident, or an incident becomes a breach.
-**Compliance is commonly the lagging indicator; blast‑radius containment
-often becomes the unavoidable leading indicator when something breaks
-badly.** At the workload layer—particularly where CSW enforces segmentation
-policy—audit-oriented exports often overlap substantially with artefacts
-incident responders reconstruct under pressure. Assessors revisit periodically; attackers probe reachable paths
-far more impatiently — both perspectives stress‑test whether policy is real
-property or aspiration.
-
-That reframes what micro-segmentation is *for*. It is not a
-compliance project that happens to limit blast radius as a side
-effect — it is a blast-radius control that happens to satisfy the
-compliance requirement at the same time. PCI Req 1, HIPAA §164.312,
-NIST AC-4, ISO A.8.22, DORA Art. 9, NIS2 Art. 21(2)(j) — these controls are
-where standards writers captured the idea that *unbounded lateral
-reachability routinely turns small footholds into existential incidents.*
-They are not cynical checkboxes; they encode failure modes people keep
-living through. Treating segmentation only as audit busywork forfeits
-blast‑radius containment while still paying for the programme.
-
-CSW is designed to sharpen those answers wherever workload-resident
-telemetry and enforcement overlap your scope — acknowledging that tooling
-never replaces disciplined architecture, identity and access management,
-patching, backups, and mature SOC processes.
-
-### Audience guide
-
-| Audience | Lead with | Key takeaway |
-|---|---|---|
-| **CISO / Security leadership** | The PDF report's executive summary and the *Compliance Posture Summary* table | CSW collapses several manual evidence-gathering programs (segmentation reviews, change attestation, drift tracking) into continuous, query-able state. |
-| **Security architect** | The full PDF report's control-by-control mapping | Where each control is satisfied (agent telemetry, policy enforcement, conversation graph, forensic flows) and what gaps remain to be designed around. |
-| **Compliance / GRC team** | The *Audit Evidence* and *Gap Analysis* sections in the PDF | Which CSW reports, exports, and dashboards are auditor-ready as-is, and what supplementary attestation language to use. |
-| **Operations / SRE / DevSecOps** | The Markdown technical runbook | Concrete configuration steps, policy patterns, and "what to show the auditor on day 1" playbooks. |
-| **You already have firewalls and EDR** | The runbooks and the 800-207 / 207A reports | Workload-resident telemetry and identity-aware segmentation address many evidence questions about *process-to-process* and *intra-host East–West* flows that perimeter and endpoint controls usually see only partially. The frameworks below spell out which obligations sit in that gap — and which still require other tools. |
-
-### How to get the most out of this repo
-
-Whether you found this from a search for a specific control, were
-pointed here by your Cisco account team, or are doing a broader
-evaluation, here's a way to navigate the material that respects your
-time:
-
-1. **Open the framework that's actually on your roadmap.** The one tied
-   to a current audit, a customer contractual ask, or board-level
-   pressure. Skimming all sixteen will dilute the signal — pick one
-   and stay with it.
-2. **Start with the technical runbook (`*-Technical-Runbook.md` in the
-   same folder).** It shows the *how*: sensor deployment phases, policy
-   patterns, evidence collection cadence, and what an auditor will
-   actually accept as proof. If the runbook's level of detail looks
-   plausible for your environment, that's the strongest signal that the
-   mapping is real and not marketing — and it's the right place to
-   stress-test scope before investing in a wider read.
-3. **Then read the matching report.** Open the executive summary in the
-   PDF and jump to the *Compliance Posture Summary* table. It tells you
-   in one page which control families CSW addresses fully, which it
-   addresses partially, and where you'll need complementary controls.
-   With the runbook fresh in your head, the report reads as the
-   evidence story for work you've already verified is real.
-4. **Once you've grounded the conversation in compliance language, read
-   the NIST 800-207 and 800-207A reports.** These shift the lens from
-   *"what do we have to do?"* to *"what does a defensible zero-trust
-   architecture actually look like at the workload tier?"* — useful
-   even if zero trust isn't your stated initiative, because the same
-   patterns underlie most modern compliance frameworks.
-5. **When you're ready, ask your Cisco account team for a discovery
-   exercise.** Specifically: a short engagement where CSW is deployed
-   in a representative slice of your environment and the same evidence
-   tables in these reports are populated with *your real workloads,
-   your real flows, your real CVEs*. That converts these documents from
-   abstract mappings into something you can actually defend in front of
-   your auditors and your board.
-
-### Why look at CSW at all?
-
-Be honest about the question. There are many security tools competing
-for attention; the case for evaluating CSW specifically rests on a few
-things these mappings demonstrate concretely:
-
-- **It operates where the workload lives.** Not solely at the perimeter or
-  through an endpoint-console-only lens—the agent observes applications,
-  processes, and flows directly on servers, VMs, and supported container
-  hosts, alongside optional cloud inventory through authorised
-  connectors. Many East–West and process-context questions land more
-  naturally here **as part of** a layered control stack, alongside your
-  existing tools—use judgment about where CSW fits.
-- **Segmentation anchored in observed behaviour.** Teams often freeze
-  diagrams long before production traffic changes. Where CSW's policy
-  workflow is anchored in observed conversational reality (with appropriate
-  human approvals), auditors increasingly see artefacts that resemble the
-  *in place and operating effectively* framing in PCI DSS v4 and the intent
-  of NIST CA-7-style continuous diagnostics — contingent on disciplined
-  change management behind the knobs.
-- **Hybrid / multi‑cloud cohesion.** Organisations operating across AWS,
-  Azure, GCP, on‑prem, and containers often value a single segmentation
-  and evidence vocabulary—CSW supports that posture where you standardise
-  on it **as a deliberate programme choice**.
-- **Operational leverage — not another silo.** Process‑level conversational
-  graphs (where enabled), vulnerability posture, enriched flow history, and
-  export paths into telemetry platforms can converge on fewer bespoke
-  evidence pulls — freeing humans for judgement calls instead of
-  archaeology.
-- **It complements, not replaces, what you have.** CSW is built to live
-  alongside firewalls, EDR, SIEM, and CSPM. The frameworks here show
-  exactly which evidence questions land in the gap those tools leave —
-  not as a replacement argument, but as a "here's what's still missing"
-  argument.
-
-If after reading any one framework you can answer *"yes, our current
-controls already produce artefacts on page X at comparable fidelity
-without undue manual effort"* — Cisco Secure Workload may add little beyond
-marginal convenience for that obligation. Ambiguity—or heavy glue—to get
-answers is generally the pragmatic signal to revisit the conversation with
-your Cisco account team rather than accumulating more slideware diagrams.
-
-### File formats
-
-- **Markdown runbooks** — The technical foundation. Reference for the
-  security engineers and platform owners doing the work: deployment
-  playbooks, CSW configuration steps, sample policies, and the
-  auditor-response guidance the report cites. Markdown for editing or
-  diff-reviewing in a code editor; HTML for reading in a browser.
-- **DOCX reports** — Customer-facing editable master built on top of the
-  runbook. Replace `[Customer Name]` and `[Month Year]` placeholders, and
-  tailor the Compliance Posture Summary table to the customer's specific
-  scope and deployment stage before sharing externally.
-- **PDF reports** — Render of the DOCX for customer review and audit
-  conversations; renders natively in the GitHub web UI. Generated from
-  the DOCX via LibreOffice; treat the DOCX as the editable master and
-  re-generate the PDF after any edits.
-
-## Folder Structure
-
-```
-CSW-Compliance-Mapping/
-├── INDEX.md             ← control-ID lookup across all frameworks
-├── HIPAA/
-├── SOC2/
-├── PCI-DSS-v4/
-├── NIST-800-53/
-├── ISO-27001-2022/
-├── CISA-ZeroTrust/
-├── FIPS-140/
-├── NIST-800-207/
-├── NIST-800-207A/
-├── DORA/                ← EU financial sector
-├── NIS2/                ← EU essential & important entities
-├── NERC-CIP/            ← North American bulk electric system (IT side)
-├── TSA-Pipeline/        ← TSA-designated natural gas / oil pipelines (IT side)
-├── CIS-Controls-v8/     ← CIS Critical Security Controls v8.1 (IG2 lead)
-├── NIST-CSF-2/          ← NIST Cybersecurity Framework 2.0 (Govern + 5 functions)
-└── CMMC-2/              ← CMMC 2.0 (Level 2 lead, with L1 / L3 deltas)
-```
+This repository ships with Cisco's standard terms in
+[`LICENSE`](./LICENSE) at the repo root — read before redistributing,
+forking commercially, or building derivative artefacts outside your
+organisation.
 
 ## Disclaimer
 
@@ -445,10 +171,11 @@ any specific control depends on each organization's environment,
 deployment, and risk posture. Always validate against the latest
 official source documents before formal use.
 
-**Guidelines.** The capability bullets earlier in **What is Cisco Secure
-Workload?** describe how teams commonly use Cisco Secure Workload. They are
-not a completeness check for your estate—apply professional judgment,
-align with your assessors, and tailor to how you run operations.
+**Guidelines.** The capability bullets in
+[Background — What is Cisco Secure Workload?](./docs/about-csw.md)
+describe how teams commonly use Cisco Secure Workload. They are not a
+completeness check for your estate — apply professional judgment, align
+with your assessors, and tailor to how you run operations.
 
 For questions, scoping discussions, or to validate how these mappings
 apply to your environment, please contact your **Cisco account team**.

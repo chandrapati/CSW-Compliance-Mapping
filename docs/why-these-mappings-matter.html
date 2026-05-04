@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Why these mappings matter</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+:root {
+--fg: #1f2328;
+--fg-muted: #59636e;
+--bg: #ffffff;
+--bg-muted: #f6f8fa;
+--border: #d1d9e0;
+--link: #0969da;
+--link-hover: #0349b4;
+--code-bg: #f6f8fa;
+--accent: #cf222e;
+--max-width: 920px;
+}
+@media (prefers-color-scheme: dark) {
+:root {
+--fg: #e6edf3;
+--fg-muted: #9198a1;
+--bg: #0d1117;
+--bg-muted: #151b23;
+--border: #3d444d;
+--link: #4493f8;
+--link-hover: #6cb6ff;
+--code-bg: #151b23;
+--accent: #ff7b72;
+}
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+margin: 0 auto;
+max-width: var(--max-width);
+padding: 2rem 1.25rem 4rem;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+font-size: 16px;
+line-height: 1.6;
+color: var(--fg);
+background: var(--bg);
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 2rem;
+margin-bottom: 1rem;
+font-weight: 600;
+line-height: 1.25;
+}
+h1 { font-size: 2rem; border-bottom: 1px solid var(--border); padding-bottom: .35rem; }
+h2 { font-size: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: .3rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1rem; }
+h5, h6 { font-size: .875rem; color: var(--fg-muted); }
+p, ul, ol, blockquote, pre, table { margin: 0 0 1rem; }
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+ul, ol { padding-left: 1.6rem; }
+li + li { margin-top: .15rem; }
+blockquote {
+margin: 0 0 1rem;
+padding: .5rem 1rem;
+color: var(--fg-muted);
+border-left: .25rem solid var(--border);
+background: var(--bg-muted);
+border-radius: 0 6px 6px 0;
+}
+code, pre, kbd, samp {
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+font-size: .9em;
+}
+code {
+background: var(--code-bg);
+padding: .15rem .35rem;
+border-radius: 4px;
+}
+pre {
+background: var(--code-bg);
+padding: 1rem;
+border-radius: 6px;
+overflow: auto;
+font-size: .85rem;
+line-height: 1.45;
+}
+pre code { background: transparent; padding: 0; font-size: inherit; }
+table {
+display: block;
+width: 100%;
+overflow: auto;
+border-collapse: collapse;
+}
+th, td {
+border: 1px solid var(--border);
+padding: .5rem .75rem;
+vertical-align: top;
+text-align: left;
+}
+th {
+background: var(--bg-muted);
+font-weight: 600;
+}
+tbody tr:nth-child(2n) { background: var(--bg-muted); }
+hr {
+border: 0;
+height: 1px;
+background: var(--border);
+margin: 2rem 0;
+}
+img { max-width: 100%; height: auto; }
+
+.doc-meta {
+margin: 0 0 2rem;
+padding: .75rem 1rem;
+border: 1px solid var(--border);
+border-radius: 6px;
+background: var(--bg-muted);
+font-size: .9rem;
+color: var(--fg-muted);
+}
+.doc-meta a { font-weight: 500; }
+
+@media print {
+body { max-width: none; padding: 0; color: #000; background: #fff; }
+a { color: #000; text-decoration: underline; }
+pre, code, blockquote { background: #f5f5f5; }
+}
+</style>
+</head>
+<body>
+<div class="doc-meta">Source: <a href="why-these-mappings-matter.html">why-these-mappings-matter.md</a> · <a href="../index.html">repository index</a></div>
+<header id="title-block-header">
+<h1 class="title">Why these mappings matter</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#why-these-mappings-matter" id="toc-why-these-mappings-matter">Why these mappings matter</a>
+<ul>
+<li><a href="#use-them-to-start-a-different-conversation-with-yourself" id="toc-use-them-to-start-a-different-conversation-with-yourself">Use
+them to start a different conversation — with yourself</a>
+<ul>
+<li><a href="#notice-the-pattern" id="toc-notice-the-pattern">Notice the
+pattern</a></li>
+</ul></li>
+<li><a href="#why-look-at-csw-at-all" id="toc-why-look-at-csw-at-all">Why look at CSW at all?</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="why-these-mappings-matter">Why these mappings matter</h1>
+<blockquote>
+<p>Companion to the <a href="../README.html">CSW Compliance Mapping
+repository</a>. The README gives the short version of why these mappings
+exist; this page is the longer argument — the kind you’d walk a
+sceptical engineer or auditor through.</p>
+</blockquote>
+<h2 id="use-them-to-start-a-different-conversation-with-yourself">Use
+them to start a different conversation — with yourself</h2>
+<p>Compliance frameworks were originally written to capture lessons from
+real breaches. Over time the conversation around them has narrowed to
+checkbox status — <em>do you have a firewall, do you have an EDR, do you
+have a SIEM</em> — and the connection back to actual loss prevention has
+gotten thinner. Walk through the questions below about <em>your own</em>
+environment and compare how each lands in compliance language versus
+during an incident retrospective — organisations that triage breaches
+almost always converge on segmentation, lateral movement, patching
+priorities, visibility gaps, or drift across “what’s supposed to happen”
+versus “what’s actually happening.” They are overlapping views of
+similar underlying risk.</p>
+<ul>
+<li><p><strong>Can you enumerate, right now—at the fidelity your
+monitoring stack actually provides—every process talking to your
+cardholder data environment, and reason about how that picture changed
+over roughly the last 30 days without a rebuild-the-world
+project?</strong> <em>(PCI DSS Req 1.2, 11.5)</em> Your QSA asks
+something in this neighbourhood once per assessment cycle. Immediately
+after credential theft or initial foothold, defenders ask a related
+question repeatedly: <em>what new paths opened from this pivot?</em> If
+assembling the authoritative answer reliably takes heroic effort,
+defenders are improvising faster than attackers during the decisive
+early hours.</p></li>
+<li><p><strong>When a CVE drops on a library inside one of your
+containers, how long until you know which production workloads are
+exposed and which paths attackers could traverse to reach them?</strong>
+<em>(NIST RA-5, CM-7, ISO A.8.8)</em> Many vulnerability scanners and
+programmes answer <em>whether a CVE exists on an asset</em>. They often
+omit or under-weight the richer question CSW specialises in: given how
+this workload actually converses — ingress, egress and lateral paths —
+what’s the practical blast radius? Separate tools partially answer
+pieces of this; assembling a coherent, repeatable picture
+organisation-wide commonly remains brittle without workload-resident
+conversational context.</p></li>
+<li><p><strong>If an auditor asks you to demonstrate least-privilege
+between two applications, what artefact do you hand them?</strong>
+<em>(SOC 2 CC6.1, 800-53 AC-3)</em> Now ask exactly the same question
+with different words: <em>if app A is compromised, what stops it from
+talking to app B?</em> — and notice the answer should be the same
+artefact. If your “least privilege” lives in a network-design document
+and not in something the workload actually enforces, then you have
+least- privilege as a policy, not as a property of your
+environment.</p></li>
+<li><p><strong>Your zero-trust architecture diagram shows a Policy
+Decision Point and a Policy Enforcement Point — where do they actually
+live in your stack today, and what data feeds them?</strong> <em>(NIST
+800-207 §3.2, 800-207A PDP/PEP)</em> If you paused right now — without
+opening a wiki — where does an allow vs deny verdict <em>actually get
+applied</em> for lateral workload‑to‑workload flows you care most about
+defending, which engine emitted it last, what attributes did it ingest,
+and can you replay a decision historically? Architectural diagrams
+clarify intent; answering those factual questions cleanly for production
+traffic is harder for many organisations than decks suggest.</p></li>
+<li><p><strong>If a lateral-movement or ransomware tabletop asked
+<em>“how fast can we change who can talk to whom”</em> — would the
+answer be <em>continuous, policy-driven reachability</em> tied to live
+workload behaviour, or mainly <em>project-driven network
+redesigns</em>?</strong> <em>(CISA ZTMM treats “Optimal” maturity as an
+aspiration; use it that way, not as a guarantee.)</em> Not every
+incident involves ransomware, yet exercises still surface the same axis:
+does blast-radius containment ride on everyday operations, or wait for
+the next big architectural push?</p></li>
+</ul>
+<h3 id="notice-the-pattern">Notice the pattern</h3>
+<p>Each of those questions appears in a compliance framework
+<em>because</em> the framework’s authors knew it was the question that
+decides whether a foothold becomes an incident, or an incident becomes a
+breach. <strong>Compliance is commonly the lagging indicator;
+blast‑radius containment often becomes the unavoidable leading indicator
+when something breaks badly.</strong> At the workload layer—particularly
+where CSW enforces segmentation policy—audit-oriented exports often
+overlap substantially with artefacts incident responders reconstruct
+under pressure. Assessors revisit periodically; attackers probe
+reachable paths far more impatiently — both perspectives stress‑test
+whether policy is real property or aspiration.</p>
+<p>That reframes what micro-segmentation is <em>for</em>. It is not a
+compliance project that happens to limit blast radius as a side effect —
+it is a blast-radius control that happens to satisfy the compliance
+requirement at the same time. PCI Req 1, HIPAA §164.312, NIST AC-4, ISO
+A.8.22, DORA Art. 9, NIS2 Art. 21(2)(j) — these controls are where
+standards writers captured the idea that <em>unbounded lateral
+reachability routinely turns small footholds into existential
+incidents.</em> They are not cynical checkboxes; they encode failure
+modes people keep living through. Treating segmentation only as audit
+busywork forfeits blast‑radius containment while still paying for the
+programme.</p>
+<p>CSW is designed to sharpen those answers wherever workload-resident
+telemetry and enforcement overlap your scope — acknowledging that
+tooling never replaces disciplined architecture, identity and access
+management, patching, backups, and mature SOC processes.</p>
+<h2 id="why-look-at-csw-at-all">Why look at CSW at all?</h2>
+<p>Be honest about the question. There are many security tools competing
+for attention; the case for evaluating CSW specifically rests on a few
+things these mappings demonstrate concretely:</p>
+<ul>
+<li><strong>It operates where the workload lives.</strong> Not solely at
+the perimeter or through an endpoint-console-only lens—the agent
+observes applications, processes, and flows directly on servers, VMs,
+and supported container hosts, alongside optional cloud inventory
+through authorised connectors. Many East–West and process-context
+questions land more naturally here <strong>as part of</strong> a layered
+control stack, alongside your existing tools—use judgment about where
+CSW fits.</li>
+<li><strong>Segmentation anchored in observed behaviour.</strong> Teams
+often freeze diagrams long before production traffic changes. Where
+CSW’s policy workflow is anchored in observed conversational reality
+(with appropriate human approvals), auditors increasingly see artefacts
+that resemble the <em>in place and operating effectively</em> framing in
+PCI DSS v4 and the intent of NIST CA-7-style continuous diagnostics —
+contingent on disciplined change management behind the knobs.</li>
+<li><strong>Hybrid / multi‑cloud cohesion.</strong> Organisations
+operating across AWS, Azure, GCP, on‑prem, and containers often value a
+single segmentation and evidence vocabulary—CSW supports that posture
+where you standardise on it <strong>as a deliberate programme
+choice</strong>.</li>
+<li><strong>Operational leverage — not another silo.</strong>
+Process‑level conversational graphs (where enabled), vulnerability
+posture, enriched flow history, and export paths into telemetry
+platforms can converge on fewer bespoke evidence pulls — freeing humans
+for judgement calls instead of archaeology.</li>
+<li><strong>It complements, not replaces, what you have.</strong> CSW is
+built to live alongside firewalls, EDR, SIEM, and CSPM. The frameworks
+here show exactly which evidence questions land in the gap those tools
+leave — not as a replacement argument, but as a “here’s what’s still
+missing” argument.</li>
+</ul>
+<p>If after reading any one framework you can answer <em>“yes, our
+current controls already produce artefacts on page X at comparable
+fidelity without undue manual effort”</em> — Cisco Secure Workload may
+add little beyond marginal convenience for that obligation. Ambiguity—or
+heavy glue—to get answers is generally the pragmatic signal to revisit
+the conversation with your Cisco account team rather than accumulating
+more slideware diagrams.</p>
+<hr />
+<p><strong>See also</strong></p>
+<ul>
+<li><a href="./about-csw.html">Background — What is Cisco Secure
+Workload?</a></li>
+<li><a href="./audience-and-usage.html">Audience and usage guide</a> — who
+should read what, file format choices, and folder layout.</li>
+<li><a href="../README.html">Repository README</a> — asset library, scope
+notes, and disclaimer.</li>
+</ul>
+</body>
+</html>
