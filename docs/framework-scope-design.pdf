@@ -1,0 +1,624 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [7 0 R 9 0 R 11 0 R 13 0 R] /Count 4 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique >>
+endobj
+6 0 obj
+<< /Length 6423 >>
+stream
+BT
+/F2 18 Tf
+1 0 0 1 54.00 732.00 Tm
+(Cisco Secure Workload - Framework Scope Design Guide) Tj
+/F1 9 Tf
+1 0 0 1 54.00 698.00 Tm
+(Customer-facing scope and label patterns for Cisco Secure Workload \(CSW\)) Tj
+/F1 9 Tf
+1 0 0 1 54.00 686.00 Tm
+(compliance mapping workshops.) Tj
+/F1 9 Tf
+1 0 0 1 54.00 668.00 Tm
+(Use this guide before a proof-of-value, deployment planning workshop, or) Tj
+/F1 9 Tf
+1 0 0 1 54.00 656.00 Tm
+(evidence-readiness discussion. It helps teams translate framework language) Tj
+/F1 9 Tf
+1 0 0 1 54.00 644.00 Tm
+(into practical CSW scopes, labels, and evidence boundaries. These patterns) Tj
+/F1 9 Tf
+1 0 0 1 54.00 632.00 Tm
+(are starting points: validate final scope with the customer's architecture,) Tj
+/F1 9 Tf
+1 0 0 1 54.00 620.00 Tm
+(asset owners, compliance team, and assessor.) Tj
+/F2 14 Tf
+1 0 0 1 54.00 596.00 Tm
+(Scope Design Principles) Tj
+/F1 9 Tf
+1 0 0 1 66.00 566.00 Tm
+(1. Start from the protected service, not the tool. Define the system,) Tj
+/F1 9 Tf
+1 0 0 1 54.00 554.00 Tm
+(business function, data boundary, or regulated environment first; then) Tj
+/F1 9 Tf
+1 0 0 1 54.00 542.00 Tm
+(map CSW scopes to that boundary.) Tj
+/F1 9 Tf
+1 0 0 1 66.00 530.00 Tm
+(2. Separate regulatory scope from operational ownership. A PCI CDE,) Tj
+/F1 9 Tf
+1 0 0 1 54.00 518.00 Tm
+(HIPAA ePHI zone, CUI enclave, or DORA important business function may) Tj
+/F1 9 Tf
+1 0 0 1 54.00 506.00 Tm
+(cross teams, clouds, and platforms.) Tj
+/F1 9 Tf
+1 0 0 1 66.00 494.00 Tm
+(3. Use labels for policy and evidence. Scopes should be generated from) Tj
+/F1 9 Tf
+1 0 0 1 54.00 482.00 Tm
+(stable labels where possible so inventory, ADM, flow search, policy) Tj
+/F1 9 Tf
+1 0 0 1 54.00 470.00 Tm
+(workspaces, and reports use the same vocabulary.) Tj
+/F1 9 Tf
+1 0 0 1 66.00 458.00 Tm
+(4. Reconcile CSW coverage. CSW evidence covers instrumented workloads) Tj
+/F1 9 Tf
+1 0 0 1 54.00 446.00 Tm
+(and supported connector visibility. Reconcile gaps with the CMDB, cloud) Tj
+/F1 9 Tf
+1 0 0 1 54.00 434.00 Tm
+(inventory, OT inventory, IAM, SIEM, vulnerability scanner, and GRC tools.) Tj
+/F1 9 Tf
+1 0 0 1 66.00 422.00 Tm
+(5. Keep out-of-scope explicit. Physical controls, legal obligations,) Tj
+/F1 9 Tf
+1 0 0 1 54.00 410.00 Tm
+(cryptographic module validation, IAM/MFA, endpoint malware controls, and) Tj
+/F1 9 Tf
+1 0 0 1 54.00 398.00 Tm
+(OT device enforcement usually require complementary controls.) Tj
+/F2 14 Tf
+1 0 0 1 54.00 374.00 Tm
+(Framework Scope Design Table) Tj
+/F2 11 Tf
+1 0 0 1 54.00 344.00 Tm
+(Table: Framework / Customer scope anchor / Suggested CSW scope pattern / Primary evidence focus /) Tj
+/F2 11 Tf
+1 0 0 1 64.00 328.00 Tm
+(Boundaries and complementary controls) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 308.00 Tm
+(HIPAA Security Rule: Customer scope anchor: ePHI applications, databases, clinical integrations, and business associate) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 298.00 Tm
+(connections; Suggested CSW scope pattern: Healthcare-Org > ePHI-Zone > app/service scopes such as EHR, Billing, PACS,) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 288.00 Tm
+(HL7; separate BAA-Partners egress scope; Primary evidence focus: ePHI workload isolation, access-path evidence,) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 278.00 Tm
+(audit-control telemetry, risk-analysis inputs; Boundaries and complementary controls: HIPAA administrative, physical,) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 268.00 Tm
+(legal, and BAA obligations remain outside CSW; validate PHI classification with privacy/compliance owners) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 258.00 Tm
+(SOC 2 Type II: Customer scope anchor: The service organization's system boundary and selected Trust Services Criteria;) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 248.00 Tm
+(Suggested CSW scope pattern: SOC2-System > Production, Supporting-Infra, Admin-Access, Vendor-Integrations; align scope) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 238.00 Tm
+(to system description; Primary evidence focus: Operating-effectiveness evidence for segmentation, monitoring, change) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 228.00 Tm
+(drift, incident investigation; Boundaries and complementary controls: SOC 2 criteria depend on the auditor's system) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 218.00 Tm
+(description and control design; CSW augments IAM, change management, SIEM, and availability controls) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 208.00 Tm
+(PCI DSS v4.0: Customer scope anchor: Cardholder Data Environment \(CDE\), CDE-connected systems, and security-impacting) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 198.00 Tm
+(systems; Suggested CSW scope pattern: PCI-Environment > CDE, CDE-Connected, Security-Services, Third-Party-Processors,) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 188.00 Tm
+(Out-of-Scope-Validation; Primary evidence focus: CDE flow documentation, segmentation simulation/enforcement, policy) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 178.00 Tm
+(exceptions, vulnerability exposure context; Boundaries and complementary controls: CSW does not replace QSA judgment,) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 168.00 Tm
+(ASV scans, penetration testing, network security controls, or PCI governance requirements) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 158.00 Tm
+(NIST SP 800-53 Rev. 5: Customer scope anchor: FISMA/FedRAMP system boundary and SSP control implementation; Suggested) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 148.00 Tm
+(CSW scope pattern: System-Boundary > impact-level or component scopes such as Moderate, High, Data-Store, App-Tier,) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 138.00 Tm
+(Management; Primary evidence focus: AC, AU, CM, IR, RA, SC, and SI evidence for covered workloads; Boundaries and) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 128.00 Tm
+(complementary controls: Full 800-53 scope includes many controls outside CSW: identity, personnel, physical,) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 118.00 Tm
+(contingency, privacy, and governance controls) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 108.00 Tm
+(ISO/IEC 27001:2022: Customer scope anchor: ISMS scope, information assets, and Annex A control applicability; Suggested) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 98.00 Tm
+(CSW scope pattern: ISMS-Boundary > Confidential-Data, Business-Critical-Apps, Cloud-Services, Supplier-Connections;) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 88.00 Tm
+(Primary evidence focus: Annex A.8 monitoring, network security, segregation, vulnerability, and supplier-egress) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 78.00 Tm
+(evidence; Boundaries and complementary controls: Certification depends on ISMS design, SoA, risk treatment, internal) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 68.00 Tm
+(audit, and management review; CSW is a technical evidence source) Tj
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 8636 >>
+stream
+BT
+/F1 7.5 Tf
+1 0 0 1 54.00 738.00 Tm
+(CISA Zero Trust Maturity Model: Customer scope anchor: Agency/enterprise zero-trust initiative by pillar and use case;) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 728.00 Tm
+(Suggested CSW scope pattern: ZT-Workloads > Sensitive-Apps, Privileged-Admin, Inter-App-Flows, External-Dependencies;) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 718.00 Tm
+(Primary evidence focus: Workload-layer evidence for networks and applications/workloads pillars, plus visibility and) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 708.00 Tm
+(analytics; Boundaries and complementary controls: ZTMM maturity is organizational; pair CSW with IdP, MFA, device) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 698.00 Tm
+(posture, data governance, SIEM/SOAR, and policy orchestration) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 688.00 Tm
+(FIPS 140: Customer scope anchor: Systems handling regulated cryptographic use or plaintext-protocol risk; Suggested CSW) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 678.00 Tm
+(scope pattern: Crypto-Review > Sensitive-Transport, Plaintext-Protocol-Candidates, FIPS-Required-Systems; Primary) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 668.00 Tm
+(evidence focus: Detection/blocking of obvious plaintext transports and inventory support for cryptographic usage review;) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 658.00 Tm
+(Boundaries and complementary controls: CSW is not a FIPS-validated cryptographic module; validation, key management, and) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 648.00 Tm
+(module selection belong to FIPS-validated libraries/HSMs) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 638.00 Tm
+(NIST SP 800-207: Customer scope anchor: Zero Trust Architecture tenets for workload-to-workload access; Suggested CSW) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 628.00 Tm
+(scope pattern: ZTA-Resources > Protected-Resources, Policy-Enforced-Flows, Observed-Dependencies, Exceptions; Primary) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 618.00 Tm
+(evidence focus: Resource inventory, per-connection flow evidence, dynamic scoping, workload enforcement as one possible) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 608.00 Tm
+(PEP placement; Boundaries and complementary controls: NIST ZTA also requires identity, device posture, policy decision) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 598.00 Tm
+(architecture, and enterprise-wide telemetry beyond CSW) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 588.00 Tm
+(NIST SP 800-207A: Customer scope anchor: PDP/PEP/PA/PIP component mapping for a cloud-native ZTA discussion; Suggested) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 578.00 Tm
+(CSW scope pattern: ZTA-Components > PEP-Analogue, Policy-Workspace, Telemetry-PIP, SOAR-Integrated; Primary evidence) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 568.00 Tm
+(focus: Illustrative traceability from CSW policy, enforcement, and telemetry to 207A-style logical components;) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 558.00 Tm
+(Boundaries and complementary controls: Treat PDP/PEP/PA/PIP mapping as an analogue for workload segmentation, not a) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 548.00 Tm
+(complete enterprise ZTA architecture) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 538.00 Tm
+(DORA: Customer scope anchor: Important business functions \(IBFs\), supporting ICT assets, and third-party dependencies;) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 528.00 Tm
+(Suggested CSW scope pattern: DORA-IBF > one scope per IBF, with nested Critical, Supporting, Third-Party-Egress,) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 518.00 Tm
+(Incident-Dossier scopes; Primary evidence focus: Article 8 inventory inputs, Article 9 segmentation, Article 10) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 508.00 Tm
+(detection, Article 19 incident evidence, Article 28 technical egress; Boundaries and complementary controls: DORA) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 498.00 Tm
+(governance, register of information, contracts, testing programme, and authority reporting remain customer-owned) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 488.00 Tm
+(NIS2: Customer scope anchor: Essential/important entity services and Article 21 risk-management measures; Suggested CSW) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 478.00 Tm
+(scope pattern: NIS2-Service > Essential-Service, Important-Service, Supplier-Egress, Incident-Reporting,) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 468.00 Tm
+(High-Risk-Workloads; Primary evidence focus: Risk-policy enforcement evidence, incident dossier, supply-chain egress,) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 458.00 Tm
+(vulnerability exposure, secured workload paths; Boundaries and complementary controls: MFA, training, governance,) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 448.00 Tm
+(cryptography, secured voice/video, and national transposition specifics require complementary programmes) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 438.00 Tm
+(NERC CIP: Customer scope anchor: IT-side systems supporting BES Cyber System functions; Suggested CSW scope pattern:) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 428.00 Tm
+(BES-Supporting-IT > EACMS, Jump-Hosts, Vendor-Access, BCSI-Hosts, Identity-PKI, Patch-Repos; Primary evidence focus:) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 418.00 Tm
+(IT-side ESP boundary evidence, interactive remote access paths, ports/services baseline, vulnerability and change) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 408.00 Tm
+(evidence; Boundaries and complementary controls: CSW is not an EAP and does not enforce on PLCs/RTUs/IEDs/HMIs; pair) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 398.00 Tm
+(with boundary firewalls and OT-aware monitoring) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 388.00 Tm
+(TSA Pipeline Security Directive: Customer scope anchor: IT-side systems supporting Critical Cyber Systems and IT/OT) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 378.00 Tm
+(segmentation; Suggested CSW scope pattern: Pipeline-IT-Estate > OT-Facing-IT, CCS-Supporting-IT, Vendor-Access,) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 368.00 Tm
+(Patch-Repositories, Corporate-IT; Primary evidence focus: IT-side segmentation, documented IT-to-OT flows, access) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 358.00 Tm
+(control, monitoring, unpatched-system risk evidence; Boundaries and complementary controls: CSW does not replace the) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 348.00 Tm
+(Cybersecurity Coordinator, CAP/CIRP, architecture review, boundary firewall, or OT DPI/monitoring tools) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 338.00 Tm
+(CIS Controls v8.1: Customer scope anchor: Enterprise assets and software in the customer's Implementation Group scope;) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 328.00 Tm
+(Suggested CSW scope pattern: CIS-IG2 > Enterprise-Assets, Software-Inventory, Secure-Config, Vuln-Exposure,) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 318.00 Tm
+(Network-Monitoring; Primary evidence focus: Controls 1, 2, 4, 7, 8, 13, and 17 evidence for covered workloads;) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 308.00 Tm
+(Boundaries and complementary controls: Reconcile CSW inventory with enterprise source of truth; endpoint, email,) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 298.00 Tm
+(awareness, backup, and data controls are broader than CSW) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 288.00 Tm
+(NIST CSF 2.0: Customer scope anchor: CSF Profile outcomes, target tier, and management reporting needs; Suggested CSW) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 278.00 Tm
+(scope pattern: CSF-Profile > Govern-Evidence, Identify-Assets, Protect-Segmentation, Detect-Monitoring, Respond-Dossier,) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 268.00 Tm
+(Recover-Diff; Primary evidence focus: Technical evidence that feeds GV, ID, PR, DE, RS, and RC outcomes; Boundaries and) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 258.00 Tm
+(complementary controls: CSF is an outcomes framework; CSW does not author the Profile or replace governance, risk) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 248.00 Tm
+(appetite, or enterprise policy decisions) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 238.00 Tm
+(CMMC 2.0: Customer scope anchor: FCI/CUI enclave and CMMC assessment boundary; Suggested CSW scope pattern: CMMC-Scope >) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 228.00 Tm
+(CUI-Enclave, FCI-Systems, CUI-Connected, Admin-Access, External-Services, Out-of-Scope-Validation; Primary evidence) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 218.00 Tm
+(focus: AC, AU, CM, RA, SC, and SI technical evidence for CUI-scope workloads; Boundaries and complementary controls:) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 208.00 Tm
+(CMMC requires SSP, POA&M, CUI scoping, and C3PAO/government assessment as applicable; CSW supports evidence but does not) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 198.00 Tm
+(certify compliance) Tj
+/F2 14 Tf
+1 0 0 1 54.00 176.00 Tm
+(Label / Tag Recommendations) Tj
+/F2 11 Tf
+1 0 0 1 54.00 146.00 Tm
+(Baseline Labels for Every Customer) Tj
+/F1 9 Tf
+1 0 0 1 54.00 120.00 Tm
+(Use a small, consistent baseline across all frameworks. Keep values stable) Tj
+/F1 9 Tf
+1 0 0 1 54.00 108.00 Tm
+(and controlled; avoid free-form spelling differences that split evidence.) Tj
+/F2 11 Tf
+1 0 0 1 54.00 90.00 Tm
+(Table: Label key / Example values / Why it matters) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 70.00 Tm
+(Label key: app; Example values: payments-api, ehr-core, identity; Why it matters: Groups workloads into application) Tj
+ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 8 0 R >>
+endobj
+10 0 obj
+<< /Length 7833 >>
+stream
+BT
+/F1 7.5 Tf
+1 0 0 1 64.00 738.00 Tm
+(scopes and ADM workspaces) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 728.00 Tm
+(Label key: env; Example values: prod, stage, dev, test; Why it matters: Separates production evidence from) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 718.00 Tm
+(non-production noise) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 708.00 Tm
+(Label key: owner; Example values: team-payments, clinical-apps, platform; Why it matters: Connects policy exceptions and) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 698.00 Tm
+(remediation to accountable teams) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 688.00 Tm
+(Label key: data_class; Example values: public, internal, confidential, phi, pci, cui; Why it matters: Drives regulated) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 678.00 Tm
+(data boundaries and evidence queries) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 668.00 Tm
+(Label key: compliance; Example values: hipaa, pci, soc2, dora, cmmc, none; Why it matters: Enables framework-specific) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 658.00 Tm
+(scopes without duplicating inventory) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 648.00 Tm
+(Label key: criticality; Example values: critical, high, medium, low; Why it matters: Supports prioritization,) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 638.00 Tm
+(segmentation strictness, and incident response) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 628.00 Tm
+(Label key: internet_exposed; Example values: true, false; Why it matters: Helps identify boundary and attack-surface) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 618.00 Tm
+(review candidates) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 608.00 Tm
+(Label key: third_party; Example values: none, supplier-name, processor-name; Why it matters: Supports supplier egress) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 598.00 Tm
+(and business associate / processor reviews) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 588.00 Tm
+(Label key: region; Example values: us-east, eu-west, site-001; Why it matters: Supports residency, operational) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 578.00 Tm
+(ownership, and sector/site reporting) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 568.00 Tm
+(Label key: lifecycle; Example values: active, exception, decommissioning; Why it matters: Keeps stale workloads and) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 558.00 Tm
+(temporary exceptions visible) Tj
+/F2 11 Tf
+1 0 0 1 54.00 542.00 Tm
+(Framework-Specific Labels) Tj
+/F2 11 Tf
+1 0 0 1 54.00 516.00 Tm
+(Table: Framework / Additional label keys / Example values / Scope-design use) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 496.00 Tm
+(Framework: HIPAA; Additional label keys: phi_scope, clinical_system, baa_partner, ehr_app; Example values: in-scope,) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 486.00 Tm
+(epic, clearinghouse-a, true; Scope-design use: Build ePHI and partner-egress scopes) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 476.00 Tm
+(Framework: SOC 2; Additional label keys: soc2_boundary, trust_service, system_component; Example values: in-scope,) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 466.00 Tm
+(security, database; Scope-design use: Align workloads to the SOC 2 system description) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 456.00 Tm
+(Framework: PCI DSS v4.0; Additional label keys: pci_scope, cde_zone, card_data_role, qsa_exception; Example values: cde,) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 446.00 Tm
+(cde-connected, pan-storage, none; Scope-design use: Separate CDE, connected, and out-of-scope validation populations) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 436.00 Tm
+(Framework: NIST 800-53; Additional label keys: system_id, impact_level, control_family, ssp_component; Example values:) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 426.00 Tm
+(sys-001, moderate, ac, app-tier; Scope-design use: Tie workloads to SSP components and impact-level evidence) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 416.00 Tm
+(Framework: ISO 27001:2022; Additional label keys: isms_scope, soa_control, asset_type, supplier_related; Example values:) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 406.00 Tm
+(in-scope, a.8.22, database, true; Scope-design use: Align CSW evidence with the SoA and asset inventory) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 396.00 Tm
+(Framework: CISA ZTMM; Additional label keys: zt_pillar, zt_stage_target, zt_use_case; Example values: networks,) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 386.00 Tm
+(advanced, east-west; Scope-design use: Organize evidence by maturity pillar and use case) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 376.00 Tm
+(Framework: FIPS 140; Additional label keys: fips_required, crypto_review, plaintext_risk, module_owner; Example values:) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 366.00 Tm
+(true, transport, high, platform; Scope-design use: Identify workloads needing crypto posture review) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 356.00 Tm
+(Framework: NIST 800-207; Additional label keys: zta_resource, pep_candidate, policy_source, access_pattern; Example) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 346.00 Tm
+(values: protected, csw-workload, adm, inter-app; Scope-design use: Trace workload resources and enforcement patterns) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 336.00 Tm
+(Framework: NIST 800-207A; Additional label keys: zta_component, pdp_analogue, pip_signal, pa_workspace; Example values:) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 326.00 Tm
+(pep, csw-policy, vuln-context, zta-prod; Scope-design use: Support logical-component discussion and traceability) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 316.00 Tm
+(Framework: DORA; Additional label keys: dora_ibf, ibf_name, ibf_criticality, ict_third_party; Example values: true,) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 306.00 Tm
+(sepa-transfer, critical, provider-a; Scope-design use: Build IBF and third-party exposure scopes) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 296.00 Tm
+(Framework: NIS2; Additional label keys: nis2_entity_type, nis2_service, article21_measure, csirt_reportable; Example) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 286.00 Tm
+(values: essential, health-service, 21-2-b, true; Scope-design use: Structure service, measure, and incident evidence) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 276.00 Tm
+(Framework: NERC CIP; Additional label keys: cip_scope, bes_support_role, eacms, bcsi, ot_facing; Example values:) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 266.00 Tm
+(it-side, jump-host, true, false, true; Scope-design use: Isolate IT-side BES-supporting systems and access paths) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 256.00 Tm
+(Framework: TSA Pipeline; Additional label keys: tsa_scope, ccs_function, site, ot_facing, vendor_access; Example values:) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 246.00 Tm
+(it-side, historian, site-001, true, true; Scope-design use: Build site-specific IT/OT and vendor access scopes) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 236.00 Tm
+(Framework: CIS Controls v8.1; Additional label keys: cis_control, implementation_group, asset_inventory_source; Example) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 226.00 Tm
+(values: control-1, ig2, cmdb; Scope-design use: Organize evidence by Safeguard and Implementation Group) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 216.00 Tm
+(Framework: NIST CSF 2.0; Additional label keys: csf_function, csf_category, profile_scope, target_tier; Example values:) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 206.00 Tm
+(protect, pr.ir, core-platform, tier-3; Scope-design use: Align evidence with CSF Profile outcomes) Tj
+/F1 7.5 Tf
+1 0 0 1 54.00 196.00 Tm
+(Framework: CMMC 2.0; Additional label keys: cmmc_level, cui_scope, fci_scope, assessment_boundary, poam_item; Example) Tj
+/F1 7.5 Tf
+1 0 0 1 64.00 186.00 Tm
+(values: l2, in-scope, false, cui-enclave, poam-123; Scope-design use: Build CUI/FCI boundaries and C3PAO evidence sets) Tj
+/F2 14 Tf
+1 0 0 1 54.00 164.00 Tm
+(Workshop Output Checklist) Tj
+/F1 9 Tf
+1 0 0 1 54.00 134.00 Tm
+(By the end of a scope-design workshop, capture:) Tj
+/F1 9 Tf
+1 0 0 1 66.00 116.00 Tm
+(? The customer-owned authoritative inventory source and reconciliation owner.) Tj
+/F1 9 Tf
+1 0 0 1 66.00 104.00 Tm
+(? The CSW scope hierarchy for the selected framework.) Tj
+/F1 9 Tf
+1 0 0 1 66.00 92.00 Tm
+(? Required baseline labels and framework-specific labels.) Tj
+/F1 9 Tf
+1 0 0 1 66.00 80.00 Tm
+(? Initial values for regulated data, criticality, owner, and environment.) Tj
+/F1 9 Tf
+1 0 0 1 66.00 68.00 Tm
+(? Known gaps: unsupported workloads, missing connectors, uninstrumented OT,) Tj
+ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 10 0 R >>
+endobj
+12 0 obj
+<< /Length 880 >>
+stream
+BT
+/F1 9 Tf
+1 0 0 1 54.00 738.00 Tm
+(unmanaged SaaS, IAM-only controls, physical controls, or legal obligations.) Tj
+/F1 9 Tf
+1 0 0 1 66.00 726.00 Tm
+(? The first ADM / flow-search window and evidence export cadence.) Tj
+/F1 9 Tf
+1 0 0 1 66.00 714.00 Tm
+(? A named owner for label hygiene and exception review.) Tj
+/F2 14 Tf
+1 0 0 1 54.00 690.00 Tm
+(Customer Conversation Prompt) Tj
+/F1 9 Tf
+1 0 0 1 54.00 660.00 Tm
+(The practical question is not "can CSW map to this framework?" It is:) Tj
+/F3 9 Tf
+1 0 0 1 66.00 642.00 Tm
+(Which workloads, flows, owners, and labels must be correct before the) Tj
+/F3 9 Tf
+1 0 0 1 66.00 630.00 Tm
+(mapping becomes evidence a customer can validate with their assessor?) Tj
+/F1 9 Tf
+1 0 0 1 54.00 612.00 Tm
+(Use this guide to answer that question before building dashboards or) Tj
+/F1 9 Tf
+1 0 0 1 54.00 600.00 Tm
+(collecting audit packets.) Tj
+ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 12 0 R >>
+endobj
+xref
+0 14
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000141 00000 n 
+0000000211 00000 n 
+0000000286 00000 n 
+0000000364 00000 n 
+0000006839 00000 n 
+0000006985 00000 n 
+0000015673 00000 n 
+0000015819 00000 n 
+0000023705 00000 n 
+0000023853 00000 n 
+0000024785 00000 n 
+trailer
+<< /Size 14 /Root 1 0 R >>
+startxref
+24933
+%%EOF

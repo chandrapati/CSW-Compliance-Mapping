@@ -42,6 +42,12 @@ For the longer argument — including the five conversation-starter
 questions worth walking through against your own environment — see
 [Why these mappings matter](./docs/why-these-mappings-matter.md).
 
+## Customer design aids
+
+| Asset | Use it for | Formats |
+|---|---|---|
+| Framework Scope Design Guide | Translating each compliance framework into practical CSW scope patterns, customer workshop questions, and label/tag recommendations | [MD](./docs/framework-scope-design.md) · [PDF](./docs/framework-scope-design.pdf) |
+
 ## Asset library
 
 **Coverage** highlights what each framework section addresses so the
@@ -116,6 +122,9 @@ reach for the runbook vs. the report).
 - **[Why these mappings matter](./docs/why-these-mappings-matter.md)** —
   five conversation-starter questions to ask about your own environment,
   plus the case for evaluating CSW alongside what you already run.
+- **[Framework Scope Design Guide](./docs/framework-scope-design.md)** —
+  customer workshop aid for translating framework obligations into CSW
+  scopes, labels, and evidence boundaries.
 - **[Audience and usage guide](./docs/audience-and-usage.md)** — who
   should lead with which document, runbook-vs-report guidance, file
   format guidance, and the full folder layout.
