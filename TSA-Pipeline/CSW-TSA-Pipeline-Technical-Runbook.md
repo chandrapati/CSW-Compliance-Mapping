@@ -72,9 +72,9 @@ open item.
 designated owner/operators are required to comply. Nothing in this
 runbook substitutes for the responsible Senior Cybersecurity
 Officer's accountability under the SD or for the formal TSA
-inspection response. CSW gives the responsible officer the
-*evidence* needed to demonstrate compliance; it does not substitute
-for the designated security programme.
+inspection response. CSW gives the responsible officer technical
+evidence inputs for the operator's compliance programme; it does not
+substitute for the designated security programme.
 
 ---
 
@@ -243,7 +243,8 @@ Step 1: Enumerate observed IT→OT flows
   CSW UI → Investigate → Flow Search
   Filter: source_scope ⊂ Pipeline-IT-Estate AND
           destination_subnet ∈ OT-network-ranges
-  → Output: complete IT→OT flow inventory per site
+  → Output: observed IT→OT flow inventory per site for instrumented IT
+    workloads and configured OT destination definitions
 
 Step 2: Reconcile against the documented flows in your Cybersecurity
         Architecture Design Review
@@ -468,7 +469,7 @@ section; (b) prior-period delta showing what changed since last CAP;
 ## 10. Cybersecurity Architecture Design Review
 
 The SD requires periodic architecture design reviews. CSW does not
-*perform* the review, but provides authoritative inputs.
+*perform* the review, but provides telemetry-based inputs.
 
 **CSW inputs to the design review:**
 

@@ -39,14 +39,14 @@ audit window.
 
 ## 1. Overview
 
-SOC 2 Type II audits evaluate whether security controls operated effectively over a defined period (typically 6–12 months). Cisco Secure Workload (CSW) directly addresses the **Security** Trust Services Criteria (TSC) and contributes to **Availability**, **Confidentiality**, and **Processing Integrity** criteria through workload visibility, micro-segmentation, vulnerability detection, and forensic telemetry.
+SOC 2 Type II audits evaluate whether security controls operated effectively over a defined period (typically 6–12 months). Cisco Secure Workload (CSW) can support evidence for selected **Security** Trust Services Criteria (TSC) and contribute technical inputs to **Availability**, **Confidentiality**, and **Processing Integrity** criteria through workload visibility, micro-segmentation, vulnerability exposure context, and forensic telemetry.
 
 ### SOC 2 TSC to CSW Capability Map
 
 | Trust Services Criteria | CSW Capability |
 |---|---|
 | CC6 — Logical & Physical Access | Micro-segmentation, scope-based access enforcement |
-| CC7 — System Operations | Anomaly detection, vulnerability scanning, alerting |
+| CC7 — System Operations | Anomaly detection, vulnerability exposure visibility, alerting |
 | CC8 — Change Management | Policy workspace versioning, ADM drift detection |
 | CC9 — Risk Mitigation | Vulnerability prioritization, compensating controls |
 | A1 — Availability | Workload health monitoring, sensor telemetry |
@@ -73,7 +73,7 @@ SOC 2 Type II requires evidence across the **entire audit period**. Configure CS
 - Policy violations logged with source, destination, process, and timestamp
 
 **CC6.6 — Network and Infrastructure Controls**
-- ADM discovers all communication paths — no undocumented flows
+- ADM documents communication paths visible to CSW over the selected observation window; corroborate coverage gaps with other discovery sources
 - Micro-segmentation enforces least-privilege network access
 - External access paths (third-party, partner) isolated in dedicated CSW scopes
 
@@ -83,7 +83,7 @@ SOC 2 Type II requires evidence across the **entire audit period**. Configure CS
 - Encryption compliance report available for auditor evidence package
 
 **CC7.1 — Detection of Vulnerabilities**
-- Continuous CVE scanning on all in-scope workloads
+- Continuous vulnerability exposure / CVE inventory for CSW-instrumented workloads
 - CVSS-scored reports with workload-level attribution
 - Remediation tracking via policy compensating controls
 
@@ -152,7 +152,7 @@ CSW UI → Defend → Alerts
 |---|---|---|---|
 | Access control policy export | Defend → Policy Workspaces | CC6.1 | Per audit request |
 | Policy violation log | Alerts → Triggered Events | CC6.1, CC6.6 | Monthly export |
-| Vulnerability scan report | Investigate → Vulnerability | CC7.1, CC9.1 | Weekly |
+| Vulnerability exposure report | Investigate → Vulnerability | CC7.1, CC9.1 | Weekly |
 | Network flow audit log | Investigate → Flow Search | CC6.7, CC7.2 | Continuous |
 | Anomaly alert log | Alerts → Dashboard | CC7.2, CC7.3 | Monthly |
 | ADM application map | Investigate → ADM | CC6.6, CC8.1 | Quarterly |
@@ -165,11 +165,11 @@ CSW UI → Defend → Alerts
 
 | Auditor Finding | CSW Remediation |
 |---|---|
-| Undocumented network access paths | ADM generates complete dependency map as evidence |
+| Undocumented network access paths | ADM generates observed dependency maps as evidence inputs |
 | No workload-level access controls | Micro-segmentation enforces and logs all access |
 | Undetected lateral movement | Anomaly detection + forensic telemetry |
 | No evidence of encryption enforcement | Protocol-level flow analysis + block policy |
-| Vulnerability management gaps | Continuous CVE scan with CVSS prioritization |
+| Vulnerability management gaps | Continuous vulnerability exposure view with CVSS prioritization |
 | Insufficient logging | Full process + network telemetry across audit period |
 
 ---

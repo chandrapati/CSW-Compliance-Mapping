@@ -11,8 +11,8 @@
 | Audience | Lead with | Key takeaway |
 |---|---|---|
 | **CISO / Security leadership** | The PDF report's executive summary and the *Compliance Posture Summary* table | CSW collapses several manual evidence-gathering programs (segmentation reviews, change attestation, drift tracking) into continuous, query-able state. |
-| **Security architect** | The full PDF report's control-by-control mapping | Where each control is satisfied (agent telemetry, policy enforcement, conversation graph, forensic flows) and what gaps remain to be designed around. |
-| **Compliance / GRC team** | The *Audit Evidence* and *Gap Analysis* sections in the PDF | Which CSW reports, exports, and dashboards are auditor-ready as-is, and what supplementary attestation language to use. |
+| **Security architect** | The full PDF report's control-by-control mapping | Where CSW can contribute to control evidence (agent telemetry, policy enforcement, conversation graph, forensic flows) and what gaps remain to be designed around. |
+| **Compliance / GRC team** | The *Audit Evidence* and *Gap Analysis* sections in the PDF | Which CSW reports, exports, and dashboards can become candidate auditor-review artefacts, and what supplementary attestation language to use. |
 | **Operations / SRE / DevSecOps** | The Markdown technical runbook | Concrete configuration steps, policy patterns, and "what to show the auditor on day 1" playbooks. |
 | **You already have firewalls and EDR** | The runbooks and the 800-207 / 207A reports | Workload-resident telemetry and identity-aware segmentation address many evidence questions about *process-to-process* and *intra-host East–West* flows that perimeter and endpoint controls usually see only partially. The frameworks below spell out which obligations sit in that gap — and which still require other tools. |
 
@@ -29,8 +29,8 @@ time:
    and stay with it.
 2. **Start with the technical runbook (`*-Technical-Runbook.md` in the
    same folder).** It shows the *how*: sensor deployment phases, policy
-   patterns, evidence collection cadence, and what an auditor will
-   actually accept as proof. If the runbook's level of detail looks
+   patterns, evidence collection cadence, and typical proof points to
+   validate with your auditor or assessor. If the runbook's level of detail looks
    plausible for your environment, that's the strongest signal that the
    mapping is real and not marketing — and it's the right place to
    stress-test scope before investing in a wider read.
@@ -51,8 +51,8 @@ time:
    in a representative slice of your environment and the same evidence
    tables in these reports are populated with *your real workloads,
    your real flows, your real CVEs*. That converts these documents from
-   abstract mappings into something you can actually defend in front of
-   your auditors and your board.
+   abstract mappings into scope-specific artefacts you can validate with
+   auditors and leadership.
 
 ## Runbook or report — when to use which
 

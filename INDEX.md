@@ -21,16 +21,16 @@ supports evidence for it.
 
 | If you're asking… | Start here |
 |---|---|
-| "How do I prove my segmentation actually works?" | [PCI Req 1](./PCI-DSS-v4/pci-runbook.md), [HIPAA §164.312(a)(1)](./HIPAA/CSW-HIPAA-Technical-Runbook.md), [NIST AC-4](./NIST-800-53/nist-runbook.md), [DORA Art. 9](./DORA/CSW-DORA-Technical-Runbook.md), [NERC CIP-005 R1](./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.md), [TSA SD Section III.A](./TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.md), [CIS Safeguard 13.4](./CIS-Controls-v8/CSW-CIS-Technical-Runbook.md), [CSF PR.IR-01](./NIST-CSF-2/CSW-CSF-Technical-Runbook.md), [CMMC SC.L2-3.13.1 / 3.13.6](./CMMC-2/CSW-CMMC-Technical-Runbook.md) |
-| "How do I demonstrate continuous monitoring?" | [NIST CA-7 / SI-4](./NIST-800-53/nist-runbook.md), [PCI Req 11](./PCI-DSS-v4/pci-runbook.md), [SOC 2 CC7.2](./SOC2/soc2-runbook.md), [NIS2 Art. 21(2)(b)](./NIS2/CSW-NIS2-Technical-Runbook.md), [NERC CIP-007 R4](./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.md), [TSA SD Section III.C](./TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.md), [CIS Safeguards 13.1 / 13.6](./CIS-Controls-v8/CSW-CIS-Technical-Runbook.md), [CSF DE.CM-01 / DE.CM-09](./NIST-CSF-2/CSW-CSF-Technical-Runbook.md), [CMMC SI.L2-3.14.6](./CMMC-2/CSW-CMMC-Technical-Runbook.md) |
+| "How do I prove my segmentation actually works?" | [PCI Req 1](./PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.md), [HIPAA §164.312(a)(1)](./HIPAA/CSW-HIPAA-Technical-Runbook.md), [NIST AC-4](./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md), [DORA Art. 9](./DORA/CSW-DORA-Technical-Runbook.md), [NERC CIP-005 R1](./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.md), [TSA SD Section III.A](./TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.md), [CIS Safeguard 13.4](./CIS-Controls-v8/CSW-CIS-Technical-Runbook.md), [CSF PR.IR-01](./NIST-CSF-2/CSW-CSF-Technical-Runbook.md), [CMMC SC.L2-3.13.1 / 3.13.6](./CMMC-2/CSW-CMMC-Technical-Runbook.md) |
+| "How do I demonstrate continuous monitoring?" | [NIST CA-7 / SI-4](./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md), [PCI Req 11](./PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.md), [SOC 2 CC7.2](./SOC2/CSW-SOC2-Technical-Runbook.md), [NIS2 Art. 21(2)(b)](./NIS2/CSW-NIS2-Technical-Runbook.md), [NERC CIP-007 R4](./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.md), [TSA SD Section III.C](./TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.md), [CIS Safeguards 13.1 / 13.6](./CIS-Controls-v8/CSW-CIS-Technical-Runbook.md), [CSF DE.CM-01 / DE.CM-09](./NIST-CSF-2/CSW-CSF-Technical-Runbook.md), [CMMC SI.L2-3.14.6](./CMMC-2/CSW-CMMC-Technical-Runbook.md) |
 | "How do I produce an incident-reporting evidence pack?" | [DORA Art. 19](./DORA/CSW-DORA-Technical-Runbook.md), [NIS2 Art. 23](./NIS2/CSW-NIS2-Technical-Runbook.md), [HIPAA §164.308(a)(6)](./HIPAA/CSW-HIPAA-Technical-Runbook.md), [NERC CIP-008](./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.md), [TSA CIRP / 24-hour CISA](./TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.md), [CIS Control 17](./CIS-Controls-v8/CSW-CIS-Technical-Runbook.md), [CSF RS.AN-03 / RS.AN-07](./NIST-CSF-2/CSW-CSF-Technical-Runbook.md), [CMMC IR.L2-3.6.x](./CMMC-2/CSW-CMMC-Technical-Runbook.md) |
-| "How do I show my supply chain / third-party exposure?" | [DORA Art. 28](./DORA/CSW-DORA-Technical-Runbook.md), [NIS2 Art. 21(2)(d)](./NIS2/CSW-NIS2-Technical-Runbook.md), [ISO A.5.19–A.5.22](./ISO-27001-2022/iso27001-runbook.md), [NERC CIP-013](./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.md), [CIS Control 15](./CIS-Controls-v8/CSW-CIS-Technical-Runbook.md), [CSF GV.SC-04 / GV.SC-07](./NIST-CSF-2/CSW-CSF-Technical-Runbook.md) |
-| "Where does CSW fit in a Zero Trust architecture?" | [NIST 800-207 Tenets](./NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md), [NIST 800-207A PDP/PEP/PA/PIP](./NIST-800-207A/CSW-NIST-800-207A-Technical-Runbook.md), [CISA ZTMM](./CISA-ZeroTrust/cisa-ztmm-runbook.md), [CSF PR.IR / PR.AA](./NIST-CSF-2/CSW-CSF-Technical-Runbook.md) |
-| "How do I evidence vulnerability management?" | [PCI Req 6, 11.3](./PCI-DSS-v4/pci-runbook.md), [NIST RA-5](./NIST-800-53/nist-runbook.md), [ISO A.8.8](./ISO-27001-2022/iso27001-runbook.md), [NIS2 Art. 21(2)(e)](./NIS2/CSW-NIS2-Technical-Runbook.md), [NERC CIP-010 R3](./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.md), [TSA SD Section III.D](./TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.md), [CIS Control 7](./CIS-Controls-v8/CSW-CIS-Technical-Runbook.md), [CSF ID.RA-01 / ID.RA-05](./NIST-CSF-2/CSW-CSF-Technical-Runbook.md), [CMMC RA.L2-3.11.2 / 3.11.3](./CMMC-2/CSW-CMMC-Technical-Runbook.md) |
-| "How do I evidence IT/OT segmentation on the IT side?" | [NERC CIP-005 R1 (IT-side ESP enclave)](./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.md), [TSA SD Section III.A](./TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.md), [NIST AC-4 / SC-7](./NIST-800-53/nist-runbook.md) |
-| "How do I evidence asset and software inventory?" | [CIS Controls 1 + 2](./CIS-Controls-v8/CSW-CIS-Technical-Runbook.md), [NIST CM-8](./NIST-800-53/nist-runbook.md), [CSF ID.AM-01 / ID.AM-02](./NIST-CSF-2/CSW-CSF-Technical-Runbook.md), [CMMC CM.L2-3.4.1 / 3.4.6](./CMMC-2/CSW-CMMC-Technical-Runbook.md) |
-| "How do I evidence governance to my management body?" | [DORA Art. 5](./DORA/CSW-DORA-Technical-Runbook.md), [NIS2 Art. 20](./NIS2/CSW-NIS2-Technical-Runbook.md), [CSF GV.OV-01/02/03](./NIST-CSF-2/CSW-CSF-Technical-Runbook.md), [SOC 2 CC4.1](./SOC2/soc2-runbook.md) |
-| "What does CSW look like for a CMMC L2 (CUI) scope?" | [CMMC AC.L2-3.1.1 / 3.1.3](./CMMC-2/CSW-CMMC-Technical-Runbook.md), [CMMC SC.L2-3.13.1 / 3.13.6](./CMMC-2/CSW-CMMC-Technical-Runbook.md), [NIST 800-53 AC-4](./NIST-800-53/nist-runbook.md) |
+| "How do I show my supply chain / third-party exposure?" | [DORA Art. 28](./DORA/CSW-DORA-Technical-Runbook.md), [NIS2 Art. 21(2)(d)](./NIS2/CSW-NIS2-Technical-Runbook.md), [ISO A.5.19–A.5.22](./ISO-27001-2022/CSW-ISO27001-Technical-Runbook.md), [NERC CIP-013](./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.md), [CIS Control 15](./CIS-Controls-v8/CSW-CIS-Technical-Runbook.md), [CSF GV.SC-04 / GV.SC-07](./NIST-CSF-2/CSW-CSF-Technical-Runbook.md) |
+| "Where does CSW fit in a Zero Trust architecture?" | [NIST 800-207 Tenets](./NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md), [NIST 800-207A PDP/PEP/PA/PIP](./NIST-800-207A/CSW-NIST-800-207A-Technical-Runbook.md), [CISA ZTMM](./CISA-ZeroTrust/CSW-CISA-ZTMM-Technical-Runbook.md), [CSF PR.IR / PR.AA](./NIST-CSF-2/CSW-CSF-Technical-Runbook.md) |
+| "How do I evidence vulnerability management?" | [PCI Req 6, 11.3](./PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.md), [NIST RA-5](./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md), [ISO A.8.8](./ISO-27001-2022/CSW-ISO27001-Technical-Runbook.md), [NIS2 Art. 21(2)(e)](./NIS2/CSW-NIS2-Technical-Runbook.md), [NERC CIP-010 R3](./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.md), [TSA SD Section III.D](./TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.md), [CIS Control 7](./CIS-Controls-v8/CSW-CIS-Technical-Runbook.md), [CSF ID.RA-01 / ID.RA-05](./NIST-CSF-2/CSW-CSF-Technical-Runbook.md), [CMMC RA.L2-3.11.2 / 3.11.3](./CMMC-2/CSW-CMMC-Technical-Runbook.md) |
+| "How do I evidence IT/OT segmentation on the IT side?" | [NERC CIP-005 R1 (IT-side ESP enclave)](./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.md), [TSA SD Section III.A](./TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.md), [NIST AC-4 / SC-7](./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md) |
+| "How do I evidence asset and software inventory?" | [CIS Controls 1 + 2](./CIS-Controls-v8/CSW-CIS-Technical-Runbook.md), [NIST CM-8](./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md), [CSF ID.AM-01 / ID.AM-02](./NIST-CSF-2/CSW-CSF-Technical-Runbook.md), [CMMC CM.L2-3.4.1 / 3.4.6](./CMMC-2/CSW-CMMC-Technical-Runbook.md) |
+| "How do I evidence governance to my management body?" | [DORA Art. 5](./DORA/CSW-DORA-Technical-Runbook.md), [NIS2 Art. 20](./NIS2/CSW-NIS2-Technical-Runbook.md), [CSF GV.OV-01/02/03](./NIST-CSF-2/CSW-CSF-Technical-Runbook.md), [SOC 2 CC4.1](./SOC2/CSW-SOC2-Technical-Runbook.md) |
+| "What does CSW look like for a CMMC L2 (CUI) scope?" | [CMMC AC.L2-3.1.1 / 3.1.3](./CMMC-2/CSW-CMMC-Technical-Runbook.md), [CMMC SC.L2-3.13.1 / 3.13.6](./CMMC-2/CSW-CMMC-Technical-Runbook.md), [NIST 800-53 AC-4](./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md) |
 
 ---
 
@@ -56,7 +56,7 @@ Source: [`HIPAA/CSW-HIPAA-Technical-Runbook.md`](./HIPAA/CSW-HIPAA-Technical-Run
 
 ## SOC 2 — Trust Services Criteria
 
-Source: [`SOC2/soc2-runbook.md`](./SOC2/soc2-runbook.md)
+Source: [`SOC2/CSW-SOC2-Technical-Runbook.md`](./SOC2/CSW-SOC2-Technical-Runbook.md)
 
 | Criterion | Topic | CSW can support evidence for |
 |---|---|---|
@@ -74,7 +74,7 @@ Source: [`SOC2/soc2-runbook.md`](./SOC2/soc2-runbook.md)
 
 ## PCI DSS v4.0
 
-Source: [`PCI-DSS-v4/pci-runbook.md`](./PCI-DSS-v4/pci-runbook.md)
+Source: [`PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.md`](./PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.md)
 
 | Requirement | Topic | CSW can support evidence for |
 |---|---|---|
@@ -95,7 +95,7 @@ Source: [`PCI-DSS-v4/pci-runbook.md`](./PCI-DSS-v4/pci-runbook.md)
 
 ## NIST SP 800-53 Rev 5
 
-Source: [`NIST-800-53/nist-runbook.md`](./NIST-800-53/nist-runbook.md)
+Source: [`NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md`](./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md)
 
 | Control | Topic | CSW can support evidence for |
 |---|---|---|
@@ -121,7 +121,7 @@ Source: [`NIST-800-53/nist-runbook.md`](./NIST-800-53/nist-runbook.md)
 
 ## ISO/IEC 27001:2022 — Annex A
 
-Source: [`ISO-27001-2022/iso27001-runbook.md`](./ISO-27001-2022/iso27001-runbook.md)
+Source: [`ISO-27001-2022/CSW-ISO27001-Technical-Runbook.md`](./ISO-27001-2022/CSW-ISO27001-Technical-Runbook.md)
 
 | Annex A | Topic | CSW can support evidence for |
 |---|---|---|
@@ -143,7 +143,7 @@ Source: [`ISO-27001-2022/iso27001-runbook.md`](./ISO-27001-2022/iso27001-runbook
 
 ## CISA Zero Trust Maturity Model v2.0
 
-Source: [`CISA-ZeroTrust/cisa-ztmm-runbook.md`](./CISA-ZeroTrust/cisa-ztmm-runbook.md)
+Source: [`CISA-ZeroTrust/CSW-CISA-ZTMM-Technical-Runbook.md`](./CISA-ZeroTrust/CSW-CISA-ZTMM-Technical-Runbook.md)
 
 | Pillar | Example maturity path (varies by deployment) | CSW can support evidence for |
 |---|---|---|
@@ -267,11 +267,11 @@ Source: [`NIS2/CSW-NIS2-Technical-Runbook.md`](./NIS2/CSW-NIS2-Technical-Runbook
 | Art. 21(2)(g) | Cyber hygiene + training | Patch & process telemetry (training out of scope) |
 | Art. 21(2)(h) | Cryptography / encryption | Plaintext-protocol DENY (no crypto primitives) |
 | Art. 21(2)(i) | HR sec / access control / asset management | Inventory + label discipline supporting asset-management evidence |
-| Art. 21(2)(j) | MFA / secured comms | Identity-based segmentation (workload-to-workload analogue) |
+| Art. 21(2)(j) | MFA / secured comms | MFA remains outside CSW; CSW supports authorised workload-to-workload segmentation separately |
 | Art. 23(1) | 24-h early warning | 6-artefact dossier (initial pass) |
 | Art. 23(2) | 72-h notification | Same dossier, progressively complete |
 | Art. 23(3) | 1-month final report | Same dossier, plus root-cause and remediation |
-| Art. 32 / 33 | Supervisory measures | On-demand audit-ready exports |
+| Art. 32 / 33 | Supervisory measures | On-demand exports customers can use as inputs to supervisory evidence packs |
 
 ---
 

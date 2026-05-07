@@ -27,12 +27,12 @@ the contract" view.
 **Questions this runbook helps you answer:**
 
 - *Control 1 (Inventory of Enterprise Assets) and Control 2
-  (Inventory of Software Assets): can I produce a current,
-  authoritative inventory of every workload and the software running
-  on it, refreshed continuously rather than monthly?*
+  (Inventory of Software Assets): can I produce a current inventory of
+  CSW-covered workloads and the software running on them, refreshed
+  continuously and reconciled with the enterprise source of truth?*
 - *Control 4 (Secure Configuration): can I detect drift from baseline
-  configuration on every workload, attribute the change to a request
-  ticket, and produce evidence per quarter?*
+  configuration on CSW-covered workloads, attribute the change to a
+  request ticket, and produce evidence per quarter?*
 - *Control 7 (Continuous Vulnerability Management): for every CVE
   that drops, can I show which workloads are exposed, how reachable
   they are from current attacker positions, and how that backlog has
@@ -157,7 +157,7 @@ logging — not CSW), 1.5 (passive discovery).
 **CSW Implementation:**
 ```
 Step 1: Achieve sensor coverage (Safeguard 1.1)
-  → Linux:   yum/dnf/apt + systemctl enable tetd
+  → Linux:   yum/dnf/apt + systemctl enable csw-agent
   → Windows: MSI install + service verification
   → Containers: DaemonSet sensor for K8s; per-node sensor for ECS/AKS/GKE
   → Cloud:   External Orchestrators (AWS/Azure/GCP) for asset metadata

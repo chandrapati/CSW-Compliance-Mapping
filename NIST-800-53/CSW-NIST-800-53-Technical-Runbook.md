@@ -39,7 +39,7 @@ to section 4 if you're building the evidence package now.
 
 ## 1. Overview
 
-NIST SP 800-53 Rev 5 provides a comprehensive catalog of security and privacy controls for federal information systems. CSW directly addresses controls across seven key families: **AC** (Access Control), **AU** (Audit & Accountability), **CM** (Configuration Management), **IR** (Incident Response), **RA** (Risk Assessment), **SC** (System & Communications Protection), and **SI** (System & Information Integrity).
+NIST SP 800-53 Rev 5 provides a comprehensive catalog of security and privacy controls for federal information systems. CSW can support technical evidence for selected controls across seven key families: **AC** (Access Control), **AU** (Audit & Accountability), **CM** (Configuration Management), **IR** (Incident Response), **RA** (Risk Assessment), **SC** (System & Communications Protection), and **SI** (System & Information Integrity).
 
 ---
 
@@ -50,7 +50,7 @@ NIST SP 800-53 Rev 5 provides a comprehensive catalog of security and privacy co
 | Control | Name | CSW Implementation |
 |---|---|---|
 | AC-3 | Access Enforcement | Micro-segmentation enforces allowlist policies at workload level |
-| AC-4 | Information Flow Enforcement | ADM maps all flows; policy blocks unauthorized paths |
+| AC-4 | Information Flow Enforcement | ADM maps observed flows within CSW coverage; policy blocks unauthorized paths where enforcement is deployed |
 | AC-6 | Least Privilege | Workload-scoped policies grant minimum required network access |
 | AC-17 | Remote Access | Jump-host enforcement; remote admin paths explicitly defined and logged |
 | AC-20 | Use of External Systems | External partner scope with restricted, audited access paths |
@@ -90,7 +90,7 @@ CSW UI → Defend → Segmentation
 | CM-2 | Baseline Configuration | ADM establishes approved communication baseline |
 | CM-6 | Configuration Settings | Process monitoring detects configuration drift (new processes, new ports) |
 | CM-7 | Least Functionality | Block non-approved services via port-level policy enforcement |
-| CM-8 | System Component Inventory | CSW inventory provides real-time workload asset catalog |
+| CM-8 | System Component Inventory | CSW inventory provides a workload asset catalog for covered components; reconcile with the SSP / CMDB for full CM-8 scope |
 
 **Baseline Drift Detection:**
 ```
@@ -124,7 +124,7 @@ CSW UI → Investigate → ADM
 | Control | Name | CSW Implementation |
 |---|---|---|
 | RA-3 | Risk Assessment | Vulnerability data + ADM attack surface = continuous risk posture |
-| RA-5 | Vulnerability Monitoring | Continuous CVE scanning with CVSS scoring |
+| RA-5 | Vulnerability Monitoring | Continuous vulnerability exposure visibility with CVSS scoring |
 | RA-7 | Risk Response | Compensating controls via policy when patching delayed |
 | RA-9 | Criticality Analysis | Scope-based tagging identifies high-criticality workloads |
 
@@ -141,8 +141,8 @@ CSW UI → Investigate → ADM
 
 | Control | Name | CSW Implementation |
 |---|---|---|
-| SI-2 | Flaw Remediation | Continuous vulnerability scan; prioritized remediation guidance |
-| SI-3 | Malicious Code Protection | Process hash monitoring detects unknown/malicious executables |
+| SI-2 | Flaw Remediation | Continuous vulnerability exposure view; prioritized remediation guidance |
+| SI-3 | Malicious Code Protection | Process hash monitoring provides detection signals that complement AV / EDR controls |
 | SI-4 | System Monitoring | Full telemetry with anomaly detection and alerting |
 | SI-7 | Software & Firmware Integrity | Process hash baseline from ADM; deviation triggers alert |
 

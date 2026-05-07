@@ -11,11 +11,11 @@ and containers — wherever they live. A lightweight agent on each
 workload, paired with agentless connectors for AWS, Azure, GCP and
 Kubernetes, gives you four things continuously and from one place:
 
-- **A complete, current inventory** across hosts and workloads—observed
-  processes and packages where the platform surfaces them—and the network
-  conversations those workloads participate in across on‑prem and
-  supported cloud footprints. Best practice is to reconcile this view with
-  your authoritative CMDB or cloud asset records.
+- **A workload-centric inventory** across hosts and workloads within
+  your CSW sensor and connector coverage—observed processes and packages
+  where the platform surfaces them—and the network conversations those
+  workloads participate in across on-prem and supported cloud footprints.
+  Reconcile this view with your authoritative CMDB or cloud asset records.
 - **An application dependency map** built from observed behaviour, not
   guessed from a network diagram, so you can see exactly which
   workloads talk to which, on which ports, with which processes.
@@ -29,7 +29,7 @@ Kubernetes, gives you four things continuously and from one place:
 
 ## Machine learning, in practical terms
 
-**CSW makes extensive use of machine learning** alongside classical
+**CSW uses machine learning for some capabilities** alongside classical
 signals (rules, baselines, graph edges you can inspect). Exactly which
 models and features ship in a given release are documented in official
 product materials and release notes — treat this repository as mapping
@@ -56,8 +56,8 @@ In practical terms, CSW collapses several things organisations
 typically run as separate programmes — segmentation reviews, change
 attestation, drift tracking, application-flow documentation,
 vulnerability prioritisation, lateral-movement detection — into a
-single, query-able, evidence-producing system. Because discovery and
-detection reconcile against live workload behaviour rather than relying
+consolidated workload-evidence source, subject to coverage and
+integrations. Because discovery and detection reconcile against live workload behaviour rather than relying
 purely on static diagrams, evidence can stay materially aligned with how
 applications actually run — supporting both *audit-style questions*
 (what changed, what's allowed?) and *incident-response questions* (what

@@ -63,7 +63,7 @@ NIST SP 800-207 defines Zero Trust Architecture (ZTA) through seven foundational
 **CSW Implementation:**
 ```
 Step 1: Deploy software sensors on all on-prem workloads
-  → Linux: rpm/dpkg install + systemctl enable tetd
+  → Linux: rpm/dpkg install + systemctl enable csw-agent
   → Windows: MSI install + service verification
 
 Step 2: Connect cloud accounts (agentless discovery)
@@ -80,10 +80,10 @@ Step 3: Label every workload as a classified resource
     app:          [application name]
     owner:        [team name]
 
-Step 4: Validate inventory completeness
+Step 4: Validate CSW coverage and label completeness
   CSW UI → Inventory
   → Filter: label missing → Identify unlabeled workloads
-  → Target: 100% label coverage before ADM run
+  → Target: 100% label coverage for in-scope CSW-covered workloads before ADM run
 ```
 
 **Evidence:** Inventory export (CSV), cloud connector discovery report
@@ -152,13 +152,14 @@ Step 3: Default-deny for all sensitive scopes
   → Only explicitly documented flows are permitted
   → No "allow same subnet" rules — violates Tenet 3
 
-Step 4: Per-session audit trail
+Step 4: Per-connection audit trail
   CSW logs every connection: source, destination, process,
   user, timestamp, bytes, and policy decision (allow/deny)
-  → Satisfies NIST 800-207 per-session access record requirement
+  → Contributes to per-access records for network connections CSW observes;
+    validate required fields against your logging standard
 ```
 
-**Evidence:** Per-session flow log export, policy workspace (allowlist rules), policy denial log
+**Evidence:** Per-connection flow log export, policy workspace (allowlist rules), policy denial log
 
 ---
 

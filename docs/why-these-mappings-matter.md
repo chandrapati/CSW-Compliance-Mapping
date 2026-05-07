@@ -77,10 +77,10 @@ underlying risk.
 Each of those questions appears in a compliance framework *because*
 the framework's authors knew it was the question that decides whether
 a foothold becomes an incident, or an incident becomes a breach.
-**Compliance is commonly the lagging indicator; blast‑radius containment
+**Compliance is commonly the lagging indicator; blast-radius containment
 often becomes the unavoidable leading indicator when something breaks
 badly.** At the workload layer—particularly where CSW enforces segmentation
-policy—audit-oriented exports often overlap substantially with artefacts
+policy and exports are in scope—audit-oriented exports can overlap with artefacts
 incident responders reconstruct under pressure. Assessors revisit periodically; attackers probe reachable paths
 far more impatiently — both perspectives stress‑test whether policy is real
 property or aspiration.
@@ -117,10 +117,10 @@ things these mappings demonstrate concretely:
 - **Segmentation anchored in observed behaviour.** Teams often freeze
   diagrams long before production traffic changes. Where CSW's policy
   workflow is anchored in observed conversational reality (with appropriate
-  human approvals), auditors increasingly see artefacts that resemble the
-  *in place and operating effectively* framing in PCI DSS v4 and the intent
-  of NIST CA-7-style continuous diagnostics — contingent on disciplined
-  change management behind the knobs.
+  human approvals), those artefacts can support assessor discussions about
+  operating effectiveness and the intent of NIST CA-7-style continuous
+  diagnostics — contingent on disciplined change management behind the
+  knobs.
 - **Hybrid / multi‑cloud cohesion.** Organisations operating across AWS,
   Azure, GCP, on‑prem, and containers often value a single segmentation
   and evidence vocabulary—CSW supports that posture where you standardise

@@ -18,9 +18,9 @@ engagement.
 **Questions this runbook helps you answer:**
 
 - *Article 8 — ICT Risk Management Framework: can I produce a current
-  inventory of all ICT assets supporting "important business functions"
-  (IBFs), classified by criticality, and prove the inventory is
-  refreshed continuously rather than annually?*
+  inventory view of CSW-covered ICT assets supporting "important
+  business functions" (IBFs), classified by criticality, and reconcile
+  it with the authoritative enterprise ICT asset register?*
 - *Article 9(2) — protection and prevention: for each IBF, can I
   demonstrate that network segmentation between supporting systems is
   enforced and continuously verified, not just designed?*
@@ -93,7 +93,7 @@ control?").
 
 | DORA Pillar | CSW contribution |
 |---|---|
-| Pillar 1 — ICT Risk Management | Continuous asset inventory (Art. 8), segmentation enforcement (Art. 9), behavioural detection (Art. 10), forensic flow data for response & learning (Arts. 11, 13). |
+| Pillar 1 — ICT Risk Management | Continuous workload inventory inputs (Art. 8), segmentation enforcement (Art. 9), behavioural detection (Art. 10), forensic flow data for response & learning (Arts. 11, 13). |
 | Pillar 2 — Incident Management | Reconstructable process and flow timeline supporting initial, intermediate and final reports (Art. 19). |
 | Pillar 3 — Resilience Testing | Workload-level evidence for vulnerability assessments and scenario-based tests (Art. 25(1)); attack-path data and segmentation telemetry for TLPT (Art. 26). |
 | Pillar 4 — Third-Party Risk | Independent technical view of which third-party endpoints critical workloads call (complements but does not replace contractual register). |
@@ -133,7 +133,7 @@ Step 3: Build an IBF Scope per business function
   Repeat for each IBF
   → This becomes the unit of policy, evidence, and reporting
 
-Step 4: Validate completeness against the inventory baseline
+Step 4: Validate CSW coverage against the authoritative inventory baseline
   → Cross-check CSW inventory count vs. your CMDB / ServiceNow IBF view
   → Any delta = scoping risk; resolve before formal Art. 8 sign-off
 ```
@@ -151,8 +151,8 @@ updated "periodically and on every significant change."
 
 **CSW Implementation:**
 ```
-Step 1: Achieve sensor coverage on every workload supporting an IBF
-  → Linux:   yum/dnf/apt + systemctl enable tetd
+Step 1: Achieve sensor coverage on every supported workload supporting an IBF
+  → Linux:   yum/dnf/apt + systemctl enable csw-agent
   → Windows: MSI install + service verification
   → Containers: DaemonSet sensor for K8s; per-node sensor for ECS/AKS/GKE
   → Cloud:   External Orchestrators (AWS/Azure/GCP) for asset metadata
@@ -172,10 +172,11 @@ Step 4: Wire the inventory feed to your Register of Information
   → Use: nightly export → reconcile against management's Register
 ```
 
-**Evidence:** (a) current inventory export with every workload's OS,
-hostname, IP, agent version, owner labels, last-check-in; (b) ADM
+**Evidence:** (a) current CSW inventory export with each covered workload's
+OS, hostname, IP, agent version, owner labels, last-check-in; (b) ADM
 dependency graph per IBF; (c) drift report showing additions/removals
-since the previous management-body review.
+since the previous management-body review; (d) reconciliation notes for
+assets outside CSW coverage.
 
 ---
 

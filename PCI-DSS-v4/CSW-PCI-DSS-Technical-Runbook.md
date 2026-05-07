@@ -39,7 +39,7 @@ assessment window or preparing v4.0 transition evidence.
 
 ## 1. Overview
 
-PCI DSS v4.0 introduces customized implementation approaches and strengthens network segmentation requirements. CSW is uniquely positioned to satisfy PCI DSS Requirements 1 (network controls), 6 (vulnerability management), 10 (logging/monitoring), and 11 (security testing) through workload-level visibility and enforcement.
+PCI DSS v4.0 introduces customized implementation approaches and strengthens network segmentation requirements. CSW can support evidence for aspects of PCI DSS Requirements 1 (network controls), 6 (vulnerability management), 10 (logging/monitoring), and 11 (security testing) where workload-level visibility and enforcement apply; confirm final scope and evidence sufficiency with your QSA.
 
 ### PCI DSS Requirement → CSW Capability Map
 
@@ -47,7 +47,7 @@ PCI DSS v4.0 introduces customized implementation approaches and strengthens net
 |---|---|
 | Req 1 — Network Security Controls | Micro-segmentation, CDE isolation |
 | Req 2 — Secure Configurations | Vulnerability detection, process monitoring |
-| Req 6 — Vulnerability Management | Continuous CVE scanning, CVSS prioritization |
+| Req 6 — Vulnerability Management | Continuous vulnerability exposure visibility, CVSS prioritization |
 | Req 7 — Access Control | Workload-level allowlist enforcement |
 | Req 10 — Logging & Monitoring | Full flow + process telemetry |
 | Req 11 — Security Testing | ADM baseline deviation detection |
@@ -134,7 +134,7 @@ Remediation SLAs:
 
 **7.2.1 — Access to system components and cardholder data restricted**
 - CSW scope-based policy: only approved workload identities access CDE
-- Policy enforced at OS level — bypasses firewall rule gaps
+- Workload-level enforcement can catch gaps beneath or between network-security-control views; it complements, not replaces, PCI network security controls
 - Process-level access audit: which process on which workload touched CDE
 
 **7.2.5 — Default and unnecessary accounts removed**
@@ -164,8 +164,8 @@ CSW captures per CDE workload:
 ### Requirement 11 — Security Testing
 
 **11.3.1 — External vulnerability scans quarterly**
-- CSW provides continuous (not just quarterly) vulnerability assessment
-- Exceeds PCI DSS requirement; use CSW reports as supplementary evidence
+- CSW provides continuous vulnerability exposure context for workloads it observes
+- Use CSW reports as supplementary evidence; they do not replace required PCI external ASV scans or other mandated testing unless explicitly accepted by your QSA for a documented customized approach
 
 **11.4.1 — Penetration testing methodology**
 - ADM baseline used as pre-pentest reference
@@ -181,7 +181,7 @@ CSW captures per CDE workload:
 | CDE network policy export | Defend → Policy Workspaces | Req 1 | Per assessment |
 | CDE inbound/outbound flow log | Investigate → Flow Search | Req 1, Req 10 | Continuous |
 | Policy violation report | Alerts → Triggered Events | Req 10 | Monthly |
-| Vulnerability scan (CDE) | Investigate → Vulnerability | Req 6, Req 11 | Weekly |
+| Vulnerability exposure report (CDE) | Investigate → Vulnerability | Req 6, Req 11 | Weekly |
 | CDE scope membership snapshot | Inventory → Export | Req 1, Req 7 | Monthly |
 | Anomaly detection log | Alerts → Dashboard | Req 10, Req 11 | Monthly |
 | ADM dependency map (CDE) | Investigate → ADM | Req 1 | Quarterly |
@@ -194,8 +194,8 @@ CSW captures per CDE workload:
 | New in v4.0 | CSW Response |
 |---|---|
 | 12.3.2 — Targeted risk analysis for each requirement | CSW vulnerability + ADM data feeds risk analysis |
-| 1.2.1 — All traffic flows documented and approved | ADM generates complete approved flow documentation |
-| 6.3.3 — All vulnerabilities addressed per risk ranking | Continuous CVE scan with CVSS-ranked remediation |
+| 1.2.1 — All traffic flows documented and approved | ADM produces observed-flow documentation for CSW-instrumented paths; human approval and non-CSW paths remain part of CDE documentation |
+| 6.3.3 — All vulnerabilities addressed per risk ranking | Continuous vulnerability exposure view with CVSS-ranked remediation inputs |
 | 10.7.2 — Failures of critical security controls detected | Sensor offline alerts, policy enforcement gap detection |
 
 ---

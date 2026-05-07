@@ -275,10 +275,10 @@ Step 3: Daily drift report
 ### (j) Use of multi-factor authentication or continuous authentication solutions, secured voice, video and text communications and secured emergency communication systems within the entity, where appropriate
 
 **CSW position:** MFA itself is provided by Cisco Duo or equivalent.
-CSW addresses the *workload-to-workload* analogue of "secured
-communication" by:
-- enforcing identity- and label-based segmentation (workload identity
-  is the equivalent of "MFA between systems"), and
+CSW addresses a separate workload-to-workload secured-communication
+control by:
+- enforcing identity- and label-based segmentation for authorised
+  workload paths, and
 - denying connection paths that the policy doesn't explicitly allow.
 
 **Evidence:** Segmentation workspace export; deny-by-default policy

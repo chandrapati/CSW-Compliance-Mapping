@@ -46,7 +46,7 @@ ISO 27001:2022 restructured Annex A from 114 controls across 14 domains to **93 
 | New Control | Ref | CSW Relevance |
 |---|---|---|
 | Threat Intelligence | A.5.7 | Vulnerability CVE data feeds threat intel posture |
-| Information Security for Cloud Services | A.5.23 | CSW cloud connectors enforce policy on AWS/Azure/GCP |
+| Information Security for Cloud Services | A.5.23 | CSW cloud connectors support cloud inventory and policy context; enforcement depends on sensor / connector coverage and complements cloud-native IAM and network controls |
 | ICT Readiness for Business Continuity | A.5.30 | Policy workspaces exportable for DR; sensor redundancy |
 | Web Filtering | A.8.23 | CSW blocks unauthorized outbound from sensitive workloads |
 | Secure Coding | A.8.28 | Process monitoring detects unexpected code execution |
@@ -64,7 +64,7 @@ ISO 27001:2022 restructured Annex A from 114 controls across 14 domains to **93 
 | A.8.16 | Monitoring Activities | Real-time anomaly detection; policy violation alerting |
 | A.8.19 | Installation of Software | Process hash monitoring detects unauthorized software |
 | A.8.20 | Networks Security | Micro-segmentation enforces network security at workload level |
-| A.8.21 | Security of Network Services | ADM maps all network services; policy enforces approved services only |
+| A.8.21 | Security of Network Services | ADM maps observed network services; policy enforces approved services where CSW enforcement is deployed |
 | A.8.22 | Segregation of Networks | Scope-based isolation (PHI, CDE, production, dev) |
 | A.8.23 | Web Filtering | Block unauthorized outbound web access from sensitive scopes |
 | A.8.25 | Secure Development Lifecycle | ADM detects new communication paths introduced by code changes |
@@ -75,7 +75,7 @@ ISO 27001:2022 restructured Annex A from 114 controls across 14 domains to **93 
 | Control | Name | CSW Implementation |
 |---|---|---|
 | A.5.7 | Threat Intelligence | CVE vulnerability data provides threat-informed risk posture |
-| A.5.23 | Cloud Services Security | Cloud connectors enforce unified policy across AWS/Azure/GCP |
+| A.5.23 | Cloud Services Security | Cloud connectors support unified visibility and policy context across AWS/Azure/GCP, with enforcement dependent on deployment coverage |
 | A.5.25 | Information Security Incident Management | Forensic telemetry supports incident response and root cause analysis |
 | A.5.30 | ICT Readiness | Policy workspace backup; simulation mode for DR testing |
 | A.5.37 | Documented Operating Procedures | ADM-generated dependency maps serve as documented network procedures |

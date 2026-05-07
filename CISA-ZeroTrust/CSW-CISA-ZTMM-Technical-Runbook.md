@@ -82,7 +82,7 @@ Phase 3 — Optimal (Ongoing):
 
 ## 3. CSW Maturity Mapping — Applications & Workloads Pillar
 
-| Maturity Stage | Requirement | CSW Capability |
+| Maturity Stage | Requirement | CSW capability that may support evidence toward the stage |
 |---|---|---|
 | **Traditional** | No workload-level visibility | ADM provides first-ever workload communication map |
 | **Initial** | Basic application inventory; some access controls | CSW inventory + scope-based access policies |
@@ -101,7 +101,7 @@ Phase 3 — Optimal (Ongoing):
 
 | Maturity Stage | Requirement | CSW Capability |
 |---|---|---|
-| **Traditional** | No data flow visibility | ADM reveals all data movement paths |
+| **Traditional** | No data flow visibility | ADM reveals observed data movement paths within CSW coverage |
 | **Initial** | Data categorized; basic access controls | Scope-based isolation for sensitive data workloads |
 | **Advanced** | Data access logged; encryption enforced | Full flow telemetry; encryption compliance enforcement |
 | **Optimal** | Automated data protection response | Alert-triggered policy updates on data access violations |
@@ -110,13 +110,13 @@ Phase 3 — Optimal (Ongoing):
 
 ## 5. CISA ZTMM Pillar Coverage Summary
 
-| Pillar | CSW Role | Maturity Achievable |
+| Pillar | CSW Role | Example maturity evidence CSW may support |
 |---|---|---|
-| Identity | Supporting (enforces identity-verified access paths) | Initial → Advanced |
-| Devices | Supporting (process + OS-level workload fingerprinting) | Initial → Advanced |
-| Networks | **Primary** (micro-segmentation, encryption, monitoring) | Advanced → Optimal |
-| Applications & Workloads | **Primary** (workload identity, policy, vulnerability) | Advanced → Optimal |
-| Data | Supporting (data flow visibility, encryption enforcement) | Initial → Advanced |
+| Identity | Supporting (enforces identity-aware workload access paths where integrated) | Initial → Advanced evidence when paired with IAM / IdP controls |
+| Devices | Supporting (process + OS-level workload fingerprinting) | Initial → Advanced evidence for covered workloads |
+| Networks | **Primary** for workload micro-segmentation, plaintext-flow detection / blocking, monitoring | Advanced evidence; Optimal remains an organizational target |
+| Applications & Workloads | **Primary** for workload identity, policy, vulnerability context | Advanced evidence; Optimal remains an organizational target |
+| Data | Supporting (data flow visibility, plaintext-flow detection / blocking) | Initial → Advanced evidence when paired with data governance controls |
 
 ---
 

@@ -60,11 +60,15 @@ you're packaging evidence.
 | **Primary audience** | CISOs, architects | GRC, security engineers, cloud architects |
 | **CSW mapping** | Tenet-by-tenet (see companion doc) | Component-by-component (this document) |
 
-**CSW in the 800-207A model:**
-- **PEP** → CSW software sensor (enforcement at workload level)
-- **PDP** → CSW policy engine (per-flow access decision)
-- **PA** → CSW policy workspace (policy authoring, deployment, audit)
-- **PIP** → CSW telemetry (vulnerability, process, ADM baseline, flow context)
+**CSW in the 800-207A model (illustrative mapping):**
+- **PEP analogue** → CSW software sensor (enforcement at workload level)
+- **PDP analogue** → CSW policy engine for network / workload connection decisions
+- **PA analogue** → CSW policy workspace (policy authoring, deployment, audit)
+- **PIP analogue** → CSW telemetry (vulnerability, process, ADM baseline, flow context)
+
+This mapping is a practical decomposition for workload segmentation discussions,
+not a claim that CSW implements every possible 800-207A PDP / PEP / PA / PIP
+responsibility across identity, data, endpoint, and enterprise policy systems.
 
 ---
 
@@ -86,12 +90,12 @@ CSW UI → Defend → Segmentation
   → Mode: Enforcement (after simulation validation)
   → Priority: Absolute Policies first, then ranked allowlist
 
-Absolute Policies (PDP hard denials — never overridden):
+Absolute Policies (CSW hard denials — never overridden within the workspace):
   DENY: Any → Sensitive-Scope         # Default deny inbound
   DENY: Sensitive-Scope → Internet    # No direct internet egress
   DENY: Any → Sensitive-Scope (port 80, 21, 23, 389)  # Non-compliant protocols
 
-Allowlist Policies (PDP conditional allows):
+Allowlist Policies (CSW conditional allows):
   ALLOW: [Source Workload] → [Dest Workload] (port X)
   → Derived from ADM output — actual observed traffic
   → Each rule = one approved access transaction pattern
@@ -114,7 +118,7 @@ Step 3: SOAR calls CSW API:
     "dst":       "WorkloadY",
     "comment":   "Compensating control — CVE-XXXX-YYYY unpatched"
   }
-Step 4: PDP now denies all access to Workload Y except admin jump-host
+Step 4: CSW policy now denies workload-network access to Workload Y except admin jump-host
 Step 5: On patch completion → SOAR removes compensating policy
 ```
 
@@ -145,14 +149,14 @@ The PEP must:
 ```bash
 # Linux — RHEL/CentOS
 rpm -ivh tet-sensor-<version>.rpm
-systemctl enable tetd && systemctl start tetd
+systemctl enable csw-agent && systemctl start csw-agent
 
 # Linux — Ubuntu/Debian
 dpkg -i tet-sensor-<version>.deb
-systemctl enable tetd && systemctl start tetd
+systemctl enable csw-agent && systemctl start csw-agent
 
 # Windows
-msiexec /i TetSensor.msi /quiet
+msiexec /i <Cisco-generated-CSW-agent>.msi /quiet
 
 # Verify PEP is active:
 CSW UI → Manage → Agents
@@ -293,7 +297,7 @@ The PIP must provide continuous, real-time attribute signals to the PDP across t
 **Workload Posture PIP (Device/Resource Domain):**
 ```
 CSW Vulnerability Feed:
-  → Continuous CVE scanning — no scheduling required
+  → Continuous vulnerability exposure visibility — no scheduling required
   → Per-workload CVE inventory with CVSS score
   → SIEM export: Kafka/Syslog → real-time posture feed
   → API query: GET /openapi/v1/vulnerabilities?workload=<id>

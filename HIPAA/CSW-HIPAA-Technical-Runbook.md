@@ -39,15 +39,15 @@ next quarter.
 
 ## 1. Overview
 
-This runbook guides deployment of Cisco Secure Workload (CSW) in healthcare environments to satisfy HIPAA Security Rule requirements. CSW provides workload-level visibility, micro-segmentation, vulnerability detection, and forensic telemetry — all directly mappable to HIPAA Technical Safeguard controls.
+This runbook guides deployment of Cisco Secure Workload (CSW) in healthcare environments to support technical and operational evidence for elements of the HIPAA Security Rule commonly mapped to workload segmentation, logging, and risk-analysis inputs. CSW provides workload-level visibility, micro-segmentation, vulnerability exposure context, and forensic telemetry — all subject to deployment scope and complementary administrative, physical, and organizational controls.
 
 ### HIPAA Security Rule Structure
 
 | Safeguard Category | Relevant CSW Capabilities |
 |---|---|
-| Administrative Safeguards (§164.308) | Policy enforcement, audit controls, risk analysis data |
-| Physical Safeguards (§164.310) | Workload isolation, access boundary enforcement |
-| Technical Safeguards (§164.312) | Micro-segmentation, encryption enforcement, audit logs, unique user ID enforcement |
+| Administrative Safeguards (§164.308) | Policy enforcement evidence, audit-control inputs, risk-analysis data |
+| Physical Safeguards (§164.310) | Limited / out of scope; CSW can only provide logical workload-boundary evidence that may support facility or device-control narratives |
+| Technical Safeguards (§164.312) | Micro-segmentation, plaintext-flow detection / blocking, audit logs, identity-aware access evidence where integrated |
 | Organizational Requirements (§164.314) | BAA scope definition, third-party access control |
 
 ---
@@ -76,12 +76,12 @@ rpm -ivh tet-sensor-<version>.rpm    # RHEL/CentOS
 dpkg -i tet-sensor-<version>.deb     # Ubuntu/Debian
 
 # Verify sensor is running
-systemctl status tetd
+systemctl status csw-agent
 ```
 
 **Key Sensor Configuration:**
 - Enforcement Mode: **Monitoring Only** (do NOT enforce at this stage)
-- Data Collection: Enable process hash, network flow, vulnerability scan
+- Data Collection: Enable process hash, network flow, and vulnerability exposure visibility where supported
 - Tags: Apply `env:production`, `compliance:hipaa`, `data:phi` from Day 1
 
 ### 3.2 Cloud Workloads (AWS / Azure / GCP)
@@ -302,7 +302,7 @@ CSW UI → Investigate → Vulnerability Report
   → Export for compliance evidence
 ```
 
-**HIPAA Relevance:** §164.308(a)(1) requires ongoing risk analysis. CSW vulnerability data satisfies this with workload-level CVE mapping.
+**HIPAA Relevance:** §164.308(a)(1) requires ongoing risk analysis. CSW vulnerability data can inform that analysis with workload-level CVE mapping, but it remains one input among threat, impact, control-testing, BAA, and operational-risk evidence.
 
 ### 8.2 Prioritization for PHI Workloads
 
@@ -363,7 +363,7 @@ Retain forensic exports for minimum **6 years** per HIPAA documentation requirem
 | Evidence Item | CSW Source | HIPAA Control |
 |---|---|---|
 | Policy enforcement log | Defend → Policy Analysis | §164.312(a) |
-| Vulnerability scan report | Investigate → Vulnerability | §164.308(a)(1) |
+| Vulnerability exposure report | Investigate → Vulnerability | §164.308(a)(1) |
 | Flow audit log (PHI-Zone) | Investigate → Flow Search | §164.312(b) |
 | Policy violation report | Alerts → Triggered Events | §164.308(a)(6) |
 | Scope membership snapshot | Inventory → Export | §164.308(a)(3) |

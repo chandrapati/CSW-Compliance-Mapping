@@ -77,8 +77,9 @@ protection); section 8 for SI (system & information integrity).
 **Important.** CMMC 2.0 assessment is performed by a Certified Third-
 Party Assessor Organisation (C3PAO) for Level 2 certified-assessed
 scope. Nothing in this runbook substitutes for the SSP, POA&M, or
-the C3PAO engagement. CSW gives the assessment evidence that
-satisfies many of the technical objectives the C3PAO will look for.
+the C3PAO engagement. CSW can support evidence for many technical
+practices the C3PAO evaluates, subject to CUI scope, implementation,
+and assessor judgment.
 
 ---
 
@@ -247,8 +248,8 @@ Step 1: Identify any cui_scope=in-scope workload that is also
         internet-reachable
         → CSW reachability query
 Step 2: For each, validate that the architecture is intentional
-        and that the workload satisfies the boundary protection
-        requirements (SC.L2-3.13.5)
+        and that the workload has supporting boundary-protection
+        evidence for SC.L2-3.13.5
 Step 3: Continuous monitoring for net-new internet-reachable
         CUI workloads
 ```
@@ -682,8 +683,8 @@ view:
 - **NIST SP 800-53 Rev 5** — superset of 800-171. The 800-53
   runbook covers CMMC L2 with broader context. See
   [800-53 runbook](../NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md).
-- **NIST SP 800-207 (Zero Trust Architecture)** — the architectural
-  pattern that satisfies many SC/AC controls at depth. See
+- **NIST SP 800-207 (Zero Trust Architecture)** — an architectural
+  pattern that can support many SC/AC control objectives at depth. See
   [800-207 runbook](../NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md).
 - **NIST CSF 2.0** — the outcomes wrapper that cites 800-171 as
   Informative References under PR/DE/RS Subcategories. See
