@@ -1,0 +1,175 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R 5 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 4 0 R >>
+endobj
+4 0 obj
+<< /Length 2285 >>
+stream
+BT
+/F1 10 Tf
+50 760 Td
+14 TL
+(Cisco Secure Workload - NIST SP 800-171 Rev. 3 Compliance Report) Tj
+T*
+() Tj
+T*
+(Customer-Facing Compliance Report) Tj
+T*
+() Tj
+T*
+(Framework: NIST SP 800-171 Rev. 3) Tj
+T*
+(Primary audience: Defense industrial base, CUI enclave owners, CMMC preparation teams, and) Tj
+T*
+(security architects.) Tj
+T*
+(CSW positioning: CUI enclave isolation, 03.01 and 03.13 flow enforcement, Rev. 3 family) Tj
+T*
+(alignment, and CMMC Level 2 underpinning evidence.) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(Executive Summary) Tj
+T*
+() Tj
+T*
+(Cisco Secure Workload \(CSW\) can support this framework by producing workload-level evidence) Tj
+T*
+(for inventory, application dependency mapping, segmentation design, policy simulation,) Tj
+T*
+(vulnerability context, and incident investigation. The strongest customer story is not that) Tj
+T*
+(CSW "certifies" compliance; it is that CSW turns workload communication into evidence that) Tj
+T*
+(control owners, assessors, and technical teams can review.) Tj
+T*
+() Tj
+T*
+(Suggested CSW Scope Pattern) Tj
+T*
+() Tj
+T*
+(NIST-800-171 > CUI-Enclave, CUI-Applications, Boundary-Services, Admin-Paths, External-) Tj
+T*
+(Connections) Tj
+T*
+() Tj
+T*
+(This scope pattern should be validated with the customer's architecture, application owners,) Tj
+T*
+(compliance team, and assessor before it is used for formal evidence.) Tj
+T*
+() Tj
+T*
+(Outcomes CSW Can Support) Tj
+T*
+() Tj
+T*
+(? Identify CUI-related workloads and enclave boundaries.) Tj
+T*
+(? Support access control and system communication protection evidence.) Tj
+T*
+(? Document allowed and observed workload communication paths.) Tj
+T*
+(? Package evidence that can inform CMMC Level 2 preparation.) Tj
+T*
+() Tj
+T*
+(Evidence Package) Tj
+T*
+() Tj
+T*
+(? CUI workload inventory) Tj
+T*
+(? Enclave flow and boundary map) Tj
+T*
+(? Policy candidate and exception register) Tj
+T*
+(? External connection summary) Tj
+T*
+(? Vulnerability and monitoring evidence) Tj
+T*
+() Tj
+T*
+(POV / Workshop Approach) Tj
+T*
+() Tj
+T*
+(1. Select one business service, regulated boundary, or critical workload group.) Tj
+T*
+(2. Validate workload coverage and install sensors or configure supported connectors.) Tj
+T*
+(3. Apply labels for application, environment, owner, data class, criticality, compliance) Tj
+T*
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 6 0 R >>
+endobj
+6 0 obj
+<< /Length 886 >>
+stream
+BT
+/F1 10 Tf
+50 760 Td
+14 TL
+(scope, and lifecycle.) Tj
+T*
+(4. Observe flows over a representative business window.) Tj
+T*
+(5. Use ADM to generate a candidate policy and review it with the application owner.) Tj
+T*
+(6. Package inventory, scope, flows, policy, exceptions, and known gaps as the evidence) Tj
+T*
+(output.) Tj
+T*
+() Tj
+T*
+(Boundaries and Complementary Controls) Tj
+T*
+() Tj
+T*
+(CSW does not replace CUI marking, contracts, SSP/POA&M ownership, identity governance,) Tj
+T*
+(encryption, media protection, or CMMC assessment decisions.) Tj
+T*
+() Tj
+T*
+(Disclaimer) Tj
+T*
+() Tj
+T*
+(This report is for informational and planning purposes. It is not legal, regulatory, audit,) Tj
+T*
+(or certification advice. Validate all mappings against the current official framework text,) Tj
+T*
+(the customer's environment, and qualified compliance, legal, and audit professionals.) Tj
+T*
+ET
+endstream
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000121 00000 n 
+0000000296 00000 n 
+0000002633 00000 n 
+0000002808 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+3745
+%%EOF
