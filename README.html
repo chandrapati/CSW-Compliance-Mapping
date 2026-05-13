@@ -299,12 +299,15 @@ pre, code, blockquote { background: #f5f5f5; }
 <h1 id="cisco-secure-workload-compliance-mapping-assets">Cisco Secure
 Workload — Compliance Mapping Assets</h1>
 <p>Customer-facing reports and matching technical runbooks that map
-Cisco Secure Workload (CSW) controls to <strong>sixteen</strong>
+Cisco Secure Workload (CSW) controls to <strong>twenty-two</strong>
 compliance, sector, and zero-trust frameworks. Every framework folder
 ships the same set of assets: a Markdown technical runbook (the
 engineering view), a DOCX report (the editable customer master), a PDF
 render of that report, and HTML versions of both for browser/mobile
-reading.</p>
+reading. <strong>IEC 62443, GDPR, MITRE ATT&amp;CK, FedRAMP, SWIFT
+CSCF,</strong> and <strong>HITRUST CSF</strong> currently ship the
+Markdown technical runbook only; DOCX/PDF/HTML reports for those
+frameworks are not yet in this repository.</p>
 <blockquote>
 <p><strong>New here?</strong> Read <a href="./docs/about-csw.html">Background — What is Cisco Secure
 Workload?</a> for a one-page intro to the platform itself, then come
@@ -322,11 +325,12 @@ audit day?”</em></p>
 trace specific controls (e.g. PCI DSS Req 1.2.1, HIPAA §164.312(a)(1),
 NIST AC-4) to concrete CSW capabilities — micro-segmentation,
 process-level telemetry, software inventory, vulnerability awareness,
-forensic flow data, and policy-as-code enforcement — and explain how
-that capability produces auditor-grade evidence.</p>
-<p>The same workload-resident evidence that satisfies an auditor also
-shortens the questions defenders ask under pressure: <em>what was
-talking to what, on which port, via which process, and what
+forensic flow data, and authored workload policy — and explain how those
+capabilities can contribute evidence for assessor review when deployed
+in scope.</p>
+<p>The same workload-resident evidence that can support an auditor’s
+review also shortens the questions defenders ask under pressure:
+<em>what was talking to what, on which port, via which process, and what
 changed?</em> That overlap is not a coincidence — it’s why segmentation,
 lateral-movement visibility, and patching priority show up across PCI
 Req 1, HIPAA §164.312, NIST AC-4, ISO A.8.22, DORA Art. 9, NIS2 Art.
@@ -337,6 +341,30 @@ the programme.</p>
 <p>For the longer argument — including the five conversation-starter
 questions worth walking through against your own environment — see <a href="./docs/why-these-mappings-matter.html">Why these mappings
 matter</a>.</p>
+<h2 id="customer-design-aids">Customer design aids</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Asset</th>
+<th>Use it for</th>
+<th>Formats</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Framework Scope Design Guide</td>
+<td>Translating each compliance framework into practical CSW scope
+patterns, customer workshop questions, and label/tag
+recommendations</td>
+<td><a href="./docs/framework-scope-design.html">MD</a> · <a href="./docs/framework-scope-design.pdf">PDF</a></td>
+</tr>
+</tbody>
+</table>
 <h2 id="asset-library">Asset library</h2>
 <p><strong>Coverage</strong> highlights what each framework section
 addresses so the whole library can be scanned in one view. The
@@ -365,7 +393,7 @@ when to reach for the runbook vs. the report).</p>
 <tbody>
 <tr>
 <td>HIPAA Security Rule</td>
-<td>ePHI workload isolation; OCR-investigation audit trail; BAA
+<td>ePHI workload isolation; investigation-supporting telemetry; BAA
 technical boundary evidence</td>
 <td><a href="./HIPAA/CSW-HIPAA-Technical-Runbook.html">MD</a> · <a href="./HIPAA/CSW-HIPAA-Technical-Runbook.html">HTML</a></td>
 <td><a href="./HIPAA/CSW-HIPAA-Compliance-Report.pdf">PDF</a> · <a href="./HIPAA/CSW-HIPAA-Compliance-Report.docx">DOCX</a> · <a href="./HIPAA/CSW-HIPAA-Compliance-Report.html">HTML</a></td>
@@ -379,8 +407,8 @@ artefacts; customer due-diligence proofs</td>
 </tr>
 <tr>
 <td>PCI DSS v4.0</td>
-<td>CDE segmentation simulation→enforce; QSA-ready Req 1/11 evidence;
-CVE + EPSS + reachability prioritisation</td>
+<td>CDE segmentation simulation→enforce; Req 1/11 evidence inputs to
+validate with your QSA; CVE + EPSS + reachability prioritisation</td>
 <td><a href="./PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.html">MD</a> · <a href="./PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.html">HTML</a></td>
 <td><a href="./PCI-DSS-v4/CSW-PCI-DSS-Compliance-Report.pdf">PDF</a> ·
 <a href="./PCI-DSS-v4/CSW-PCI-DSS-Compliance-Report.docx">DOCX</a> · <a href="./PCI-DSS-v4/CSW-PCI-DSS-Compliance-Report.html">HTML</a></td>
@@ -423,7 +451,7 @@ visibility</td>
 <tr>
 <td>NIST SP 800-207 (ZTA Seven Tenets)</td>
 <td>Workload-side evidence for Tenets 2/3/5/6; ZTA architecture mapping;
-clear PEP placement at the workload</td>
+workload-level enforcement as one possible PEP placement</td>
 <td><a href="./NIST-800-207/CSW-NIST-800-207-Technical-Runbook.html">MD</a> · <a href="./NIST-800-207/CSW-NIST-800-207-Technical-Runbook.html">HTML</a></td>
 <td><a href="./NIST-800-207/CSW-NIST-800-207-Compliance-Report.pdf">PDF</a> ·
 <a href="./NIST-800-207/CSW-NIST-800-207-Compliance-Report.docx">DOCX</a> ·
@@ -497,15 +525,65 @@ CM, RA, SC, SI families; CUI-scope labelling pattern; L1 (FCI) and L3
 <td><a href="./CMMC-2/CSW-CMMC-Technical-Runbook.html">MD</a> · <a href="./CMMC-2/CSW-CMMC-Technical-Runbook.html">HTML</a></td>
 <td><a href="./CMMC-2/CSW-CMMC-Compliance-Report.pdf">PDF</a> · <a href="./CMMC-2/CSW-CMMC-Compliance-Report.docx">DOCX</a> · <a href="./CMMC-2/CSW-CMMC-Compliance-Report.html">HTML</a></td>
 </tr>
+<tr>
+<td>IEC 62443 (IACS)</td>
+<td>Zones &amp; conduits segmentation; IT-side OT boundary hardening; SR
+control evidence; pair with Cyber Vision/Claroty for OT device
+layer</td>
+<td><a href="./IEC-62443/CSW-IEC62443-Technical-Runbook.html">MD</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>GDPR (EU 2016/679)</td>
+<td>Art. 32 security-of-processing evidence; data-flow mapping for Art.
+30 RoPA; breach timeline for Art. 33/34; processor egress for Art.
+28</td>
+<td><a href="./GDPR/CSW-GDPR-Technical-Runbook.html">MD</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>MITRE ATT&amp;CK (Enterprise)</td>
+<td>Tactic-by-tactic detection/prevention mapping (TA0001–TA0011,
+TA0040); technique-level forensic rule alignment; SOC integration
+guidance</td>
+<td><a href="./MITRE-ATTACK/CSW-MITRE-ATTACK-Technical-Runbook.html">MD</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>FedRAMP (Moderate)</td>
+<td>Moderate baseline overlay on NIST 800-53; ConMon evidence; POA&amp;M
+inputs; 3PAO assessment preparation; AC-4/SC-7/CA-7/SI-4 FedRAMP
+parameters</td>
+<td><a href="./FedRAMP/CSW-FedRAMP-Technical-Runbook.html">MD</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>SWIFT CSCF (v2024)</td>
+<td>SWIFT secure zone isolation; mandatory/advisory control mapping;
+operator session integrity; Internet access restriction; SWIFT-specific
+logging</td>
+<td><a href="./SWIFT-CSCF/CSW-SWIFT-CSCF-Technical-Runbook.html">MD</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>HITRUST CSF (v11)</td>
+<td>Harmonized control mapping (HIPAA+ISO+NIST+PCI); e1/i1/r2 assessment
+level guidance; network segregation; vulnerability management; incident
+evidence</td>
+<td><a href="./HITRUST-CSF/CSW-HITRUST-Technical-Runbook.html">MD</a></td>
+<td>—</td>
+</tr>
 </tbody>
 </table>
 <blockquote>
 <p><strong>Quickly find a control?</strong> See <a href="./INDEX.html"><code>INDEX.md</code></a> for a control-ID-keyed index
-across all sixteen frameworks (e.g. <em>PCI Req 1.2</em>, <em>HIPAA
+across all twenty-two frameworks (e.g. <em>PCI Req 1.2</em>, <em>HIPAA
 §164.312(a)(1)</em>, <em>DORA Art. 9</em>, <em>NIS2 Art. 21(2)(d)</em>,
 <em>NIST AC-4</em>, <em>NERC CIP-005 R1</em>, <em>TSA SD Section
-III.A</em>, <em>CIS Safeguard 13.4</em>, <em>CSF PR.IR-01</em>, <em>CMMC
-AC.L2-3.1.1</em>).</p>
+III.A</em>, <em>IEC 62443 SR 5.3</em>, <em>GDPR Art. 32</em>,
+<em>FedRAMP AC-4</em>, <em>SWIFT CSCF 1.4</em>, <em>HITRUST 01.m</em>,
+<em>MITRE TA0008</em>, <em>CIS Safeguard 13.4</em>, <em>CSF
+PR.IR-01</em>, <em>CMMC AC.L2-3.1.1</em>).</p>
 </blockquote>
 <blockquote>
 <p><strong>Cross-cutting frameworks scope note (CIS, CSF,
@@ -548,12 +626,16 @@ repository.</li>
 mappings matter</a></strong> — five conversation-starter questions to
 ask about your own environment, plus the case for evaluating CSW
 alongside what you already run.</li>
+<li><strong><a href="./docs/framework-scope-design.html">Framework Scope
+Design Guide</a></strong> — customer workshop aid for translating
+framework obligations into CSW scopes, labels, and evidence
+boundaries.</li>
 <li><strong><a href="./docs/audience-and-usage.html">Audience and usage
 guide</a></strong> — who should lead with which document,
 runbook-vs-report guidance, file format guidance, and the full folder
 layout.</li>
 <li><strong><a href="./INDEX.html"><code>INDEX.md</code></a></strong> —
-control-ID lookup across all sixteen frameworks.</li>
+control-ID lookup across all twenty-two frameworks.</li>
 </ul>
 <p>Once GitHub Pages is enabled, the same content is also browseable at
 <code>https://chandrapati.github.io/CSW-Compliance-Mapping/</code>
@@ -567,7 +649,8 @@ outside your organisation.</p>
 standards and regulatory framework documents (HIPAA, SOC 2, PCI DSS,
 NIST SP 800-series, ISO/IEC 27001, CISA ZTMM, FIPS 140, EU DORA, EU
 NIS2, NERC CIP, TSA Pipeline Security Directives, CIS Critical Security
-Controls v8.1, NIST Cybersecurity Framework 2.0, and CMMC 2.0)
+Controls v8.1, NIST Cybersecurity Framework 2.0, CMMC 2.0, IEC 62443,
+GDPR, MITRE ATT&amp;CK, FedRAMP, SWIFT CSCF, and HITRUST CSF)
 cross-referenced against documented Cisco Secure Workload (CSW) product
 capabilities at the time of authoring.</p>
 <p>The <strong>NERC CIP</strong> and <strong>TSA Pipeline</strong>

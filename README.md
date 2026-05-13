@@ -1,11 +1,14 @@
 # Cisco Secure Workload — Compliance Mapping Assets
 
 Customer-facing reports and matching technical runbooks that map Cisco
-Secure Workload (CSW) controls to **sixteen** compliance, sector, and
+Secure Workload (CSW) controls to **twenty-two** compliance, sector, and
 zero-trust frameworks. Every framework folder ships the same set of
 assets: a Markdown technical runbook (the engineering view), a DOCX
 report (the editable customer master), a PDF render of that report,
-and HTML versions of both for browser/mobile reading.
+and HTML versions of both for browser/mobile reading. **IEC 62443,
+GDPR, MITRE ATT&CK, FedRAMP, SWIFT CSCF,** and **HITRUST CSF** currently
+ship the Markdown technical runbook only; DOCX/PDF/HTML reports for those
+frameworks are not yet in this repository.
 
 > **New here?** Read [Background — What is Cisco Secure Workload?](./docs/about-csw.md)
 > for a one-page intro to the platform itself, then come back to pick a
@@ -78,12 +81,19 @@ reach for the runbook vs. the report).
 | CIS Critical Security Controls v8.1 | Direct on Controls 1, 2, 4, 7, 8, 13 (asset & software inventory, secure config, vuln mgmt, audit logs, network monitoring); IG2 lead with IG1/IG3 deltas called out | [MD](./CIS-Controls-v8/CSW-CIS-Technical-Runbook.md) · [HTML](./CIS-Controls-v8/CSW-CIS-Technical-Runbook.html) | [PDF](./CIS-Controls-v8/CSW-CIS-Compliance-Report.pdf) · [DOCX](./CIS-Controls-v8/CSW-CIS-Compliance-Report.docx) · [HTML](./CIS-Controls-v8/CSW-CIS-Compliance-Report.html) |
 | NIST Cybersecurity Framework 2.0 | Govern (GV.OV/GV.SC) evidence pack; direct coverage of ID.AM, ID.RA, PR.IR, PR.PS, DE.CM, DE.AE, RS.AN, RS.MI Subcategories | [MD](./NIST-CSF-2/CSW-CSF-Technical-Runbook.md) · [HTML](./NIST-CSF-2/CSW-CSF-Technical-Runbook.html) | [PDF](./NIST-CSF-2/CSW-CSF-Compliance-Report.pdf) · [DOCX](./NIST-CSF-2/CSW-CSF-Compliance-Report.docx) · [HTML](./NIST-CSF-2/CSW-CSF-Compliance-Report.html) |
 | CMMC 2.0 (DoD / DIB) | Level 2 lead (110 controls = NIST 800-171 Rev 2): direct on AC, AU, CM, RA, SC, SI families; CUI-scope labelling pattern; L1 (FCI) and L3 (800-172) deltas | [MD](./CMMC-2/CSW-CMMC-Technical-Runbook.md) · [HTML](./CMMC-2/CSW-CMMC-Technical-Runbook.html) | [PDF](./CMMC-2/CSW-CMMC-Compliance-Report.pdf) · [DOCX](./CMMC-2/CSW-CMMC-Compliance-Report.docx) · [HTML](./CMMC-2/CSW-CMMC-Compliance-Report.html) |
+| IEC 62443 (IACS) | Zones & conduits segmentation; IT-side OT boundary hardening; SR control evidence; pair with Cyber Vision/Claroty for OT device layer | [MD](./IEC-62443/CSW-IEC62443-Technical-Runbook.md) | — |
+| GDPR (EU 2016/679) | Art. 32 security-of-processing evidence; data-flow mapping for Art. 30 RoPA; breach timeline for Art. 33/34; processor egress for Art. 28 | [MD](./GDPR/CSW-GDPR-Technical-Runbook.md) | — |
+| MITRE ATT&CK (Enterprise) | Tactic-by-tactic detection/prevention mapping (TA0001–TA0011, TA0040); technique-level forensic rule alignment; SOC integration guidance | [MD](./MITRE-ATTACK/CSW-MITRE-ATTACK-Technical-Runbook.md) | — |
+| FedRAMP (Moderate) | Moderate baseline overlay on NIST 800-53; ConMon evidence; POA&M inputs; 3PAO assessment preparation; AC-4/SC-7/CA-7/SI-4 FedRAMP parameters | [MD](./FedRAMP/CSW-FedRAMP-Technical-Runbook.md) | — |
+| SWIFT CSCF (v2024) | SWIFT secure zone isolation; mandatory/advisory control mapping; operator session integrity; Internet access restriction; SWIFT-specific logging | [MD](./SWIFT-CSCF/CSW-SWIFT-CSCF-Technical-Runbook.md) | — |
+| HITRUST CSF (v11) | Harmonized control mapping (HIPAA+ISO+NIST+PCI); e1/i1/r2 assessment level guidance; network segregation; vulnerability management; incident evidence | [MD](./HITRUST-CSF/CSW-HITRUST-Technical-Runbook.md) | — |
 
 > **Quickly find a control?** See [`INDEX.md`](./INDEX.md) for a
-> control-ID-keyed index across all sixteen frameworks (e.g. *PCI Req
+> control-ID-keyed index across all twenty-two frameworks (e.g. *PCI Req
 > 1.2*, *HIPAA §164.312(a)(1)*, *DORA Art. 9*, *NIS2 Art. 21(2)(d)*,
-> *NIST AC-4*, *NERC CIP-005 R1*, *TSA SD Section III.A*, *CIS
-> Safeguard 13.4*, *CSF PR.IR-01*, *CMMC AC.L2-3.1.1*).
+> *NIST AC-4*, *NERC CIP-005 R1*, *TSA SD Section III.A*, *IEC 62443 SR 5.3*,
+> *GDPR Art. 32*, *FedRAMP AC-4*, *SWIFT CSCF 1.4*, *HITRUST 01.m*, *MITRE TA0008*,
+> *CIS Safeguard 13.4*, *CSF PR.IR-01*, *CMMC AC.L2-3.1.1*).
 
 > **Cross-cutting frameworks scope note (CIS, CSF, CMMC).** These three
 > frameworks are *cross-mapping* / certification frameworks that
@@ -128,7 +138,7 @@ reach for the runbook vs. the report).
 - **[Audience and usage guide](./docs/audience-and-usage.md)** — who
   should lead with which document, runbook-vs-report guidance, file
   format guidance, and the full folder layout.
-- **[`INDEX.md`](./INDEX.md)** — control-ID lookup across all sixteen
+- **[`INDEX.md`](./INDEX.md)** — control-ID lookup across all twenty-two
   frameworks.
 
 Once GitHub Pages is enabled, the same content is also browseable at
@@ -148,8 +158,9 @@ The compliance mappings in this repository are derived from public
 standards and regulatory framework documents (HIPAA, SOC 2, PCI DSS,
 NIST SP 800-series, ISO/IEC 27001, CISA ZTMM, FIPS 140, EU DORA,
 EU NIS2, NERC CIP, TSA Pipeline Security Directives, CIS Critical
-Security Controls v8.1, NIST Cybersecurity Framework 2.0, and CMMC
-2.0) cross-referenced against documented Cisco Secure Workload (CSW)
+Security Controls v8.1, NIST Cybersecurity Framework 2.0, CMMC 2.0,
+IEC 62443, GDPR, MITRE ATT&CK, FedRAMP, SWIFT CSCF, and HITRUST CSF)
+cross-referenced against documented Cisco Secure Workload (CSW)
 product capabilities at the time of authoring.
 
 The **NERC CIP** and **TSA Pipeline** mappings are explicitly scoped

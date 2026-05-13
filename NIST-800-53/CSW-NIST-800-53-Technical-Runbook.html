@@ -370,13 +370,14 @@ level; go to section 4 if you’re building the evidence package now.</p>
 <hr />
 <h2 id="overview">1. Overview</h2>
 <p>NIST SP 800-53 Rev 5 provides a comprehensive catalog of security and
-privacy controls for federal information systems. CSW directly addresses
-controls across seven key families: <strong>AC</strong> (Access
-Control), <strong>AU</strong> (Audit &amp; Accountability),
-<strong>CM</strong> (Configuration Management), <strong>IR</strong>
-(Incident Response), <strong>RA</strong> (Risk Assessment),
-<strong>SC</strong> (System &amp; Communications Protection), and
-<strong>SI</strong> (System &amp; Information Integrity).</p>
+privacy controls for federal information systems. CSW can support
+technical evidence for selected controls across seven key families:
+<strong>AC</strong> (Access Control), <strong>AU</strong> (Audit &amp;
+Accountability), <strong>CM</strong> (Configuration Management),
+<strong>IR</strong> (Incident Response), <strong>RA</strong> (Risk
+Assessment), <strong>SC</strong> (System &amp; Communications
+Protection), and <strong>SI</strong> (System &amp; Information
+Integrity).</p>
 <hr />
 <h2 id="control-family-mapping">2. Control Family Mapping</h2>
 <h3 id="ac-access-control">AC — Access Control</h3>
@@ -403,7 +404,8 @@ level</td>
 <tr>
 <td>AC-4</td>
 <td>Information Flow Enforcement</td>
-<td>ADM maps all flows; policy blocks unauthorized paths</td>
+<td>ADM maps observed flows within CSW coverage; policy blocks
+unauthorized paths where enforcement is deployed</td>
 </tr>
 <tr>
 <td>AC-6</td>
@@ -511,7 +513,8 @@ ports)</td>
 <tr>
 <td>CM-8</td>
 <td>System Component Inventory</td>
-<td>CSW inventory provides real-time workload asset catalog</td>
+<td>CSW inventory provides a workload asset catalog for covered
+components; reconcile with the SSP / CMDB for full CM-8 scope</td>
 </tr>
 </tbody>
 </table>
@@ -590,7 +593,7 @@ posture</td>
 <tr>
 <td>RA-5</td>
 <td>Vulnerability Monitoring</td>
-<td>Continuous CVE scanning with CVSS scoring</td>
+<td>Continuous vulnerability exposure visibility with CVSS scoring</td>
 </tr>
 <tr>
 <td>RA-7</td>
@@ -661,12 +664,14 @@ Integrity</h3>
 <tr>
 <td>SI-2</td>
 <td>Flaw Remediation</td>
-<td>Continuous vulnerability scan; prioritized remediation guidance</td>
+<td>Continuous vulnerability exposure view; prioritized remediation
+guidance</td>
 </tr>
 <tr>
 <td>SI-3</td>
 <td>Malicious Code Protection</td>
-<td>Process hash monitoring detects unknown/malicious executables</td>
+<td>Process hash monitoring provides detection signals that complement
+AV / EDR controls</td>
 </tr>
 <tr>
 <td>SI-4</td>

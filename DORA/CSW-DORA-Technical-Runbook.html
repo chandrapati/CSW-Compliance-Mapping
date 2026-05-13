@@ -356,9 +356,9 @@ for their competent-authority engagement.</p>
 <p><strong>Questions this runbook helps you answer:</strong></p>
 <ul>
 <li><em>Article 8 — ICT Risk Management Framework: can I produce a
-current inventory of all ICT assets supporting “important business
-functions” (IBFs), classified by criticality, and prove the inventory is
-refreshed continuously rather than annually?</em></li>
+current inventory view of CSW-covered ICT assets supporting “important
+business functions” (IBFs), classified by criticality, and reconcile it
+with the authoritative enterprise ICT asset register?</em></li>
 <li><em>Article 9(2) — protection and prevention: for each IBF, can I
 demonstrate that network segmentation between supporting systems is
 enforced and continuously verified, not just designed?</em></li>
@@ -440,9 +440,9 @@ talking to that I don’t control?”).</p>
 <tbody>
 <tr>
 <td>Pillar 1 — ICT Risk Management</td>
-<td>Continuous asset inventory (Art. 8), segmentation enforcement (Art.
-9), behavioural detection (Art. 10), forensic flow data for response
-&amp; learning (Arts. 11, 13).</td>
+<td>Continuous workload inventory inputs (Art. 8), segmentation
+enforcement (Art. 9), behavioural detection (Art. 10), forensic flow
+data for response &amp; learning (Arts. 11, 13).</td>
 </tr>
 <tr>
 <td>Pillar 2 — Incident Management</td>
@@ -499,7 +499,7 @@ Step 3: Build an IBF Scope per business function
   Repeat for each IBF
   → This becomes the unit of policy, evidence, and reporting
 
-Step 4: Validate completeness against the inventory baseline
+Step 4: Validate CSW coverage against the authoritative inventory baseline
   → Cross-check CSW inventory count vs. your CMDB / ServiceNow IBF view
   → Any delta = scoping risk; resolve before formal Art. 8 sign-off</code></pre>
 <p><strong>Evidence:</strong> Per-IBF scope export (CSV) with workload
@@ -511,8 +511,8 @@ Inventory</h2>
 assets, including their interdependencies. Article 8(6) specifies it
 must be updated “periodically and on every significant change.”</p>
 <p><strong>CSW Implementation:</strong></p>
-<pre><code>Step 1: Achieve sensor coverage on every workload supporting an IBF
-  → Linux:   yum/dnf/apt + systemctl enable tetd
+<pre><code>Step 1: Achieve sensor coverage on every supported workload supporting an IBF
+  → Linux:   yum/dnf/apt + systemctl enable csw-agent
   → Windows: MSI install + service verification
   → Containers: DaemonSet sensor for K8s; per-node sensor for ECS/AKS/GKE
   → Cloud:   External Orchestrators (AWS/Azure/GCP) for asset metadata
@@ -530,10 +530,11 @@ Step 3: Schedule continuous inventory drift detection
 Step 4: Wire the inventory feed to your Register of Information
   → API: /openapi/v1/inventory
   → Use: nightly export → reconcile against management&#39;s Register</code></pre>
-<p><strong>Evidence:</strong> (a) current inventory export with every
-workload’s OS, hostname, IP, agent version, owner labels, last-check-in;
-(b) ADM dependency graph per IBF; (c) drift report showing
-additions/removals since the previous management-body review.</p>
+<p><strong>Evidence:</strong> (a) current CSW inventory export with each
+covered workload’s OS, hostname, IP, agent version, owner labels,
+last-check-in; (b) ADM dependency graph per IBF; (c) drift report
+showing additions/removals since the previous management-body review;
+(d) reconciliation notes for assets outside CSW coverage.</p>
 <hr />
 <h2 id="article-9-protection-and-prevention">4. Article 9 — Protection
 and Prevention</h2>

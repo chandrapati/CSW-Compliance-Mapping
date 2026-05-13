@@ -321,11 +321,12 @@ machines and containers — wherever they live. A lightweight agent on
 each workload, paired with agentless connectors for AWS, Azure, GCP and
 Kubernetes, gives you four things continuously and from one place:</p>
 <ul>
-<li><strong>A complete, current inventory</strong> across hosts and
-workloads—observed processes and packages where the platform surfaces
-them—and the network conversations those workloads participate in across
-on‑prem and supported cloud footprints. Best practice is to reconcile
-this view with your authoritative CMDB or cloud asset records.</li>
+<li><strong>A workload-centric inventory</strong> across hosts and
+workloads within your CSW sensor and connector coverage—observed
+processes and packages where the platform surfaces them—and the network
+conversations those workloads participate in across on-prem and
+supported cloud footprints. Reconcile this view with your authoritative
+CMDB or cloud asset records.</li>
 <li><strong>An application dependency map</strong> built from observed
 behaviour, not guessed from a network diagram, so you can see exactly
 which workloads talk to which, on which ports, with which
@@ -340,7 +341,7 @@ designed the way your programme prefers.</li>
 </ul>
 <h2 id="machine-learning-in-practical-terms">Machine learning, in
 practical terms</h2>
-<p><strong>CSW makes extensive use of machine learning</strong>
+<p><strong>CSW uses machine learning for some capabilities</strong>
 alongside classical signals (rules, baselines, graph edges you can
 inspect). Exactly which models and features ship in a given release are
 documented in official product materials and release notes — treat this
@@ -369,13 +370,14 @@ compliance</h2>
 typically run as separate programmes — segmentation reviews, change
 attestation, drift tracking, application-flow documentation,
 vulnerability prioritisation, lateral-movement detection — into a
-single, query-able, evidence-producing system. Because discovery and
-detection reconcile against live workload behaviour rather than relying
-purely on static diagrams, evidence can stay materially aligned with how
-applications actually run — supporting both <em>audit-style
-questions</em> (what changed, what’s allowed?) and <em>incident-response
-questions</em> (what was talking to what, across which process?) far
-more cleanly than periodic reviews alone usually achieve.</p>
+consolidated workload-evidence source, subject to coverage and
+integrations. Because discovery and detection reconcile against live
+workload behaviour rather than relying purely on static diagrams,
+evidence can stay materially aligned with how applications actually run
+— supporting both <em>audit-style questions</em> (what changed, what’s
+allowed?) and <em>incident-response questions</em> (what was talking to
+what, across which process?) far more cleanly than periodic reviews
+alone usually achieve.</p>
 <p>The <a href="../README.html">main repository README</a> explains,
 framework-by-framework, exactly which auditor questions and which
 incident-response questions that data answers — and what artefact you’d

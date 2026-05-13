@@ -373,11 +373,12 @@ inside the audit window.</p>
 <h2 id="overview">1. Overview</h2>
 <p>SOC 2 Type II audits evaluate whether security controls operated
 effectively over a defined period (typically 6–12 months). Cisco Secure
-Workload (CSW) directly addresses the <strong>Security</strong> Trust
-Services Criteria (TSC) and contributes to
-<strong>Availability</strong>, <strong>Confidentiality</strong>, and
-<strong>Processing Integrity</strong> criteria through workload
-visibility, micro-segmentation, vulnerability detection, and forensic
+Workload (CSW) can support evidence for selected
+<strong>Security</strong> Trust Services Criteria (TSC) and contribute
+technical inputs to <strong>Availability</strong>,
+<strong>Confidentiality</strong>, and <strong>Processing
+Integrity</strong> criteria through workload visibility,
+micro-segmentation, vulnerability exposure context, and forensic
 telemetry.</p>
 <h3 id="soc-2-tsc-to-csw-capability-map">SOC 2 TSC to CSW Capability
 Map</h3>
@@ -399,7 +400,7 @@ Map</h3>
 </tr>
 <tr>
 <td>CC7 — System Operations</td>
-<td>Anomaly detection, vulnerability scanning, alerting</td>
+<td>Anomaly detection, vulnerability exposure visibility, alerting</td>
 </tr>
 <tr>
 <td>CC8 — Change Management</td>
@@ -439,17 +440,19 @@ workload-level allowlist policies - Every inbound connection to
 sensitive workloads requires explicit policy approval - Policy
 violations logged with source, destination, process, and timestamp</p>
 <p><strong>CC6.6 — Network and Infrastructure Controls</strong> - ADM
-discovers all communication paths — no undocumented flows -
-Micro-segmentation enforces least-privilege network access - External
-access paths (third-party, partner) isolated in dedicated CSW scopes</p>
+documents communication paths visible to CSW over the selected
+observation window; corroborate coverage gaps with other discovery
+sources - Micro-segmentation enforces least-privilege network access -
+External access paths (third-party, partner) isolated in dedicated CSW
+scopes</p>
 <p><strong>CC6.7 — Transmission of Confidential Information</strong> -
 CSW detects unencrypted transmission (HTTP, FTP, plain LDAP) - Alerts
 trigger on any plaintext flow from confidential data scopes - Encryption
 compliance report available for auditor evidence package</p>
 <p><strong>CC7.1 — Detection of Vulnerabilities</strong> - Continuous
-CVE scanning on all in-scope workloads - CVSS-scored reports with
-workload-level attribution - Remediation tracking via policy
-compensating controls</p>
+vulnerability exposure / CVE inventory for CSW-instrumented workloads -
+CVSS-scored reports with workload-level attribution - Remediation
+tracking via policy compensating controls</p>
 <p><strong>CC7.2 — Monitoring of System Components</strong> - Full
 process and network telemetry across all monitored workloads - Anomaly
 detection alerts on baseline deviation - Sensor health monitoring —
@@ -552,7 +555,7 @@ Setup</h3>
 <td>Monthly export</td>
 </tr>
 <tr>
-<td>Vulnerability scan report</td>
+<td>Vulnerability exposure report</td>
 <td>Investigate → Vulnerability</td>
 <td>CC7.1, CC9.1</td>
 <td>Weekly</td>
@@ -606,7 +609,7 @@ Findings CSW Addresses</h2>
 <tbody>
 <tr>
 <td>Undocumented network access paths</td>
-<td>ADM generates complete dependency map as evidence</td>
+<td>ADM generates observed dependency maps as evidence inputs</td>
 </tr>
 <tr>
 <td>No workload-level access controls</td>
@@ -622,7 +625,7 @@ Findings CSW Addresses</h2>
 </tr>
 <tr>
 <td>Vulnerability management gaps</td>
-<td>Continuous CVE scan with CVSS prioritization</td>
+<td>Continuous vulnerability exposure view with CVSS prioritization</td>
 </tr>
 <tr>
 <td>Insufficient logging</td>

@@ -491,10 +491,12 @@ within the next quarter.</p>
 <hr />
 <h2 id="overview">1. Overview</h2>
 <p>This runbook guides deployment of Cisco Secure Workload (CSW) in
-healthcare environments to satisfy HIPAA Security Rule requirements. CSW
-provides workload-level visibility, micro-segmentation, vulnerability
-detection, and forensic telemetry — all directly mappable to HIPAA
-Technical Safeguard controls.</p>
+healthcare environments to support technical and operational evidence
+for elements of the HIPAA Security Rule commonly mapped to workload
+segmentation, logging, and risk-analysis inputs. CSW provides
+workload-level visibility, micro-segmentation, vulnerability exposure
+context, and forensic telemetry — all subject to deployment scope and
+complementary administrative, physical, and organizational controls.</p>
 <h3 id="hipaa-security-rule-structure">HIPAA Security Rule
 Structure</h3>
 <table>
@@ -511,16 +513,19 @@ Structure</h3>
 <tbody>
 <tr>
 <td>Administrative Safeguards (§164.308)</td>
-<td>Policy enforcement, audit controls, risk analysis data</td>
+<td>Policy enforcement evidence, audit-control inputs, risk-analysis
+data</td>
 </tr>
 <tr>
 <td>Physical Safeguards (§164.310)</td>
-<td>Workload isolation, access boundary enforcement</td>
+<td>Limited / out of scope; CSW can only provide logical
+workload-boundary evidence that may support facility or device-control
+narratives</td>
 </tr>
 <tr>
 <td>Technical Safeguards (§164.312)</td>
-<td>Micro-segmentation, encryption enforcement, audit logs, unique user
-ID enforcement</td>
+<td>Micro-segmentation, plaintext-flow detection / blocking, audit logs,
+identity-aware access evidence where integrated</td>
 </tr>
 <tr>
 <td>Organizational Requirements (§164.314)</td>
@@ -555,11 +560,12 @@ Deployment (Days 1–5)</h2>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">dpkg</span> <span class="at">-i</span> tet-sensor-<span class="op">&lt;</span>version<span class="op">&gt;</span>.deb     <span class="co"># Ubuntu/Debian</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify sensor is running</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">systemctl</span> status tetd</span></code></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">systemctl</span> status csw-agent</span></code></pre></div>
 <p><strong>Key Sensor Configuration:</strong> - Enforcement Mode:
 <strong>Monitoring Only</strong> (do NOT enforce at this stage) - Data
-Collection: Enable process hash, network flow, vulnerability scan -
-Tags: Apply <code>env:production</code>, <code>compliance:hipaa</code>,
+Collection: Enable process hash, network flow, and vulnerability
+exposure visibility where supported - Tags: Apply
+<code>env:production</code>, <code>compliance:hipaa</code>,
 <code>data:phi</code> from Day 1</p>
 <h3 id="cloud-workloads-aws-azure-gcp">3.2 Cloud Workloads (AWS / Azure
 / GCP)</h3>
@@ -893,8 +899,9 @@ Vulnerability &amp; Risk Management</h2>
   → Filter: CVSS Score ≥ 7.0
   → Export for compliance evidence</code></pre>
 <p><strong>HIPAA Relevance:</strong> §164.308(a)(1) requires ongoing
-risk analysis. CSW vulnerability data satisfies this with workload-level
-CVE mapping.</p>
+risk analysis. CSW vulnerability data can inform that analysis with
+workload-level CVE mapping, but it remains one input among threat,
+impact, control-testing, BAA, and operational-risk evidence.</p>
 <h3 id="prioritization-for-phi-workloads">8.2 Prioritization for PHI
 Workloads</h3>
 <pre><code>Priority 1: Critical CVEs (CVSS 9.0+) on EHR/Billing servers → Patch within 24 hours
@@ -1001,7 +1008,7 @@ per Audit Cycle (Quarterly Recommended)</h3>
 <td>§164.312(a)</td>
 </tr>
 <tr>
-<td>Vulnerability scan report</td>
+<td>Vulnerability exposure report</td>
 <td>Investigate → Vulnerability</td>
 <td>§164.308(a)(1)</td>
 </tr>

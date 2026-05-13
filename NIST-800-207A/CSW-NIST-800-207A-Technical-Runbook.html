@@ -518,12 +518,17 @@ vs. 800-207</h2>
 </tr>
 </tbody>
 </table>
-<p><strong>CSW in the 800-207A model:</strong> - <strong>PEP</strong> →
-CSW software sensor (enforcement at workload level) -
-<strong>PDP</strong> → CSW policy engine (per-flow access decision) -
-<strong>PA</strong> → CSW policy workspace (policy authoring,
-deployment, audit) - <strong>PIP</strong> → CSW telemetry
-(vulnerability, process, ADM baseline, flow context)</p>
+<p><strong>CSW in the 800-207A model (illustrative mapping):</strong> -
+<strong>PEP analogue</strong> → CSW software sensor (enforcement at
+workload level) - <strong>PDP analogue</strong> → CSW policy engine for
+network / workload connection decisions - <strong>PA analogue</strong> →
+CSW policy workspace (policy authoring, deployment, audit) - <strong>PIP
+analogue</strong> → CSW telemetry (vulnerability, process, ADM baseline,
+flow context)</p>
+<p>This mapping is a practical decomposition for workload segmentation
+discussions, not a claim that CSW implements every possible 800-207A PDP
+/ PEP / PA / PIP responsibility across identity, data, endpoint, and
+enterprise policy systems.</p>
 <hr />
 <h2 id="pdp-policy-decision-point">2. PDP — Policy Decision Point</h2>
 <h3 id="what-800-207a-requires">What 800-207A Requires</h3>
@@ -539,12 +544,12 @@ for audit</p>
   → Mode: Enforcement (after simulation validation)
   → Priority: Absolute Policies first, then ranked allowlist
 
-Absolute Policies (PDP hard denials — never overridden):
+Absolute Policies (CSW hard denials — never overridden within the workspace):
   DENY: Any → Sensitive-Scope         # Default deny inbound
   DENY: Sensitive-Scope → Internet    # No direct internet egress
   DENY: Any → Sensitive-Scope (port 80, 21, 23, 389)  # Non-compliant protocols
 
-Allowlist Policies (PDP conditional allows):
+Allowlist Policies (CSW conditional allows):
   ALLOW: [Source Workload] → [Dest Workload] (port X)
   → Derived from ADM output — actual observed traffic
   → Each rule = one approved access transaction pattern</code></pre>
@@ -565,7 +570,7 @@ Step 3: SOAR calls CSW API:
     &quot;dst&quot;:       &quot;WorkloadY&quot;,
     &quot;comment&quot;:   &quot;Compensating control — CVE-XXXX-YYYY unpatched&quot;
   }
-Step 4: PDP now denies all access to Workload Y except admin jump-host
+Step 4: CSW policy now denies workload-network access to Workload Y except admin jump-host
 Step 5: On patch completion → SOAR removes compensating policy</code></pre>
 <p><strong>PDP Decision Audit:</strong></p>
 <pre><code>CSW UI → Investigate → Flow Search
@@ -586,14 +591,14 @@ environments (on-prem and cloud)</p>
 <p><strong>Sensor Deployment (PEP installation):</strong></p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Linux — RHEL/CentOS</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rpm</span> <span class="at">-ivh</span> tet-sensor-<span class="op">&lt;</span>version<span class="op">&gt;</span>.rpm</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">systemctl</span> enable tetd <span class="kw">&amp;&amp;</span> <span class="ex">systemctl</span> start tetd</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">systemctl</span> enable csw-agent <span class="kw">&amp;&amp;</span> <span class="ex">systemctl</span> start csw-agent</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Linux — Ubuntu/Debian</span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">dpkg</span> <span class="at">-i</span> tet-sensor-<span class="op">&lt;</span>version<span class="op">&gt;</span>.deb</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="ex">systemctl</span> enable tetd <span class="kw">&amp;&amp;</span> <span class="ex">systemctl</span> start tetd</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="ex">systemctl</span> enable csw-agent <span class="kw">&amp;&amp;</span> <span class="ex">systemctl</span> start csw-agent</span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Windows</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="ex">msiexec</span> /i TetSensor.msi /quiet</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="ex">msiexec</span> /i <span class="op">&lt;</span>Cisco-generated-CSW-agent<span class="op">&gt;</span>.msi /quiet</span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify PEP is active:</span></span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="ex">CSW</span> UI → Manage → Agents</span>
@@ -704,7 +709,7 @@ network state, anomalies</p>
 <h3 id="csw-implementation-3">CSW Implementation</h3>
 <p><strong>Workload Posture PIP (Device/Resource Domain):</strong></p>
 <pre><code>CSW Vulnerability Feed:
-  → Continuous CVE scanning — no scheduling required
+  → Continuous vulnerability exposure visibility — no scheduling required
   → Per-workload CVE inventory with CVSS score
   → SIEM export: Kafka/Syslog → real-time posture feed
   → API query: GET /openapi/v1/vulnerabilities?workload=&lt;id&gt;

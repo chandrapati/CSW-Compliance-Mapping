@@ -374,10 +374,11 @@ inside the assessment window or preparing v4.0 transition evidence.</p>
 <hr />
 <h2 id="overview">1. Overview</h2>
 <p>PCI DSS v4.0 introduces customized implementation approaches and
-strengthens network segmentation requirements. CSW is uniquely
-positioned to satisfy PCI DSS Requirements 1 (network controls), 6
+strengthens network segmentation requirements. CSW can support evidence
+for aspects of PCI DSS Requirements 1 (network controls), 6
 (vulnerability management), 10 (logging/monitoring), and 11 (security
-testing) through workload-level visibility and enforcement.</p>
+testing) where workload-level visibility and enforcement apply; confirm
+final scope and evidence sufficiency with your QSA.</p>
 <h3 id="pci-dss-requirement-csw-capability-map">PCI DSS Requirement →
 CSW Capability Map</h3>
 <table>
@@ -402,7 +403,8 @@ CSW Capability Map</h3>
 </tr>
 <tr>
 <td>Req 6 — Vulnerability Management</td>
-<td>Continuous CVE scanning, CVSS prioritization</td>
+<td>Continuous vulnerability exposure visibility, CVSS
+prioritization</td>
 </tr>
 <tr>
 <td>Req 7 — Access Control</td>
@@ -485,9 +487,10 @@ request patterns surfaced via forensic telemetry</p>
 Control</h3>
 <p><strong>7.2.1 — Access to system components and cardholder data
 restricted</strong> - CSW scope-based policy: only approved workload
-identities access CDE - Policy enforced at OS level — bypasses firewall
-rule gaps - Process-level access audit: which process on which workload
-touched CDE</p>
+identities access CDE - Workload-level enforcement can catch gaps
+beneath or between network-security-control views; it complements, not
+replaces, PCI network security controls - Process-level access audit:
+which process on which workload touched CDE</p>
 <p><strong>7.2.5 — Default and unnecessary accounts removed</strong> -
 CSW process monitoring detects unexpected processes on CDE workloads -
 Alert on new process hash not seen in ADM baseline</p>
@@ -509,9 +512,10 @@ SOC/SIEM eliminates manual review burden</p>
 <h3 id="requirement-11-security-testing">Requirement 11 — Security
 Testing</h3>
 <p><strong>11.3.1 — External vulnerability scans quarterly</strong> -
-CSW provides continuous (not just quarterly) vulnerability assessment -
-Exceeds PCI DSS requirement; use CSW reports as supplementary
-evidence</p>
+CSW provides continuous vulnerability exposure context for workloads it
+observes - Use CSW reports as supplementary evidence; they do not
+replace required PCI external ASV scans or other mandated testing unless
+explicitly accepted by your QSA for a documented customized approach</p>
 <p><strong>11.4.1 — Penetration testing methodology</strong> - ADM
 baseline used as pre-pentest reference - Post-pentest ADM comparison
 detects any new paths discovered - Forensic telemetry captures all
@@ -553,7 +557,7 @@ pentest activity for review</p>
 <td>Monthly</td>
 </tr>
 <tr>
-<td>Vulnerability scan (CDE)</td>
+<td>Vulnerability exposure report (CDE)</td>
 <td>Investigate → Vulnerability</td>
 <td>Req 6, Req 11</td>
 <td>Weekly</td>
@@ -605,11 +609,13 @@ Requirements CSW Addresses</h2>
 </tr>
 <tr>
 <td>1.2.1 — All traffic flows documented and approved</td>
-<td>ADM generates complete approved flow documentation</td>
+<td>ADM produces observed-flow documentation for CSW-instrumented paths;
+human approval and non-CSW paths remain part of CDE documentation</td>
 </tr>
 <tr>
 <td>6.3.3 — All vulnerabilities addressed per risk ranking</td>
-<td>Continuous CVE scan with CVSS-ranked remediation</td>
+<td>Continuous vulnerability exposure view with CVSS-ranked remediation
+inputs</td>
 </tr>
 <tr>
 <td>10.7.2 — Failures of critical security controls detected</td>

@@ -459,7 +459,7 @@ Maturity Mapping — Applications &amp; Workloads Pillar</h2>
 <tr>
 <th>Maturity Stage</th>
 <th>Requirement</th>
-<th>CSW Capability</th>
+<th>CSW capability that may support evidence toward the stage</th>
 </tr>
 </thead>
 <tbody>
@@ -513,7 +513,7 @@ Mapping — Data Pillar (Supporting)</h2>
 <tr>
 <td><strong>Traditional</strong></td>
 <td>No data flow visibility</td>
-<td>ADM reveals all data movement paths</td>
+<td>ADM reveals observed data movement paths within CSW coverage</td>
 </tr>
 <tr>
 <td><strong>Initial</strong></td>
@@ -545,36 +545,39 @@ Summary</h2>
 <tr>
 <th>Pillar</th>
 <th>CSW Role</th>
-<th>Maturity Achievable</th>
+<th>Example maturity evidence CSW may support</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Identity</td>
-<td>Supporting (enforces identity-verified access paths)</td>
-<td>Initial → Advanced</td>
+<td>Supporting (enforces identity-aware workload access paths where
+integrated)</td>
+<td>Initial → Advanced evidence when paired with IAM / IdP controls</td>
 </tr>
 <tr>
 <td>Devices</td>
 <td>Supporting (process + OS-level workload fingerprinting)</td>
-<td>Initial → Advanced</td>
+<td>Initial → Advanced evidence for covered workloads</td>
 </tr>
 <tr>
 <td>Networks</td>
-<td><strong>Primary</strong> (micro-segmentation, encryption,
-monitoring)</td>
-<td>Advanced → Optimal</td>
+<td><strong>Primary</strong> for workload micro-segmentation,
+plaintext-flow detection / blocking, monitoring</td>
+<td>Advanced evidence; Optimal remains an organizational target</td>
 </tr>
 <tr>
 <td>Applications &amp; Workloads</td>
-<td><strong>Primary</strong> (workload identity, policy,
-vulnerability)</td>
-<td>Advanced → Optimal</td>
+<td><strong>Primary</strong> for workload identity, policy,
+vulnerability context</td>
+<td>Advanced evidence; Optimal remains an organizational target</td>
 </tr>
 <tr>
 <td>Data</td>
-<td>Supporting (data flow visibility, encryption enforcement)</td>
-<td>Initial → Advanced</td>
+<td>Supporting (data flow visibility, plaintext-flow detection /
+blocking)</td>
+<td>Initial → Advanced evidence when paired with data governance
+controls</td>
 </tr>
 </tbody>
 </table>

@@ -417,9 +417,9 @@ item.</p>
 authority; designated owner/operators are required to comply. Nothing in
 this runbook substitutes for the responsible Senior Cybersecurity
 Officer’s accountability under the SD or for the formal TSA inspection
-response. CSW gives the responsible officer the <em>evidence</em> needed
-to demonstrate compliance; it does not substitute for the designated
-security programme.</p>
+response. CSW gives the responsible officer technical evidence inputs
+for the operator’s compliance programme; it does not substitute for the
+designated security programme.</p>
 <hr />
 <h2 id="overview">1. Overview</h2>
 <p>The TSA Pipeline Security Directive 2021-02 series (currently in
@@ -616,7 +616,8 @@ and OT systems, with denial of all other communication.</p>
   CSW UI → Investigate → Flow Search
   Filter: source_scope ⊂ Pipeline-IT-Estate AND
           destination_subnet ∈ OT-network-ranges
-  → Output: complete IT→OT flow inventory per site
+  → Output: observed IT→OT flow inventory per site for instrumented IT
+    workloads and configured OT destination definitions
 
 Step 2: Reconcile against the documented flows in your Cybersecurity
         Architecture Design Review
@@ -810,7 +811,7 @@ CAP; (c) Senior Cybersecurity Officer sign-off summary.</p>
 <h2 id="cybersecurity-architecture-design-review">10. Cybersecurity
 Architecture Design Review</h2>
 <p>The SD requires periodic architecture design reviews. CSW does not
-<em>perform</em> the review, but provides authoritative inputs.</p>
+<em>perform</em> the review, but provides telemetry-based inputs.</p>
 <p><strong>CSW inputs to the design review:</strong></p>
 <ol type="1">
 <li>Current IT-side workload inventory with CCS labelling.</li>

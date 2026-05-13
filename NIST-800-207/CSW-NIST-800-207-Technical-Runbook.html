@@ -408,7 +408,7 @@ Implementation Guide</h2>
 treated as a managed resource, regardless of ownership or location.</p>
 <p><strong>CSW Implementation:</strong></p>
 <pre><code>Step 1: Deploy software sensors on all on-prem workloads
-  → Linux: rpm/dpkg install + systemctl enable tetd
+  → Linux: rpm/dpkg install + systemctl enable csw-agent
   → Windows: MSI install + service verification
 
 Step 2: Connect cloud accounts (agentless discovery)
@@ -425,10 +425,10 @@ Step 3: Label every workload as a classified resource
     app:          [application name]
     owner:        [team name]
 
-Step 4: Validate inventory completeness
+Step 4: Validate CSW coverage and label completeness
   CSW UI → Inventory
   → Filter: label missing → Identify unlabeled workloads
-  → Target: 100% label coverage before ADM run</code></pre>
+  → Target: 100% label coverage for in-scope CSW-covered workloads before ADM run</code></pre>
 <p><strong>Evidence:</strong> Inventory export (CSV), cloud connector
 discovery report</p>
 <hr />
@@ -491,11 +491,12 @@ Step 3: Default-deny for all sensitive scopes
   → Only explicitly documented flows are permitted
   → No &quot;allow same subnet&quot; rules — violates Tenet 3
 
-Step 4: Per-session audit trail
+Step 4: Per-connection audit trail
   CSW logs every connection: source, destination, process,
   user, timestamp, bytes, and policy decision (allow/deny)
-  → Satisfies NIST 800-207 per-session access record requirement</code></pre>
-<p><strong>Evidence:</strong> Per-session flow log export, policy
+  → Contributes to per-access records for network connections CSW observes;
+    validate required fields against your logging standard</code></pre>
+<p><strong>Evidence:</strong> Per-connection flow log export, policy
 workspace (allowlist rules), policy denial log</p>
 <hr />
 <h3 id="tenet-4-access-is-determined-by-dynamic-policy">Tenet 4 — Access

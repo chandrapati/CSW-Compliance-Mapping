@@ -9,6 +9,8 @@ Usage:
 Re-run any time the underlying DOCX or MD changes.
 """
 
+from __future__ import annotations
+
 import re
 import shutil
 import subprocess
@@ -42,6 +44,12 @@ FRAMEWORKS = [
     ("CIS-Controls-v8","CIS Critical Security Controls v8.1",       "CIS-Controls-v8/CSW-CIS-Compliance-Report",  "CIS-Controls-v8/CSW-CIS-Technical-Runbook"),
     ("NIST-CSF-2",    "NIST Cybersecurity Framework 2.0",           "NIST-CSF-2/CSW-CSF-Compliance-Report",       "NIST-CSF-2/CSW-CSF-Technical-Runbook"),
     ("CMMC-2",        "CMMC 2.0",                                   "CMMC-2/CSW-CMMC-Compliance-Report",          "CMMC-2/CSW-CMMC-Technical-Runbook"),
+    ("IEC-62443",     "IEC 62443 (IACS)",                           "IEC-62443/CSW-IEC62443-Compliance-Report",   "IEC-62443/CSW-IEC62443-Technical-Runbook"),
+    ("GDPR",          "GDPR (EU 2016/679)",                         "GDPR/CSW-GDPR-Compliance-Report",           "GDPR/CSW-GDPR-Technical-Runbook"),
+    ("MITRE-ATTACK",  "MITRE ATT&CK (Enterprise)",                  "MITRE-ATTACK/CSW-MITRE-ATTACK-Compliance-Report", "MITRE-ATTACK/CSW-MITRE-ATTACK-Technical-Runbook"),
+    ("FedRAMP",       "FedRAMP (Moderate)",                         "FedRAMP/CSW-FedRAMP-Compliance-Report",      "FedRAMP/CSW-FedRAMP-Technical-Runbook"),
+    ("SWIFT-CSCF",    "SWIFT CSCF (v2024)",                         "SWIFT-CSCF/CSW-SWIFT-CSCF-Compliance-Report", "SWIFT-CSCF/CSW-SWIFT-CSCF-Technical-Runbook"),
+    ("HITRUST-CSF",   "HITRUST CSF (v11)",                          "HITRUST-CSF/CSW-HITRUST-Compliance-Report",  "HITRUST-CSF/CSW-HITRUST-Technical-Runbook"),
 ]
 
 
@@ -108,16 +116,26 @@ def rewrite_links(html_path: Path) -> None:
         html_path.write_text(new, encoding="utf-8")
 
 
-def build_index(report_html_paths: list[tuple[str, str, str]]) -> None:
-    """Write top-level index.html linking to all rendered assets."""
+def build_index(report_html_paths: list[tuple[str, str | None, str | None]]) -> None:
+    """Write top-level index.html linking to all rendered assets.
+
+    ``None`` for report or runbook href means that HTML was not generated
+    (typically missing DOCX source or Markdown runbook).
+    """
     rows = []
     for fw_label, report_html, runbook_html in report_html_paths:
+        report_cell = (
+            f'<a href="{report_html}">Report</a>' if report_html else "—"
+        )
+        runbook_cell = (
+            f'<a href="{runbook_html}">Runbook</a>' if runbook_html else "—"
+        )
         rows.append(
-            f'    <tr>'
-            f'<td>{fw_label}</td>'
-            f'<td><a href="{report_html}">Report</a></td>'
-            f'<td><a href="{runbook_html}">Runbook</a></td>'
-            f'</tr>'
+            f"    <tr>"
+            f"<td>{fw_label}</td>"
+            f"<td>{report_cell}</td>"
+            f"<td>{runbook_cell}</td>"
+            f"</tr>"
         )
 
     index_template = (
@@ -130,7 +148,7 @@ def build_index(report_html_paths: list[tuple[str, str, str]]) -> None:
         "</head>\n<body>\n"
         "<h1>Cisco Secure Workload &mdash; Compliance Mapping Assets</h1>\n"
         "<p>Browseable HTML renderings of the customer-facing reports and the matching "
-        "technical runbooks for sixteen compliance, sector, and zero-trust frameworks. "
+        "technical runbooks for twenty-two compliance, sector, and zero-trust frameworks. "
         "DOCX (editable master), PDF (review copy), and Markdown (runbook source) "
         "remain in the repository and on each framework's GitHub folder page.</p>\n"
         '<p><strong>Repository:</strong> '
@@ -147,9 +165,9 @@ def build_index(report_html_paths: list[tuple[str, str, str]]) -> None:
         '  <li><a href="docs/audience-and-usage.html">Audience and usage guide</a>'
         " &mdash; who reads what, runbook-vs-report, file formats, and folder layout.</li>\n"
         '  <li><a href="INDEX.html">Control-ID Index</a> &mdash; '
-        "lookup across all sixteen frameworks (PCI Req 1.2, HIPAA \u00a7164.312(a)(1), "
+        "lookup across all twenty-two frameworks (PCI Req 1.2, HIPAA \u00a7164.312(a)(1), "
         "DORA Art. 9, NIS2 Art. 21(2)(d), NIST AC-4, NERC CIP-005 R1, "
-        "TSA SD Section III.A, CIS Safeguard 13.4, CSF PR.IR-01, "
+        "TSA SD Section III.A, IEC 62443 SR 5.3, GDPR Art. 32, CIS Safeguard 13.4, CSF PR.IR-01, "
         "CMMC AC.L2-3.1.1, etc.).</li>\n"
         "</ul>\n"
         '<h2>Frameworks</h2>\n'
@@ -178,6 +196,7 @@ def main() -> int:
         runbook_md  = ROOT / f"{runbook_stem}.md"
         runbook_html = ROOT / f"{runbook_stem}.html"
 
+        report_href: str | None = None
         if not report_docx.exists():
             print(f"SKIP report (missing): {report_docx}")
         else:
@@ -185,7 +204,9 @@ def main() -> int:
             run_pandoc(report_docx, report_html, f"{fw_label} \u2014 Compliance Report",
                        report_docx.name, report_docx.name)
             rewrite_links(report_html)
+            report_href = str(report_html.relative_to(ROOT))
 
+        runbook_href: str | None = None
         if not runbook_md.exists():
             print(f"SKIP runbook (missing): {runbook_md}")
         else:
@@ -193,12 +214,9 @@ def main() -> int:
             run_pandoc(runbook_md, runbook_html, f"{fw_label} \u2014 Technical Runbook",
                        runbook_md.name, runbook_md.name)
             rewrite_links(runbook_html)
+            runbook_href = str(runbook_html.relative_to(ROOT))
 
-        rendered.append((
-            fw_label,
-            str(report_html.relative_to(ROOT)),
-            str(runbook_html.relative_to(ROOT)),
-        ))
+        rendered.append((fw_label, report_href, runbook_href))
 
     # docs/ background pages (rendered into docs/*.html alongside the source).
     # These live one folder deep so they reuse run_pandoc(), which already

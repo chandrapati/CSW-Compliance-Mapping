@@ -11,12 +11,10 @@ into practical CSW scopes, labels, and evidence boundaries. These patterns
 are starting points: validate final scope with the customer's architecture,
 asset owners, compliance team, and assessor.
 
-**Navigate:** [Table of contents](#table-of-contents) · [Framework mappings](#framework-mappings) · [Full summary table](#framework-scope-design-table)
-
 ## Table of contents
 
 - [Scope design principles](#scope-design-principles)
-- [Framework scope design](#framework-scope-design-table)<a id="framework-mappings"></a>
+- [Framework scope design](#framework-scope-design-table)
   - [HIPAA Security Rule](#hipaa-security-rule)
   - [SOC 2 Type II](#soc-2-type-ii)
   - [PCI DSS v4.0](#pci-dss-v40)
@@ -33,6 +31,12 @@ asset owners, compliance team, and assessor.
   - [CIS Controls v8.1](#cis-controls-v81)
   - [NIST CSF 2.0](#nist-csf-20)
   - [CMMC 2.0](#cmmc-20)
+  - [IEC 62443](#iec-62443)
+  - [GDPR](#gdpr)
+  - [MITRE ATT&CK](#mitre-attck)
+  - [FedRAMP](#fedramp)
+  - [SWIFT CSCF](#swift-cscf)
+  - [HITRUST CSF v11](#hitrust-csf-v11)
 - [Label / tag recommendations](#label--tag-recommendations)
   - [Baseline labels for every customer](#baseline-labels-for-every-customer)
   - [Framework-specific labels](#framework-specific-labels)
@@ -79,8 +83,12 @@ asset owners, compliance team, and assessor.
 | CIS Controls v8.1 | Enterprise assets and software in the customer's Implementation Group scope | `CIS-IG2` > `Enterprise-Assets`, `Software-Inventory`, `Secure-Config`, `Vuln-Exposure`, `Network-Monitoring` | Controls 1, 2, 4, 7, 8, 13, and 17 evidence for covered workloads | Reconcile CSW inventory with enterprise source of truth; endpoint, email, awareness, backup, and data controls are broader than CSW |
 | NIST CSF 2.0 | CSF Profile outcomes, target tier, and management reporting needs | `CSF-Profile` > `Govern-Evidence`, `Identify-Assets`, `Protect-Segmentation`, `Detect-Monitoring`, `Respond-Dossier`, `Recover-Diff` | Technical evidence that feeds GV, ID, PR, DE, RS, and RC outcomes | CSF is an outcomes framework; CSW does not author the Profile or replace governance, risk appetite, or enterprise policy decisions |
 | CMMC 2.0 | FCI/CUI enclave and CMMC assessment boundary | `CMMC-Scope` > `CUI-Enclave`, `FCI-Systems`, `CUI-Connected`, `Admin-Access`, `External-Services`, `Out-of-Scope-Validation` | AC, AU, CM, RA, SC, and SI technical evidence for CUI-scope workloads | CMMC requires SSP, POA&M, CUI scoping, and C3PAO/government assessment as applicable; CSW supports evidence but does not certify compliance |
-
-[↑ Back to top](#top) · [↑ Framework mappings](#framework-mappings) · [↑ Table of contents](#table-of-contents)
+| IEC 62443 | IT-side systems supporting IACS zones & conduits (engineering workstations, jump hosts, historians, brokers — not Level 0–2 OT devices) | `Industrial-IACS` > `Plant-OT-Support`, `Conduit-<id>`, `DMZ-Brokers`, `Vendor-Remote-Access` — labels mirror approved zone/conduit reference design | SR 5 restricted data flow; SR 1 access paths; SR 3 integrity baselines; SR 6–7 monitoring & availability signals for adjacent IT | CSW does not inspect ICS wire payloads on PLCs/RTUs/IEDs; pair with OT PAS (Cyber Vision, Claroty, Nozomi) and integrator-approved conduit tests |
+| GDPR | Systems processing personal data, aligned to RoPA activity IDs and processor egress | `GDPR-In-Scope` > `ROPA-<activity>`, `Personal-Data-Tier`, `Sub-Processors-Egress` | Art. 25/32 technical measures (segmentation, monitoring, cleartext posture); Art. 30 flow corroboration; Art. 28 egress; breach forensics for Art. 33–34 (*legal owns filings*) | Lawful basis, DPIA sign-off, DSARs, records text fields, and Schrems II assessments remain legal/privacy-owned |
+| MITRE ATT&CK | Enterprise detection & containment programme scoped to crown jewels and lateral choke points | `Enterprise-ATTCK` > `Tier0-Identity-Adjacent`, `Crown-Jewel-Apps`, `Jump-Host-Enclave`, `Internet-Facing-Entry` | Tactic-level evidence (TA0001–TA0011, TA0040) from flow/process telemetry plus segmentation containment | CSW is not full EDR/email/identity coverage — pair with SIEM, XDR/EDR, and hunting workflows |
+| FedRAMP | FedRAMP Moderate (or agency) authorization boundary for a cloud system | `FedRAMP-InScope` > `Management-Plane`, `App-Tier`, `Data-Tier`, `Security-Monitoring` mapped to SSP components | AC-4 / SC-7 workload enforcement; CA-7 ConMon exports; CM/RA/SI/AU/IR technical attachments; POA&M-ready vuln rows | CSW the **product** is not itself FedRAMP-authorized; reconcile inheritance vs customer responsibility in the SSP; 3PAO validates |
+| SWIFT CSCF | SWIFT secure zone & adjacent controlled interfaces per CSP architecture | `SWIFT-Program` > `SWIFT-Secure-Zone` (`Messaging-Interfaces`, `Operator-Jump-Hosts`) + `SWIFT-Adjacent` | CSCF 1.1 zone isolation; 1.4 internet egress restriction; 2.1 internal flows (ADM); 2.6 session confidentiality; 6.4 logging | Mandatory vs Advisory applicability follows **your** official CSCF v2024 matrix row; CSW does not complete CSP attestation |
+| HITRUST CSF v11 | MyCSF assessment scope spanning harmonised baselines (HIPAA, ISO, NIST, PCI as cited in PRS) | `HITRUST-In-Scope` > `PHI-Production` (if applicable), `PCI-CDE-Connected`, `Enterprise-Critical` | 01.m/01.n/01.o segregation & connection control; 09.ab/09.ad monitoring & operator evidence; 10.a ADM; 10.m vuln; 11.a/11.c incident artefacts; e1/i1/r2 export depth per programme | Certification remains with HITRUST/assessor; confirm **exact PRS** keys in MyCSF |
 
 The following anchors match the framework links in the [table of contents](#table-of-contents) so you can jump directly to a row in the table above.
 
@@ -90,7 +98,7 @@ The following anchors match the framework links in the [table of contents](#tabl
 |---|---|---|---|
 | ePHI applications, databases, clinical integrations, and business associate connections | `Healthcare-Org` > `ePHI-Zone` > app/service scopes such as `EHR`, `Billing`, `PACS`, `HL7`; separate `BAA-Partners` egress scope | ePHI workload isolation, access-path evidence, audit-control telemetry, risk-analysis inputs | HIPAA administrative, physical, legal, and BAA obligations remain outside CSW; validate PHI classification with privacy/compliance owners |
 
-[↑ Back to top](#top) · [↑ Framework mappings](#framework-mappings) · [↑ Table of contents](#table-of-contents)
+[↑ Back to top](#top)
 
 <h3 id="soc-2-type-ii">SOC 2 Type II</h3>
 
@@ -98,7 +106,7 @@ The following anchors match the framework links in the [table of contents](#tabl
 |---|---|---|---|
 | The service organization's system boundary and selected Trust Services Criteria | `SOC2-System` > `Production`, `Supporting-Infra`, `Admin-Access`, `Vendor-Integrations`; align scope to system description | Operating-effectiveness evidence for segmentation, monitoring, change drift, incident investigation | SOC 2 criteria depend on the auditor's system description and control design; CSW augments IAM, change management, SIEM, and availability controls |
 
-[↑ Back to top](#top) · [↑ Framework mappings](#framework-mappings) · [↑ Table of contents](#table-of-contents)
+[↑ Back to top](#top)
 
 <h3 id="pci-dss-v40">PCI DSS v4.0</h3>
 
@@ -106,7 +114,7 @@ The following anchors match the framework links in the [table of contents](#tabl
 |---|---|---|---|
 | Cardholder Data Environment (CDE), CDE-connected systems, and security-impacting systems | `PCI-Environment` > `CDE`, `CDE-Connected`, `Security-Services`, `Third-Party-Processors`, `Out-of-Scope-Validation` | CDE flow documentation, segmentation simulation/enforcement, policy exceptions, vulnerability exposure context | CSW does not replace QSA judgment, ASV scans, penetration testing, network security controls, or PCI governance requirements |
 
-[↑ Back to top](#top) · [↑ Framework mappings](#framework-mappings) · [↑ Table of contents](#table-of-contents)
+[↑ Back to top](#top)
 
 <h3 id="nist-sp-800-53-rev-5">NIST SP 800-53 Rev. 5</h3>
 
@@ -114,7 +122,7 @@ The following anchors match the framework links in the [table of contents](#tabl
 |---|---|---|---|
 | FISMA/FedRAMP system boundary and SSP control implementation | `System-Boundary` > impact-level or component scopes such as `Moderate`, `High`, `Data-Store`, `App-Tier`, `Management` | AC, AU, CM, IR, RA, SC, and SI evidence for covered workloads | Full 800-53 scope includes many controls outside CSW: identity, personnel, physical, contingency, privacy, and governance controls |
 
-[↑ Back to top](#top) · [↑ Framework mappings](#framework-mappings) · [↑ Table of contents](#table-of-contents)
+[↑ Back to top](#top)
 
 <h3 id="isoiec-270012022">ISO/IEC 27001:2022</h3>
 
@@ -122,7 +130,7 @@ The following anchors match the framework links in the [table of contents](#tabl
 |---|---|---|---|
 | ISMS scope, information assets, and Annex A control applicability | `ISMS-Boundary` > `Confidential-Data`, `Business-Critical-Apps`, `Cloud-Services`, `Supplier-Connections` | Annex A.8 monitoring, network security, segregation, vulnerability, and supplier-egress evidence | Certification depends on ISMS design, SoA, risk treatment, internal audit, and management review; CSW is a technical evidence source |
 
-[↑ Back to top](#top) · [↑ Framework mappings](#framework-mappings) · [↑ Table of contents](#table-of-contents)
+[↑ Back to top](#top)
 
 <h3 id="cisa-zero-trust-maturity-model">CISA Zero Trust Maturity Model</h3>
 
@@ -130,7 +138,7 @@ The following anchors match the framework links in the [table of contents](#tabl
 |---|---|---|---|
 | Agency/enterprise zero-trust initiative by pillar and use case | `ZT-Workloads` > `Sensitive-Apps`, `Privileged-Admin`, `Inter-App-Flows`, `External-Dependencies` | Workload-layer evidence for networks and applications/workloads pillars, plus visibility and analytics | ZTMM maturity is organizational; pair CSW with IdP, MFA, device posture, data governance, SIEM/SOAR, and policy orchestration |
 
-[↑ Back to top](#top) · [↑ Framework mappings](#framework-mappings) · [↑ Table of contents](#table-of-contents)
+[↑ Back to top](#top)
 
 <h3 id="fips-140">FIPS 140</h3>
 
@@ -138,7 +146,7 @@ The following anchors match the framework links in the [table of contents](#tabl
 |---|---|---|---|
 | Systems handling regulated cryptographic use or plaintext-protocol risk | `Crypto-Review` > `Sensitive-Transport`, `Plaintext-Protocol-Candidates`, `FIPS-Required-Systems` | Detection/blocking of obvious plaintext transports and inventory support for cryptographic usage review | CSW is not a FIPS-validated cryptographic module; validation, key management, and module selection belong to FIPS-validated libraries/HSMs |
 
-[↑ Back to top](#top) · [↑ Framework mappings](#framework-mappings) · [↑ Table of contents](#table-of-contents)
+[↑ Back to top](#top)
 
 <h3 id="nist-sp-800-207">NIST SP 800-207</h3>
 
@@ -146,7 +154,7 @@ The following anchors match the framework links in the [table of contents](#tabl
 |---|---|---|---|
 | Zero Trust Architecture tenets for workload-to-workload access | `ZTA-Resources` > `Protected-Resources`, `Policy-Enforced-Flows`, `Observed-Dependencies`, `Exceptions` | Resource inventory, per-connection flow evidence, dynamic scoping, workload enforcement as one possible PEP placement | NIST ZTA also requires identity, device posture, policy decision architecture, and enterprise-wide telemetry beyond CSW |
 
-[↑ Back to top](#top) · [↑ Framework mappings](#framework-mappings) · [↑ Table of contents](#table-of-contents)
+[↑ Back to top](#top)
 
 <h3 id="nist-sp-800-207a">NIST SP 800-207A</h3>
 
@@ -154,7 +162,7 @@ The following anchors match the framework links in the [table of contents](#tabl
 |---|---|---|---|
 | PDP/PEP/PA/PIP component mapping for a cloud-native ZTA discussion | `ZTA-Components` > `PEP-Analogue`, `Policy-Workspace`, `Telemetry-PIP`, `SOAR-Integrated` | Illustrative traceability from CSW policy, enforcement, and telemetry to 207A-style logical components | Treat PDP/PEP/PA/PIP mapping as an analogue for workload segmentation, not a complete enterprise ZTA architecture |
 
-[↑ Back to top](#top) · [↑ Framework mappings](#framework-mappings) · [↑ Table of contents](#table-of-contents)
+[↑ Back to top](#top)
 
 <h3 id="dora">DORA</h3>
 
@@ -162,7 +170,7 @@ The following anchors match the framework links in the [table of contents](#tabl
 |---|---|---|---|
 | Important business functions (IBFs), supporting ICT assets, and third-party dependencies | `DORA-IBF` > one scope per IBF, with nested `Critical`, `Supporting`, `Third-Party-Egress`, `Incident-Dossier` scopes | Article 8 inventory inputs, Article 9 segmentation, Article 10 detection, Article 19 incident evidence, Article 28 technical egress | DORA governance, register of information, contracts, testing programme, and authority reporting remain customer-owned |
 
-[↑ Back to top](#top) · [↑ Framework mappings](#framework-mappings) · [↑ Table of contents](#table-of-contents)
+[↑ Back to top](#top)
 
 <h3 id="nis2">NIS2</h3>
 
@@ -170,7 +178,7 @@ The following anchors match the framework links in the [table of contents](#tabl
 |---|---|---|---|
 | Essential/important entity services and Article 21 risk-management measures | `NIS2-Service` > `Essential-Service`, `Important-Service`, `Supplier-Egress`, `Incident-Reporting`, `High-Risk-Workloads` | Risk-policy enforcement evidence, incident dossier, supply-chain egress, vulnerability exposure, secured workload paths | MFA, training, governance, cryptography, secured voice/video, and national transposition specifics require complementary programmes |
 
-[↑ Back to top](#top) · [↑ Framework mappings](#framework-mappings) · [↑ Table of contents](#table-of-contents)
+[↑ Back to top](#top)
 
 <h3 id="nerc-cip">NERC CIP</h3>
 
@@ -178,7 +186,7 @@ The following anchors match the framework links in the [table of contents](#tabl
 |---|---|---|---|
 | IT-side systems supporting BES Cyber System functions | `BES-Supporting-IT` > `EACMS`, `Jump-Hosts`, `Vendor-Access`, `BCSI-Hosts`, `Identity-PKI`, `Patch-Repos` | IT-side ESP boundary evidence, interactive remote access paths, ports/services baseline, vulnerability and change evidence | CSW is not an EAP and does not enforce on PLCs/RTUs/IEDs/HMIs; pair with boundary firewalls and OT-aware monitoring |
 
-[↑ Back to top](#top) · [↑ Framework mappings](#framework-mappings) · [↑ Table of contents](#table-of-contents)
+[↑ Back to top](#top)
 
 <h3 id="tsa-pipeline-security-directive">TSA Pipeline Security Directive</h3>
 
@@ -186,15 +194,15 @@ The following anchors match the framework links in the [table of contents](#tabl
 |---|---|---|---|
 | IT-side systems supporting Critical Cyber Systems and IT/OT segmentation | `Pipeline-IT-Estate` > `OT-Facing-IT`, `CCS-Supporting-IT`, `Vendor-Access`, `Patch-Repositories`, `Corporate-IT` | IT-side segmentation, documented IT-to-OT flows, access control, monitoring, unpatched-system risk evidence | CSW does not replace the Cybersecurity Coordinator, CAP/CIRP, architecture review, boundary firewall, or OT DPI/monitoring tools |
 
-[↑ Back to top](#top) · [↑ Framework mappings](#framework-mappings) · [↑ Table of contents](#table-of-contents)
+[↑ Back to top](#top)
 
 <h3 id="cis-controls-v81">CIS Controls v8.1</h3>
 
-| Customer scope anchor | Suggested CSW scope pattern | Primary evidence focus | Boundaries and complementary controls |
+| Customer scope anchor | Suggested CSW scope pattern | Primary evidence focus | intersections and complementary controls |
 |---|---|---|---|
 | Enterprise assets and software in the customer's Implementation Group scope | `CIS-IG2` > `Enterprise-Assets`, `Software-Inventory`, `Secure-Config`, `Vuln-Exposure`, `Network-Monitoring` | Controls 1, 2, 4, 7, 8, 13, and 17 evidence for covered workloads | Reconcile CSW inventory with enterprise source of truth; endpoint, email, awareness, backup, and data controls are broader than CSW |
 
-[↑ Back to top](#top) · [↑ Framework mappings](#framework-mappings) · [↑ Table of contents](#table-of-contents)
+[↑ Back to top](#top)
 
 <h3 id="nist-csf-20">NIST CSF 2.0</h3>
 
@@ -202,7 +210,7 @@ The following anchors match the framework links in the [table of contents](#tabl
 |---|---|---|---|
 | CSF Profile outcomes, target tier, and management reporting needs | `CSF-Profile` > `Govern-Evidence`, `Identify-Assets`, `Protect-Segmentation`, `Detect-Monitoring`, `Respond-Dossier`, `Recover-Diff` | Technical evidence that feeds GV, ID, PR, DE, RS, and RC outcomes | CSF is an outcomes framework; CSW does not author the Profile or replace governance, risk appetite, or enterprise policy decisions |
 
-[↑ Back to top](#top) · [↑ Framework mappings](#framework-mappings) · [↑ Table of contents](#table-of-contents)
+[↑ Back to top](#top)
 
 <h3 id="cmmc-20">CMMC 2.0</h3>
 
@@ -210,7 +218,55 @@ The following anchors match the framework links in the [table of contents](#tabl
 |---|---|---|---|
 | FCI/CUI enclave and CMMC assessment boundary | `CMMC-Scope` > `CUI-Enclave`, `FCI-Systems`, `CUI-Connected`, `Admin-Access`, `External-Services`, `Out-of-Scope-Validation` | AC, AU, CM, RA, SC, and SI technical evidence for CUI-scope workloads | CMMC requires SSP, POA&M, CUI scoping, and C3PAO/government assessment as applicable; CSW supports evidence but does not certify compliance |
 
-[↑ Back to top](#top) · [↑ Framework mappings](#framework-mappings) · [↑ Table of contents](#table-of-contents)
+[↑ Back to top](#top)
+
+<h3 id="iec-62443">IEC 62443</h3>
+
+| Customer scope anchor | Suggested CSW scope pattern | Primary evidence focus | Boundaries and complementary controls |
+|---|---|---|---|
+| IT-side systems supporting IACS zones & conduits | `Industrial-IACS` > `Plant-OT-Support`, `Conduit-<id>`, `DMZ-Brokers`, `Vendor-Remote-Access` | SR 5 conduit enforcement; SR 1 access paths; SR 3 integrity; SR 6–7 monitoring signals on IACS-adjacent IT | OT device layer (PLCs/RTUs/IEDs) and safety systems require PAS/ICS tools and integrator lifecycle evidence; CSW does not replace them |
+
+[↑ Back to top](#top)
+
+<h3 id="gdpr">GDPR</h3>
+
+| Customer scope anchor | Suggested CSW scope pattern | Primary evidence focus | Boundaries and complementary controls |
+|---|---|---|---|
+| Personal-data processing systems tied to RoPA activities & processor endpoints | `GDPR-In-Scope` > `ROPA-<activity>`, `Personal-Data-Tier`, `Sub-Processors-Egress` | Art. 25/32 technical measures; RoPA flow validation; processor egress monitoring; breach forensics inputs | Lawful basis, DPIA decisions, DSAR fulfilment, privacy notices, and supervisory filings require legal/privacy programme ownership |
+
+[↑ Back to top](#top)
+
+<h3 id="mitre-attck">MITRE ATT&CK</h3>
+
+| Customer scope anchor | Suggested CSW scope pattern | Primary evidence focus | Boundaries and complementary controls |
+|---|---|---|---|
+| SOC / purple-team coverage for crown jewels and lateral movement choke points | `Enterprise-ATTCK` > `Tier0-Identity-Adjacent`, `Crown-Jewel-Apps`, `Jump-Host-Enclave`, `Internet-Facing-Entry` | TA0001–TA0011 & TA0040 tactic-aligned telemetry; segmentation containment; SIEM export discipline | Email, identity, kernel, and cloud-control-plane techniques require companion tooling (XDR/EDR, IdP logs, CSPM); publish a pairing matrix |
+
+[↑ Back to top](#top)
+
+<h3 id="fedramp">FedRAMP</h3>
+
+| Customer scope anchor | Suggested CSW scope pattern | Primary evidence focus | Boundaries and complementary controls |
+|---|---|---|---|
+| FedRAMP authorization boundary components (Moderate emphasis) | `FedRAMP-InScope` > SSP-aligned `Management-Plane`, `App-Tier`, `Data-Tier`, `Security-Monitoring` | AC-4 / SC-7 workload enforcement narratives; CA-7 ConMon exports; CM/RA/SI families; POA&M-ready findings | Many Moderate controls are policy, personnel, physical, or IAM-console tasks; CSW product FedRAMP status is separate from **your** system ATO |
+
+[↑ Back to top](#top)
+
+<h3 id="swift-cscf">SWIFT CSCF</h3>
+
+| Customer scope anchor | Suggested CSW scope pattern | Primary evidence focus | Boundaries and complementary controls |
+|---|---|---|---|
+| SWIFT secure zone messaging interfaces, operator paths, and adjacent collectors | `SWIFT-Program` > `SWIFT-Secure-Zone` > `Messaging-Interfaces`, `Operator-Jump-Hosts`, `Local-Logging-Forwarders` + `SWIFT-Adjacent` | Zone isolation (1.1); internet egress deny (1.4); internal flow evidence (2.1); cleartext controls (2.6); logging integrations (6.4) | Official Mandatory/Advisory/N/A comes from your CSCF v2024 applicability worksheet; password/MFA policy and CSP organisational tasks sit outside CSW |
+
+[↑ Back to top](#top)
+
+<h3 id="hitrust-csf-v11">HITRUST CSF v11</h3>
+
+| Customer scope anchor | Suggested CSW scope pattern | Primary evidence focus | Boundaries and complementary controls |
+|---|---|---|---|
+| MyCSF in-scope systems with harmonised PRS references | `HITRUST-In-Scope` > `PHI-Production`, `PCI-CDE-Connected`, risk-tier labels | 01.m/01.n/01.o network segregation & routing visibility; 09.x monitoring & operator logs; 10.a ADM; 10.m vulnerabilities; 11.x incident evidence; assessment-level export cadence (e1/i1/r2) | HITRUST certification, SoA/risk register narratives, privacy legal controls, AV/EDR, authenticated scanning, and physical security remain complementary |
+
+[↑ Back to top](#top)
 
 ## Label / Tag Recommendations
 
@@ -254,6 +310,12 @@ and controlled; avoid free-form spelling differences that split evidence.
 | CIS Controls v8.1 | `cis_control`, `implementation_group`, `asset_inventory_source` | `control-1`, `ig2`, `cmdb` | Organize evidence by Safeguard and Implementation Group |
 | NIST CSF 2.0 | `csf_function`, `csf_category`, `profile_scope`, `target_tier` | `protect`, `pr.ir`, `core-platform`, `tier-3` | Align evidence with CSF Profile outcomes |
 | CMMC 2.0 | `cmmc_level`, `cui_scope`, `fci_scope`, `assessment_boundary`, `poam_item` | `l2`, `in-scope`, `false`, `cui-enclave`, `poam-123` | Build CUI/FCI boundaries and C3PAO evidence sets |
+| IEC 62443 | `zone`, `conduit`, `sl-target`, `ics-role` | `cell-a`, `c-ot-to-mes-01`, `SL2`, `historian` | Align policies to approved cyber zone / conduit drawings |
+| GDPR | `ropa-id`, `data-class`, `processor`, `gdpr_scope` | `HR-001`, `personal`, `payroll-vendor`, `in` | Tie telemetry to RoPA activities and processor egress reviews |
+| MITRE ATT&CK | `attack-surface`, `mitre_tactic_focus`, `crown_jewel` | `internet-facing`, `lateral-movement`, `true` | Scope detection baselines and containment narratives |
+| FedRAMP | `ssp-component-id`, `data-impact`, `conmon_cadence` | `web-tier`, `moderate`, `monthly` | Map hosts to SSP attachments and ConMon rhythm |
+| SWIFT CSCF | `swift_zone`, `swift_role`, `cscf_arch_type` | `secure`, `smc`, `A1` | Partition secure zone vs adjacent interfaces for CSP folders |
+| HITRUST CSF | `hitrust_prs_ref`, `assessment_level`, `data-class` | `01.m`, `i1`, `phi` | Cross-walk exports to MyCSF requirement rows |
 
 [↑ Back to top](#top)
 
