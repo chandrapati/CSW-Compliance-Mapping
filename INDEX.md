@@ -1,6 +1,6 @@
 # Control-ID Index
 
-A lookup index across all twenty-two frameworks in this repository.
+A lookup index across all twenty-eight frameworks in this repository.
 Use it to jump from a specific control / requirement / article to the
 runbook section that explains how Cisco Secure Workload (CSW)
 supports evidence for it.
@@ -21,18 +21,19 @@ supports evidence for it.
 
 | If you're asking… | Start here |
 |---|---|
-| "How do I prove my segmentation actually works?" | [PCI Req 1](./PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.md), [HIPAA §164.312(a)(1)](./HIPAA/CSW-HIPAA-Technical-Runbook.md), [NIST AC-4](./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md), [DORA Art. 9](./DORA/CSW-DORA-Technical-Runbook.md), [NERC CIP-005 R1](./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.md), [TSA SD Section III.A](./TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.md), [IEC 62443 SR 5.1–5.4](./IEC-62443/CSW-IEC62443-Technical-Runbook.md), [GDPR Art. 25 / Art. 32](./GDPR/CSW-GDPR-Technical-Runbook.md), [FedRAMP AC-4 / SC-7](./FedRAMP/CSW-FedRAMP-Technical-Runbook.md), [SWIFT CSCF 1.1](./SWIFT-CSCF/CSW-SWIFT-CSCF-Technical-Runbook.md), [HITRUST 01.m](./HITRUST-CSF/CSW-HITRUST-Technical-Runbook.md), [CIS Safeguard 13.4](./CIS-Controls-v8/CSW-CIS-Technical-Runbook.md), [CSF PR.IR-01](./NIST-CSF-2/CSW-CSF-Technical-Runbook.md), [CMMC SC.L2-3.13.1 / 3.13.6](./CMMC-2/CSW-CMMC-Technical-Runbook.md) |
-| "How do I demonstrate continuous monitoring?" | [NIST CA-7 / SI-4](./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md), [PCI Req 11](./PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.md), [SOC 2 CC7.2](./SOC2/CSW-SOC2-Technical-Runbook.md), [NIS2 Art. 21(2)(b)](./NIS2/CSW-NIS2-Technical-Runbook.md), [NERC CIP-007 R4](./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.md), [TSA SD Section III.C](./TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.md), [FedRAMP CA-7 / SI-4](./FedRAMP/CSW-FedRAMP-Technical-Runbook.md), [IEC 62443 SR 6](./IEC-62443/CSW-IEC62443-Technical-Runbook.md), [SWIFT CSCF 6.4](./SWIFT-CSCF/CSW-SWIFT-CSCF-Technical-Runbook.md), [HITRUST 09.ab](./HITRUST-CSF/CSW-HITRUST-Technical-Runbook.md), [CIS Safeguards 13.1 / 13.6](./CIS-Controls-v8/CSW-CIS-Technical-Runbook.md), [CSF DE.CM-01 / DE.CM-09](./NIST-CSF-2/CSW-CSF-Technical-Runbook.md), [CMMC SI.L2-3.14.6](./CMMC-2/CSW-CMMC-Technical-Runbook.md) |
-| "How do I produce an incident-reporting evidence pack?" | [DORA Art. 19](./DORA/CSW-DORA-Technical-Runbook.md), [NIS2 Art. 23](./NIS2/CSW-NIS2-Technical-Runbook.md), [HIPAA §164.308(a)(6)](./HIPAA/CSW-HIPAA-Technical-Runbook.md), [GDPR Art. 33–34](./GDPR/CSW-GDPR-Technical-Runbook.md), [NERC CIP-008](./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.md), [TSA CIRP / 24-hour CISA](./TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.md), [SWIFT CSCF 7.1](./SWIFT-CSCF/CSW-SWIFT-CSCF-Technical-Runbook.md), [HITRUST 11.a / 11.c](./HITRUST-CSF/CSW-HITRUST-Technical-Runbook.md), [CIS Control 17](./CIS-Controls-v8/CSW-CIS-Technical-Runbook.md), [CSF RS.AN-03 / RS.AN-07](./NIST-CSF-2/CSW-CSF-Technical-Runbook.md), [CMMC IR.L2-3.6.x](./CMMC-2/CSW-CMMC-Technical-Runbook.md) |
+| "How do I prove my segmentation actually works?" | [PCI Req 1](./PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.md), [HIPAA §164.312(a)(1)](./HIPAA/CSW-HIPAA-Technical-Runbook.md), [NIST AC-4](./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md), [DORA Art. 9](./DORA/CSW-DORA-Technical-Runbook.md), [NERC CIP-005 R1](./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.md), [TSA SD Section III.A](./TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.md), [IEC 62443 SR 5.1–5.4](./IEC-62443/CSW-IEC62443-Technical-Runbook.md), [GDPR Art. 25 / Art. 32](./GDPR/CSW-GDPR-Technical-Runbook.md), [FedRAMP AC-4 / SC-7](./FedRAMP/CSW-FedRAMP-Technical-Runbook.md), [SWIFT CSCF 1.1](./SWIFT-CSCF/CSW-SWIFT-CSCF-Technical-Runbook.md), [HITRUST 01.m](./HITRUST-CSF/CSW-HITRUST-Technical-Runbook.md), [CIS Safeguard 13.4](./CIS-Controls-v8/CSW-CIS-Technical-Runbook.md), [CSF PR.IR-01](./NIST-CSF-2/CSW-CSF-Technical-Runbook.md), [CMMC SC.L2-3.13.1 / 3.13.6](./CMMC-2/CSW-CMMC-Technical-Runbook.md), [NIST 800-171 03.01.03 / 03.13.06](./NIST-800-171/CSW-NIST-800-171-Technical-Runbook.md), [HIPAA NPRM §164.312(a)(2)(vi)](./HIPAA-2025-NPRM/CSW-HIPAA-NPRM-Technical-Runbook.md), [UK CE1](./UK-Cyber-Essentials/CSW-Cyber-Essentials-Technical-Runbook.md), [AU E5](./AU-Essential-Eight/CSW-Essential-Eight-Technical-Runbook.md), [CSA IVS-09](./CSA-CCM/CSW-CSA-CCM-Technical-Runbook.md) |
+| "How do I demonstrate continuous monitoring?" | [NIST CA-7 / SI-4](./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md), [PCI Req 11](./PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.md), [SOC 2 CC7.2](./SOC2/CSW-SOC2-Technical-Runbook.md), [NIS2 Art. 21(2)(b)](./NIS2/CSW-NIS2-Technical-Runbook.md), [NERC CIP-007 R4](./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.md), [TSA SD Section III.C](./TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.md), [FedRAMP CA-7 / SI-4](./FedRAMP/CSW-FedRAMP-Technical-Runbook.md), [IEC 62443 SR 6](./IEC-62443/CSW-IEC62443-Technical-Runbook.md), [SWIFT CSCF 6.4](./SWIFT-CSCF/CSW-SWIFT-CSCF-Technical-Runbook.md), [HITRUST 09.ab](./HITRUST-CSF/CSW-HITRUST-Technical-Runbook.md), [CIS Safeguards 13.1 / 13.6](./CIS-Controls-v8/CSW-CIS-Technical-Runbook.md), [CSF DE.CM-01 / DE.CM-09](./NIST-CSF-2/CSW-CSF-Technical-Runbook.md), [CMMC SI.L2-3.14.6](./CMMC-2/CSW-CMMC-Technical-Runbook.md), [COBIT MEA01 / MEA02](./COBIT-2019/CSW-COBIT-Technical-Runbook.md), [CSA LOG](./CSA-CCM/CSW-CSA-CCM-Technical-Runbook.md) |
+| "How do I produce an incident-reporting evidence pack?" | [DORA Art. 19](./DORA/CSW-DORA-Technical-Runbook.md), [NIS2 Art. 23](./NIS2/CSW-NIS2-Technical-Runbook.md), [HIPAA §164.308(a)(6)](./HIPAA/CSW-HIPAA-Technical-Runbook.md), [GDPR Art. 33–34](./GDPR/CSW-GDPR-Technical-Runbook.md), [NERC CIP-008](./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.md), [TSA CIRP / 24-hour CISA](./TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.md), [SWIFT CSCF 7.1](./SWIFT-CSCF/CSW-SWIFT-CSCF-Technical-Runbook.md), [HITRUST 11.a / 11.c](./HITRUST-CSF/CSW-HITRUST-Technical-Runbook.md), [CIS Control 17](./CIS-Controls-v8/CSW-CIS-Technical-Runbook.md), [CSF RS.AN-03 / RS.AN-07](./NIST-CSF-2/CSW-CSF-Technical-Runbook.md), [CMMC IR.L2-3.6.x](./CMMC-2/CSW-CMMC-Technical-Runbook.md), [HIPAA NPRM §164.308(a)(6)](./HIPAA-2025-NPRM/CSW-HIPAA-NPRM-Technical-Runbook.md) |
 | "How do I show my supply chain / third-party exposure?" | [DORA Art. 28](./DORA/CSW-DORA-Technical-Runbook.md), [NIS2 Art. 21(2)(d)](./NIS2/CSW-NIS2-Technical-Runbook.md), [GDPR Art. 28](./GDPR/CSW-GDPR-Technical-Runbook.md), [ISO A.5.19–A.5.22](./ISO-27001-2022/CSW-ISO27001-Technical-Runbook.md), [NERC CIP-013](./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.md), [CIS Control 15](./CIS-Controls-v8/CSW-CIS-Technical-Runbook.md), [CSF GV.SC-04 / GV.SC-07](./NIST-CSF-2/CSW-CSF-Technical-Runbook.md) |
 | "Where does CSW fit in a Zero Trust architecture?" | [NIST 800-207 Tenets](./NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md), [NIST 800-207A PDP/PEP/PA/PIP](./NIST-800-207A/CSW-NIST-800-207A-Technical-Runbook.md), [CISA ZTMM](./CISA-ZeroTrust/CSW-CISA-ZTMM-Technical-Runbook.md), [FedRAMP AC-4 / SC-7 (workload tier)](./FedRAMP/CSW-FedRAMP-Technical-Runbook.md), [CSF PR.IR / PR.AA](./NIST-CSF-2/CSW-CSF-Technical-Runbook.md) |
-| "How do I evidence vulnerability management?" | [PCI Req 6, 11.3](./PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.md), [NIST RA-5](./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md), [ISO A.8.8](./ISO-27001-2022/CSW-ISO27001-Technical-Runbook.md), [NIS2 Art. 21(2)(e)](./NIS2/CSW-NIS2-Technical-Runbook.md), [NERC CIP-010 R3](./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.md), [TSA SD Section III.D](./TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.md), [FedRAMP RA-5](./FedRAMP/CSW-FedRAMP-Technical-Runbook.md), [HITRUST 10.m](./HITRUST-CSF/CSW-HITRUST-Technical-Runbook.md), [IEC 62443 SR 3](./IEC-62443/CSW-IEC62443-Technical-Runbook.md), [CIS Control 7](./CIS-Controls-v8/CSW-CIS-Technical-Runbook.md), [CSF ID.RA-01 / ID.RA-05](./NIST-CSF-2/CSW-CSF-Technical-Runbook.md), [CMMC RA.L2-3.11.2 / 3.11.3](./CMMC-2/CSW-CMMC-Technical-Runbook.md) |
+| "How do I evidence vulnerability management?" | [PCI Req 6, 11.3](./PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.md), [NIST RA-5](./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md), [ISO A.8.8](./ISO-27001-2022/CSW-ISO27001-Technical-Runbook.md), [NIS2 Art. 21(2)(e)](./NIS2/CSW-NIS2-Technical-Runbook.md), [NERC CIP-010 R3](./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.md), [TSA SD Section III.D](./TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.md), [FedRAMP RA-5](./FedRAMP/CSW-FedRAMP-Technical-Runbook.md), [HITRUST 10.m](./HITRUST-CSF/CSW-HITRUST-Technical-Runbook.md), [IEC 62443 SR 3](./IEC-62443/CSW-IEC62443-Technical-Runbook.md), [CIS Control 7](./CIS-Controls-v8/CSW-CIS-Technical-Runbook.md), [CSF ID.RA-01 / ID.RA-05](./NIST-CSF-2/CSW-CSF-Technical-Runbook.md), [CMMC RA.L2-3.11.2 / 3.11.3](./CMMC-2/CSW-CMMC-Technical-Runbook.md), [AU E2 / E6](./AU-Essential-Eight/CSW-Essential-Eight-Technical-Runbook.md), [UK CE5](./UK-Cyber-Essentials/CSW-Cyber-Essentials-Technical-Runbook.md), [CSA TVM](./CSA-CCM/CSW-CSA-CCM-Technical-Runbook.md), [HIPAA NPRM §164.308(a)(2)](./HIPAA-2025-NPRM/CSW-HIPAA-NPRM-Technical-Runbook.md) |
 | "How do I evidence IT/OT segmentation on the IT side?" | [NERC CIP-005 R1 (IT-side ESP enclave)](./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.md), [TSA SD Section III.A](./TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.md), [IEC 62443 SR 5 (zones & conduits)](./IEC-62443/CSW-IEC62443-Technical-Runbook.md), [NIST AC-4 / SC-7](./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md) |
 | "How do I map workload telemetry to MITRE ATT&CK?" | [TA0001–TA0011, TA0040](./MITRE-ATTACK/CSW-MITRE-ATTACK-Technical-Runbook.md) |
 | "How do I evidence a SWIFT secure zone at the workload layer?" | [SWIFT CSCF 1.1 / 1.4 / 2.1](./SWIFT-CSCF/CSW-SWIFT-CSCF-Technical-Runbook.md) |
-| "How do I evidence asset and software inventory?" | [CIS Controls 1 + 2](./CIS-Controls-v8/CSW-CIS-Technical-Runbook.md), [NIST CM-8](./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md), [CSF ID.AM-01 / ID.AM-02](./NIST-CSF-2/CSW-CSF-Technical-Runbook.md), [CMMC CM.L2-3.4.1 / 3.4.6](./CMMC-2/CSW-CMMC-Technical-Runbook.md) |
-| "How do I evidence governance to my management body?" | [DORA Art. 5](./DORA/CSW-DORA-Technical-Runbook.md), [NIS2 Art. 20](./NIS2/CSW-NIS2-Technical-Runbook.md), [CSF GV.OV-01/02/03](./NIST-CSF-2/CSW-CSF-Technical-Runbook.md), [SOC 2 CC4.1](./SOC2/CSW-SOC2-Technical-Runbook.md) |
-| "What does CSW look like for a CMMC L2 (CUI) scope?" | [CMMC AC.L2-3.1.1 / 3.1.3](./CMMC-2/CSW-CMMC-Technical-Runbook.md), [CMMC SC.L2-3.13.1 / 3.13.6](./CMMC-2/CSW-CMMC-Technical-Runbook.md), [NIST 800-53 AC-4](./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md) |
+| "How do I evidence asset and software inventory?" | [CIS Controls 1 + 2](./CIS-Controls-v8/CSW-CIS-Technical-Runbook.md), [NIST CM-8](./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md), [CSF ID.AM-01 / ID.AM-02](./NIST-CSF-2/CSW-CSF-Technical-Runbook.md), [CMMC CM.L2-3.4.1 / 3.4.6](./CMMC-2/CSW-CMMC-Technical-Runbook.md), [HIPAA NPRM §164.308(a)(1)(ii)(A)](./HIPAA-2025-NPRM/CSW-HIPAA-NPRM-Technical-Runbook.md), [NIST 800-171 03.04.x](./NIST-800-171/CSW-NIST-800-171-Technical-Runbook.md) |
+| "How do I evidence governance to my management body?" | [DORA Art. 5](./DORA/CSW-DORA-Technical-Runbook.md), [NIS2 Art. 20](./NIS2/CSW-NIS2-Technical-Runbook.md), [CSF GV.OV-01/02/03](./NIST-CSF-2/CSW-CSF-Technical-Runbook.md), [SOC 2 CC4.1](./SOC2/CSW-SOC2-Technical-Runbook.md), [COBIT EDM03 / MEA01 / MEA02](./COBIT-2019/CSW-COBIT-Technical-Runbook.md) |
+| "What does CSW look like for a CMMC L2 (CUI) scope?" | [CMMC AC.L2-3.1.1 / 3.1.3](./CMMC-2/CSW-CMMC-Technical-Runbook.md), [CMMC SC.L2-3.13.1 / 3.13.6](./CMMC-2/CSW-CMMC-Technical-Runbook.md), [NIST 800-53 AC-4](./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md), [NIST 800-171 Rev. 3](./NIST-800-171/CSW-NIST-800-171-Technical-Runbook.md) |
+| "How do I evidence CCM / STAR segmentation and cloud data flows?" | [CSA IVS / IAM / DSP / TVM](./CSA-CCM/CSW-CSA-CCM-Technical-Runbook.md) |
 
 ---
 
@@ -626,26 +627,139 @@ Source: [`HITRUST-CSF/CSW-HITRUST-Technical-Runbook.md`](./HITRUST-CSF/CSW-HITRU
 
 ---
 
+## NIST SP 800-171 Rev. 3
+
+Source: [`NIST-800-171/CSW-NIST-800-171-Technical-Runbook.md`](./NIST-800-171/CSW-NIST-800-171-Technical-Runbook.md)
+
+| Requirement | Topic | CSW can support evidence for |
+|---|---|---|
+| 03.01.02 | Access enforcement | Scope-based micro-segmentation; deny default with explicit allow; policy exports |
+| 03.01.03 | Information flow enforcement for CUI | Boundary policies CUI↔non-CUI; ADM-approved paths |
+| 03.01.05 | Least privilege (incl. network) | Minimal allow-list; process-scoped visibility |
+| 03.01.12 | Remote access | Policies for jump hosts / bastions; admin-port flow logs |
+| 03.03.01–03.03.08 | Audit and accountability | Flow + process telemetry → SIEM; timestamped records; RBAC on console |
+| 03.04.01 / 03.04.02 | Baseline configuration; configuration change | ADM as communication baseline; new flows / listeners flagged |
+| 03.04.08 | Authorized software — allow by exception | Process / software inventory vs approved list |
+| 03.11.x | Risk assessment inputs | CVE + reachability + EPSS-style prioritisation |
+| 03.13.01 | Boundary protection | Enclave segmentation; internal boundary rules |
+| 03.13.06 | Deny by default / allow by exception | Workload-level default deny |
+| 03.13.08 | Transmission confidentiality (path hygiene) | Cleartext detection/blocking; protocol posture narratives |
+| 03.14.01 / 03.14.02 / 03.14.06 | Flaw remediation; malicious code (complementary); system monitoring | Vulnerability exports; process signals + AV pairing; behavioural rules |
+| 03.06.x | Incident handling (technical evidence) | Forensic export bundle |
+| 03.12.03 / 03.12.05 | Continuous monitoring; information exchange agreements | Telemetry + policy effectiveness; ADM interface inventory + SSP references |
+
+---
+
+## CSA Cloud Controls Matrix v4.0
+
+Source: [`CSA-CCM/CSW-CSA-CCM-Technical-Runbook.md`](./CSA-CCM/CSW-CSA-CCM-Technical-Runbook.md)
+
+| Domain / objective | Topic | CSW can support evidence for |
+|---|---|---|
+| AIS | Application & interface security | ADM dependency map; constrained interfaces; approved listener inventory |
+| BCR | Business continuity & resilience | Pre/post DR ADM & policy diff; connectivity baselines around tests |
+| CCC | Change control & configuration management | Drift detection; inventory deltas; CAB-linked diffs |
+| DSP | Data security & privacy lifecycle | Tier separation; monitored egress; data-flow boundaries |
+| GRC | Governance / metrics | Coverage KPIs; violation trends |
+| IAM | Identity & access (technical) | Identity-aware segmentation; admin-path controls |
+| IVS (e.g. IVS-09) | Infrastructure & virtualization / network segmentation | Micro-segmentation; east-west enforcement reports |
+| LOG | Logging & monitoring | Flow/process telemetry; SIEM feed health |
+| SEF | Security incident & forensics | Timeline reconstruction; process trees |
+| TVM | Threat & vulnerability management | CVE inventory; reachability / exposure context |
+
+---
+
+## COBIT 2019
+
+Source: [`COBIT-2019/CSW-COBIT-Technical-Runbook.md`](./COBIT-2019/CSW-COBIT-Technical-Runbook.md)
+
+| Objective / focus area | Topic | CSW can support evidence for |
+|---|---|---|
+| APO13 | Managed security | Segmentation workspaces; telemetry; vuln exposure views |
+| DSS01 | Managed operations | Flow/process monitoring; inventory; operational dashboards |
+| DSS02 | Managed service requests & incidents | Forensic search; process context for IR |
+| DSS05 | Managed security services | Enforcement logs; segmentation coverage |
+| DSS05.02 | Network and connectivity security | ADM snapshots; explicit allow/deny exports |
+| DSS05.05 | Physical and logical access (logical network) | Admin-path restriction rules; observed admin flows *(IdP/MFA complementary)* |
+| MEA01 | Managed performance and conformance monitoring | Conformance dashboards; scheduled exports |
+| MEA02 | Managed system of internal control | Drift detection; policy versioning; audit bundles |
+| BAI06 | Managed IT changes | Post-change package / listener deltas |
+| BAI10 | Managed configuration | Baseline listeners & process sets |
+| EDM03 | Ensured risk optimization (inputs) | CVE + reachability prioritisation for risk committees |
+
+---
+
+## Australian Essential Eight (ACSC EEMM)
+
+Source: [`AU-Essential-Eight/CSW-Essential-Eight-Technical-Runbook.md`](./AU-Essential-Eight/CSW-Essential-Eight-Technical-Runbook.md)
+
+| Strategy | Topic | CSW can support evidence for |
+|---|---|---|
+| E1 | Application control | Process visibility; execution telemetry; hunt exports *with* allowlist records from endpoint tool |
+| E2 | Patch applications | Inventory; CVE + EPSS + exposure |
+| E3 | Office macro settings | Limited — egress patterns from Office *(not macro policy config)* |
+| E4 | User application hardening | Browser/Office network baselines; anomalies |
+| E5 | Restrict administrative privileges | Admin-path segmentation; jump-host rules; process visibility |
+| E6 | Patch operating systems | OS inventory; CVE mapping |
+| E7 | Multi-factor authentication | **Out of scope** — IdP evidence |
+| E8 | Regular backups | Peripheral flow telemetry only *(not immutability / restore testing)* |
+
+---
+
+## UK Cyber Essentials Plus
+
+Source: [`UK-Cyber-Essentials/CSW-Cyber-Essentials-Technical-Runbook.md`](./UK-Cyber-Essentials/CSW-Cyber-Essentials-Technical-Runbook.md)
+
+| Theme | Topic | CSW can support evidence for |
+|---|---|---|
+| CE1 | Firewalls & gateways | Workload micro-segmentation; deny-by-default; ADM-backed rules |
+| CE2 | Secure configuration | Software inventory; drift; listener reports |
+| CE3 | User access control | Identity-aware policies where integrated; east-west least privilege |
+| CE4 | Malware protection | Complement AV/EDR — anomaly rules; lateral containment |
+| CE5 | Security updates | CVE + EPSS; reachability-ranked backlog |
+
+---
+
+## HIPAA Security Rule — 2025 NPRM (proposed)
+
+> **Proposed rule.** This section indexes **discussed NPRM provisions** — confirm **final** regulatory text and effective dates with counsel before formal reliance. Parallel compliance with the **current** Security Rule applies until amendments are in force.
+
+Source: [`HIPAA-2025-NPRM/CSW-HIPAA-NPRM-Technical-Runbook.md`](./HIPAA-2025-NPRM/CSW-HIPAA-NPRM-Technical-Runbook.md)
+
+| Provision | Topic | CSW can support evidence for |
+|---|---|---|
+| §164.312(a)(2)(vi) | Network segmentation (*proposed mandatory*) | Deny-by-default between ePHI and non-ePHI; ADM-backed rules |
+| §164.312(a)(1) | Access control (*strengthened*) | Identity-aware segmentation; process-level visibility |
+| §164.308(a)(1)(ii)(A) | Technology asset inventory | Workload discovery; software inventory exports |
+| §164.308(a)(1)(ii)(B) | Risk analysis — network map | ADM + flow topology |
+| §164.308(a)(2) | Vulnerability management (*proposed*) | CVE + EPSS + reachability |
+| §164.312(b) | Audit controls — *24-month retention (proposed)* | Flow/process telemetry to SIEM / durable archive |
+| §164.312(e) / NPRM encryption (*verify final §*) | Encryption in transit / path hygiene | Plaintext detection & blocking narratives |
+| §164.308(a)(6) | Security incident — timely notification themes | Forensic flow/process timelines |
+| §164.306(e) | Annual compliance assessment (*proposed*) | Continuous monitoring artefact cadence |
+
+---
+
 ## Reverse Lookup — common CSW capabilities → frameworks
 
 | CSW capability | Frameworks it often supports (apply judgment per deployment) |
 |---|---|
-| Workload inventory views | HIPAA §164.308(a)(1)(ii)(A) · PCI Req 2 · NIST CM-8 · ISO A.8.1 · CISA ZTMM Devices · 800-207 Tenet 1 · DORA Art. 8 · NIS2 Art. 21(2)(i) · NERC CIP-002 R1 · TSA SD Section II · IEC 62443 SR 3 · FedRAMP CM-8 · CIS Safeguard 1.1 · CSF ID.AM-01 · CMMC CM.L2-3.4.1 |
-| Workload-level segmentation (allow-list / deny-by-default) | HIPAA §164.312(a)(1) · SOC 2 CC6.1 · PCI Req 1, 7 · NIST AC-3, AC-4, SC-7 · ISO A.8.20–A.8.22 · CISA ZTMM Networks · 800-207 Tenets 3, 6 · 800-207A PEP · DORA Art. 9 · NIS2 Art. 21(2)(a), (j) · NERC CIP-005 R1 · TSA SD Section III.A · IEC 62443 SR 5 · GDPR Art. 25 / 32 · FedRAMP AC-4 / SC-7 · SWIFT CSCF 1.1 · HITRUST 01.m–01.o · CIS Safeguards 4.4, 13.4 · CSF PR.IR-01 · CMMC AC.L2-3.1.1, SC.L2-3.13.1 / 3.13.6 |
-| Identity-aware least-privilege between zones (e.g. IT-to-OT-adjacent) | NIST AC-3, AC-6 · 800-207 Tenets 3, 6 · NERC CIP-005 R1 (IT-side) · TSA SD Section III.A / III.B · IEC 62443 SR 1 · SWIFT CSCF 5.1 · CIS Safeguard 6.1 · CSF PR.AA-05 · CMMC AC.L2-3.1.2 / 3.1.3 |
+| Workload inventory views | HIPAA §164.308(a)(1)(ii)(A) · PCI Req 2 · NIST CM-8 · ISO A.8.1 · CISA ZTMM Devices · 800-207 Tenet 1 · DORA Art. 8 · NIS2 Art. 21(2)(i) · NERC CIP-002 R1 · TSA SD Section II · IEC 62443 SR 3 · FedRAMP CM-8 · CIS Safeguard 1.1 · CSF ID.AM-01 · CMMC CM.L2-3.4.1 · HIPAA NPRM §164.308(a)(1)(ii)(A) · NIST 800-171 03.04.x |
+| Workload-level segmentation (allow-list / deny-by-default) | HIPAA §164.312(a)(1) · SOC 2 CC6.1 · PCI Req 1, 7 · NIST AC-3, AC-4, SC-7 · ISO A.8.20–A.8.22 · CISA ZTMM Networks · 800-207 Tenets 3, 6 · 800-207A PEP · DORA Art. 9 · NIS2 Art. 21(2)(a), (j) · NERC CIP-005 R1 · TSA SD Section III.A · IEC 62443 SR 5 · GDPR Art. 25 / 32 · FedRAMP AC-4 / SC-7 · SWIFT CSCF 1.1 · HITRUST 01.m–01.o · CIS Safeguards 4.4, 13.4 · CSF PR.IR-01 · CMMC AC.L2-3.1.1, SC.L2-3.13.1 / 3.13.6 · NIST 800-171 03.13.06 · HIPAA NPRM §164.312(a)(2)(vi) · UK CE1 · CSA IVS-09 · COBIT DSS05.02 |
+| Identity-aware least-privilege between zones (e.g. IT-to-OT-adjacent) | NIST AC-3, AC-6 · 800-207 Tenets 3, 6 · NERC CIP-005 R1 (IT-side) · TSA SD Section III.A / III.B · IEC 62443 SR 1 · SWIFT CSCF 5.1 · CIS Safeguard 6.1 · CSF PR.AA-05 · CMMC AC.L2-3.1.2 / 3.1.3 · AU E5 · UK CE3 |
 | Interactive remote access termination evidence | NERC CIP-005 R2 · NIST AC-17 · DORA Art. 9 (telework) · CIS Safeguard 13.5 · CMMC AC.L2-3.1.13 |
 | ADM (application dependency mapping) | PCI Req 1.2.1 · NIST CA-7, CM-2 · ISO A.8.16 · DORA Art. 8(6) · NIS2 Art. 21(2)(a) · NERC CIP-010 R1.1 · TSA SD Section III.A (documented flows) · GDPR Art. 30 (RoPA corroboration) · IEC 62443 SR 5 · FedRAMP AC-4 · HITRUST 10.a · CIS Safeguard 12.4 · CSF ID.AM-03 · CMMC SC.L2-3.13.2 |
-| Per-workload listening-port inventory + last-flow timestamp | PCI Req 1.2.6, 2.2.4 · NIST CM-7 · NERC CIP-007 R1 · TSA SD Section III.B · CIS Safeguards 4.6, 2.6 · CMMC CM.L2-3.4.6 |
-| Exposure / vulnerability views + conversational reachability | PCI Req 6.3.3, 11.3 · NIST RA-5, SI-5 · ISO A.8.8 · DORA Art. 25(1) · NIS2 Art. 21(2)(e) · NERC CIP-010 R3 · TSA SD Section III.D · FedRAMP RA-5 · IEC 62443 SR 3 · HITRUST 10.m · CIS Safeguards 7.1–7.7 · CSF ID.RA-01 / ID.RA-05 · CMMC RA.L2-3.11.2 / 3.11.3 |
-| Configuration baseline + unauthorised-change detection | NIST CM-2, CM-3, CM-6 · ISO A.8.9 · NERC CIP-010 R1, R1.5 · CIS Safeguard 4.1 · CSF PR.PS-01 / ID.RA-07 · CMMC CM.L2-3.4.1 / 3.4.3 |
-| Process + flow telemetry into SIEM | HIPAA §164.312(b) · SOC 2 CC7.2 · PCI Req 10 · NIST AU-2, AU-12, SI-4 · ISO A.8.16 · DORA Art. 10 · NIS2 Art. 21(2)(b) · NERC CIP-007 R4 · TSA SD Section III.C · FedRAMP SI-4 / AU-* · IEC 62443 SR 6 · SWIFT CSCF 6.4 · HITRUST 09.ab · CIS Safeguards 8.2 / 8.5 / 13.6 · CSF DE.CM-01 / DE.CM-09 / PR.PS-04 · CMMC AU.L2-3.3.1 / 3.3.2 / SI.L2-3.14.6 |
+| Per-workload listening-port inventory + last-flow timestamp | PCI Req 1.2.6, 2.2.4 · NIST CM-7 · NERC CIP-007 R1 · TSA SD Section III.B · CIS Safeguards 4.6, 2.6 · CMMC CM.L2-3.4.6 · UK CE2 · AU E1/E4 (listener visibility) |
+| Exposure / vulnerability views + conversational reachability | PCI Req 6.3.3, 11.3 · NIST RA-5, SI-5 · ISO A.8.8 · DORA Art. 25(1) · NIS2 Art. 21(2)(e) · NERC CIP-010 R3 · TSA SD Section III.D · FedRAMP RA-5 · IEC 62443 SR 3 · HITRUST 10.m · CIS Safeguards 7.1–7.7 · CSF ID.RA-01 / ID.RA-05 · CMMC RA.L2-3.11.2 / 3.11.3 · HIPAA NPRM §164.308(a)(2) · CSA TVM · AU E2/E6 · UK CE5 |
+| Configuration baseline + unauthorised-change detection | NIST CM-2, CM-3, CM-6 · ISO A.8.9 · NERC CIP-010 R1, R1.5 · CIS Safeguard 4.1 · CSF PR.PS-01 / ID.RA-07 · CMMC CM.L2-3.4.1 / 3.4.3 · COBIT BAI06 / BAI10 · CSA CCC |
+| Process + flow telemetry into SIEM | HIPAA §164.312(b) · SOC 2 CC7.2 · PCI Req 10 · NIST AU-2, AU-12, SI-4 · ISO A.8.16 · DORA Art. 10 · NIS2 Art. 21(2)(b) · NERC CIP-007 R4 · TSA SD Section III.C · FedRAMP SI-4 / AU-* · IEC 62443 SR 6 · SWIFT CSCF 6.4 · HITRUST 09.ab · CIS Safeguards 8.2 / 8.5 / 13.6 · CSF DE.CM-01 / DE.CM-09 / PR.PS-04 · CMMC AU.L2-3.3.1 / 3.3.2 / SI.L2-3.14.6 · NIST 800-171 03.03.x · HIPAA NPRM §164.312(b) (*proposed retention*) · CSA LOG |
 | Quarantine policy + forensic export | HIPAA §164.308(a)(6) · SOC 2 CC7.3, CC7.4 · NIST IR-4 · DORA Art. 11 · NIS2 Art. 21(2)(b) · NERC CIP-008 · TSA CIRP / 24-hour CISA · GDPR Art. 33–34 · SWIFT CSCF 7.1 · HITRUST 11.a / 11.c · CIS Control 17 · CSF RS.MI-01 / RS.AN-07 · CMMC IR.L2-3.6.x |
 | Egress observation + supplier reconciliation | ISO A.5.19–A.5.22 · NIST SR-3, SR-6 · DORA Art. 28 · NIS2 Art. 21(2)(d) · GDPR Art. 28 · NERC CIP-013 R1 (vendor remote access on the IT side) · CIS Safeguards 15.1 / 15.4 · CSF GV.SC-04 / GV.SC-07 / GV.SC-09 · CMMC AC.L2-3.1.20 |
 | Plaintext-protocol DENY enforcement | HIPAA §164.312(e)(1) · NIST SC-7, SC-13 (programme support) · ISO A.8.24 · 800-207 Tenet 2 · NIS2 Art. 21(2)(h) · GDPR Art. 32 · SWIFT CSCF 2.6 · FIPS 140 (programme support) · CIS Safeguard 12.2 · CSF PR.DS-02 |
-| Quarterly evidence pack to management body / Senior Officer | DORA Art. 5 · NIS2 Art. 20 · ISO Clause 9.3 (management review input) · SOC 2 CC4.1 · NERC CIP-003 R1 · TSA Cybersecurity Coordinator role · CSF GV.OV-01 / 02 / 03 · CMMC supports the SSP/POA&M cycle |
-| Annual self-assessment evidence pack | NIST CA-2 · ISO Clause 9.2 · TSA Cybersecurity Assessment Plan (CAP) · CIS IG self-assessment · CMMC L2 self-assessment (where contract permits) |
-| Behavioural detection + anomaly detection | NIST SI-4 · DORA Art. 10(2) · NIS2 Art. 21(2)(b) · MITRE ATT&CK TA0001–TA0040 · CIS Safeguards 13.2 / 13.3 · CSF DE.AE-02 / DE.AE-07 · CMMC SI.L2-3.14.2 / 3.14.6 |
-| CUI / regulated-data scope labelling | HIPAA ePHI tagging · PCI CDE labelling · DORA ICT-asset criticality (Art. 8) · CSF ID.AM-05 · CMMC CUI scope (foundational) |
+| Quarterly evidence pack to management body / Senior Officer | DORA Art. 5 · NIS2 Art. 20 · ISO Clause 9.3 (management review input) · SOC 2 CC4.1 · NERC CIP-003 R1 · TSA Cybersecurity Coordinator role · CSF GV.OV-01 / 02 / 03 · CMMC supports the SSP/POA&M cycle · COBIT MEA01 / EDM03 (technical inputs) |
+| Annual self-assessment evidence pack | NIST CA-2 · ISO Clause 9.2 · TSA Cybersecurity Assessment Plan (CAP) · CIS IG self-assessment · CMMC L2 self-assessment (where contract permits) · HIPAA NPRM §164.306(e) (*proposed*) |
+| Behavioural detection + anomaly detection | NIST SI-4 · DORA Art. 10(2) · NIS2 Art. 21(2)(b) · MITRE ATT&CK TA0001–TA0040 · CIS Safeguards 13.2 / 13.3 · CSF DE.AE-02 / DE.AE-07 · CMMC SI.L2-3.14.2 / 3.14.6 · UK CE4 · AU E1/E4 |
+| CUI / regulated-data scope labelling | HIPAA ePHI tagging · PCI CDE labelling · DORA ICT-asset criticality (Art. 8) · CSF ID.AM-05 · CMMC CUI scope (foundational) · NIST 800-171 `cui_scope` / enclave labels |
 
 ---
 

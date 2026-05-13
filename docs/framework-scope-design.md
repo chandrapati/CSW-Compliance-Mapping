@@ -37,6 +37,12 @@ asset owners, compliance team, and assessor.
   - [FedRAMP](#fedramp)
   - [SWIFT CSCF](#swift-cscf)
   - [HITRUST CSF v11](#hitrust-csf-v11)
+  - [NIST SP 800-171 Rev. 3](#nist-sp-800-171-rev-3)
+  - [CSA CCM v4.0](#csa-ccm-v40)
+  - [COBIT 2019](#cobit-2019)
+  - [Australian Essential Eight](#australian-essential-eight)
+  - [UK Cyber Essentials Plus](#uk-cyber-essentials-plus)
+  - [HIPAA Security Rule — 2025 NPRM](#hipaa-security-rule--2025-nprm)
 - [Label / tag recommendations](#label--tag-recommendations)
   - [Baseline labels for every customer](#baseline-labels-for-every-customer)
   - [Framework-specific labels](#framework-specific-labels)
@@ -62,6 +68,8 @@ asset owners, compliance team, and assessor.
    OT device enforcement usually require complementary controls.
 
 [↑ Back to top](#top)
+
+<a id="framework-mappings"></a>
 
 ## Framework Scope Design Table
 
@@ -89,6 +97,12 @@ asset owners, compliance team, and assessor.
 | FedRAMP | FedRAMP Moderate (or agency) authorization boundary for a cloud system | `FedRAMP-InScope` > `Management-Plane`, `App-Tier`, `Data-Tier`, `Security-Monitoring` mapped to SSP components | AC-4 / SC-7 workload enforcement; CA-7 ConMon exports; CM/RA/SI/AU/IR technical attachments; POA&M-ready vuln rows | CSW the **product** is not itself FedRAMP-authorized; reconcile inheritance vs customer responsibility in the SSP; 3PAO validates |
 | SWIFT CSCF | SWIFT secure zone & adjacent controlled interfaces per CSP architecture | `SWIFT-Program` > `SWIFT-Secure-Zone` (`Messaging-Interfaces`, `Operator-Jump-Hosts`) + `SWIFT-Adjacent` | CSCF 1.1 zone isolation; 1.4 internet egress restriction; 2.1 internal flows (ADM); 2.6 session confidentiality; 6.4 logging | Mandatory vs Advisory applicability follows **your** official CSCF v2024 matrix row; CSW does not complete CSP attestation |
 | HITRUST CSF v11 | MyCSF assessment scope spanning harmonised baselines (HIPAA, ISO, NIST, PCI as cited in PRS) | `HITRUST-In-Scope` > `PHI-Production` (if applicable), `PCI-CDE-Connected`, `Enterprise-Critical` | 01.m/01.n/01.o segregation & connection control; 09.ab/09.ad monitoring & operator evidence; 10.a ADM; 10.m vuln; 11.a/11.c incident artefacts; e1/i1/r2 export depth per programme | Certification remains with HITRUST/assessor; confirm **exact PRS** keys in MyCSF |
+| NIST SP 800-171 Rev. 3 | CUI systems and enclaves per SSP / CMMC assessment context | `CUI-Program` > `CUI-Enclave` > `CUI-Apps`, `CUI-Data`, `Security-Services`, `Non-CUI` | 03.01.03 information-flow enforcement; 03.13.06 deny-by-default; 03.03 audit telemetry; 03.04 baselines; 03.11 vuln reachability | Confirm **Rev. 2 vs. Rev. 3** baseline with PMO; administrative, physical, IdP, and FIPS modules remain complementary |
+| CSA CCM v4 | Multicloud / hybrid services in CCM or CSA STAR scope | `CCM-STAR` > `Prod-Regulated`, `Shared-Services`, `Sandbox` (separate policy workspaces from prod) | IVS-09-style segmentation; DSP tier isolation; LOG / SIEM forwarding; TVM reachability; AIS interface inventory | Map each row to **shared responsibility** (customer vs CSP); HRS and pure programme attestations stay organisational |
+| COBIT 2019 | IT governance assessments where technology evidence is required for DSS / BAI / MEA | `COBIT-Evidence` > `Production-Critical`, `Admin-Jump`, `Third-Party-Integration` | DSS05.02 connectivity security; APO13 managed security posture; MEA01/02 conformance exports; BAI06/10 change & configuration signals | Culture, HR, sourcing, and full SOx narratives remain outside CSW; attach evidence only to technology-addressable practices |
+| Australian Essential Eight | Organisations aligning to ACSC EEMM strategies E1–E8 | `E8-Scope` > `Crown-Jewels`, `Windows-Servers`, `Linux-Servers`, `Admins-Jump-Zone` | E2/E6 CVE+EPSS prioritisation; E5 admin-path restriction; E1/E4 complementary process telemetry | CSW does **not** replace allowlisting, Office macro policy, MFA, or backup programmes |
+| UK Cyber Essentials Plus | UK organisations in Cyber Essentials **Plus** certification boundary | `UK-CE` > `CE-In-Scope-Production`, `Corporate-Standard`, `Partner-Connectivity` | CE1 workload-level firewall; CE2 inventory & drift; CE3 east-west least privilege; CE5 vuln backlog | Accredited assessor awards certification; CSW complements perimeter firewalls and AV/EDR |
+| HIPAA Security Rule (2025 NPRM) | Covered entities / BAs planning for **proposed** Security Rule updates | `HIPAA-NPRM` > `PHI-Zone`, `Non-PHI-Enterprise`, `BA-Connectivity`, `SIEM-Archive` | §164.312(a)(2)(vi) segmentation (*proposed*); technology asset inventory; §164.308(a)(2) vuln programme; §164.312(b) 24-month log architecture (*proposed*) | **Proposed rule** only — reconcile with **final** FR text; maintain **current-rule** compliance until effective |
 
 The following anchors match the framework links in the [table of contents](#table-of-contents) so you can jump directly to a row in the table above.
 
@@ -266,7 +280,55 @@ The following anchors match the framework links in the [table of contents](#tabl
 |---|---|---|---|
 | MyCSF in-scope systems with harmonised PRS references | `HITRUST-In-Scope` > `PHI-Production`, `PCI-CDE-Connected`, risk-tier labels | 01.m/01.n/01.o network segregation & routing visibility; 09.x monitoring & operator logs; 10.a ADM; 10.m vulnerabilities; 11.x incident evidence; assessment-level export cadence (e1/i1/r2) | HITRUST certification, SoA/risk register narratives, privacy legal controls, AV/EDR, authenticated scanning, and physical security remain complementary |
 
-[↑ Back to top](#top)
+[↑ Back to top](#top) · [↑ Framework mappings](#framework-mappings) · [↑ Table of contents](#table-of-contents)
+
+<h3 id="nist-sp-800-171-rev-3">NIST SP 800-171 Rev. 3</h3>
+
+| Customer scope anchor | Suggested CSW scope pattern | Primary evidence focus | Boundaries and complementary controls |
+|---|---|---|---|
+| CUI systems and enclaves per SSP / nonfederal organisation boundary | `CUI-Program` > `CUI-Enclave` > `CUI-Apps`, `CUI-Data`, `Security-Services`, `Non-CUI` | 03.01.03 CUI information-flow enforcement; 03.13.06 deny-by-default; 03.03 audit exports; 03.04 baseline drift; 03.11 reachability-aware risk inputs | Personnel, physical, training, formal assessments, IdP lifecycle, and crypto module validation stay outside CSW; confirm applicable **800-171 revision** |
+
+[↑ Back to top](#top) · [↑ Framework mappings](#framework-mappings) · [↑ Table of contents](#table-of-contents)
+
+<h3 id="csa-ccm-v40">CSA CCM v4.0</h3>
+
+| Customer scope anchor | Suggested CSW scope pattern | Primary evidence focus | Boundaries and complementary controls |
+|---|---|---|---|
+| Hybrid / multicloud workloads under CCM or CSA STAR evidence | `CCM-STAR` > regulated prod tiers + segregated non-prod | IVS / IAM / DSP segmentation; LOG forwarding; TVM reachability exports; AIS dependency baselines | Classify **customer vs CSP** responsibility per row; STAR legal attestation and HR domains stay programme-owned |
+
+[↑ Back to top](#top) · [↑ Framework mappings](#framework-mappings) · [↑ Table of contents](#table-of-contents)
+
+<h3 id="cobit-2019">COBIT 2019</h3>
+
+| Customer scope anchor | Suggested CSW scope pattern | Primary evidence focus | Boundaries and complementary controls |
+|---|---|---|---|
+| IT governance scope where DSS / BAI / MEA need technical artefacts | `COBIT-Evidence` > tiered production + admin jump + integrations | DSS05.02 network security; APO13 enforcement posture; MEA01/02 conformance views; BAI06/10 change & configuration diffs | Board culture, competencies, procurement contracts, and non-technical COBIT practices require other evidence |
+
+[↑ Back to top](#top) · [↑ Framework mappings](#framework-mappings) · [↑ Table of contents](#table-of-contents)
+
+<h3 id="australian-essential-eight">Australian Essential Eight</h3>
+
+| Customer scope anchor | Suggested CSW scope pattern | Primary evidence focus | Boundaries and complementary controls |
+|---|---|---|---|
+| ACSC EEMM strategies with per-strategy ML targets | `E8-Scope` > crown jewels + server classes + admin jump zone | E2/E6 inventory & prioritisation; E5 admin-path enforcement; E1/E4 detection-oriented telemetry | Allowlisting (**E1**), macro policy (**E3**), MFA (**E7**), backups (**E8**) remain owned by dedicated tooling |
+
+[↑ Back to top](#top) · [↑ Framework mappings](#framework-mappings) · [↑ Table of contents](#table-of-contents)
+
+<h3 id="uk-cyber-essentials-plus">UK Cyber Essentials Plus</h3>
+
+| Customer scope anchor | Suggested CSW scope pattern | Primary evidence focus | Boundaries and complementary controls |
+|---|---|---|---|
+| CE Plus in-scope production estate | `UK-CE` > `CE-In-Scope-Production` + corporate / partner scopes | CE1 workload firewall narrative; CE2 secure configuration drift; CE5 patch evidence | Accredited assessor certifies outcome; perimeter appliance config and AV/EDR still required |
+
+[↑ Back to top](#top) · [↑ Framework mappings](#framework-mappings) · [↑ Table of contents](#table-of-contents)
+
+<h3 id="hipaa-security-rule--2025-nprm">HIPAA Security Rule — 2025 NPRM</h3>
+
+| Customer scope anchor | Suggested CSW scope pattern | Primary evidence focus | Boundaries and complementary controls |
+|---|---|---|---|
+| ePHI processing systems while planning for **proposed** rule changes | `HIPAA-NPRM` > `PHI-Zone` default deny vs `Non-PHI-Enterprise` + SIEM archive scope | §164.312(a)(2)(vi) microsegmentation (*proposed*); inventory & ADM map; vuln backlog; §164.312(b) SIEM/object-store retention (*proposed*) | **NPRM is not final law** — privacy office & counsel own interpretation; parallel **current** HIPAA compliance until effective |
+
+[↑ Back to top](#top) · [↑ Framework mappings](#framework-mappings) · [↑ Table of contents](#table-of-contents)
 
 ## Label / Tag Recommendations
 
@@ -316,6 +378,12 @@ and controlled; avoid free-form spelling differences that split evidence.
 | FedRAMP | `ssp-component-id`, `data-impact`, `conmon_cadence` | `web-tier`, `moderate`, `monthly` | Map hosts to SSP attachments and ConMon rhythm |
 | SWIFT CSCF | `swift_zone`, `swift_role`, `cscf_arch_type` | `secure`, `smc`, `A1` | Partition secure zone vs adjacent interfaces for CSP folders |
 | HITRUST CSF | `hitrust_prs_ref`, `assessment_level`, `data-class` | `01.m`, `i1`, `phi` | Cross-walk exports to MyCSF requirement rows |
+| NIST 800-171 Rev. 3 | `cui_scope`, `cui_role`, `enclave_id`, `data_class` | `in_scope`, `stores`, `ENCLAVE-A`, `cui` | Tie workloads to SSP components and CUI handling roles |
+| CSA CCM v4 | `ccm_domain_focus`, `data_class`, `star_service` | `IVS,LOG`, `pci`, `SVC-042` | Align STAR services to CCM domain evidence |
+| COBIT 2019 | `cobit_domain`, `service_tier`, `owner_team` | `DSS`, `tier1`, `platform-ops` | Route exports to objective owners |
+| ACSC Essential Eight | `e8_strategy`, `admin_tier`, `internet_exposed` | `E5`, `tier0`, `true` | Build per-strategy ML evidence slices |
+| UK Cyber Essentials Plus | `ce-scope`, `tier`, `owner` | `in`, `data`, `infra-team` | Maintain Plus assessment boundary labels |
+| HIPAA 2025 NPRM | `nprm_scope`, `data_class`, `siem_retention_track` | `2025-planning`, `ephi`, `24-mo` | Track NPRM programme vs current-rule scopes |
 
 [↑ Back to top](#top)
 

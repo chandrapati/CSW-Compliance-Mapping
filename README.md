@@ -1,14 +1,16 @@
 # Cisco Secure Workload — Compliance Mapping Assets
 
 Customer-facing reports and matching technical runbooks that map Cisco
-Secure Workload (CSW) controls to **twenty-two** compliance, sector, and
+Secure Workload (CSW) controls to **twenty-eight** compliance, sector, and
 zero-trust frameworks. Every framework folder ships the same set of
 assets: a Markdown technical runbook (the engineering view), a DOCX
 report (the editable customer master), a PDF render of that report,
 and HTML versions of both for browser/mobile reading. **IEC 62443,
-GDPR, MITRE ATT&CK, FedRAMP, SWIFT CSCF,** and **HITRUST CSF** currently
-ship the Markdown technical runbook only; DOCX/PDF/HTML reports for those
-frameworks are not yet in this repository.
+GDPR, MITRE ATT&CK, FedRAMP, SWIFT CSCF, HITRUST CSF, NIST SP 800-171
+Rev. 3, CSA CCM v4.0, COBIT 2019, ACSC Essential Eight, UK Cyber
+Essentials Plus,** and **HIPAA 2025 NPRM** currently ship the Markdown
+technical runbook only; DOCX/PDF/HTML reports for those frameworks
+are not yet in this repository.
 
 > **New here?** Read [Background — What is Cisco Secure Workload?](./docs/about-csw.md)
 > for a one-page intro to the platform itself, then come back to pick a
@@ -87,13 +89,20 @@ reach for the runbook vs. the report).
 | FedRAMP (Moderate) | Moderate baseline overlay on NIST 800-53; ConMon evidence; POA&M inputs; 3PAO assessment preparation; AC-4/SC-7/CA-7/SI-4 FedRAMP parameters | [MD](./FedRAMP/CSW-FedRAMP-Technical-Runbook.md) | — |
 | SWIFT CSCF (v2024) | SWIFT secure zone isolation; mandatory/advisory control mapping; operator session integrity; Internet access restriction; SWIFT-specific logging | [MD](./SWIFT-CSCF/CSW-SWIFT-CSCF-Technical-Runbook.md) | — |
 | HITRUST CSF (v11) | Harmonized control mapping (HIPAA+ISO+NIST+PCI); e1/i1/r2 assessment level guidance; network segregation; vulnerability management; incident evidence | [MD](./HITRUST-CSF/CSW-HITRUST-Technical-Runbook.md) | — |
+| NIST SP 800-171 Rev. 3 | CUI enclave isolation; 03.01/03.13 flow enforcement; Rev 3 family alignment with 800-53; CMMC L2 underpinning evidence | [MD](./NIST-800-171/CSW-NIST-800-171-Technical-Runbook.md) | — |
+| CSA CCM v4 | Cloud workload segmentation; IVS-09 network security; DSP data isolation; TVM reachability; STAR certification evidence support | [MD](./CSA-CCM/CSW-CSA-CCM-Technical-Runbook.md) | — |
+| COBIT 2019 | DSS05.02 network security; APO13 managed security; MEA01/02 conformance monitoring; BAI06/10 change and configuration evidence | [MD](./COBIT-2019/CSW-COBIT-Technical-Runbook.md) | — |
+| Australian Essential Eight | ML1–ML3 maturity evidence; E2/E6 patch prioritisation via CVE+EPSS; E5 admin privilege path restriction; E1 application control support | [MD](./AU-Essential-Eight/CSW-Essential-Eight-Technical-Runbook.md) | — |
+| UK Cyber Essentials Plus | CE1 workload-level firewall; CE2 secure configuration baseline; CE5 patch management evidence; Plus technical verification support | [MD](./UK-Cyber-Essentials/CSW-Cyber-Essentials-Technical-Runbook.md) | — |
+| HIPAA 2025 NPRM | Mandatory network segmentation (§164.312(a)(2)(vi)); technology asset inventory; 24-month log retention architecture; 72-hour breach timeline; annual assessment evidence | [MD](./HIPAA-2025-NPRM/CSW-HIPAA-NPRM-Technical-Runbook.md) | — |
 
 > **Quickly find a control?** See [`INDEX.md`](./INDEX.md) for a
-> control-ID-keyed index across all twenty-two frameworks (e.g. *PCI Req
+> control-ID-keyed index across all twenty-eight frameworks (e.g. *PCI Req
 > 1.2*, *HIPAA §164.312(a)(1)*, *DORA Art. 9*, *NIS2 Art. 21(2)(d)*,
 > *NIST AC-4*, *NERC CIP-005 R1*, *TSA SD Section III.A*, *IEC 62443 SR 5.3*,
 > *GDPR Art. 32*, *FedRAMP AC-4*, *SWIFT CSCF 1.4*, *HITRUST 01.m*, *MITRE TA0008*,
-> *CIS Safeguard 13.4*, *CSF PR.IR-01*, *CMMC AC.L2-3.1.1*).
+> *CIS Safeguard 13.4*, *CSF PR.IR-01*, *CMMC AC.L2-3.1.1*, *NIST 800-171 03.13.06*,
+> *CSA IVS-09*, *COBIT DSS05.02*, *E8 E5*, *UK CE1*, *HIPAA NPRM §164.312(a)(2)(vi)*).
 
 > **Cross-cutting frameworks scope note (CIS, CSF, CMMC).** These three
 > frameworks are *cross-mapping* / certification frameworks that
@@ -138,7 +147,7 @@ reach for the runbook vs. the report).
 - **[Audience and usage guide](./docs/audience-and-usage.md)** — who
   should lead with which document, runbook-vs-report guidance, file
   format guidance, and the full folder layout.
-- **[`INDEX.md`](./INDEX.md)** — control-ID lookup across all twenty-two
+- **[`INDEX.md`](./INDEX.md)** — control-ID lookup across all twenty-eight
   frameworks.
 
 Once GitHub Pages is enabled, the same content is also browseable at
@@ -159,9 +168,17 @@ standards and regulatory framework documents (HIPAA, SOC 2, PCI DSS,
 NIST SP 800-series, ISO/IEC 27001, CISA ZTMM, FIPS 140, EU DORA,
 EU NIS2, NERC CIP, TSA Pipeline Security Directives, CIS Critical
 Security Controls v8.1, NIST Cybersecurity Framework 2.0, CMMC 2.0,
-IEC 62443, GDPR, MITRE ATT&CK, FedRAMP, SWIFT CSCF, and HITRUST CSF)
+IEC 62443, GDPR, MITRE ATT&CK, FedRAMP, SWIFT CSCF, HITRUST CSF,
+NIST SP 800-171 Rev. 3, CSA Cloud Controls Matrix v4, COBIT 2019,
+ACSC Essential Eight, UK Cyber Essentials Plus, and the HIPAA Security
+Rule 2025 Notice of Proposed Rulemaking (NPRM)
 cross-referenced against documented Cisco Secure Workload (CSW)
 product capabilities at the time of authoring.
+
+The **HIPAA 2025 NPRM** technical mapping interprets a **proposed**
+Security Rule update and must be reconciled against **final** regulatory
+text before formal reliance; continue parallel compliance with the
+**current** Security Rule until amendments are effective.
 
 The **NERC CIP** and **TSA Pipeline** mappings are explicitly scoped
 to the **IT side of the IT/OT boundary** and are issued as **draft
