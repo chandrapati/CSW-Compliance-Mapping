@@ -3,19 +3,19 @@
 << /Type /Catalog /Pages 2 0 R >>
 endobj
 2 0 obj
-<< /Type /Pages /Kids [3 0 R 5 0 R] /Count 2 >>
+<< /Type /Pages /Kids [3 0 R 5 0 R 7 0 R] /Count 3 >>
 endobj
 3 0 obj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 4 0 R >>
 endobj
 4 0 obj
-<< /Length 2285 >>
+<< /Length 2583 >>
 stream
 BT
 /F1 10 Tf
 50 760 Td
 14 TL
-(Cisco Secure Workload - NIST SP 800-171 Rev. 3 Compliance Report) Tj
+(Cisco Secure Workload - NIST SP 800-171 Compliance Report) Tj
 T*
 () Tj
 T*
@@ -23,15 +23,49 @@ T*
 T*
 () Tj
 T*
-(Framework: NIST SP 800-171 Rev. 3) Tj
+(Framework: NIST SP 800-171 Revision 3 - Protecting Controlled Unclassified Information \(CUI\)) Tj
 T*
-(Primary audience: Defense industrial base, CUI enclave owners, CMMC preparation teams, and) Tj
+(Primary audience: Defense industrial base contractors, federal contractors and) Tj
 T*
-(security architects.) Tj
+(subcontractors, and any organisation processing or storing CUI on non-federal systems.) Tj
 T*
-(CSW positioning: CUI enclave isolation, 03.01 and 03.13 flow enforcement, Rev. 3 family) Tj
+(CSW positioning: CUI enclave isolation, access enforcement, system and communications) Tj
 T*
-(alignment, and CMMC Level 2 underpinning evidence.) Tj
+(protection \(03.01 and 03.13 families\), and CMMC Level 2 underpinning evidence.) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(Framework Version Note) Tj
+T*
+() Tj
+T*
+(References NIST SP 800-171 Rev. 3 \(published May 2024\). Rev. 3 restructured the families;) Tj
+T*
+(common family abbreviations used here \(e.g. 03.01 Access Control, 03.13 System and) Tj
+T*
+(Communications Protection\) follow the Rev. 3 numbering. Validate against the version) Tj
+T*
+(applicable to the customer's contract \(Rev. 2 numbering may still be referenced in legacy) Tj
+T*
+(contracts\).) Tj
+T*
+() Tj
+T*
+(CSW UI Navigation Note) Tj
+T*
+() Tj
+T*
+(Cisco does not yet publish framework-specific CSW UI navigation for this standard;) Tj
+T*
+(framework-specific navigation is on the product roadmap. This report references CSW) Tj
+T*
+(*capabilities* and the *evidence artifacts* they produce. The technical runbook \(CSW-) Tj
+T*
+(NIST-800-171-Technical-Runbook.md\) in this folder contains the deeper engineering detail.) Tj
 T*
 () Tj
 T*
@@ -43,15 +77,19 @@ T*
 T*
 () Tj
 T*
-(Cisco Secure Workload \(CSW\) can support this framework by producing workload-level evidence) Tj
+(Cisco Secure Workload \(CSW\) supports a defined subset of this framework. The strongest) Tj
 T*
-(for inventory, application dependency mapping, segmentation design, policy simulation,) Tj
+(customer story is not that CSW "certifies" compliance; it is that CSW turns workload) Tj
 T*
-(vulnerability context, and incident investigation. The strongest customer story is not that) Tj
+(communication and inventory into evidence that the customer, the customer's compliance team,) Tj
 T*
-(CSW "certifies" compliance; it is that CSW turns workload communication into evidence that) Tj
+(and the customer's assessor can review. This report describes which framework topics CSW) Tj
 T*
-(control owners, assessors, and technical teams can review.) Tj
+(supports, which it does not, what evidence artifacts CSW produces, and how often the) Tj
+T*
+(customer should collect them. CSW does not replace the customer's governance, policy, or) Tj
+T*
+(assessor judgement, and this report is not a control attestation.) Tj
 T*
 () Tj
 T*
@@ -59,57 +97,19 @@ T*
 T*
 () Tj
 T*
-(NIST-800-171 > CUI-Enclave, CUI-Applications, Boundary-Services, Admin-Paths, External-) Tj
+(``) Tj
 T*
-(Connections) Tj
+(NIST-800-171) Tj
 T*
-() Tj
+(??? CUI-Enclave \(workloads processing or storing CUI\)) Tj
 T*
-(This scope pattern should be validated with the customer's architecture, application owners,) Tj
+(??? CUI-Adjacent-Services \(identity, logging, patching adjacent to CUI\)) Tj
 T*
-(compliance team, and assessor before it is used for formal evidence.) Tj
+(??? Admin-Paths \(jump hosts\)) Tj
 T*
-() Tj
+(??? External-Connections \(CUI-related external paths\)) Tj
 T*
-(Outcomes CSW Can Support) Tj
-T*
-() Tj
-T*
-(? Identify CUI-related workloads and enclave boundaries.) Tj
-T*
-(? Support access control and system communication protection evidence.) Tj
-T*
-(? Document allowed and observed workload communication paths.) Tj
-T*
-(? Package evidence that can inform CMMC Level 2 preparation.) Tj
-T*
-() Tj
-T*
-(Evidence Package) Tj
-T*
-() Tj
-T*
-(? CUI workload inventory) Tj
-T*
-(? Enclave flow and boundary map) Tj
-T*
-(? Policy candidate and exception register) Tj
-T*
-(? External connection summary) Tj
-T*
-(? Vulnerability and monitoring evidence) Tj
-T*
-() Tj
-T*
-(POV / Workshop Approach) Tj
-T*
-() Tj
-T*
-(1. Select one business service, regulated boundary, or critical workload group.) Tj
-T*
-(2. Validate workload coverage and install sensors or configure supported connectors.) Tj
-T*
-(3. Apply labels for application, environment, owner, data class, criticality, compliance) Tj
+(`) Tj
 T*
 ET
 endstream
@@ -118,21 +118,174 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 6 0 R >>
 endobj
 6 0 obj
-<< /Length 886 >>
+<< /Length 2490 >>
 stream
 BT
 /F1 10 Tf
 50 760 Td
 14 TL
-(scope, and lifecycle.) Tj
+() Tj
 T*
-(4. Observe flows over a representative business window.) Tj
+(This scope pattern should be validated with the customer's architecture, application owners,) Tj
 T*
-(5. Use ADM to generate a candidate policy and review it with the application owner.) Tj
+(compliance team, and assessor before it is used for formal evidence.) Tj
 T*
-(6. Package inventory, scope, flows, policy, exceptions, and known gaps as the evidence) Tj
+() Tj
 T*
-(output.) Tj
+(In Scope for CSW Evidence) Tj
+T*
+() Tj
+T*
+(? 03.01 Access Control \(workload-to-workload allowlist\)) Tj
+T*
+(? 03.13 System and Communications Protection \(workload-to-workload segmentation\)) Tj
+T*
+(? 03.04 Configuration Management \(workspace baseline\)) Tj
+T*
+(? 03.11 Risk Assessment \(reachability-weighted vulnerability evidence\)) Tj
+T*
+(? 03.14 System and Information Integrity \(monitoring\)) Tj
+T*
+(? 03.06 Incident Response \(forensic input\)) Tj
+T*
+() Tj
+T*
+(Out of Scope \(Must Be Evidenced by Other Controls / Tools / Processes\)) Tj
+T*
+() Tj
+T*
+(? 03.05 Identification and Authentication \(identity layer\)) Tj
+T*
+(? 03.09 Personnel Security) Tj
+T*
+(? 03.10 Physical Protection) Tj
+T*
+(? 03.08 Media Protection) Tj
+T*
+(? 03.13 Cryptography enforcement \(CSW detects plaintext flows but does not enforce) Tj
+T*
+(  encryption\)) Tj
+T*
+(? CMMC assessment scoring) Tj
+T*
+() Tj
+T*
+(Framework Topic ? CSW Capability Map) Tj
+T*
+() Tj
+T*
+(| Framework topic | CSW capability | Evidence artifact |) Tj
+T*
+(|  |  |  |) Tj
+T*
+(| 03.01 Access Control \(workload layer\) | Policy workspace + enforcement / violation log |) Tj
+T*
+(Workspace snapshot + violation log |) Tj
+T*
+(| 03.13 System and Communications Protection | Default-deny at CUI enclave boundary |) Tj
+T*
+(Workspace snapshot showing boundary deny rules |) Tj
+T*
+(| 03.04 Configuration Management | Workspace baseline and change log | Change-controlled) Tj
+T*
+(policy workspace export |) Tj
+T*
+(| 03.11 Risk Assessment \(reachability\) | Reachability-weighted CVE evidence | Prioritised) Tj
+T*
+(remediation list |) Tj
+T*
+(| 03.14 System and Information Integrity | Continuous flow + process telemetry; alerts |) Tj
+T*
+(Alert and anomaly log scoped to CUI-Enclave |) Tj
+T*
+(| 03.06 Incident Response | Forensic flow + process search | Investigation pack with) Tj
+T*
+(timeline and impact scope |) Tj
+T*
+() Tj
+T*
+(Evidence Collection Approach) Tj
+T*
+() Tj
+T*
+(The table below describes per-topic evidence collection - what to collect, the CSW source) Tj
+T*
+(area, and a suggested cadence. The cadence should be tuned to the customer's audit cycle,) Tj
+T*
+(regulatory cadence, and risk appetite.) Tj
+T*
+() Tj
+T*
+(| Topic | What to collect | CSW source | Suggested cadence |) Tj
+T*
+(|  |  |  |  |) Tj
+T*
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 8 0 R >>
+endobj
+8 0 obj
+<< /Length 3253 >>
+stream
+BT
+/F1 10 Tf
+50 760 Td
+14 TL
+(| CUI enclave inventory | Workloads processing or storing CUI | Inventory + scope membership) Tj
+T*
+(export filtered by data_class=cui | Monthly |) Tj
+T*
+(| Enclave boundary evidence | Workspace snapshot + observed-vs-approved flow comparison |) Tj
+T*
+(Policy workspace export + ADM export | Quarterly + after each change |) Tj
+T*
+(| External connection summary | Outbound flow from CUI-Enclave | Flow search filtered to) Tj
+T*
+(CUI-Enclave egress | Monthly |) Tj
+T*
+(| Vulnerability + reachability | CVE list weighted by reach into CUI-Enclave | Vulnerability) Tj
+T*
+(report scoped to NIST-800-171 | Monthly |) Tj
+T*
+(| Incident sample | One representative incident timeline | Flow + process search | Per) Tj
+T*
+(incident |) Tj
+T*
+() Tj
+T*
+(POV / Workshop Approach) Tj
+T*
+() Tj
+T*
+(1. Confirm the framework version and assessment cycle with the customer's compliance team.) Tj
+T*
+(2. Select one business service, regulated boundary, or critical workload group to start) Tj
+T*
+(with; do not attempt to instrument the entire estate in the POV.) Tj
+T*
+(3. Validate workload coverage and install sensors or configure supported connectors.) Tj
+T*
+(Document the cannot-instrument register; this is itself evidence.) Tj
+T*
+(4. Apply labels for application, environment, owner, data class, criticality, compliance) Tj
+T*
+(scope, and any framework-specific tags \(e.g. tenant, prototype, isa_level, npi, cui, ephi`\).) Tj
+T*
+(5. Observe flows over a representative business window. Minimum two weeks; longer if the) Tj
+T*
+(customer has month-end, quarterly, or seasonal cycles relevant to the scope.) Tj
+T*
+(6. Use ADM to generate a candidate policy. Review with the application owner. Run in) Tj
+T*
+(Simulation mode for at least two weeks before any enforcement.) Tj
+T*
+(7. Package inventory, scope, flows, policy, exceptions, and known gaps as the evidence) Tj
+T*
+(output. Cross-reference this report's evidence collection table with the customer's existing) Tj
+T*
+(audit work-papers.) Tj
 T*
 () Tj
 T*
@@ -140,9 +293,29 @@ T*
 T*
 () Tj
 T*
-(CSW does not replace CUI marking, contracts, SSP/POA&M ownership, identity governance,) Tj
+(CSW does not replace CUI marking, federal contract requirements \(DFARS 252.204-7012, FAR) Tj
 T*
-(encryption, media protection, or CMMC assessment decisions.) Tj
+(52.204-21, etc.\), System Security Plan ownership, POA&M ownership, identity governance,) Tj
+T*
+(media protection, encryption \(FIPS-validated modules\), personnel security, or CMMC) Tj
+T*
+(assessment.) Tj
+T*
+() Tj
+T*
+(Assessor / Auditor Caveat) Tj
+T*
+() Tj
+T*
+(CSW provides technical evidence inputs. The customer's qualified assessor, auditor,) Tj
+T*
+(certifying body, or regulator determines compliance status. Validate all framework-topic) Tj
+T*
+(mappings, control IDs, paragraph references, and section numbers in this report against the) Tj
+T*
+(current official framework text. If the customer is being assessed against a version other) Tj
+T*
+(than the one referenced in the framework version note above, revalidate before use.) Tj
 T*
 () Tj
 T*
@@ -160,16 +333,18 @@ ET
 endstream
 endobj
 xref
-0 7
+0 9
 0000000000 65535 f 
 0000000009 00000 n 
 0000000058 00000 n 
-0000000121 00000 n 
-0000000296 00000 n 
-0000002633 00000 n 
-0000002808 00000 n 
+0000000127 00000 n 
+0000000302 00000 n 
+0000002937 00000 n 
+0000003112 00000 n 
+0000005654 00000 n 
+0000005829 00000 n 
 trailer
-<< /Size 7 /Root 1 0 R >>
+<< /Size 9 /Root 1 0 R >>
 startxref
-3745
+9134
 %%EOF

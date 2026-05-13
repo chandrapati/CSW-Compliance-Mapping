@@ -298,87 +298,245 @@ pre, code, blockquote { background: #f5f5f5; }
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#cisco-secure-workload---nist-sp-800-171-rev.-3-compliance-report" id="toc-cisco-secure-workload---nist-sp-800-171-rev.-3-compliance-report">Cisco
-Secure Workload - NIST SP 800-171 Rev. 3 Compliance Report</a>
+<li><a href="#cisco-secure-workload---nist-sp-800-171-compliance-report" id="toc-cisco-secure-workload---nist-sp-800-171-compliance-report">Cisco
+Secure Workload - NIST SP 800-171 Compliance Report</a>
 <ul>
 <li><a href="#customer-facing-compliance-report" id="toc-customer-facing-compliance-report">Customer-Facing Compliance
 Report</a></li>
+<li><a href="#framework-version-note" id="toc-framework-version-note">Framework Version Note</a></li>
+<li><a href="#csw-ui-navigation-note" id="toc-csw-ui-navigation-note">CSW UI Navigation Note</a></li>
 <li><a href="#executive-summary" id="toc-executive-summary">Executive
 Summary</a></li>
 <li><a href="#suggested-csw-scope-pattern" id="toc-suggested-csw-scope-pattern">Suggested CSW Scope
 Pattern</a></li>
-<li><a href="#outcomes-csw-can-support" id="toc-outcomes-csw-can-support">Outcomes CSW Can Support</a></li>
-<li><a href="#evidence-package" id="toc-evidence-package">Evidence
-Package</a></li>
+<li><a href="#in-scope-for-csw-evidence" id="toc-in-scope-for-csw-evidence">In Scope for CSW Evidence</a></li>
+<li><a href="#out-of-scope-must-be-evidenced-by-other-controls-tools-processes" id="toc-out-of-scope-must-be-evidenced-by-other-controls-tools-processes">Out
+of Scope (Must Be Evidenced by Other Controls / Tools /
+Processes)</a></li>
+<li><a href="#framework-topic-csw-capability-map" id="toc-framework-topic-csw-capability-map">Framework Topic → CSW
+Capability Map</a></li>
+<li><a href="#evidence-collection-approach" id="toc-evidence-collection-approach">Evidence Collection
+Approach</a></li>
 <li><a href="#pov-workshop-approach" id="toc-pov-workshop-approach">POV
 / Workshop Approach</a></li>
 <li><a href="#boundaries-and-complementary-controls" id="toc-boundaries-and-complementary-controls">Boundaries and
 Complementary Controls</a></li>
+<li><a href="#assessor-auditor-caveat" id="toc-assessor-auditor-caveat">Assessor / Auditor Caveat</a></li>
 <li><a href="#disclaimer" id="toc-disclaimer">Disclaimer</a></li>
 </ul></li>
 </ul>
 </nav>
-<h1 id="cisco-secure-workload---nist-sp-800-171-rev.-3-compliance-report">Cisco
-Secure Workload - NIST SP 800-171 Rev. 3 Compliance Report</h1>
+<h1 id="cisco-secure-workload---nist-sp-800-171-compliance-report">Cisco
+Secure Workload - NIST SP 800-171 Compliance Report</h1>
 <h2 id="customer-facing-compliance-report">Customer-Facing Compliance
 Report</h2>
-<p><strong>Framework:</strong> NIST SP 800-171 Rev. 3<br />
-<strong>Primary audience:</strong> Defense industrial base, CUI enclave
-owners, CMMC preparation teams, and security architects.<br />
-<strong>CSW positioning:</strong> CUI enclave isolation, 03.01 and 03.13
-flow enforcement, Rev. 3 family alignment, and CMMC Level 2 underpinning
-evidence.</p>
+<p><strong>Framework:</strong> NIST SP 800-171 Revision 3 - Protecting
+Controlled Unclassified Information (CUI)<br />
+<strong>Primary audience:</strong> Defense industrial base contractors,
+federal contractors and subcontractors, and any organisation processing
+or storing CUI on non-federal systems.<br />
+<strong>CSW positioning:</strong> CUI enclave isolation, access
+enforcement, system and communications protection (03.01 and 03.13
+families), and CMMC Level 2 underpinning evidence.</p>
+<hr />
+<h2 id="framework-version-note">Framework Version Note</h2>
+<p>References NIST SP 800-171 Rev. 3 (published May 2024). Rev. 3
+restructured the families; common family abbreviations used here
+(e.g. 03.01 Access Control, 03.13 System and Communications Protection)
+follow the Rev. 3 numbering. Validate against the version applicable to
+the customer’s contract (Rev. 2 numbering may still be referenced in
+legacy contracts).</p>
+<h2 id="csw-ui-navigation-note">CSW UI Navigation Note</h2>
+<p>Cisco does not yet publish framework-specific CSW UI navigation for
+this standard; framework-specific navigation is on the product roadmap.
+This report references CSW <em>capabilities</em> and the <em>evidence
+artifacts</em> they produce. The technical runbook
+(<code>CSW-NIST-800-171-Technical-Runbook.md</code>) in this folder
+contains the deeper engineering detail.</p>
 <hr />
 <h2 id="executive-summary">Executive Summary</h2>
-<p>Cisco Secure Workload (CSW) can support this framework by producing
-workload-level evidence for inventory, application dependency mapping,
-segmentation design, policy simulation, vulnerability context, and
-incident investigation. The strongest customer story is not that CSW
-“certifies” compliance; it is that CSW turns workload communication into
-evidence that control owners, assessors, and technical teams can
-review.</p>
+<p>Cisco Secure Workload (CSW) supports a defined subset of this
+framework. The strongest customer story is not that CSW “certifies”
+compliance; it is that CSW turns workload communication and inventory
+into evidence that the customer, the customer’s compliance team, and the
+customer’s assessor can review. This report describes which framework
+topics CSW supports, which it does not, what evidence artifacts CSW
+produces, and how often the customer should collect them. CSW does
+<strong>not</strong> replace the customer’s governance, policy, or
+assessor judgement, and this report is <strong>not</strong> a control
+attestation.</p>
 <h2 id="suggested-csw-scope-pattern">Suggested CSW Scope Pattern</h2>
-<p><code>NIST-800-171</code> &gt; <code>CUI-Enclave</code>,
-<code>CUI-Applications</code>, <code>Boundary-Services</code>,
-<code>Admin-Paths</code>, <code>External-Connections</code></p>
+<pre><code>NIST-800-171
+├── CUI-Enclave (workloads processing or storing CUI)
+├── CUI-Adjacent-Services (identity, logging, patching adjacent to CUI)
+├── Admin-Paths (jump hosts)
+└── External-Connections (CUI-related external paths)</code></pre>
 <p>This scope pattern should be validated with the customer’s
 architecture, application owners, compliance team, and assessor before
 it is used for formal evidence.</p>
-<h2 id="outcomes-csw-can-support">Outcomes CSW Can Support</h2>
+<h2 id="in-scope-for-csw-evidence">In Scope for CSW Evidence</h2>
 <ul>
-<li>Identify CUI-related workloads and enclave boundaries.</li>
-<li>Support access control and system communication protection
-evidence.</li>
-<li>Document allowed and observed workload communication paths.</li>
-<li>Package evidence that can inform CMMC Level 2 preparation.</li>
+<li>03.01 Access Control (workload-to-workload allowlist)</li>
+<li>03.13 System and Communications Protection (workload-to-workload
+segmentation)</li>
+<li>03.04 Configuration Management (workspace baseline)</li>
+<li>03.11 Risk Assessment (reachability-weighted vulnerability
+evidence)</li>
+<li>03.14 System and Information Integrity (monitoring)</li>
+<li>03.06 Incident Response (forensic input)</li>
 </ul>
-<h2 id="evidence-package">Evidence Package</h2>
+<h2 id="out-of-scope-must-be-evidenced-by-other-controls-tools-processes">Out
+of Scope (Must Be Evidenced by Other Controls / Tools / Processes)</h2>
 <ul>
-<li>CUI workload inventory</li>
-<li>Enclave flow and boundary map</li>
-<li>Policy candidate and exception register</li>
-<li>External connection summary</li>
-<li>Vulnerability and monitoring evidence</li>
+<li>03.05 Identification and Authentication (identity layer)</li>
+<li>03.09 Personnel Security</li>
+<li>03.10 Physical Protection</li>
+<li>03.08 Media Protection</li>
+<li>03.13 Cryptography enforcement (CSW detects plaintext flows but does
+not enforce encryption)</li>
+<li>CMMC assessment scoring</li>
 </ul>
+<h2 id="framework-topic-csw-capability-map">Framework Topic → CSW
+Capability Map</h2>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 28%" />
+<col style="width: 28%" />
+</colgroup>
+<thead>
+<tr>
+<th>Framework topic</th>
+<th>CSW capability</th>
+<th>Evidence artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>03.01 Access Control (workload layer)</td>
+<td>Policy workspace + enforcement / violation log</td>
+<td>Workspace snapshot + violation log</td>
+</tr>
+<tr>
+<td>03.13 System and Communications Protection</td>
+<td>Default-deny at CUI enclave boundary</td>
+<td>Workspace snapshot showing boundary deny rules</td>
+</tr>
+<tr>
+<td>03.04 Configuration Management</td>
+<td>Workspace baseline and change log</td>
+<td>Change-controlled policy workspace export</td>
+</tr>
+<tr>
+<td>03.11 Risk Assessment (reachability)</td>
+<td>Reachability-weighted CVE evidence</td>
+<td>Prioritised remediation list</td>
+</tr>
+<tr>
+<td>03.14 System and Information Integrity</td>
+<td>Continuous flow + process telemetry; alerts</td>
+<td>Alert and anomaly log scoped to CUI-Enclave</td>
+</tr>
+<tr>
+<td>03.06 Incident Response</td>
+<td>Forensic flow + process search</td>
+<td>Investigation pack with timeline and impact scope</td>
+</tr>
+</tbody>
+</table>
+<h2 id="evidence-collection-approach">Evidence Collection Approach</h2>
+<p>The table below describes per-topic evidence collection - what to
+collect, the CSW source area, and a suggested cadence. The cadence
+should be tuned to the customer’s audit cycle, regulatory cadence, and
+risk appetite.</p>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr>
+<th>Topic</th>
+<th>What to collect</th>
+<th>CSW source</th>
+<th>Suggested cadence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CUI enclave inventory</td>
+<td>Workloads processing or storing CUI</td>
+<td>Inventory + scope membership export filtered by data_class=cui</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>Enclave boundary evidence</td>
+<td>Workspace snapshot + observed-vs-approved flow comparison</td>
+<td>Policy workspace export + ADM export</td>
+<td>Quarterly + after each change</td>
+</tr>
+<tr>
+<td>External connection summary</td>
+<td>Outbound flow from CUI-Enclave</td>
+<td>Flow search filtered to CUI-Enclave egress</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>Vulnerability + reachability</td>
+<td>CVE list weighted by reach into CUI-Enclave</td>
+<td>Vulnerability report scoped to NIST-800-171</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>Incident sample</td>
+<td>One representative incident timeline</td>
+<td>Flow + process search</td>
+<td>Per incident</td>
+</tr>
+</tbody>
+</table>
 <h2 id="pov-workshop-approach">POV / Workshop Approach</h2>
 <ol type="1">
+<li>Confirm the framework version and assessment cycle with the
+customer’s compliance team.</li>
 <li>Select one business service, regulated boundary, or critical
-workload group.</li>
+workload group to start with; do not attempt to instrument the entire
+estate in the POV.</li>
 <li>Validate workload coverage and install sensors or configure
-supported connectors.</li>
+supported connectors. Document the cannot-instrument register; this is
+itself evidence.</li>
 <li>Apply labels for application, environment, owner, data class,
-criticality, compliance scope, and lifecycle.</li>
-<li>Observe flows over a representative business window.</li>
-<li>Use ADM to generate a candidate policy and review it with the
-application owner.</li>
+criticality, compliance scope, and any framework-specific tags
+(e.g. <code>tenant</code>, <code>prototype</code>,
+<code>isa_level</code>, <code>npi</code>, <code>cui</code>,
+<code>ephi</code>).</li>
+<li>Observe flows over a representative business window. Minimum two
+weeks; longer if the customer has month-end, quarterly, or seasonal
+cycles relevant to the scope.</li>
+<li>Use ADM to generate a candidate policy. Review with the application
+owner. Run in Simulation mode for at least two weeks before any
+enforcement.</li>
 <li>Package inventory, scope, flows, policy, exceptions, and known gaps
-as the evidence output.</li>
+as the evidence output. Cross-reference this report’s evidence
+collection table with the customer’s existing audit work-papers.</li>
 </ol>
 <h2 id="boundaries-and-complementary-controls">Boundaries and
 Complementary Controls</h2>
-<p>CSW does not replace CUI marking, contracts, SSP/POA&amp;M ownership,
-identity governance, encryption, media protection, or CMMC assessment
-decisions.</p>
+<p>CSW does not replace CUI marking, federal contract requirements
+(DFARS 252.204-7012, FAR 52.204-21, etc.), System Security Plan
+ownership, POA&amp;M ownership, identity governance, media protection,
+encryption (FIPS-validated modules), personnel security, or CMMC
+assessment.</p>
+<h2 id="assessor-auditor-caveat">Assessor / Auditor Caveat</h2>
+<p>CSW provides technical evidence inputs. The customer’s qualified
+assessor, auditor, certifying body, or regulator determines compliance
+status. Validate all framework-topic mappings, control IDs, paragraph
+references, and section numbers in this report against the current
+official framework text. If the customer is being assessed against a
+version other than the one referenced in the framework version note
+above, revalidate before use.</p>
 <h2 id="disclaimer">Disclaimer</h2>
 <p>This report is for informational and planning purposes. It is not
 legal, regulatory, audit, or certification advice. Validate all mappings

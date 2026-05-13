@@ -3,13 +3,13 @@
 << /Type /Catalog /Pages 2 0 R >>
 endobj
 2 0 obj
-<< /Type /Pages /Kids [3 0 R 5 0 R] /Count 2 >>
+<< /Type /Pages /Kids [3 0 R 5 0 R 7 0 R 9 0 R] /Count 4 >>
 endobj
 3 0 obj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 4 0 R >>
 endobj
 4 0 obj
-<< /Length 2409 >>
+<< /Length 2590 >>
 stream
 BT
 /F1 10 Tf
@@ -23,15 +23,53 @@ T*
 T*
 () Tj
 T*
-(Framework: HIPAA Security Rule 2025 NPRM) Tj
+(Framework: HIPAA Security Rule - 2025 Notice of Proposed Rulemaking \(NPRM\)) Tj
 T*
 (Primary audience: Healthcare covered entities, business associates, compliance leaders, and) Tj
 T*
-(security teams tracking the proposed rule.) Tj
+(security architects preparing for the 2025 NPRM and tracking implementation expectations.) Tj
 T*
-(CSW positioning: Mandatory network segmentation, technology asset inventory, 24-month log) Tj
+(CSW positioning: Proposed mandatory network segmentation, technology asset inventory) Tj
 T*
-(retention architecture, 72-hour breach timeline, and annual assessment evidence.) Tj
+(expansion, longer audit-trail retention architecture, 72-hour breach timeline support, and) Tj
+T*
+(annual technical assessment evidence.) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(Framework Version Note) Tj
+T*
+() Tj
+T*
+(This report references the HIPAA Security Rule 2025 NPRM published by HHS / OCR. The NPRM is) Tj
+T*
+(a PROPOSED rule. Final rule text, effective dates, and implementation expectations may) Tj
+T*
+(differ from the NPRM. Revalidate this mapping after final rulemaking. Specific section) Tj
+T*
+(references \(e.g. proposed 45 CFR 164.312\(a\)\(2\)\(vi\) network segmentation; 24-month audit) Tj
+T*
+(trail retention; 72-hour breach timeline\) reflect the proposed-rule language at the time of) Tj
+T*
+(writing.) Tj
+T*
+() Tj
+T*
+(CSW UI Navigation Note) Tj
+T*
+() Tj
+T*
+(Cisco does not yet publish framework-specific CSW UI navigation for this standard;) Tj
+T*
+(framework-specific navigation is on the product roadmap. This report references CSW) Tj
+T*
+(*capabilities* and the *evidence artifacts* they produce. The technical runbook \(CSW-HIPAA-) Tj
+T*
+(NPRM-Technical-Runbook.md\) in this folder contains the deeper engineering detail.) Tj
 T*
 () Tj
 T*
@@ -43,15 +81,19 @@ T*
 T*
 () Tj
 T*
-(Cisco Secure Workload \(CSW\) can support this framework by producing workload-level evidence) Tj
+(Cisco Secure Workload \(CSW\) supports a defined subset of this framework. The strongest) Tj
 T*
-(for inventory, application dependency mapping, segmentation design, policy simulation,) Tj
+(customer story is not that CSW "certifies" compliance; it is that CSW turns workload) Tj
 T*
-(vulnerability context, and incident investigation. The strongest customer story is not that) Tj
+(communication and inventory into evidence that the customer, the customer's compliance team,) Tj
 T*
-(CSW "certifies" compliance; it is that CSW turns workload communication into evidence that) Tj
+(and the customer's assessor can review. This report describes which framework topics CSW) Tj
 T*
-(control owners, assessors, and technical teams can review.) Tj
+(supports, which it does not, what evidence artifacts CSW produces, and how often the) Tj
+T*
+(customer should collect them. CSW does not replace the customer's governance, policy, or) Tj
+T*
+(assessor judgement, and this report is not a control attestation.) Tj
 T*
 () Tj
 T*
@@ -59,9 +101,34 @@ T*
 T*
 () Tj
 T*
-(HIPAA-2025-NPRM > ePHI-Systems, Network-Segmentation, Technology-Assets, Log-Retention,) Tj
+(``) Tj
 T*
-(Incident-Timeline, Annual-Assessment) Tj
+(HIPAA-2025-NPRM) Tj
+T*
+(??? ePHI-Systems) Tj
+T*
+(??? Network-Segmentation-Boundary) Tj
+T*
+(??? Technology-Asset-Inventory) Tj
+T*
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 6 0 R >>
+endobj
+6 0 obj
+<< /Length 2685 >>
+stream
+BT
+/F1 10 Tf
+50 760 Td
+14 TL
+(??? Audit-Trail-Sources) Tj
+T*
+(??? Incident-Timeline) Tj
+T*
+(`) Tj
 T*
 () Tj
 T*
@@ -71,33 +138,126 @@ T*
 T*
 () Tj
 T*
-(Outcomes CSW Can Support) Tj
+(In Scope for CSW Evidence) Tj
 T*
 () Tj
 T*
-(? Map ePHI-related workloads and proposed segmentation boundaries.) Tj
+(? Proposed network segmentation requirement \(workload-to-workload allowlist\)) Tj
 T*
-(? Support technology asset inventory with workload and software telemetry.) Tj
+(? Proposed expanded technology asset inventory \(workload + software inventory\)) Tj
 T*
-(? Prepare incident timeline evidence for proposed 72-hour expectations.) Tj
+(? Proposed longer audit-trail retention \(architecture / evidence inputs\)) Tj
 T*
-(? Document architecture considerations for longer log-retention requirements.) Tj
+(? Proposed 72-hour breach timeline \(forensic input\)) Tj
 T*
-() Tj
-T*
-(Evidence Package) Tj
+(? Proposed annual technical assessment \(continuous evidence\)) Tj
 T*
 () Tj
 T*
-(? ePHI workload inventory) Tj
+(Out of Scope \(Must Be Evidenced by Other Controls / Tools / Processes\)) Tj
 T*
-(? Segmentation policy and flow evidence) Tj
+() Tj
 T*
-(? Technology asset and software inventory) Tj
+(? Privacy Rule provisions) Tj
 T*
-(? Incident timeline sample) Tj
+(? Business Associate Agreement \(BAA\) lifecycle) Tj
 T*
-(? Annual assessment evidence package) Tj
+(? Identity and access management beyond workload-to-workload) Tj
+T*
+(? Encryption enforcement \(CSW detects plaintext but does not enforce encryption\)) Tj
+T*
+(? Final OCR / HHS interpretive guidance and enforcement decisions) Tj
+T*
+() Tj
+T*
+(Framework Topic ? CSW Capability Map) Tj
+T*
+() Tj
+T*
+(| Framework topic | CSW capability | Evidence artifact |) Tj
+T*
+(|  |  |  |) Tj
+T*
+(| Proposed mandatory network segmentation | Policy workspace + workload-to-workload) Tj
+T*
+(allowlist | Workspace snapshot + observed-vs-approved flow comparison |) Tj
+T*
+(| Proposed expanded technology asset inventory | Workload inventory + software / package) Tj
+T*
+(inventory | Inventory and software-package extract reconciled to CMDB |) Tj
+T*
+(| Proposed audit-trail retention | Workload flow + process telemetry retained per longer) Tj
+T*
+(retention window | Retained telemetry export with retention attestation |) Tj
+T*
+(| Proposed 72-hour breach timeline | Forensic flow + process search across the incident) Tj
+T*
+(window | Investigation pack with timeline and ePHI-system-impact scope |) Tj
+T*
+(| Proposed annual technical assessment | Continuous policy + ADM + vulnerability evidence |) Tj
+T*
+(Annual evidence bundle |) Tj
+T*
+() Tj
+T*
+(Evidence Collection Approach) Tj
+T*
+() Tj
+T*
+(The table below describes per-topic evidence collection - what to collect, the CSW source) Tj
+T*
+(area, and a suggested cadence. The cadence should be tuned to the customer's audit cycle,) Tj
+T*
+(regulatory cadence, and risk appetite.) Tj
+T*
+() Tj
+T*
+(| Topic | What to collect | CSW source | Suggested cadence |) Tj
+T*
+(|  |  |  |  |) Tj
+T*
+(| ePHI system inventory | Workloads handling ePHI | Inventory + scope membership export) Tj
+T*
+(filtered by data_class=ephi | Monthly |) Tj
+T*
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 8 0 R >>
+endobj
+8 0 obj
+<< /Length 3260 >>
+stream
+BT
+/F1 10 Tf
+50 760 Td
+14 TL
+(| Segmentation evidence | Workspace snapshot + observed-vs-approved flow comparison | Policy) Tj
+T*
+(workspace export + ADM export | Quarterly + after each change |) Tj
+T*
+(| Technology asset inventory | Workload + software inventory aligned to proposed inventory) Tj
+T*
+(expansion | Inventory + software/package extract | Monthly |) Tj
+T*
+(| Audit-trail retention | Workload flow + process telemetry over the proposed retention) Tj
+T*
+(window | Retained telemetry export with retention attestation | Continuous; validated) Tj
+T*
+(annually |) Tj
+T*
+(| Vulnerability + reachability | CVE list weighted by reach into ePHI systems |) Tj
+T*
+(Vulnerability report scoped to HIPAA-2025-NPRM | Monthly |) Tj
+T*
+(| Breach timeline sample | Workload-level timeline for one representative incident | Flow +) Tj
+T*
+(process search | Per breach |) Tj
+T*
+(| Annual technical assessment pack | Aggregated annual evidence bundle | Inventory +) Tj
+T*
+(workspace + ADM + vulnerability + incident-sample extracts | Annually |) Tj
 T*
 () Tj
 T*
@@ -105,34 +265,33 @@ T*
 T*
 () Tj
 T*
-(1. Select one business service, regulated boundary, or critical workload group.) Tj
+(1. Confirm the framework version and assessment cycle with the customer's compliance team.) Tj
 T*
-(2. Validate workload coverage and install sensors or configure supported connectors.) Tj
+(2. Select one business service, regulated boundary, or critical workload group to start) Tj
 T*
-(3. Apply labels for application, environment, owner, data class, criticality, compliance) Tj
+(with; do not attempt to instrument the entire estate in the POV.) Tj
 T*
-ET
-endstream
-endobj
-5 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 6 0 R >>
-endobj
-6 0 obj
-<< /Length 962 >>
-stream
-BT
-/F1 10 Tf
-50 760 Td
-14 TL
-(scope, and lifecycle.) Tj
+(3. Validate workload coverage and install sensors or configure supported connectors.) Tj
 T*
-(4. Observe flows over a representative business window.) Tj
+(Document the cannot-instrument register; this is itself evidence.) Tj
 T*
-(5. Use ADM to generate a candidate policy and review it with the application owner.) Tj
+(4. Apply labels for application, environment, owner, data class, criticality, compliance) Tj
 T*
-(6. Package inventory, scope, flows, policy, exceptions, and known gaps as the evidence) Tj
+(scope, and any framework-specific tags \(e.g. tenant, prototype, isa_level, npi, cui, ephi`\).) Tj
 T*
-(output.) Tj
+(5. Observe flows over a representative business window. Minimum two weeks; longer if the) Tj
+T*
+(customer has month-end, quarterly, or seasonal cycles relevant to the scope.) Tj
+T*
+(6. Use ADM to generate a candidate policy. Review with the application owner. Run in) Tj
+T*
+(Simulation mode for at least two weeks before any enforcement.) Tj
+T*
+(7. Package inventory, scope, flows, policy, exceptions, and known gaps as the evidence) Tj
+T*
+(output. Cross-reference this report's evidence collection table with the customer's existing) Tj
+T*
+(audit work-papers.) Tj
 T*
 () Tj
 T*
@@ -140,11 +299,29 @@ T*
 T*
 () Tj
 T*
-(This mapping is based on a proposed rule and must be revalidated after final rulemaking. CSW) Tj
+(This mapping reflects a PROPOSED rule and must be revalidated against the final rule. CSW) Tj
 T*
-(does not replace legal analysis, HIPAA policies, risk analysis, BAA management, IAM,) Tj
+(does not replace legal analysis, HIPAA policies, the risk analysis itself, BAA management,) Tj
 T*
-(encryption, or regulatory reporting.) Tj
+(identity / authentication, encryption enforcement, breach-notification decisions, or OCR) Tj
+T*
+(enforcement engagement.) Tj
+T*
+() Tj
+T*
+(Assessor / Auditor Caveat) Tj
+T*
+() Tj
+T*
+(CSW provides technical evidence inputs. The customer's qualified assessor, auditor,) Tj
+T*
+(certifying body, or regulator determines compliance status. Validate all framework-topic) Tj
+T*
+(mappings, control IDs, paragraph references, and section numbers in this report against the) Tj
+T*
+(current official framework text. If the customer is being assessed against a version other) Tj
+T*
+(than the one referenced in the framework version note above, revalidate before use.) Tj
 T*
 () Tj
 T*
@@ -152,6 +329,19 @@ T*
 T*
 () Tj
 T*
+ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 10 0 R >>
+endobj
+10 0 obj
+<< /Length 325 >>
+stream
+BT
+/F1 10 Tf
+50 760 Td
+14 TL
 (This report is for informational and planning purposes. It is not legal, regulatory, audit,) Tj
 T*
 (or certification advice. Validate all mappings against the current official framework text,) Tj
@@ -162,16 +352,20 @@ ET
 endstream
 endobj
 xref
-0 7
+0 11
 0000000000 65535 f 
 0000000009 00000 n 
 0000000058 00000 n 
-0000000121 00000 n 
-0000000296 00000 n 
-0000002757 00000 n 
-0000002932 00000 n 
+0000000133 00000 n 
+0000000308 00000 n 
+0000002950 00000 n 
+0000003125 00000 n 
+0000005862 00000 n 
+0000006037 00000 n 
+0000009349 00000 n 
+0000009525 00000 n 
 trailer
-<< /Size 7 /Root 1 0 R >>
+<< /Size 11 /Root 1 0 R >>
 startxref
-3945
+9902
 %%EOF

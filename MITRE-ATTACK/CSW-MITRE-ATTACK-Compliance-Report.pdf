@@ -3,13 +3,13 @@
 << /Type /Catalog /Pages 2 0 R >>
 endobj
 2 0 obj
-<< /Type /Pages /Kids [3 0 R 5 0 R] /Count 2 >>
+<< /Type /Pages /Kids [3 0 R 5 0 R 7 0 R] /Count 3 >>
 endobj
 3 0 obj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 4 0 R >>
 endobj
 4 0 obj
-<< /Length 2338 >>
+<< /Length 2609 >>
 stream
 BT
 /F1 10 Tf
@@ -23,15 +23,53 @@ T*
 T*
 () Tj
 T*
-(Framework: MITRE ATT&CK Enterprise) Tj
+(Framework: MITRE ATT&CK Enterprise \(https://attack.mitre.org\)) Tj
 T*
-(Primary audience: SOC, detection engineering, threat hunting, and security architecture) Tj
+(Primary audience: Security architects, detection engineers, threat hunters, SOC analysts,) Tj
 T*
-(teams.) Tj
+(and red-team / purple-team functions using ATT&CK as the common reference for adversary) Tj
 T*
-(CSW positioning: Tactic-by-tactic detection and prevention mapping, technique-level forensic) Tj
+(behaviour.) Tj
 T*
-(alignment, and SOC integration guidance.) Tj
+(CSW positioning: ATT&CK is not a compliance framework. CSW supports a subset of ATT&CK) Tj
+T*
+(tactics with workload-level prevention and detection evidence, primarily Lateral Movement) Tj
+T*
+(\(TA0008\), Discovery \(TA0007\), Command and Control \(TA0011\) detection of egress, Exfiltration) Tj
+T*
+(\(TA0010\) detection, and Initial Access \(TA0001\) reduction by reducing reachable surface.) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(Framework Version Note) Tj
+T*
+() Tj
+T*
+(MITRE ATT&CK is a living knowledge base; the version evolves periodically \(current version) Tj
+T*
+(at time of writing is v15\). This report references the high-level tactics \(TA0001 through) Tj
+T*
+(TA0040 / TA0011 family\). Validate technique-level mappings against the ATT&CK version your) Tj
+T*
+(detection-engineering team is using.) Tj
+T*
+() Tj
+T*
+(CSW UI Navigation Note) Tj
+T*
+() Tj
+T*
+(Cisco does not yet publish framework-specific CSW UI navigation for this standard;) Tj
+T*
+(framework-specific navigation is on the product roadmap. This report references CSW) Tj
+T*
+(*capabilities* and the *evidence artifacts* they produce. The technical runbook \(CSW-MITRE-) Tj
+T*
+(ATTACK-Technical-Runbook.md\) in this folder contains the deeper engineering detail.) Tj
 T*
 () Tj
 T*
@@ -43,15 +81,19 @@ T*
 T*
 () Tj
 T*
-(Cisco Secure Workload \(CSW\) can support this framework by producing workload-level evidence) Tj
+(Cisco Secure Workload \(CSW\) supports a defined subset of this framework. The strongest) Tj
 T*
-(for inventory, application dependency mapping, segmentation design, policy simulation,) Tj
+(customer story is not that CSW "certifies" compliance; it is that CSW turns workload) Tj
 T*
-(vulnerability context, and incident investigation. The strongest customer story is not that) Tj
+(communication and inventory into evidence that the customer, the customer's compliance team,) Tj
 T*
-(CSW "certifies" compliance; it is that CSW turns workload communication into evidence that) Tj
+(and the customer's assessor can review. This report describes which framework topics CSW) Tj
 T*
-(control owners, assessors, and technical teams can review.) Tj
+(supports, which it does not, what evidence artifacts CSW produces, and how often the) Tj
+T*
+(customer should collect them. CSW does not replace the customer's governance, policy, or) Tj
+T*
+(assessor judgement, and this report is not a control attestation.) Tj
 T*
 () Tj
 T*
@@ -59,57 +101,15 @@ T*
 T*
 () Tj
 T*
-(MITRE-ATTACK > Initial-Access, Execution, Persistence, Privilege-Escalation, Defense-) Tj
+(``) Tj
 T*
-(Evasion, Lateral-Movement, Command-Control, Exfiltration, Impact) Tj
+(MITRE-ATTACK) Tj
 T*
-() Tj
+(\(no fixed scope tree; ATT&CK is a tactic / technique cross-cut applied to any CSW-) Tj
 T*
-(This scope pattern should be validated with the customer's architecture, application owners,) Tj
+(instrumented scope\)) Tj
 T*
-(compliance team, and assessor before it is used for formal evidence.) Tj
-T*
-() Tj
-T*
-(Outcomes CSW Can Support) Tj
-T*
-() Tj
-T*
-(? Map CSW telemetry and policy controls to ATT&CK tactics and techniques.) Tj
-T*
-(? Use workload process and flow evidence for forensic rule alignment.) Tj
-T*
-(? Identify lateral movement and command-and-control opportunities.) Tj
-T*
-(? Create SOC-ready evidence packages for investigation workflows.) Tj
-T*
-() Tj
-T*
-(Evidence Package) Tj
-T*
-() Tj
-T*
-(? Technique-to-CSW capability matrix) Tj
-T*
-(? Observed flow and process telemetry examples) Tj
-T*
-(? Lateral movement candidate paths) Tj
-T*
-(? Policy deny / allow evidence) Tj
-T*
-(? SOC enrichment guidance) Tj
-T*
-() Tj
-T*
-(POV / Workshop Approach) Tj
-T*
-() Tj
-T*
-(1. Select one business service, regulated boundary, or critical workload group.) Tj
-T*
-(2. Validate workload coverage and install sensors or configure supported connectors.) Tj
-T*
-(3. Apply labels for application, environment, owner, data class, criticality, compliance) Tj
+(`) Tj
 T*
 ET
 endstream
@@ -118,21 +118,172 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 6 0 R >>
 endobj
 6 0 obj
-<< /Length 905 >>
+<< /Length 2852 >>
 stream
 BT
 /F1 10 Tf
 50 760 Td
 14 TL
-(scope, and lifecycle.) Tj
+() Tj
 T*
-(4. Observe flows over a representative business window.) Tj
+(This scope pattern should be validated with the customer's architecture, application owners,) Tj
 T*
-(5. Use ADM to generate a candidate policy and review it with the application owner.) Tj
+(compliance team, and assessor before it is used for formal evidence.) Tj
 T*
-(6. Package inventory, scope, flows, policy, exceptions, and known gaps as the evidence) Tj
+() Tj
 T*
-(output.) Tj
+(In Scope for CSW Evidence) Tj
+T*
+() Tj
+T*
+(? Initial Access \(TA0001\) - reachable-surface reduction) Tj
+T*
+(? Discovery \(TA0007\) - lateral discovery flow detection) Tj
+T*
+(? Lateral Movement \(TA0008\) - east-west flow detection and prevention) Tj
+T*
+(? Command and Control \(TA0011\) - egress flow detection) Tj
+T*
+(? Exfiltration \(TA0010\) - egress flow detection) Tj
+T*
+(? Impact \(TA0040\) - workload reach scoping during impact analysis) Tj
+T*
+() Tj
+T*
+(Out of Scope \(Must Be Evidenced by Other Controls / Tools / Processes\)) Tj
+T*
+() Tj
+T*
+(? Execution \(TA0002\) - endpoint behaviour \(EDR domain\)) Tj
+T*
+(? Persistence \(TA0003\) - host-level \(EDR domain\)) Tj
+T*
+(? Privilege Escalation \(TA0004\) - host-level \(EDR domain\)) Tj
+T*
+(? Defense Evasion \(TA0005\) - many techniques are host-level \(EDR domain\)) Tj
+T*
+(? Credential Access \(TA0006\) - identity layer \(IAM / EDR\)) Tj
+T*
+(? Collection \(TA0009\) - host-level \(EDR / DLP\)) Tj
+T*
+() Tj
+T*
+(Framework Topic ? CSW Capability Map) Tj
+T*
+() Tj
+T*
+(| Framework topic | CSW capability | Evidence artifact |) Tj
+T*
+(|  |  |  |) Tj
+T*
+(| Initial Access \(TA0001\) - reduce reachable surface | Reachability-weighted vulnerability) Tj
+T*
+(evidence; policy workspace deny by default | Vulnerability report + workspace snapshot) Tj
+T*
+(showing reduced ingress paths |) Tj
+T*
+(| Discovery \(TA0007\) - detect lateral discovery flows | Process + flow telemetry; alerts on) Tj
+T*
+(unexpected scanning patterns | Alert log for unauthorised east-west reconnaissance |) Tj
+T*
+(| Lateral Movement \(TA0008\) - east-west enforcement and detection | Policy workspace +) Tj
+T*
+(enforcement / violation log | Workspace snapshot + violation log showing east-west allowlist) Tj
+T*
+(enforcement |) Tj
+T*
+(| Command and Control \(TA0011\) - egress detection | Outbound flow telemetry with destination) Tj
+T*
+(context | Egress flow report and anomaly alerts |) Tj
+T*
+(| Exfiltration \(TA0010\) - egress detection | Outbound flow telemetry with destination) Tj
+T*
+(context and volume context | Egress flow report with volume anomalies |) Tj
+T*
+(| Impact \(TA0040\) - reach scoping | Forensic flow + process search | Investigation pack) Tj
+T*
+(showing reach from the impacted workload |) Tj
+T*
+() Tj
+T*
+(Evidence Collection Approach) Tj
+T*
+() Tj
+T*
+(The table below describes per-topic evidence collection - what to collect, the CSW source) Tj
+T*
+(area, and a suggested cadence. The cadence should be tuned to the customer's audit cycle,) Tj
+T*
+(regulatory cadence, and risk appetite.) Tj
+T*
+() Tj
+T*
+(| Topic | What to collect | CSW source | Suggested cadence |) Tj
+T*
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 8 0 R >>
+endobj
+8 0 obj
+<< /Length 3284 >>
+stream
+BT
+/F1 10 Tf
+50 760 Td
+14 TL
+(|  |  |  |  |) Tj
+T*
+(| Reachable-surface reduction | Reduced ingress paths to high-value workloads | Policy) Tj
+T*
+(workspace export + reachability summary | Quarterly + after each major workspace change |) Tj
+T*
+(| Lateral-movement enforcement | East-west allowlist enforcement and violation log | Policy) Tj
+T*
+(workspace export + policy analysis output | Continuous; reviewed quarterly |) Tj
+T*
+(| Egress monitoring | Outbound flow telemetry to external destinations | Flow search) Tj
+T*
+(filtered to external destinations | Continuous; reviewed daily for high-value scopes |) Tj
+T*
+(| Detection content \(joint with SOC\) | ATT&CK-mapped detection rules using CSW telemetry |) Tj
+T*
+(SOC integration \(CSW telemetry exported to SIEM\) | Continuous; rule sets reviewed monthly |) Tj
+T*
+() Tj
+T*
+(POV / Workshop Approach) Tj
+T*
+() Tj
+T*
+(1. Confirm the framework version and assessment cycle with the customer's compliance team.) Tj
+T*
+(2. Select one business service, regulated boundary, or critical workload group to start) Tj
+T*
+(with; do not attempt to instrument the entire estate in the POV.) Tj
+T*
+(3. Validate workload coverage and install sensors or configure supported connectors.) Tj
+T*
+(Document the cannot-instrument register; this is itself evidence.) Tj
+T*
+(4. Apply labels for application, environment, owner, data class, criticality, compliance) Tj
+T*
+(scope, and any framework-specific tags \(e.g. tenant, prototype, isa_level, npi, cui, ephi`\).) Tj
+T*
+(5. Observe flows over a representative business window. Minimum two weeks; longer if the) Tj
+T*
+(customer has month-end, quarterly, or seasonal cycles relevant to the scope.) Tj
+T*
+(6. Use ADM to generate a candidate policy. Review with the application owner. Run in) Tj
+T*
+(Simulation mode for at least two weeks before any enforcement.) Tj
+T*
+(7. Package inventory, scope, flows, policy, exceptions, and known gaps as the evidence) Tj
+T*
+(output. Cross-reference this report's evidence collection table with the customer's existing) Tj
+T*
+(audit work-papers.) Tj
 T*
 () Tj
 T*
@@ -142,7 +293,25 @@ T*
 T*
 (ATT&CK is not a compliance standard. CSW does not replace EDR, SIEM, identity telemetry,) Tj
 T*
-(malware analysis, endpoint response, or full detection engineering coverage.) Tj
+(malware analysis, endpoint response, threat intelligence, or the full detection engineering) Tj
+T*
+(function. CSW is one telemetry source among many for an ATT&CK-aligned SOC.) Tj
+T*
+() Tj
+T*
+(Assessor / Auditor Caveat) Tj
+T*
+() Tj
+T*
+(CSW provides technical evidence inputs. The customer's qualified assessor, auditor,) Tj
+T*
+(certifying body, or regulator determines compliance status. Validate all framework-topic) Tj
+T*
+(mappings, control IDs, paragraph references, and section numbers in this report against the) Tj
+T*
+(current official framework text. If the customer is being assessed against a version other) Tj
+T*
+(than the one referenced in the framework version note above, revalidate before use.) Tj
 T*
 () Tj
 T*
@@ -160,16 +329,18 @@ ET
 endstream
 endobj
 xref
-0 7
+0 9
 0000000000 65535 f 
 0000000009 00000 n 
 0000000058 00000 n 
-0000000121 00000 n 
-0000000296 00000 n 
-0000002686 00000 n 
-0000002861 00000 n 
+0000000127 00000 n 
+0000000302 00000 n 
+0000002963 00000 n 
+0000003138 00000 n 
+0000006042 00000 n 
+0000006217 00000 n 
 trailer
-<< /Size 7 /Root 1 0 R >>
+<< /Size 9 /Root 1 0 R >>
 startxref
-3817
+9553
 %%EOF

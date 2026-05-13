@@ -1,83 +1,301 @@
-# Cisco Secure Workload — NIST SP 800-82
-## Technical Runbook | OT-Adjacent IT and Industrial Control System Support
+# Cisco Secure Workload — NIST SP 800-82 Rev. 3
+## Technical Runbook | IT-Side Boundary to OT / ICS Environments
 
 **Version:** 1.0  
-**Framework:** NIST SP 800-82, Guide to Operational Technology (OT) Security  
-**Use Case:** IT-side systems supporting OT environments, jump hosts, historians, patch repositories, identity services, and vendor access
+**Framework:** NIST Special Publication 800-82 Revision 3 — *Guide to Operational Technology (OT) Security* (NIST, September 2023)  
+**Use Case:** IT-side segmentation of OT zones, IT/OT DMZ workload control, OT-adjacent monitoring service segmentation, IT/OT communication path evidence
+
+> **Framework version note.** NIST SP 800-82 Rev. 3 is *guidance*, not a separate control catalogue. It uses NIST SP 800-53 Rev. 5 as its underlying control framework and provides an OT-tailored overlay and OT-specific guidance. This runbook references **800-82 topic areas** (e.g. cybersecurity programme, network architecture, segmentation, incident response) and the **800-53 control families** the overlay aligns to. Specific control selection and tailoring must be done against the customer's OT cybersecurity programme and the 800-53 baseline they apply.
+>
+> **Scope boundary.** CSW is a workload-segmentation product. The deep OT device layer (PLCs, RTUs, HMIs, controllers, OT protocols like Modbus, DNP3, S7, OPC UA) is **not** within CSW's direct enforcement scope and is better addressed by an OT-native product (e.g. Cisco Cyber Vision, Claroty xDome, Nozomi). CSW's role is to harden the **IT-side workloads adjacent to OT** — historians, engineering workstations, jump hosts, IT/OT DMZ workloads, asset / vulnerability servers, and monitoring servers — and to evidence the IT-side of the IT/OT communication boundary.
+>
+> **CSW UI navigation note.** Cisco does not yet publish 800-82-specific CSW UI navigation; framework-specific paths are on the product roadmap. This runbook describes CSW *capabilities* and the *evidence artifacts* they produce.
 
 ---
 
 ## Reader's Guide
 
-**Who this is for.** Security architects, plant IT/OT teams, industrial asset owners, and SOC teams using NIST SP 800-82 guidance to improve OT-adjacent security.
-
-**Scope boundary.** CSW applies to servers, VMs, cloud workloads, and supported connectors. It does not inspect PLC/RTU/IED/HMI fieldbus behavior or replace passive OT visibility. Use it for the IT-side systems that support or bridge to OT.
+**Who this is for.** Industrial / critical infrastructure operators (manufacturing, energy, water, transportation, pharma, food production) and any organisation with an OT estate whose IT-side boundary must demonstrate segmentation hygiene; CISO / OT security lead, IT and OT engineering, internal audit, and consultants preparing a 800-82-aligned assessment.
 
 **Questions this runbook helps you answer:**
 
-- *Can I map and restrict communication between corporate IT and OT-supporting systems?*
-- *Can I prove jump hosts, historians, patch repositories, identity services, and vendor systems have constrained paths?*
-- *Can I produce incident evidence for OT-adjacent Windows/Linux workloads?*
+- *Can I demonstrate that IT workloads with reach into the IT/OT DMZ or into OT zones are inventoried, classified, and segmented?* (800-82 network architecture topic; 800-53 AC, SC, CM families)
+- *Can I evidence that the IT/OT communication boundary is constrained to approved flows only?* (800-82 segmentation; 800-53 SC-7 / AC-4)
+- *Can I produce monitoring evidence on the IT side of the IT/OT boundary?* (800-82 monitoring topic; 800-53 SI-4 / AU family)
+- *Can I prioritise patching of IT-side workloads whose reachability is into OT zones?* (800-82 vulnerability management; 800-53 RA / SI-2)
+- *In the event of an incident, can I reconstruct IT-side workload flow to/from OT zones?* (800-82 incident response; 800-53 IR family)
 
-**What you'll need.** OT zone/conduit model, Purdue-level architecture, OT-supporting IT inventory, vendor access list, maintenance-window constraints, passive OT monitoring coverage, and change-approval process.
+**What you'll need.** IT asset inventory, OT asset inventory (from your OT-native product), an architecture diagram showing IT zones, IT/OT DMZ, and OT zones (e.g. ISA-95 levels 3.5–4), the OT cybersecurity programme document, and a list of historians / engineering workstations / IT/OT DMZ workloads in scope.
+
+**Where to start.** Sections 1–4 if you are scoping; 5–7 if you are designing and simulating policy; 9–10 if you are preparing an assessment / audit pack within the next quarter.
 
 ---
 
 ## 1. Overview
 
-NIST SP 800-82 provides OT security guidance, including segmentation, remote access, monitoring, vulnerability management, and incident response considerations. CSW can support the IT workload layer adjacent to OT. It should be paired with Cisco Cyber Vision or equivalent OT visibility for Level 0-2 device and protocol coverage.
+NIST SP 800-82 Rev. 3 is OT-tailored guidance over NIST SP 800-53 Rev. 5. Its key technical themes for the IT-side workload layer are:
 
-## 2. NIST 800-82 Topic Map
+- A **cybersecurity programme** that integrates OT considerations
+- A **network architecture** that segregates IT from OT (commonly described as ISA-95 levels with a DMZ at level 3.5 between the manufacturing zone (3) and the enterprise zone (4–5))
+- Continuous **monitoring** with OT-tailored considerations (e.g. minimising disruption)
+- **Access control** at zone boundaries
+- **Vulnerability management** with OT-specific change-management constraints
+- **Incident response** with OT-specific operational concerns
 
-| 800-82 topic | CSW can support evidence for | Boundary |
+CSW supports the **IT-side** of these themes by:
+
+- Inventorying IT-side workloads adjacent to the OT estate
+- Producing reachability evidence into the IT/OT DMZ and across the boundary
+- Enforcing workload-level allowlist policy at the IT/OT boundary on the IT side
+- Producing monitoring telemetry and policy-violation alerts
+- Producing reachability-weighted vulnerability evidence so patch prioritisation reflects OT-adjacency
+- Producing forensic flow + process timelines on the IT side for incident response
+
+What CSW does **not** do for 800-82: enforce policy on OT devices, parse OT protocols, manage OT change windows, replace the OT-native product, or replace the OT cybersecurity programme.
+
+### 800-82 Topic Areas and CSW Relevance
+
+| 800-82 topic area | CSW relevance (IT side) | Underlying 800-53 control family (representative) |
 |---|---|---|
-| Network segmentation | Workload policy for OT-facing IT, DMZ brokers, jump hosts, historians | OT firewall / conduit architecture remains authoritative |
-| Remote access | Vendor/jump-host dependency mapping and allowlists | PAM/MFA/session recording remain complementary |
-| Asset inventory | OT-supporting Windows/Linux workload inventory | PLC/RTU/IED inventory requires OT tools |
-| Vulnerability management | CVE/package context for IT workloads supporting OT | Safety constraints and OT patch governance remain customer-owned |
-| Monitoring and detection | Flow/process telemetry and SIEM export for OT-adjacent workloads | OT protocol DPI requires Cyber Vision/Claroty/Nozomi/Dragos |
-| Incident response | Communication timeline and containment evidence for IT-side systems | Safety and operational response remain OT-owned |
+| OT cybersecurity programme | Evidence inputs (inventory, telemetry) | PM family |
+| Network architecture and segmentation | Workload-level segmentation on IT-side; ADM-derived allowlist; policy workspace | SC-7, AC-4 |
+| Monitoring | Continuous flow / process telemetry; anomaly alerts | SI-4, AU family |
+| Access control | Workload-to-workload allowlist on IT side | AC-3, AC-4, AC-6 |
+| Vulnerability management | Reachability-weighted CVE evidence | RA-5, SI-2 |
+| Incident response | Forensic flow / process telemetry | IR family |
+| Configuration / change management | Baseline policy workspace + change log | CM family |
 
-## 3. Suggested Scope Pattern
+---
 
-```text
-NIST-800-82
-├── OT-Facing-IT
-│   ├── Jump-Hosts
-│   ├── Historians
-│   ├── Patch-Repositories
-│   ├── Backup
-│   ├── Identity-PKI
-│   └── Vendor-Access
-├── Industrial-DMZ
-├── Site-Specific-Systems
-└── Cannot-Instrument
+## 2. Pre-Deployment Checklist
+
+- [ ] CSW cluster provisioned
+- [ ] Sensor compatibility verified on **IT-side** workloads only (historians, engineering workstations, IT/OT DMZ workloads, jump hosts, asset / vulnerability servers, monitoring servers). Do not install CSW sensors on OT devices.
+- [ ] OT-native product (Cyber Vision / Claroty / Nozomi) confirmed for OT zones
+- [ ] IT/OT architecture diagram reviewed; the IT/OT DMZ boundary defined unambiguously
+- [ ] Stakeholders: CISO, OT security lead, OT operations lead, internal audit
+- [ ] Change windows agreed with OT operations (sensor install on engineering workstations is operationally sensitive)
+- [ ] Evidence retention agreed with internal audit and OT engineering
+
+---
+
+## 3. Phase 1 — IT-Side Sensor & Connector Deployment (Days 1–5)
+
+- Install software sensors only on **IT-side** workloads in monitoring mode
+- Connect cloud accounts for cloud-hosted IT workloads in scope (e.g. cloud historian, cloud SCADA front-end)
+- Day-1 labels: `application`, `env`, `isa_level`, `it_or_ot`, `criticality`, `owner`, `compliance=nist-800-82`
+- Maintain a `cannot-instrument` register for OT devices and any appliances; this register is itself evidence (it documents the boundary of CSW's coverage)
+- Retain Phase-1 sensor inventory baseline
+
+---
+
+## 4. Phase 2 — IT/OT Scope Architecture (Days 6–10)
+
+### 4.1 Suggested Scope Architecture
+
+```
+Root Scope
+└── NIST-800-82
+    ├── OT-Adjacent-IT                       (Level 3.5 IT/OT DMZ — IT-side workloads)
+    │   ├── Historians
+    │   ├── Patch-Servers-OT-Direction
+    │   ├── Engineering-Workstations
+    │   └── Jump-Hosts-to-OT
+    ├── OT-Monitoring-IT-Side                (CSW-instrumented IT-side monitoring servers)
+    ├── Enterprise-IT                        (Level 4–5 enterprise systems)
+    └── OT-Zones                             (Level 0–3 — NOT instrumented by CSW; referenced via flow visibility only)
 ```
 
-## 4. POV Steps
+CSW will **not** have sensors inside OT-Zones; it observes the IT-side endpoint of every IT↔OT flow.
 
-- [ ] Start with OT-supporting IT, not PLCs or safety systems.
-- [ ] Confirm which workloads can safely run CSW sensors.
-- [ ] Label by `site`, `function`, `purdue_level`, `owner`, `criticality`, and `ot_facing`.
-- [ ] Observe normal maintenance and vendor-access windows.
-- [ ] Validate flows with plant operations and OT security.
-- [ ] Generate policy candidates for jump hosts, patch repositories, and historians.
-- [ ] Document systems requiring passive-only monitoring.
+### 4.2 Inventory Filters
 
-## 5. Evidence Package
+```
+Filter: OT-Adjacent-IT-Candidates
+  - Tag: it_or_ot = it-side
+  - Tag: isa_level = 3.5
+  - Hostname / app pattern matches: historian, engineering, ot-jump
 
-- OT-adjacent workload inventory.
-- Scope map by site/function/Purdue layer.
-- Vendor and remote-access flow summary.
-- Jump host / historian / patch-repo dependency maps.
-- High-risk port and plaintext protocol findings.
-- Cannot-instrument register.
-- Policy candidate and rollback notes.
+Filter: Jump-Hosts-to-OT
+  - Listening port: 22, 3389
+  - Tag: purpose = ot-admin
+```
 
-## 6. Complementary Controls
+### 4.3 Labeling Strategy
 
-Pair CSW with Cisco Cyber Vision, OT firewalls, PAM/MFA, SIEM/SOAR, passive OT monitoring, maintenance procedures, backup/restore validation, and plant change-management controls.
+| Label key | Example values | Why it matters for 800-82 |
+|---|---|---|
+| `isa_level` | 4, 3.5, 3, 2, 1 | Reflects ISA-95 architectural level commonly used in 800-82 references |
+| `it_or_ot` | it-side, ot-side | Anchors the boundary CSW evidences |
+| `application` | historian, mes, engineering-workstation | Maps workloads to OT-adjacent systems |
+| `env` | production, dev, lab | Production OT-adjacent workloads need stricter controls |
+| `criticality` | critical, important, standard | Risk tiering |
+| `owner` | <function> | Accountability |
+| `compliance` | nist-800-82 | Filters CSW evidence to 800-82 scope |
 
-## 7. Safety Caveat
+---
 
-Do not infer CSW support for OT field devices unless explicitly validated. Industrial safety, process availability, and integrator-approved change control take precedence over enforcement.
+## 5. Phase 3 — Application Dependency Mapping (Days 11–21)
+
+Run ADM on the IT-side scopes. For 800-82, the most important questions are about **boundary** flows:
+
+| Question | 800-82 / 800-53 reference |
+|---|---|
+| Which IT workloads communicate with OT-Zones, and on what ports / protocols? | SC-7, AC-4 |
+| Which IT workloads in OT-Adjacent-IT communicate with Enterprise-IT? | SC-7, AC-4 |
+| Are flows into OT-Zones constrained to approved historians, engineering workstations, or jump hosts? | AC-3, AC-4, AC-6 |
+| Are jump-host flows to OT-Zones audited? | AC-6, AU family |
+| Which IT-side OT-adjacent workloads have direct or transitive reach to the internet? | SC-7 |
+
+Use ADM to confirm or correct `isa_level`, `it_or_ot`, and `application` labels.
+
+---
+
+## 6. Phase 4 — Policy Development (Days 22–35)
+
+### 6.1 800-82-Aligned Policy Framework (IT side)
+
+**Absolute policies:**
+
+```
+DENY  Enterprise-IT             → OT-Zones                    (no direct enterprise → OT)
+DENY  OT-Adjacent-IT            → Internet                    (no direct internet egress from OT-adjacent IT)
+DENY  Any                       → OT-Zones                    (default deny inbound from the IT side)
+```
+
+**Allowlist policies (examples to adapt per environment):**
+
+```
+ALLOW Historians                → OT-Zones                    tcp/<approved-ot-protocol-via-DMZ>
+ALLOW Engineering-Workstations  → OT-Zones                    tcp/<approved-engineering-protocol>
+ALLOW Jump-Hosts-to-OT          → OT-Zones                    tcp/22, tcp/3389
+ALLOW OT-Adjacent-IT            → OT-Monitoring-IT-Side       tcp/443
+ALLOW Patch-Servers             → OT-Adjacent-IT              tcp/<approved-update-port>
+```
+
+**Catch-all (audit everything else):**
+
+```
+LOG   Any                       → OT-Adjacent-IT              (unmatched inbound)
+LOG   OT-Adjacent-IT            → Any                         (unmatched outbound)
+```
+
+### 6.2 Policy Workspace Lifecycle
+
+Even more conservative than IT-only frameworks; OT operations cannot tolerate accidental denial:
+
+| Phase | Mode | Duration | Purpose |
+|---|---|---|---|
+| 1 | Simulation | 4 weeks | Validate against live traffic; long observation window for OT cycles |
+| 2 | Enforcement of high-confidence rules only | 2 weeks | Enterprise→OT deny, internet egress deny |
+| 3 | Full Enforcement on IT side | Ongoing | OT-side enforcement remains with the OT-native product |
+
+Snapshot the workspace at every phase transition; this is evidence for SC-7 / AC-4 / CM family.
+
+---
+
+## 7. Phase 5 — 800-82 Topic Mapping with CSW Evidence
+
+| 800-82 topic | What CSW produces | How to use it (800-53 family) |
+|---|---|---|
+| Network architecture and segmentation | Policy workspace; observed IT↔OT flows; ADM-derived allowlist | SC-7, AC-4 evidence on the IT side of the boundary |
+| Monitoring | Continuous flow / process telemetry; alerts on unauthorised IT↔OT flow | SI-4, AU family |
+| Access control | Workload-to-workload allowlist + enforcement log | AC-3, AC-4, AC-6 |
+| Vulnerability management | Reachability-weighted CVE on OT-adjacent IT workloads | RA-5, SI-2 |
+| Incident response | Forensic flow / process search across the incident window | IR family |
+| Configuration management | Workspace snapshot before/after each change | CM family |
+
+---
+
+## 8. Phase 6 — Vulnerability Management (IT-side, OT-aware)
+
+OT environments often have constrained patch windows. CSW's role on the IT side:
+
+```
+Priority 1: Critical CVE on OT-Adjacent-IT with inbound reachability
+Priority 2: Critical CVE on Jump-Hosts-to-OT
+Priority 3: Critical CVE on Patch-Servers / OT-Monitoring-IT-Side
+```
+
+If a patch must be delayed (common in OT-adjacent environments), use CSW to:
+
+- Restrict the vulnerable port to an explicit approved source list
+- Add an anomaly alert on the affected process
+- Log all connections to the affected workload
+- Document the exception in the policy workspace exception register
+
+The exception register itself is evidence for RA / SI-2 risk acceptance and CM change control.
+
+---
+
+## 9. Phase 7 — Monitoring & Alerting
+
+| Alert | Trigger | 800-82 topic |
+|---|---|---|
+| Unapproved IT→OT flow | New flow from any IT workload → OT-Zones outside approved baseline | Segmentation |
+| Enterprise→OT attempt | Enterprise-IT → OT-Zones (any) | Segmentation |
+| Jump-host activity outside change window | Jump-Hosts-to-OT → OT-Zones outside an authorised change window | Access control |
+| Plaintext on regulated paths | HTTP / unencrypted protocol from OT-Adjacent-IT | Communications (detection) |
+| Policy violation | Enforced policy block triggered | Segmentation / Access control |
+| Sensor offline | Agent stops reporting on an OT-Adjacent-IT workload | Monitoring evidence integrity |
+
+### 9.2 Forensic Telemetry
+
+Per incident, retain on the IT side:
+
+- Flow log scoped to affected IT workload(s) and time window (with process context)
+- Process search output
+- Policy workspace state at the time of the incident
+- Vulnerability snapshot for the affected workload(s)
+- Pair with the OT-native product's view of the OT side to produce a complete picture
+
+---
+
+## 10. Reporting & Evidence Collection
+
+### 10.1 Evidence per Audit Cycle (quarterly recommended)
+
+| Evidence item | CSW source area | 800-82 topic |
+|---|---|---|
+| IT-side workload inventory adjacent to OT | Inventory export | Programme / asset evidence |
+| Scope + label membership (`isa_level`, `it_or_ot`) | Scope membership export | Segmentation |
+| Approved vs. observed IT↔OT flows | ADM workspace export | Segmentation |
+| Policy workspace snapshot | Policy workspace export | Segmentation / change control |
+| Policy enforcement / violations | Policy analysis output | Access control / monitoring |
+| Vulnerability + reachability (OT-adjacent IT) | Vulnerability report scoped to NIST-800-82 | Vulnerability management |
+| Jump-host activity report | Flow search on Jump-Hosts-to-OT | Access control / monitoring |
+| Incident timeline (IT-side) | Flow + process search | Incident response |
+| Exception register | Policy workspace exceptions list | Configuration / risk acceptance |
+
+### 10.2 Ongoing Compliance Posture
+
+- **Monthly:** scope / inventory hygiene; jump-host activity review
+- **Quarterly:** policy workspace review; refresh evidence pack 10.1
+- **Annually:** independent walk-through with OT engineering and internal audit
+- **Continuously:** policy drift detection; ADM re-run every 90 days
+
+---
+
+## 11. Common Pitfalls
+
+| Pitfall | Mitigation |
+|---|---|
+| Trying to instrument OT devices with CSW | Use an OT-native product for OT devices; CSW is for IT-side workloads |
+| Treating 800-82 as a standalone control catalogue | 800-82 is OT-tailored guidance over 800-53; cite 800-53 controls for the actual control language |
+| Skipping the simulation window for OT-adjacent workloads | Use a 4-week simulation; OT cycles are long |
+| Enforcing IT-side rules without coordinating with OT operations | All policy enforcement on OT-adjacent IT requires OT engineering sign-off |
+| Assuming network protocol by port (e.g. Modbus on TCP/502) | Confirm by process + observed handshake where possible; OT protocols vary |
+| Treating CSW jump-host visibility as session monitoring | CSW shows the flow; session-level command recording is a PAM responsibility |
+
+---
+
+## Related Frameworks in This Repository
+
+- [NIST SP 800-53 Rev 5](../NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md) — the control catalogue underlying 800-82
+- [NERC CIP](../NERC-CIP/CSW-NERC-CIP-Technical-Runbook.md) — for North American Bulk Electric System operators
+- [TSA Pipeline](../TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.md) — for US pipeline operators
+- [IEC 62443](../IEC-62443/CSW-IEC-62443-Technical-Runbook.md) — adjacent OT cybersecurity standard
+
+---
+
+*Document prepared for Cisco industrial / critical-infrastructure engagements. Replace [Customer Name] and any bracketed fields before customer delivery. CSW addresses the IT-side workload boundary only; pair with an OT-native product for OT device coverage.*

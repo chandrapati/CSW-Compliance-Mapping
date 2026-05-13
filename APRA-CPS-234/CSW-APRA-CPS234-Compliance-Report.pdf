@@ -3,13 +3,13 @@
 << /Type /Catalog /Pages 2 0 R >>
 endobj
 2 0 obj
-<< /Type /Pages /Kids [3 0 R 5 0 R] /Count 2 >>
+<< /Type /Pages /Kids [3 0 R 5 0 R 7 0 R] /Count 3 >>
 endobj
 3 0 obj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 4 0 R >>
 endobj
 4 0 obj
-<< /Length 2301 >>
+<< /Length 2484 >>
 stream
 BT
 /F1 10 Tf
@@ -23,15 +23,47 @@ T*
 T*
 () Tj
 T*
-(Framework: APRA CPS 234 - Information Security) Tj
+(Framework: APRA Prudential Standard CPS 234 - Information Security) Tj
 T*
 (Primary audience: Australian banks, insurers, superannuation trustees, and other APRA-) Tj
 T*
-(regulated entities.) Tj
+(regulated entities; CISO function, technology risk, internal audit, and information asset) Tj
 T*
-(CSW positioning: Critical information asset visibility, control testing, service-provider) Tj
+(owners.) Tj
 T*
-(dependency review, and incident scoping.) Tj
+(CSW positioning: Information asset segmentation, control-implementation evidence, control-) Tj
+T*
+(testing inputs, incident management, and third-party service-provider visibility.) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(Framework Version Note) Tj
+T*
+() Tj
+T*
+(References CPS 234 as published in 2019. Paragraph numbers in this report are well-known and) Tj
+T*
+(stable for CPS 234; if APRA has issued amendments or related standards in scope \(e.g. CPS) Tj
+T*
+(230 Operational Risk Management\), validate the applicable text.) Tj
+T*
+() Tj
+T*
+(CSW UI Navigation Note) Tj
+T*
+() Tj
+T*
+(Cisco does not yet publish framework-specific CSW UI navigation for this standard;) Tj
+T*
+(framework-specific navigation is on the product roadmap. This report references CSW) Tj
+T*
+(*capabilities* and the *evidence artifacts* they produce. The technical runbook \(CSW-APRA-) Tj
+T*
+(CPS234-Technical-Runbook.md\) in this folder contains the deeper engineering detail.) Tj
 T*
 () Tj
 T*
@@ -43,15 +75,19 @@ T*
 T*
 () Tj
 T*
-(Cisco Secure Workload \(CSW\) can support this framework by producing workload-level evidence) Tj
+(Cisco Secure Workload \(CSW\) supports a defined subset of this framework. The strongest) Tj
 T*
-(for inventory, application dependency mapping, segmentation design, policy simulation,) Tj
+(customer story is not that CSW "certifies" compliance; it is that CSW turns workload) Tj
 T*
-(vulnerability context, and incident investigation. The strongest customer story is not that) Tj
+(communication and inventory into evidence that the customer, the customer's compliance team,) Tj
 T*
-(CSW "certifies" compliance; it is that CSW turns workload communication into evidence that) Tj
+(and the customer's assessor can review. This report describes which framework topics CSW) Tj
 T*
-(control owners, assessors, and technical teams can review.) Tj
+(supports, which it does not, what evidence artifacts CSW produces, and how often the) Tj
+T*
+(customer should collect them. CSW does not replace the customer's governance, policy, or) Tj
+T*
+(assessor judgement, and this report is not a control attestation.) Tj
 T*
 () Tj
 T*
@@ -59,57 +95,21 @@ T*
 T*
 () Tj
 T*
-(APRA-CPS234 > Critical-Information-Assets, Material-Operations, Service-Providers, Incident-) Tj
+(``) Tj
 T*
-(Evidence) Tj
+(CPS-234) Tj
 T*
-() Tj
+(??? Critical-Information-Assets \(Customer-Records, Payments-and-Ledger, Trading-Settlement,) Tj
 T*
-(This scope pattern should be validated with the customer's architecture, application owners,) Tj
+(Policy-and-Claims\)) Tj
 T*
-(compliance team, and assessor before it is used for formal evidence.) Tj
+(??? Material-Operations \(Online-Channels, Operational-Core\)) Tj
 T*
-() Tj
+(??? Service-Providers \(Outsourced-Connectivity\)) Tj
 T*
-(Outcomes CSW Can Support) Tj
+(??? Incident-Evidence) Tj
 T*
-() Tj
-T*
-(? Map workloads to critical information assets and material operations.) Tj
-T*
-(? Use policy simulation and flow review as technical control-testing evidence.) Tj
-T*
-(? Identify third-party service-provider communication paths.) Tj
-T*
-(? Support incident scoping with flow and process telemetry.) Tj
-T*
-() Tj
-T*
-(Evidence Package) Tj
-T*
-() Tj
-T*
-(? Critical information asset workload inventory) Tj
-T*
-(? Control-testing export) Tj
-T*
-(? Service-provider egress map) Tj
-T*
-(? Policy candidate and exception register) Tj
-T*
-(? Incident scoping example) Tj
-T*
-() Tj
-T*
-(POV / Workshop Approach) Tj
-T*
-() Tj
-T*
-(1. Select one business service, regulated boundary, or critical workload group.) Tj
-T*
-(2. Validate workload coverage and install sensors or configure supported connectors.) Tj
-T*
-(3. Apply labels for application, environment, owner, data class, criticality, compliance) Tj
+(`) Tj
 T*
 ET
 endstream
@@ -118,21 +118,166 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 6 0 R >>
 endobj
 6 0 obj
-<< /Length 863 >>
+<< /Length 2873 >>
 stream
 BT
 /F1 10 Tf
 50 760 Td
 14 TL
-(scope, and lifecycle.) Tj
+() Tj
 T*
-(4. Observe flows over a representative business window.) Tj
+(This scope pattern should be validated with the customer's architecture, application owners,) Tj
 T*
-(5. Use ADM to generate a candidate policy and review it with the application owner.) Tj
+(compliance team, and assessor before it is used for formal evidence.) Tj
 T*
-(6. Package inventory, scope, flows, policy, exceptions, and known gaps as the evidence) Tj
+() Tj
 T*
-(output.) Tj
+(In Scope for CSW Evidence) Tj
+T*
+() Tj
+T*
+(? Para. 20 - Information asset identification and classification) Tj
+T*
+(? Para. 21-23 - Implementation of controls \(network access layer\)) Tj
+T*
+(? Para. 24-28 - Incident management \(technical scoping\)) Tj
+T*
+(? Para. 29-33 - Testing of control effectiveness \(continuous, not point-in-time\)) Tj
+T*
+(? Para. 34-35 - Internal audit \(evidence pack inputs\)) Tj
+T*
+() Tj
+T*
+(Out of Scope \(Must Be Evidenced by Other Controls / Tools / Processes\)) Tj
+T*
+() Tj
+T*
+(? Para. 13-15 - Information security capability \(governance\)) Tj
+T*
+(? Para. 16-19 - Policy framework) Tj
+T*
+(? Para. 36-37 - APRA notification decision \(CSW provides scoping inputs only\)) Tj
+T*
+(? IAM/PAM, cryptography assurance, BCP/DR, supplier contractual arrangements) Tj
+T*
+() Tj
+T*
+(Framework Topic ? CSW Capability Map) Tj
+T*
+() Tj
+T*
+(| Framework topic | CSW capability | Evidence artifact |) Tj
+T*
+(|  |  |  |) Tj
+T*
+(| Para. 20 - Asset identification and classification | Workload inventory; scope + label) Tj
+T*
+(export | Inventory and scope membership export reconciled to information asset register |) Tj
+T*
+(| Para. 21-23 - Controls implementation | Policy workspace; ADM-derived allowlist |) Tj
+T*
+(Workspace snapshot and observed-vs-approved flow comparison |) Tj
+T*
+(| Para. 21-23 - Third-party paths | Outbound flow summary to service-provider endpoints |) Tj
+T*
+(Service-provider egress report |) Tj
+T*
+(| Para. 24-28 - Incident management | Forensic flow + process telemetry | Investigation pack) Tj
+T*
+(with timeline and impact scope |) Tj
+T*
+(| Para. 29-33 - Control effectiveness testing | Continuous flow data; policy-violation log;) Tj
+T*
+(drift report | Continuous control-testing evidence \(replaces point-in-time samples\) |) Tj
+T*
+(| Para. 34-35 - Internal audit | Periodic evidence pack | Quarterly evidence bundle for) Tj
+T*
+(audit work-papers |) Tj
+T*
+() Tj
+T*
+(Evidence Collection Approach) Tj
+T*
+() Tj
+T*
+(The table below describes per-topic evidence collection - what to collect, the CSW source) Tj
+T*
+(area, and a suggested cadence. The cadence should be tuned to the customer's audit cycle,) Tj
+T*
+(regulatory cadence, and risk appetite.) Tj
+T*
+() Tj
+T*
+(| Topic | What to collect | CSW source | Suggested cadence |) Tj
+T*
+(|  |  |  |  |) Tj
+T*
+(| Information asset register reconciliation | Workloads supporting each critical information) Tj
+T*
+(asset | Inventory + scope membership | Quarterly |) Tj
+T*
+(| Controls-implementation evidence | Workspace snapshot and observed-vs-approved flow) Tj
+T*
+(comparison | Policy workspace export + ADM export | Quarterly + after each change |) Tj
+T*
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 8 0 R >>
+endobj
+8 0 obj
+<< /Length 2993 >>
+stream
+BT
+/F1 10 Tf
+50 760 Td
+14 TL
+(| Control-effectiveness testing | Continuous policy-violation and drift evidence | Policy) Tj
+T*
+(analysis output \(continuous\) | Continuous, reviewed quarterly |) Tj
+T*
+(| Third-party service-provider paths | Outbound flow to vendor endpoints | Flow search) Tj
+T*
+(filtered to vendor endpoints | Monthly |) Tj
+T*
+(| Incident management sample | One representative incident timeline | Flow + process search) Tj
+T*
+(| Per incident; one representative sample per audit cycle |) Tj
+T*
+() Tj
+T*
+(POV / Workshop Approach) Tj
+T*
+() Tj
+T*
+(1. Confirm the framework version and assessment cycle with the customer's compliance team.) Tj
+T*
+(2. Select one business service, regulated boundary, or critical workload group to start) Tj
+T*
+(with; do not attempt to instrument the entire estate in the POV.) Tj
+T*
+(3. Validate workload coverage and install sensors or configure supported connectors.) Tj
+T*
+(Document the cannot-instrument register; this is itself evidence.) Tj
+T*
+(4. Apply labels for application, environment, owner, data class, criticality, compliance) Tj
+T*
+(scope, and any framework-specific tags \(e.g. tenant, prototype, isa_level, npi, cui, ephi`\).) Tj
+T*
+(5. Observe flows over a representative business window. Minimum two weeks; longer if the) Tj
+T*
+(customer has month-end, quarterly, or seasonal cycles relevant to the scope.) Tj
+T*
+(6. Use ADM to generate a candidate policy. Review with the application owner. Run in) Tj
+T*
+(Simulation mode for at least two weeks before any enforcement.) Tj
+T*
+(7. Package inventory, scope, flows, policy, exceptions, and known gaps as the evidence) Tj
+T*
+(output. Cross-reference this report's evidence collection table with the customer's existing) Tj
+T*
+(audit work-papers.) Tj
 T*
 () Tj
 T*
@@ -140,9 +285,27 @@ T*
 T*
 () Tj
 T*
-(CSW does not replace APRA notification decisions, formal control ownership, supplier) Tj
+(CSW does not replace board accountability for information security \(Para. 13-14\), the policy) Tj
 T*
-(assurance, IAM, EDR, or GRC workflows.) Tj
+(framework \(Para. 16-19\), related-party assurance, IAM/PAM lifecycle, cryptography programme) Tj
+T*
+(decisions, BCP/DR test outcomes, or the APRA notification decision \(Para. 36-37\).) Tj
+T*
+() Tj
+T*
+(Assessor / Auditor Caveat) Tj
+T*
+() Tj
+T*
+(CSW provides technical evidence inputs. The customer's qualified assessor, auditor,) Tj
+T*
+(certifying body, or regulator determines compliance status. Validate all framework-topic) Tj
+T*
+(mappings, control IDs, paragraph references, and section numbers in this report against the) Tj
+T*
+(current official framework text. If the customer is being assessed against a version other) Tj
+T*
+(than the one referenced in the framework version note above, revalidate before use.) Tj
 T*
 () Tj
 T*
@@ -160,16 +323,18 @@ ET
 endstream
 endobj
 xref
-0 7
+0 9
 0000000000 65535 f 
 0000000009 00000 n 
 0000000058 00000 n 
-0000000121 00000 n 
-0000000296 00000 n 
-0000002649 00000 n 
-0000002824 00000 n 
+0000000127 00000 n 
+0000000302 00000 n 
+0000002838 00000 n 
+0000003013 00000 n 
+0000005938 00000 n 
+0000006113 00000 n 
 trailer
-<< /Size 7 /Root 1 0 R >>
+<< /Size 9 /Root 1 0 R >>
 startxref
-3738
+9158
 %%EOF

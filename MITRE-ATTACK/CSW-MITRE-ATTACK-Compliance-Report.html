@@ -303,17 +303,25 @@ Secure Workload - MITRE ATT&amp;CK Compliance Report</a>
 <ul>
 <li><a href="#customer-facing-compliance-report" id="toc-customer-facing-compliance-report">Customer-Facing Compliance
 Report</a></li>
+<li><a href="#framework-version-note" id="toc-framework-version-note">Framework Version Note</a></li>
+<li><a href="#csw-ui-navigation-note" id="toc-csw-ui-navigation-note">CSW UI Navigation Note</a></li>
 <li><a href="#executive-summary" id="toc-executive-summary">Executive
 Summary</a></li>
 <li><a href="#suggested-csw-scope-pattern" id="toc-suggested-csw-scope-pattern">Suggested CSW Scope
 Pattern</a></li>
-<li><a href="#outcomes-csw-can-support" id="toc-outcomes-csw-can-support">Outcomes CSW Can Support</a></li>
-<li><a href="#evidence-package" id="toc-evidence-package">Evidence
-Package</a></li>
+<li><a href="#in-scope-for-csw-evidence" id="toc-in-scope-for-csw-evidence">In Scope for CSW Evidence</a></li>
+<li><a href="#out-of-scope-must-be-evidenced-by-other-controls-tools-processes" id="toc-out-of-scope-must-be-evidenced-by-other-controls-tools-processes">Out
+of Scope (Must Be Evidenced by Other Controls / Tools /
+Processes)</a></li>
+<li><a href="#framework-topic-csw-capability-map" id="toc-framework-topic-csw-capability-map">Framework Topic → CSW
+Capability Map</a></li>
+<li><a href="#evidence-collection-approach" id="toc-evidence-collection-approach">Evidence Collection
+Approach</a></li>
 <li><a href="#pov-workshop-approach" id="toc-pov-workshop-approach">POV
 / Workshop Approach</a></li>
 <li><a href="#boundaries-and-complementary-controls" id="toc-boundaries-and-complementary-controls">Boundaries and
 Complementary Controls</a></li>
+<li><a href="#assessor-auditor-caveat" id="toc-assessor-auditor-caveat">Assessor / Auditor Caveat</a></li>
 <li><a href="#disclaimer" id="toc-disclaimer">Disclaimer</a></li>
 </ul></li>
 </ul>
@@ -322,67 +330,210 @@ Complementary Controls</a></li>
 Secure Workload - MITRE ATT&amp;CK Compliance Report</h1>
 <h2 id="customer-facing-compliance-report">Customer-Facing Compliance
 Report</h2>
-<p><strong>Framework:</strong> MITRE ATT&amp;CK Enterprise<br />
-<strong>Primary audience:</strong> SOC, detection engineering, threat
-hunting, and security architecture teams.<br />
-<strong>CSW positioning:</strong> Tactic-by-tactic detection and
-prevention mapping, technique-level forensic alignment, and SOC
-integration guidance.</p>
+<p><strong>Framework:</strong> MITRE ATT&amp;CK Enterprise
+(https://attack.mitre.org)<br />
+<strong>Primary audience:</strong> Security architects, detection
+engineers, threat hunters, SOC analysts, and red-team / purple-team
+functions using ATT&amp;CK as the common reference for adversary
+behaviour.<br />
+<strong>CSW positioning:</strong> ATT&amp;CK is not a compliance
+framework. CSW supports a subset of ATT&amp;CK tactics with
+workload-level prevention and detection evidence, primarily Lateral
+Movement (TA0008), Discovery (TA0007), Command and Control (TA0011)
+detection of egress, Exfiltration (TA0010) detection, and Initial Access
+(TA0001) reduction by reducing reachable surface.</p>
+<hr />
+<h2 id="framework-version-note">Framework Version Note</h2>
+<p>MITRE ATT&amp;CK is a living knowledge base; the version evolves
+periodically (current version at time of writing is v15). This report
+references the high-level tactics (TA0001 through TA0040 / TA0011
+family). Validate technique-level mappings against the ATT&amp;CK
+version your detection-engineering team is using.</p>
+<h2 id="csw-ui-navigation-note">CSW UI Navigation Note</h2>
+<p>Cisco does not yet publish framework-specific CSW UI navigation for
+this standard; framework-specific navigation is on the product roadmap.
+This report references CSW <em>capabilities</em> and the <em>evidence
+artifacts</em> they produce. The technical runbook
+(<code>CSW-MITRE-ATTACK-Technical-Runbook.md</code>) in this folder
+contains the deeper engineering detail.</p>
 <hr />
 <h2 id="executive-summary">Executive Summary</h2>
-<p>Cisco Secure Workload (CSW) can support this framework by producing
-workload-level evidence for inventory, application dependency mapping,
-segmentation design, policy simulation, vulnerability context, and
-incident investigation. The strongest customer story is not that CSW
-“certifies” compliance; it is that CSW turns workload communication into
-evidence that control owners, assessors, and technical teams can
-review.</p>
+<p>Cisco Secure Workload (CSW) supports a defined subset of this
+framework. The strongest customer story is not that CSW “certifies”
+compliance; it is that CSW turns workload communication and inventory
+into evidence that the customer, the customer’s compliance team, and the
+customer’s assessor can review. This report describes which framework
+topics CSW supports, which it does not, what evidence artifacts CSW
+produces, and how often the customer should collect them. CSW does
+<strong>not</strong> replace the customer’s governance, policy, or
+assessor judgement, and this report is <strong>not</strong> a control
+attestation.</p>
 <h2 id="suggested-csw-scope-pattern">Suggested CSW Scope Pattern</h2>
-<p><code>MITRE-ATTACK</code> &gt; <code>Initial-Access</code>,
-<code>Execution</code>, <code>Persistence</code>,
-<code>Privilege-Escalation</code>, <code>Defense-Evasion</code>,
-<code>Lateral-Movement</code>, <code>Command-Control</code>,
-<code>Exfiltration</code>, <code>Impact</code></p>
+<pre><code>MITRE-ATTACK
+(no fixed scope tree; ATT&amp;CK is a tactic / technique cross-cut applied to any CSW-instrumented scope)</code></pre>
 <p>This scope pattern should be validated with the customer’s
 architecture, application owners, compliance team, and assessor before
 it is used for formal evidence.</p>
-<h2 id="outcomes-csw-can-support">Outcomes CSW Can Support</h2>
+<h2 id="in-scope-for-csw-evidence">In Scope for CSW Evidence</h2>
 <ul>
-<li>Map CSW telemetry and policy controls to ATT&amp;CK tactics and
-techniques.</li>
-<li>Use workload process and flow evidence for forensic rule
-alignment.</li>
-<li>Identify lateral movement and command-and-control
-opportunities.</li>
-<li>Create SOC-ready evidence packages for investigation workflows.</li>
+<li>Initial Access (TA0001) - reachable-surface reduction</li>
+<li>Discovery (TA0007) - lateral discovery flow detection</li>
+<li>Lateral Movement (TA0008) - east-west flow detection and
+prevention</li>
+<li>Command and Control (TA0011) - egress flow detection</li>
+<li>Exfiltration (TA0010) - egress flow detection</li>
+<li>Impact (TA0040) - workload reach scoping during impact analysis</li>
 </ul>
-<h2 id="evidence-package">Evidence Package</h2>
+<h2 id="out-of-scope-must-be-evidenced-by-other-controls-tools-processes">Out
+of Scope (Must Be Evidenced by Other Controls / Tools / Processes)</h2>
 <ul>
-<li>Technique-to-CSW capability matrix</li>
-<li>Observed flow and process telemetry examples</li>
-<li>Lateral movement candidate paths</li>
-<li>Policy deny / allow evidence</li>
-<li>SOC enrichment guidance</li>
+<li>Execution (TA0002) - endpoint behaviour (EDR domain)</li>
+<li>Persistence (TA0003) - host-level (EDR domain)</li>
+<li>Privilege Escalation (TA0004) - host-level (EDR domain)</li>
+<li>Defense Evasion (TA0005) - many techniques are host-level (EDR
+domain)</li>
+<li>Credential Access (TA0006) - identity layer (IAM / EDR)</li>
+<li>Collection (TA0009) - host-level (EDR / DLP)</li>
 </ul>
+<h2 id="framework-topic-csw-capability-map">Framework Topic → CSW
+Capability Map</h2>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 28%" />
+<col style="width: 28%" />
+</colgroup>
+<thead>
+<tr>
+<th>Framework topic</th>
+<th>CSW capability</th>
+<th>Evidence artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Initial Access (TA0001) - reduce reachable surface</td>
+<td>Reachability-weighted vulnerability evidence; policy workspace deny
+by default</td>
+<td>Vulnerability report + workspace snapshot showing reduced ingress
+paths</td>
+</tr>
+<tr>
+<td>Discovery (TA0007) - detect lateral discovery flows</td>
+<td>Process + flow telemetry; alerts on unexpected scanning
+patterns</td>
+<td>Alert log for unauthorised east-west reconnaissance</td>
+</tr>
+<tr>
+<td>Lateral Movement (TA0008) - east-west enforcement and detection</td>
+<td>Policy workspace + enforcement / violation log</td>
+<td>Workspace snapshot + violation log showing east-west allowlist
+enforcement</td>
+</tr>
+<tr>
+<td>Command and Control (TA0011) - egress detection</td>
+<td>Outbound flow telemetry with destination context</td>
+<td>Egress flow report and anomaly alerts</td>
+</tr>
+<tr>
+<td>Exfiltration (TA0010) - egress detection</td>
+<td>Outbound flow telemetry with destination context and volume
+context</td>
+<td>Egress flow report with volume anomalies</td>
+</tr>
+<tr>
+<td>Impact (TA0040) - reach scoping</td>
+<td>Forensic flow + process search</td>
+<td>Investigation pack showing reach from the impacted workload</td>
+</tr>
+</tbody>
+</table>
+<h2 id="evidence-collection-approach">Evidence Collection Approach</h2>
+<p>The table below describes per-topic evidence collection - what to
+collect, the CSW source area, and a suggested cadence. The cadence
+should be tuned to the customer’s audit cycle, regulatory cadence, and
+risk appetite.</p>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr>
+<th>Topic</th>
+<th>What to collect</th>
+<th>CSW source</th>
+<th>Suggested cadence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reachable-surface reduction</td>
+<td>Reduced ingress paths to high-value workloads</td>
+<td>Policy workspace export + reachability summary</td>
+<td>Quarterly + after each major workspace change</td>
+</tr>
+<tr>
+<td>Lateral-movement enforcement</td>
+<td>East-west allowlist enforcement and violation log</td>
+<td>Policy workspace export + policy analysis output</td>
+<td>Continuous; reviewed quarterly</td>
+</tr>
+<tr>
+<td>Egress monitoring</td>
+<td>Outbound flow telemetry to external destinations</td>
+<td>Flow search filtered to external destinations</td>
+<td>Continuous; reviewed daily for high-value scopes</td>
+</tr>
+<tr>
+<td>Detection content (joint with SOC)</td>
+<td>ATT&amp;CK-mapped detection rules using CSW telemetry</td>
+<td>SOC integration (CSW telemetry exported to SIEM)</td>
+<td>Continuous; rule sets reviewed monthly</td>
+</tr>
+</tbody>
+</table>
 <h2 id="pov-workshop-approach">POV / Workshop Approach</h2>
 <ol type="1">
+<li>Confirm the framework version and assessment cycle with the
+customer’s compliance team.</li>
 <li>Select one business service, regulated boundary, or critical
-workload group.</li>
+workload group to start with; do not attempt to instrument the entire
+estate in the POV.</li>
 <li>Validate workload coverage and install sensors or configure
-supported connectors.</li>
+supported connectors. Document the cannot-instrument register; this is
+itself evidence.</li>
 <li>Apply labels for application, environment, owner, data class,
-criticality, compliance scope, and lifecycle.</li>
-<li>Observe flows over a representative business window.</li>
-<li>Use ADM to generate a candidate policy and review it with the
-application owner.</li>
+criticality, compliance scope, and any framework-specific tags
+(e.g. <code>tenant</code>, <code>prototype</code>,
+<code>isa_level</code>, <code>npi</code>, <code>cui</code>,
+<code>ephi</code>).</li>
+<li>Observe flows over a representative business window. Minimum two
+weeks; longer if the customer has month-end, quarterly, or seasonal
+cycles relevant to the scope.</li>
+<li>Use ADM to generate a candidate policy. Review with the application
+owner. Run in Simulation mode for at least two weeks before any
+enforcement.</li>
 <li>Package inventory, scope, flows, policy, exceptions, and known gaps
-as the evidence output.</li>
+as the evidence output. Cross-reference this report’s evidence
+collection table with the customer’s existing audit work-papers.</li>
 </ol>
 <h2 id="boundaries-and-complementary-controls">Boundaries and
 Complementary Controls</h2>
 <p>ATT&amp;CK is not a compliance standard. CSW does not replace EDR,
-SIEM, identity telemetry, malware analysis, endpoint response, or full
-detection engineering coverage.</p>
+SIEM, identity telemetry, malware analysis, endpoint response, threat
+intelligence, or the full detection engineering function. CSW is one
+telemetry source among many for an ATT&amp;CK-aligned SOC.</p>
+<h2 id="assessor-auditor-caveat">Assessor / Auditor Caveat</h2>
+<p>CSW provides technical evidence inputs. The customer’s qualified
+assessor, auditor, certifying body, or regulator determines compliance
+status. Validate all framework-topic mappings, control IDs, paragraph
+references, and section numbers in this report against the current
+official framework text. If the customer is being assessed against a
+version other than the one referenced in the framework version note
+above, revalidate before use.</p>
 <h2 id="disclaimer">Disclaimer</h2>
 <p>This report is for informational and planning purposes. It is not
 legal, regulatory, audit, or certification advice. Validate all mappings

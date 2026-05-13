@@ -3,19 +3,19 @@
 << /Type /Catalog /Pages 2 0 R >>
 endobj
 2 0 obj
-<< /Type /Pages /Kids [3 0 R 5 0 R] /Count 2 >>
+<< /Type /Pages /Kids [3 0 R 5 0 R 7 0 R] /Count 3 >>
 endobj
 3 0 obj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 4 0 R >>
 endobj
 4 0 obj
-<< /Length 2352 >>
+<< /Length 2673 >>
 stream
 BT
 /F1 10 Tf
 50 760 Td
 14 TL
-(Cisco Secure Workload - Australian Essential Eight Compliance Report) Tj
+(Cisco Secure Workload - ACSC Essential Eight Compliance Report) Tj
 T*
 () Tj
 T*
@@ -23,15 +23,55 @@ T*
 T*
 () Tj
 T*
-(Framework: ACSC Essential Eight) Tj
+(Framework: Australian Cyber Security Centre \(ACSC\) Essential Eight Maturity Model) Tj
 T*
-(Primary audience: Australian public and private-sector security teams using Essential Eight) Tj
+(Primary audience: Australian Commonwealth, state, and territory government agencies and the) Tj
 T*
-(maturity guidance.) Tj
+(broader Australian public and private sector using Essential Eight as the baseline maturity) Tj
 T*
-(CSW positioning: ML1-ML3 maturity evidence, patch prioritisation using CVE / EPSS and) Tj
+(reference.) Tj
 T*
-(reachability, admin path restriction, and application control support.) Tj
+(CSW positioning: Patch prioritisation using CVE + reachability, administrative-path) Tj
+T*
+(restriction at the workload-to-workload layer, and supporting evidence for application) Tj
+T*
+(control through observed process telemetry.) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(Framework Version Note) Tj
+T*
+() Tj
+T*
+(References the Essential Eight Maturity Model as published by ACSC. The model uses three) Tj
+T*
+(Maturity Levels \(ML1, ML2, ML3\). The eight mitigation strategies are: Application Control,) Tj
+T*
+(Patch Applications, Configure Microsoft Office Macro Settings, User Application Hardening,) Tj
+T*
+(Restrict Administrative Privileges, Patch Operating Systems, Multi-Factor Authentication,) Tj
+T*
+(Regular Backups. CSW only supports a subset of these; the others are out of scope. Validate) Tj
+T*
+(maturity-level requirements against the current ACSC publication.) Tj
+T*
+() Tj
+T*
+(CSW UI Navigation Note) Tj
+T*
+() Tj
+T*
+(Cisco does not yet publish framework-specific CSW UI navigation for this standard;) Tj
+T*
+(framework-specific navigation is on the product roadmap. This report references CSW) Tj
+T*
+(*capabilities* and the *evidence artifacts* they produce. The technical runbook \(CSW-) Tj
+T*
+(Essential-Eight-Technical-Runbook.md\) in this folder contains the deeper engineering detail.) Tj
 T*
 () Tj
 T*
@@ -43,15 +83,19 @@ T*
 T*
 () Tj
 T*
-(Cisco Secure Workload \(CSW\) can support this framework by producing workload-level evidence) Tj
+(Cisco Secure Workload \(CSW\) supports a defined subset of this framework. The strongest) Tj
 T*
-(for inventory, application dependency mapping, segmentation design, policy simulation,) Tj
+(customer story is not that CSW "certifies" compliance; it is that CSW turns workload) Tj
 T*
-(vulnerability context, and incident investigation. The strongest customer story is not that) Tj
+(communication and inventory into evidence that the customer, the customer's compliance team,) Tj
 T*
-(CSW "certifies" compliance; it is that CSW turns workload communication into evidence that) Tj
+(and the customer's assessor can review. This report describes which framework topics CSW) Tj
 T*
-(control owners, assessors, and technical teams can review.) Tj
+(supports, which it does not, what evidence artifacts CSW produces, and how often the) Tj
+T*
+(customer should collect them. CSW does not replace the customer's governance, policy, or) Tj
+T*
+(assessor judgement, and this report is not a control attestation.) Tj
 T*
 () Tj
 T*
@@ -59,9 +103,32 @@ T*
 T*
 () Tj
 T*
-(Essential-Eight > Critical-Applications, Admin-Paths, Patch-Priority, Application-Control-) Tj
+(``) Tj
 T*
-(Support, Monitoring) Tj
+(Essential-Eight) Tj
+T*
+(??? Critical-Applications) Tj
+T*
+(??? Admin-Paths \(Jump-Hosts, Admin-Workstations\)) Tj
+T*
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 6 0 R >>
+endobj
+6 0 obj
+<< /Length 2690 >>
+stream
+BT
+/F1 10 Tf
+50 760 Td
+14 TL
+(??? Patch-Priority-Targets) Tj
+T*
+(??? Application-Control-Support) Tj
+T*
+(`) Tj
 T*
 () Tj
 T*
@@ -71,33 +138,112 @@ T*
 T*
 () Tj
 T*
-(Outcomes CSW Can Support) Tj
+(In Scope for CSW Evidence) Tj
 T*
 () Tj
 T*
-(? Prioritize patching using vulnerability, exploitability, and reachability context.) Tj
+(? E2 / E6 - Patch Applications and Patch Operating Systems \(reachability-weighted) Tj
 T*
-(? Restrict administrative workload communication paths.) Tj
+(  prioritisation\)) Tj
 T*
-(? Support application control conversations with observed process telemetry.) Tj
+(? E5 - Restrict Administrative Privileges \(workload-to-workload admin path restriction\)) Tj
 T*
-(? Package maturity-level evidence for segmentation and monitoring.) Tj
+(? E1 - Application Control \(supporting evidence via observed process telemetry; CSW does) Tj
 T*
-() Tj
-T*
-(Evidence Package) Tj
+(  not enforce application control\)) Tj
 T*
 () Tj
 T*
-(? Critical workload inventory) Tj
+(Out of Scope \(Must Be Evidenced by Other Controls / Tools / Processes\)) Tj
 T*
-(? Admin path flow summary) Tj
+() Tj
 T*
-(? Patch prioritization export) Tj
+(? E3 - Configure Microsoft Office Macro Settings \(endpoint configuration\)) Tj
 T*
-(? Observed process and application evidence) Tj
+(? E4 - User Application Hardening \(endpoint configuration\)) Tj
 T*
-(? Policy candidate and exception register) Tj
+(? E7 - Multi-Factor Authentication \(identity layer\)) Tj
+T*
+(? E8 - Regular Backups \(backup / recovery\)) Tj
+T*
+(? Essential Eight maturity-level scoring decisions) Tj
+T*
+() Tj
+T*
+(Framework Topic ? CSW Capability Map) Tj
+T*
+() Tj
+T*
+(| Framework topic | CSW capability | Evidence artifact |) Tj
+T*
+(|  |  |  |) Tj
+T*
+(| E2 - Patch Applications \(prioritisation\) | Reachability-weighted CVE on application) Tj
+T*
+(workloads | Prioritised remediation list with compensating-control register |) Tj
+T*
+(| E6 - Patch Operating Systems \(prioritisation\) | Reachability-weighted CVE on OS layer |) Tj
+T*
+(Prioritised remediation list |) Tj
+T*
+(| E5 - Restrict Administrative Privileges \(workload layer\) | Policy workspace + admin-path) Tj
+T*
+(allowlist | Workspace snapshot showing admin-path restrictions + jump-host flow report |) Tj
+T*
+(| E1 - Application Control \(supporting\) | Observed process telemetry | Process inventory and) Tj
+T*
+(unexpected-process anomalies as input to application control content |) Tj
+T*
+(| Maturity-level evidence \(across the above\) | Periodic evidence pack | Quarterly evidence) Tj
+T*
+(bundle covering the three CSW-supported strategies |) Tj
+T*
+() Tj
+T*
+(Evidence Collection Approach) Tj
+T*
+() Tj
+T*
+(The table below describes per-topic evidence collection - what to collect, the CSW source) Tj
+T*
+(area, and a suggested cadence. The cadence should be tuned to the customer's audit cycle,) Tj
+T*
+(regulatory cadence, and risk appetite.) Tj
+T*
+() Tj
+T*
+(| Topic | What to collect | CSW source | Suggested cadence |) Tj
+T*
+(|  |  |  |  |) Tj
+T*
+(| Critical workload inventory | Workloads in scope of Essential Eight uplift | Inventory +) Tj
+T*
+(scope membership export | Monthly |) Tj
+T*
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 8 0 R >>
+endobj
+8 0 obj
+<< /Length 2907 >>
+stream
+BT
+/F1 10 Tf
+50 760 Td
+14 TL
+(| Patch prioritisation | CVE list weighted by reach and exploitability | Vulnerability) Tj
+T*
+(report scoped to Essential-Eight | Monthly |) Tj
+T*
+(| Admin path restriction | Jump-host and admin-workstation flow telemetry | Flow search on) Tj
+T*
+(Admin-Paths + policy workspace export | Continuous; reviewed monthly |) Tj
+T*
+(| Application control input | Observed process telemetry on critical workloads | Process) Tj
+T*
+(inventory and anomaly report | Quarterly |) Tj
 T*
 () Tj
 T*
@@ -105,34 +251,33 @@ T*
 T*
 () Tj
 T*
-(1. Select one business service, regulated boundary, or critical workload group.) Tj
+(1. Confirm the framework version and assessment cycle with the customer's compliance team.) Tj
 T*
-(2. Validate workload coverage and install sensors or configure supported connectors.) Tj
+(2. Select one business service, regulated boundary, or critical workload group to start) Tj
 T*
-(3. Apply labels for application, environment, owner, data class, criticality, compliance) Tj
+(with; do not attempt to instrument the entire estate in the POV.) Tj
 T*
-ET
-endstream
-endobj
-5 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 6 0 R >>
-endobj
-6 0 obj
-<< /Length 890 >>
-stream
-BT
-/F1 10 Tf
-50 760 Td
-14 TL
-(scope, and lifecycle.) Tj
+(3. Validate workload coverage and install sensors or configure supported connectors.) Tj
 T*
-(4. Observe flows over a representative business window.) Tj
+(Document the cannot-instrument register; this is itself evidence.) Tj
 T*
-(5. Use ADM to generate a candidate policy and review it with the application owner.) Tj
+(4. Apply labels for application, environment, owner, data class, criticality, compliance) Tj
 T*
-(6. Package inventory, scope, flows, policy, exceptions, and known gaps as the evidence) Tj
+(scope, and any framework-specific tags \(e.g. tenant, prototype, isa_level, npi, cui, ephi`\).) Tj
 T*
-(output.) Tj
+(5. Observe flows over a representative business window. Minimum two weeks; longer if the) Tj
+T*
+(customer has month-end, quarterly, or seasonal cycles relevant to the scope.) Tj
+T*
+(6. Use ADM to generate a candidate policy. Review with the application owner. Run in) Tj
+T*
+(Simulation mode for at least two weeks before any enforcement.) Tj
+T*
+(7. Package inventory, scope, flows, policy, exceptions, and known gaps as the evidence) Tj
+T*
+(output. Cross-reference this report's evidence collection table with the customer's existing) Tj
+T*
+(audit work-papers.) Tj
 T*
 () Tj
 T*
@@ -140,9 +285,27 @@ T*
 T*
 () Tj
 T*
-(CSW does not replace application control enforcement, endpoint hardening, MFA, backup) Tj
+(CSW does not enforce application control on endpoints, harden user applications, configure) Tj
 T*
-(recovery, macro controls, or ACSC maturity assessment ownership.) Tj
+(Office macro settings, enforce MFA, perform backups, or replace ACSC maturity-level) Tj
+T*
+(assessment ownership.) Tj
+T*
+() Tj
+T*
+(Assessor / Auditor Caveat) Tj
+T*
+() Tj
+T*
+(CSW provides technical evidence inputs. The customer's qualified assessor, auditor,) Tj
+T*
+(certifying body, or regulator determines compliance status. Validate all framework-topic) Tj
+T*
+(mappings, control IDs, paragraph references, and section numbers in this report against the) Tj
+T*
+(current official framework text. If the customer is being assessed against a version other) Tj
+T*
+(than the one referenced in the framework version note above, revalidate before use.) Tj
 T*
 () Tj
 T*
@@ -160,16 +323,18 @@ ET
 endstream
 endobj
 xref
-0 7
+0 9
 0000000000 65535 f 
 0000000009 00000 n 
 0000000058 00000 n 
-0000000121 00000 n 
-0000000296 00000 n 
-0000002700 00000 n 
-0000002875 00000 n 
+0000000127 00000 n 
+0000000302 00000 n 
+0000003027 00000 n 
+0000003202 00000 n 
+0000005944 00000 n 
+0000006119 00000 n 
 trailer
-<< /Size 7 /Root 1 0 R >>
+<< /Size 9 /Root 1 0 R >>
 startxref
-3816
+9078
 %%EOF

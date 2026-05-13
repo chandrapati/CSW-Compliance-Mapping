@@ -303,17 +303,25 @@ Secure Workload - SWIFT CSCF Compliance Report</a>
 <ul>
 <li><a href="#customer-facing-compliance-report" id="toc-customer-facing-compliance-report">Customer-Facing Compliance
 Report</a></li>
+<li><a href="#framework-version-note" id="toc-framework-version-note">Framework Version Note</a></li>
+<li><a href="#csw-ui-navigation-note" id="toc-csw-ui-navigation-note">CSW UI Navigation Note</a></li>
 <li><a href="#executive-summary" id="toc-executive-summary">Executive
 Summary</a></li>
 <li><a href="#suggested-csw-scope-pattern" id="toc-suggested-csw-scope-pattern">Suggested CSW Scope
 Pattern</a></li>
-<li><a href="#outcomes-csw-can-support" id="toc-outcomes-csw-can-support">Outcomes CSW Can Support</a></li>
-<li><a href="#evidence-package" id="toc-evidence-package">Evidence
-Package</a></li>
+<li><a href="#in-scope-for-csw-evidence" id="toc-in-scope-for-csw-evidence">In Scope for CSW Evidence</a></li>
+<li><a href="#out-of-scope-must-be-evidenced-by-other-controls-tools-processes" id="toc-out-of-scope-must-be-evidenced-by-other-controls-tools-processes">Out
+of Scope (Must Be Evidenced by Other Controls / Tools /
+Processes)</a></li>
+<li><a href="#framework-topic-csw-capability-map" id="toc-framework-topic-csw-capability-map">Framework Topic → CSW
+Capability Map</a></li>
+<li><a href="#evidence-collection-approach" id="toc-evidence-collection-approach">Evidence Collection
+Approach</a></li>
 <li><a href="#pov-workshop-approach" id="toc-pov-workshop-approach">POV
 / Workshop Approach</a></li>
 <li><a href="#boundaries-and-complementary-controls" id="toc-boundaries-and-complementary-controls">Boundaries and
 Complementary Controls</a></li>
+<li><a href="#assessor-auditor-caveat" id="toc-assessor-auditor-caveat">Assessor / Auditor Caveat</a></li>
 <li><a href="#disclaimer" id="toc-disclaimer">Disclaimer</a></li>
 </ul></li>
 </ul>
@@ -323,66 +331,219 @@ Secure Workload - SWIFT CSCF Compliance Report</h1>
 <h2 id="customer-facing-compliance-report">Customer-Facing Compliance
 Report</h2>
 <p><strong>Framework:</strong> SWIFT Customer Security Controls
-Framework v2024<br />
-<strong>Primary audience:</strong> Financial institutions, SWIFT
-operations teams, security teams, and assurance owners.<br />
-<strong>CSW positioning:</strong> SWIFT secure zone isolation,
-mandatory/advisory control mapping, operator session integrity context,
-Internet restriction, and SWIFT-specific logging support.</p>
+Framework (CSCF) v2024<br />
+<strong>Primary audience:</strong> SWIFT users (financial institutions
+and service bureaus) subject to the SWIFT Customer Security Programme
+(CSP) and required to attest annually.<br />
+<strong>CSW positioning:</strong> SWIFT secure-zone segmentation,
+restricted Internet access from the secure zone, restricted access
+between the secure zone and the general enterprise IT estate,
+monitoring, and SWIFT-specific logging support.</p>
+<hr />
+<h2 id="framework-version-note">Framework Version Note</h2>
+<p>References CSCF v2024. SWIFT publishes a new CSCF version yearly;
+verify against the version applicable to the customer’s attestation
+cycle. Control codes (e.g. 1.1, 1.4, 2.1, etc.) are stable across recent
+versions for mandatory controls but advisory controls evolve.</p>
+<h2 id="csw-ui-navigation-note">CSW UI Navigation Note</h2>
+<p>Cisco does not yet publish framework-specific CSW UI navigation for
+this standard; framework-specific navigation is on the product roadmap.
+This report references CSW <em>capabilities</em> and the <em>evidence
+artifacts</em> they produce. The technical runbook
+(<code>CSW-SWIFT-CSCF-Technical-Runbook.md</code>) in this folder
+contains the deeper engineering detail.</p>
 <hr />
 <h2 id="executive-summary">Executive Summary</h2>
-<p>Cisco Secure Workload (CSW) can support this framework by producing
-workload-level evidence for inventory, application dependency mapping,
-segmentation design, policy simulation, vulnerability context, and
-incident investigation. The strongest customer story is not that CSW
-“certifies” compliance; it is that CSW turns workload communication into
-evidence that control owners, assessors, and technical teams can
-review.</p>
+<p>Cisco Secure Workload (CSW) supports a defined subset of this
+framework. The strongest customer story is not that CSW “certifies”
+compliance; it is that CSW turns workload communication and inventory
+into evidence that the customer, the customer’s compliance team, and the
+customer’s assessor can review. This report describes which framework
+topics CSW supports, which it does not, what evidence artifacts CSW
+produces, and how often the customer should collect them. CSW does
+<strong>not</strong> replace the customer’s governance, policy, or
+assessor judgement, and this report is <strong>not</strong> a control
+attestation.</p>
 <h2 id="suggested-csw-scope-pattern">Suggested CSW Scope Pattern</h2>
-<p><code>SWIFT-CSCF</code> &gt; <code>Secure-Zone</code>,
-<code>SWIFT-Interfaces</code>, <code>Operator-Workstations</code>,
-<code>Jump-Hosts</code>, <code>Internet-Restricted-Systems</code>,
-<code>Third-Party-Connectivity</code></p>
+<pre><code>SWIFT-CSCF
+├── SWIFT-Secure-Zone (Messaging-Interfaces, Communication-Interfaces, Local-Authentication)
+├── Operator-Workstations (dedicated and general-purpose)
+├── Jump-Hosts-to-Secure-Zone
+├── Internet-Restricted-Systems
+└── Third-Party-Connectivity</code></pre>
 <p>This scope pattern should be validated with the customer’s
 architecture, application owners, compliance team, and assessor before
 it is used for formal evidence.</p>
-<h2 id="outcomes-csw-can-support">Outcomes CSW Can Support</h2>
+<h2 id="in-scope-for-csw-evidence">In Scope for CSW Evidence</h2>
 <ul>
-<li>Identify workloads within or connected to the SWIFT secure
-zone.</li>
-<li>Review Internet and third-party egress paths from SWIFT-related
-systems.</li>
-<li>Support segmentation evidence for mandatory and advisory
-controls.</li>
-<li>Package flow and process telemetry for operational review.</li>
+<li>1.1 SWIFT Environment Protection (secure-zone isolation
+evidence)</li>
+<li>1.4 Internet Access Restriction (egress monitoring from secure
+zone)</li>
+<li>2.x System Integrity (workload monitoring, vulnerability handling on
+secure-zone components)</li>
+<li>5.x Access Controls (workload-to-workload layer)</li>
+<li>6.x Detect Anomalous Activity (continuous flow + process
+telemetry)</li>
 </ul>
-<h2 id="evidence-package">Evidence Package</h2>
+<h2 id="out-of-scope-must-be-evidenced-by-other-controls-tools-processes">Out
+of Scope (Must Be Evidenced by Other Controls / Tools / Processes)</h2>
 <ul>
-<li>SWIFT secure zone workload inventory</li>
-<li>Internet access restriction evidence</li>
-<li>Operator / jump-host flow summary</li>
-<li>Policy candidate and exception register</li>
-<li>Monitoring and incident timeline sample</li>
+<li>3.x Physically Secure the Environment</li>
+<li>4.x Prevent Compromise of Credentials (identity layer)</li>
+<li>5.4 Physical and Logical Password Storage</li>
+<li>6.4 Logging and Monitoring (CSW is one log source; SWIFT-specific
+logging requires the messaging interface logs)</li>
+<li>7.x Plan for Incident Response and Information Sharing
+(governance)</li>
+<li>SWIFT CSP attestation submission itself</li>
 </ul>
+<h2 id="framework-topic-csw-capability-map">Framework Topic → CSW
+Capability Map</h2>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 28%" />
+<col style="width: 28%" />
+</colgroup>
+<thead>
+<tr>
+<th>Framework topic</th>
+<th>CSW capability</th>
+<th>Evidence artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.1 Secure-zone isolation</td>
+<td>Policy workspace + default-deny at secure-zone boundary</td>
+<td>Workspace snapshot showing secure-zone boundary deny rules</td>
+</tr>
+<tr>
+<td>1.4 Internet access restriction</td>
+<td>Outbound flow telemetry from secure zone</td>
+<td>Egress flow report from SWIFT-Secure-Zone</td>
+</tr>
+<tr>
+<td>2.x System integrity (vulnerability)</td>
+<td>Reachability-weighted CVE on secure-zone components</td>
+<td>Prioritised remediation list</td>
+</tr>
+<tr>
+<td>5.x Access controls (workload layer)</td>
+<td>Policy workspace + enforcement / violation log</td>
+<td>Workspace snapshot + violation log</td>
+</tr>
+<tr>
+<td>6.x Anomalous activity detection</td>
+<td>Continuous flow + process telemetry; alerts</td>
+<td>Alert and anomaly log scoped to SWIFT-CSCF</td>
+</tr>
+<tr>
+<td>Operator path evidence</td>
+<td>Flow telemetry for operator workstations and jump hosts</td>
+<td>Operator-workstation flow report</td>
+</tr>
+</tbody>
+</table>
+<h2 id="evidence-collection-approach">Evidence Collection Approach</h2>
+<p>The table below describes per-topic evidence collection - what to
+collect, the CSW source area, and a suggested cadence. The cadence
+should be tuned to the customer’s audit cycle, regulatory cadence, and
+risk appetite.</p>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr>
+<th>Topic</th>
+<th>What to collect</th>
+<th>CSW source</th>
+<th>Suggested cadence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Secure-zone inventory</td>
+<td>Workloads in SWIFT-Secure-Zone</td>
+<td>Inventory + scope membership export</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>Secure-zone boundary evidence</td>
+<td>Workspace snapshot and policy violation log</td>
+<td>Policy workspace export + policy analysis output</td>
+<td>Quarterly + after each change</td>
+</tr>
+<tr>
+<td>Internet access restriction evidence</td>
+<td>Outbound flow from secure zone with destination context</td>
+<td>Flow search filtered to SWIFT-Secure-Zone egress</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>Vulnerability + reachability</td>
+<td>CVE list weighted by reach into secure-zone components</td>
+<td>Vulnerability report scoped to SWIFT-CSCF</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>Operator workstation activity</td>
+<td>Operator and jump-host flow telemetry</td>
+<td>Flow search on Operator-Workstations and Jump-Hosts</td>
+<td>Continuous; reviewed monthly</td>
+</tr>
+<tr>
+<td>Incident sample</td>
+<td>Workload-level timeline for one representative incident</td>
+<td>Flow + process search</td>
+<td>Per incident</td>
+</tr>
+</tbody>
+</table>
 <h2 id="pov-workshop-approach">POV / Workshop Approach</h2>
 <ol type="1">
+<li>Confirm the framework version and assessment cycle with the
+customer’s compliance team.</li>
 <li>Select one business service, regulated boundary, or critical
-workload group.</li>
+workload group to start with; do not attempt to instrument the entire
+estate in the POV.</li>
 <li>Validate workload coverage and install sensors or configure
-supported connectors.</li>
+supported connectors. Document the cannot-instrument register; this is
+itself evidence.</li>
 <li>Apply labels for application, environment, owner, data class,
-criticality, compliance scope, and lifecycle.</li>
-<li>Observe flows over a representative business window.</li>
-<li>Use ADM to generate a candidate policy and review it with the
-application owner.</li>
+criticality, compliance scope, and any framework-specific tags
+(e.g. <code>tenant</code>, <code>prototype</code>,
+<code>isa_level</code>, <code>npi</code>, <code>cui</code>,
+<code>ephi</code>).</li>
+<li>Observe flows over a representative business window. Minimum two
+weeks; longer if the customer has month-end, quarterly, or seasonal
+cycles relevant to the scope.</li>
+<li>Use ADM to generate a candidate policy. Review with the application
+owner. Run in Simulation mode for at least two weeks before any
+enforcement.</li>
 <li>Package inventory, scope, flows, policy, exceptions, and known gaps
-as the evidence output.</li>
+as the evidence output. Cross-reference this report’s evidence
+collection table with the customer’s existing audit work-papers.</li>
 </ol>
 <h2 id="boundaries-and-complementary-controls">Boundaries and
 Complementary Controls</h2>
-<p>CSW does not replace SWIFT CSP attestation, endpoint hardening,
-operator authentication, transaction integrity, logging retention, or
-SWIFT-specific application controls.</p>
+<p>CSW does not replace the SWIFT CSP attestation, the messaging
+interface itself, SWIFT-specific application controls (logging, message
+integrity, operator authentication), physical security of the SWIFT
+environment, or the operator credential lifecycle.</p>
+<h2 id="assessor-auditor-caveat">Assessor / Auditor Caveat</h2>
+<p>CSW provides technical evidence inputs. The customer’s qualified
+assessor, auditor, certifying body, or regulator determines compliance
+status. Validate all framework-topic mappings, control IDs, paragraph
+references, and section numbers in this report against the current
+official framework text. If the customer is being assessed against a
+version other than the one referenced in the framework version note
+above, revalidate before use.</p>
 <h2 id="disclaimer">Disclaimer</h2>
 <p>This report is for informational and planning purposes. It is not
 legal, regulatory, audit, or certification advice. Validate all mappings

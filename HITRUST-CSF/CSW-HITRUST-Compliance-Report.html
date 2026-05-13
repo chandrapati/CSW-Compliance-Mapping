@@ -303,17 +303,25 @@ Secure Workload - HITRUST CSF Compliance Report</a>
 <ul>
 <li><a href="#customer-facing-compliance-report" id="toc-customer-facing-compliance-report">Customer-Facing Compliance
 Report</a></li>
+<li><a href="#framework-version-note" id="toc-framework-version-note">Framework Version Note</a></li>
+<li><a href="#csw-ui-navigation-note" id="toc-csw-ui-navigation-note">CSW UI Navigation Note</a></li>
 <li><a href="#executive-summary" id="toc-executive-summary">Executive
 Summary</a></li>
 <li><a href="#suggested-csw-scope-pattern" id="toc-suggested-csw-scope-pattern">Suggested CSW Scope
 Pattern</a></li>
-<li><a href="#outcomes-csw-can-support" id="toc-outcomes-csw-can-support">Outcomes CSW Can Support</a></li>
-<li><a href="#evidence-package" id="toc-evidence-package">Evidence
-Package</a></li>
+<li><a href="#in-scope-for-csw-evidence" id="toc-in-scope-for-csw-evidence">In Scope for CSW Evidence</a></li>
+<li><a href="#out-of-scope-must-be-evidenced-by-other-controls-tools-processes" id="toc-out-of-scope-must-be-evidenced-by-other-controls-tools-processes">Out
+of Scope (Must Be Evidenced by Other Controls / Tools /
+Processes)</a></li>
+<li><a href="#framework-topic-csw-capability-map" id="toc-framework-topic-csw-capability-map">Framework Topic → CSW
+Capability Map</a></li>
+<li><a href="#evidence-collection-approach" id="toc-evidence-collection-approach">Evidence Collection
+Approach</a></li>
 <li><a href="#pov-workshop-approach" id="toc-pov-workshop-approach">POV
 / Workshop Approach</a></li>
 <li><a href="#boundaries-and-complementary-controls" id="toc-boundaries-and-complementary-controls">Boundaries and
 Complementary Controls</a></li>
+<li><a href="#assessor-auditor-caveat" id="toc-assessor-auditor-caveat">Assessor / Auditor Caveat</a></li>
 <li><a href="#disclaimer" id="toc-disclaimer">Disclaimer</a></li>
 </ul></li>
 </ul>
@@ -323,65 +331,211 @@ Secure Workload - HITRUST CSF Compliance Report</h1>
 <h2 id="customer-facing-compliance-report">Customer-Facing Compliance
 Report</h2>
 <p><strong>Framework:</strong> HITRUST CSF v11<br />
-<strong>Primary audience:</strong> Healthcare, life sciences, payer,
-provider, and service-provider teams preparing HITRUST evidence.<br />
-<strong>CSW positioning:</strong> Harmonized HIPAA / ISO / NIST / PCI
-mapping, e1/i1/r2 assessment guidance, network segregation,
-vulnerability management, and incident evidence.</p>
+<strong>Primary audience:</strong> Healthcare covered entities, payers,
+providers, life-sciences organisations, and service providers preparing
+for or maintaining HITRUST CSF certification.<br />
+<strong>CSW positioning:</strong> Network segregation, vulnerability
+management with reachability, monitoring, and incident response evidence
+harmonised against the HIPAA / ISO 27001 / NIST 800-53 / PCI
+authoritative sources HITRUST CSF integrates.</p>
+<hr />
+<h2 id="framework-version-note">Framework Version Note</h2>
+<p>References HITRUST CSF v11. HITRUST evolves the CSF periodically;
+assessment levels (e1, i1, r2) have different evidence requirements.
+Validate the version, assessment level, and authoritative-source
+mappings against the customer’s HITRUST authoritative-sources list.</p>
+<h2 id="csw-ui-navigation-note">CSW UI Navigation Note</h2>
+<p>Cisco does not yet publish framework-specific CSW UI navigation for
+this standard; framework-specific navigation is on the product roadmap.
+This report references CSW <em>capabilities</em> and the <em>evidence
+artifacts</em> they produce. The technical runbook
+(<code>CSW-HITRUST-Technical-Runbook.md</code>) in this folder contains
+the deeper engineering detail.</p>
 <hr />
 <h2 id="executive-summary">Executive Summary</h2>
-<p>Cisco Secure Workload (CSW) can support this framework by producing
-workload-level evidence for inventory, application dependency mapping,
-segmentation design, policy simulation, vulnerability context, and
-incident investigation. The strongest customer story is not that CSW
-“certifies” compliance; it is that CSW turns workload communication into
-evidence that control owners, assessors, and technical teams can
-review.</p>
+<p>Cisco Secure Workload (CSW) supports a defined subset of this
+framework. The strongest customer story is not that CSW “certifies”
+compliance; it is that CSW turns workload communication and inventory
+into evidence that the customer, the customer’s compliance team, and the
+customer’s assessor can review. This report describes which framework
+topics CSW supports, which it does not, what evidence artifacts CSW
+produces, and how often the customer should collect them. CSW does
+<strong>not</strong> replace the customer’s governance, policy, or
+assessor judgement, and this report is <strong>not</strong> a control
+attestation.</p>
 <h2 id="suggested-csw-scope-pattern">Suggested CSW Scope Pattern</h2>
-<p><code>HITRUST-CSF</code> &gt; <code>Regulated-Data-Systems</code>,
-<code>Network-Segmentation</code>,
-<code>Vulnerability-Management</code>, <code>Incident-Evidence</code>,
-<code>Third-Party-Egress</code></p>
+<pre><code>HITRUST-CSF
+├── Regulated-Data-Systems (ePHI, PCI-CDE if applicable, PII)
+├── Network-Segmentation-Boundary
+├── Vulnerability-Management-Scope
+├── Incident-Evidence
+└── Third-Party-Egress</code></pre>
 <p>This scope pattern should be validated with the customer’s
 architecture, application owners, compliance team, and assessor before
 it is used for formal evidence.</p>
-<h2 id="outcomes-csw-can-support">Outcomes CSW Can Support</h2>
+<h2 id="in-scope-for-csw-evidence">In Scope for CSW Evidence</h2>
 <ul>
-<li>Support HITRUST-aligned evidence for segmentation and network
-protection.</li>
-<li>Map workload controls to harmonized HIPAA, ISO, NIST, and PCI
-themes.</li>
-<li>Identify vulnerability exposure and reachable regulated
-workloads.</li>
-<li>Build incident and monitoring evidence for assessment review.</li>
+<li>Network Protection / Segregation (HITRUST 09.m / 09.s; HIPAA
+Security Rule technical safeguards; ISO 27001 A.13; 800-53 SC-7 /
+AC-4)</li>
+<li>Vulnerability Management (HITRUST 06; 800-53 RA-5 / SI-2)</li>
+<li>Monitoring (HITRUST 09; 800-53 SI-4 / AU family)</li>
+<li>Incident Response (HITRUST 11; 800-53 IR family)</li>
+<li>Third-party / business-associate egress (HIPAA business-associate
+context)</li>
 </ul>
-<h2 id="evidence-package">Evidence Package</h2>
+<h2 id="out-of-scope-must-be-evidenced-by-other-controls-tools-processes">Out
+of Scope (Must Be Evidenced by Other Controls / Tools / Processes)</h2>
 <ul>
-<li>HITRUST-scoped workload inventory</li>
-<li>Segmentation and network restriction evidence</li>
-<li>Vulnerability exposure summary</li>
-<li>Third-party egress summary</li>
-<li>Incident timeline and monitoring sample</li>
+<li>Organisational policy, training, and governance domains</li>
+<li>Physical and environmental controls</li>
+<li>Identity lifecycle and access management beyond
+workload-to-workload</li>
+<li>Cryptography enforcement</li>
+<li>Business continuity testing</li>
+<li>HITRUST assessor scoring and certification decisions</li>
 </ul>
+<h2 id="framework-topic-csw-capability-map">Framework Topic → CSW
+Capability Map</h2>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 28%" />
+<col style="width: 28%" />
+</colgroup>
+<thead>
+<tr>
+<th>Framework topic</th>
+<th>CSW capability</th>
+<th>Evidence artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Network segregation</td>
+<td>Policy workspace + workload-to-workload allowlist</td>
+<td>Workspace snapshot + observed-vs-approved flow comparison</td>
+</tr>
+<tr>
+<td>Vulnerability management</td>
+<td>Reachability-weighted CVE on regulated workloads</td>
+<td>Prioritised remediation list with compensating-control register</td>
+</tr>
+<tr>
+<td>Monitoring</td>
+<td>Continuous flow + process telemetry; alerts</td>
+<td>Alert and anomaly log scoped to HITRUST-CSF</td>
+</tr>
+<tr>
+<td>Incident response</td>
+<td>Forensic flow + process search across the incident window</td>
+<td>Investigation pack with timeline and impact scope</td>
+</tr>
+<tr>
+<td>Business-associate / third-party egress</td>
+<td>Outbound flow summary to BA / vendor endpoints</td>
+<td>BA-edge flow report</td>
+</tr>
+<tr>
+<td>Audit support</td>
+<td>Periodic evidence pack</td>
+<td>Quarterly evidence bundle aligned to HITRUST authoritative-source
+mappings</td>
+</tr>
+</tbody>
+</table>
+<h2 id="evidence-collection-approach">Evidence Collection Approach</h2>
+<p>The table below describes per-topic evidence collection - what to
+collect, the CSW source area, and a suggested cadence. The cadence
+should be tuned to the customer’s audit cycle, regulatory cadence, and
+risk appetite.</p>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr>
+<th>Topic</th>
+<th>What to collect</th>
+<th>CSW source</th>
+<th>Suggested cadence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Regulated-data system inventory</td>
+<td>Workloads with ePHI / PCI / PII labels</td>
+<td>Inventory + scope membership export</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>Segmentation evidence</td>
+<td>Workspace snapshot + observed-vs-approved flow comparison</td>
+<td>Policy workspace export + ADM export</td>
+<td>Quarterly + after each change</td>
+</tr>
+<tr>
+<td>Vulnerability + reachability</td>
+<td>CVE list weighted by reach into regulated-data systems</td>
+<td>Vulnerability report scoped to HITRUST-CSF</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>Third-party egress reconciliation</td>
+<td>Outbound flow to BA / vendor endpoints</td>
+<td>Flow search filtered to BA / vendor endpoints</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>Incident timeline sample</td>
+<td>One representative incident</td>
+<td>Flow + process search</td>
+<td>Per incident</td>
+</tr>
+</tbody>
+</table>
 <h2 id="pov-workshop-approach">POV / Workshop Approach</h2>
 <ol type="1">
+<li>Confirm the framework version and assessment cycle with the
+customer’s compliance team.</li>
 <li>Select one business service, regulated boundary, or critical
-workload group.</li>
+workload group to start with; do not attempt to instrument the entire
+estate in the POV.</li>
 <li>Validate workload coverage and install sensors or configure
-supported connectors.</li>
+supported connectors. Document the cannot-instrument register; this is
+itself evidence.</li>
 <li>Apply labels for application, environment, owner, data class,
-criticality, compliance scope, and lifecycle.</li>
-<li>Observe flows over a representative business window.</li>
-<li>Use ADM to generate a candidate policy and review it with the
-application owner.</li>
+criticality, compliance scope, and any framework-specific tags
+(e.g. <code>tenant</code>, <code>prototype</code>,
+<code>isa_level</code>, <code>npi</code>, <code>cui</code>,
+<code>ephi</code>).</li>
+<li>Observe flows over a representative business window. Minimum two
+weeks; longer if the customer has month-end, quarterly, or seasonal
+cycles relevant to the scope.</li>
+<li>Use ADM to generate a candidate policy. Review with the application
+owner. Run in Simulation mode for at least two weeks before any
+enforcement.</li>
 <li>Package inventory, scope, flows, policy, exceptions, and known gaps
-as the evidence output.</li>
+as the evidence output. Cross-reference this report’s evidence
+collection table with the customer’s existing audit work-papers.</li>
 </ol>
 <h2 id="boundaries-and-complementary-controls">Boundaries and
 Complementary Controls</h2>
-<p>CSW does not replace HITRUST assessment methodology, control scoring,
-privacy governance, IAM, encryption, vendor management, or policy
-ownership.</p>
+<p>CSW does not replace HITRUST authoritative-source policy, training,
+governance, the HITRUST assessor’s scoring, identity lifecycle,
+encryption, physical and environmental controls, or HITRUST
+certification submission.</p>
+<h2 id="assessor-auditor-caveat">Assessor / Auditor Caveat</h2>
+<p>CSW provides technical evidence inputs. The customer’s qualified
+assessor, auditor, certifying body, or regulator determines compliance
+status. Validate all framework-topic mappings, control IDs, paragraph
+references, and section numbers in this report against the current
+official framework text. If the customer is being assessed against a
+version other than the one referenced in the framework version note
+above, revalidate before use.</p>
 <h2 id="disclaimer">Disclaimer</h2>
 <p>This report is for informational and planning purposes. It is not
 legal, regulatory, audit, or certification advice. Validate all mappings

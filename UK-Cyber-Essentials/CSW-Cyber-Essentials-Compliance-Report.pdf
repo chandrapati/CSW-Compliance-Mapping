@@ -3,13 +3,13 @@
 << /Type /Catalog /Pages 2 0 R >>
 endobj
 2 0 obj
-<< /Type /Pages /Kids [3 0 R 5 0 R] /Count 2 >>
+<< /Type /Pages /Kids [3 0 R 5 0 R 7 0 R] /Count 3 >>
 endobj
 3 0 obj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 4 0 R >>
 endobj
 4 0 obj
-<< /Length 2300 >>
+<< /Length 2506 >>
 stream
 BT
 /F1 10 Tf
@@ -23,15 +23,49 @@ T*
 T*
 () Tj
 T*
-(Framework: UK Cyber Essentials Plus) Tj
+(Framework: UK NCSC Cyber Essentials Plus) Tj
 T*
-(Primary audience: UK organisations preparing Cyber Essentials or Cyber Essentials Plus) Tj
+(Primary audience: UK organisations preparing for Cyber Essentials or Cyber Essentials Plus) Tj
 T*
-(technical verification.) Tj
+(certification.) Tj
 T*
-(CSW positioning: CE1 workload-level firewall evidence, CE2 secure configuration baseline,) Tj
+(CSW positioning: Workload-level firewall evidence \(control category 1\), secure configuration) Tj
 T*
-(CE5 patch management evidence, and Plus verification support.) Tj
+(baseline \(category 2\), patch / vulnerability prioritisation \(category 3 - Security Update) Tj
+T*
+(Management\), and supporting evidence for technical verification \(CE+ component\).) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(Framework Version Note) Tj
+T*
+() Tj
+T*
+(References Cyber Essentials \(CE\) and Cyber Essentials Plus \(CE+\) as operated by IASME on) Tj
+T*
+(behalf of NCSC. The five control categories are: Firewalls, Secure Configuration, Security) Tj
+T*
+(Update Management, User Access Control, and Malware Protection. CE / CE+ requirements are) Tj
+T*
+(updated periodically; validate against the current published requirements document.) Tj
+T*
+() Tj
+T*
+(CSW UI Navigation Note) Tj
+T*
+() Tj
+T*
+(Cisco does not yet publish framework-specific CSW UI navigation for this standard;) Tj
+T*
+(framework-specific navigation is on the product roadmap. This report references CSW) Tj
+T*
+(*capabilities* and the *evidence artifacts* they produce. The technical runbook \(CSW-Cyber-) Tj
+T*
+(Essentials-Technical-Runbook.md\) in this folder contains the deeper engineering detail.) Tj
 T*
 () Tj
 T*
@@ -43,15 +77,19 @@ T*
 T*
 () Tj
 T*
-(Cisco Secure Workload \(CSW\) can support this framework by producing workload-level evidence) Tj
+(Cisco Secure Workload \(CSW\) supports a defined subset of this framework. The strongest) Tj
 T*
-(for inventory, application dependency mapping, segmentation design, policy simulation,) Tj
+(customer story is not that CSW "certifies" compliance; it is that CSW turns workload) Tj
 T*
-(vulnerability context, and incident investigation. The strongest customer story is not that) Tj
+(communication and inventory into evidence that the customer, the customer's compliance team,) Tj
 T*
-(CSW "certifies" compliance; it is that CSW turns workload communication into evidence that) Tj
+(and the customer's assessor can review. This report describes which framework topics CSW) Tj
 T*
-(control owners, assessors, and technical teams can review.) Tj
+(supports, which it does not, what evidence artifacts CSW produces, and how often the) Tj
+T*
+(customer should collect them. CSW does not replace the customer's governance, policy, or) Tj
+T*
+(assessor judgement, and this report is not a control attestation.) Tj
 T*
 () Tj
 T*
@@ -59,9 +97,34 @@ T*
 T*
 () Tj
 T*
-(UK-Cyber-Essentials > Internet-Facing-Systems, Workload-Firewall, Secure-Configuration,) Tj
+(``) Tj
 T*
-(Patch-Evidence, Verification-Sample) Tj
+(UK-Cyber-Essentials) Tj
+T*
+(??? Internet-Facing-Systems) Tj
+T*
+(??? Workload-Firewall-Scope) Tj
+T*
+(??? Secure-Configuration-Baseline) Tj
+T*
+(??? Patch-Evidence-Scope) Tj
+T*
+(??? Verification-Sample) Tj
+T*
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 6 0 R >>
+endobj
+6 0 obj
+<< /Length 2665 >>
+stream
+BT
+/F1 10 Tf
+50 760 Td
+14 TL
+(`) Tj
 T*
 () Tj
 T*
@@ -71,33 +134,106 @@ T*
 T*
 () Tj
 T*
-(Outcomes CSW Can Support) Tj
+(In Scope for CSW Evidence) Tj
 T*
 () Tj
 T*
-(? Identify Internet-facing and sensitive workloads.) Tj
+(? Category 1 - Firewalls \(workload-level allowlist and default-deny\)) Tj
 T*
-(? Document workload-level firewall and segmentation posture.) Tj
+(? Category 2 - Secure Configuration \(workspace baseline\)) Tj
 T*
-(? Support secure configuration and patch management evidence.) Tj
+(? Category 3 - Security Update Management \(CVE + reachability\)) Tj
 T*
-(? Prepare technical verification evidence for Plus discussions.) Tj
-T*
-() Tj
-T*
-(Evidence Package) Tj
+(? Technical Verification \(CE+\) - workload sample selection support) Tj
 T*
 () Tj
 T*
-(? Cyber Essentials workload inventory) Tj
+(Out of Scope \(Must Be Evidenced by Other Controls / Tools / Processes\)) Tj
 T*
-(? Firewall / policy evidence) Tj
+() Tj
 T*
-(? Secure configuration support notes) Tj
+(? Category 4 - User Access Control \(identity layer\)) Tj
 T*
-(? Patch exposure summary) Tj
+(? Category 5 - Malware Protection \(endpoint\)) Tj
 T*
-(? Verification sample pack) Tj
+(? Cyber Essentials questionnaire submission) Tj
+T*
+(? IASME certification body decisions) Tj
+T*
+() Tj
+T*
+(Framework Topic ? CSW Capability Map) Tj
+T*
+() Tj
+T*
+(| Framework topic | CSW capability | Evidence artifact |) Tj
+T*
+(|  |  |  |) Tj
+T*
+(| Category 1 - Firewalls \(workload layer\) | Policy workspace + default-deny + workload-to-) Tj
+T*
+(workload allowlist | Workspace snapshot showing firewall posture per workload |) Tj
+T*
+(| Category 2 - Secure Configuration | Workspace baseline + change log | Baseline policy) Tj
+T*
+(workspace export + change-controlled exports |) Tj
+T*
+(| Category 3 - Security Update Management | Reachability-weighted CVE evidence | Prioritised) Tj
+T*
+(remediation list with patch-due-date evidence |) Tj
+T*
+(| Technical Verification \(CE+\) sampling | Workload inventory + reach summary for sampled) Tj
+T*
+(hosts | Sample-pack export for assessor |) Tj
+T*
+() Tj
+T*
+(Evidence Collection Approach) Tj
+T*
+() Tj
+T*
+(The table below describes per-topic evidence collection - what to collect, the CSW source) Tj
+T*
+(area, and a suggested cadence. The cadence should be tuned to the customer's audit cycle,) Tj
+T*
+(regulatory cadence, and risk appetite.) Tj
+T*
+() Tj
+T*
+(| Topic | What to collect | CSW source | Suggested cadence |) Tj
+T*
+(|  |  |  |  |) Tj
+T*
+(| Workload inventory | Workloads in CE / CE+ certification scope | Inventory + scope) Tj
+T*
+(membership export | Monthly |) Tj
+T*
+(| Firewall posture per workload | Default-deny and allowlist evidence | Policy workspace) Tj
+T*
+(export | Quarterly + after each change |) Tj
+T*
+(| Vulnerability + reachability | CVE list weighted by reach across CE scope | Vulnerability) Tj
+T*
+(report scoped to UK-Cyber-Essentials | Monthly \(CE expects 14-day patching for) Tj
+T*
+(critical/high\) |) Tj
+T*
+(| Verification sample pack | Per-workload posture for assessor-selected sample | Per-) Tj
+T*
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 8 0 R >>
+endobj
+8 0 obj
+<< /Length 2583 >>
+stream
+BT
+/F1 10 Tf
+50 760 Td
+14 TL
+(workload inventory, policy, and vulnerability extracts | Per certification cycle |) Tj
 T*
 () Tj
 T*
@@ -105,34 +241,33 @@ T*
 T*
 () Tj
 T*
-(1. Select one business service, regulated boundary, or critical workload group.) Tj
+(1. Confirm the framework version and assessment cycle with the customer's compliance team.) Tj
 T*
-(2. Validate workload coverage and install sensors or configure supported connectors.) Tj
+(2. Select one business service, regulated boundary, or critical workload group to start) Tj
 T*
-(3. Apply labels for application, environment, owner, data class, criticality, compliance) Tj
+(with; do not attempt to instrument the entire estate in the POV.) Tj
 T*
-ET
-endstream
-endobj
-5 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 6 0 R >>
-endobj
-6 0 obj
-<< /Length 895 >>
-stream
-BT
-/F1 10 Tf
-50 760 Td
-14 TL
-(scope, and lifecycle.) Tj
+(3. Validate workload coverage and install sensors or configure supported connectors.) Tj
 T*
-(4. Observe flows over a representative business window.) Tj
+(Document the cannot-instrument register; this is itself evidence.) Tj
 T*
-(5. Use ADM to generate a candidate policy and review it with the application owner.) Tj
+(4. Apply labels for application, environment, owner, data class, criticality, compliance) Tj
 T*
-(6. Package inventory, scope, flows, policy, exceptions, and known gaps as the evidence) Tj
+(scope, and any framework-specific tags \(e.g. tenant, prototype, isa_level, npi, cui, ephi`\).) Tj
 T*
-(output.) Tj
+(5. Observe flows over a representative business window. Minimum two weeks; longer if the) Tj
+T*
+(customer has month-end, quarterly, or seasonal cycles relevant to the scope.) Tj
+T*
+(6. Use ADM to generate a candidate policy. Review with the application owner. Run in) Tj
+T*
+(Simulation mode for at least two weeks before any enforcement.) Tj
+T*
+(7. Package inventory, scope, flows, policy, exceptions, and known gaps as the evidence) Tj
+T*
+(output. Cross-reference this report's evidence collection table with the customer's existing) Tj
+T*
+(audit work-papers.) Tj
 T*
 () Tj
 T*
@@ -140,9 +275,27 @@ T*
 T*
 () Tj
 T*
-(CSW does not replace Cyber Essentials certification, endpoint configuration, malware) Tj
+(CSW does not replace the Cyber Essentials questionnaire submission, endpoint malware) Tj
 T*
-(protection, MFA, unsupported software governance, or assessor testing.) Tj
+(protection, user access control / identity governance, unsupported-software governance, the) Tj
+T*
+(assessor's CE+ verification testing, or the IASME certification body decision.) Tj
+T*
+() Tj
+T*
+(Assessor / Auditor Caveat) Tj
+T*
+() Tj
+T*
+(CSW provides technical evidence inputs. The customer's qualified assessor, auditor,) Tj
+T*
+(certifying body, or regulator determines compliance status. Validate all framework-topic) Tj
+T*
+(mappings, control IDs, paragraph references, and section numbers in this report against the) Tj
+T*
+(current official framework text. If the customer is being assessed against a version other) Tj
+T*
+(than the one referenced in the framework version note above, revalidate before use.) Tj
 T*
 () Tj
 T*
@@ -160,16 +313,18 @@ ET
 endstream
 endobj
 xref
-0 7
+0 9
 0000000000 65535 f 
 0000000009 00000 n 
 0000000058 00000 n 
-0000000121 00000 n 
-0000000296 00000 n 
-0000002648 00000 n 
-0000002823 00000 n 
+0000000127 00000 n 
+0000000302 00000 n 
+0000002860 00000 n 
+0000003035 00000 n 
+0000005752 00000 n 
+0000005927 00000 n 
 trailer
-<< /Size 7 /Root 1 0 R >>
+<< /Size 9 /Root 1 0 R >>
 startxref
-3769
+8562
 %%EOF

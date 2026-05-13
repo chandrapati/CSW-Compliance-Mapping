@@ -3,13 +3,13 @@
 << /Type /Catalog /Pages 2 0 R >>
 endobj
 2 0 obj
-<< /Type /Pages /Kids [3 0 R 5 0 R] /Count 2 >>
+<< /Type /Pages /Kids [3 0 R 5 0 R 7 0 R 9 0 R] /Count 4 >>
 endobj
 3 0 obj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 4 0 R >>
 endobj
 4 0 obj
-<< /Length 2300 >>
+<< /Length 2572 >>
 stream
 BT
 /F1 10 Tf
@@ -23,13 +23,49 @@ T*
 T*
 () Tj
 T*
-(Framework: COBIT 2019) Tj
+(Framework: ISACA COBIT 2019 - Framework for the Governance and Management of Enterprise IT) Tj
 T*
-(Primary audience: IT governance, risk, audit, security operations, and control owners.) Tj
+(Primary audience: IT governance, internal audit, risk management, and assurance teams using) Tj
 T*
-(CSW positioning: DSS05.02 network security, APO13 managed security, MEA01/02 conformance) Tj
+(COBIT 2019 as the governance and management framework.) Tj
 T*
-(monitoring, and BAI06/10 change and configuration evidence.) Tj
+(CSW positioning: Workload-level evidence inputs to COBIT objectives where the practice is) Tj
+T*
+(technical: DSS05 \(security services\), APO13 \(managed security\), MEA01 \(performance and) Tj
+T*
+(conformance monitoring\), and BAI06 / BAI10 \(change and configuration evidence\).) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(Framework Version Note) Tj
+T*
+() Tj
+T*
+(References COBIT 2019. Objective codes \(e.g. APO13 Managed Security, DSS05 Managed Security) Tj
+T*
+(Services, MEA01 Managed Performance and Conformance Monitoring, BAI06 Managed IT Changes\)) Tj
+T*
+(are stable in COBIT 2019. Validate scope tailoring against the customer's design factors and) Tj
+T*
+(goals cascade.) Tj
+T*
+() Tj
+T*
+(CSW UI Navigation Note) Tj
+T*
+() Tj
+T*
+(Cisco does not yet publish framework-specific CSW UI navigation for this standard;) Tj
+T*
+(framework-specific navigation is on the product roadmap. This report references CSW) Tj
+T*
+(*capabilities* and the *evidence artifacts* they produce. The technical runbook \(CSW-) Tj
+T*
+(COBIT-2019-Technical-Runbook.md\) in this folder contains the deeper engineering detail.) Tj
 T*
 () Tj
 T*
@@ -41,15 +77,19 @@ T*
 T*
 () Tj
 T*
-(Cisco Secure Workload \(CSW\) can support this framework by producing workload-level evidence) Tj
+(Cisco Secure Workload \(CSW\) supports a defined subset of this framework. The strongest) Tj
 T*
-(for inventory, application dependency mapping, segmentation design, policy simulation,) Tj
+(customer story is not that CSW "certifies" compliance; it is that CSW turns workload) Tj
 T*
-(vulnerability context, and incident investigation. The strongest customer story is not that) Tj
+(communication and inventory into evidence that the customer, the customer's compliance team,) Tj
 T*
-(CSW "certifies" compliance; it is that CSW turns workload communication into evidence that) Tj
+(and the customer's assessor can review. This report describes which framework topics CSW) Tj
 T*
-(control owners, assessors, and technical teams can review.) Tj
+(supports, which it does not, what evidence artifacts CSW produces, and how often the) Tj
+T*
+(customer should collect them. CSW does not replace the customer's governance, policy, or) Tj
+T*
+(assessor judgement, and this report is not a control attestation.) Tj
 T*
 () Tj
 T*
@@ -57,59 +97,19 @@ T*
 T*
 () Tj
 T*
-(COBIT-2019 > Governance-Evidence, Managed-Security, Network-Security, Change-Configuration,) Tj
+(``) Tj
 T*
-(Monitoring) Tj
+(COBIT-2019) Tj
+T*
+(\(no fixed scope tree; COBIT objective evidence is mapped across whichever CSW-instrumented) Tj
+T*
+(scopes are in audit scope\)) Tj
+T*
+(`) Tj
 T*
 () Tj
 T*
 (This scope pattern should be validated with the customer's architecture, application owners,) Tj
-T*
-(compliance team, and assessor before it is used for formal evidence.) Tj
-T*
-() Tj
-T*
-(Outcomes CSW Can Support) Tj
-T*
-() Tj
-T*
-(? Provide workload-level evidence for governance and assurance conversations.) Tj
-T*
-(? Support network security and configuration monitoring objectives.) Tj
-T*
-(? Document policy changes, exceptions, and operational review points.) Tj
-T*
-(? Translate technical telemetry into management-system evidence.) Tj
-T*
-() Tj
-T*
-(Evidence Package) Tj
-T*
-() Tj
-T*
-(? Governance scope workload inventory) Tj
-T*
-(? Network security flow summary) Tj
-T*
-(? Change / configuration evidence) Tj
-T*
-(? Monitoring and exception register) Tj
-T*
-(? Management review package) Tj
-T*
-() Tj
-T*
-(POV / Workshop Approach) Tj
-T*
-() Tj
-T*
-(1. Select one business service, regulated boundary, or critical workload group.) Tj
-T*
-(2. Validate workload coverage and install sensors or configure supported connectors.) Tj
-T*
-(3. Apply labels for application, environment, owner, data class, criticality, compliance) Tj
-T*
-(scope, and lifecycle.) Tj
 T*
 ET
 endstream
@@ -118,19 +118,184 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 6 0 R >>
 endobj
 6 0 obj
-<< /Length 852 >>
+<< /Length 2847 >>
 stream
 BT
 /F1 10 Tf
 50 760 Td
 14 TL
-(4. Observe flows over a representative business window.) Tj
+(compliance team, and assessor before it is used for formal evidence.) Tj
 T*
-(5. Use ADM to generate a candidate policy and review it with the application owner.) Tj
+() Tj
 T*
-(6. Package inventory, scope, flows, policy, exceptions, and known gaps as the evidence) Tj
+(In Scope for CSW Evidence) Tj
 T*
-(output.) Tj
+() Tj
+T*
+(? DSS05.02 - Manage network and connectivity security \(workload segmentation and policy) Tj
+T*
+(  enforcement\)) Tj
+T*
+(? DSS05.03 - Manage endpoint security \(workload-level allowlist input\)) Tj
+T*
+(? DSS05.07 - Manage vulnerabilities \(reachability-weighted CVE\)) Tj
+T*
+(? APO13.01 - Establish and maintain an information security management system \(workload-) Tj
+T*
+(  level inputs\)) Tj
+T*
+(? MEA01.04 / MEA01.05 - Performance and conformance monitoring \(continuous evidence\)) Tj
+T*
+(? BAI06.01 - Evaluate, prioritise, and authorise change requests \(workspace change log\)) Tj
+T*
+(? BAI10.01 - Establish and maintain a configuration model \(workspace baseline\)) Tj
+T*
+() Tj
+T*
+(Out of Scope \(Must Be Evidenced by Other Controls / Tools / Processes\)) Tj
+T*
+() Tj
+T*
+(? Governance objectives \(EDM family\)) Tj
+T*
+(? APO01-12 \(organisational alignment, enterprise architecture, portfolio, financials,) Tj
+T*
+(  HR, relationships, service agreements, suppliers, quality, risk, security beyond) Tj
+T*
+(  technical, data, projects\)) Tj
+T*
+(? BAI01-05 / BAI07-09 / BAI11 \(organisational change, requirements definition,) Tj
+T*
+(  identification of solutions, availability, capacity, ITSM, organisational change) Tj
+T*
+(  enablement, knowledge, assets\)) Tj
+T*
+(? DSS01 / DSS03 / DSS04 / DSS06 \(managed operations, problems, continuity, business) Tj
+T*
+(  process controls\)) Tj
+T*
+(? MEA02-04 \(system of internal control, compliance with external requirements,) Tj
+T*
+(  assurance\)) Tj
+T*
+() Tj
+T*
+(Framework Topic ? CSW Capability Map) Tj
+T*
+() Tj
+T*
+(| Framework topic | CSW capability | Evidence artifact |) Tj
+T*
+(|  |  |  |) Tj
+T*
+(| DSS05.02 - Network and connectivity security | Policy workspace + workload-to-workload) Tj
+T*
+(allowlist | Workspace snapshot + observed-vs-approved flow comparison |) Tj
+T*
+(| DSS05.07 - Vulnerability management | Reachability-weighted CVE evidence | Prioritised) Tj
+T*
+(remediation list |) Tj
+T*
+(| APO13 - Managed security \(technical inputs\) | Continuous workload telemetry + periodic) Tj
+T*
+(evidence pack | Quarterly evidence bundle |) Tj
+T*
+(| MEA01.04 - Performance and conformance monitoring | Policy-violation log; drift evidence |) Tj
+T*
+(Continuous evidence \(replaces point-in-time samples\) |) Tj
+T*
+(| BAI06 - Managed changes | Workspace change log \(snapshots before/after each change\) |) Tj
+T*
+(Change-controlled policy workspace export |) Tj
+T*
+(| BAI10 - Managed configuration | Workspace baseline snapshots | Baseline configuration) Tj
+T*
+(evidence |) Tj
+T*
+() Tj
+T*
+(Evidence Collection Approach) Tj
+T*
+() Tj
+T*
+(The table below describes per-topic evidence collection - what to collect, the CSW source) Tj
+T*
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 8 0 R >>
+endobj
+8 0 obj
+<< /Length 3172 >>
+stream
+BT
+/F1 10 Tf
+50 760 Td
+14 TL
+(area, and a suggested cadence. The cadence should be tuned to the customer's audit cycle,) Tj
+T*
+(regulatory cadence, and risk appetite.) Tj
+T*
+() Tj
+T*
+(| Topic | What to collect | CSW source | Suggested cadence |) Tj
+T*
+(|  |  |  |  |) Tj
+T*
+(| Workload scope inventory | Workloads in COBIT audit scope by business function | Inventory) Tj
+T*
+(+ scope membership export | Monthly |) Tj
+T*
+(| Policy and change evidence | Workspace snapshot before/after each authorised change |) Tj
+T*
+(Policy workspace export + change log | Per change + quarterly bundle |) Tj
+T*
+(| Conformance monitoring evidence | Continuous policy-violation and drift evidence | Policy) Tj
+T*
+(analysis output | Continuous; reviewed quarterly |) Tj
+T*
+(| Vulnerability + reachability | CVE list weighted by reach across in-scope workloads |) Tj
+T*
+(Vulnerability report scoped to COBIT-2019 | Monthly |) Tj
+T*
+(| Management review pack | Aggregated quarterly evidence bundle | Inventory + workspace +) Tj
+T*
+(policy violation + vulnerability extracts | Quarterly |) Tj
+T*
+() Tj
+T*
+(POV / Workshop Approach) Tj
+T*
+() Tj
+T*
+(1. Confirm the framework version and assessment cycle with the customer's compliance team.) Tj
+T*
+(2. Select one business service, regulated boundary, or critical workload group to start) Tj
+T*
+(with; do not attempt to instrument the entire estate in the POV.) Tj
+T*
+(3. Validate workload coverage and install sensors or configure supported connectors.) Tj
+T*
+(Document the cannot-instrument register; this is itself evidence.) Tj
+T*
+(4. Apply labels for application, environment, owner, data class, criticality, compliance) Tj
+T*
+(scope, and any framework-specific tags \(e.g. tenant, prototype, isa_level, npi, cui, ephi`\).) Tj
+T*
+(5. Observe flows over a representative business window. Minimum two weeks; longer if the) Tj
+T*
+(customer has month-end, quarterly, or seasonal cycles relevant to the scope.) Tj
+T*
+(6. Use ADM to generate a candidate policy. Review with the application owner. Run in) Tj
+T*
+(Simulation mode for at least two weeks before any enforcement.) Tj
+T*
+(7. Package inventory, scope, flows, policy, exceptions, and known gaps as the evidence) Tj
+T*
+(output. Cross-reference this report's evidence collection table with the customer's existing) Tj
+T*
+(audit work-papers.) Tj
 T*
 () Tj
 T*
@@ -138,14 +303,45 @@ T*
 T*
 () Tj
 T*
-(CSW does not replace COBIT governance design, process ownership, risk appetite decisions,) Tj
+(CSW does not replace COBIT governance design, design-factor analysis, goals cascade, process) Tj
 T*
-(enterprise metrics, audit judgment, or GRC workflow.) Tj
+(ownership, risk appetite decisions, enterprise metrics ownership, audit judgement, or GRC) Tj
+T*
+(workflow.) Tj
+T*
+() Tj
+T*
+(Assessor / Auditor Caveat) Tj
+T*
+() Tj
+T*
+(CSW provides technical evidence inputs. The customer's qualified assessor, auditor,) Tj
+T*
+(certifying body, or regulator determines compliance status. Validate all framework-topic) Tj
+T*
+(mappings, control IDs, paragraph references, and section numbers in this report against the) Tj
+T*
+(current official framework text. If the customer is being assessed against a version other) Tj
+T*
+(than the one referenced in the framework version note above, revalidate before use.) Tj
 T*
 () Tj
 T*
 (Disclaimer) Tj
 T*
+ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 10 0 R >>
+endobj
+10 0 obj
+<< /Length 334 >>
+stream
+BT
+/F1 10 Tf
+50 760 Td
+14 TL
 () Tj
 T*
 (This report is for informational and planning purposes. It is not legal, regulatory, audit,) Tj
@@ -158,16 +354,20 @@ ET
 endstream
 endobj
 xref
-0 7
+0 11
 0000000000 65535 f 
 0000000009 00000 n 
 0000000058 00000 n 
-0000000121 00000 n 
-0000000296 00000 n 
-0000002648 00000 n 
-0000002823 00000 n 
+0000000133 00000 n 
+0000000308 00000 n 
+0000002932 00000 n 
+0000003107 00000 n 
+0000006006 00000 n 
+0000006181 00000 n 
+0000009405 00000 n 
+0000009581 00000 n 
 trailer
-<< /Size 7 /Root 1 0 R >>
+<< /Size 11 /Root 1 0 R >>
 startxref
-3726
+9967
 %%EOF

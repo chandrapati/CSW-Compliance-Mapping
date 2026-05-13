@@ -304,17 +304,25 @@ Secure Workload - HIPAA 2025 NPRM Compliance Report</a>
 <ul>
 <li><a href="#customer-facing-compliance-report" id="toc-customer-facing-compliance-report">Customer-Facing Compliance
 Report</a></li>
+<li><a href="#framework-version-note" id="toc-framework-version-note">Framework Version Note</a></li>
+<li><a href="#csw-ui-navigation-note" id="toc-csw-ui-navigation-note">CSW UI Navigation Note</a></li>
 <li><a href="#executive-summary" id="toc-executive-summary">Executive
 Summary</a></li>
 <li><a href="#suggested-csw-scope-pattern" id="toc-suggested-csw-scope-pattern">Suggested CSW Scope
 Pattern</a></li>
-<li><a href="#outcomes-csw-can-support" id="toc-outcomes-csw-can-support">Outcomes CSW Can Support</a></li>
-<li><a href="#evidence-package" id="toc-evidence-package">Evidence
-Package</a></li>
+<li><a href="#in-scope-for-csw-evidence" id="toc-in-scope-for-csw-evidence">In Scope for CSW Evidence</a></li>
+<li><a href="#out-of-scope-must-be-evidenced-by-other-controls-tools-processes" id="toc-out-of-scope-must-be-evidenced-by-other-controls-tools-processes">Out
+of Scope (Must Be Evidenced by Other Controls / Tools /
+Processes)</a></li>
+<li><a href="#framework-topic-csw-capability-map" id="toc-framework-topic-csw-capability-map">Framework Topic → CSW
+Capability Map</a></li>
+<li><a href="#evidence-collection-approach" id="toc-evidence-collection-approach">Evidence Collection
+Approach</a></li>
 <li><a href="#pov-workshop-approach" id="toc-pov-workshop-approach">POV
 / Workshop Approach</a></li>
 <li><a href="#boundaries-and-complementary-controls" id="toc-boundaries-and-complementary-controls">Boundaries and
 Complementary Controls</a></li>
+<li><a href="#assessor-auditor-caveat" id="toc-assessor-auditor-caveat">Assessor / Auditor Caveat</a></li>
 <li><a href="#disclaimer" id="toc-disclaimer">Disclaimer</a></li>
 </ul></li>
 </ul>
@@ -323,69 +331,226 @@ Complementary Controls</a></li>
 Secure Workload - HIPAA 2025 NPRM Compliance Report</h1>
 <h2 id="customer-facing-compliance-report">Customer-Facing Compliance
 Report</h2>
-<p><strong>Framework:</strong> HIPAA Security Rule 2025 NPRM<br />
+<p><strong>Framework:</strong> HIPAA Security Rule - 2025 Notice of
+Proposed Rulemaking (NPRM)<br />
 <strong>Primary audience:</strong> Healthcare covered entities, business
-associates, compliance leaders, and security teams tracking the proposed
-rule.<br />
-<strong>CSW positioning:</strong> Mandatory network segmentation,
-technology asset inventory, 24-month log retention architecture, 72-hour
-breach timeline, and annual assessment evidence.</p>
+associates, compliance leaders, and security architects preparing for
+the 2025 NPRM and tracking implementation expectations.<br />
+<strong>CSW positioning:</strong> Proposed mandatory network
+segmentation, technology asset inventory expansion, longer audit-trail
+retention architecture, 72-hour breach timeline support, and annual
+technical assessment evidence.</p>
+<hr />
+<h2 id="framework-version-note">Framework Version Note</h2>
+<p>This report references the HIPAA Security Rule 2025 NPRM published by
+HHS / OCR. The NPRM is a PROPOSED rule. Final rule text, effective
+dates, and implementation expectations may differ from the NPRM.
+Revalidate this mapping after final rulemaking. Specific section
+references (e.g. proposed 45 CFR 164.312(a)(2)(vi) network segmentation;
+24-month audit trail retention; 72-hour breach timeline) reflect the
+proposed-rule language at the time of writing.</p>
+<h2 id="csw-ui-navigation-note">CSW UI Navigation Note</h2>
+<p>Cisco does not yet publish framework-specific CSW UI navigation for
+this standard; framework-specific navigation is on the product roadmap.
+This report references CSW <em>capabilities</em> and the <em>evidence
+artifacts</em> they produce. The technical runbook
+(<code>CSW-HIPAA-NPRM-Technical-Runbook.md</code>) in this folder
+contains the deeper engineering detail.</p>
 <hr />
 <h2 id="executive-summary">Executive Summary</h2>
-<p>Cisco Secure Workload (CSW) can support this framework by producing
-workload-level evidence for inventory, application dependency mapping,
-segmentation design, policy simulation, vulnerability context, and
-incident investigation. The strongest customer story is not that CSW
-“certifies” compliance; it is that CSW turns workload communication into
-evidence that control owners, assessors, and technical teams can
-review.</p>
+<p>Cisco Secure Workload (CSW) supports a defined subset of this
+framework. The strongest customer story is not that CSW “certifies”
+compliance; it is that CSW turns workload communication and inventory
+into evidence that the customer, the customer’s compliance team, and the
+customer’s assessor can review. This report describes which framework
+topics CSW supports, which it does not, what evidence artifacts CSW
+produces, and how often the customer should collect them. CSW does
+<strong>not</strong> replace the customer’s governance, policy, or
+assessor judgement, and this report is <strong>not</strong> a control
+attestation.</p>
 <h2 id="suggested-csw-scope-pattern">Suggested CSW Scope Pattern</h2>
-<p><code>HIPAA-2025-NPRM</code> &gt; <code>ePHI-Systems</code>,
-<code>Network-Segmentation</code>, <code>Technology-Assets</code>,
-<code>Log-Retention</code>, <code>Incident-Timeline</code>,
-<code>Annual-Assessment</code></p>
+<pre><code>HIPAA-2025-NPRM
+├── ePHI-Systems
+├── Network-Segmentation-Boundary
+├── Technology-Asset-Inventory
+├── Audit-Trail-Sources
+└── Incident-Timeline</code></pre>
 <p>This scope pattern should be validated with the customer’s
 architecture, application owners, compliance team, and assessor before
 it is used for formal evidence.</p>
-<h2 id="outcomes-csw-can-support">Outcomes CSW Can Support</h2>
+<h2 id="in-scope-for-csw-evidence">In Scope for CSW Evidence</h2>
 <ul>
-<li>Map ePHI-related workloads and proposed segmentation
-boundaries.</li>
-<li>Support technology asset inventory with workload and software
-telemetry.</li>
-<li>Prepare incident timeline evidence for proposed 72-hour
-expectations.</li>
-<li>Document architecture considerations for longer log-retention
-requirements.</li>
+<li>Proposed network segmentation requirement (workload-to-workload
+allowlist)</li>
+<li>Proposed expanded technology asset inventory (workload + software
+inventory)</li>
+<li>Proposed longer audit-trail retention (architecture / evidence
+inputs)</li>
+<li>Proposed 72-hour breach timeline (forensic input)</li>
+<li>Proposed annual technical assessment (continuous evidence)</li>
 </ul>
-<h2 id="evidence-package">Evidence Package</h2>
+<h2 id="out-of-scope-must-be-evidenced-by-other-controls-tools-processes">Out
+of Scope (Must Be Evidenced by Other Controls / Tools / Processes)</h2>
 <ul>
-<li>ePHI workload inventory</li>
-<li>Segmentation policy and flow evidence</li>
-<li>Technology asset and software inventory</li>
-<li>Incident timeline sample</li>
-<li>Annual assessment evidence package</li>
+<li>Privacy Rule provisions</li>
+<li>Business Associate Agreement (BAA) lifecycle</li>
+<li>Identity and access management beyond workload-to-workload</li>
+<li>Encryption enforcement (CSW detects plaintext but does not enforce
+encryption)</li>
+<li>Final OCR / HHS interpretive guidance and enforcement decisions</li>
 </ul>
+<h2 id="framework-topic-csw-capability-map">Framework Topic → CSW
+Capability Map</h2>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 28%" />
+<col style="width: 28%" />
+</colgroup>
+<thead>
+<tr>
+<th>Framework topic</th>
+<th>CSW capability</th>
+<th>Evidence artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Proposed mandatory network segmentation</td>
+<td>Policy workspace + workload-to-workload allowlist</td>
+<td>Workspace snapshot + observed-vs-approved flow comparison</td>
+</tr>
+<tr>
+<td>Proposed expanded technology asset inventory</td>
+<td>Workload inventory + software / package inventory</td>
+<td>Inventory and software-package extract reconciled to CMDB</td>
+</tr>
+<tr>
+<td>Proposed audit-trail retention</td>
+<td>Workload flow + process telemetry retained per longer retention
+window</td>
+<td>Retained telemetry export with retention attestation</td>
+</tr>
+<tr>
+<td>Proposed 72-hour breach timeline</td>
+<td>Forensic flow + process search across the incident window</td>
+<td>Investigation pack with timeline and ePHI-system-impact scope</td>
+</tr>
+<tr>
+<td>Proposed annual technical assessment</td>
+<td>Continuous policy + ADM + vulnerability evidence</td>
+<td>Annual evidence bundle</td>
+</tr>
+</tbody>
+</table>
+<h2 id="evidence-collection-approach">Evidence Collection Approach</h2>
+<p>The table below describes per-topic evidence collection - what to
+collect, the CSW source area, and a suggested cadence. The cadence
+should be tuned to the customer’s audit cycle, regulatory cadence, and
+risk appetite.</p>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr>
+<th>Topic</th>
+<th>What to collect</th>
+<th>CSW source</th>
+<th>Suggested cadence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ePHI system inventory</td>
+<td>Workloads handling ePHI</td>
+<td>Inventory + scope membership export filtered by data_class=ephi</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>Segmentation evidence</td>
+<td>Workspace snapshot + observed-vs-approved flow comparison</td>
+<td>Policy workspace export + ADM export</td>
+<td>Quarterly + after each change</td>
+</tr>
+<tr>
+<td>Technology asset inventory</td>
+<td>Workload + software inventory aligned to proposed inventory
+expansion</td>
+<td>Inventory + software/package extract</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>Audit-trail retention</td>
+<td>Workload flow + process telemetry over the proposed retention
+window</td>
+<td>Retained telemetry export with retention attestation</td>
+<td>Continuous; validated annually</td>
+</tr>
+<tr>
+<td>Vulnerability + reachability</td>
+<td>CVE list weighted by reach into ePHI systems</td>
+<td>Vulnerability report scoped to HIPAA-2025-NPRM</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>Breach timeline sample</td>
+<td>Workload-level timeline for one representative incident</td>
+<td>Flow + process search</td>
+<td>Per breach</td>
+</tr>
+<tr>
+<td>Annual technical assessment pack</td>
+<td>Aggregated annual evidence bundle</td>
+<td>Inventory + workspace + ADM + vulnerability + incident-sample
+extracts</td>
+<td>Annually</td>
+</tr>
+</tbody>
+</table>
 <h2 id="pov-workshop-approach">POV / Workshop Approach</h2>
 <ol type="1">
+<li>Confirm the framework version and assessment cycle with the
+customer’s compliance team.</li>
 <li>Select one business service, regulated boundary, or critical
-workload group.</li>
+workload group to start with; do not attempt to instrument the entire
+estate in the POV.</li>
 <li>Validate workload coverage and install sensors or configure
-supported connectors.</li>
+supported connectors. Document the cannot-instrument register; this is
+itself evidence.</li>
 <li>Apply labels for application, environment, owner, data class,
-criticality, compliance scope, and lifecycle.</li>
-<li>Observe flows over a representative business window.</li>
-<li>Use ADM to generate a candidate policy and review it with the
-application owner.</li>
+criticality, compliance scope, and any framework-specific tags
+(e.g. <code>tenant</code>, <code>prototype</code>,
+<code>isa_level</code>, <code>npi</code>, <code>cui</code>,
+<code>ephi</code>).</li>
+<li>Observe flows over a representative business window. Minimum two
+weeks; longer if the customer has month-end, quarterly, or seasonal
+cycles relevant to the scope.</li>
+<li>Use ADM to generate a candidate policy. Review with the application
+owner. Run in Simulation mode for at least two weeks before any
+enforcement.</li>
 <li>Package inventory, scope, flows, policy, exceptions, and known gaps
-as the evidence output.</li>
+as the evidence output. Cross-reference this report’s evidence
+collection table with the customer’s existing audit work-papers.</li>
 </ol>
 <h2 id="boundaries-and-complementary-controls">Boundaries and
 Complementary Controls</h2>
-<p>This mapping is based on a proposed rule and must be revalidated
-after final rulemaking. CSW does not replace legal analysis, HIPAA
-policies, risk analysis, BAA management, IAM, encryption, or regulatory
-reporting.</p>
+<p>This mapping reflects a PROPOSED rule and must be revalidated against
+the final rule. CSW does not replace legal analysis, HIPAA policies, the
+risk analysis itself, BAA management, identity / authentication,
+encryption enforcement, breach-notification decisions, or OCR
+enforcement engagement.</p>
+<h2 id="assessor-auditor-caveat">Assessor / Auditor Caveat</h2>
+<p>CSW provides technical evidence inputs. The customer’s qualified
+assessor, auditor, certifying body, or regulator determines compliance
+status. Validate all framework-topic mappings, control IDs, paragraph
+references, and section numbers in this report against the current
+official framework text. If the customer is being assessed against a
+version other than the one referenced in the framework version note
+above, revalidate before use.</p>
 <h2 id="disclaimer">Disclaimer</h2>
 <p>This report is for informational and planning purposes. It is not
 legal, regulatory, audit, or certification advice. Validate all mappings

@@ -3,19 +3,19 @@
 << /Type /Catalog /Pages 2 0 R >>
 endobj
 2 0 obj
-<< /Type /Pages /Kids [3 0 R 5 0 R] /Count 2 >>
+<< /Type /Pages /Kids [3 0 R 5 0 R 7 0 R 9 0 R] /Count 4 >>
 endobj
 3 0 obj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 4 0 R >>
 endobj
 4 0 obj
-<< /Length 2280 >>
+<< /Length 2676 >>
 stream
 BT
 /F1 10 Tf
 50 760 Td
 14 TL
-(Cisco Secure Workload - TISAX Compliance Report) Tj
+(Cisco Secure Workload - TISAX / VDA ISA Compliance Report) Tj
 T*
 () Tj
 T*
@@ -23,15 +23,53 @@ T*
 T*
 () Tj
 T*
-(Framework: TISAX / VDA ISA) Tj
+(Framework: TISAX \(Trusted Information Security Assessment Exchange\) - assessment of the VDA) Tj
 T*
-(Primary audience: Automotive OEMs, suppliers, engineering partners, and providers preparing) Tj
+(ISA \(Information Security Assessment\) catalogue) Tj
 T*
-(for TISAX assessment.) Tj
+(Primary audience: Automotive suppliers, OEM partners, and engineering / development service) Tj
 T*
-(CSW positioning: Prototype protection, engineering-system segmentation, customer-) Tj
+(providers preparing for, maintaining, or renewing a TISAX assessment.) Tj
 T*
-(confidential workload boundaries, and supplier/customer egress evidence.) Tj
+(CSW positioning: Information security level evidence, prototype-protection segmentation,) Tj
+T*
+(data-protection segmentation, and supplier readiness for the ENX/TISAX assessment.) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(Framework Version Note) Tj
+T*
+() Tj
+T*
+(TISAX is the assessment label operated by the ENX Association; VDA ISA is the underlying) Tj
+T*
+(control catalogue. VDA ISA has multiple published versions \(5.x at time of writing\). This) Tj
+T*
+(report references VDA ISA topic areas by name, not specific control numbers, because control) Tj
+T*
+(numbering may vary across catalogue versions. Validate against the VDA ISA workbook version) Tj
+T*
+(applicable to your assessment scope and assessment objectives \(AL 1 / AL 2 / AL 3 / AL High) Tj
+T*
+(/ AL Very High\).) Tj
+T*
+() Tj
+T*
+(CSW UI Navigation Note) Tj
+T*
+() Tj
+T*
+(Cisco does not yet publish framework-specific CSW UI navigation for this standard;) Tj
+T*
+(framework-specific navigation is on the product roadmap. This report references CSW) Tj
+T*
+(*capabilities* and the *evidence artifacts* they produce. The technical runbook \(CSW-TISAX-) Tj
+T*
+(Technical-Runbook.md\) in this folder contains the deeper engineering detail.) Tj
 T*
 () Tj
 T*
@@ -43,15 +81,19 @@ T*
 T*
 () Tj
 T*
-(Cisco Secure Workload \(CSW\) can support this framework by producing workload-level evidence) Tj
+(Cisco Secure Workload \(CSW\) supports a defined subset of this framework. The strongest) Tj
 T*
-(for inventory, application dependency mapping, segmentation design, policy simulation,) Tj
+(customer story is not that CSW "certifies" compliance; it is that CSW turns workload) Tj
 T*
-(vulnerability context, and incident investigation. The strongest customer story is not that) Tj
+(communication and inventory into evidence that the customer, the customer's compliance team,) Tj
 T*
-(CSW "certifies" compliance; it is that CSW turns workload communication into evidence that) Tj
+(and the customer's assessor can review. This report describes which framework topics CSW) Tj
 T*
-(control owners, assessors, and technical teams can review.) Tj
+(supports, which it does not, what evidence artifacts CSW produces, and how often the) Tj
+T*
+(customer should collect them. CSW does not replace the customer's governance, policy, or) Tj
+T*
+(assessor judgement, and this report is not a control attestation.) Tj
 T*
 () Tj
 T*
@@ -59,9 +101,36 @@ T*
 T*
 () Tj
 T*
-(TISAX > Prototype-Protection, Engineering-Systems, Customer-Confidential, Supplier-Customer-) Tj
+(``) Tj
 T*
-(Egress) Tj
+(TISAX) Tj
+T*
+(??? Information-Security-Scope \(Production-Workloads, Engineering-Workloads, Corporate-) Tj
+T*
+(Adjacent\)) Tj
+T*
+(??? Prototype-Protection-Scope \(only when in assessment scope\)) Tj
+T*
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 6 0 R >>
+endobj
+6 0 obj
+<< /Length 2845 >>
+stream
+BT
+/F1 10 Tf
+50 760 Td
+14 TL
+(??? Data-Protection-Scope \(only when in assessment scope\)) Tj
+T*
+(??? Security-Services) Tj
+T*
+(??? Supplier-Edges) Tj
+T*
+(`) Tj
 T*
 () Tj
 T*
@@ -71,33 +140,152 @@ T*
 T*
 () Tj
 T*
-(Outcomes CSW Can Support) Tj
+(In Scope for CSW Evidence) Tj
 T*
 () Tj
 T*
-(? Map prototype, engineering, and customer-confidential workloads.) Tj
+(? Asset Management \(workload inventory, labels, reachability\)) Tj
 T*
-(? Document supplier and customer communication paths.) Tj
+(? Communication Security \(workload-level segmentation\)) Tj
 T*
-(? Identify excessive lateral access or unexpected egress.) Tj
+(? Operations Security \(continuous monitoring, vulnerability + reachability\)) Tj
 T*
-(? Support VDA ISA assessment evidence with workload telemetry.) Tj
+(? Identity and Access Management \(workload-to-workload layer\)) Tj
+T*
+(? Information Security Incident Management \(forensic flow / process telemetry\)) Tj
+T*
+(? Prototype Protection \(when in scope - isolation evidence\)) Tj
+T*
+(? Data Protection \(when in scope - isolation evidence\)) Tj
+T*
+(? Supplier Relationships \(outbound flow visibility\)) Tj
+T*
+(? Compliance \(evidence pack inputs\)) Tj
 T*
 () Tj
 T*
-(Evidence Package) Tj
+(Out of Scope \(Must Be Evidenced by Other Controls / Tools / Processes\)) Tj
 T*
 () Tj
 T*
-(? TISAX scope workload inventory) Tj
+(? Information Security Policies and Organisation \(governance\)) Tj
 T*
-(? Supplier/customer egress summary) Tj
+(? Personnel / HR controls) Tj
 T*
-(? Flow and process telemetry summary) Tj
+(? Physical Security \(including prototype physical handling\)) Tj
 T*
-(? Vulnerability exposure report) Tj
+(? System Acquisition, Development, Maintenance \(code-level controls\)) Tj
 T*
-(? Policy candidate and exception register) Tj
+(? Cryptography \(CSW detects plaintext flows but does not enforce encryption\)) Tj
+T*
+(? Portability and Interoperability) Tj
+T*
+() Tj
+T*
+(Framework Topic ? CSW Capability Map) Tj
+T*
+() Tj
+T*
+(| Framework topic | CSW capability | Evidence artifact |) Tj
+T*
+(|  |  |  |) Tj
+T*
+(| Asset Management | Workload inventory; scope + label export | Inventory and classification) Tj
+T*
+(evidence at workload layer |) Tj
+T*
+(| Communication Security | Policy workspace; ADM-derived allowlist; observed flows |) Tj
+T*
+(Segmentation evidence \(workspace snapshot + observed-vs-approved flow comparison\) |) Tj
+T*
+(| Operations Security | Continuous monitoring; vulnerability + reachability; configuration) Tj
+T*
+(baseline on policy | Operations control evidence |) Tj
+T*
+(| Identity and Access Management \(workload-to-workload\) | Policy workspace + enforcement /) Tj
+T*
+(violation log | Workload-to-workload privilege evidence \(complements identity layer\) |) Tj
+T*
+(| Cryptography \(detection\) | Plaintext-flow detection on regulated paths | Detection input) Tj
+T*
+(only |) Tj
+T*
+(| Supplier Relationships | Outbound flow summary to supplier endpoints | Supplier-edge flow) Tj
+T*
+(report reconciled against supplier register |) Tj
+T*
+(| Incident Management | Forensic flow + process telemetry | Investigation pack with timeline) Tj
+T*
+(and impact scope |) Tj
+T*
+(| Prototype Protection \(if in scope\) | Isolation evidence for the Prototype-Protection scope) Tj
+T*
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 8 0 R >>
+endobj
+8 0 obj
+<< /Length 3269 >>
+stream
+BT
+/F1 10 Tf
+50 760 Td
+14 TL
+(| Inbound/outbound reachability summary for prototype workloads |) Tj
+T*
+(| Data Protection \(if in scope\) | Isolation evidence for the Personal-Data scope |) Tj
+T*
+(Inbound/outbound reachability summary for personal-data workloads |) Tj
+T*
+() Tj
+T*
+(Evidence Collection Approach) Tj
+T*
+() Tj
+T*
+(The table below describes per-topic evidence collection - what to collect, the CSW source) Tj
+T*
+(area, and a suggested cadence. The cadence should be tuned to the customer's audit cycle,) Tj
+T*
+(regulatory cadence, and risk appetite.) Tj
+T*
+() Tj
+T*
+(| Topic | What to collect | CSW source | Suggested cadence |) Tj
+T*
+(|  |  |  |  |) Tj
+T*
+(| Information asset and prototype/data scope mapping | Workloads in the assessment scope by) Tj
+T*
+(label | Inventory + scope membership export filtered by assessment_objective, prototype,) Tj
+T*
+(data_class | Monthly |) Tj
+T*
+(| Segmentation evidence | Workspace snapshot and ADM-derived allowlist | Policy workspace) Tj
+T*
+(export + ADM export | Quarterly + after each change |) Tj
+T*
+(| Supplier egress reconciliation | Outbound flow to supplier endpoints | Flow search) Tj
+T*
+(filtered to supplier endpoints | Monthly |) Tj
+T*
+(| Operations evidence | Continuous monitoring and vulnerability data | Vulnerability report) Tj
+T*
+(+ alert log scoped to TISAX | Monthly |) Tj
+T*
+(| Prototype-Protection isolation \(if in scope\) | Reachability into the prototype scope |) Tj
+T*
+(Reach summary for the Prototype-Protection scope | Quarterly |) Tj
+T*
+(| Data-Protection isolation \(if in scope\) | Reachability into the personal-data scope |) Tj
+T*
+(Reach summary for the Data-Protection scope | Quarterly |) Tj
+T*
+(| Incident sample | One representative incident timeline | Flow + process search | Per) Tj
+T*
+(incident; one representative sample per surveillance cycle |) Tj
 T*
 () Tj
 T*
@@ -105,34 +293,33 @@ T*
 T*
 () Tj
 T*
-(1. Select one business service, regulated boundary, or critical workload group.) Tj
+(1. Confirm the framework version and assessment cycle with the customer's compliance team.) Tj
 T*
-(2. Validate workload coverage and install sensors or configure supported connectors.) Tj
+(2. Select one business service, regulated boundary, or critical workload group to start) Tj
 T*
-(3. Apply labels for application, environment, owner, data class, criticality, compliance) Tj
+(with; do not attempt to instrument the entire estate in the POV.) Tj
 T*
-ET
-endstream
-endobj
-5 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 6 0 R >>
-endobj
-6 0 obj
-<< /Length 847 >>
-stream
-BT
-/F1 10 Tf
-50 760 Td
-14 TL
-(scope, and lifecycle.) Tj
+(3. Validate workload coverage and install sensors or configure supported connectors.) Tj
 T*
-(4. Observe flows over a representative business window.) Tj
+(Document the cannot-instrument register; this is itself evidence.) Tj
 T*
-(5. Use ADM to generate a candidate policy and review it with the application owner.) Tj
+(4. Apply labels for application, environment, owner, data class, criticality, compliance) Tj
 T*
-(6. Package inventory, scope, flows, policy, exceptions, and known gaps as the evidence) Tj
+(scope, and any framework-specific tags \(e.g. tenant, prototype, isa_level, npi, cui, ephi`\).) Tj
 T*
-(output.) Tj
+(5. Observe flows over a representative business window. Minimum two weeks; longer if the) Tj
+T*
+(customer has month-end, quarterly, or seasonal cycles relevant to the scope.) Tj
+T*
+(6. Use ADM to generate a candidate policy. Review with the application owner. Run in) Tj
+T*
+(Simulation mode for at least two weeks before any enforcement.) Tj
+T*
+(7. Package inventory, scope, flows, policy, exceptions, and known gaps as the evidence) Tj
+T*
+(output. Cross-reference this report's evidence collection table with the customer's existing) Tj
+T*
+(audit work-papers.) Tj
 T*
 () Tj
 T*
@@ -140,9 +327,40 @@ T*
 T*
 () Tj
 T*
-(CSW does not replace physical prototype controls, DLP, IAM, supplier contracts, or TISAX) Tj
+(CSW does not replace organisational policy, training, supplier assurance contracts, physical) Tj
 T*
-(assessor judgment.) Tj
+ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 10 0 R >>
+endobj
+10 0 obj
+<< /Length 1028 >>
+stream
+BT
+/F1 10 Tf
+50 760 Td
+14 TL
+(security and prototype physical handling, identity lifecycle, cryptography assurance, or the) Tj
+T*
+(TISAX assessment itself.) Tj
+T*
+() Tj
+T*
+(Assessor / Auditor Caveat) Tj
+T*
+() Tj
+T*
+(CSW provides technical evidence inputs. The customer's qualified assessor, auditor,) Tj
+T*
+(certifying body, or regulator determines compliance status. Validate all framework-topic) Tj
+T*
+(mappings, control IDs, paragraph references, and section numbers in this report against the) Tj
+T*
+(current official framework text. If the customer is being assessed against a version other) Tj
+T*
+(than the one referenced in the framework version note above, revalidate before use.) Tj
 T*
 () Tj
 T*
@@ -160,16 +378,20 @@ ET
 endstream
 endobj
 xref
-0 7
+0 11
 0000000000 65535 f 
 0000000009 00000 n 
 0000000058 00000 n 
-0000000121 00000 n 
-0000000296 00000 n 
-0000002628 00000 n 
-0000002803 00000 n 
+0000000133 00000 n 
+0000000308 00000 n 
+0000003036 00000 n 
+0000003211 00000 n 
+0000006108 00000 n 
+0000006283 00000 n 
+0000009604 00000 n 
+0000009780 00000 n 
 trailer
-<< /Size 7 /Root 1 0 R >>
+<< /Size 11 /Root 1 0 R >>
 startxref
-3701
+10861
 %%EOF

@@ -3,19 +3,19 @@
 << /Type /Catalog /Pages 2 0 R >>
 endobj
 2 0 obj
-<< /Type /Pages /Kids [3 0 R 5 0 R] /Count 2 >>
+<< /Type /Pages /Kids [3 0 R 5 0 R 7 0 R] /Count 3 >>
 endobj
 3 0 obj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 4 0 R >>
 endobj
 4 0 obj
-<< /Length 2320 >>
+<< /Length 2528 >>
 stream
 BT
 /F1 10 Tf
 50 760 Td
 14 TL
-(Cisco Secure Workload - CSA CCM v4 Compliance Report) Tj
+(Cisco Secure Workload - CSA CCM Compliance Report) Tj
 T*
 () Tj
 T*
@@ -23,13 +23,51 @@ T*
 T*
 () Tj
 T*
-(Framework: Cloud Security Alliance Cloud Controls Matrix v4) Tj
+(Framework: Cloud Security Alliance Cloud Controls Matrix \(CCM\) v4) Tj
 T*
-(Primary audience: Cloud security, SaaS, IaaS/PaaS, and STAR certification preparation teams.) Tj
+(Primary audience: Cloud service providers preparing CSA STAR submissions \(self-assessment,) Tj
 T*
-(CSW positioning: Cloud workload segmentation, IVS-09 network security, DSP data isolation,) Tj
+(STAR Level 1\) or CSA STAR Certification / Attestation \(Level 2\), and cloud customers using) Tj
 T*
-(TVM reachability, and STAR evidence support.) Tj
+(CCM as a control reference.) Tj
+T*
+(CSW positioning: Infrastructure and Virtualization Security \(IVS\), Data Security and Privacy) Tj
+T*
+(Lifecycle \(DSP\), and Threat and Vulnerability Management \(TVM\) evidence at the cloud) Tj
+T*
+(workload layer.) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(Framework Version Note) Tj
+T*
+() Tj
+T*
+(References CCM v4. The CCM is updated periodically; validate the version applicable to the) Tj
+T*
+(customer's STAR \(Security, Trust, Assurance, and Risk\) submission. CCM domain abbreviations) Tj
+T*
+(used here \(e.g. IVS Infrastructure & Virtualization Security, DSP Data Security and Privacy) Tj
+T*
+(Lifecycle Management, TVM Threat & Vulnerability Management\) are stable in v4.) Tj
+T*
+() Tj
+T*
+(CSW UI Navigation Note) Tj
+T*
+() Tj
+T*
+(Cisco does not yet publish framework-specific CSW UI navigation for this standard;) Tj
+T*
+(framework-specific navigation is on the product roadmap. This report references CSW) Tj
+T*
+(*capabilities* and the *evidence artifacts* they produce. The technical runbook \(CSW-CSA-) Tj
+T*
+(CCM-Technical-Runbook.md\) in this folder contains the deeper engineering detail.) Tj
 T*
 () Tj
 T*
@@ -41,15 +79,19 @@ T*
 T*
 () Tj
 T*
-(Cisco Secure Workload \(CSW\) can support this framework by producing workload-level evidence) Tj
+(Cisco Secure Workload \(CSW\) supports a defined subset of this framework. The strongest) Tj
 T*
-(for inventory, application dependency mapping, segmentation design, policy simulation,) Tj
+(customer story is not that CSW "certifies" compliance; it is that CSW turns workload) Tj
 T*
-(vulnerability context, and incident investigation. The strongest customer story is not that) Tj
+(communication and inventory into evidence that the customer, the customer's compliance team,) Tj
 T*
-(CSW "certifies" compliance; it is that CSW turns workload communication into evidence that) Tj
+(and the customer's assessor can review. This report describes which framework topics CSW) Tj
 T*
-(control owners, assessors, and technical teams can review.) Tj
+(supports, which it does not, what evidence artifacts CSW produces, and how often the) Tj
+T*
+(customer should collect them. CSW does not replace the customer's governance, policy, or) Tj
+T*
+(assessor judgement, and this report is not a control attestation.) Tj
 T*
 () Tj
 T*
@@ -57,9 +99,32 @@ T*
 T*
 () Tj
 T*
-(CSA-CCM > Cloud-Workloads, Tenant-Boundaries, Data-Protection, Network-Security, Threat-) Tj
+(``) Tj
 T*
-(Vulnerability-Management) Tj
+(CSA-CCM) Tj
+T*
+(??? Cloud-Workloads \(Customer-Tenants and Shared-Infrastructure\)) Tj
+T*
+(??? Tenant-Boundaries) Tj
+T*
+(??? Data-Protection-Scope) Tj
+T*
+(??? Management-Plane) Tj
+T*
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 6 0 R >>
+endobj
+6 0 obj
+<< /Length 2772 >>
+stream
+BT
+/F1 10 Tf
+50 760 Td
+14 TL
+(`) Tj
 T*
 () Tj
 T*
@@ -69,33 +134,122 @@ T*
 T*
 () Tj
 T*
-(Outcomes CSW Can Support) Tj
+(In Scope for CSW Evidence) Tj
 T*
 () Tj
 T*
-(? Map cloud workloads to tenant and data-boundary labels.) Tj
+(? IVS - Infrastructure and Virtualization Security \(segmentation, tenant boundary\)) Tj
 T*
-(? Support infrastructure and virtualization security evidence.) Tj
+(? DSP - Data Security and Privacy Lifecycle \(data-flow visibility, segmentation\)) Tj
 T*
-(? Identify reachability of vulnerable cloud workloads.) Tj
+(? TVM - Threat and Vulnerability Management \(reachability-weighted CVE\)) Tj
 T*
-(? Package segmentation and monitoring artifacts for STAR discussions.) Tj
+(? LOG - Logging and Monitoring \(workload telemetry as one log source\)) Tj
 T*
-() Tj
-T*
-(Evidence Package) Tj
+(? SEF - Security Incident Management, E-Discovery, and Cloud Forensics \(forensic input\)) Tj
 T*
 () Tj
 T*
-(? Cloud workload inventory) Tj
+(Out of Scope \(Must Be Evidenced by Other Controls / Tools / Processes\)) Tj
 T*
-(? Tenant and data-boundary flow summary) Tj
+() Tj
 T*
-(? IVS / DSP / TVM evidence package) Tj
+(? AAA - Audit Assurance and Compliance \(governance\)) Tj
 T*
-(? Vulnerability reachability summary) Tj
+(? BCR - Business Continuity Management and Operational Resilience) Tj
 T*
-(? Policy candidate and exception register) Tj
+(? CCC - Change Control and Configuration Management beyond CSW workspace) Tj
+T*
+(? DCS - Datacenter Security \(physical\)) Tj
+T*
+(? GRC - Governance, Risk Management, and Compliance) Tj
+T*
+(? HRS - Human Resources) Tj
+T*
+(? IAM - Identity and Access Management lifecycle) Tj
+T*
+(? STA - Supply Chain Management beyond CSW egress visibility) Tj
+T*
+() Tj
+T*
+(Framework Topic ? CSW Capability Map) Tj
+T*
+() Tj
+T*
+(| Framework topic | CSW capability | Evidence artifact |) Tj
+T*
+(|  |  |  |) Tj
+T*
+(| IVS - Infrastructure and Virtualization Security | Policy workspace + tenant-boundary deny) Tj
+T*
+(enforcement | Workspace snapshot + cross-tenant violation log |) Tj
+T*
+(| DSP - Data Security \(segmentation\) | Workload-to-workload allowlist between data-) Tj
+T*
+(protection scopes | Workspace snapshot + observed-vs-approved flow comparison |) Tj
+T*
+(| TVM - Threat and Vulnerability Management | Reachability-weighted CVE on cloud workloads |) Tj
+T*
+(Prioritised remediation list with compensating-control register |) Tj
+T*
+(| LOG - Logging and Monitoring | Continuous flow + process telemetry; alerts | Alert and) Tj
+T*
+(anomaly log scoped to CSA-CCM |) Tj
+T*
+(| SEF - Incident Management / Forensics | Forensic flow + process search | Investigation) Tj
+T*
+(pack with timeline and tenant-impact scoping |) Tj
+T*
+() Tj
+T*
+(Evidence Collection Approach) Tj
+T*
+() Tj
+T*
+(The table below describes per-topic evidence collection - what to collect, the CSW source) Tj
+T*
+(area, and a suggested cadence. The cadence should be tuned to the customer's audit cycle,) Tj
+T*
+(regulatory cadence, and risk appetite.) Tj
+T*
+() Tj
+T*
+(| Topic | What to collect | CSW source | Suggested cadence |) Tj
+T*
+(|  |  |  |  |) Tj
+T*
+(| Cloud workload inventory across tenants | Workloads grouped by tenant / service offering |) Tj
+T*
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 8 0 R >>
+endobj
+8 0 obj
+<< /Length 3170 >>
+stream
+BT
+/F1 10 Tf
+50 760 Td
+14 TL
+(Inventory + scope membership export filtered by tenant and service_offering | Monthly |) Tj
+T*
+(| Tenant separation evidence | Cross-tenant deny enforcement and violation log | Policy) Tj
+T*
+(workspace export + policy analysis output | Continuous; reviewed quarterly |) Tj
+T*
+(| Vulnerability + reachability | CVE list weighted by reach into tenant data scopes |) Tj
+T*
+(Vulnerability report scoped to CSA-CCM | Monthly |) Tj
+T*
+(| Monitoring evidence | Continuous flow + process telemetry; alerts | Alert and anomaly log) Tj
+T*
+(export | Continuous |) Tj
+T*
+(| Forensic sample | Workload-level timeline for one representative incident | Flow + process) Tj
+T*
+(search | Per incident |) Tj
 T*
 () Tj
 T*
@@ -103,34 +257,33 @@ T*
 T*
 () Tj
 T*
-(1. Select one business service, regulated boundary, or critical workload group.) Tj
+(1. Confirm the framework version and assessment cycle with the customer's compliance team.) Tj
 T*
-(2. Validate workload coverage and install sensors or configure supported connectors.) Tj
+(2. Select one business service, regulated boundary, or critical workload group to start) Tj
 T*
-(3. Apply labels for application, environment, owner, data class, criticality, compliance) Tj
+(with; do not attempt to instrument the entire estate in the POV.) Tj
 T*
-(scope, and lifecycle.) Tj
+(3. Validate workload coverage and install sensors or configure supported connectors.) Tj
 T*
-ET
-endstream
-endobj
-5 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 6 0 R >>
-endobj
-6 0 obj
-<< /Length 860 >>
-stream
-BT
-/F1 10 Tf
-50 760 Td
-14 TL
-(4. Observe flows over a representative business window.) Tj
+(Document the cannot-instrument register; this is itself evidence.) Tj
 T*
-(5. Use ADM to generate a candidate policy and review it with the application owner.) Tj
+(4. Apply labels for application, environment, owner, data class, criticality, compliance) Tj
 T*
-(6. Package inventory, scope, flows, policy, exceptions, and known gaps as the evidence) Tj
+(scope, and any framework-specific tags \(e.g. tenant, prototype, isa_level, npi, cui, ephi`\).) Tj
 T*
-(output.) Tj
+(5. Observe flows over a representative business window. Minimum two weeks; longer if the) Tj
+T*
+(customer has month-end, quarterly, or seasonal cycles relevant to the scope.) Tj
+T*
+(6. Use ADM to generate a candidate policy. Review with the application owner. Run in) Tj
+T*
+(Simulation mode for at least two weeks before any enforcement.) Tj
+T*
+(7. Package inventory, scope, flows, policy, exceptions, and known gaps as the evidence) Tj
+T*
+(output. Cross-reference this report's evidence collection table with the customer's existing) Tj
+T*
+(audit work-papers.) Tj
 T*
 () Tj
 T*
@@ -138,9 +291,27 @@ T*
 T*
 () Tj
 T*
-(CSW does not replace CSP native controls, IAM, KMS, logging retention, cloud posture) Tj
+(CSW does not replace CSA STAR submission / attestation, CSP organisational and physical) Tj
 T*
-(management, STAR attestation, or shared-responsibility decisions.) Tj
+(controls, identity lifecycle \(IAM\), key management \(KMS\), backup and DR, portability and) Tj
+T*
+(interoperability, or shared-responsibility model decisions.) Tj
+T*
+() Tj
+T*
+(Assessor / Auditor Caveat) Tj
+T*
+() Tj
+T*
+(CSW provides technical evidence inputs. The customer's qualified assessor, auditor,) Tj
+T*
+(certifying body, or regulator determines compliance status. Validate all framework-topic) Tj
+T*
+(mappings, control IDs, paragraph references, and section numbers in this report against the) Tj
+T*
+(current official framework text. If the customer is being assessed against a version other) Tj
+T*
+(than the one referenced in the framework version note above, revalidate before use.) Tj
 T*
 () Tj
 T*
@@ -158,16 +329,18 @@ ET
 endstream
 endobj
 xref
-0 7
+0 9
 0000000000 65535 f 
 0000000009 00000 n 
 0000000058 00000 n 
-0000000121 00000 n 
-0000000296 00000 n 
-0000002668 00000 n 
-0000002843 00000 n 
+0000000127 00000 n 
+0000000302 00000 n 
+0000002882 00000 n 
+0000003057 00000 n 
+0000005881 00000 n 
+0000006056 00000 n 
 trailer
-<< /Size 7 /Root 1 0 R >>
+<< /Size 9 /Root 1 0 R >>
 startxref
-3754
+9278
 %%EOF

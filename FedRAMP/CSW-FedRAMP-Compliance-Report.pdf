@@ -3,19 +3,19 @@
 << /Type /Catalog /Pages 2 0 R >>
 endobj
 2 0 obj
-<< /Type /Pages /Kids [3 0 R 5 0 R] /Count 2 >>
+<< /Type /Pages /Kids [3 0 R 5 0 R 7 0 R] /Count 3 >>
 endobj
 3 0 obj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 4 0 R >>
 endobj
 4 0 obj
-<< /Length 2348 >>
+<< /Length 2539 >>
 stream
 BT
 /F1 10 Tf
 50 760 Td
 14 TL
-(Cisco Secure Workload - FedRAMP Moderate Compliance Report) Tj
+(Cisco Secure Workload - FedRAMP Compliance Report) Tj
 T*
 () Tj
 T*
@@ -23,15 +23,47 @@ T*
 T*
 () Tj
 T*
-(Framework: FedRAMP Moderate Baseline) Tj
+(Framework: FedRAMP \(Moderate baseline\) - Federal Risk and Authorization Management Program) Tj
 T*
-(Primary audience: Cloud service providers, federal customers, 3PAOs, and security teams) Tj
+(Primary audience: Cloud service providers seeking or maintaining FedRAMP authorisation,) Tj
 T*
-(preparing FedRAMP evidence.) Tj
+(federal agency customers, and 3PAOs preparing assessment evidence.) Tj
 T*
-(CSW positioning: Moderate baseline overlay on NIST 800-53, ConMon evidence, POA&M inputs,) Tj
+(CSW positioning: Information-flow enforcement \(AC-4\), boundary protection \(SC-7\), continuous) Tj
 T*
-(and AC-4 / SC-7 / CA-7 / SI-4 support.) Tj
+(monitoring evidence \(CA-7\), and system monitoring \(SI-4\) at the workload layer.) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(Framework Version Note) Tj
+T*
+() Tj
+T*
+(FedRAMP baselines are aligned to NIST SP 800-53 Rev. 5 \(Low, Moderate, High\). This report) Tj
+T*
+(assumes the Moderate baseline as the most common cloud-service scope. Control IDs referenced) Tj
+T*
+(\(e.g. AC-4, SC-7, SI-4, CA-7\) are stable in 800-53 Rev. 5. Validate the customer's) Tj
+T*
+(authorisation level and parameter tailoring against the SSP.) Tj
+T*
+() Tj
+T*
+(CSW UI Navigation Note) Tj
+T*
+() Tj
+T*
+(Cisco does not yet publish framework-specific CSW UI navigation for this standard;) Tj
+T*
+(framework-specific navigation is on the product roadmap. This report references CSW) Tj
+T*
+(*capabilities* and the *evidence artifacts* they produce. The technical runbook \(CSW-) Tj
+T*
+(FedRAMP-Technical-Runbook.md\) in this folder contains the deeper engineering detail.) Tj
 T*
 () Tj
 T*
@@ -43,15 +75,19 @@ T*
 T*
 () Tj
 T*
-(Cisco Secure Workload \(CSW\) can support this framework by producing workload-level evidence) Tj
+(Cisco Secure Workload \(CSW\) supports a defined subset of this framework. The strongest) Tj
 T*
-(for inventory, application dependency mapping, segmentation design, policy simulation,) Tj
+(customer story is not that CSW "certifies" compliance; it is that CSW turns workload) Tj
 T*
-(vulnerability context, and incident investigation. The strongest customer story is not that) Tj
+(communication and inventory into evidence that the customer, the customer's compliance team,) Tj
 T*
-(CSW "certifies" compliance; it is that CSW turns workload communication into evidence that) Tj
+(and the customer's assessor can review. This report describes which framework topics CSW) Tj
 T*
-(control owners, assessors, and technical teams can review.) Tj
+(supports, which it does not, what evidence artifacts CSW produces, and how often the) Tj
+T*
+(customer should collect them. CSW does not replace the customer's governance, policy, or) Tj
+T*
+(assessor judgement, and this report is not a control attestation.) Tj
 T*
 () Tj
 T*
@@ -59,57 +95,21 @@ T*
 T*
 () Tj
 T*
-(FedRAMP > Moderate-Baseline, Boundary-Protection, Information-Flow-Enforcement, Continuous-) Tj
+(``) Tj
 T*
-(Monitoring, POAM-Evidence) Tj
+(FedRAMP) Tj
 T*
-() Tj
+(??? Authorisation-Boundary \(in-scope workloads inside the SSP boundary\)) Tj
 T*
-(This scope pattern should be validated with the customer's architecture, application owners,) Tj
+(??? External-Connections \(external systems and interconnections\)) Tj
 T*
-(compliance team, and assessor before it is used for formal evidence.) Tj
+(??? Privileged-Operations \(jump hosts, admin paths\)) Tj
 T*
-() Tj
+(??? ConMon-Telemetry-Sources) Tj
 T*
-(Outcomes CSW Can Support) Tj
-T*
-() Tj
-T*
-(? Support information-flow enforcement and boundary protection evidence.) Tj
-T*
-(? Provide workload telemetry for continuous monitoring discussions.) Tj
-T*
-(? Identify segmentation and vulnerability findings that may inform POA&M entries.) Tj
-T*
-(? Prepare 3PAO review artifacts from observed and approved flow data.) Tj
+(`) Tj
 T*
 () Tj
-T*
-(Evidence Package) Tj
-T*
-() Tj
-T*
-(? FedRAMP-scoped workload inventory) Tj
-T*
-(? AC-4 / SC-7 flow evidence package) Tj
-T*
-(? Continuous monitoring export) Tj
-T*
-(? Vulnerability and reachability summary) Tj
-T*
-(? Exception and remediation register) Tj
-T*
-() Tj
-T*
-(POV / Workshop Approach) Tj
-T*
-() Tj
-T*
-(1. Select one business service, regulated boundary, or critical workload group.) Tj
-T*
-(2. Validate workload coverage and install sensors or configure supported connectors.) Tj
-T*
-(3. Apply labels for application, environment, owner, data class, criticality, compliance) Tj
 T*
 ET
 endstream
@@ -118,21 +118,170 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 6 0 R >>
 endobj
 6 0 obj
-<< /Length 897 >>
+<< /Length 2744 >>
 stream
 BT
 /F1 10 Tf
 50 760 Td
 14 TL
-(scope, and lifecycle.) Tj
+(This scope pattern should be validated with the customer's architecture, application owners,) Tj
 T*
-(4. Observe flows over a representative business window.) Tj
+(compliance team, and assessor before it is used for formal evidence.) Tj
 T*
-(5. Use ADM to generate a candidate policy and review it with the application owner.) Tj
+() Tj
 T*
-(6. Package inventory, scope, flows, policy, exceptions, and known gaps as the evidence) Tj
+(In Scope for CSW Evidence) Tj
 T*
-(output.) Tj
+() Tj
+T*
+(? AC-4 - Information Flow Enforcement \(workload-to-workload\)) Tj
+T*
+(? SC-7 - Boundary Protection \(workload-to-workload\)) Tj
+T*
+(? AU family - Audit and Accountability \(workload telemetry\)) Tj
+T*
+(? SI-4 - System Monitoring \(workload telemetry\)) Tj
+T*
+(? CA-7 - Continuous Monitoring \(technical telemetry\)) Tj
+T*
+(? RA-5 / SI-2 - Vulnerability Scanning and Flaw Remediation \(reachability-weighted\)) Tj
+T*
+() Tj
+T*
+(Out of Scope \(Must Be Evidenced by Other Controls / Tools / Processes\)) Tj
+T*
+() Tj
+T*
+(? AC-1 through AC-3 - Identity-layer access enforcement) Tj
+T*
+(? Encryption controls \(SC-8 / SC-13\) - CSW detects plaintext flows but does not enforce) Tj
+T*
+(  encryption) Tj
+T*
+(? Personnel security \(PS family\), physical security \(PE family\)) Tj
+T*
+(? FedRAMP 3PAO judgement, agency ATO decisions, POA&M ownership) Tj
+T*
+(? SSP authorship and control parameter selection) Tj
+T*
+() Tj
+T*
+(Framework Topic ? CSW Capability Map) Tj
+T*
+() Tj
+T*
+(| Framework topic | CSW capability | Evidence artifact |) Tj
+T*
+(|  |  |  |) Tj
+T*
+(| AC-4 - Information Flow Enforcement | Policy workspace + workload-to-workload allowlist |) Tj
+T*
+(Workspace snapshot + observed-vs-approved flow comparison |) Tj
+T*
+(| SC-7 - Boundary Protection \(workload layer\) | Default-deny policy at the workload boundary) Tj
+T*
+(| Workspace snapshot showing boundary deny rules |) Tj
+T*
+(| AU family - Audit | Workload flow + process telemetry retained per retention policy |) Tj
+T*
+(Retained telemetry export |) Tj
+T*
+(| SI-4 - System Monitoring | Continuous flow + process telemetry; alerts | Alert and anomaly) Tj
+T*
+(log scoped to FedRAMP boundary |) Tj
+T*
+(| CA-7 - Continuous Monitoring | Continuous workspace + ADM + vulnerability evidence |) Tj
+T*
+(Monthly evidence pack for ConMon submission |) Tj
+T*
+(| RA-5 / SI-2 - Vulnerability handling | Reachability-weighted CVE evidence | Prioritised) Tj
+T*
+(remediation list with POA&M inputs |) Tj
+T*
+() Tj
+T*
+(Evidence Collection Approach) Tj
+T*
+() Tj
+T*
+(The table below describes per-topic evidence collection - what to collect, the CSW source) Tj
+T*
+(area, and a suggested cadence. The cadence should be tuned to the customer's audit cycle,) Tj
+T*
+(regulatory cadence, and risk appetite.) Tj
+T*
+() Tj
+T*
+(| Topic | What to collect | CSW source | Suggested cadence |) Tj
+T*
+(|  |  |  |  |) Tj
+T*
+(| Authorisation boundary inventory | Workloads inside the SSP boundary | Inventory + scope) Tj
+T*
+(membership export | Monthly |) Tj
+T*
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 8 0 R >>
+endobj
+8 0 obj
+<< /Length 3128 >>
+stream
+BT
+/F1 10 Tf
+50 760 Td
+14 TL
+(| Information-flow enforcement evidence | Workspace snapshot + violation log | Policy) Tj
+T*
+(workspace export + policy analysis output | Monthly \(ConMon cadence\) |) Tj
+T*
+(| Continuous monitoring evidence | Workspace, ADM, and vulnerability inputs to ConMon |) Tj
+T*
+(Aggregated monthly evidence pack | Monthly |) Tj
+T*
+(| Vulnerability + reachability | CVE list weighted by reach inside the boundary |) Tj
+T*
+(Vulnerability report scoped to FedRAMP boundary | Monthly \(per FedRAMP scanning cadence\) |) Tj
+T*
+(| Incident sample | One representative incident timeline for IR drills or actual incidents |) Tj
+T*
+(Flow + process search | Per incident |) Tj
+T*
+() Tj
+T*
+(POV / Workshop Approach) Tj
+T*
+() Tj
+T*
+(1. Confirm the framework version and assessment cycle with the customer's compliance team.) Tj
+T*
+(2. Select one business service, regulated boundary, or critical workload group to start) Tj
+T*
+(with; do not attempt to instrument the entire estate in the POV.) Tj
+T*
+(3. Validate workload coverage and install sensors or configure supported connectors.) Tj
+T*
+(Document the cannot-instrument register; this is itself evidence.) Tj
+T*
+(4. Apply labels for application, environment, owner, data class, criticality, compliance) Tj
+T*
+(scope, and any framework-specific tags \(e.g. tenant, prototype, isa_level, npi, cui, ephi`\).) Tj
+T*
+(5. Observe flows over a representative business window. Minimum two weeks; longer if the) Tj
+T*
+(customer has month-end, quarterly, or seasonal cycles relevant to the scope.) Tj
+T*
+(6. Use ADM to generate a candidate policy. Review with the application owner. Run in) Tj
+T*
+(Simulation mode for at least two weeks before any enforcement.) Tj
+T*
+(7. Package inventory, scope, flows, policy, exceptions, and known gaps as the evidence) Tj
+T*
+(output. Cross-reference this report's evidence collection table with the customer's existing) Tj
+T*
+(audit work-papers.) Tj
 T*
 () Tj
 T*
@@ -140,9 +289,27 @@ T*
 T*
 () Tj
 T*
-(CSW does not replace FedRAMP authorization, SSP ownership, 3PAO assessment, CSP platform) Tj
+(CSW does not replace FedRAMP authorisation, SSP ownership, 3PAO assessment, CSP platform) Tj
 T*
-(controls, IAM, encryption, audit retention, or agency ATO decisions.) Tj
+(controls, identity layer \(IAM / MFA\), encryption \(FIPS-validated modules\), audit-log) Tj
+T*
+(retention infrastructure, or agency ATO decisions.) Tj
+T*
+() Tj
+T*
+(Assessor / Auditor Caveat) Tj
+T*
+() Tj
+T*
+(CSW provides technical evidence inputs. The customer's qualified assessor, auditor,) Tj
+T*
+(certifying body, or regulator determines compliance status. Validate all framework-topic) Tj
+T*
+(mappings, control IDs, paragraph references, and section numbers in this report against the) Tj
+T*
+(current official framework text. If the customer is being assessed against a version other) Tj
+T*
+(than the one referenced in the framework version note above, revalidate before use.) Tj
 T*
 () Tj
 T*
@@ -160,16 +327,18 @@ ET
 endstream
 endobj
 xref
-0 7
+0 9
 0000000000 65535 f 
 0000000009 00000 n 
 0000000058 00000 n 
-0000000121 00000 n 
-0000000296 00000 n 
-0000002696 00000 n 
-0000002871 00000 n 
+0000000127 00000 n 
+0000000302 00000 n 
+0000002893 00000 n 
+0000003068 00000 n 
+0000005864 00000 n 
+0000006039 00000 n 
 trailer
-<< /Size 7 /Root 1 0 R >>
+<< /Size 9 /Root 1 0 R >>
 startxref
-3819
+9219
 %%EOF

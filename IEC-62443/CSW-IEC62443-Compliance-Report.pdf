@@ -3,13 +3,13 @@
 << /Type /Catalog /Pages 2 0 R >>
 endobj
 2 0 obj
-<< /Type /Pages /Kids [3 0 R 5 0 R] /Count 2 >>
+<< /Type /Pages /Kids [3 0 R 5 0 R 7 0 R 9 0 R] /Count 4 >>
 endobj
 3 0 obj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 4 0 R >>
 endobj
 4 0 obj
-<< /Length 2365 >>
+<< /Length 2632 >>
 stream
 BT
 /F1 10 Tf
@@ -25,13 +25,49 @@ T*
 T*
 (Framework: IEC 62443 - Industrial Automation and Control Systems Security) Tj
 T*
-(Primary audience: Industrial, manufacturing, energy, utilities, and OT security teams) Tj
+(Primary audience: Industrial, manufacturing, energy, utilities, transportation, and) Tj
 T*
-(designing zones and conduits.) Tj
+(pharmaceutical operators and integrators applying IEC 62443 zones and conduits architecture.) Tj
 T*
-(CSW positioning: Zones and conduits segmentation, IT-side OT boundary hardening, SR control) Tj
+(CSW positioning: IT-side workload segmentation that aligns with zones and conduits) Tj
 T*
-(evidence, and complementary OT device visibility.) Tj
+(architecture; the OT device-layer SR controls are addressed by an OT-native product \(Cyber) Tj
+T*
+(Vision, Claroty, Nozomi\).) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(Framework Version Note) Tj
+T*
+() Tj
+T*
+(IEC 62443 is a multi-part series \(e.g. 62443-2-1 for IACS security programmes, 62443-3-2 for) Tj
+T*
+(zones and conduits / risk assessment, 62443-3-3 for system security requirements, 62443-4-2) Tj
+T*
+(for component requirements\). This report focuses on the zones-and-conduits and system-) Tj
+T*
+(security-requirement themes; cite the specific part and edition relevant to the customer's) Tj
+T*
+(certification scope.) Tj
+T*
+() Tj
+T*
+(CSW UI Navigation Note) Tj
+T*
+() Tj
+T*
+(Cisco does not yet publish framework-specific CSW UI navigation for this standard;) Tj
+T*
+(framework-specific navigation is on the product roadmap. This report references CSW) Tj
+T*
+(*capabilities* and the *evidence artifacts* they produce. The technical runbook \(CSW-) Tj
+T*
+(IEC-62443-Technical-Runbook.md\) in this folder contains the deeper engineering detail.) Tj
 T*
 () Tj
 T*
@@ -43,15 +79,19 @@ T*
 T*
 () Tj
 T*
-(Cisco Secure Workload \(CSW\) can support this framework by producing workload-level evidence) Tj
+(Cisco Secure Workload \(CSW\) supports a defined subset of this framework. The strongest) Tj
 T*
-(for inventory, application dependency mapping, segmentation design, policy simulation,) Tj
+(customer story is not that CSW "certifies" compliance; it is that CSW turns workload) Tj
 T*
-(vulnerability context, and incident investigation. The strongest customer story is not that) Tj
+(communication and inventory into evidence that the customer, the customer's compliance team,) Tj
 T*
-(CSW "certifies" compliance; it is that CSW turns workload communication into evidence that) Tj
+(and the customer's assessor can review. This report describes which framework topics CSW) Tj
 T*
-(control owners, assessors, and technical teams can review.) Tj
+(supports, which it does not, what evidence artifacts CSW produces, and how often the) Tj
+T*
+(customer should collect them. CSW does not replace the customer's governance, policy, or) Tj
+T*
+(assessor judgement, and this report is not a control attestation.) Tj
 T*
 () Tj
 T*
@@ -59,9 +99,34 @@ T*
 T*
 () Tj
 T*
-(IEC-62443 > IT-OT-Boundary, Industrial-DMZ, Jump-Hosts, Engineering-Workstations,) Tj
+(``) Tj
 T*
-(Historians, Vendor-Access) Tj
+(IEC-62443) Tj
+T*
+(??? IT-Side-Zones \(Enterprise-Zone, Operations-Zone-IT-Side\)) Tj
+T*
+(??? IT-OT-DMZ-IT-Side \(Historians, Engineering-Workstations, Jump-Hosts, Patch-Servers,) Tj
+T*
+(Asset-Servers\)) Tj
+T*
+(??? Conduits \(observed IT-side endpoints of every IT-OT conduit\)) Tj
+T*
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 6 0 R >>
+endobj
+6 0 obj
+<< /Length 2819 >>
+stream
+BT
+/F1 10 Tf
+50 760 Td
+14 TL
+(??? OT-Side-Zones \(NOT instrumented; observed via conduit endpoints\)) Tj
+T*
+(`) Tj
 T*
 () Tj
 T*
@@ -71,33 +136,128 @@ T*
 T*
 () Tj
 T*
-(Outcomes CSW Can Support) Tj
+(In Scope for CSW Evidence) Tj
 T*
 () Tj
 T*
-(? Map IT-side workloads that participate in OT access paths.) Tj
+(? Zone definition \(IT side\) and IT-side conduit endpoints) Tj
 T*
-(? Document conduit-like communication between industrial support systems.) Tj
+(? Foundational Requirement-aligned themes on the IT side: Identification and) Tj
 T*
-(? Identify unexpected lateral movement paths near the OT boundary.) Tj
+(  Authentication Control \(FR1\), Use Control \(FR2\), System Integrity / monitoring \(FR3 /) Tj
 T*
-(? Package SR-aligned segmentation and monitoring evidence.) Tj
+(  FR6\), Data Confidentiality \(detection, FR4\), Restricted Data Flow \(FR5\)) Tj
+T*
+(? Network architecture evidence on the IT side) Tj
+T*
+(? Vulnerability management with reachability context) Tj
+T*
+(? Incident response - IT-side forensic input) Tj
 T*
 () Tj
 T*
-(Evidence Package) Tj
+(Out of Scope \(Must Be Evidenced by Other Controls / Tools / Processes\)) Tj
 T*
 () Tj
 T*
-(? Zone and conduit workload inventory) Tj
+(? Component-level \(FR / SR\) requirements on OT devices \(PLC, RTU, IED, HMI\)) Tj
 T*
-(? IT/OT boundary flow summary) Tj
+(? OT protocol inspection and OT change management) Tj
 T*
-(? Jump host and vendor-access dependency map) Tj
+(? Physical security and personnel controls) Tj
 T*
-(? Policy candidate and exception register) Tj
+(? Cryptography enforcement on OT links) Tj
 T*
-(? Cannot-instrument OT device layer notes) Tj
+(? Safety system controls) Tj
+T*
+() Tj
+T*
+(Framework Topic ? CSW Capability Map) Tj
+T*
+() Tj
+T*
+(| Framework topic | CSW capability | Evidence artifact |) Tj
+T*
+(|  |  |  |) Tj
+T*
+(| Zone and conduit architecture \(IT side\) | Scope architecture mirroring zones; policy) Tj
+T*
+(workspace as conduit allowlist | Workspace snapshot + observed conduit flow report |) Tj
+T*
+(| Restricted Data Flow \(FR5, IT side\) | Workload-to-workload allowlist between zones; cross-) Tj
+T*
+(zone deny enforcement | Policy workspace + cross-zone violation log |) Tj
+T*
+(| System Integrity / Monitoring \(FR3 / FR6\) | Continuous flow + process telemetry; alerts on) Tj
+T*
+(unauthorised conduit flow | Alert and anomaly log scoped to IEC-62443 |) Tj
+T*
+(| Use Control \(FR2\) workload layer | Policy workspace + enforcement / violation log |) Tj
+T*
+(Workload-to-workload use-control evidence |) Tj
+T*
+(| Data Confidentiality \(FR4\) detection | Plaintext-flow detection on regulated paths |) Tj
+T*
+(Detection input only |) Tj
+T*
+(| Vulnerability handling | Reachability-weighted CVE on IT-side zone members | Prioritised) Tj
+T*
+(remediation list with compensating-control register |) Tj
+T*
+(| Incident response \(IT side\) | Forensic flow + process telemetry | Investigation pack with) Tj
+T*
+(timeline and impact scope |) Tj
+T*
+() Tj
+T*
+(Evidence Collection Approach) Tj
+T*
+() Tj
+T*
+(The table below describes per-topic evidence collection - what to collect, the CSW source) Tj
+T*
+(area, and a suggested cadence. The cadence should be tuned to the customer's audit cycle,) Tj
+T*
+(regulatory cadence, and risk appetite.) Tj
+T*
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 8 0 R >>
+endobj
+8 0 obj
+<< /Length 3147 >>
+stream
+BT
+/F1 10 Tf
+50 760 Td
+14 TL
+() Tj
+T*
+(| Topic | What to collect | CSW source | Suggested cadence |) Tj
+T*
+(|  |  |  |  |) Tj
+T*
+(| Zone inventory \(IT side\) | Workloads grouped by zone and conduit endpoint | Inventory +) Tj
+T*
+(scope membership export with iec62443_zone label | Monthly |) Tj
+T*
+(| Conduit evidence | Observed and approved IT-side conduit flows | ADM workspace export +) Tj
+T*
+(policy workspace export | Quarterly |) Tj
+T*
+(| Cross-zone deny evidence | Cross-zone violation log | Policy analysis output | Continuous;) Tj
+T*
+(reviewed quarterly |) Tj
+T*
+(| Vulnerability + reachability | CVE list weighted by reach into OT-side zones |) Tj
+T*
+(Vulnerability report scoped to IEC-62443 | Monthly |) Tj
+T*
+(| Incident sample | One representative IT-side incident timeline | Flow + process search |) Tj
+T*
+(Per incident; one representative sample per audit cycle |) Tj
 T*
 () Tj
 T*
@@ -105,34 +265,33 @@ T*
 T*
 () Tj
 T*
-(1. Select one business service, regulated boundary, or critical workload group.) Tj
+(1. Confirm the framework version and assessment cycle with the customer's compliance team.) Tj
 T*
-(2. Validate workload coverage and install sensors or configure supported connectors.) Tj
+(2. Select one business service, regulated boundary, or critical workload group to start) Tj
 T*
-(3. Apply labels for application, environment, owner, data class, criticality, compliance) Tj
+(with; do not attempt to instrument the entire estate in the POV.) Tj
 T*
-ET
-endstream
-endobj
-5 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 6 0 R >>
-endobj
-6 0 obj
-<< /Length 955 >>
-stream
-BT
-/F1 10 Tf
-50 760 Td
-14 TL
-(scope, and lifecycle.) Tj
+(3. Validate workload coverage and install sensors or configure supported connectors.) Tj
 T*
-(4. Observe flows over a representative business window.) Tj
+(Document the cannot-instrument register; this is itself evidence.) Tj
 T*
-(5. Use ADM to generate a candidate policy and review it with the application owner.) Tj
+(4. Apply labels for application, environment, owner, data class, criticality, compliance) Tj
 T*
-(6. Package inventory, scope, flows, policy, exceptions, and known gaps as the evidence) Tj
+(scope, and any framework-specific tags \(e.g. tenant, prototype, isa_level, npi, cui, ephi`\).) Tj
 T*
-(output.) Tj
+(5. Observe flows over a representative business window. Minimum two weeks; longer if the) Tj
+T*
+(customer has month-end, quarterly, or seasonal cycles relevant to the scope.) Tj
+T*
+(6. Use ADM to generate a candidate policy. Review with the application owner. Run in) Tj
+T*
+(Simulation mode for at least two weeks before any enforcement.) Tj
+T*
+(7. Package inventory, scope, flows, policy, exceptions, and known gaps as the evidence) Tj
+T*
+(output. Cross-reference this report's evidence collection table with the customer's existing) Tj
+T*
+(audit work-papers.) Tj
 T*
 () Tj
 T*
@@ -140,11 +299,27 @@ T*
 T*
 () Tj
 T*
-(CSW does not replace OT-native asset discovery or protocol inspection. Pair it with Cisco) Tj
+(CSW does not certify against IEC 62443, parse OT protocols, enforce SR controls on OT) Tj
 T*
-(Cyber Vision, Claroty, Nozomi, Dragos, OT firewalls, and plant change control for PLC, RTU,) Tj
+(components, manage OT change windows, or replace an OT-native product \(Cyber Vision,) Tj
 T*
-(IED, and fieldbus layers.) Tj
+(Claroty, Nozomi, Dragos\) for OT device discovery and protocol inspection.) Tj
+T*
+() Tj
+T*
+(Assessor / Auditor Caveat) Tj
+T*
+() Tj
+T*
+(CSW provides technical evidence inputs. The customer's qualified assessor, auditor,) Tj
+T*
+(certifying body, or regulator determines compliance status. Validate all framework-topic) Tj
+T*
+(mappings, control IDs, paragraph references, and section numbers in this report against the) Tj
+T*
+(current official framework text. If the customer is being assessed against a version other) Tj
+T*
+(than the one referenced in the framework version note above, revalidate before use.) Tj
 T*
 () Tj
 T*
@@ -154,6 +329,19 @@ T*
 T*
 (This report is for informational and planning purposes. It is not legal, regulatory, audit,) Tj
 T*
+ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 10 0 R >>
+endobj
+10 0 obj
+<< /Length 225 >>
+stream
+BT
+/F1 10 Tf
+50 760 Td
+14 TL
 (or certification advice. Validate all mappings against the current official framework text,) Tj
 T*
 (the customer's environment, and qualified compliance, legal, and audit professionals.) Tj
@@ -162,16 +350,20 @@ ET
 endstream
 endobj
 xref
-0 7
+0 11
 0000000000 65535 f 
 0000000009 00000 n 
 0000000058 00000 n 
-0000000121 00000 n 
-0000000296 00000 n 
-0000002713 00000 n 
-0000002888 00000 n 
+0000000133 00000 n 
+0000000308 00000 n 
+0000002992 00000 n 
+0000003167 00000 n 
+0000006038 00000 n 
+0000006213 00000 n 
+0000009412 00000 n 
+0000009588 00000 n 
 trailer
-<< /Size 7 /Root 1 0 R >>
+<< /Size 11 /Root 1 0 R >>
 startxref
-3894
+9865
 %%EOF

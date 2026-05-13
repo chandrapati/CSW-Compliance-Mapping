@@ -298,89 +298,246 @@ pre, code, blockquote { background: #f5f5f5; }
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#cisco-secure-workload---csa-ccm-v4-compliance-report" id="toc-cisco-secure-workload---csa-ccm-v4-compliance-report">Cisco
-Secure Workload - CSA CCM v4 Compliance Report</a>
+<li><a href="#cisco-secure-workload---csa-ccm-compliance-report" id="toc-cisco-secure-workload---csa-ccm-compliance-report">Cisco Secure
+Workload - CSA CCM Compliance Report</a>
 <ul>
 <li><a href="#customer-facing-compliance-report" id="toc-customer-facing-compliance-report">Customer-Facing Compliance
 Report</a></li>
+<li><a href="#framework-version-note" id="toc-framework-version-note">Framework Version Note</a></li>
+<li><a href="#csw-ui-navigation-note" id="toc-csw-ui-navigation-note">CSW UI Navigation Note</a></li>
 <li><a href="#executive-summary" id="toc-executive-summary">Executive
 Summary</a></li>
 <li><a href="#suggested-csw-scope-pattern" id="toc-suggested-csw-scope-pattern">Suggested CSW Scope
 Pattern</a></li>
-<li><a href="#outcomes-csw-can-support" id="toc-outcomes-csw-can-support">Outcomes CSW Can Support</a></li>
-<li><a href="#evidence-package" id="toc-evidence-package">Evidence
-Package</a></li>
+<li><a href="#in-scope-for-csw-evidence" id="toc-in-scope-for-csw-evidence">In Scope for CSW Evidence</a></li>
+<li><a href="#out-of-scope-must-be-evidenced-by-other-controls-tools-processes" id="toc-out-of-scope-must-be-evidenced-by-other-controls-tools-processes">Out
+of Scope (Must Be Evidenced by Other Controls / Tools /
+Processes)</a></li>
+<li><a href="#framework-topic-csw-capability-map" id="toc-framework-topic-csw-capability-map">Framework Topic → CSW
+Capability Map</a></li>
+<li><a href="#evidence-collection-approach" id="toc-evidence-collection-approach">Evidence Collection
+Approach</a></li>
 <li><a href="#pov-workshop-approach" id="toc-pov-workshop-approach">POV
 / Workshop Approach</a></li>
 <li><a href="#boundaries-and-complementary-controls" id="toc-boundaries-and-complementary-controls">Boundaries and
 Complementary Controls</a></li>
+<li><a href="#assessor-auditor-caveat" id="toc-assessor-auditor-caveat">Assessor / Auditor Caveat</a></li>
 <li><a href="#disclaimer" id="toc-disclaimer">Disclaimer</a></li>
 </ul></li>
 </ul>
 </nav>
-<h1 id="cisco-secure-workload---csa-ccm-v4-compliance-report">Cisco
-Secure Workload - CSA CCM v4 Compliance Report</h1>
+<h1 id="cisco-secure-workload---csa-ccm-compliance-report">Cisco Secure
+Workload - CSA CCM Compliance Report</h1>
 <h2 id="customer-facing-compliance-report">Customer-Facing Compliance
 Report</h2>
 <p><strong>Framework:</strong> Cloud Security Alliance Cloud Controls
-Matrix v4<br />
-<strong>Primary audience:</strong> Cloud security, SaaS, IaaS/PaaS, and
-STAR certification preparation teams.<br />
-<strong>CSW positioning:</strong> Cloud workload segmentation, IVS-09
-network security, DSP data isolation, TVM reachability, and STAR
-evidence support.</p>
+Matrix (CCM) v4<br />
+<strong>Primary audience:</strong> Cloud service providers preparing CSA
+STAR submissions (self-assessment, STAR Level 1) or CSA STAR
+Certification / Attestation (Level 2), and cloud customers using CCM as
+a control reference.<br />
+<strong>CSW positioning:</strong> Infrastructure and Virtualization
+Security (IVS), Data Security and Privacy Lifecycle (DSP), and Threat
+and Vulnerability Management (TVM) evidence at the cloud workload
+layer.</p>
+<hr />
+<h2 id="framework-version-note">Framework Version Note</h2>
+<p>References CCM v4. The CCM is updated periodically; validate the
+version applicable to the customer’s STAR (Security, Trust, Assurance,
+and Risk) submission. CCM domain abbreviations used here (e.g. IVS
+Infrastructure &amp; Virtualization Security, DSP Data Security and
+Privacy Lifecycle Management, TVM Threat &amp; Vulnerability Management)
+are stable in v4.</p>
+<h2 id="csw-ui-navigation-note">CSW UI Navigation Note</h2>
+<p>Cisco does not yet publish framework-specific CSW UI navigation for
+this standard; framework-specific navigation is on the product roadmap.
+This report references CSW <em>capabilities</em> and the <em>evidence
+artifacts</em> they produce. The technical runbook
+(<code>CSW-CSA-CCM-Technical-Runbook.md</code>) in this folder contains
+the deeper engineering detail.</p>
 <hr />
 <h2 id="executive-summary">Executive Summary</h2>
-<p>Cisco Secure Workload (CSW) can support this framework by producing
-workload-level evidence for inventory, application dependency mapping,
-segmentation design, policy simulation, vulnerability context, and
-incident investigation. The strongest customer story is not that CSW
-“certifies” compliance; it is that CSW turns workload communication into
-evidence that control owners, assessors, and technical teams can
-review.</p>
+<p>Cisco Secure Workload (CSW) supports a defined subset of this
+framework. The strongest customer story is not that CSW “certifies”
+compliance; it is that CSW turns workload communication and inventory
+into evidence that the customer, the customer’s compliance team, and the
+customer’s assessor can review. This report describes which framework
+topics CSW supports, which it does not, what evidence artifacts CSW
+produces, and how often the customer should collect them. CSW does
+<strong>not</strong> replace the customer’s governance, policy, or
+assessor judgement, and this report is <strong>not</strong> a control
+attestation.</p>
 <h2 id="suggested-csw-scope-pattern">Suggested CSW Scope Pattern</h2>
-<p><code>CSA-CCM</code> &gt; <code>Cloud-Workloads</code>,
-<code>Tenant-Boundaries</code>, <code>Data-Protection</code>,
-<code>Network-Security</code>,
-<code>Threat-Vulnerability-Management</code></p>
+<pre><code>CSA-CCM
+├── Cloud-Workloads (Customer-Tenants and Shared-Infrastructure)
+├── Tenant-Boundaries
+├── Data-Protection-Scope
+└── Management-Plane</code></pre>
 <p>This scope pattern should be validated with the customer’s
 architecture, application owners, compliance team, and assessor before
 it is used for formal evidence.</p>
-<h2 id="outcomes-csw-can-support">Outcomes CSW Can Support</h2>
+<h2 id="in-scope-for-csw-evidence">In Scope for CSW Evidence</h2>
 <ul>
-<li>Map cloud workloads to tenant and data-boundary labels.</li>
-<li>Support infrastructure and virtualization security evidence.</li>
-<li>Identify reachability of vulnerable cloud workloads.</li>
-<li>Package segmentation and monitoring artifacts for STAR
-discussions.</li>
+<li>IVS - Infrastructure and Virtualization Security (segmentation,
+tenant boundary)</li>
+<li>DSP - Data Security and Privacy Lifecycle (data-flow visibility,
+segmentation)</li>
+<li>TVM - Threat and Vulnerability Management (reachability-weighted
+CVE)</li>
+<li>LOG - Logging and Monitoring (workload telemetry as one log
+source)</li>
+<li>SEF - Security Incident Management, E-Discovery, and Cloud Forensics
+(forensic input)</li>
 </ul>
-<h2 id="evidence-package">Evidence Package</h2>
+<h2 id="out-of-scope-must-be-evidenced-by-other-controls-tools-processes">Out
+of Scope (Must Be Evidenced by Other Controls / Tools / Processes)</h2>
 <ul>
-<li>Cloud workload inventory</li>
-<li>Tenant and data-boundary flow summary</li>
-<li>IVS / DSP / TVM evidence package</li>
-<li>Vulnerability reachability summary</li>
-<li>Policy candidate and exception register</li>
+<li>AAA - Audit Assurance and Compliance (governance)</li>
+<li>BCR - Business Continuity Management and Operational Resilience</li>
+<li>CCC - Change Control and Configuration Management beyond CSW
+workspace</li>
+<li>DCS - Datacenter Security (physical)</li>
+<li>GRC - Governance, Risk Management, and Compliance</li>
+<li>HRS - Human Resources</li>
+<li>IAM - Identity and Access Management lifecycle</li>
+<li>STA - Supply Chain Management beyond CSW egress visibility</li>
 </ul>
+<h2 id="framework-topic-csw-capability-map">Framework Topic → CSW
+Capability Map</h2>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 28%" />
+<col style="width: 28%" />
+</colgroup>
+<thead>
+<tr>
+<th>Framework topic</th>
+<th>CSW capability</th>
+<th>Evidence artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IVS - Infrastructure and Virtualization Security</td>
+<td>Policy workspace + tenant-boundary deny enforcement</td>
+<td>Workspace snapshot + cross-tenant violation log</td>
+</tr>
+<tr>
+<td>DSP - Data Security (segmentation)</td>
+<td>Workload-to-workload allowlist between data-protection scopes</td>
+<td>Workspace snapshot + observed-vs-approved flow comparison</td>
+</tr>
+<tr>
+<td>TVM - Threat and Vulnerability Management</td>
+<td>Reachability-weighted CVE on cloud workloads</td>
+<td>Prioritised remediation list with compensating-control register</td>
+</tr>
+<tr>
+<td>LOG - Logging and Monitoring</td>
+<td>Continuous flow + process telemetry; alerts</td>
+<td>Alert and anomaly log scoped to CSA-CCM</td>
+</tr>
+<tr>
+<td>SEF - Incident Management / Forensics</td>
+<td>Forensic flow + process search</td>
+<td>Investigation pack with timeline and tenant-impact scoping</td>
+</tr>
+</tbody>
+</table>
+<h2 id="evidence-collection-approach">Evidence Collection Approach</h2>
+<p>The table below describes per-topic evidence collection - what to
+collect, the CSW source area, and a suggested cadence. The cadence
+should be tuned to the customer’s audit cycle, regulatory cadence, and
+risk appetite.</p>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr>
+<th>Topic</th>
+<th>What to collect</th>
+<th>CSW source</th>
+<th>Suggested cadence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cloud workload inventory across tenants</td>
+<td>Workloads grouped by tenant / service offering</td>
+<td>Inventory + scope membership export filtered by tenant and
+service_offering</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>Tenant separation evidence</td>
+<td>Cross-tenant deny enforcement and violation log</td>
+<td>Policy workspace export + policy analysis output</td>
+<td>Continuous; reviewed quarterly</td>
+</tr>
+<tr>
+<td>Vulnerability + reachability</td>
+<td>CVE list weighted by reach into tenant data scopes</td>
+<td>Vulnerability report scoped to CSA-CCM</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>Monitoring evidence</td>
+<td>Continuous flow + process telemetry; alerts</td>
+<td>Alert and anomaly log export</td>
+<td>Continuous</td>
+</tr>
+<tr>
+<td>Forensic sample</td>
+<td>Workload-level timeline for one representative incident</td>
+<td>Flow + process search</td>
+<td>Per incident</td>
+</tr>
+</tbody>
+</table>
 <h2 id="pov-workshop-approach">POV / Workshop Approach</h2>
 <ol type="1">
+<li>Confirm the framework version and assessment cycle with the
+customer’s compliance team.</li>
 <li>Select one business service, regulated boundary, or critical
-workload group.</li>
+workload group to start with; do not attempt to instrument the entire
+estate in the POV.</li>
 <li>Validate workload coverage and install sensors or configure
-supported connectors.</li>
+supported connectors. Document the cannot-instrument register; this is
+itself evidence.</li>
 <li>Apply labels for application, environment, owner, data class,
-criticality, compliance scope, and lifecycle.</li>
-<li>Observe flows over a representative business window.</li>
-<li>Use ADM to generate a candidate policy and review it with the
-application owner.</li>
+criticality, compliance scope, and any framework-specific tags
+(e.g. <code>tenant</code>, <code>prototype</code>,
+<code>isa_level</code>, <code>npi</code>, <code>cui</code>,
+<code>ephi</code>).</li>
+<li>Observe flows over a representative business window. Minimum two
+weeks; longer if the customer has month-end, quarterly, or seasonal
+cycles relevant to the scope.</li>
+<li>Use ADM to generate a candidate policy. Review with the application
+owner. Run in Simulation mode for at least two weeks before any
+enforcement.</li>
 <li>Package inventory, scope, flows, policy, exceptions, and known gaps
-as the evidence output.</li>
+as the evidence output. Cross-reference this report’s evidence
+collection table with the customer’s existing audit work-papers.</li>
 </ol>
 <h2 id="boundaries-and-complementary-controls">Boundaries and
 Complementary Controls</h2>
-<p>CSW does not replace CSP native controls, IAM, KMS, logging
-retention, cloud posture management, STAR attestation, or
-shared-responsibility decisions.</p>
+<p>CSW does not replace CSA STAR submission / attestation, CSP
+organisational and physical controls, identity lifecycle (IAM), key
+management (KMS), backup and DR, portability and interoperability, or
+shared-responsibility model decisions.</p>
+<h2 id="assessor-auditor-caveat">Assessor / Auditor Caveat</h2>
+<p>CSW provides technical evidence inputs. The customer’s qualified
+assessor, auditor, certifying body, or regulator determines compliance
+status. Validate all framework-topic mappings, control IDs, paragraph
+references, and section numbers in this report against the current
+official framework text. If the customer is being assessed against a
+version other than the one referenced in the framework version note
+above, revalidate before use.</p>
 <h2 id="disclaimer">Disclaimer</h2>
 <p>This report is for informational and planning purposes. It is not
 legal, regulatory, audit, or certification advice. Validate all mappings

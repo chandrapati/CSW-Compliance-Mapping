@@ -3,13 +3,13 @@
 << /Type /Catalog /Pages 2 0 R >>
 endobj
 2 0 obj
-<< /Type /Pages /Kids [3 0 R 5 0 R] /Count 2 >>
+<< /Type /Pages /Kids [3 0 R 5 0 R 7 0 R 9 0 R] /Count 4 >>
 endobj
 3 0 obj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 4 0 R >>
 endobj
 4 0 obj
-<< /Length 2412 >>
+<< /Length 2542 >>
 stream
 BT
 /F1 10 Tf
@@ -23,15 +23,47 @@ T*
 T*
 () Tj
 T*
-(Framework: SWIFT Customer Security Controls Framework v2024) Tj
+(Framework: SWIFT Customer Security Controls Framework \(CSCF\) v2024) Tj
 T*
-(Primary audience: Financial institutions, SWIFT operations teams, security teams, and) Tj
+(Primary audience: SWIFT users \(financial institutions and service bureaus\) subject to the) Tj
 T*
-(assurance owners.) Tj
+(SWIFT Customer Security Programme \(CSP\) and required to attest annually.) Tj
 T*
-(CSW positioning: SWIFT secure zone isolation, mandatory/advisory control mapping, operator) Tj
+(CSW positioning: SWIFT secure-zone segmentation, restricted Internet access from the secure) Tj
 T*
-(session integrity context, Internet restriction, and SWIFT-specific logging support.) Tj
+(zone, restricted access between the secure zone and the general enterprise IT estate,) Tj
+T*
+(monitoring, and SWIFT-specific logging support.) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(Framework Version Note) Tj
+T*
+() Tj
+T*
+(References CSCF v2024. SWIFT publishes a new CSCF version yearly; verify against the version) Tj
+T*
+(applicable to the customer's attestation cycle. Control codes \(e.g. 1.1, 1.4, 2.1, etc.\) are) Tj
+T*
+(stable across recent versions for mandatory controls but advisory controls evolve.) Tj
+T*
+() Tj
+T*
+(CSW UI Navigation Note) Tj
+T*
+() Tj
+T*
+(Cisco does not yet publish framework-specific CSW UI navigation for this standard;) Tj
+T*
+(framework-specific navigation is on the product roadmap. This report references CSW) Tj
+T*
+(*capabilities* and the *evidence artifacts* they produce. The technical runbook \(CSW-SWIFT-) Tj
+T*
+(CSCF-Technical-Runbook.md\) in this folder contains the deeper engineering detail.) Tj
 T*
 () Tj
 T*
@@ -43,15 +75,19 @@ T*
 T*
 () Tj
 T*
-(Cisco Secure Workload \(CSW\) can support this framework by producing workload-level evidence) Tj
+(Cisco Secure Workload \(CSW\) supports a defined subset of this framework. The strongest) Tj
 T*
-(for inventory, application dependency mapping, segmentation design, policy simulation,) Tj
+(customer story is not that CSW "certifies" compliance; it is that CSW turns workload) Tj
 T*
-(vulnerability context, and incident investigation. The strongest customer story is not that) Tj
+(communication and inventory into evidence that the customer, the customer's compliance team,) Tj
 T*
-(CSW "certifies" compliance; it is that CSW turns workload communication into evidence that) Tj
+(and the customer's assessor can review. This report describes which framework topics CSW) Tj
 T*
-(control owners, assessors, and technical teams can review.) Tj
+(supports, which it does not, what evidence artifacts CSW produces, and how often the) Tj
+T*
+(customer should collect them. CSW does not replace the customer's governance, policy, or) Tj
+T*
+(assessor judgement, and this report is not a control attestation.) Tj
 T*
 () Tj
 T*
@@ -59,57 +95,21 @@ T*
 T*
 () Tj
 T*
-(SWIFT-CSCF > Secure-Zone, SWIFT-Interfaces, Operator-Workstations, Jump-Hosts, Internet-) Tj
+(``) Tj
 T*
-(Restricted-Systems, Third-Party-Connectivity) Tj
+(SWIFT-CSCF) Tj
 T*
-() Tj
+(??? SWIFT-Secure-Zone \(Messaging-Interfaces, Communication-Interfaces, Local-Authentication\)) Tj
 T*
-(This scope pattern should be validated with the customer's architecture, application owners,) Tj
+(??? Operator-Workstations \(dedicated and general-purpose\)) Tj
 T*
-(compliance team, and assessor before it is used for formal evidence.) Tj
+(??? Jump-Hosts-to-Secure-Zone) Tj
 T*
-() Tj
+(??? Internet-Restricted-Systems) Tj
 T*
-(Outcomes CSW Can Support) Tj
+(??? Third-Party-Connectivity) Tj
 T*
-() Tj
-T*
-(? Identify workloads within or connected to the SWIFT secure zone.) Tj
-T*
-(? Review Internet and third-party egress paths from SWIFT-related systems.) Tj
-T*
-(? Support segmentation evidence for mandatory and advisory controls.) Tj
-T*
-(? Package flow and process telemetry for operational review.) Tj
-T*
-() Tj
-T*
-(Evidence Package) Tj
-T*
-() Tj
-T*
-(? SWIFT secure zone workload inventory) Tj
-T*
-(? Internet access restriction evidence) Tj
-T*
-(? Operator / jump-host flow summary) Tj
-T*
-(? Policy candidate and exception register) Tj
-T*
-(? Monitoring and incident timeline sample) Tj
-T*
-() Tj
-T*
-(POV / Workshop Approach) Tj
-T*
-() Tj
-T*
-(1. Select one business service, regulated boundary, or critical workload group.) Tj
-T*
-(2. Validate workload coverage and install sensors or configure supported connectors.) Tj
-T*
-(3. Apply labels for application, environment, owner, data class, criticality, compliance) Tj
+(`) Tj
 T*
 ET
 endstream
@@ -118,21 +118,178 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 6 0 R >>
 endobj
 6 0 obj
-<< /Length 910 >>
+<< /Length 2634 >>
 stream
 BT
 /F1 10 Tf
 50 760 Td
 14 TL
-(scope, and lifecycle.) Tj
+() Tj
 T*
-(4. Observe flows over a representative business window.) Tj
+(This scope pattern should be validated with the customer's architecture, application owners,) Tj
 T*
-(5. Use ADM to generate a candidate policy and review it with the application owner.) Tj
+(compliance team, and assessor before it is used for formal evidence.) Tj
 T*
-(6. Package inventory, scope, flows, policy, exceptions, and known gaps as the evidence) Tj
+() Tj
 T*
-(output.) Tj
+(In Scope for CSW Evidence) Tj
+T*
+() Tj
+T*
+(? 1.1 SWIFT Environment Protection \(secure-zone isolation evidence\)) Tj
+T*
+(? 1.4 Internet Access Restriction \(egress monitoring from secure zone\)) Tj
+T*
+(? 2.x System Integrity \(workload monitoring, vulnerability handling on secure-zone) Tj
+T*
+(  components\)) Tj
+T*
+(? 5.x Access Controls \(workload-to-workload layer\)) Tj
+T*
+(? 6.x Detect Anomalous Activity \(continuous flow + process telemetry\)) Tj
+T*
+() Tj
+T*
+(Out of Scope \(Must Be Evidenced by Other Controls / Tools / Processes\)) Tj
+T*
+() Tj
+T*
+(? 3.x Physically Secure the Environment) Tj
+T*
+(? 4.x Prevent Compromise of Credentials \(identity layer\)) Tj
+T*
+(? 5.4 Physical and Logical Password Storage) Tj
+T*
+(? 6.4 Logging and Monitoring \(CSW is one log source; SWIFT-specific logging requires the) Tj
+T*
+(  messaging interface logs\)) Tj
+T*
+(? 7.x Plan for Incident Response and Information Sharing \(governance\)) Tj
+T*
+(? SWIFT CSP attestation submission itself) Tj
+T*
+() Tj
+T*
+(Framework Topic ? CSW Capability Map) Tj
+T*
+() Tj
+T*
+(| Framework topic | CSW capability | Evidence artifact |) Tj
+T*
+(|  |  |  |) Tj
+T*
+(| 1.1 Secure-zone isolation | Policy workspace + default-deny at secure-zone boundary |) Tj
+T*
+(Workspace snapshot showing secure-zone boundary deny rules |) Tj
+T*
+(| 1.4 Internet access restriction | Outbound flow telemetry from secure zone | Egress flow) Tj
+T*
+(report from SWIFT-Secure-Zone |) Tj
+T*
+(| 2.x System integrity \(vulnerability\) | Reachability-weighted CVE on secure-zone components) Tj
+T*
+(| Prioritised remediation list |) Tj
+T*
+(| 5.x Access controls \(workload layer\) | Policy workspace + enforcement / violation log |) Tj
+T*
+(Workspace snapshot + violation log |) Tj
+T*
+(| 6.x Anomalous activity detection | Continuous flow + process telemetry; alerts | Alert and) Tj
+T*
+(anomaly log scoped to SWIFT-CSCF |) Tj
+T*
+(| Operator path evidence | Flow telemetry for operator workstations and jump hosts |) Tj
+T*
+(Operator-workstation flow report |) Tj
+T*
+() Tj
+T*
+(Evidence Collection Approach) Tj
+T*
+() Tj
+T*
+(The table below describes per-topic evidence collection - what to collect, the CSW source) Tj
+T*
+(area, and a suggested cadence. The cadence should be tuned to the customer's audit cycle,) Tj
+T*
+(regulatory cadence, and risk appetite.) Tj
+T*
+() Tj
+T*
+(| Topic | What to collect | CSW source | Suggested cadence |) Tj
+T*
+(|  |  |  |  |) Tj
+T*
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 8 0 R >>
+endobj
+8 0 obj
+<< /Length 3344 >>
+stream
+BT
+/F1 10 Tf
+50 760 Td
+14 TL
+(| Secure-zone inventory | Workloads in SWIFT-Secure-Zone | Inventory + scope membership) Tj
+T*
+(export | Monthly |) Tj
+T*
+(| Secure-zone boundary evidence | Workspace snapshot and policy violation log | Policy) Tj
+T*
+(workspace export + policy analysis output | Quarterly + after each change |) Tj
+T*
+(| Internet access restriction evidence | Outbound flow from secure zone with destination) Tj
+T*
+(context | Flow search filtered to SWIFT-Secure-Zone egress | Monthly |) Tj
+T*
+(| Vulnerability + reachability | CVE list weighted by reach into secure-zone components |) Tj
+T*
+(Vulnerability report scoped to SWIFT-CSCF | Monthly |) Tj
+T*
+(| Operator workstation activity | Operator and jump-host flow telemetry | Flow search on) Tj
+T*
+(Operator-Workstations and Jump-Hosts | Continuous; reviewed monthly |) Tj
+T*
+(| Incident sample | Workload-level timeline for one representative incident | Flow + process) Tj
+T*
+(search | Per incident |) Tj
+T*
+() Tj
+T*
+(POV / Workshop Approach) Tj
+T*
+() Tj
+T*
+(1. Confirm the framework version and assessment cycle with the customer's compliance team.) Tj
+T*
+(2. Select one business service, regulated boundary, or critical workload group to start) Tj
+T*
+(with; do not attempt to instrument the entire estate in the POV.) Tj
+T*
+(3. Validate workload coverage and install sensors or configure supported connectors.) Tj
+T*
+(Document the cannot-instrument register; this is itself evidence.) Tj
+T*
+(4. Apply labels for application, environment, owner, data class, criticality, compliance) Tj
+T*
+(scope, and any framework-specific tags \(e.g. tenant, prototype, isa_level, npi, cui, ephi`\).) Tj
+T*
+(5. Observe flows over a representative business window. Minimum two weeks; longer if the) Tj
+T*
+(customer has month-end, quarterly, or seasonal cycles relevant to the scope.) Tj
+T*
+(6. Use ADM to generate a candidate policy. Review with the application owner. Run in) Tj
+T*
+(Simulation mode for at least two weeks before any enforcement.) Tj
+T*
+(7. Package inventory, scope, flows, policy, exceptions, and known gaps as the evidence) Tj
+T*
+(output. Cross-reference this report's evidence collection table with the customer's existing) Tj
+T*
+(audit work-papers.) Tj
 T*
 () Tj
 T*
@@ -140,9 +297,27 @@ T*
 T*
 () Tj
 T*
-(CSW does not replace SWIFT CSP attestation, endpoint hardening, operator authentication,) Tj
+(CSW does not replace the SWIFT CSP attestation, the messaging interface itself, SWIFT-) Tj
 T*
-(transaction integrity, logging retention, or SWIFT-specific application controls.) Tj
+(specific application controls \(logging, message integrity, operator authentication\),) Tj
+T*
+(physical security of the SWIFT environment, or the operator credential lifecycle.) Tj
+T*
+() Tj
+T*
+(Assessor / Auditor Caveat) Tj
+T*
+() Tj
+T*
+(CSW provides technical evidence inputs. The customer's qualified assessor, auditor,) Tj
+T*
+(certifying body, or regulator determines compliance status. Validate all framework-topic) Tj
+T*
+(mappings, control IDs, paragraph references, and section numbers in this report against the) Tj
+T*
+(current official framework text. If the customer is being assessed against a version other) Tj
+T*
+(than the one referenced in the framework version note above, revalidate before use.) Tj
 T*
 () Tj
 T*
@@ -154,22 +329,39 @@ T*
 T*
 (or certification advice. Validate all mappings against the current official framework text,) Tj
 T*
+ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 10 0 R >>
+endobj
+10 0 obj
+<< /Length 125 >>
+stream
+BT
+/F1 10 Tf
+50 760 Td
+14 TL
 (the customer's environment, and qualified compliance, legal, and audit professionals.) Tj
 T*
 ET
 endstream
 endobj
 xref
-0 7
+0 11
 0000000000 65535 f 
 0000000009 00000 n 
 0000000058 00000 n 
-0000000121 00000 n 
-0000000296 00000 n 
-0000002760 00000 n 
-0000002935 00000 n 
+0000000133 00000 n 
+0000000308 00000 n 
+0000002902 00000 n 
+0000003077 00000 n 
+0000005763 00000 n 
+0000005938 00000 n 
+0000009334 00000 n 
+0000009510 00000 n 
 trailer
-<< /Size 7 /Root 1 0 R >>
+<< /Size 11 /Root 1 0 R >>
 startxref
-3896
+9687
 %%EOF

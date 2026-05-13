@@ -1,82 +1,294 @@
 # Cisco Secure Workload — APRA CPS 234
-## Technical Runbook | Australian Prudentially Regulated Entities
+## Technical Runbook | Australian APRA-Regulated Entities
 
 **Version:** 1.0  
-**Framework:** APRA Prudential Standard CPS 234 — Information Security  
-**Use Case:** Critical information asset segmentation, control testing, incident evidence, third-party dependency visibility
+**Framework:** APRA Prudential Standard CPS 234 — Information Security (effective 1 July 2019)  
+**Use Case:** Information asset segmentation, control implementation evidence, control testing inputs, incident management, third-party service-provider visibility
+
+> **Framework version note.** This runbook references CPS 234 as published in 2019. CPS 234 paragraph numbers are stable; APRA also operates additional related standards (e.g. CPS 230 — Operational Risk Management) which are not addressed here. Validate against APRA's published version before use in a supervisory or assurance engagement.
+>
+> **CSW UI navigation note.** Cisco has not yet published CPS 234-specific CSW UI navigation; framework-specific paths are on the product roadmap. This runbook describes CSW *capabilities* and the *evidence artifacts* they produce.
 
 ---
 
 ## Reader's Guide
 
-**Who this is for.** Australian banks, insurers, superannuation trustees, and other APRA-regulated entities aligning workload controls to CPS 234.
+**Who this is for.** Australian banks, insurers, superannuation trustees, and other APRA-regulated entities; their CISO function, technology risk and information security teams, internal audit, and the business owners who must attest to information asset control effectiveness under CPS 234.
 
 **Questions this runbook helps you answer:**
 
-- *Can I identify and protect workloads that support critical or sensitive information assets?*
-- *Can I show that segmentation controls operate as designed and are tested?*
-- *Can I produce investigation evidence for material information security incidents?*
-- *Can I see service-provider communication paths that support critical operations?*
+- *Are information assets classified, and can I evidence which workloads support material business operations?* (Para. 20)
+- *Are information security controls implemented in a manner commensurate with the assessed information security vulnerabilities and threats?* (Para. 21–23)
+- *Can I produce control-testing evidence (Para. 29–33) from continuous workload telemetry rather than point-in-time samples?*
+- *If a material information security incident occurs, can I rebuild the workload-level timeline needed for Para. 24–28 incident management and Para. 36–37 APRA notification scoping?*
+- *Can I identify communication paths to third-party service providers that handle material information assets?* (Para. 21–23 in conjunction with related-party arrangements)
 
-**What you'll need.** Information asset classification, materiality / criticality ratings, supplier register, control-testing cadence, incident-response workflow, CMDB/cloud inventory, and application ownership data.
+**What you'll need.** Information asset register, business operations criticality classification, supplier / related-party register, CMDB or cloud inventory, vulnerability management process, incident response runbook, internal audit plan, and application owner contacts.
+
+**Where to start.** Sections 1–4 if you are scoping; 5–7 if you are designing and simulating policy; 9–10 if you are preparing for internal audit, external assurance, or APRA tripartite review within the quarter.
 
 ---
 
 ## 1. Overview
 
-APRA CPS 234 requires regulated entities to maintain information security capabilities commensurate with threats and vulnerabilities, protect information assets, test controls, and notify APRA of material incidents. CSW can support the technical evidence layer for workloads and cloud/server assets in scope. It does not replace board accountability, information-security governance, supplier assurance, IAM/PAM, endpoint protection, or regulatory notification decisions.
+CPS 234 is an outcome-based prudential standard. Its core obligations are: classify information assets by criticality and sensitivity (Para. 20), implement controls commensurate with the assessed threat (Para. 21–23), notify APRA of material information security control weaknesses and incidents (Para. 36–37), and systematically test the effectiveness of controls (Para. 29–33).
 
-## 2. CPS 234 Requirement Map
+CSW can support **technical evidence** for the technology-control-effectiveness, information-asset-classification, network-segmentation, vulnerability-context, and incident-scoping dimensions of CPS 234. CSW does **not** replace board accountability for information security (Para. 13–14), the policy framework (Para. 16–19), the related-party assurance process, IAM/PAM, cryptography, BCP/DR, or APRA notification decisions.
 
-| CPS 234 area | CSW can support evidence for | Boundary |
+### CPS 234 Paragraph Map and CSW Relevance
+
+| CPS 234 paragraph | Topic | CSW relevance |
 |---|---|---|
-| Information asset identification | Workload inventory, labels, application scopes | Official asset register remains authoritative |
-| Control implementation | Segmentation policy, deny-by-default allowlists, scope-based enforcement | IAM, endpoint, physical, and process controls remain complementary |
-| Control testing | Policy simulation, flow drift review, evidence exports | Formal test plan and sign-off remain customer-owned |
-| Incident management | Flow/process timeline and affected workload scoping | APRA notification decision remains governance/legal-owned |
-| Service provider management | Third-party egress and dependency visibility | Contractual assurance remains supplier-risk-owned |
+| 13–15 | Information security capability | Out of scope for CSW evidence directly; CSW outputs feed capability reporting |
+| 16–19 | Policy framework | Out of scope (governance artefact) |
+| 20 | Information asset identification and classification | Workload inventory; scope and label evidence; reachability mapping |
+| 21–23 | Implementation of controls | Workload-level segmentation; ADM-derived allowlists; policy workspace |
+| 24–28 | Incident management | Flow + process telemetry; forensic timeline; impact-scoping evidence |
+| 29–33 | Testing of control effectiveness | Continuous flow + policy data; drift detection; policy-violation samples |
+| 34–35 | Internal audit | Periodic evidence packs (Section 10) |
+| 36–37 | APRA notification | Incident scoping inputs only; the notification decision is governance |
 
-## 3. Suggested Scope Pattern
+Topics **out of scope** for CSW evidence: board oversight, policy framework, related-party contractual arrangements, IAM lifecycle, cryptography assurance, BCP/DR test outcomes, and APRA reporting decisions.
 
-```text
-APRA-CPS234
-├── Critical-Information-Assets
-│   ├── Customer-Data
-│   ├── Payments
-│   ├── Core-Systems
-│   └── Analytics
-├── Material-Operations
-│   ├── Digital-Channels
-│   ├── Identity
-│   └── Monitoring
-├── Service-Providers
-└── Incident-Evidence
+---
+
+## 2. Pre-Deployment Checklist
+
+- [ ] CSW cluster (SaaS or on-prem) provisioned
+- [ ] Network reachability from in-scope workloads to the CSW cluster confirmed
+- [ ] Linux / Windows agent compatibility verified across representative critical workloads
+- [ ] Cloud accounts (AWS / Azure / GCP) connected for any in-scope cloud workloads
+- [ ] Information asset register reviewed; "material" asset classification confirmed
+- [ ] Stakeholders identified: CISO, Information Security Manager, Information Asset Owners, Internal Audit lead
+- [ ] Change management window approved
+- [ ] Evidence retention agreed with internal audit and the assurance partner
+
+---
+
+## 3. Phase 1 — Sensor & Connector Deployment (Days 1–5)
+
+Deploy CSW telemetry sources in monitoring mode only.
+
+- Install software sensors on representative workloads supporting material information assets
+- Connect cloud accounts as read-only CSW cloud connectors where in-scope workloads run in cloud
+- Apply Day-1 labels: `application`, `env`, `data_class`, `asset_criticality`, `owner`, `compliance=cps234`
+- Document any workloads that cannot be instrumented (managed SaaS, certain appliances) in a `cannot-instrument` register; this register is evidence in its own right
+
+**Sensor validation evidence:** sensor inventory with status, version, last-checkin timestamp — retained as the Phase 1 baseline for control-testing comparisons later.
+
+---
+
+## 4. Phase 2 — Scope, Inventory, and Information Asset Classification (Days 6–10)
+
+CPS 234 Para. 20 obliges entities to classify information assets by criticality and sensitivity. The CSW scope architecture should mirror that classification, not duplicate it.
+
+### 4.1 Suggested Scope Architecture
+
+```
+Root Scope
+└── CPS-234
+    ├── Critical-Information-Assets
+    │   ├── Customer-Records
+    │   ├── Payments-and-Ledger
+    │   ├── Trading-Settlement
+    │   └── Policy-and-Claims
+    ├── Material-Operations
+    │   ├── Online-Channels
+    │   └── Operational-Core
+    ├── Service-Providers
+    │   └── Outsourced-Connectivity
+    └── Incident-Evidence
 ```
 
-## 4. POV Steps
+### 4.2 Inventory Filters
 
-- [ ] Select one critical information asset or material operation.
-- [ ] Install CSW sensors / connectors for representative workloads.
-- [ ] Apply labels: `asset_class`, `criticality`, `owner`, `env`, `service_provider`, `data_class`.
-- [ ] Run observation window and validate dependencies with application owners.
-- [ ] Identify unexpected access, high-risk ports, and supplier egress.
-- [ ] Generate policy candidate and run simulation.
-- [ ] Package evidence against CPS 234 control testing and incident-response needs.
+```
+Filter: Customer-Records-Candidates
+  - Tag (from asset register): data_class = customer
+  - Listening process: mysqld, postgres, oracle, sqlserver, mongod
+  - Listening port: 1521, 3306, 5432, 1433, 27017
 
-## 5. Evidence Package
+Filter: Service-Provider-Edges
+  - Destination outside on-prem and cloud allow-lists
+  - Tag: managed_by = vendor
 
-- Critical information asset workload inventory.
-- Scope and label hierarchy.
-- Dependency map and third-party egress summary.
-- Control testing export: observed vs allowed flows.
-- Policy simulation result.
-- Vulnerability exposure and high-risk communication findings.
-- Incident scoping example: affected workloads, processes, and flows.
+Filter: Operational-Core-Candidates
+  - Tag: asset_criticality = critical
+```
 
-## 6. Complementary Controls
+### 4.3 Labeling Strategy
 
-Use CSW with IAM/MFA, PAM, EDR, vulnerability scanners, SIEM/SOAR, ServiceNow/GRC, supplier-risk management, backup/DR, and APRA reporting procedures.
+| Label key | Example values | Why it matters for CPS 234 |
+|---|---|---|
+| `asset_criticality` | critical, material, supporting | Maps to Para. 20 classification |
+| `data_class` | customer, internal, public | Sensitivity dimension of Para. 20 |
+| `application` | <named application> | Connects workload to information asset |
+| `env` | production, uat, dev | Required for environment segregation evidence |
+| `owner` | <named function> | Accountability under Para. 14 |
+| `compliance` | cps234 | Filters CSW evidence to the CPS 234 scope |
 
-## 7. Assessor Caveat
+---
 
-CPS 234 is an APRA prudential standard. Validate evidence sufficiency with risk, compliance, internal audit, legal, and any appointed assessors.
+## 5. Phase 3 — Application Dependency Mapping (Days 11–21)
+
+### 5.1 ADM Configuration
+
+For each scope in 4.1, create an ADM workspace; run across a representative business window that covers month-end and any quarterly reporting cycles. Minimum 2 weeks.
+
+### 5.2 ADM Analysis for CPS 234
+
+For each cluster, document:
+
+| Question | CPS 234 paragraph |
+|---|---|
+| Which workloads receive connections from outside the Critical-Information-Assets scope? | 21–23 |
+| Are database connections encrypted? | 21–23 (controls commensurate with threat) |
+| Which workloads reach Service-Providers? | 21–23 (third-party paths) |
+| Are there unexpected lateral connections within Material-Operations? | 24–28 (early indicator for incidents) |
+| Which workloads are reached by administrative paths? | 21–23 (privileged access surface) |
+
+### 5.3 Classification and Re-Scoping
+
+1. Export ADM clusters and review with information asset owners.
+2. Confirm classification (`asset_criticality`, `data_class`) for each cluster.
+3. Apply or correct labels.
+4. Move workloads into the correct scope.
+5. Re-run ADM to produce the candidate policy.
+
+---
+
+## 6. Phase 4 — Policy Development (Days 22–35)
+
+### 6.1 CPS-234-Aligned Policy Framework
+
+**Absolute policies:**
+
+```
+DENY  Any                            → Critical-Information-Assets         (default deny inbound)
+DENY  Critical-Information-Assets    → Internet                            (no direct internet egress)
+DENY  Corporate-IT                   → Critical-Information-Assets         (admin only via approved jump paths)
+```
+
+**Allowlist policies (examples to adapt per application):**
+
+```
+ALLOW Channel-Layer                  → Payments-and-Ledger                  tcp/443
+ALLOW Payments-and-Ledger            → Customer-Records-DB                  tcp/<db-port-tls>
+ALLOW Material-Operations            → Identity-Adjacent                    tcp/636, tcp/88
+ALLOW Jump-Hosts                     → Critical-Information-Assets          tcp/22, tcp/3389
+ALLOW Critical-Information-Assets    → Monitoring-Stack                     tcp/443
+```
+
+**Catch-all (audit everything else):**
+
+```
+LOG   Any                            → Critical-Information-Assets         (unmatched flows trigger alert)
+LOG   Critical-Information-Assets    → Any                                  (unmatched outbound)
+```
+
+### 6.2 Policy Workspace Lifecycle
+
+| Phase | Mode | Duration | Purpose |
+|---|---|---|---|
+| 1 | Simulation | 2 weeks | Validate against live traffic; tune false positives |
+| 2 | Enforcement (high-confidence rules) | 1 week | Internet egress deny; obvious deny rules |
+| 3 | Full Enforcement | Ongoing | Workload allowlist enforced; monthly exception review |
+
+Treat the policy workspace itself as control-implementation evidence (Para. 21–23) and snapshot it at each transition.
+
+---
+
+## 7. Phase 5 — Paragraph Mapping with CSW Evidence
+
+| CPS 234 paragraph | What CSW produces | How to use it |
+|---|---|---|
+| Para. 20 | Workload inventory; scope + label export; reachability mapping | Evidence of asset identification and classification |
+| Para. 21–23 | Policy workspace; ADM-derived allowlist; vulnerability + reachability data | Evidence that controls are implemented and commensurate with threat |
+| Para. 24–28 | Flow + process search across the incident window | Incident impact scoping and timeline |
+| Para. 29–33 | Continuous flow data; policy-violation log; policy drift report | Control-effectiveness testing evidence (continuous, not point-in-time) |
+| Para. 34–35 | Periodic evidence pack (Section 10.1) | Internal audit work-paper input |
+| Para. 36–37 | Affected-workload list with timestamps and paths | Input to APRA notification scoping (decision is governance) |
+
+---
+
+## 8. Phase 6 — Vulnerability & Risk Management
+
+CSW vulnerability data is reachability-weighted. Use it to prioritise patching of internet-exposed and critical-information-asset-reachable workloads.
+
+**Compensating controls in CSW (when patch is delayed):** restrict the vulnerable port to approved sources, add an anomaly alert on the affected process, log all connections, and record the exception in the workspace exception register (this register is itself evidence for Para. 21–23 risk acceptance).
+
+---
+
+## 9. Phase 7 — Monitoring & Alerting
+
+| Alert | Trigger | CPS 234 paragraph |
+|---|---|---|
+| Unauthorised reach to Critical-Information-Assets | Any unapproved source → CIA scope | 21–23 |
+| Plaintext protocol detected on customer-record path | HTTP / FTP / unencrypted DB protocol from CIA | 21–23 |
+| Lateral movement inside CIA | New east-west flow outside the approved baseline | 24–28 |
+| External egress from CIA | CIA → external endpoint not on the allow-list | 21–23 (third-party paths) |
+| Policy violation | Enforced policy block triggered | 21–23 |
+| Sensor offline | Agent stops reporting | 29–33 (evidence integrity) |
+
+### 9.2 Forensic Telemetry
+
+For an information security incident, the CSW forensic pack should contain:
+
+- Flow log scoped to the affected workload(s) and time window (with process context)
+- Process search output
+- Policy workspace state at the time of the incident
+- Vulnerability snapshot for the affected workload(s)
+
+Retain incident packs per the entity's evidence retention policy and APRA expectations.
+
+---
+
+## 10. Reporting & Evidence Collection
+
+### 10.1 Evidence per Audit / Assurance Cycle (quarterly recommended)
+
+| Evidence item | CSW source area | CPS 234 paragraph |
+|---|---|---|
+| Workload inventory snapshot | Inventory export | Para. 20 |
+| Scope + label membership | Scope membership export | Para. 20 |
+| Approved vs. observed flow comparison | ADM workspace export | Para. 21–23 |
+| Policy workspace snapshot | Policy workspace export | Para. 21–23 |
+| Policy enforcement log / violations | Policy analysis output | Para. 21–23 and 29–33 |
+| Vulnerability exposure with reachability | Vulnerability report scoped to CPS-234 | Para. 21–23 |
+| Service-provider egress summary | Flow search filtered to vendor endpoints | Para. 21–23 (third-party paths) |
+| Incident timeline sample | Flow + process search for a representative incident | Para. 24–28 |
+| Exception register | Policy workspace exceptions list | Para. 21–23 (risk acceptance) |
+
+### 10.2 Ongoing Compliance Posture
+
+- **Monthly:** scope / inventory hygiene review; service-provider egress reconciliation
+- **Quarterly:** policy workspace review; refresh evidence pack 10.1
+- **Annually:** independent walk-through with internal audit; refresh assumptions and baselines
+- **Continuously:** policy drift detection and ADM re-run every 90 days
+
+---
+
+## 11. Common Pitfalls
+
+| Pitfall | Mitigation |
+|---|---|
+| Confusing CSW evidence with the entity's information security capability | CSW outputs are technical inputs; capability assessment is governance |
+| Critical information assets missing labels | Reconcile information asset register ↔ CSW inventory monthly |
+| Scope set by subnet rather than workload | Use process + label identity for scope membership |
+| ADM run too short, missing month-end | Minimum 2-week observation; align to business cycles |
+| Service-provider paths assumed safe because endpoint is internal | Service-provider scope membership and egress must be evidenced, not assumed |
+| Plaintext protocols allow-listed by port | Identify protocols by process and observed handshake |
+| Treating Para. 36–37 notification as automated from CSW | Notification is a governance decision; CSW provides scoping evidence only |
+
+---
+
+## Related Frameworks in This Repository
+
+- [ISO/IEC 27001:2022](../ISO-27001-2022/CSW-ISO27001-Technical-Runbook.md)
+- [SOC 2 Type II](../SOC2/CSW-SOC2-Technical-Runbook.md)
+- [PCI DSS v4.0](../PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.md) — where the entity processes card data
+- [NIST SP 800-53 Rev 5](../NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md) — useful technical control reference for control-design conversations
+
+---
+
+*Document prepared for Cisco financial-services engagements in Australia. Replace [Customer Name] and any bracketed fields before customer delivery. Validate paragraph references against the current APRA publication.*
