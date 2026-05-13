@@ -280,7 +280,7 @@ The following anchors match the framework links in the [table of contents](#tabl
 |---|---|---|---|
 | MyCSF in-scope systems with harmonised PRS references | `HITRUST-In-Scope` > `PHI-Production`, `PCI-CDE-Connected`, risk-tier labels | 01.m/01.n/01.o network segregation & routing visibility; 09.x monitoring & operator logs; 10.a ADM; 10.m vulnerabilities; 11.x incident evidence; assessment-level export cadence (e1/i1/r2) | HITRUST certification, SoA/risk register narratives, privacy legal controls, AV/EDR, authenticated scanning, and physical security remain complementary |
 
-[↑ Back to top](#top) · [↑ Framework mappings](#framework-mappings) · [↑ Table of contents](#table-of-contents)
+[↑ Back to top](#top)
 
 <h3 id="nist-sp-800-171-rev-3">NIST SP 800-171 Rev. 3</h3>
 
