@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>MAS Technology Risk Management Guidelines — Technical Runbook</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+:root {
+--fg: #1f2328;
+--fg-muted: #59636e;
+--bg: #ffffff;
+--bg-muted: #f6f8fa;
+--border: #d1d9e0;
+--link: #0969da;
+--link-hover: #0349b4;
+--code-bg: #f6f8fa;
+--accent: #cf222e;
+--max-width: 920px;
+}
+@media (prefers-color-scheme: dark) {
+:root {
+--fg: #e6edf3;
+--fg-muted: #9198a1;
+--bg: #0d1117;
+--bg-muted: #151b23;
+--border: #3d444d;
+--link: #4493f8;
+--link-hover: #6cb6ff;
+--code-bg: #151b23;
+--accent: #ff7b72;
+}
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+margin: 0 auto;
+max-width: var(--max-width);
+padding: 2rem 1.25rem 4rem;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+font-size: 16px;
+line-height: 1.6;
+color: var(--fg);
+background: var(--bg);
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 2rem;
+margin-bottom: 1rem;
+font-weight: 600;
+line-height: 1.25;
+}
+h1 { font-size: 2rem; border-bottom: 1px solid var(--border); padding-bottom: .35rem; }
+h2 { font-size: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: .3rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1rem; }
+h5, h6 { font-size: .875rem; color: var(--fg-muted); }
+p, ul, ol, blockquote, pre, table { margin: 0 0 1rem; }
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+ul, ol { padding-left: 1.6rem; }
+li + li { margin-top: .15rem; }
+blockquote {
+margin: 0 0 1rem;
+padding: .5rem 1rem;
+color: var(--fg-muted);
+border-left: .25rem solid var(--border);
+background: var(--bg-muted);
+border-radius: 0 6px 6px 0;
+}
+code, pre, kbd, samp {
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+font-size: .9em;
+}
+code {
+background: var(--code-bg);
+padding: .15rem .35rem;
+border-radius: 4px;
+}
+pre {
+background: var(--code-bg);
+padding: 1rem;
+border-radius: 6px;
+overflow: auto;
+font-size: .85rem;
+line-height: 1.45;
+}
+pre code { background: transparent; padding: 0; font-size: inherit; }
+table {
+display: block;
+width: 100%;
+overflow: auto;
+border-collapse: collapse;
+}
+th, td {
+border: 1px solid var(--border);
+padding: .5rem .75rem;
+vertical-align: top;
+text-align: left;
+}
+th {
+background: var(--bg-muted);
+font-weight: 600;
+}
+tbody tr:nth-child(2n) { background: var(--bg-muted); }
+hr {
+border: 0;
+height: 1px;
+background: var(--border);
+margin: 2rem 0;
+}
+img { max-width: 100%; height: auto; }
+
+.doc-meta {
+margin: 0 0 2rem;
+padding: .75rem 1rem;
+border: 1px solid var(--border);
+border-radius: 6px;
+background: var(--bg-muted);
+font-size: .9rem;
+color: var(--fg-muted);
+}
+.doc-meta a { font-weight: 500; }
+
+@media print {
+body { max-width: none; padding: 0; color: #000; background: #fff; }
+a { color: #000; text-decoration: underline; }
+pre, code, blockquote { background: #f5f5f5; }
+}
+</style>
+</head>
+<body>
+<div class="doc-meta">Source: <a href="CSW-MAS-TRM-Technical-Runbook.html">CSW-MAS-TRM-Technical-Runbook.md</a> · <a href="../index.html">repository index</a></div>
+<header id="title-block-header">
+<h1 class="title">MAS Technology Risk Management Guidelines — Technical
+Runbook</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#cisco-secure-workload-mas-technology-risk-management-guidelines" id="toc-cisco-secure-workload-mas-technology-risk-management-guidelines">Cisco
+Secure Workload — MAS Technology Risk Management Guidelines</a>
+<ul>
+<li><a href="#technical-runbook-singapore-financial-institutions" id="toc-technical-runbook-singapore-financial-institutions">Technical
+Runbook | Singapore Financial Institutions</a></li>
+<li><a href="#readers-guide" id="toc-readers-guide">Reader’s
+Guide</a></li>
+<li><a href="#overview" id="toc-overview">1. Overview</a></li>
+<li><a href="#mas-trm-topic-map" id="toc-mas-trm-topic-map">2. MAS TRM
+Topic Map</a></li>
+<li><a href="#suggested-scope-pattern" id="toc-suggested-scope-pattern">3. Suggested Scope Pattern</a></li>
+<li><a href="#deployment-checklist" id="toc-deployment-checklist">4.
+Deployment Checklist</a></li>
+<li><a href="#evidence-package" id="toc-evidence-package">5. Evidence
+Package</a></li>
+<li><a href="#complementary-controls" id="toc-complementary-controls">6.
+Complementary Controls</a></li>
+<li><a href="#assessor-regulator-caveat" id="toc-assessor-regulator-caveat">7. Assessor / Regulator
+Caveat</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="cisco-secure-workload-mas-technology-risk-management-guidelines">Cisco
+Secure Workload — MAS Technology Risk Management Guidelines</h1>
+<h2 id="technical-runbook-singapore-financial-institutions">Technical
+Runbook | Singapore Financial Institutions</h2>
+<p><strong>Version:</strong> 1.0<br />
+<strong>Framework:</strong> Monetary Authority of Singapore Technology
+Risk Management (TRM) Guidelines<br />
+<strong>Use Case:</strong> Financial-services workload segmentation,
+outsourcing / third-party visibility, cyber resilience evidence</p>
+<hr />
+<h2 id="readers-guide">Reader’s Guide</h2>
+<p><strong>Who this is for.</strong> Singapore financial institutions
+and regulated financial-services providers using MAS TRM as a technology
+risk management baseline.</p>
+<p><strong>Questions this runbook helps you answer:</strong></p>
+<ul>
+<li><em>Can I demonstrate controlled workload connectivity for critical
+systems and customer-data environments?</em></li>
+<li><em>Can I produce evidence for technology asset inventory, network
+security, vulnerability management, and incident
+investigation?</em></li>
+<li><em>Can I reconcile third-party / outsourced service communication
+paths against approved technology risk boundaries?</em></li>
+</ul>
+<p><strong>What you’ll need.</strong> Critical system inventory,
+outsourcing / third-party register, CMDB or cloud inventory, network
+diagrams, vulnerability-management process, SIEM retention requirements,
+and application owner validation.</p>
+<hr />
+<h2 id="overview">1. Overview</h2>
+<p>MAS TRM is a supervisory guideline for financial institutions’
+technology risk management. CSW can support technical evidence where
+workload visibility, microsegmentation, flow telemetry, vulnerability
+context, process/package inventory, and incident investigation are
+relevant. CSW does not replace MAS governance, board / senior management
+accountability, outsourcing due diligence, BCP/DR, IAM, cryptographic
+architecture, or regulatory notification decisions.</p>
+<h2 id="mas-trm-topic-map">2. MAS TRM Topic Map</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>MAS TRM topic</th>
+<th>CSW can support evidence for</th>
+<th>Boundary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Technology asset inventory</td>
+<td>Workload inventory, labels, application scopes, cloud connector
+context</td>
+<td>Reconcile with official CMDB / asset register</td>
+</tr>
+<tr>
+<td>Network security</td>
+<td>Workload-level segmentation, deny-by-default policy, approved-flow
+baselines</td>
+<td>Perimeter / internet controls remain firewall/SASE-owned</td>
+</tr>
+<tr>
+<td>Vulnerability management</td>
+<td>CVE / package exposure context, reachability-informed
+prioritization</td>
+<td>Scanner ownership and SLA governance remain customer-owned</td>
+</tr>
+<tr>
+<td>Security monitoring</td>
+<td>Flow/process telemetry and SIEM export</td>
+<td>SOC process and alert adjudication remain customer-owned</td>
+</tr>
+<tr>
+<td>Incident response</td>
+<td>Flow timeline, process context, quarantine / containment
+evidence</td>
+<td>Legal/regulatory notification remains customer-owned</td>
+</tr>
+<tr>
+<td>Outsourcing / third-party risk</td>
+<td>Supplier egress visibility and approved endpoint mapping</td>
+<td>Contractual controls and supplier assurance remain GRC-owned</td>
+</tr>
+</tbody>
+</table>
+<h2 id="suggested-scope-pattern">3. Suggested Scope Pattern</h2>
+<pre class="text"><code>MAS-TRM
+├── Critical-Systems
+│   ├── Digital-Banking
+│   ├── Payments
+│   ├── Trading
+│   └── Core-Platforms
+├── Customer-Data
+│   ├── Data-Stores
+│   └── Analytics
+├── Security-Services
+│   ├── Identity
+│   ├── Monitoring
+│   └── Patch-Management
+└── Outsourced-Third-Parties</code></pre>
+<h2 id="deployment-checklist">4. Deployment Checklist</h2>
+<ul class="task-list">
+<li><label><input type="checkbox"></input>Identify one critical system or
+customer-data application for the pilot.</label></li>
+<li><label><input type="checkbox"></input>Confirm workloads can be
+instrumented or discovered through supported connectors.</label></li>
+<li><label><input type="checkbox"></input>Align labels to business service,
+environment, owner, data class, and criticality.</label></li>
+<li><label><input type="checkbox"></input>Define a normal observation window
+that captures month-end or batch processing if relevant.</label></li>
+<li><label><input type="checkbox"></input>Export observed flows and validate
+dependencies with the application owner.</label></li>
+<li><label><input type="checkbox"></input>Generate candidate policy through
+ADM and review before enforcement.</label></li>
+</ul>
+<h2 id="evidence-package">5. Evidence Package</h2>
+<ul>
+<li>Critical-system workload inventory.</li>
+<li>Scope and label export.</li>
+<li>Approved and observed flow comparison.</li>
+<li>Third-party / outsourced egress summary.</li>
+<li>High-risk port and plaintext protocol findings.</li>
+<li>Vulnerability exposure summary.</li>
+<li>ADM policy candidate and exception register.</li>
+<li>Incident-response timeline sample from flow/process telemetry.</li>
+</ul>
+<h2 id="complementary-controls">6. Complementary Controls</h2>
+<p>Pair CSW evidence with IAM/MFA, PAM, SIEM/SOAR, vulnerability
+scanners, GRC/outsourcing workflow, firewall/SASE controls, backup/DR
+testing, and cryptographic key-management evidence.</p>
+<h2 id="assessor-regulator-caveat">7. Assessor / Regulator Caveat</h2>
+<p>MAS TRM is principle- and outcome-oriented. Validate final evidence
+format and supervisory expectations with the institution’s risk,
+compliance, legal, and audit teams.</p>
+</body>
+</html>

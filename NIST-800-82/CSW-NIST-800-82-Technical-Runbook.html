@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>NIST SP 800-82 — Technical Runbook</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+:root {
+--fg: #1f2328;
+--fg-muted: #59636e;
+--bg: #ffffff;
+--bg-muted: #f6f8fa;
+--border: #d1d9e0;
+--link: #0969da;
+--link-hover: #0349b4;
+--code-bg: #f6f8fa;
+--accent: #cf222e;
+--max-width: 920px;
+}
+@media (prefers-color-scheme: dark) {
+:root {
+--fg: #e6edf3;
+--fg-muted: #9198a1;
+--bg: #0d1117;
+--bg-muted: #151b23;
+--border: #3d444d;
+--link: #4493f8;
+--link-hover: #6cb6ff;
+--code-bg: #151b23;
+--accent: #ff7b72;
+}
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+margin: 0 auto;
+max-width: var(--max-width);
+padding: 2rem 1.25rem 4rem;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+font-size: 16px;
+line-height: 1.6;
+color: var(--fg);
+background: var(--bg);
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 2rem;
+margin-bottom: 1rem;
+font-weight: 600;
+line-height: 1.25;
+}
+h1 { font-size: 2rem; border-bottom: 1px solid var(--border); padding-bottom: .35rem; }
+h2 { font-size: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: .3rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1rem; }
+h5, h6 { font-size: .875rem; color: var(--fg-muted); }
+p, ul, ol, blockquote, pre, table { margin: 0 0 1rem; }
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+ul, ol { padding-left: 1.6rem; }
+li + li { margin-top: .15rem; }
+blockquote {
+margin: 0 0 1rem;
+padding: .5rem 1rem;
+color: var(--fg-muted);
+border-left: .25rem solid var(--border);
+background: var(--bg-muted);
+border-radius: 0 6px 6px 0;
+}
+code, pre, kbd, samp {
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+font-size: .9em;
+}
+code {
+background: var(--code-bg);
+padding: .15rem .35rem;
+border-radius: 4px;
+}
+pre {
+background: var(--code-bg);
+padding: 1rem;
+border-radius: 6px;
+overflow: auto;
+font-size: .85rem;
+line-height: 1.45;
+}
+pre code { background: transparent; padding: 0; font-size: inherit; }
+table {
+display: block;
+width: 100%;
+overflow: auto;
+border-collapse: collapse;
+}
+th, td {
+border: 1px solid var(--border);
+padding: .5rem .75rem;
+vertical-align: top;
+text-align: left;
+}
+th {
+background: var(--bg-muted);
+font-weight: 600;
+}
+tbody tr:nth-child(2n) { background: var(--bg-muted); }
+hr {
+border: 0;
+height: 1px;
+background: var(--border);
+margin: 2rem 0;
+}
+img { max-width: 100%; height: auto; }
+
+.doc-meta {
+margin: 0 0 2rem;
+padding: .75rem 1rem;
+border: 1px solid var(--border);
+border-radius: 6px;
+background: var(--bg-muted);
+font-size: .9rem;
+color: var(--fg-muted);
+}
+.doc-meta a { font-weight: 500; }
+
+@media print {
+body { max-width: none; padding: 0; color: #000; background: #fff; }
+a { color: #000; text-decoration: underline; }
+pre, code, blockquote { background: #f5f5f5; }
+}
+</style>
+</head>
+<body>
+<div class="doc-meta">Source: <a href="CSW-NIST-800-82-Technical-Runbook.html">CSW-NIST-800-82-Technical-Runbook.md</a> · <a href="../index.html">repository index</a></div>
+<header id="title-block-header">
+<h1 class="title">NIST SP 800-82 — Technical Runbook</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#cisco-secure-workload-nist-sp-800-82" id="toc-cisco-secure-workload-nist-sp-800-82">Cisco Secure Workload —
+NIST SP 800-82</a>
+<ul>
+<li><a href="#technical-runbook-ot-adjacent-it-and-industrial-control-system-support" id="toc-technical-runbook-ot-adjacent-it-and-industrial-control-system-support">Technical
+Runbook | OT-Adjacent IT and Industrial Control System Support</a></li>
+<li><a href="#readers-guide" id="toc-readers-guide">Reader’s
+Guide</a></li>
+<li><a href="#overview" id="toc-overview">1. Overview</a></li>
+<li><a href="#nist-800-82-topic-map" id="toc-nist-800-82-topic-map">2.
+NIST 800-82 Topic Map</a></li>
+<li><a href="#suggested-scope-pattern" id="toc-suggested-scope-pattern">3. Suggested Scope Pattern</a></li>
+<li><a href="#pov-steps" id="toc-pov-steps">4. POV Steps</a></li>
+<li><a href="#evidence-package" id="toc-evidence-package">5. Evidence
+Package</a></li>
+<li><a href="#complementary-controls" id="toc-complementary-controls">6.
+Complementary Controls</a></li>
+<li><a href="#safety-caveat" id="toc-safety-caveat">7. Safety
+Caveat</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="cisco-secure-workload-nist-sp-800-82">Cisco Secure Workload —
+NIST SP 800-82</h1>
+<h2 id="technical-runbook-ot-adjacent-it-and-industrial-control-system-support">Technical
+Runbook | OT-Adjacent IT and Industrial Control System Support</h2>
+<p><strong>Version:</strong> 1.0<br />
+<strong>Framework:</strong> NIST SP 800-82, Guide to Operational
+Technology (OT) Security<br />
+<strong>Use Case:</strong> IT-side systems supporting OT environments,
+jump hosts, historians, patch repositories, identity services, and
+vendor access</p>
+<hr />
+<h2 id="readers-guide">Reader’s Guide</h2>
+<p><strong>Who this is for.</strong> Security architects, plant IT/OT
+teams, industrial asset owners, and SOC teams using NIST SP 800-82
+guidance to improve OT-adjacent security.</p>
+<p><strong>Scope boundary.</strong> CSW applies to servers, VMs, cloud
+workloads, and supported connectors. It does not inspect PLC/RTU/IED/HMI
+fieldbus behavior or replace passive OT visibility. Use it for the
+IT-side systems that support or bridge to OT.</p>
+<p><strong>Questions this runbook helps you answer:</strong></p>
+<ul>
+<li><em>Can I map and restrict communication between corporate IT and
+OT-supporting systems?</em></li>
+<li><em>Can I prove jump hosts, historians, patch repositories, identity
+services, and vendor systems have constrained paths?</em></li>
+<li><em>Can I produce incident evidence for OT-adjacent Windows/Linux
+workloads?</em></li>
+</ul>
+<p><strong>What you’ll need.</strong> OT zone/conduit model,
+Purdue-level architecture, OT-supporting IT inventory, vendor access
+list, maintenance-window constraints, passive OT monitoring coverage,
+and change-approval process.</p>
+<hr />
+<h2 id="overview">1. Overview</h2>
+<p>NIST SP 800-82 provides OT security guidance, including segmentation,
+remote access, monitoring, vulnerability management, and incident
+response considerations. CSW can support the IT workload layer adjacent
+to OT. It should be paired with Cisco Cyber Vision or equivalent OT
+visibility for Level 0-2 device and protocol coverage.</p>
+<h2 id="nist-800-82-topic-map">2. NIST 800-82 Topic Map</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>800-82 topic</th>
+<th>CSW can support evidence for</th>
+<th>Boundary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Network segmentation</td>
+<td>Workload policy for OT-facing IT, DMZ brokers, jump hosts,
+historians</td>
+<td>OT firewall / conduit architecture remains authoritative</td>
+</tr>
+<tr>
+<td>Remote access</td>
+<td>Vendor/jump-host dependency mapping and allowlists</td>
+<td>PAM/MFA/session recording remain complementary</td>
+</tr>
+<tr>
+<td>Asset inventory</td>
+<td>OT-supporting Windows/Linux workload inventory</td>
+<td>PLC/RTU/IED inventory requires OT tools</td>
+</tr>
+<tr>
+<td>Vulnerability management</td>
+<td>CVE/package context for IT workloads supporting OT</td>
+<td>Safety constraints and OT patch governance remain
+customer-owned</td>
+</tr>
+<tr>
+<td>Monitoring and detection</td>
+<td>Flow/process telemetry and SIEM export for OT-adjacent
+workloads</td>
+<td>OT protocol DPI requires Cyber Vision/Claroty/Nozomi/Dragos</td>
+</tr>
+<tr>
+<td>Incident response</td>
+<td>Communication timeline and containment evidence for IT-side
+systems</td>
+<td>Safety and operational response remain OT-owned</td>
+</tr>
+</tbody>
+</table>
+<h2 id="suggested-scope-pattern">3. Suggested Scope Pattern</h2>
+<pre class="text"><code>NIST-800-82
+├── OT-Facing-IT
+│   ├── Jump-Hosts
+│   ├── Historians
+│   ├── Patch-Repositories
+│   ├── Backup
+│   ├── Identity-PKI
+│   └── Vendor-Access
+├── Industrial-DMZ
+├── Site-Specific-Systems
+└── Cannot-Instrument</code></pre>
+<h2 id="pov-steps">4. POV Steps</h2>
+<ul class="task-list">
+<li><label><input type="checkbox"></input>Start with OT-supporting IT, not
+PLCs or safety systems.</label></li>
+<li><label><input type="checkbox"></input>Confirm which workloads can safely
+run CSW sensors.</label></li>
+<li><label><input type="checkbox"></input>Label by <code>site</code>,
+<code>function</code>, <code>purdue_level</code>, <code>owner</code>,
+<code>criticality</code>, and <code>ot_facing</code>.</label></li>
+<li><label><input type="checkbox"></input>Observe normal maintenance and
+vendor-access windows.</label></li>
+<li><label><input type="checkbox"></input>Validate flows with plant operations
+and OT security.</label></li>
+<li><label><input type="checkbox"></input>Generate policy candidates for jump
+hosts, patch repositories, and historians.</label></li>
+<li><label><input type="checkbox"></input>Document systems requiring
+passive-only monitoring.</label></li>
+</ul>
+<h2 id="evidence-package">5. Evidence Package</h2>
+<ul>
+<li>OT-adjacent workload inventory.</li>
+<li>Scope map by site/function/Purdue layer.</li>
+<li>Vendor and remote-access flow summary.</li>
+<li>Jump host / historian / patch-repo dependency maps.</li>
+<li>High-risk port and plaintext protocol findings.</li>
+<li>Cannot-instrument register.</li>
+<li>Policy candidate and rollback notes.</li>
+</ul>
+<h2 id="complementary-controls">6. Complementary Controls</h2>
+<p>Pair CSW with Cisco Cyber Vision, OT firewalls, PAM/MFA, SIEM/SOAR,
+passive OT monitoring, maintenance procedures, backup/restore
+validation, and plant change-management controls.</p>
+<h2 id="safety-caveat">7. Safety Caveat</h2>
+<p>Do not infer CSW support for OT field devices unless explicitly
+validated. Industrial safety, process availability, and
+integrator-approved change control take precedence over enforcement.</p>
+</body>
+</html>

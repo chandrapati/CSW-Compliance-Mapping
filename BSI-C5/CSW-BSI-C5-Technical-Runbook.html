@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>BSI C5 — Technical Runbook</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+:root {
+--fg: #1f2328;
+--fg-muted: #59636e;
+--bg: #ffffff;
+--bg-muted: #f6f8fa;
+--border: #d1d9e0;
+--link: #0969da;
+--link-hover: #0349b4;
+--code-bg: #f6f8fa;
+--accent: #cf222e;
+--max-width: 920px;
+}
+@media (prefers-color-scheme: dark) {
+:root {
+--fg: #e6edf3;
+--fg-muted: #9198a1;
+--bg: #0d1117;
+--bg-muted: #151b23;
+--border: #3d444d;
+--link: #4493f8;
+--link-hover: #6cb6ff;
+--code-bg: #151b23;
+--accent: #ff7b72;
+}
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+margin: 0 auto;
+max-width: var(--max-width);
+padding: 2rem 1.25rem 4rem;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+font-size: 16px;
+line-height: 1.6;
+color: var(--fg);
+background: var(--bg);
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 2rem;
+margin-bottom: 1rem;
+font-weight: 600;
+line-height: 1.25;
+}
+h1 { font-size: 2rem; border-bottom: 1px solid var(--border); padding-bottom: .35rem; }
+h2 { font-size: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: .3rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1rem; }
+h5, h6 { font-size: .875rem; color: var(--fg-muted); }
+p, ul, ol, blockquote, pre, table { margin: 0 0 1rem; }
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+ul, ol { padding-left: 1.6rem; }
+li + li { margin-top: .15rem; }
+blockquote {
+margin: 0 0 1rem;
+padding: .5rem 1rem;
+color: var(--fg-muted);
+border-left: .25rem solid var(--border);
+background: var(--bg-muted);
+border-radius: 0 6px 6px 0;
+}
+code, pre, kbd, samp {
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+font-size: .9em;
+}
+code {
+background: var(--code-bg);
+padding: .15rem .35rem;
+border-radius: 4px;
+}
+pre {
+background: var(--code-bg);
+padding: 1rem;
+border-radius: 6px;
+overflow: auto;
+font-size: .85rem;
+line-height: 1.45;
+}
+pre code { background: transparent; padding: 0; font-size: inherit; }
+table {
+display: block;
+width: 100%;
+overflow: auto;
+border-collapse: collapse;
+}
+th, td {
+border: 1px solid var(--border);
+padding: .5rem .75rem;
+vertical-align: top;
+text-align: left;
+}
+th {
+background: var(--bg-muted);
+font-weight: 600;
+}
+tbody tr:nth-child(2n) { background: var(--bg-muted); }
+hr {
+border: 0;
+height: 1px;
+background: var(--border);
+margin: 2rem 0;
+}
+img { max-width: 100%; height: auto; }
+
+.doc-meta {
+margin: 0 0 2rem;
+padding: .75rem 1rem;
+border: 1px solid var(--border);
+border-radius: 6px;
+background: var(--bg-muted);
+font-size: .9rem;
+color: var(--fg-muted);
+}
+.doc-meta a { font-weight: 500; }
+
+@media print {
+body { max-width: none; padding: 0; color: #000; background: #fff; }
+a { color: #000; text-decoration: underline; }
+pre, code, blockquote { background: #f5f5f5; }
+}
+</style>
+</head>
+<body>
+<div class="doc-meta">Source: <a href="CSW-BSI-C5-Technical-Runbook.html">CSW-BSI-C5-Technical-Runbook.md</a> · <a href="../index.html">repository index</a></div>
+<header id="title-block-header">
+<h1 class="title">BSI C5 — Technical Runbook</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#cisco-secure-workload-bsi-c5" id="toc-cisco-secure-workload-bsi-c5">Cisco Secure Workload — BSI C5</a>
+<ul>
+<li><a href="#technical-runbook-cloud-computing-compliance-criteria-catalogue" id="toc-technical-runbook-cloud-computing-compliance-criteria-catalogue">Technical
+Runbook | Cloud Computing Compliance Criteria Catalogue</a></li>
+<li><a href="#readers-guide" id="toc-readers-guide">Reader’s
+Guide</a></li>
+<li><a href="#overview" id="toc-overview">1. Overview</a></li>
+<li><a href="#c5-topic-map" id="toc-c5-topic-map">2. C5 Topic
+Map</a></li>
+<li><a href="#suggested-scope-pattern" id="toc-suggested-scope-pattern">3. Suggested Scope Pattern</a></li>
+<li><a href="#pov-steps" id="toc-pov-steps">4. POV Steps</a></li>
+<li><a href="#evidence-package" id="toc-evidence-package">5. Evidence
+Package</a></li>
+<li><a href="#complementary-controls" id="toc-complementary-controls">6.
+Complementary Controls</a></li>
+<li><a href="#assurance-caveat" id="toc-assurance-caveat">7. Assurance
+Caveat</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="cisco-secure-workload-bsi-c5">Cisco Secure Workload — BSI
+C5</h1>
+<h2 id="technical-runbook-cloud-computing-compliance-criteria-catalogue">Technical
+Runbook | Cloud Computing Compliance Criteria Catalogue</h2>
+<p><strong>Version:</strong> 1.0<br />
+<strong>Framework:</strong> BSI C5 — Cloud Computing Compliance Criteria
+Catalogue<br />
+<strong>Use Case:</strong> Cloud service provider and cloud customer
+workload segmentation, cloud tenant evidence, monitoring, and
+vulnerability context</p>
+<hr />
+<h2 id="readers-guide">Reader’s Guide</h2>
+<p><strong>Who this is for.</strong> Cloud service providers, SaaS
+operators, and cloud customers using BSI C5 as a cloud assurance
+baseline, especially in German or EU-aligned assurance contexts.</p>
+<p><strong>Questions this runbook helps you answer:</strong></p>
+<ul>
+<li><em>Can I produce workload-level evidence for cloud network
+segmentation and tenant/service isolation?</em></li>
+<li><em>Can I reconcile cloud inventory, application scopes,
+vulnerability context, and monitoring evidence?</em></li>
+<li><em>Can I show supplier/customer communication paths and incident
+investigation artifacts?</em></li>
+</ul>
+<p><strong>What you’ll need.</strong> Cloud architecture, C5 scope
+statement, tenant/service boundary definition, cloud account inventory,
+CMDB or tag model, SIEM retention, vulnerability process, and
+shared-responsibility model.</p>
+<hr />
+<h2 id="overview">1. Overview</h2>
+<p>BSI C5 provides cloud assurance criteria across organization,
+security policies, asset management, cryptography, operations,
+communication security, vulnerability handling, incident management, and
+portability/interoperability. CSW can support technical evidence for
+cloud/server workloads where visibility, segmentation, vulnerability
+context, telemetry, and policy evidence apply. It does not replace the
+auditor’s attestation, cloud provider controls, IAM, cryptography,
+backup/DR, or governance requirements.</p>
+<h2 id="c5-topic-map">2. C5 Topic Map</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>C5 topic</th>
+<th>CSW can support evidence for</th>
+<th>Boundary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Asset management</td>
+<td>Workload inventory, cloud connector context, labels</td>
+<td>Official asset register remains authoritative</td>
+</tr>
+<tr>
+<td>Communication security</td>
+<td>Workload segmentation and approved service paths</td>
+<td>Perimeter/SASE/cloud-native controls remain complementary</td>
+</tr>
+<tr>
+<td>Operations</td>
+<td>Baseline dependencies, drift detection, policy reports</td>
+<td>Operational process evidence remains customer-owned</td>
+</tr>
+<tr>
+<td>Vulnerability handling</td>
+<td>Package/CVE exposure and reachability context</td>
+<td>Scanner and remediation workflow remain complementary</td>
+</tr>
+<tr>
+<td>Incident management</td>
+<td>Flow/process timelines and affected workload scoping</td>
+<td>Legal/customer notification remains customer-owned</td>
+</tr>
+<tr>
+<td>Supplier/customer boundaries</td>
+<td>Tenant/service egress and shared-service communication</td>
+<td>Contractual assurance and CSP controls remain separate</td>
+</tr>
+</tbody>
+</table>
+<h2 id="suggested-scope-pattern">3. Suggested Scope Pattern</h2>
+<pre class="text"><code>BSI-C5
+├── Cloud-Service-Scope
+│   ├── Production-Service
+│   ├── Tenant-Shared-Services
+│   ├── Customer-Data-Stores
+│   └── Management-Plane-Adjacent
+├── Cloud-Accounts
+│   ├── AWS
+│   ├── Azure
+│   └── GCP
+├── Supplier-Egress
+└── Incident-Evidence</code></pre>
+<h2 id="pov-steps">4. POV Steps</h2>
+<ul class="task-list">
+<li><label><input type="checkbox"></input>Select one cloud service or SaaS
+production boundary.</label></li>
+<li><label><input type="checkbox"></input>Connect supported cloud accounts or
+deploy sensors on representative workloads.</label></li>
+<li><label><input type="checkbox"></input>Normalize labels from cloud tags:
+<code>app</code>, <code>env</code>, <code>owner</code>,
+<code>tenant</code>, <code>data_class</code>, <code>criticality</code>,
+<code>region</code>.</label></li>
+<li><label><input type="checkbox"></input>Observe flows across the agreed
+business cycle.</label></li>
+<li><label><input type="checkbox"></input>Identify shared-service, management,
+and customer-data communication paths.</label></li>
+<li><label><input type="checkbox"></input>Generate ADM candidate policy and
+run simulation.</label></li>
+<li><label><input type="checkbox"></input>Export evidence for the C5 criteria
+owner.</label></li>
+</ul>
+<h2 id="evidence-package">5. Evidence Package</h2>
+<ul>
+<li>Cloud workload inventory.</li>
+<li>Scope tree and tag/label mapping.</li>
+<li>Tenant/shared-service flow summary.</li>
+<li>Supplier egress summary.</li>
+<li>Vulnerability exposure and high-risk communication report.</li>
+<li>Policy candidate and exceptions.</li>
+<li>Incident evidence sample.</li>
+</ul>
+<h2 id="complementary-controls">6. Complementary Controls</h2>
+<p>Use CSW with cloud-native CSPM/CWPP, IAM, KMS/HSM, SIEM/SOAR,
+vulnerability scanners, backup/DR, GRC, customer notification workflows,
+and cloud provider assurance reports.</p>
+<h2 id="assurance-caveat">7. Assurance Caveat</h2>
+<p>BSI C5 evidence depends on the exact audit scope and
+shared-responsibility model. Validate CSW evidence mapping with the C5
+audit owner and assessor.</p>
+</body>
+</html>

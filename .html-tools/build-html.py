@@ -50,6 +50,18 @@ FRAMEWORKS = [
     ("FedRAMP",       "FedRAMP (Moderate)",                         "FedRAMP/CSW-FedRAMP-Compliance-Report",      "FedRAMP/CSW-FedRAMP-Technical-Runbook"),
     ("SWIFT-CSCF",    "SWIFT CSCF (v2024)",                         "SWIFT-CSCF/CSW-SWIFT-CSCF-Compliance-Report", "SWIFT-CSCF/CSW-SWIFT-CSCF-Technical-Runbook"),
     ("HITRUST-CSF",   "HITRUST CSF (v11)",                          "HITRUST-CSF/CSW-HITRUST-Compliance-Report",  "HITRUST-CSF/CSW-HITRUST-Technical-Runbook"),
+    ("NIST-800-171",  "NIST SP 800-171 Rev. 3",                     "NIST-800-171/CSW-NIST-800-171-Compliance-Report", "NIST-800-171/CSW-NIST-800-171-Technical-Runbook"),
+    ("CSA-CCM",       "CSA CCM v4",                                  "CSA-CCM/CSW-CSA-CCM-Compliance-Report",      "CSA-CCM/CSW-CSA-CCM-Technical-Runbook"),
+    ("COBIT-2019",    "COBIT 2019",                                  "COBIT-2019/CSW-COBIT-Compliance-Report",     "COBIT-2019/CSW-COBIT-Technical-Runbook"),
+    ("AU-Essential-Eight", "Australian Essential Eight",             "AU-Essential-Eight/CSW-Essential-Eight-Compliance-Report", "AU-Essential-Eight/CSW-Essential-Eight-Technical-Runbook"),
+    ("UK-Cyber-Essentials", "UK Cyber Essentials Plus",              "UK-Cyber-Essentials/CSW-Cyber-Essentials-Compliance-Report", "UK-Cyber-Essentials/CSW-Cyber-Essentials-Technical-Runbook"),
+    ("HIPAA-2025-NPRM", "HIPAA Security Rule — 2025 NPRM",           "HIPAA-2025-NPRM/CSW-HIPAA-NPRM-Compliance-Report", "HIPAA-2025-NPRM/CSW-HIPAA-NPRM-Technical-Runbook"),
+    ("MAS-TRM",       "MAS Technology Risk Management Guidelines",   "MAS-TRM/CSW-MAS-TRM-Compliance-Report",      "MAS-TRM/CSW-MAS-TRM-Technical-Runbook"),
+    ("APRA-CPS-234",  "APRA CPS 234",                                "APRA-CPS-234/CSW-APRA-CPS234-Compliance-Report", "APRA-CPS-234/CSW-APRA-CPS234-Technical-Runbook"),
+    ("NY-DFS-23-NYCRR-500", "NY DFS 23 NYCRR Part 500",              "NY-DFS-23-NYCRR-500/CSW-NYDFS-Compliance-Report", "NY-DFS-23-NYCRR-500/CSW-NYDFS-Technical-Runbook"),
+    ("TISAX",         "TISAX / VDA ISA",                             "TISAX/CSW-TISAX-Compliance-Report",          "TISAX/CSW-TISAX-Technical-Runbook"),
+    ("NIST-800-82",   "NIST SP 800-82",                              "NIST-800-82/CSW-NIST-800-82-Compliance-Report", "NIST-800-82/CSW-NIST-800-82-Technical-Runbook"),
+    ("BSI-C5",        "BSI C5",                                      "BSI-C5/CSW-BSI-C5-Compliance-Report",        "BSI-C5/CSW-BSI-C5-Technical-Runbook"),
 ]
 
 
@@ -148,7 +160,7 @@ def build_index(report_html_paths: list[tuple[str, str | None, str | None]]) -> 
         "</head>\n<body>\n"
         "<h1>Cisco Secure Workload &mdash; Compliance Mapping Assets</h1>\n"
         "<p>Browseable HTML renderings of the customer-facing reports and the matching "
-        "technical runbooks for twenty-two compliance, sector, and zero-trust frameworks. "
+        "technical runbooks for thirty-four compliance, sector, and zero-trust frameworks. "
         "DOCX (editable master), PDF (review copy), and Markdown (runbook source) "
         "remain in the repository and on each framework's GitHub folder page.</p>\n"
         '<p><strong>Repository:</strong> '
@@ -165,7 +177,7 @@ def build_index(report_html_paths: list[tuple[str, str | None, str | None]]) -> 
         '  <li><a href="docs/audience-and-usage.html">Audience and usage guide</a>'
         " &mdash; who reads what, runbook-vs-report, file formats, and folder layout.</li>\n"
         '  <li><a href="INDEX.html">Control-ID Index</a> &mdash; '
-        "lookup across all twenty-two frameworks (PCI Req 1.2, HIPAA \u00a7164.312(a)(1), "
+        "lookup across all thirty-four frameworks (PCI Req 1.2, HIPAA \u00a7164.312(a)(1), "
         "DORA Art. 9, NIS2 Art. 21(2)(d), NIST AC-4, NERC CIP-005 R1, "
         "TSA SD Section III.A, IEC 62443 SR 5.3, GDPR Art. 32, CIS Safeguard 13.4, CSF PR.IR-01, "
         "CMMC AC.L2-3.1.1, etc.).</li>\n"

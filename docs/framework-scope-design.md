@@ -43,6 +43,12 @@ asset owners, compliance team, and assessor.
   - [Australian Essential Eight](#australian-essential-eight)
   - [UK Cyber Essentials Plus](#uk-cyber-essentials-plus)
   - [HIPAA Security Rule — 2025 NPRM](#hipaa-security-rule--2025-nprm)
+  - [MAS TRM](#mas-trm)
+  - [APRA CPS 234](#apra-cps-234)
+  - [NY DFS 23 NYCRR Part 500](#ny-dfs-23-nycrr-part-500)
+  - [TISAX](#tisax)
+  - [NIST SP 800-82](#nist-sp-800-82)
+  - [BSI C5](#bsi-c5)
 - [Label / tag recommendations](#label--tag-recommendations)
   - [Baseline labels for every customer](#baseline-labels-for-every-customer)
   - [Framework-specific labels](#framework-specific-labels)
@@ -103,6 +109,12 @@ asset owners, compliance team, and assessor.
 | Australian Essential Eight | Organisations aligning to ACSC EEMM strategies E1–E8 | `E8-Scope` > `Crown-Jewels`, `Windows-Servers`, `Linux-Servers`, `Admins-Jump-Zone` | E2/E6 CVE+EPSS prioritisation; E5 admin-path restriction; E1/E4 complementary process telemetry | CSW does **not** replace allowlisting, Office macro policy, MFA, or backup programmes |
 | UK Cyber Essentials Plus | UK organisations in Cyber Essentials **Plus** certification boundary | `UK-CE` > `CE-In-Scope-Production`, `Corporate-Standard`, `Partner-Connectivity` | CE1 workload-level firewall; CE2 inventory & drift; CE3 east-west least privilege; CE5 vuln backlog | Accredited assessor awards certification; CSW complements perimeter firewalls and AV/EDR |
 | HIPAA Security Rule (2025 NPRM) | Covered entities / BAs planning for **proposed** Security Rule updates | `HIPAA-NPRM` > `PHI-Zone`, `Non-PHI-Enterprise`, `BA-Connectivity`, `SIEM-Archive` | §164.312(a)(2)(vi) segmentation (*proposed*); technology asset inventory; §164.308(a)(2) vuln programme; §164.312(b) 24-month log architecture (*proposed*) | **Proposed rule** only — reconcile with **final** FR text; maintain **current-rule** compliance until effective |
+| MAS TRM | Singapore financial institution critical systems, customer-data systems, and outsourced/third-party dependencies | `MAS-TRM` > `Critical-Systems`, `Customer-Data`, `Security-Services`, `Outsourced-Third-Parties` | Critical-system inventory, network security, vulnerability, monitoring, incident, and outsourcing evidence | Board/senior management accountability, outsourcing due diligence, BCP/DR, IAM, and MAS reporting decisions remain customer-owned |
+| APRA CPS 234 | Australian prudential information assets and material operations | `APRA-CPS234` > `Critical-Information-Assets`, `Material-Operations`, `Service-Providers`, `Incident-Evidence` | Information asset mapping, control testing, service-provider egress, and incident scoping evidence | CPS 234 governance, formal control testing, APRA notification, and supplier assurance remain risk/compliance-owned |
+| NY DFS 23 NYCRR Part 500 | Covered systems, nonpublic-information applications, and third-party service-provider paths | `NYDFS-500` > `Covered-Systems`, `NPI-Applications`, `Critical-Operations`, `Third-Party-Service-Providers` | Covered-system inventory, least-privilege workload paths, vulnerability, monitoring/testing, and incident evidence | CISO governance, annual certification, written policies, encryption, MFA/IAM, and DFS notification decisions remain outside CSW |
+| TISAX | Automotive prototype, engineering, customer-confidential, and supplier/customer connectivity scopes | `TISAX` > `Prototype-Protection`, `Engineering-Systems`, `Customer-Confidential`, `Supplier-Customer-Egress` | VDA ISA-aligned network segregation, supplier/customer egress, vulnerability, and logging evidence | Assessment objectives, physical prototype controls, DLP, IAM, supplier contracts, and TISAX assessment outcome remain complementary |
+| NIST SP 800-82 | OT-adjacent IT systems that support industrial operations | `NIST-800-82` > `OT-Facing-IT`, `Industrial-DMZ`, `Jump-Hosts`, `Historians`, `Patch-Repositories`, `Vendor-Access` | OT-supporting IT segmentation, remote access paths, vulnerability, monitoring, and incident evidence | PLC/RTU/IED/HMI visibility and OT protocol inspection require Cyber Vision/Claroty/Nozomi/Dragos and plant change control |
+| BSI C5 | Cloud service scope, tenant/shared services, customer-data stores, and supplier egress | `BSI-C5` > `Cloud-Service-Scope`, `Production-Service`, `Tenant-Shared-Services`, `Customer-Data-Stores`, `Supplier-Egress` | Cloud workload inventory, communication security, vulnerability handling, incident, and shared-service boundary evidence | C5 attestation, IAM/KMS, CSP controls, backup/DR, portability, and shared-responsibility decisions remain audit/customer-owned |
 
 The following anchors match the framework links in the [table of contents](#table-of-contents) so you can jump directly to a row in the table above.
 
@@ -330,6 +342,54 @@ The following anchors match the framework links in the [table of contents](#tabl
 
 [↑ Back to top](#top) · [↑ Framework mappings](#framework-mappings) · [↑ Table of contents](#table-of-contents)
 
+<h3 id="mas-trm">MAS TRM</h3>
+
+| Customer scope anchor | Suggested CSW scope pattern | Primary evidence focus | Boundaries and complementary controls |
+|---|---|---|---|
+| Singapore financial institution critical systems and outsourced service paths | `MAS-TRM` > `Critical-Systems`, `Customer-Data`, `Security-Services`, `Outsourced-Third-Parties` | Critical-system inventory, approved-flow baselines, third-party egress, vulnerability, monitoring, and incident evidence | MAS governance, outsourcing due diligence, BCP/DR, IAM, and reporting decisions remain outside CSW |
+
+[↑ Back to top](#top) · [↑ Framework mappings](#framework-mappings) · [↑ Table of contents](#table-of-contents)
+
+<h3 id="apra-cps-234">APRA CPS 234</h3>
+
+| Customer scope anchor | Suggested CSW scope pattern | Primary evidence focus | Boundaries and complementary controls |
+|---|---|---|---|
+| Critical information assets and material operations for APRA-regulated entities | `APRA-CPS234` > `Critical-Information-Assets`, `Material-Operations`, `Service-Providers`, `Incident-Evidence` | Information asset mapping, control testing, service-provider egress, and incident scoping evidence | Formal control testing, APRA notification, supplier assurance, and governance remain customer-owned |
+
+[↑ Back to top](#top) · [↑ Framework mappings](#framework-mappings) · [↑ Table of contents](#table-of-contents)
+
+<h3 id="ny-dfs-23-nycrr-part-500">NY DFS 23 NYCRR Part 500</h3>
+
+| Customer scope anchor | Suggested CSW scope pattern | Primary evidence focus | Boundaries and complementary controls |
+|---|---|---|---|
+| Covered systems, NPI applications, and third-party service-provider access | `NYDFS-500` > `Covered-Systems`, `NPI-Applications`, `Critical-Operations`, `Third-Party-Service-Providers` | Covered workload inventory, least-privilege paths, vulnerability, monitoring/testing, and incident evidence | CISO governance, annual certification, written policies, encryption, MFA/IAM, and DFS notifications remain complementary |
+
+[↑ Back to top](#top) · [↑ Framework mappings](#framework-mappings) · [↑ Table of contents](#table-of-contents)
+
+<h3 id="tisax">TISAX</h3>
+
+| Customer scope anchor | Suggested CSW scope pattern | Primary evidence focus | Boundaries and complementary controls |
+|---|---|---|---|
+| Automotive prototype, engineering, customer-confidential, and supplier/customer connectivity scopes | `TISAX` > `Prototype-Protection`, `Engineering-Systems`, `Customer-Confidential`, `Supplier-Customer-Egress` | VDA ISA-aligned network segregation, supplier/customer egress, vulnerability, and logging evidence | TISAX assessment objectives, physical prototype controls, DLP, IAM, and supplier contracts remain complementary |
+
+[↑ Back to top](#top) · [↑ Framework mappings](#framework-mappings) · [↑ Table of contents](#table-of-contents)
+
+<h3 id="nist-sp-800-82">NIST SP 800-82</h3>
+
+| Customer scope anchor | Suggested CSW scope pattern | Primary evidence focus | Boundaries and complementary controls |
+|---|---|---|---|
+| OT-adjacent IT systems that support industrial operations | `NIST-800-82` > `OT-Facing-IT`, `Industrial-DMZ`, `Jump-Hosts`, `Historians`, `Patch-Repositories`, `Vendor-Access` | OT-supporting IT segmentation, remote access, vulnerability, monitoring, and incident evidence | PLC/RTU/IED/HMI visibility and protocol inspection require OT-native tools and plant change controls |
+
+[↑ Back to top](#top) · [↑ Framework mappings](#framework-mappings) · [↑ Table of contents](#table-of-contents)
+
+<h3 id="bsi-c5">BSI C5</h3>
+
+| Customer scope anchor | Suggested CSW scope pattern | Primary evidence focus | Boundaries and complementary controls |
+|---|---|---|---|
+| Cloud service scope, tenant/shared services, customer-data stores, and supplier egress | `BSI-C5` > `Cloud-Service-Scope`, `Production-Service`, `Tenant-Shared-Services`, `Customer-Data-Stores`, `Supplier-Egress` | Cloud workload inventory, communication security, vulnerability handling, incident, and shared-service boundary evidence | C5 attestation, IAM/KMS, CSP controls, backup/DR, portability, and shared-responsibility decisions remain outside CSW |
+
+[↑ Back to top](#top) · [↑ Framework mappings](#framework-mappings) · [↑ Table of contents](#table-of-contents)
+
 ## Label / Tag Recommendations
 
 ### Baseline Labels for Every Customer
@@ -384,6 +444,12 @@ and controlled; avoid free-form spelling differences that split evidence.
 | ACSC Essential Eight | `e8_strategy`, `admin_tier`, `internet_exposed` | `E5`, `tier0`, `true` | Build per-strategy ML evidence slices |
 | UK Cyber Essentials Plus | `ce-scope`, `tier`, `owner` | `in`, `data`, `infra-team` | Maintain Plus assessment boundary labels |
 | HIPAA 2025 NPRM | `nprm_scope`, `data_class`, `siem_retention_track` | `2025-planning`, `ephi`, `24-mo` | Track NPRM programme vs current-rule scopes |
+| MAS TRM | `mas_critical_system`, `outsourcing_provider`, `customer_data_scope` | `true`, `provider-a`, `in-scope` | Build critical-system and third-party egress evidence |
+| APRA CPS 234 | `critical_info_asset`, `material_operation`, `service_provider` | `customer-data`, `digital-channel`, `provider-a` | Tie workloads to critical assets and control-testing owners |
+| NY DFS 23 NYCRR Part 500 | `nydfs_covered_system`, `npi_scope`, `third_party_provider` | `true`, `npi`, `processor-a` | Separate covered systems and nonpublic-information applications |
+| TISAX | `tisax_scope`, `prototype_data`, `customer_confidential`, `supplier_link` | `in-scope`, `true`, `oem-a`, `supplier-b` | Support VDA ISA assessment slices and supplier/customer egress |
+| NIST 800-82 | `ot_facing`, `purdue_level`, `site`, `ics_support_role` | `true`, `3.5`, `plant-01`, `historian` | Label OT-adjacent IT and plant-specific support paths |
+| BSI C5 | `c5_scope`, `tenant_boundary`, `cloud_service`, `customer_data` | `in-scope`, `shared-service`, `svc-001`, `true` | Align cloud workload evidence to C5 service boundaries |
 
 [↑ Back to top](#top)
 

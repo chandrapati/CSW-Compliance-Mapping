@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>TISAX / VDA ISA — Technical Runbook</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+:root {
+--fg: #1f2328;
+--fg-muted: #59636e;
+--bg: #ffffff;
+--bg-muted: #f6f8fa;
+--border: #d1d9e0;
+--link: #0969da;
+--link-hover: #0349b4;
+--code-bg: #f6f8fa;
+--accent: #cf222e;
+--max-width: 920px;
+}
+@media (prefers-color-scheme: dark) {
+:root {
+--fg: #e6edf3;
+--fg-muted: #9198a1;
+--bg: #0d1117;
+--bg-muted: #151b23;
+--border: #3d444d;
+--link: #4493f8;
+--link-hover: #6cb6ff;
+--code-bg: #151b23;
+--accent: #ff7b72;
+}
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+margin: 0 auto;
+max-width: var(--max-width);
+padding: 2rem 1.25rem 4rem;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+font-size: 16px;
+line-height: 1.6;
+color: var(--fg);
+background: var(--bg);
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 2rem;
+margin-bottom: 1rem;
+font-weight: 600;
+line-height: 1.25;
+}
+h1 { font-size: 2rem; border-bottom: 1px solid var(--border); padding-bottom: .35rem; }
+h2 { font-size: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: .3rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1rem; }
+h5, h6 { font-size: .875rem; color: var(--fg-muted); }
+p, ul, ol, blockquote, pre, table { margin: 0 0 1rem; }
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+ul, ol { padding-left: 1.6rem; }
+li + li { margin-top: .15rem; }
+blockquote {
+margin: 0 0 1rem;
+padding: .5rem 1rem;
+color: var(--fg-muted);
+border-left: .25rem solid var(--border);
+background: var(--bg-muted);
+border-radius: 0 6px 6px 0;
+}
+code, pre, kbd, samp {
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+font-size: .9em;
+}
+code {
+background: var(--code-bg);
+padding: .15rem .35rem;
+border-radius: 4px;
+}
+pre {
+background: var(--code-bg);
+padding: 1rem;
+border-radius: 6px;
+overflow: auto;
+font-size: .85rem;
+line-height: 1.45;
+}
+pre code { background: transparent; padding: 0; font-size: inherit; }
+table {
+display: block;
+width: 100%;
+overflow: auto;
+border-collapse: collapse;
+}
+th, td {
+border: 1px solid var(--border);
+padding: .5rem .75rem;
+vertical-align: top;
+text-align: left;
+}
+th {
+background: var(--bg-muted);
+font-weight: 600;
+}
+tbody tr:nth-child(2n) { background: var(--bg-muted); }
+hr {
+border: 0;
+height: 1px;
+background: var(--border);
+margin: 2rem 0;
+}
+img { max-width: 100%; height: auto; }
+
+.doc-meta {
+margin: 0 0 2rem;
+padding: .75rem 1rem;
+border: 1px solid var(--border);
+border-radius: 6px;
+background: var(--bg-muted);
+font-size: .9rem;
+color: var(--fg-muted);
+}
+.doc-meta a { font-weight: 500; }
+
+@media print {
+body { max-width: none; padding: 0; color: #000; background: #fff; }
+a { color: #000; text-decoration: underline; }
+pre, code, blockquote { background: #f5f5f5; }
+}
+</style>
+</head>
+<body>
+<div class="doc-meta">Source: <a href="CSW-TISAX-Technical-Runbook.html">CSW-TISAX-Technical-Runbook.md</a> · <a href="../index.html">repository index</a></div>
+<header id="title-block-header">
+<h1 class="title">TISAX / VDA ISA — Technical Runbook</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#cisco-secure-workload-tisax" id="toc-cisco-secure-workload-tisax">Cisco Secure Workload — TISAX</a>
+<ul>
+<li><a href="#technical-runbook-automotive-information-security-assessment" id="toc-technical-runbook-automotive-information-security-assessment">Technical
+Runbook | Automotive Information Security Assessment</a></li>
+<li><a href="#readers-guide" id="toc-readers-guide">Reader’s
+Guide</a></li>
+<li><a href="#overview" id="toc-overview">1. Overview</a></li>
+<li><a href="#tisax-vda-isa-topic-map" id="toc-tisax-vda-isa-topic-map">2. TISAX / VDA ISA Topic Map</a></li>
+<li><a href="#suggested-scope-pattern" id="toc-suggested-scope-pattern">3. Suggested Scope Pattern</a></li>
+<li><a href="#pov-steps" id="toc-pov-steps">4. POV Steps</a></li>
+<li><a href="#evidence-package" id="toc-evidence-package">5. Evidence
+Package</a></li>
+<li><a href="#complementary-controls" id="toc-complementary-controls">6.
+Complementary Controls</a></li>
+<li><a href="#assessment-caveat" id="toc-assessment-caveat">7.
+Assessment Caveat</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="cisco-secure-workload-tisax">Cisco Secure Workload — TISAX</h1>
+<h2 id="technical-runbook-automotive-information-security-assessment">Technical
+Runbook | Automotive Information Security Assessment</h2>
+<p><strong>Version:</strong> 1.0<br />
+<strong>Framework:</strong> TISAX / VDA ISA-aligned information security
+assessment<br />
+<strong>Use Case:</strong> Automotive supplier workload segmentation,
+prototype / confidential data protection, supplier connectivity
+evidence</p>
+<hr />
+<h2 id="readers-guide">Reader’s Guide</h2>
+<p><strong>Who this is for.</strong> Automotive OEMs, suppliers,
+engineering partners, and service providers preparing for TISAX
+assessment or customer security requirements based on VDA ISA.</p>
+<p><strong>Questions this runbook helps you answer:</strong></p>
+<ul>
+<li><em>Can I prove that prototype, engineering, and
+customer-confidential workloads are isolated from general corporate
+systems?</em></li>
+<li><em>Can I document supplier/customer connectivity and detect
+unexpected egress?</em></li>
+<li><em>Can I provide technical evidence for network segmentation,
+monitoring, vulnerability, and incident investigation
+controls?</em></li>
+</ul>
+<p><strong>What you’ll need.</strong> Assessment objective, VDA ISA
+scope, customer-specific protection needs, engineering / prototype
+system inventory, supplier connection list, application ownership, and
+evidence request expectations.</p>
+<hr />
+<h2 id="overview">1. Overview</h2>
+<p>TISAX assessments use VDA ISA to evaluate information security
+controls in automotive ecosystems. CSW can support technical evidence
+for workload segmentation, dependency mapping, vulnerability context,
+process/flow telemetry, and supplier egress monitoring. CSW does not
+replace TISAX assessment, VDA ISA control ownership, physical prototype
+controls, HR/training controls, IAM/MFA, DLP, or supplier contractual
+assurance.</p>
+<h2 id="tisax-vda-isa-topic-map">2. TISAX / VDA ISA Topic Map</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Assessment topic</th>
+<th>CSW can support evidence for</th>
+<th>Boundary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Information classification</td>
+<td>Scope/label mapping to prototype, confidential, and customer data
+workloads</td>
+<td>Classification policy remains customer-owned</td>
+</tr>
+<tr>
+<td>Access control</td>
+<td>Workload-level communication allowlists</td>
+<td>IAM/PAM remains complementary</td>
+</tr>
+<tr>
+<td>Network segregation</td>
+<td>Engineering/prototype enclave segmentation and supplier egress</td>
+<td>Campus/perimeter controls remain complementary</td>
+</tr>
+<tr>
+<td>Vulnerability management</td>
+<td>Workload package/CVE context and reachability</td>
+<td>Scanner and remediation SLAs remain customer-owned</td>
+</tr>
+<tr>
+<td>Logging and monitoring</td>
+<td>Flow/process telemetry and SIEM export</td>
+<td>SOC workflow remains complementary</td>
+</tr>
+<tr>
+<td>Supplier connectivity</td>
+<td>Approved customer/supplier endpoints and egress tracking</td>
+<td>Contractual supplier assurance remains GRC-owned</td>
+</tr>
+</tbody>
+</table>
+<h2 id="suggested-scope-pattern">3. Suggested Scope Pattern</h2>
+<pre class="text"><code>TISAX
+├── Assessment-Scope
+│   ├── Prototype-Protection
+│   ├── Engineering-Systems
+│   ├── Customer-Confidential
+│   └── Production-IT
+├── Supplier-Customer-Egress
+├── Shared-Services
+└── Incident-Evidence</code></pre>
+<h2 id="pov-steps">4. POV Steps</h2>
+<ul class="task-list">
+<li><label><input type="checkbox"></input>Select one engineering, prototype,
+or customer-confidential workload group.</label></li>
+<li><label><input type="checkbox"></input>Label workloads by
+<code>assessment_scope</code>, <code>data_class</code>,
+<code>customer</code>, <code>owner</code>, <code>env</code>, and
+<code>criticality</code>.</label></li>
+<li><label><input type="checkbox"></input>Observe flows over a representative
+engineering cycle.</label></li>
+<li><label><input type="checkbox"></input>Validate customer/supplier
+communication with business owners.</label></li>
+<li><label><input type="checkbox"></input>Identify unexpected egress,
+high-risk ports, and excessive lateral paths.</label></li>
+<li><label><input type="checkbox"></input>Generate candidate policy and
+simulate before enforcement.</label></li>
+</ul>
+<h2 id="evidence-package">5. Evidence Package</h2>
+<ul>
+<li>TISAX scope workload inventory.</li>
+<li>Prototype / engineering / customer-confidential scope map.</li>
+<li>Supplier and customer egress summary.</li>
+<li>Flow and process telemetry summary.</li>
+<li>Vulnerability exposure summary.</li>
+<li>Policy candidate and exception register.</li>
+<li>Assessment evidence notes by VDA ISA topic.</li>
+</ul>
+<h2 id="complementary-controls">6. Complementary Controls</h2>
+<p>Use CSW with IAM/MFA/PAM, DLP, endpoint security, SIEM, GRC, physical
+prototype controls, supplier contracts, and customer-specific evidence
+portals.</p>
+<h2 id="assessment-caveat">7. Assessment Caveat</h2>
+<p>TISAX labels and VDA ISA assessment objectives vary by customer and
+scope. Validate final evidence with the customer’s assessment provider
+and OEM/customer requirements.</p>
+</body>
+</html>

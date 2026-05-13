@@ -299,15 +299,18 @@ pre, code, blockquote { background: #f5f5f5; }
 <h1 id="cisco-secure-workload-compliance-mapping-assets">Cisco Secure
 Workload — Compliance Mapping Assets</h1>
 <p>Customer-facing reports and matching technical runbooks that map
-Cisco Secure Workload (CSW) controls to <strong>twenty-two</strong>
+Cisco Secure Workload (CSW) controls to <strong>thirty-four</strong>
 compliance, sector, and zero-trust frameworks. Every framework folder
 ships the same set of assets: a Markdown technical runbook (the
 engineering view), a DOCX report (the editable customer master), a PDF
 render of that report, and HTML versions of both for browser/mobile
-reading. <strong>IEC 62443, GDPR, MITRE ATT&amp;CK, FedRAMP, SWIFT
-CSCF,</strong> and <strong>HITRUST CSF</strong> currently ship the
-Markdown technical runbook only; DOCX/PDF/HTML reports for those
-frameworks are not yet in this repository.</p>
+reading. <strong>IEC 62443, GDPR, MITRE ATT&amp;CK, FedRAMP, SWIFT CSCF,
+HITRUST CSF, NIST SP 800-171 Rev. 3, CSA CCM v4.0, COBIT 2019, ACSC
+Essential Eight, UK Cyber Essentials Plus, HIPAA 2025 NPRM, MAS TRM,
+APRA CPS 234, NY DFS 23 NYCRR Part 500, TISAX, NIST SP 800-82,</strong>
+and <strong>BSI C5</strong> currently ship the Markdown technical
+runbook only; DOCX/PDF/HTML reports for those frameworks are not yet in
+this repository.</p>
 <blockquote>
 <p><strong>New here?</strong> Read <a href="./docs/about-csw.html">Background — What is Cisco Secure
 Workload?</a> for a one-page intro to the platform itself, then come
@@ -573,17 +576,109 @@ evidence</td>
 <td><a href="./HITRUST-CSF/CSW-HITRUST-Technical-Runbook.html">MD</a></td>
 <td>—</td>
 </tr>
+<tr>
+<td>NIST SP 800-171 Rev. 3</td>
+<td>CUI enclave isolation; 03.01/03.13 flow enforcement; Rev 3 family
+alignment with 800-53; CMMC L2 underpinning evidence</td>
+<td><a href="./NIST-800-171/CSW-NIST-800-171-Technical-Runbook.html">MD</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>CSA CCM v4</td>
+<td>Cloud workload segmentation; IVS-09 network security; DSP data
+isolation; TVM reachability; STAR certification evidence support</td>
+<td><a href="./CSA-CCM/CSW-CSA-CCM-Technical-Runbook.html">MD</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>COBIT 2019</td>
+<td>DSS05.02 network security; APO13 managed security; MEA01/02
+conformance monitoring; BAI06/10 change and configuration evidence</td>
+<td><a href="./COBIT-2019/CSW-COBIT-Technical-Runbook.html">MD</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Australian Essential Eight</td>
+<td>ML1–ML3 maturity evidence; E2/E6 patch prioritisation via CVE+EPSS;
+E5 admin privilege path restriction; E1 application control support</td>
+<td><a href="./AU-Essential-Eight/CSW-Essential-Eight-Technical-Runbook.html">MD</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>UK Cyber Essentials Plus</td>
+<td>CE1 workload-level firewall; CE2 secure configuration baseline; CE5
+patch management evidence; Plus technical verification support</td>
+<td><a href="./UK-Cyber-Essentials/CSW-Cyber-Essentials-Technical-Runbook.html">MD</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>HIPAA 2025 NPRM</td>
+<td>Mandatory network segmentation (§164.312(a)(2)(vi)); technology
+asset inventory; 24-month log retention architecture; 72-hour breach
+timeline; annual assessment evidence</td>
+<td><a href="./HIPAA-2025-NPRM/CSW-HIPAA-NPRM-Technical-Runbook.html">MD</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>MAS TRM</td>
+<td>Singapore financial-sector technology risk evidence; critical-system
+segmentation; outsourcing / third-party egress; incident investigation
+support</td>
+<td><a href="./MAS-TRM/CSW-MAS-TRM-Technical-Runbook.html">MD</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>APRA CPS 234</td>
+<td>Australian prudential information security; critical information
+assets; control testing; service-provider dependency visibility</td>
+<td><a href="./APRA-CPS-234/CSW-APRA-CPS234-Technical-Runbook.html">MD</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>NY DFS 23 NYCRR Part 500</td>
+<td>Covered-system workload visibility; NPI application scope;
+vulnerability context; third-party service-provider egress; incident
+support</td>
+<td><a href="./NY-DFS-23-NYCRR-500/CSW-NYDFS-Technical-Runbook.html">MD</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>TISAX / VDA ISA</td>
+<td>Automotive prototype and confidential engineering workload
+segmentation; supplier/customer egress; assessment evidence support</td>
+<td><a href="./TISAX/CSW-TISAX-Technical-Runbook.html">MD</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>NIST SP 800-82</td>
+<td>OT-adjacent IT segmentation; jump hosts, historians, patch
+repositories, identity services, vendor access; pair with OT
+visibility</td>
+<td><a href="./NIST-800-82/CSW-NIST-800-82-Technical-Runbook.html">MD</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>BSI C5</td>
+<td>Cloud service assurance; tenant/shared-service workload boundaries;
+cloud communication security; vulnerability and incident evidence</td>
+<td><a href="./BSI-C5/CSW-BSI-C5-Technical-Runbook.html">MD</a></td>
+<td>—</td>
+</tr>
 </tbody>
 </table>
 <blockquote>
 <p><strong>Quickly find a control?</strong> See <a href="./INDEX.html"><code>INDEX.md</code></a> for a control-ID-keyed index
-across all twenty-two frameworks (e.g. <em>PCI Req 1.2</em>, <em>HIPAA
+across all thirty-four frameworks (e.g. <em>PCI Req 1.2</em>, <em>HIPAA
 §164.312(a)(1)</em>, <em>DORA Art. 9</em>, <em>NIS2 Art. 21(2)(d)</em>,
 <em>NIST AC-4</em>, <em>NERC CIP-005 R1</em>, <em>TSA SD Section
 III.A</em>, <em>IEC 62443 SR 5.3</em>, <em>GDPR Art. 32</em>,
 <em>FedRAMP AC-4</em>, <em>SWIFT CSCF 1.4</em>, <em>HITRUST 01.m</em>,
 <em>MITRE TA0008</em>, <em>CIS Safeguard 13.4</em>, <em>CSF
-PR.IR-01</em>, <em>CMMC AC.L2-3.1.1</em>).</p>
+PR.IR-01</em>, <em>CMMC AC.L2-3.1.1</em>, <em>NIST 800-171
+03.13.06</em>, <em>CSA IVS-09</em>, <em>COBIT DSS05.02</em>, <em>E8
+E5</em>, <em>UK CE1</em>, <em>HIPAA NPRM §164.312(a)(2)(vi)</em>,
+<em>MAS TRM</em>, <em>APRA CPS 234</em>, <em>NY DFS 500.03</em>,
+<em>TISAX ISA</em>, <em>NIST 800-82</em>, <em>BSI C5</em>).</p>
 </blockquote>
 <blockquote>
 <p><strong>Cross-cutting frameworks scope note (CIS, CSF,
@@ -635,7 +730,7 @@ guide</a></strong> — who should lead with which document,
 runbook-vs-report guidance, file format guidance, and the full folder
 layout.</li>
 <li><strong><a href="./INDEX.html"><code>INDEX.md</code></a></strong> —
-control-ID lookup across all twenty-two frameworks.</li>
+control-ID lookup across all thirty-four frameworks.</li>
 </ul>
 <p>Once GitHub Pages is enabled, the same content is also browseable at
 <code>https://chandrapati.github.io/CSW-Compliance-Mapping/</code>
@@ -650,9 +745,18 @@ standards and regulatory framework documents (HIPAA, SOC 2, PCI DSS,
 NIST SP 800-series, ISO/IEC 27001, CISA ZTMM, FIPS 140, EU DORA, EU
 NIS2, NERC CIP, TSA Pipeline Security Directives, CIS Critical Security
 Controls v8.1, NIST Cybersecurity Framework 2.0, CMMC 2.0, IEC 62443,
-GDPR, MITRE ATT&amp;CK, FedRAMP, SWIFT CSCF, and HITRUST CSF)
-cross-referenced against documented Cisco Secure Workload (CSW) product
-capabilities at the time of authoring.</p>
+GDPR, MITRE ATT&amp;CK, FedRAMP, SWIFT CSCF, HITRUST CSF, NIST SP
+800-171 Rev. 3, CSA Cloud Controls Matrix v4, COBIT 2019, ACSC Essential
+Eight, UK Cyber Essentials Plus, the HIPAA Security Rule 2025 Notice of
+Proposed Rulemaking (NPRM), MAS Technology Risk Management Guidelines,
+APRA CPS 234, NY DFS 23 NYCRR Part 500, TISAX / VDA ISA, NIST SP 800-82,
+and BSI C5 cross-referenced against documented Cisco Secure Workload
+(CSW) product capabilities at the time of authoring.</p>
+<p>The <strong>HIPAA 2025 NPRM</strong> technical mapping interprets a
+<strong>proposed</strong> Security Rule update and must be reconciled
+against <strong>final</strong> regulatory text before formal reliance;
+continue parallel compliance with the <strong>current</strong> Security
+Rule until amendments are effective.</p>
 <p>The <strong>NERC CIP</strong> and <strong>TSA Pipeline</strong>
 mappings are explicitly scoped to the <strong>IT side of the IT/OT
 boundary</strong> and are issued as <strong>draft v1</strong>. Treat
