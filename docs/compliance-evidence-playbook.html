@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>CSW Compliance Evidence Playbook</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+  <style>
+:root {
+--fg: #1f2328;
+--fg-muted: #59636e;
+--bg: #ffffff;
+--bg-muted: #f6f8fa;
+--border: #d1d9e0;
+--link: #0969da;
+--link-hover: #0349b4;
+--code-bg: #f6f8fa;
+--accent: #cf222e;
+--max-width: 920px;
+}
+@media (prefers-color-scheme: dark) {
+:root {
+--fg: #e6edf3;
+--fg-muted: #9198a1;
+--bg: #0d1117;
+--bg-muted: #151b23;
+--border: #3d444d;
+--link: #4493f8;
+--link-hover: #6cb6ff;
+--code-bg: #151b23;
+--accent: #ff7b72;
+}
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+margin: 0 auto;
+max-width: var(--max-width);
+padding: 2rem 1.25rem 4rem;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+font-size: 16px;
+line-height: 1.6;
+color: var(--fg);
+background: var(--bg);
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 2rem;
+margin-bottom: 1rem;
+font-weight: 600;
+line-height: 1.25;
+}
+h1 { font-size: 2rem; border-bottom: 1px solid var(--border); padding-bottom: .35rem; }
+h2 { font-size: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: .3rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1rem; }
+h5, h6 { font-size: .875rem; color: var(--fg-muted); }
+p, ul, ol, blockquote, pre, table { margin: 0 0 1rem; }
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+ul, ol { padding-left: 1.6rem; }
+li + li { margin-top: .15rem; }
+blockquote {
+margin: 0 0 1rem;
+padding: .5rem 1rem;
+color: var(--fg-muted);
+border-left: .25rem solid var(--border);
+background: var(--bg-muted);
+border-radius: 0 6px 6px 0;
+}
+code, pre, kbd, samp {
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+font-size: .9em;
+}
+code {
+background: var(--code-bg);
+padding: .15rem .35rem;
+border-radius: 4px;
+}
+pre {
+background: var(--code-bg);
+padding: 1rem;
+border-radius: 6px;
+overflow: auto;
+font-size: .85rem;
+line-height: 1.45;
+}
+pre code { background: transparent; padding: 0; font-size: inherit; }
+table {
+display: block;
+width: 100%;
+overflow: auto;
+border-collapse: collapse;
+}
+th, td {
+border: 1px solid var(--border);
+padding: .5rem .75rem;
+vertical-align: top;
+text-align: left;
+}
+th {
+background: var(--bg-muted);
+font-weight: 600;
+}
+tbody tr:nth-child(2n) { background: var(--bg-muted); }
+hr {
+border: 0;
+height: 1px;
+background: var(--border);
+margin: 2rem 0;
+}
+img { max-width: 100%; height: auto; }
+
+.doc-meta {
+margin: 0 0 2rem;
+padding: .75rem 1rem;
+border: 1px solid var(--border);
+border-radius: 6px;
+background: var(--bg-muted);
+font-size: .9rem;
+color: var(--fg-muted);
+}
+.doc-meta a { font-weight: 500; }
+
+@media print {
+body { max-width: none; padding: 0; color: #000; background: #fff; }
+a { color: #000; text-decoration: underline; }
+pre, code, blockquote { background: #f5f5f5; }
+}
+</style>
+</head>
+<body>
+<div class="doc-meta">Source: <a href="compliance-evidence-playbook.html">compliance-evidence-playbook.md</a> · <a href="../index.html">repository index</a></div>
+<header id="title-block-header">
+<h1 class="title">CSW Compliance Evidence Playbook</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#csw-compliance-evidence-playbook" id="toc-csw-compliance-evidence-playbook">CSW compliance evidence
+playbook</a>
+<ul>
+<li><a href="#what-this-playbook-is-and-is-not" id="toc-what-this-playbook-is-and-is-not">What this playbook is (and is
+not)</a></li>
+<li><a href="#csw-in-five-minutes-new-operators" id="toc-csw-in-five-minutes-new-operators">CSW in five minutes (new
+operators)</a>
+<ul>
+<li><a href="#console-map" id="toc-console-map">Console map</a></li>
+<li><a href="#modes-always-in-this-order-for-compliance-rollouts" id="toc-modes-always-in-this-order-for-compliance-rollouts">Modes
+(always in this order for compliance rollouts)</a></li>
+</ul></li>
+<li><a href="#the-universal-4-phase-evidence-programme" id="toc-the-universal-4-phase-evidence-programme">The universal 4-phase
+evidence programme</a>
+<ul>
+<li><a href="#phase-1-coverage-and-inventory-days-110" id="toc-phase-1-coverage-and-inventory-days-110">Phase 1 — Coverage and
+inventory (Days 1–10)</a></li>
+<li><a href="#phase-2-behaviour-baseline-days-1128" id="toc-phase-2-behaviour-baseline-days-1128">Phase 2 — Behaviour
+baseline (Days 11–28)</a></li>
+<li><a href="#phase-3-policy-and-simulation-days-2945" id="toc-phase-3-policy-and-simulation-days-2945">Phase 3 — Policy and
+simulation (Days 29–45)</a></li>
+<li><a href="#phase-4-enforcement-and-continuous-proof-day-46" id="toc-phase-4-enforcement-and-continuous-proof-day-46">Phase 4 —
+Enforcement and continuous proof (Day 46+)</a></li>
+</ul></li>
+<li><a href="#quarterly-evidence-pack-copy-into-every-framework" id="toc-quarterly-evidence-pack-copy-into-every-framework">Quarterly
+evidence pack (copy into every framework)</a></li>
+<li><a href="#api-and-automation-optional" id="toc-api-and-automation-optional">API and automation
+(optional)</a></li>
+<li><a href="#pairing-with-the-customer-facing-report" id="toc-pairing-with-the-customer-facing-report">Pairing with the
+customer-facing report</a></li>
+<li><a href="#csw-effectiveness-why-programmes-choose-it" id="toc-csw-effectiveness-why-programmes-choose-it">CSW effectiveness —
+why programmes choose it</a></li>
+<li><a href="#next-steps" id="toc-next-steps">Next steps</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="csw-compliance-evidence-playbook">CSW compliance evidence
+playbook</h1>
+<blockquote>
+<p><strong>Audience:</strong> Security engineers, GRC analysts, and
+Cisco SEs who are <strong>new to Cisco Secure Workload (CSW)</strong>
+and need a repeatable way to turn CSW deployment into
+<strong>assessor-ready evidence</strong> for any framework in this
+repository.</p>
+</blockquote>
+<p>Companion to <a href="./about-csw.html">About CSW</a> and the
+per-framework <strong>Technical Runbooks</strong>
+(<code>*-Technical-Runbook.md</code>).</p>
+<hr />
+<h2 id="what-this-playbook-is-and-is-not">What this playbook is (and is
+not)</h2>
+<table>
+<colgroup>
+<col style="width: 44%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr>
+<th>This playbook <strong>is</strong></th>
+<th>This playbook <strong>is not</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Step-by-step CSW operations for evidence collection</td>
+<td>Legal or audit sign-off</td>
+</tr>
+<tr>
+<td>A cadence you can run quarterly</td>
+<td>A substitute for your QSA, OCR, or C3PAO</td>
+</tr>
+<tr>
+<td>Framework-agnostic CSW mechanics</td>
+<td>The full control text of HIPAA, PCI, etc.</td>
+</tr>
+</tbody>
+</table>
+<p>Every framework runbook maps <strong>specific control IDs</strong> to
+CSW artefacts. <strong>Start here</strong> for <em>how</em>; open the
+framework runbook for <em>which controls</em>.</p>
+<hr />
+<h2 id="csw-in-five-minutes-new-operators">CSW in five minutes (new
+operators)</h2>
+<p>CSW protects <strong>workloads</strong> (servers, VMs, containers) —
+not the network perimeter alone.</p>
+<pre class="text"><code>Agent on workload  →  observes processes + flows  →  CSW SaaS console
+                              ↓
+                    Scopes + labels (compliance boundary)
+                              ↓
+                    ADM (learn who talks to whom)
+                              ↓
+                    Policy workspace (allow / deny / log)
+                              ↓
+                    Monitor → Simulation → Enforce
+                              ↓
+                    Exports = audit evidence</code></pre>
+<h3 id="console-map">Console map</h3>
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 46%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr>
+<th>Area</th>
+<th>Menu path (typical)</th>
+<th>Use for evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inventory</td>
+<td>Investigate → Inventory / Workloads</td>
+<td>Scope membership, agent health</td>
+</tr>
+<tr>
+<td>Flows</td>
+<td>Investigate → Flows / Flow Search</td>
+<td>Who talked to whom, when, on which port</td>
+</tr>
+<tr>
+<td>Processes</td>
+<td>Investigate → Processes</td>
+<td>Which binary opened the connection</td>
+</tr>
+<tr>
+<td>ADM</td>
+<td>Policy Lifecycle → ADM / Dependency map</td>
+<td>Live application diagram</td>
+</tr>
+<tr>
+<td>Policy</td>
+<td>Defend → Segmentation / Workspaces</td>
+<td>Allow/deny rules, simulation, enforce</td>
+</tr>
+<tr>
+<td>Denied traffic</td>
+<td>Defend → Denied Connections</td>
+<td>Proof enforcement blocked a flow</td>
+</tr>
+<tr>
+<td>Vulnerabilities</td>
+<td>Investigate → Vulnerability</td>
+<td>CVE + workload + reachability context</td>
+</tr>
+<tr>
+<td>Agents</td>
+<td>Manage → Agents / Sensors</td>
+<td>Coverage %, enforcement mode</td>
+</tr>
+<tr>
+<td>Connectors</td>
+<td>Platform → Orchestrators</td>
+<td>Cloud inventory without agents</td>
+</tr>
+<tr>
+<td>Audit</td>
+<td>Administration → Audit logs</td>
+<td>Who changed policy in CSW</td>
+</tr>
+</tbody>
+</table>
+<h3 id="modes-always-in-this-order-for-compliance-rollouts">Modes
+(always in this order for compliance rollouts)</h3>
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 42%" />
+<col style="width: 42%" />
+</colgroup>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Traffic impact</th>
+<th>Evidence value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Visibility / Monitor</strong></td>
+<td>None — observe only</td>
+<td>Baseline flows, ADM, scope proof</td>
+</tr>
+<tr>
+<td><strong>Simulation</strong></td>
+<td>None — predict blocks</td>
+<td>Safe pre-enforcement report for change board</td>
+</tr>
+<tr>
+<td><strong>Enforcement</strong></td>
+<td>Blocks non-matching traffic</td>
+<td>Primary segmentation control evidence</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Never skip Simulation</strong> before Enforce in regulated
+environments.</p>
+<hr />
+<h2 id="the-universal-4-phase-evidence-programme">The universal 4-phase
+evidence programme</h2>
+<p>Run this once per compliance boundary (CDE, PHI zone, CUI enclave,
+SWIFT zone, etc.). Timelines assume a pilot scope of 20–200 workloads;
+scale phases proportionally.</p>
+<h3 id="phase-1-coverage-and-inventory-days-110">Phase 1 — Coverage and
+inventory (Days 1–10)</h3>
+<p><strong>Goal:</strong> Prove every in-scope system component appears
+in CSW and is labeled.</p>
+<table>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 17%" />
+<col style="width: 29%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr>
+<th>Step</th>
+<th>Action</th>
+<th>CSW location</th>
+<th>Evidence artefact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.1</td>
+<td>Define in-scope IP/host list from compliance scope doc</td>
+<td>(customer doc)</td>
+<td>Scope document (input)</td>
+</tr>
+<tr>
+<td>1.2</td>
+<td>Install agents or enable cloud connectors</td>
+<td>Manage → Agents; Platform → Connectors</td>
+<td>Agent inventory export</td>
+</tr>
+<tr>
+<td>1.3</td>
+<td>Verify 100% of scope list appears in inventory</td>
+<td>Investigate → Inventory (filter by label/subnet)</td>
+<td>Screenshot + CSV export</td>
+</tr>
+<tr>
+<td>1.4</td>
+<td>Apply labels: <code>compliance:&lt;framework&gt;</code>,
+<code>data:&lt;class&gt;</code>, <code>env:&lt;tier&gt;</code></td>
+<td>Inventory → Labels</td>
+<td>Label policy doc</td>
+</tr>
+<tr>
+<td>1.5</td>
+<td>Create CSW <strong>scope</strong> matching compliance boundary</td>
+<td>Scopes / App scopes</td>
+<td>Scope definition export</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pass criteria:</strong> No in-scope workload missing from
+inventory for &gt;24 h without documented exception.</p>
+<p><strong>CSW effectiveness:</strong> Replaces manual CMDB
+reconciliation samples with <strong>continuous</strong> inventory tied
+to observed behaviour.</p>
+<hr />
+<h3 id="phase-2-behaviour-baseline-days-1128">Phase 2 — Behaviour
+baseline (Days 11–28)</h3>
+<p><strong>Goal:</strong> Produce a <strong>machine-generated</strong>
+communication map assessors treat as stronger than static diagrams.</p>
+<table>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 17%" />
+<col style="width: 29%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr>
+<th>Step</th>
+<th>Action</th>
+<th>CSW location</th>
+<th>Evidence artefact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2.1</td>
+<td>Start ADM on compliance scope; run ≥2 weeks (include
+billing/month-end if applicable)</td>
+<td>ADM / Application Dependency Mapping</td>
+<td>ADM cluster report</td>
+</tr>
+<tr>
+<td>2.2</td>
+<td>Document unexpected flows (scope creep, shadow IT, vendor
+egress)</td>
+<td>Investigate → Flow Search</td>
+<td>Anomaly flow export</td>
+</tr>
+<tr>
+<td>2.3</td>
+<td>Capture process context on critical flows (DB, auth,
+integration)</td>
+<td>Flow detail → process column</td>
+<td>Flow+process screenshot</td>
+</tr>
+<tr>
+<td>2.4</td>
+<td>Map ADM clusters to application owners; confirm data
+classification</td>
+<td>(workshop)</td>
+<td>Signed app-to-cluster table</td>
+</tr>
+<tr>
+<td>2.5</td>
+<td>Export dependency map for assessor</td>
+<td>ADM → Export / screenshot</td>
+<td><strong>Live network diagram</strong> artefact</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pass criteria:</strong> App owners attest ADM matches
+expected architecture; exceptions documented.</p>
+<p><strong>CSW effectiveness:</strong> PCI Req 1.2.1, HIPAA risk
+analysis, and NIST CM-2 all ask for <strong>current</strong>
+connectivity — ADM answers from telemetry, not last year’s Visio.</p>
+<hr />
+<h3 id="phase-3-policy-and-simulation-days-2945">Phase 3 — Policy and
+simulation (Days 29–45)</h3>
+<p><strong>Goal:</strong> Show <strong>designed</strong> isolation
+before you <strong>enforce</strong> it.</p>
+<table>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 17%" />
+<col style="width: 29%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr>
+<th>Step</th>
+<th>Action</th>
+<th>CSW location</th>
+<th>Evidence artefact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3.1</td>
+<td>Create policy workspace bound to compliance scope</td>
+<td>Defend → Segmentation</td>
+<td>Workspace config</td>
+</tr>
+<tr>
+<td>3.2</td>
+<td>Import ADM-suggested rules; add explicit DENY defaults</td>
+<td>Policy editor</td>
+<td>Policy export (JSON/CSV)</td>
+</tr>
+<tr>
+<td>3.3</td>
+<td>Run <strong>Simulation</strong> for 1–2 weeks</td>
+<td>Workspace → Simulation mode</td>
+<td>Simulation hit report</td>
+</tr>
+<tr>
+<td>3.4</td>
+<td>Remediate false positives with app owners</td>
+<td>(change tickets)</td>
+<td>Change log</td>
+</tr>
+<tr>
+<td>3.5</td>
+<td>Document compensating controls for rules deferred</td>
+<td>(GRC register)</td>
+<td>Exception register</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pass criteria:</strong> Simulation shows no business-breaking
+denies; all unmatched flows either allowed by rule or logged.</p>
+<p><strong>CSW effectiveness:</strong> Simulation produces
+<strong>change-board-ready</strong> evidence — critical for HIPAA, PCI,
+and FedRAMP change control (CM-3, Req 6.4).</p>
+<hr />
+<h3 id="phase-4-enforcement-and-continuous-proof-day-46">Phase 4 —
+Enforcement and continuous proof (Day 46+)</h3>
+<p><strong>Goal:</strong> Demonstrate controls <strong>operate
+effectively</strong> between audit cycles (PCI v4.0 language).</p>
+<table>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 17%" />
+<col style="width: 29%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr>
+<th>Step</th>
+<th>Action</th>
+<th>CSW location</th>
+<th>Evidence artefact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4.1</td>
+<td>Enable Enforcement on lowest-risk scope first</td>
+<td>Workspace → Enforce</td>
+<td>Enforcement screenshot</td>
+</tr>
+<tr>
+<td>4.2</td>
+<td>Run controlled negative test (unauthorized flow should fail)</td>
+<td>ping/curl + Denied Connections</td>
+<td>Test record + deny log</td>
+</tr>
+<tr>
+<td>4.3</td>
+<td>Export quarterly evidence pack (see table below)</td>
+<td>Multiple</td>
+<td><strong>Audit binder</strong></td>
+</tr>
+<tr>
+<td>4.4</td>
+<td>Integrate CSW alerts to SIEM (Splunk, Sentinel, etc.)</td>
+<td>Platform → Integrations</td>
+<td>SIEM sample events</td>
+</tr>
+<tr>
+<td>4.5</td>
+<td>Re-run ADM every 90 days; compare to policy baseline</td>
+<td>ADM diff</td>
+<td>Drift report</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pass criteria:</strong> Denied Connections shows test
+violation; production apps stable; quarterly pack complete.</p>
+<p><strong>CSW effectiveness:</strong> Moves from
+<strong>point-in-time</strong> audit samples (SOC 2 CC6) to
+<strong>continuous</strong> workload-resident proof.</p>
+<hr />
+<h2 id="quarterly-evidence-pack-copy-into-every-framework">Quarterly
+evidence pack (copy into every framework)</h2>
+<p>Export these every quarter (or per your assessor’s cadence). Map
+columns to control IDs using your framework runbook Section 10+.</p>
+<table>
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 23%" />
+<col style="width: 27%" />
+<col style="width: 41%" />
+</colgroup>
+<thead>
+<tr>
+<th>#</th>
+<th>Artefact</th>
+<th>CSW source</th>
+<th>Typical controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Scope membership snapshot</td>
+<td>Inventory → Export (filtered by compliance scope)</td>
+<td>Scope / asset inventory</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Agent coverage report</td>
+<td>Manage → Agents (% active, enforce mode)</td>
+<td>Monitoring / logging</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Policy workspace export</td>
+<td>Defend → Export policies</td>
+<td>Access control / segmentation</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Denied Connections log (90 days)</td>
+<td>Defend → Denied Connections</td>
+<td>Enforcement proof</td>
+</tr>
+<tr>
+<td>5</td>
+<td>ADM / dependency map</td>
+<td>ADM export</td>
+<td>Network diagram / data flows</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Vulnerability report (scoped)</td>
+<td>Investigate → Vulnerability</td>
+<td>Risk analysis / patch priority</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Policy change / audit log</td>
+<td>Administration → Audit</td>
+<td>Change management</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Sample incident flow export</td>
+<td>Investigate → Flow Search (if incident occurred)</td>
+<td>Incident response</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Simulation or enforcement attestation</td>
+<td>Workspace status + sign-off</td>
+<td>Operating effectiveness</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Exception / break-glass register</td>
+<td>(customer GRC)</td>
+<td>Compensating controls</td>
+</tr>
+</tbody>
+</table>
+<p>Store exports in your GRC tool with: <strong>date</strong>,
+<strong>scope</strong>, <strong>CSW tenant URL</strong>,
+<strong>exporting user</strong>, <strong>framework version</strong>.</p>
+<hr />
+<h2 id="api-and-automation-optional">API and automation (optional)</h2>
+<p>For repeatable evidence collection, use CSW OpenAPI (HMAC auth):</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: agent inventory</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> csw_api.py GET /openapi/v1/sensors</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: inventory search by label</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> csw_api.py POST /openapi/v1/inventory/search <span class="dt">\</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&#39;{&quot;filter&quot;:{&quot;type&quot;:&quot;eq&quot;,&quot;field&quot;:&quot;labels&quot;,&quot;value&quot;:&quot;compliance:hipaa&quot;},&quot;dimensions&quot;:[&quot;ip&quot;,&quot;hostname&quot;,&quot;enforcement_status&quot;],&quot;limit&quot;:500}&#39;</span></span></code></pre></div>
+<p>See <a href="https://github.com/chandrapati/CSW-POV-Tooling">CSW-POV-Tooling</a>
+or Cursor skill <code>csw-api</code> for helper scripts. <strong>Never
+commit API keys</strong> to this repository.</p>
+<hr />
+<h2 id="pairing-with-the-customer-facing-report">Pairing with the
+customer-facing report</h2>
+<table>
+<colgroup>
+<col style="width: 62%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr>
+<th>Document</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>This playbook + framework runbook</strong></td>
+<td>Engineers execute phases; GRC maps exports to control IDs</td>
+</tr>
+<tr>
+<td><strong>Compliance Report (PDF/DOCX)</strong></td>
+<td>Customer/auditor narrative; posture summary table</td>
+</tr>
+<tr>
+<td><strong>Framework Scope Design Guide</strong></td>
+<td>Workshop: which scopes/labels before Phase 1</td>
+</tr>
+</tbody>
+</table>
+<p>Workflow: <strong>Runbook → populate real exports → tailor Report
+placeholders → assessor review</strong>.</p>
+<hr />
+<h2 id="csw-effectiveness-why-programmes-choose-it">CSW effectiveness —
+why programmes choose it</h2>
+<table>
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 40%" />
+<col style="width: 26%" />
+</colgroup>
+<thead>
+<tr>
+<th>Compliance pain</th>
+<th>Traditional approach</th>
+<th>CSW approach</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“Prove segmentation”</td>
+<td>Annual firewall rule review + static diagram</td>
+<td>Continuous enforce + Denied Connections</td>
+</tr>
+<tr>
+<td>“Prove scope”</td>
+<td>Spreadsheet vs. CMDB</td>
+<td>Live inventory + labels + scope queries</td>
+</tr>
+<tr>
+<td>“Prove logging”</td>
+<td>SIEM only (may miss east-west)</td>
+<td>Workload flow + process telemetry</td>
+</tr>
+<tr>
+<td>“Prove vuln priority”</td>
+<td>CVE list without reachability</td>
+<td>CVE on workload + who can connect</td>
+</tr>
+<tr>
+<td>“Prove lateral movement control”</td>
+<td>Assume VLANs work</td>
+<td>East-west policy at process/workload tier</td>
+</tr>
+<tr>
+<td>“Prove change control”</td>
+<td>Sample of change tickets</td>
+<td>Policy audit log + ADM drift vs. baseline</td>
+</tr>
+</tbody>
+</table>
+<p>CSW does <strong>not</strong> replace governance, physical security,
+encryption key management, or formal penetration testing — it
+<strong>compresses</strong> the workload-resident slice of evidence into
+one queryable system.</p>
+<hr />
+<h2 id="next-steps">Next steps</h2>
+<ol type="1">
+<li>Pick your framework folder → open
+<code>*-Technical-Runbook.md</code>.</li>
+<li>Read <strong>Reader’s Guide</strong> + <strong>CSW primer</strong>
+(injected section) for your industry.</li>
+<li>Execute Phases 1–4 above; use framework Section 10 for control ID
+mapping.</li>
+<li>Tailor the matching <strong>Compliance Report</strong> for
+leadership/auditor conversations.</li>
+<li>Validate with your assessor before formal reliance — see <a href="../README.html">repository disclaimer</a>.</li>
+</ol>
+</body>
+</html>

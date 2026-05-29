@@ -23,6 +23,7 @@ CSS = TOOLS / "style.css"
 
 DOCS_PAGES = [
     ("docs/about-csw",                 "Background — What is Cisco Secure Workload?"),
+    ("docs/compliance-evidence-playbook", "CSW Compliance Evidence Playbook"),
     ("docs/why-these-mappings-matter", "Why these mappings matter"),
     ("docs/audience-and-usage",        "Audience and usage guide"),
 ]
@@ -172,6 +173,8 @@ def build_index(report_html_paths: list[tuple[str, str | None, str | None]]) -> 
         "compliance-mapping focus, asset library, scope notes, and disclaimer.</li>\n"
         '  <li><a href="docs/about-csw.html">Background &mdash; What is Cisco Secure Workload?</a>'
         " &mdash; one-page intro to the platform.</li>\n"
+        '  <li><a href="docs/compliance-evidence-playbook.html">CSW Compliance Evidence Playbook</a>'
+        " &mdash; step-by-step guide for CSW newcomers (evidence programme, exports).</li>\n"
         '  <li><a href="docs/why-these-mappings-matter.html">Why these mappings matter</a>'
         " &mdash; conversation-starter questions to ask about your own environment.</li>\n"
         '  <li><a href="docs/audience-and-usage.html">Audience and usage guide</a>'
