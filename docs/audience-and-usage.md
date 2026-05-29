@@ -23,12 +23,20 @@ pointed here by your Cisco account team, or are doing a broader
 evaluation, here's a way to navigate the material that respects your
 time:
 
+0. **If you are new to CSW, read the
+   [Compliance evidence playbook](./compliance-evidence-playbook.md)
+   first.** It explains CSW console areas, Monitor→Simulation→Enforce,
+   and a universal 4-phase evidence programme before you dive into
+   framework-specific control IDs.
 1. **Open the framework that's actually on your roadmap.** The one tied
    to a current audit, a customer contractual ask, or board-level
-   pressure. Skimming all sixteen will dilute the signal — pick one
+   pressure. Skimming all thirty-four will dilute the signal — pick one
    and stay with it.
 2. **Start with the technical runbook (`*-Technical-Runbook.md` in the
-   same folder).** It shows the *how*: sensor deployment phases, policy
+   same folder).** Each runbook now includes a **CSW primer**, **universal
+   evidence workflow checklists**, and **framework-specific CSW effectiveness**
+   highlights at the top — then the detailed phased deployment for that
+   standard. It shows the *how*: sensor deployment phases, policy
    patterns, evidence collection cadence, and typical proof points to
    validate with your auditor or assessor. If the runbook's level of detail looks
    plausible for your environment, that's the strongest signal that the
@@ -100,6 +108,7 @@ CSW-Compliance-Mapping/
 ├── INDEX.md             ← control-ID lookup across all frameworks
 ├── docs/                ← background and navigation pages (this folder)
 │   ├── about-csw.md     ← what Cisco Secure Workload actually is
+│   ├── compliance-evidence-playbook.md  ← NEW: step-by-step for CSW newcomers
 │   ├── why-these-mappings-matter.md
 │   └── audience-and-usage.md
 ├── HIPAA/

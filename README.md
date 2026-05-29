@@ -46,6 +46,7 @@ questions worth walking through against your own environment — see
 
 | Asset | Use it for | Formats |
 |---|---|---|
+| **Compliance evidence playbook** | Step-by-step CSW operations for newcomers — coverage, ADM, simulation, enforce, quarterly export pack | [MD](./docs/compliance-evidence-playbook.md) |
 | Framework Scope Design Guide | Translating each compliance framework into practical CSW scope patterns, customer workshop questions, and label/tag recommendations | [MD](./docs/framework-scope-design.md) · [PDF](./docs/framework-scope-design.pdf) |
 
 ## Asset library
@@ -137,6 +138,9 @@ reach for the runbook vs. the report).
 
 ## Read next
 
+- **[Compliance evidence playbook](./docs/compliance-evidence-playbook.md)** —
+  **start here if you are new to CSW** — universal 4-phase evidence programme,
+  console map, quarterly export pack, and CSW effectiveness vs. manual audits.
 - **[Background — What is Cisco Secure Workload?](./docs/about-csw.md)** —
   one-page intro to the platform, its agent + connector model, and the
   ML capabilities relevant to this repository.

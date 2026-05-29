@@ -37,6 +37,82 @@ to section 4 if you're building the evidence package now.
 
 ---
 
+<!-- CSW-RUNBOOK-PRIMER:v1 -->
+
+## CSW primer — if you are new to Cisco Secure Workload
+
+Cisco Secure Workload (CSW) is a **workload protection platform**. A lightweight **agent** on each server/VM/container observes processes and network flows; **cloud connectors** add AWS/Azure/GCP inventory where agents are not deployed.
+
+| CSW term | Meaning | Why compliance teams care |
+|----------|---------|---------------------------|
+| **Scope** | Logical boundary (CDE, PHI zone, CUI enclave) | Defines the systems you must prove are isolated |
+| **Label / filter** | Tag or query assigning workloads to scopes | Automates scope membership — reduces drift |
+| **ADM** | Application Dependency Mapping from observed traffic | **Live** network/data-flow diagram for assessors |
+| **Workspace** | Policy container for one scope or application | Where allow/deny rules are authored |
+| **Monitor → Simulation → Enforce** | Safe rollout sequence | Simulation = change-board evidence before blocking traffic |
+| **Denied Connections** | Log of flows blocked by policy | Primary proof that enforcement **operates** |
+
+**Console areas:** Investigate (inventory, flows, vulns) · Defend/Segmentation (policy) · Manage (agents) · Platform (connectors) · Administration (audit log)
+
+**Read next:** [Compliance evidence playbook](../docs/compliance-evidence-playbook.md) (full step-by-step) · [About CSW](../docs/about-csw.md) (platform intro)
+
+---
+
+## Universal evidence workflow
+
+Execute these phases for **this framework's** compliance boundary. Map exports to control IDs in the **Reporting & Evidence** section below.
+
+| Phase | Goal | Key CSW actions | Typical duration |
+|-------|------|-----------------|------------------|
+| **1 — Coverage** | Every in-scope workload in CSW | Install agents/connectors; apply compliance labels; create scope | Days 1–10 |
+| **2 — Baseline** | Machine-generated flow map | Run ADM ≥2 weeks; export clusters; app-owner signoff | Days 11–28 |
+| **3 — Policy** | Designed isolation before enforce | Build workspace; Simulation mode; fix false positives | Days 29–45 |
+| **4 — Operate** | Continuous proof between audits | Enforce; quarterly export pack; ADM refresh every 90 days | Ongoing |
+
+### Phase 1 checklist (coverage)
+
+- [ ] In-scope host list reconciled to CSW Inventory (100% or documented exceptions)
+- [ ] Labels applied: `compliance:<framework>`, `data:<classification>`, `env:<tier>`
+- [ ] CSW scope created matching compliance boundary
+- [ ] **Export:** inventory CSV + agent status screenshot
+
+### Phase 2 checklist (baseline)
+
+- [ ] ADM running on compliance scope for full business cycle (≥2 weeks)
+- [ ] Unexpected flows documented (shadow IT, vendor egress, scope creep)
+- [ ] App owners signed cluster-to-application mapping
+- [ ] **Export:** ADM diagram + flow samples with process context
+
+### Phase 3 checklist (policy)
+
+- [ ] Default-deny posture defined for sensitive scope
+- [ ] ADM-imported rules refined; Simulation run ≥1 week
+- [ ] Change tickets for false-positive fixes; exception register updated
+- [ ] **Export:** policy export + simulation report
+
+### Phase 4 checklist (operate)
+
+- [ ] Enforcement enabled on pilot scope; negative test recorded in Denied Connections
+- [ ] Quarterly pack: inventory, policy, denies, vulns, audit log (see playbook)
+- [ ] SIEM integration verified (sample events)
+- [ ] **Export:** enforcement screenshot + quarterly binder
+
+### What CSW evidence does not replace
+
+Physical access, HR/training records, encryption key management, signed BAAs/vendor contracts, formal pen tests, and assessor attestation still require separate programmes. CSW addresses the **workload-resident** slice: segmentation, flows, process context, vuln reachability, and change drift.
+
+---
+
+## CSW effectiveness for this framework
+
+- AC-4 information-flow enforcement with exportable policy artefacts
+- CA-7 continuous monitoring via inventory, flows, and violations
+- CM-2/3/8 baseline and change tracking through ADM drift
+
+**Compared to manual programmes:** static diagrams and annual firewall samples age immediately; CSW ties evidence to **live workload behaviour** and produces queryable exports on demand — supporting "operating effectively" language in PCI v4.0, SOC 2 CC7, and HIPAA risk analysis.
+
+---
+
 ## 1. Overview
 
 NIST SP 800-53 Rev 5 provides a comprehensive catalog of security and privacy controls for federal information systems. CSW can support technical evidence for selected controls across seven key families: **AC** (Access Control), **AU** (Audit & Accountability), **CM** (Configuration Management), **IR** (Incident Response), **RA** (Risk Assessment), **SC** (System & Communications Protection), and **SI** (System & Information Integrity).

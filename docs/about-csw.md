@@ -72,6 +72,8 @@ that data answers — and what artefact you'd hand over in each case.
 
 **See also**
 
+- [Compliance evidence playbook](./compliance-evidence-playbook.md) —
+  step-by-step guide for CSW newcomers building assessor-ready exports.
 - [Why these mappings matter](./why-these-mappings-matter.md) — the
   conversation prompts that explain why segmentation and workload
   evidence are leading indicators, not just compliance checkboxes.
