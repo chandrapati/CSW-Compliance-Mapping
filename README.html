@@ -310,6 +310,43 @@ reading.</p>
 Workload?</a> for a one-page intro to the platform itself, then come
 back to pick a framework.</p>
 </blockquote>
+<h2 id="executive-overview-60-second-read">Executive overview —
+60-second read</h2>
+<blockquote>
+<p><strong>For a CISO / CIO skimming this for the first
+time.</strong></p>
+</blockquote>
+<ul>
+<li><strong>What this is.</strong> A reference library that maps Cisco
+Secure Workload (CSW) capabilities to <strong>34 security, regulatory,
+and zero-trust frameworks</strong> — so you can see <em>which</em>
+controls CSW helps you evidence, and <em>how</em>, before committing
+budget or audit hours.</li>
+<li><strong>What you get per framework.</strong> Two paired documents —
+a <strong>technical runbook</strong> (the engineering view:
+configuration steps, sample policies, exact evidence exports) and a
+<strong>customer-facing report</strong> (the narrative built on that
+work) — each in Markdown, DOCX, PDF, and HTML.</li>
+<li><strong>The core idea.</strong> CSW turns live workload behaviour —
+<em>who talks to whom, on which port, via which process, and what
+changed</em> — into micro-segmentation, drift tracking, and
+forensic-grade flow evidence. The same evidence answers the
+<strong>auditor</strong> (“prove the control still holds, not just on
+audit day”) and the <strong>incident responder</strong> (“what moved
+laterally, and what changed”). That overlap is why segmentation shows up
+across PCI, HIPAA, NIST, DORA, NIS2, and the zero-trust models.</li>
+<li><strong>Where to start.</strong> New to CSW → <a href="./docs/compliance-evidence-playbook.html">compliance evidence
+playbook</a>. Hunting a specific control → <a href="./INDEX.html"><code>INDEX.md</code></a>. Choosing a framework → the
+<a href="#asset-library">asset library</a> table below.</li>
+<li><strong>Read this before relying on it.</strong> These mappings are
+<strong>informational reference only</strong> — not legal, audit, or
+completeness advice. They require <strong>SME review</strong> against
+current official sources and your assessors. Note the
+explicitly-labelled drafts and proposals: <strong>HIPAA 2025
+NPRM</strong> is a <em>proposed</em> rule; <strong>CIS / CSF 2.0 / CMMC
+2.0</strong> and <strong>NERC CIP / TSA Pipeline</strong> are <em>draft
+v1</em> cross-framework or IT-side sector overlays. See the full <a href="#disclaimer">Disclaimer</a>.</li>
+</ul>
 <h2 id="why-these-mappings-exist">Why these mappings exist</h2>
 <p>Compliance frameworks were written by humans trying to describe what
 “good security” looks like for a class of risk. They are
@@ -846,5 +883,124 @@ operations.</p>
 <p>For questions, scoping discussions, or to validate how these mappings
 apply to your environment, please contact your <strong>Cisco account
 team</strong>.</p>
+<hr />
+<h2 id="related-cisco-secure-workload-resources">Related Cisco Secure
+Workload Resources</h2>
+<table>
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 38%" />
+<col style="width: 26%" />
+</colgroup>
+<thead>
+<tr>
+<th>Repository</th>
+<th>Description</th>
+<th>Best for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/chandrapati/CSW-User-Education">User
+Education</a></td>
+<td>Onboarding guides and concept explainers</td>
+<td>New CSW users</td>
+</tr>
+<tr>
+<td><a href="https://github.com/chandrapati/CSW-Agent-Installation-Guide">Agent
+Installation</a></td>
+<td>Deploy CSW agents on Linux / Windows / cloud</td>
+<td>Day-1 sensor deployment</td>
+</tr>
+<tr>
+<td><a href="https://github.com/chandrapati/CSW-Policy-Lifecycle">Policy
+Lifecycle</a></td>
+<td>Policy discovery → enforcement workflow</td>
+<td>Policy management</td>
+</tr>
+<tr>
+<td><a href="https://github.com/chandrapati/csw-ise-integration">ISE /
+pxGrid</a></td>
+<td>ISE/pxGrid: user-identity–aware microsegmentation</td>
+<td>Identity &amp; Zero Trust</td>
+</tr>
+<tr>
+<td><a href="https://github.com/chandrapati/csw-anyconnect-nvm">AnyConnect
+NVM</a></td>
+<td>Endpoint process flows + user identity via NVM</td>
+<td>Endpoint telemetry</td>
+</tr>
+<tr>
+<td><a href="https://github.com/chandrapati/csw-servicenow-integration">ServiceNow
+CMDB</a></td>
+<td>ServiceNow CMDB label enrichment for workload scopes</td>
+<td>CMDB-driven policy</td>
+</tr>
+<tr>
+<td><a href="https://github.com/chandrapati/csw-aws-connector">AWS
+Connector</a></td>
+<td>EC2 tag ingestion + VPC flow logs + Security Group enforcement</td>
+<td>AWS workloads</td>
+</tr>
+<tr>
+<td><a href="https://github.com/chandrapati/csw-azure-connector">Azure
+Connector</a></td>
+<td>Azure VM tag ingestion + VNet flow logs + NSG enforcement</td>
+<td>Azure workloads</td>
+</tr>
+<tr>
+<td><a href="https://github.com/chandrapati/csw-gcp-connector">GCP
+Connector</a></td>
+<td>GCE label ingestion + VPC flow logs + firewall enforcement</td>
+<td>GCP workloads</td>
+</tr>
+<tr>
+<td><a href="https://github.com/chandrapati/csw-netflow-integration">NetFlow</a></td>
+<td>NetFlow v9/IPFIX agentless flow ingestion from switches</td>
+<td>Network fabric visibility</td>
+</tr>
+<tr>
+<td><a href="https://github.com/chandrapati/csw-erspan-integration">ERSPAN</a></td>
+<td>Agentless packet mirroring for legacy / OT / IoT devices</td>
+<td>Deep agentless visibility</td>
+</tr>
+<tr>
+<td><a href="https://github.com/chandrapati/CSW-Secure-Firewall-Integration-Guide">Secure
+Firewall</a></td>
+<td>NSEL flow ingestion from Cisco Secure Firewall (FTD/ASA)</td>
+<td>Firewall flow visibility</td>
+</tr>
+<tr>
+<td><a href="https://github.com/chandrapati/csw-splunk-integration">Splunk
+Integration</a></td>
+<td>CSW syslog alerts → Splunk SIEM</td>
+<td>SecOps / SIEM teams</td>
+</tr>
+<tr>
+<td><a href="https://github.com/chandrapati/CSW-Compliance-Mapping">Compliance
+Mapping</a></td>
+<td>Map CSW controls to NIST, PCI-DSS, HIPAA, CIS</td>
+<td>Compliance &amp; audit</td>
+</tr>
+<tr>
+<td><a href="https://github.com/chandrapati/CSW-Tenant-Insights">Tenant
+Insights</a></td>
+<td>Tenant-level reporting and analytics</td>
+<td>Visibility metrics</td>
+</tr>
+<tr>
+<td><a href="https://github.com/chandrapati/CSW-Operations-Toolkit">Operations
+Toolkit</a></td>
+<td>Day-2 ops scripts: health checks, reporting, policy analysis</td>
+<td>Ongoing operations</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Suggested customer journey:</strong><br />
+User Education → Agent Installation → Policy Lifecycle → ISE/pxGrid →
+ServiceNow CMDB → Splunk Integration → Compliance Mapping → Operations
+Toolkit</p>
+</blockquote>
 </body>
 </html>

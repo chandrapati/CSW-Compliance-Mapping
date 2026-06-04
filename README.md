@@ -11,6 +11,37 @@ and HTML versions of both for browser/mobile reading.
 > for a one-page intro to the platform itself, then come back to pick a
 > framework.
 
+## Executive overview — 60-second read
+
+> **For a CISO / CIO skimming this for the first time.**
+
+- **What this is.** A reference library that maps Cisco Secure Workload
+  (CSW) capabilities to **34 security, regulatory, and zero-trust
+  frameworks** — so you can see *which* controls CSW helps you evidence,
+  and *how*, before committing budget or audit hours.
+- **What you get per framework.** Two paired documents — a **technical
+  runbook** (the engineering view: configuration steps, sample policies,
+  exact evidence exports) and a **customer-facing report** (the narrative
+  built on that work) — each in Markdown, DOCX, PDF, and HTML.
+- **The core idea.** CSW turns live workload behaviour — *who talks to
+  whom, on which port, via which process, and what changed* — into
+  micro-segmentation, drift tracking, and forensic-grade flow evidence.
+  The same evidence answers the **auditor** ("prove the control still
+  holds, not just on audit day") and the **incident responder** ("what
+  moved laterally, and what changed"). That overlap is why segmentation
+  shows up across PCI, HIPAA, NIST, DORA, NIS2, and the zero-trust models.
+- **Where to start.** New to CSW → [compliance evidence
+  playbook](./docs/compliance-evidence-playbook.md). Hunting a specific
+  control → [`INDEX.md`](./INDEX.md). Choosing a framework → the
+  [asset library](#asset-library) table below.
+- **Read this before relying on it.** These mappings are **informational
+  reference only** — not legal, audit, or completeness advice. They
+  require **SME review** against current official sources and your
+  assessors. Note the explicitly-labelled drafts and proposals: **HIPAA
+  2025 NPRM** is a *proposed* rule; **CIS / CSF 2.0 / CMMC 2.0** and
+  **NERC CIP / TSA Pipeline** are *draft v1* cross-framework or
+  IT-side sector overlays. See the full [Disclaimer](#disclaimer).
+
 ## Why these mappings exist
 
 Compliance frameworks were written by humans trying to describe what
