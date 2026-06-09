@@ -79,6 +79,7 @@ questions worth walking through against your own environment — see
 |---|---|---|
 | **Compliance evidence playbook** | Step-by-step CSW operations for newcomers — coverage, ADM, simulation, enforce, quarterly export pack | [MD](./docs/compliance-evidence-playbook.md) · [PDF](./docs/compliance-evidence-playbook.pdf) · [DOCX](./docs/compliance-evidence-playbook.docx) · [HTML](./docs/compliance-evidence-playbook.html) |
 | Framework Scope Design Guide | Translating each compliance framework into practical CSW scope patterns, customer workshop questions, and label/tag recommendations | [MD](./docs/framework-scope-design.md) · [PDF](./docs/framework-scope-design.pdf) |
+| **SE compliance & cyber-insurance role-play** | A first discovery-conversation rehearsal aid for SEs/SAs and partners — open by asking compliance needs, map pain to CSW, frame in the customer's framework, and answer the cyber-insurance / ransomware supplemental control questions honestly (what CSW covers vs. what to pair) | [MD](./docs/se-compliance-cyber-insurance-roleplay.md) · [PDF](./docs/se-compliance-cyber-insurance-roleplay.pdf) · [DOCX](./docs/se-compliance-cyber-insurance-roleplay.docx) · [HTML](./docs/se-compliance-cyber-insurance-roleplay.html) |
 
 ## Asset library
 
@@ -181,6 +182,11 @@ reach for the runbook vs. the report).
 - **[Framework Scope Design Guide](./docs/framework-scope-design.md)** —
   customer workshop aid for translating framework obligations into CSW
   scopes, labels, and evidence boundaries.
+- **[SE compliance & cyber-insurance role-play](./docs/se-compliance-cyber-insurance-roleplay.md)** —
+  a discovery-conversation rehearsal aid: open by asking compliance needs,
+  map pain to CSW, frame it in the customer's framework, and answer the
+  cyber-insurance / ransomware supplemental honestly (what CSW covers vs.
+  what to pair).
 - **[Audience and usage guide](./docs/audience-and-usage.md)** — who
   should lead with which document, runbook-vs-report guidance, file
   format guidance, and the full folder layout.
