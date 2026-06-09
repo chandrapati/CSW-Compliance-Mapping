@@ -20,7 +20,7 @@ priorities, visibility gaps, or drift across "what's supposed to happen"
 versus "what's actually happening." They are overlapping views of similar
 underlying risk.
 
-- **Can you enumerate, right now—at the fidelity your monitoring stack
+- **Can you enumerate, right now—at the granularity your monitoring stack
   actually provides—every process talking to your cardholder data
   environment, and reason about how that picture changed over roughly the
   last 30 days without a rebuild-the-world project?** *(PCI DSS Req 1.2,
@@ -137,7 +137,7 @@ things these mappings demonstrate concretely:
   argument.
 
 If after reading any one framework you can answer *"yes, our current
-controls already produce artefacts on page X at comparable fidelity
+controls already produce artefacts on page X at comparable granularity
 without undue manual effort"* — Cisco Secure Workload may add little beyond
 marginal convenience for that obligation. Ambiguity—or heavy glue—to get
 answers is generally the pragmatic signal to revisit the conversation with
