@@ -194,6 +194,10 @@ reach for the runbook vs. the report).
   format guidance, and the full folder layout.
 - **[`INDEX.md`](./INDEX.md)** — control-ID lookup across all thirty-four
   frameworks.
+- **[CSW Epic EHR Microsegmentation Guide](https://github.com/chandrapati/CSW-Epic-Microsegmentation-Guide)** —
+  step-by-step practitioner runbook for Epic tier scopes, ADM, Interconnect/HL7
+  policy, enforcement, and HIPAA quarterly evidence — pairs directly with the
+  HIPAA and HITRUST runbooks in this repo.
 
 Once GitHub Pages is enabled, the same content is also browseable at
 `https://chandrapati.github.io/CSW-Compliance-Mapping/` (landing page
@@ -284,8 +288,9 @@ apply to your environment, please contact your **Cisco account team**.
 | [Secure Firewall](https://github.com/chandrapati/CSW-Secure-Firewall-Integration-Guide) | NSEL flow ingestion from Cisco Secure Firewall (FTD/ASA) | Firewall flow visibility |
 | [Splunk Integration](https://github.com/chandrapati/csw-splunk-integration) | CSW syslog alerts → Splunk SIEM | SecOps / SIEM teams |
 | [Compliance Mapping](https://github.com/chandrapati/CSW-Compliance-Mapping) | Map CSW controls to NIST, PCI-DSS, HIPAA, CIS | Compliance & audit |
+| [Epic EHR Microsegmentation](https://github.com/chandrapati/CSW-Epic-Microsegmentation-Guide) | Step-by-step Epic tier microsegmentation with CSW | Healthcare / Epic platform teams |
 | [Tenant Insights](https://github.com/chandrapati/CSW-Tenant-Insights) | Tenant-level reporting and analytics | Visibility metrics |
 | [Operations Toolkit](https://github.com/chandrapati/CSW-Operations-Toolkit) | Day-2 ops scripts: health checks, reporting, policy analysis | Ongoing operations |
 
 > **Suggested customer journey:**  
-> User Education → Agent Installation → Policy Lifecycle → ISE/pxGrid → ServiceNow CMDB → Splunk Integration → Compliance Mapping → Operations Toolkit
+> User Education → Agent Installation → Policy Lifecycle → ISE/pxGrid → ServiceNow CMDB → Splunk Integration → Compliance Mapping → **Epic Microsegmentation Guide (healthcare)** → Operations Toolkit

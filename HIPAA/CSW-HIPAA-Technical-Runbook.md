@@ -54,7 +54,7 @@ Cisco Secure Workload (CSW) is a **workload protection platform**. A lightweight
 
 **Console areas:** Investigate (inventory, flows, vulns) · Defend/Segmentation (policy) · Manage (agents) · Platform (connectors) · Administration (audit log)
 
-**Read next:** [Compliance evidence playbook](../docs/compliance-evidence-playbook.md) (full step-by-step) · [About CSW](../docs/about-csw.md) (platform intro)
+**Read next:** [Compliance evidence playbook](../docs/compliance-evidence-playbook.md) (full step-by-step) · [About CSW](../docs/about-csw.md) (platform intro) · [Epic EHR microsegmentation guide](https://github.com/chandrapati/CSW-Epic-Microsegmentation-Guide) (step-by-step Epic tier rollout)
 
 ---
 
@@ -469,6 +469,7 @@ Retain forensic exports for minimum **6 years** per HIPAA documentation requirem
 
 ## Related Frameworks
 
+- [CSW Epic EHR Microsegmentation Guide](https://github.com/chandrapati/CSW-Epic-Microsegmentation-Guide) — step-by-step Epic tier scopes, ADM, Interconnect/HL7, enforcement, and quarterly HIPAA evidence pack (implements many controls below for Epic estates).
 - [NIST SP 800-53 Rev 5](../NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md) — HHS recognises 800-53 as a basis for satisfying §164.306(a) administrative, physical, and technical safeguards.
 - [ISO/IEC 27001:2022](../ISO-27001-2022/CSW-ISO27001-Technical-Runbook.md) — for healthcare entities operating under both HIPAA and ISO 27001.
 - [NIS2 (EU 2022/2555)](../NIS2/CSW-NIS2-Technical-Runbook.md) — for healthcare entities with EU operations; healthcare is an essential sector under NIS2.
