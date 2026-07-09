@@ -270,7 +270,7 @@ apply to your environment, please contact your **Cisco account team**.
 
 ---
 
-## Related Cisco Secure Workload Resources
+## CSW Integration Guides & Resources
 
 | Repository | Description | Best for |
 |------------|-------------|---------|
