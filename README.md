@@ -75,6 +75,14 @@ For the longer argument — including the five conversation-starter
 questions worth walking through against your own environment — see
 [Why these mappings matter](./docs/why-these-mappings-matter.md).
 
+## How the mapping works
+
+![Cisco Secure Workload Compliance Mapping Architecture](csw-compliance-architecture.png)
+
+*The same Secure Workload capabilities — micro-segmentation, process & flow telemetry, software inventory & CVE awareness, forensic flow evidence, and authored workload policy — are mapped, control by control, to 34 compliance and zero-trust frameworks. Each framework folder pairs an engineering runbook with a customer-facing report so the same live evidence answers both the auditor and the incident responder.*
+
+---
+
 ## Customer design aids
 
 | Asset | Use it for | Formats |
