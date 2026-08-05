@@ -1,7 +1,7 @@
 # Cisco Secure Workload — PCI DSS v4.0 Compliance Framework
 ## Technical Runbook | Payment Card Industry Accounts
 
-**Version:** 1.0 | **Standard:** PCI DSS v4.0 (March 2022)
+**Version:** 1.1 | **Standard:** PCI DSS v4.0.1 (June 2024) — the current errata of PCI DSS v4.0 (March 2022). All future-dated v4.0 requirements are now **effective and mandatory** (as of 31 March 2025).
 
 ---
 
@@ -17,8 +17,9 @@ evidence.
 - *Can I prove every system component currently "in scope" for PCI is
   actually in scope today, with no scope drift since last assessment?*
   (Req 12.5.2)
-- *Req 1.2.1 calls for a current network diagram of CDE flows. What is
-  the live, machine-generated artifact form of that diagram?*
+- *Reqs 1.2.3 and 1.2.4 call for current, accurate network and
+  account-data-flow diagrams of the CDE. What is the live,
+  machine-generated artifact form of those diagrams?*
 - *Req 11.5.2 (change-detection on critical files) — what is my signal
   that nothing was added to the CDE between assessments?*
 - *Req 10.2 logging — am I capturing audit-relevant events at the
@@ -33,7 +34,8 @@ year's RoC sections).
 
 **Where to start.** Sections 1–2 if scope is in motion; section 3 to
 walk requirement-by-requirement; sections 4–5 if you're inside the
-assessment window or preparing v4.0 transition evidence.
+assessment window or assembling evidence for the now-mandatory
+future-dated v4.0 requirements.
 
 ---
 
@@ -115,18 +117,19 @@ Physical access, HR/training records, encryption key management, signed BAAs/ven
 
 ## 1. Overview
 
-PCI DSS v4.0 introduces customized implementation approaches and strengthens network segmentation requirements. CSW can support evidence for aspects of PCI DSS Requirements 1 (network controls), 6 (vulnerability management), 10 (logging/monitoring), and 11 (security testing) where workload-level visibility and enforcement apply; confirm final scope and evidence sufficiency with your QSA.
+PCI DSS v4.0 introduces the customized approach and strengthens network segmentation requirements; **v4.0.1 (June 2024)** is the current errata, and the future-dated v4.0 requirements are now **in force** (mandatory since 31 March 2025). CSW can support evidence for aspects of PCI DSS Requirements 1 (network security controls), 6 (vulnerability management), 10 (logging/monitoring), 11 (security testing, including **segmentation penetration-test** support), and 12 (**scope validation**) where workload-level visibility and enforcement apply; confirm final scope and evidence sufficiency with your QSA.
 
 ### PCI DSS Requirement → CSW Capability Map
 
 | PCI Requirement | CSW Capability |
 |---|---|
-| Req 1 — Network Security Controls | Micro-segmentation, CDE isolation |
+| Req 1 — Network Security Controls | Micro-segmentation, CDE isolation, live network/data-flow diagrams (ADM) |
 | Req 2 — Secure Configurations | Vulnerability detection, process monitoring |
 | Req 6 — Vulnerability Management | Continuous vulnerability exposure visibility, CVSS prioritization |
 | Req 7 — Access Control | Workload-level allowlist enforcement |
-| Req 10 — Logging & Monitoring | Full flow + process telemetry |
-| Req 11 — Security Testing | ADM baseline deviation detection |
+| Req 10 — Logging & Monitoring | Full flow + process telemetry; supports automated log review (10.4.1.1) |
+| Req 11 — Security Testing | ADM baseline deviation detection; segmentation-isolation evidence for 11.4.5 / 11.4.6; IDS/IPS context (11.5.1) |
+| Req 12 — Scope Management | ADM/flow evidence for CDE scope validation (12.5.2 / 12.5.2.1) |
 
 ---
 
@@ -174,6 +177,10 @@ CSW Policy: CDE-Isolation
   DENY: CDE → Internet (no direct internet access)
   LOG: All policy violations with full context
 ```
+
+**1.2.3 / 1.2.4 — Accurate network and account-data-flow diagrams**
+- CSW ADM generates a **live application-dependency / data-flow map** of the CDE from observed traffic — the machine-generated form of the network diagram (1.2.3) and account-data-flow diagram (1.2.4), refreshed on demand rather than redrawn annually
+- Export the ADM diagram and flow inventory as assessor evidence that the diagrams reflect **current** CDE connectivity
 
 **1.3.1 — Inbound traffic to CDE restricted**
 - CSW enforces allowlist-only inbound to CDE scope
@@ -237,6 +244,10 @@ CSW captures per CDE workload:
 - CSW dashboard provides daily summary of CDE events
 - Automated alert export to SOC/SIEM eliminates manual review burden
 
+**10.4.1.1 — Automated audit log review (future-dated; now mandatory)**
+- CSW streams flow, process, and policy-violation events to the SIEM via the Data Tap / syslog connector, enabling **automated** log-review mechanisms rather than manual inspection
+- Baseline-deviation and denied-connection alerts give the automated review concrete CDE signals to key on
+
 ### Requirement 11 — Security Testing
 
 **11.3.1 — External vulnerability scans quarterly**
@@ -247,6 +258,32 @@ CSW captures per CDE workload:
 - ADM baseline used as pre-pentest reference
 - Post-pentest ADM comparison detects any new paths discovered
 - Forensic telemetry captures all pentest activity for review
+
+**11.4.5 — Segmentation controls penetration-tested (all entities, ≥ every 12 months)**
+- Where segmentation isolates the CDE, CSW provides strong **supporting** evidence that the isolation holds: ADM shows zero CDE ↔ out-of-scope flows, enforced policy blocks cross-boundary attempts, and Denied Connections logs the blocks
+- Run this evidence **before and after** the required segmentation penetration test; the test itself must still be performed by a qualified tester and validated by your QSA
+
+**11.4.6 — Segmentation controls penetration-tested (service providers, ≥ every 6 months)**
+- Service providers repeat the 11.4.5 evidence on the six-month cadence and after any change to segmentation controls/methods
+- CSW change tracking (ADM refresh + policy version history) flags the "after any change" trigger between scheduled tests
+
+**11.5.1 — Intrusion detection/prevention at the CDE perimeter and critical points**
+- CSW forensic rules and network-anomaly detection add **workload-tier** intrusion signals that complement (do not replace) network IDS/IPS at the CDE boundary
+- Denied Connections and anomaly alerts feed the SOC/SIEM for detection and response
+
+### Requirement 12 — Scope Management & Risk
+
+**12.5.2 — PCI DSS scope validated (≥ every 12 months)**
+- CSW ADM/flow evidence confirms which system components actually communicate with the CDE, helping validate the documented scope and surface **scope creep** since the last assessment
+- Export inventory + flow map as the machine-generated basis for the annual scope confirmation
+
+**12.5.2.1 — Scope validated (service providers, ≥ every 6 months)**
+- Service providers repeat scope validation every six months and after significant changes to the CDE; CSW change tracking highlights new or removed CDE-connected workloads between reviews
+
+### Appendix A1 — Multi-Tenant Service Providers
+
+**A1.1 — Logical separation between customers**
+- CSW per-customer **scopes** and enforced policy isolate each tenant's workloads; ADM + Denied Connections evidence that one customer's environment cannot reach another's
 
 ---
 
@@ -261,18 +298,25 @@ CSW captures per CDE workload:
 | CDE scope membership snapshot | Inventory → Export | Req 1, Req 7 | Monthly |
 | Anomaly detection log | Alerts → Dashboard | Req 10, Req 11 | Monthly |
 | ADM dependency map (CDE) | Investigate → ADM | Req 1 | Quarterly |
+| Segmentation isolation evidence (no CDE↔out-of-scope flows + denies) | Investigate → ADM · Defend → Denied Connections | Req 11.4.5 / 11.4.6 | Per segmentation test |
+| CDE scope validation pack (inventory + flow map) | Inventory → Export · Investigate → ADM | Req 12.5.2 / 12.5.2.1 | Annually / SP semi-annually |
 | Process audit log (CDE) | Investigate → Process Search | Req 10 | On-demand |
 
 ---
 
 ## 5. PCI DSS v4.0 New Requirements CSW Addresses
 
+*The future-dated v4.0 requirements below are now **mandatory** (effective 31 March 2025) and are carried forward unchanged in v4.0.1.*
+
 | New in v4.0 | CSW Response |
 |---|---|
 | 12.3.2 — Targeted risk analysis for each requirement | CSW vulnerability + ADM data feeds risk analysis |
-| 1.2.1 — All traffic flows documented and approved | ADM produces observed-flow documentation for CSW-instrumented paths; human approval and non-CSW paths remain part of CDE documentation |
+| 1.2.4 — Account-data-flow diagram kept current | ADM produces observed-flow documentation for CSW-instrumented paths; human approval and non-CSW paths remain part of CDE documentation |
 | 6.3.3 — All vulnerabilities addressed per risk ranking | Continuous vulnerability exposure view with CVSS-ranked remediation inputs |
+| 10.4.1.1 — Automated audit log review | Flow/process/policy events streamed to the SIEM enable automated review |
 | 10.7.2 — Failures of critical security controls detected | Sensor offline alerts, policy enforcement gap detection |
+| 11.4.6 — SP segmentation pen-test every 6 months | ADM + enforce + Denied Connections isolation evidence on the SP cadence |
+| 12.5.2.1 — SP scope validation every 6 months | Inventory + flow evidence to confirm CDE scope semi-annually |
 
 ---
 
