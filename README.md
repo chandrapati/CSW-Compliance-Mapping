@@ -90,6 +90,22 @@ questions worth walking through against your own environment — see
 | **Compliance evidence playbook** | Step-by-step CSW operations for newcomers — coverage, ADM, simulation, enforce, quarterly export pack | [MD](./docs/compliance-evidence-playbook.md) · [PDF](./docs/compliance-evidence-playbook.pdf) · [DOCX](./docs/compliance-evidence-playbook.docx) · [HTML](./docs/compliance-evidence-playbook.html) |
 | Framework Scope Design Guide | Translating each compliance framework into practical CSW scope patterns, customer workshop questions, and label/tag recommendations | [MD](./docs/framework-scope-design.md) · [PDF](./docs/framework-scope-design.pdf) |
 | **SE compliance & cyber-insurance role-play** | A first discovery-conversation rehearsal aid for SEs/SAs and partners — open by asking compliance needs, map pain to CSW, frame in the customer's framework, and answer the cyber-insurance / ransomware supplemental control questions honestly (what CSW covers vs. what to pair) | [MD](./docs/se-compliance-cyber-insurance-roleplay.md) · [PDF](./docs/se-compliance-cyber-insurance-roleplay.pdf) · [DOCX](./docs/se-compliance-cyber-insurance-roleplay.docx) · [HTML](./docs/se-compliance-cyber-insurance-roleplay.html) |
+| Governance and Evidence Standards | Control applicability, shared responsibility, evidence integrity, export handling, exceptions, and mapping lifecycle | [MD](./docs/governance-and-evidence-standards.md) |
+| Evidence Package Manifest | Capturing scope, collection provenance, classification, integrity checks, limitations, and exceptions for customer evidence packages | [YAML](./templates/evidence-package-manifest.yaml) |
+
+## Governance baseline
+
+These assets are **evidence mappings**, not compliance attestations. Use the
+[Governance and Evidence Standards](./docs/governance-and-evidence-standards.md)
+to record whether CSW makes a direct or supporting evidence contribution,
+where complementary controls are required, and which party owns each control.
+Customer-specific exports, credentials, raw diagnostic bundles, and unredacted
+evidence belong in the customer-approved evidence system—not in this repository.
+
+The library contains both legacy hand-authored reports and generated report
+assets. Treat every customer-facing artifact as **draft unless marked
+SME-reviewed** for the applicable framework edition, CSW release, deployment
+scope, and shared-responsibility model.
 
 ## Asset library
 

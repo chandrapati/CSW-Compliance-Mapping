@@ -42,12 +42,11 @@ time:
    plausible for your environment, that's the strongest signal that the
    mapping is real and not marketing — and it's the right place to
    stress-test scope before investing in a wider read.
-3. **Then read the matching report.** Open the executive summary in the
-   PDF and jump to the *Compliance Posture Summary* table. It tells you
-   in one page which control families CSW addresses fully, which it
-   addresses partially, and where you'll need complementary controls.
-   With the runbook fresh in your head, the report reads as the
-   evidence story for work you've already verified is real.
+3. **Then read the matching report.** Use it to explain how CSW can
+   contribute evidence, where customer-owned or complementary controls
+   remain necessary, and which scope assumptions must be validated.
+   Do not interpret the report as a compliance attestation or a claim
+   that CSW alone fully addresses a control family.
 4. **Once you've grounded the conversation in compliance language, read
    the NIST 800-207 and 800-207A reports.** These shift the lens from
    *"what do we have to do?"* to *"what does a defensible zero-trust
@@ -95,6 +94,10 @@ time:
   conversations; renders natively in the GitHub web UI. Generated from
   the DOCX via LibreOffice; treat the DOCX as the editable master and
   re-generate the PDF after any edits.
+- **Generated niche PDFs** — Summary renderings for selected frameworks.
+  Use the matching Markdown runbook and editable DOCX as the primary
+  engineering/evidence sources; do not submit a simplified generated PDF
+  alone as an audit evidence package.
 - **HTML** — Browseable, mobile-friendly view for both runbooks and
   reports. Once GitHub Pages is enabled, the same HTML is published at
   `https://chandrapati.github.io/CSW-Compliance-Mapping/` (landing page:
@@ -111,6 +114,8 @@ CSW-Compliance-Mapping/
 │   ├── compliance-evidence-playbook.md  ← NEW: step-by-step for CSW newcomers
 │   ├── why-these-mappings-matter.md
 │   └── audience-and-usage.md
+├── templates/           ← customer-evidence templates (no customer data)
+│   └── evidence-package-manifest.yaml
 ├── HIPAA/
 ├── SOC2/
 ├── PCI-DSS-v4/
@@ -126,7 +131,8 @@ CSW-Compliance-Mapping/
 ├── TSA-Pipeline/        ← TSA-designated natural gas / oil pipelines (IT side)
 ├── CIS-Controls-v8/     ← CIS Critical Security Controls v8.1 (IG2 lead)
 ├── NIST-CSF-2/          ← NIST Cybersecurity Framework 2.0 (Govern + 5 functions)
-└── CMMC-2/              ← CMMC 2.0 (Level 2 lead, with L1 / L3 deltas)
+├── CMMC-2/              ← CMMC 2.0 (Level 2 lead, with L1 / L3 deltas)
+└── …                    ← 18 additional framework folders; see README
 ```
 
 Every framework folder follows the same shape: a Markdown technical
@@ -140,5 +146,6 @@ customer-facing report, and HTML versions of both built by
 
 - [Background — What is Cisco Secure Workload?](./about-csw.md)
 - [Why these mappings matter](./why-these-mappings-matter.md)
+- [Governance and Evidence Standards](./governance-and-evidence-standards.md)
 - [Repository README](../README.md) — asset library, scope notes, and
   disclaimer.

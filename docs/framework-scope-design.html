@@ -1,0 +1,2409 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Framework Scope Design Guide</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+:root {
+--fg: #1f2328;
+--fg-muted: #59636e;
+--bg: #ffffff;
+--bg-muted: #f6f8fa;
+--border: #d1d9e0;
+--link: #0969da;
+--link-hover: #0349b4;
+--code-bg: #f6f8fa;
+--accent: #cf222e;
+--max-width: 920px;
+}
+@media (prefers-color-scheme: dark) {
+:root {
+--fg: #e6edf3;
+--fg-muted: #9198a1;
+--bg: #0d1117;
+--bg-muted: #151b23;
+--border: #3d444d;
+--link: #4493f8;
+--link-hover: #6cb6ff;
+--code-bg: #151b23;
+--accent: #ff7b72;
+}
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+margin: 0 auto;
+max-width: var(--max-width);
+padding: 2rem 1.25rem 4rem;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+font-size: 16px;
+line-height: 1.6;
+color: var(--fg);
+background: var(--bg);
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 2rem;
+margin-bottom: 1rem;
+font-weight: 600;
+line-height: 1.25;
+}
+h1 { font-size: 2rem; border-bottom: 1px solid var(--border); padding-bottom: .35rem; }
+h2 { font-size: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: .3rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1rem; }
+h5, h6 { font-size: .875rem; color: var(--fg-muted); }
+p, ul, ol, blockquote, pre, table { margin: 0 0 1rem; }
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+ul, ol { padding-left: 1.6rem; }
+li + li { margin-top: .15rem; }
+blockquote {
+margin: 0 0 1rem;
+padding: .5rem 1rem;
+color: var(--fg-muted);
+border-left: .25rem solid var(--border);
+background: var(--bg-muted);
+border-radius: 0 6px 6px 0;
+}
+code, pre, kbd, samp {
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+font-size: .9em;
+}
+code {
+background: var(--code-bg);
+padding: .15rem .35rem;
+border-radius: 4px;
+}
+pre {
+background: var(--code-bg);
+padding: 1rem;
+border-radius: 6px;
+overflow: auto;
+font-size: .85rem;
+line-height: 1.45;
+}
+pre code { background: transparent; padding: 0; font-size: inherit; }
+table {
+display: block;
+width: 100%;
+overflow: auto;
+border-collapse: collapse;
+}
+th, td {
+border: 1px solid var(--border);
+padding: .5rem .75rem;
+vertical-align: top;
+text-align: left;
+}
+th {
+background: var(--bg-muted);
+font-weight: 600;
+}
+tbody tr:nth-child(2n) { background: var(--bg-muted); }
+hr {
+border: 0;
+height: 1px;
+background: var(--border);
+margin: 2rem 0;
+}
+img { max-width: 100%; height: auto; }
+
+.doc-meta {
+margin: 0 0 2rem;
+padding: .75rem 1rem;
+border: 1px solid var(--border);
+border-radius: 6px;
+background: var(--bg-muted);
+font-size: .9rem;
+color: var(--fg-muted);
+}
+.doc-meta a { font-weight: 500; }
+
+@media print {
+body { max-width: none; padding: 0; color: #000; background: #fff; }
+a { color: #000; text-decoration: underline; }
+pre, code, blockquote { background: #f5f5f5; }
+}
+</style>
+</head>
+<body>
+<div class="doc-meta">Source: <a href="framework-scope-design.html">framework-scope-design.md</a> · <a href="../index.html">repository index</a> · Build: 2026-08-10T20:59:53Z UTC · Repository commit: 2cc60f0</div>
+<header id="title-block-header">
+<h1 class="title">Framework Scope Design Guide</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#cisco-secure-workload-framework-scope-design-guide" id="toc-cisco-secure-workload-framework-scope-design-guide">Cisco Secure
+Workload — Framework Scope Design Guide</a>
+<ul>
+<li><a href="#table-of-contents" id="toc-table-of-contents">Table of
+contents</a></li>
+<li><a href="#scope-design-principles" id="toc-scope-design-principles">Scope Design Principles</a></li>
+<li><a href="#framework-scope-design-table" id="toc-framework-scope-design-table">Framework Scope Design
+Table</a></li>
+<li><a href="#label-tag-recommendations" id="toc-label-tag-recommendations">Label / Tag Recommendations</a>
+<ul>
+<li><a href="#baseline-labels-for-every-customer" id="toc-baseline-labels-for-every-customer">Baseline Labels for Every
+Customer</a></li>
+<li><a href="#framework-specific-labels" id="toc-framework-specific-labels">Framework-Specific Labels</a></li>
+</ul></li>
+<li><a href="#workshop-output-checklist" id="toc-workshop-output-checklist">Workshop Output Checklist</a></li>
+<li><a href="#customer-conversation-prompt" id="toc-customer-conversation-prompt">Customer Conversation
+Prompt</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="cisco-secure-workload-framework-scope-design-guide">Cisco Secure
+Workload — Framework Scope Design Guide</h1>
+<p><a id="top"></a></p>
+<p>Customer-facing scope and label patterns for Cisco Secure Workload
+(CSW) compliance mapping workshops.</p>
+<p>Use this guide before a proof-of-value, deployment planning workshop,
+or evidence-readiness discussion. It helps teams translate framework
+language into practical CSW scopes, labels, and evidence boundaries.
+These patterns are starting points: validate final scope with the
+customer’s architecture, asset owners, compliance team, and
+assessor.</p>
+<h2 id="table-of-contents">Table of contents</h2>
+<ul>
+<li><a href="#scope-design-principles">Scope design principles</a></li>
+<li><a href="#framework-scope-design-table">Framework scope design</a>
+<ul>
+<li><a href="#hipaa-security-rule">HIPAA Security Rule</a></li>
+<li><a href="#soc-2-type-ii">SOC 2 Type II</a></li>
+<li><a href="#pci-dss-v40">PCI DSS v4.0</a></li>
+<li><a href="#nist-sp-800-53-rev-5">NIST SP 800-53 Rev. 5</a></li>
+<li><a href="#isoiec-270012022">ISO/IEC 27001:2022</a></li>
+<li><a href="#cisa-zero-trust-maturity-model">CISA Zero Trust Maturity
+Model</a></li>
+<li><a href="#fips-140">FIPS 140</a></li>
+<li><a href="#nist-sp-800-207">NIST SP 800-207</a></li>
+<li><a href="#nist-sp-800-207a">NIST SP 800-207A</a></li>
+<li><a href="#dora">DORA</a></li>
+<li><a href="#nis2">NIS2</a></li>
+<li><a href="#nerc-cip">NERC CIP</a></li>
+<li><a href="#tsa-pipeline-security-directive">TSA Pipeline Security
+Directive</a></li>
+<li><a href="#cis-controls-v81">CIS Controls v8.1</a></li>
+<li><a href="#nist-csf-20">NIST CSF 2.0</a></li>
+<li><a href="#cmmc-20">CMMC 2.0</a></li>
+<li><a href="#iec-62443">IEC 62443</a></li>
+<li><a href="#gdpr">GDPR</a></li>
+<li><a href="#mitre-attck">MITRE ATT&amp;CK</a></li>
+<li><a href="#fedramp">FedRAMP</a></li>
+<li><a href="#swift-cscf">SWIFT CSCF</a></li>
+<li><a href="#hitrust-csf-v11">HITRUST CSF v11</a></li>
+<li><a href="#nist-sp-800-171-rev-3">NIST SP 800-171 Rev. 3</a></li>
+<li><a href="#csa-ccm-v40">CSA CCM v4.0</a></li>
+<li><a href="#cobit-2019">COBIT 2019</a></li>
+<li><a href="#australian-essential-eight">Australian Essential
+Eight</a></li>
+<li><a href="#uk-cyber-essentials-plus">UK Cyber Essentials
+Plus</a></li>
+<li><a href="#hipaa-security-rule--2025-nprm">HIPAA Security Rule — 2025
+NPRM</a></li>
+<li><a href="#mas-trm">MAS TRM</a></li>
+<li><a href="#apra-cps-234">APRA CPS 234</a></li>
+<li><a href="#ny-dfs-23-nycrr-part-500">NY DFS 23 NYCRR Part
+500</a></li>
+<li><a href="#tisax">TISAX</a></li>
+<li><a href="#nist-sp-800-82">NIST SP 800-82</a></li>
+<li><a href="#bsi-c5">BSI C5</a></li>
+</ul></li>
+<li><a href="#label--tag-recommendations">Label / tag
+recommendations</a>
+<ul>
+<li><a href="#baseline-labels-for-every-customer">Baseline labels for
+every customer</a></li>
+<li><a href="#framework-specific-labels">Framework-specific
+labels</a></li>
+</ul></li>
+<li><a href="#workshop-output-checklist">Workshop output
+checklist</a></li>
+<li><a href="#customer-conversation-prompt">Customer conversation
+prompt</a></li>
+</ul>
+<h2 id="scope-design-principles">Scope Design Principles</h2>
+<ol type="1">
+<li><strong>Start from the protected service, not the tool.</strong>
+Define the system, business function, data boundary, or regulated
+environment first; then map CSW scopes to that boundary.</li>
+<li><strong>Separate regulatory scope from operational
+ownership.</strong> A PCI CDE, HIPAA ePHI zone, CUI enclave, or DORA
+important business function may cross teams, clouds, and platforms.</li>
+<li><strong>Use labels for policy and evidence.</strong> Scopes should
+be generated from stable labels where possible so inventory, ADM, flow
+search, policy workspaces, and reports use the same vocabulary.</li>
+<li><strong>Reconcile CSW coverage.</strong> CSW evidence covers
+instrumented workloads and supported connector visibility. Reconcile
+gaps with the CMDB, cloud inventory, OT inventory, IAM, SIEM,
+vulnerability scanner, and GRC tools.</li>
+<li><strong>Keep out-of-scope explicit.</strong> Physical controls,
+legal obligations, cryptographic module validation, IAM/MFA, endpoint
+malware controls, and OT device enforcement usually require
+complementary controls.</li>
+</ol>
+<p><a href="#top">↑ Back to top</a></p>
+<p><a id="framework-mappings"></a></p>
+<h2 id="framework-scope-design-table">Framework Scope Design Table</h2>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th>Framework</th>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>Boundaries and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HIPAA Security Rule</td>
+<td>ePHI applications, databases, clinical integrations, and business
+associate connections</td>
+<td><code>Healthcare-Org</code> &gt; <code>ePHI-Zone</code> &gt;
+app/service scopes such as <code>EHR</code>, <code>Billing</code>,
+<code>PACS</code>, <code>HL7</code>; separate <code>BAA-Partners</code>
+egress scope</td>
+<td>ePHI workload isolation, access-path evidence, audit-control
+telemetry, risk-analysis inputs</td>
+<td>HIPAA administrative, physical, legal, and BAA obligations remain
+outside CSW; validate PHI classification with privacy/compliance
+owners</td>
+</tr>
+<tr>
+<td>SOC 2 Type II</td>
+<td>The service organization’s system boundary and selected Trust
+Services Criteria</td>
+<td><code>SOC2-System</code> &gt; <code>Production</code>,
+<code>Supporting-Infra</code>, <code>Admin-Access</code>,
+<code>Vendor-Integrations</code>; align scope to system description</td>
+<td>Operating-effectiveness evidence for segmentation, monitoring,
+change drift, incident investigation</td>
+<td>SOC 2 criteria depend on the auditor’s system description and
+control design; CSW augments IAM, change management, SIEM, and
+availability controls</td>
+</tr>
+<tr>
+<td>PCI DSS v4.0</td>
+<td>Cardholder Data Environment (CDE), CDE-connected systems, and
+security-impacting systems</td>
+<td><code>PCI-Environment</code> &gt; <code>CDE</code>,
+<code>CDE-Connected</code>, <code>Security-Services</code>,
+<code>Third-Party-Processors</code>,
+<code>Out-of-Scope-Validation</code></td>
+<td>CDE flow documentation, segmentation simulation/enforcement, policy
+exceptions, vulnerability exposure context</td>
+<td>CSW does not replace QSA judgment, ASV scans, penetration testing,
+network security controls, or PCI governance requirements</td>
+</tr>
+<tr>
+<td>NIST SP 800-53 Rev. 5</td>
+<td>FISMA/FedRAMP system boundary and SSP control implementation</td>
+<td><code>System-Boundary</code> &gt; impact-level or component scopes
+such as <code>Moderate</code>, <code>High</code>,
+<code>Data-Store</code>, <code>App-Tier</code>,
+<code>Management</code></td>
+<td>AC, AU, CM, IR, RA, SC, and SI evidence for covered workloads</td>
+<td>Full 800-53 scope includes many controls outside CSW: identity,
+personnel, physical, contingency, privacy, and governance controls</td>
+</tr>
+<tr>
+<td>ISO/IEC 27001:2022</td>
+<td>ISMS scope, information assets, and Annex A control
+applicability</td>
+<td><code>ISMS-Boundary</code> &gt; <code>Confidential-Data</code>,
+<code>Business-Critical-Apps</code>, <code>Cloud-Services</code>,
+<code>Supplier-Connections</code></td>
+<td>Annex A.8 monitoring, network security, segregation, vulnerability,
+and supplier-egress evidence</td>
+<td>Certification depends on ISMS design, SoA, risk treatment, internal
+audit, and management review; CSW is a technical evidence source</td>
+</tr>
+<tr>
+<td>CISA Zero Trust Maturity Model</td>
+<td>Agency/enterprise zero-trust initiative by pillar and use case</td>
+<td><code>ZT-Workloads</code> &gt; <code>Sensitive-Apps</code>,
+<code>Privileged-Admin</code>, <code>Inter-App-Flows</code>,
+<code>External-Dependencies</code></td>
+<td>Workload-layer evidence for networks and applications/workloads
+pillars, plus visibility and analytics</td>
+<td>ZTMM maturity is organizational; pair CSW with IdP, MFA, device
+posture, data governance, SIEM/SOAR, and policy orchestration</td>
+</tr>
+<tr>
+<td>FIPS 140</td>
+<td>Systems handling regulated cryptographic use or plaintext-protocol
+risk</td>
+<td><code>Crypto-Review</code> &gt; <code>Sensitive-Transport</code>,
+<code>Plaintext-Protocol-Candidates</code>,
+<code>FIPS-Required-Systems</code></td>
+<td>Detection/blocking of obvious plaintext transports and inventory
+support for cryptographic usage review</td>
+<td>CSW is not a FIPS-validated cryptographic module; validation, key
+management, and module selection belong to FIPS-validated
+libraries/HSMs</td>
+</tr>
+<tr>
+<td>NIST SP 800-207</td>
+<td>Zero Trust Architecture tenets for workload-to-workload access</td>
+<td><code>ZTA-Resources</code> &gt; <code>Protected-Resources</code>,
+<code>Policy-Enforced-Flows</code>, <code>Observed-Dependencies</code>,
+<code>Exceptions</code></td>
+<td>Resource inventory, per-connection flow evidence, dynamic scoping,
+workload enforcement as one possible PEP placement</td>
+<td>NIST ZTA also requires identity, device posture, policy decision
+architecture, and enterprise-wide telemetry beyond CSW</td>
+</tr>
+<tr>
+<td>NIST SP 800-207A</td>
+<td>PDP/PEP/PA/PIP component mapping for a cloud-native ZTA
+discussion</td>
+<td><code>ZTA-Components</code> &gt; <code>PEP-Analogue</code>,
+<code>Policy-Workspace</code>, <code>Telemetry-PIP</code>,
+<code>SOAR-Integrated</code></td>
+<td>Illustrative traceability from CSW policy, enforcement, and
+telemetry to 207A-style logical components</td>
+<td>Treat PDP/PEP/PA/PIP mapping as an analogue for workload
+segmentation, not a complete enterprise ZTA architecture</td>
+</tr>
+<tr>
+<td>DORA</td>
+<td>Important business functions (IBFs), supporting ICT assets, and
+third-party dependencies</td>
+<td><code>DORA-IBF</code> &gt; one scope per IBF, with nested
+<code>Critical</code>, <code>Supporting</code>,
+<code>Third-Party-Egress</code>, <code>Incident-Dossier</code>
+scopes</td>
+<td>Article 8 inventory inputs, Article 9 segmentation, Article 10
+detection, Article 19 incident evidence, Article 28 technical
+egress</td>
+<td>DORA governance, register of information, contracts, testing
+programme, and authority reporting remain customer-owned</td>
+</tr>
+<tr>
+<td>NIS2</td>
+<td>Essential/important entity services and Article 21 risk-management
+measures</td>
+<td><code>NIS2-Service</code> &gt; <code>Essential-Service</code>,
+<code>Important-Service</code>, <code>Supplier-Egress</code>,
+<code>Incident-Reporting</code>, <code>High-Risk-Workloads</code></td>
+<td>Risk-policy enforcement evidence, incident dossier, supply-chain
+egress, vulnerability exposure, secured workload paths</td>
+<td>MFA, training, governance, cryptography, secured voice/video, and
+national transposition specifics require complementary programmes</td>
+</tr>
+<tr>
+<td>NERC CIP</td>
+<td>IT-side systems supporting BES Cyber System functions</td>
+<td><code>BES-Supporting-IT</code> &gt; <code>EACMS</code>,
+<code>Jump-Hosts</code>, <code>Vendor-Access</code>,
+<code>BCSI-Hosts</code>, <code>Identity-PKI</code>,
+<code>Patch-Repos</code></td>
+<td>IT-side ESP boundary evidence, interactive remote access paths,
+ports/services baseline, vulnerability and change evidence</td>
+<td>CSW is not an EAP and does not enforce on PLCs/RTUs/IEDs/HMIs; pair
+with boundary firewalls and OT-aware monitoring</td>
+</tr>
+<tr>
+<td>TSA Pipeline Security Directive</td>
+<td>IT-side systems supporting Critical Cyber Systems and IT/OT
+segmentation</td>
+<td><code>Pipeline-IT-Estate</code> &gt; <code>OT-Facing-IT</code>,
+<code>CCS-Supporting-IT</code>, <code>Vendor-Access</code>,
+<code>Patch-Repositories</code>, <code>Corporate-IT</code></td>
+<td>IT-side segmentation, documented IT-to-OT flows, access control,
+monitoring, unpatched-system risk evidence</td>
+<td>CSW does not replace the Cybersecurity Coordinator, CAP/CIRP,
+architecture review, boundary firewall, or OT DPI/monitoring tools</td>
+</tr>
+<tr>
+<td>CIS Controls v8.1</td>
+<td>Enterprise assets and software in the customer’s Implementation
+Group scope</td>
+<td><code>CIS-IG2</code> &gt; <code>Enterprise-Assets</code>,
+<code>Software-Inventory</code>, <code>Secure-Config</code>,
+<code>Vuln-Exposure</code>, <code>Network-Monitoring</code></td>
+<td>Controls 1, 2, 4, 7, 8, 13, and 17 evidence for covered
+workloads</td>
+<td>Reconcile CSW inventory with enterprise source of truth; endpoint,
+email, awareness, backup, and data controls are broader than CSW</td>
+</tr>
+<tr>
+<td>NIST CSF 2.0</td>
+<td>CSF Profile outcomes, target tier, and management reporting
+needs</td>
+<td><code>CSF-Profile</code> &gt; <code>Govern-Evidence</code>,
+<code>Identify-Assets</code>, <code>Protect-Segmentation</code>,
+<code>Detect-Monitoring</code>, <code>Respond-Dossier</code>,
+<code>Recover-Diff</code></td>
+<td>Technical evidence that feeds GV, ID, PR, DE, RS, and RC
+outcomes</td>
+<td>CSF is an outcomes framework; CSW does not author the Profile or
+replace governance, risk appetite, or enterprise policy decisions</td>
+</tr>
+<tr>
+<td>CMMC 2.0</td>
+<td>FCI/CUI enclave and CMMC assessment boundary</td>
+<td><code>CMMC-Scope</code> &gt; <code>CUI-Enclave</code>,
+<code>FCI-Systems</code>, <code>CUI-Connected</code>,
+<code>Admin-Access</code>, <code>External-Services</code>,
+<code>Out-of-Scope-Validation</code></td>
+<td>AC, AU, CM, RA, SC, and SI technical evidence for CUI-scope
+workloads</td>
+<td>CMMC requires SSP, POA&amp;M, CUI scoping, and C3PAO/government
+assessment as applicable; CSW supports evidence but does not certify
+compliance</td>
+</tr>
+<tr>
+<td>IEC 62443</td>
+<td>IT-side systems supporting IACS zones &amp; conduits (engineering
+workstations, jump hosts, historians, brokers — not Level 0–2 OT
+devices)</td>
+<td><code>Industrial-IACS</code> &gt; <code>Plant-OT-Support</code>,
+<code>Conduit-&lt;id&gt;</code>, <code>DMZ-Brokers</code>,
+<code>Vendor-Remote-Access</code> — labels mirror approved zone/conduit
+reference design</td>
+<td>SR 5 restricted data flow; SR 1 access paths; SR 3 integrity
+baselines; SR 6–7 monitoring &amp; availability signals for adjacent
+IT</td>
+<td>CSW does not inspect ICS wire payloads on PLCs/RTUs/IEDs; pair with
+OT PAS (Cyber Vision, Claroty, Nozomi) and integrator-approved conduit
+tests</td>
+</tr>
+<tr>
+<td>GDPR</td>
+<td>Systems processing personal data, aligned to RoPA activity IDs and
+processor egress</td>
+<td><code>GDPR-In-Scope</code> &gt; <code>ROPA-&lt;activity&gt;</code>,
+<code>Personal-Data-Tier</code>, <code>Sub-Processors-Egress</code></td>
+<td>Art. 25/32 technical measures (segmentation, monitoring, cleartext
+posture); Art. 30 flow corroboration; Art. 28 egress; breach forensics
+for Art. 33–34 (<em>legal owns filings</em>)</td>
+<td>Lawful basis, DPIA sign-off, DSARs, records text fields, and Schrems
+II assessments remain legal/privacy-owned</td>
+</tr>
+<tr>
+<td>MITRE ATT&amp;CK</td>
+<td>Enterprise detection &amp; containment programme scoped to crown
+jewels and lateral choke points</td>
+<td><code>Enterprise-ATTCK</code> &gt;
+<code>Tier0-Identity-Adjacent</code>, <code>Crown-Jewel-Apps</code>,
+<code>Jump-Host-Enclave</code>, <code>Internet-Facing-Entry</code></td>
+<td>Tactic-level evidence (TA0001–TA0011, TA0040) from flow/process
+telemetry plus segmentation containment</td>
+<td>CSW is not full EDR/email/identity coverage — pair with SIEM,
+XDR/EDR, and hunting workflows</td>
+</tr>
+<tr>
+<td>FedRAMP</td>
+<td>FedRAMP Moderate (or agency) authorization boundary for a cloud
+system</td>
+<td><code>FedRAMP-InScope</code> &gt; <code>Management-Plane</code>,
+<code>App-Tier</code>, <code>Data-Tier</code>,
+<code>Security-Monitoring</code> mapped to SSP components</td>
+<td>AC-4 / SC-7 workload enforcement; CA-7 ConMon exports;
+CM/RA/SI/AU/IR technical attachments; POA&amp;M-ready vuln rows</td>
+<td>CSW the <strong>product</strong> is not itself FedRAMP-authorized;
+reconcile inheritance vs customer responsibility in the SSP; 3PAO
+validates</td>
+</tr>
+<tr>
+<td>SWIFT CSCF</td>
+<td>SWIFT secure zone &amp; adjacent controlled interfaces per CSP
+architecture</td>
+<td><code>SWIFT-Program</code> &gt; <code>SWIFT-Secure-Zone</code>
+(<code>Messaging-Interfaces</code>, <code>Operator-Jump-Hosts</code>) +
+<code>SWIFT-Adjacent</code></td>
+<td>CSCF 1.1 zone isolation; 1.4 internet egress restriction; 2.1
+internal flows (ADM); 2.6 session confidentiality; 6.4 logging</td>
+<td>Mandatory vs Advisory applicability follows <strong>your</strong>
+official CSCF v2024 matrix row; CSW does not complete CSP
+attestation</td>
+</tr>
+<tr>
+<td>HITRUST CSF v11</td>
+<td>MyCSF assessment scope spanning harmonised baselines (HIPAA, ISO,
+NIST, PCI as cited in PRS)</td>
+<td><code>HITRUST-In-Scope</code> &gt; <code>PHI-Production</code> (if
+applicable), <code>PCI-CDE-Connected</code>,
+<code>Enterprise-Critical</code></td>
+<td>01.m/01.n/01.o segregation &amp; connection control; 09.ab/09.ad
+monitoring &amp; operator evidence; 10.a ADM; 10.m vuln; 11.a/11.c
+incident artefacts; e1/i1/r2 export depth per programme</td>
+<td>Certification remains with HITRUST/assessor; confirm <strong>exact
+PRS</strong> keys in MyCSF</td>
+</tr>
+<tr>
+<td>NIST SP 800-171 Rev. 3</td>
+<td>CUI systems and enclaves per SSP / CMMC assessment context</td>
+<td><code>CUI-Program</code> &gt; <code>CUI-Enclave</code> &gt;
+<code>CUI-Apps</code>, <code>CUI-Data</code>,
+<code>Security-Services</code>, <code>Non-CUI</code></td>
+<td>03.01.03 information-flow enforcement; 03.13.06 deny-by-default;
+03.03 audit telemetry; 03.04 baselines; 03.11 vuln reachability</td>
+<td>Confirm <strong>Rev. 2 vs. Rev. 3</strong> baseline with PMO;
+administrative, physical, IdP, and FIPS modules remain
+complementary</td>
+</tr>
+<tr>
+<td>CSA CCM v4</td>
+<td>Multicloud / hybrid services in CCM or CSA STAR scope</td>
+<td><code>CCM-STAR</code> &gt; <code>Prod-Regulated</code>,
+<code>Shared-Services</code>, <code>Sandbox</code> (separate policy
+workspaces from prod)</td>
+<td>IVS-09-style segmentation; DSP tier isolation; LOG / SIEM
+forwarding; TVM reachability; AIS interface inventory</td>
+<td>Map each row to <strong>shared responsibility</strong> (customer vs
+CSP); HRS and pure programme attestations stay organisational</td>
+</tr>
+<tr>
+<td>COBIT 2019</td>
+<td>IT governance assessments where technology evidence is required for
+DSS / BAI / MEA</td>
+<td><code>COBIT-Evidence</code> &gt; <code>Production-Critical</code>,
+<code>Admin-Jump</code>, <code>Third-Party-Integration</code></td>
+<td>DSS05.02 connectivity security; APO13 managed security posture;
+MEA01/02 conformance exports; BAI06/10 change &amp; configuration
+signals</td>
+<td>Culture, HR, sourcing, and full SOx narratives remain outside CSW;
+attach evidence only to technology-addressable practices</td>
+</tr>
+<tr>
+<td>Australian Essential Eight</td>
+<td>Organisations aligning to ACSC EEMM strategies E1–E8</td>
+<td><code>E8-Scope</code> &gt; <code>Crown-Jewels</code>,
+<code>Windows-Servers</code>, <code>Linux-Servers</code>,
+<code>Admins-Jump-Zone</code></td>
+<td>E2/E6 CVE+EPSS prioritisation; E5 admin-path restriction; E1/E4
+complementary process telemetry</td>
+<td>CSW does <strong>not</strong> replace allowlisting, Office macro
+policy, MFA, or backup programmes</td>
+</tr>
+<tr>
+<td>UK Cyber Essentials Plus</td>
+<td>UK organisations in Cyber Essentials <strong>Plus</strong>
+certification boundary</td>
+<td><code>UK-CE</code> &gt; <code>CE-In-Scope-Production</code>,
+<code>Corporate-Standard</code>, <code>Partner-Connectivity</code></td>
+<td>CE1 workload-level firewall; CE2 inventory &amp; drift; CE3
+east-west least privilege; CE5 vuln backlog</td>
+<td>Accredited assessor awards certification; CSW complements perimeter
+firewalls and AV/EDR</td>
+</tr>
+<tr>
+<td>HIPAA Security Rule (2025 NPRM)</td>
+<td>Covered entities / BAs planning for <strong>proposed</strong>
+Security Rule updates</td>
+<td><code>HIPAA-NPRM</code> &gt; <code>PHI-Zone</code>,
+<code>Non-PHI-Enterprise</code>, <code>BA-Connectivity</code>,
+<code>SIEM-Archive</code></td>
+<td>§164.312(a)(2)(vi) segmentation (<em>proposed</em>); technology
+asset inventory; §164.308(a)(2) vuln programme; §164.312(b) 24-month log
+architecture (<em>proposed</em>)</td>
+<td><strong>Proposed rule</strong> only — reconcile with
+<strong>final</strong> FR text; maintain <strong>current-rule</strong>
+compliance until effective</td>
+</tr>
+<tr>
+<td>MAS TRM</td>
+<td>Singapore financial institution critical systems, customer-data
+systems, and outsourced/third-party dependencies</td>
+<td><code>MAS-TRM</code> &gt; <code>Critical-Systems</code>,
+<code>Customer-Data</code>, <code>Security-Services</code>,
+<code>Outsourced-Third-Parties</code></td>
+<td>Critical-system inventory, network security, vulnerability,
+monitoring, incident, and outsourcing evidence</td>
+<td>Board/senior management accountability, outsourcing due diligence,
+BCP/DR, IAM, and MAS reporting decisions remain customer-owned</td>
+</tr>
+<tr>
+<td>APRA CPS 234</td>
+<td>Australian prudential information assets and material
+operations</td>
+<td><code>APRA-CPS234</code> &gt;
+<code>Critical-Information-Assets</code>,
+<code>Material-Operations</code>, <code>Service-Providers</code>,
+<code>Incident-Evidence</code></td>
+<td>Information asset mapping, control testing, service-provider egress,
+and incident scoping evidence</td>
+<td>CPS 234 governance, formal control testing, APRA notification, and
+supplier assurance remain risk/compliance-owned</td>
+</tr>
+<tr>
+<td>NY DFS 23 NYCRR Part 500</td>
+<td>Covered systems, nonpublic-information applications, and third-party
+service-provider paths</td>
+<td><code>NYDFS-500</code> &gt; <code>Covered-Systems</code>,
+<code>NPI-Applications</code>, <code>Critical-Operations</code>,
+<code>Third-Party-Service-Providers</code></td>
+<td>Covered-system inventory, least-privilege workload paths,
+vulnerability, monitoring/testing, and incident evidence</td>
+<td>CISO governance, annual certification, written policies, encryption,
+MFA/IAM, and DFS notification decisions remain outside CSW</td>
+</tr>
+<tr>
+<td>TISAX</td>
+<td>Automotive prototype, engineering, customer-confidential, and
+supplier/customer connectivity scopes</td>
+<td><code>TISAX</code> &gt; <code>Prototype-Protection</code>,
+<code>Engineering-Systems</code>, <code>Customer-Confidential</code>,
+<code>Supplier-Customer-Egress</code></td>
+<td>VDA ISA-aligned network segregation, supplier/customer egress,
+vulnerability, and logging evidence</td>
+<td>Assessment objectives, physical prototype controls, DLP, IAM,
+supplier contracts, and TISAX assessment outcome remain
+complementary</td>
+</tr>
+<tr>
+<td>NIST SP 800-82</td>
+<td>OT-adjacent IT systems that support industrial operations</td>
+<td><code>NIST-800-82</code> &gt; <code>OT-Facing-IT</code>,
+<code>Industrial-DMZ</code>, <code>Jump-Hosts</code>,
+<code>Historians</code>, <code>Patch-Repositories</code>,
+<code>Vendor-Access</code></td>
+<td>OT-supporting IT segmentation, remote access paths, vulnerability,
+monitoring, and incident evidence</td>
+<td>PLC/RTU/IED/HMI visibility and OT protocol inspection require Cyber
+Vision/Claroty/Nozomi/Dragos and plant change control</td>
+</tr>
+<tr>
+<td>BSI C5</td>
+<td>Cloud service scope, tenant/shared services, customer-data stores,
+and supplier egress</td>
+<td><code>BSI-C5</code> &gt; <code>Cloud-Service-Scope</code>,
+<code>Production-Service</code>, <code>Tenant-Shared-Services</code>,
+<code>Customer-Data-Stores</code>, <code>Supplier-Egress</code></td>
+<td>Cloud workload inventory, communication security, vulnerability
+handling, incident, and shared-service boundary evidence</td>
+<td>C5 attestation, IAM/KMS, CSP controls, backup/DR, portability, and
+shared-responsibility decisions remain audit/customer-owned</td>
+</tr>
+</tbody>
+</table>
+<p>The following anchors match the framework links in the <a href="#table-of-contents">table of contents</a> so you can jump directly
+to a row in the table above.</p>
+<h3 id="hipaa-security-rule">
+HIPAA Security Rule
+</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>Boundaries and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ePHI applications, databases, clinical integrations, and business
+associate connections</td>
+<td><code>Healthcare-Org</code> &gt; <code>ePHI-Zone</code> &gt;
+app/service scopes such as <code>EHR</code>, <code>Billing</code>,
+<code>PACS</code>, <code>HL7</code>; separate <code>BAA-Partners</code>
+egress scope</td>
+<td>ePHI workload isolation, access-path evidence, audit-control
+telemetry, risk-analysis inputs</td>
+<td>HIPAA administrative, physical, legal, and BAA obligations remain
+outside CSW; validate PHI classification with privacy/compliance
+owners</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a></p>
+<h3 id="soc-2-type-ii">
+SOC 2 Type II
+</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>Boundaries and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The service organization’s system boundary and selected Trust
+Services Criteria</td>
+<td><code>SOC2-System</code> &gt; <code>Production</code>,
+<code>Supporting-Infra</code>, <code>Admin-Access</code>,
+<code>Vendor-Integrations</code>; align scope to system description</td>
+<td>Operating-effectiveness evidence for segmentation, monitoring,
+change drift, incident investigation</td>
+<td>SOC 2 criteria depend on the auditor’s system description and
+control design; CSW augments IAM, change management, SIEM, and
+availability controls</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a></p>
+<h3 id="pci-dss-v40">
+PCI DSS v4.0
+</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>Boundaries and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cardholder Data Environment (CDE), CDE-connected systems, and
+security-impacting systems</td>
+<td><code>PCI-Environment</code> &gt; <code>CDE</code>,
+<code>CDE-Connected</code>, <code>Security-Services</code>,
+<code>Third-Party-Processors</code>,
+<code>Out-of-Scope-Validation</code></td>
+<td>CDE flow documentation, segmentation simulation/enforcement, policy
+exceptions, vulnerability exposure context</td>
+<td>CSW does not replace QSA judgment, ASV scans, penetration testing,
+network security controls, or PCI governance requirements</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a></p>
+<h3 id="nist-sp-800-53-rev-5">
+NIST SP 800-53 Rev. 5
+</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>Boundaries and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FISMA/FedRAMP system boundary and SSP control implementation</td>
+<td><code>System-Boundary</code> &gt; impact-level or component scopes
+such as <code>Moderate</code>, <code>High</code>,
+<code>Data-Store</code>, <code>App-Tier</code>,
+<code>Management</code></td>
+<td>AC, AU, CM, IR, RA, SC, and SI evidence for covered workloads</td>
+<td>Full 800-53 scope includes many controls outside CSW: identity,
+personnel, physical, contingency, privacy, and governance controls</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a></p>
+<h3 id="isoiec-270012022">
+ISO/IEC 27001:2022
+</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>Boundaries and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ISMS scope, information assets, and Annex A control
+applicability</td>
+<td><code>ISMS-Boundary</code> &gt; <code>Confidential-Data</code>,
+<code>Business-Critical-Apps</code>, <code>Cloud-Services</code>,
+<code>Supplier-Connections</code></td>
+<td>Annex A.8 monitoring, network security, segregation, vulnerability,
+and supplier-egress evidence</td>
+<td>Certification depends on ISMS design, SoA, risk treatment, internal
+audit, and management review; CSW is a technical evidence source</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a></p>
+<h3 id="cisa-zero-trust-maturity-model">
+CISA Zero Trust Maturity Model
+</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>Boundaries and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Agency/enterprise zero-trust initiative by pillar and use case</td>
+<td><code>ZT-Workloads</code> &gt; <code>Sensitive-Apps</code>,
+<code>Privileged-Admin</code>, <code>Inter-App-Flows</code>,
+<code>External-Dependencies</code></td>
+<td>Workload-layer evidence for networks and applications/workloads
+pillars, plus visibility and analytics</td>
+<td>ZTMM maturity is organizational; pair CSW with IdP, MFA, device
+posture, data governance, SIEM/SOAR, and policy orchestration</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a></p>
+<h3 id="fips-140">
+FIPS 140
+</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>Boundaries and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Systems handling regulated cryptographic use or plaintext-protocol
+risk</td>
+<td><code>Crypto-Review</code> &gt; <code>Sensitive-Transport</code>,
+<code>Plaintext-Protocol-Candidates</code>,
+<code>FIPS-Required-Systems</code></td>
+<td>Detection/blocking of obvious plaintext transports and inventory
+support for cryptographic usage review</td>
+<td>CSW is not a FIPS-validated cryptographic module; validation, key
+management, and module selection belong to FIPS-validated
+libraries/HSMs</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a></p>
+<h3 id="nist-sp-800-207">
+NIST SP 800-207
+</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>Boundaries and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Zero Trust Architecture tenets for workload-to-workload access</td>
+<td><code>ZTA-Resources</code> &gt; <code>Protected-Resources</code>,
+<code>Policy-Enforced-Flows</code>, <code>Observed-Dependencies</code>,
+<code>Exceptions</code></td>
+<td>Resource inventory, per-connection flow evidence, dynamic scoping,
+workload enforcement as one possible PEP placement</td>
+<td>NIST ZTA also requires identity, device posture, policy decision
+architecture, and enterprise-wide telemetry beyond CSW</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a></p>
+<h3 id="nist-sp-800-207a">
+NIST SP 800-207A
+</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>Boundaries and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PDP/PEP/PA/PIP component mapping for a cloud-native ZTA
+discussion</td>
+<td><code>ZTA-Components</code> &gt; <code>PEP-Analogue</code>,
+<code>Policy-Workspace</code>, <code>Telemetry-PIP</code>,
+<code>SOAR-Integrated</code></td>
+<td>Illustrative traceability from CSW policy, enforcement, and
+telemetry to 207A-style logical components</td>
+<td>Treat PDP/PEP/PA/PIP mapping as an analogue for workload
+segmentation, not a complete enterprise ZTA architecture</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a></p>
+<h3 id="dora">
+DORA
+</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>Boundaries and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Important business functions (IBFs), supporting ICT assets, and
+third-party dependencies</td>
+<td><code>DORA-IBF</code> &gt; one scope per IBF, with nested
+<code>Critical</code>, <code>Supporting</code>,
+<code>Third-Party-Egress</code>, <code>Incident-Dossier</code>
+scopes</td>
+<td>Article 8 inventory inputs, Article 9 segmentation, Article 10
+detection, Article 19 incident evidence, Article 28 technical
+egress</td>
+<td>DORA governance, register of information, contracts, testing
+programme, and authority reporting remain customer-owned</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a></p>
+<h3 id="nis2">
+NIS2
+</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>Boundaries and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Essential/important entity services and Article 21 risk-management
+measures</td>
+<td><code>NIS2-Service</code> &gt; <code>Essential-Service</code>,
+<code>Important-Service</code>, <code>Supplier-Egress</code>,
+<code>Incident-Reporting</code>, <code>High-Risk-Workloads</code></td>
+<td>Risk-policy enforcement evidence, incident dossier, supply-chain
+egress, vulnerability exposure, secured workload paths</td>
+<td>MFA, training, governance, cryptography, secured voice/video, and
+national transposition specifics require complementary programmes</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a></p>
+<h3 id="nerc-cip">
+NERC CIP
+</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>Boundaries and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IT-side systems supporting BES Cyber System functions</td>
+<td><code>BES-Supporting-IT</code> &gt; <code>EACMS</code>,
+<code>Jump-Hosts</code>, <code>Vendor-Access</code>,
+<code>BCSI-Hosts</code>, <code>Identity-PKI</code>,
+<code>Patch-Repos</code></td>
+<td>IT-side ESP boundary evidence, interactive remote access paths,
+ports/services baseline, vulnerability and change evidence</td>
+<td>CSW is not an EAP and does not enforce on PLCs/RTUs/IEDs/HMIs; pair
+with boundary firewalls and OT-aware monitoring</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a></p>
+<h3 id="tsa-pipeline-security-directive">
+TSA Pipeline Security Directive
+</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>Boundaries and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IT-side systems supporting Critical Cyber Systems and IT/OT
+segmentation</td>
+<td><code>Pipeline-IT-Estate</code> &gt; <code>OT-Facing-IT</code>,
+<code>CCS-Supporting-IT</code>, <code>Vendor-Access</code>,
+<code>Patch-Repositories</code>, <code>Corporate-IT</code></td>
+<td>IT-side segmentation, documented IT-to-OT flows, access control,
+monitoring, unpatched-system risk evidence</td>
+<td>CSW does not replace the Cybersecurity Coordinator, CAP/CIRP,
+architecture review, boundary firewall, or OT DPI/monitoring tools</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a></p>
+<h3 id="cis-controls-v81">
+CIS Controls v8.1
+</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>intersections and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enterprise assets and software in the customer’s Implementation
+Group scope</td>
+<td><code>CIS-IG2</code> &gt; <code>Enterprise-Assets</code>,
+<code>Software-Inventory</code>, <code>Secure-Config</code>,
+<code>Vuln-Exposure</code>, <code>Network-Monitoring</code></td>
+<td>Controls 1, 2, 4, 7, 8, 13, and 17 evidence for covered
+workloads</td>
+<td>Reconcile CSW inventory with enterprise source of truth; endpoint,
+email, awareness, backup, and data controls are broader than CSW</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a></p>
+<h3 id="nist-csf-20">
+NIST CSF 2.0
+</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>Boundaries and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CSF Profile outcomes, target tier, and management reporting
+needs</td>
+<td><code>CSF-Profile</code> &gt; <code>Govern-Evidence</code>,
+<code>Identify-Assets</code>, <code>Protect-Segmentation</code>,
+<code>Detect-Monitoring</code>, <code>Respond-Dossier</code>,
+<code>Recover-Diff</code></td>
+<td>Technical evidence that feeds GV, ID, PR, DE, RS, and RC
+outcomes</td>
+<td>CSF is an outcomes framework; CSW does not author the Profile or
+replace governance, risk appetite, or enterprise policy decisions</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a></p>
+<h3 id="cmmc-20">
+CMMC 2.0
+</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>Boundaries and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FCI/CUI enclave and CMMC assessment boundary</td>
+<td><code>CMMC-Scope</code> &gt; <code>CUI-Enclave</code>,
+<code>FCI-Systems</code>, <code>CUI-Connected</code>,
+<code>Admin-Access</code>, <code>External-Services</code>,
+<code>Out-of-Scope-Validation</code></td>
+<td>AC, AU, CM, RA, SC, and SI technical evidence for CUI-scope
+workloads</td>
+<td>CMMC requires SSP, POA&amp;M, CUI scoping, and C3PAO/government
+assessment as applicable; CSW supports evidence but does not certify
+compliance</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a></p>
+<h3 id="iec-62443">
+IEC 62443
+</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>Boundaries and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IT-side systems supporting IACS zones &amp; conduits</td>
+<td><code>Industrial-IACS</code> &gt; <code>Plant-OT-Support</code>,
+<code>Conduit-&lt;id&gt;</code>, <code>DMZ-Brokers</code>,
+<code>Vendor-Remote-Access</code></td>
+<td>SR 5 conduit enforcement; SR 1 access paths; SR 3 integrity; SR 6–7
+monitoring signals on IACS-adjacent IT</td>
+<td>OT device layer (PLCs/RTUs/IEDs) and safety systems require PAS/ICS
+tools and integrator lifecycle evidence; CSW does not replace them</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a></p>
+<h3 id="gdpr">
+GDPR
+</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>Boundaries and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Personal-data processing systems tied to RoPA activities &amp;
+processor endpoints</td>
+<td><code>GDPR-In-Scope</code> &gt; <code>ROPA-&lt;activity&gt;</code>,
+<code>Personal-Data-Tier</code>, <code>Sub-Processors-Egress</code></td>
+<td>Art. 25/32 technical measures; RoPA flow validation; processor
+egress monitoring; breach forensics inputs</td>
+<td>Lawful basis, DPIA decisions, DSAR fulfilment, privacy notices, and
+supervisory filings require legal/privacy programme ownership</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a></p>
+<h3 id="mitre-attck">
+MITRE ATT&amp;CK
+</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>Boundaries and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SOC / purple-team coverage for crown jewels and lateral movement
+choke points</td>
+<td><code>Enterprise-ATTCK</code> &gt;
+<code>Tier0-Identity-Adjacent</code>, <code>Crown-Jewel-Apps</code>,
+<code>Jump-Host-Enclave</code>, <code>Internet-Facing-Entry</code></td>
+<td>TA0001–TA0011 &amp; TA0040 tactic-aligned telemetry; segmentation
+containment; SIEM export discipline</td>
+<td>Email, identity, kernel, and cloud-control-plane techniques require
+companion tooling (XDR/EDR, IdP logs, CSPM); publish a pairing
+matrix</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a></p>
+<h3 id="fedramp">
+FedRAMP
+</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>Boundaries and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FedRAMP authorization boundary components (Moderate emphasis)</td>
+<td><code>FedRAMP-InScope</code> &gt; SSP-aligned
+<code>Management-Plane</code>, <code>App-Tier</code>,
+<code>Data-Tier</code>, <code>Security-Monitoring</code></td>
+<td>AC-4 / SC-7 workload enforcement narratives; CA-7 ConMon exports;
+CM/RA/SI families; POA&amp;M-ready findings</td>
+<td>Many Moderate controls are policy, personnel, physical, or
+IAM-console tasks; CSW product FedRAMP status is separate from
+<strong>your</strong> system ATO</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a></p>
+<h3 id="swift-cscf">
+SWIFT CSCF
+</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>Boundaries and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SWIFT secure zone messaging interfaces, operator paths, and adjacent
+collectors</td>
+<td><code>SWIFT-Program</code> &gt; <code>SWIFT-Secure-Zone</code> &gt;
+<code>Messaging-Interfaces</code>, <code>Operator-Jump-Hosts</code>,
+<code>Local-Logging-Forwarders</code> + <code>SWIFT-Adjacent</code></td>
+<td>Zone isolation (1.1); internet egress deny (1.4); internal flow
+evidence (2.1); cleartext controls (2.6); logging integrations
+(6.4)</td>
+<td>Official Mandatory/Advisory/N/A comes from your CSCF v2024
+applicability worksheet; password/MFA policy and CSP organisational
+tasks sit outside CSW</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a></p>
+<h3 id="hitrust-csf-v11">
+HITRUST CSF v11
+</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>Boundaries and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MyCSF in-scope systems with harmonised PRS references</td>
+<td><code>HITRUST-In-Scope</code> &gt; <code>PHI-Production</code>,
+<code>PCI-CDE-Connected</code>, risk-tier labels</td>
+<td>01.m/01.n/01.o network segregation &amp; routing visibility; 09.x
+monitoring &amp; operator logs; 10.a ADM; 10.m vulnerabilities; 11.x
+incident evidence; assessment-level export cadence (e1/i1/r2)</td>
+<td>HITRUST certification, SoA/risk register narratives, privacy legal
+controls, AV/EDR, authenticated scanning, and physical security remain
+complementary</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a></p>
+<h3 id="nist-sp-800-171-rev-3">
+NIST SP 800-171 Rev. 3
+</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>Boundaries and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CUI systems and enclaves per SSP / nonfederal organisation
+boundary</td>
+<td><code>CUI-Program</code> &gt; <code>CUI-Enclave</code> &gt;
+<code>CUI-Apps</code>, <code>CUI-Data</code>,
+<code>Security-Services</code>, <code>Non-CUI</code></td>
+<td>03.01.03 CUI information-flow enforcement; 03.13.06 deny-by-default;
+03.03 audit exports; 03.04 baseline drift; 03.11 reachability-aware risk
+inputs</td>
+<td>Personnel, physical, training, formal assessments, IdP lifecycle,
+and crypto module validation stay outside CSW; confirm applicable
+<strong>800-171 revision</strong></td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a> · <a href="#framework-mappings">↑
+Framework mappings</a> · <a href="#table-of-contents">↑ Table of
+contents</a></p>
+<h3 id="csa-ccm-v40">
+CSA CCM v4.0
+</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>Boundaries and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hybrid / multicloud workloads under CCM or CSA STAR evidence</td>
+<td><code>CCM-STAR</code> &gt; regulated prod tiers + segregated
+non-prod</td>
+<td>IVS / IAM / DSP segmentation; LOG forwarding; TVM reachability
+exports; AIS dependency baselines</td>
+<td>Classify <strong>customer vs CSP</strong> responsibility per row;
+STAR legal attestation and HR domains stay programme-owned</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a> · <a href="#framework-mappings">↑
+Framework mappings</a> · <a href="#table-of-contents">↑ Table of
+contents</a></p>
+<h3 id="cobit-2019">
+COBIT 2019
+</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>Boundaries and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IT governance scope where DSS / BAI / MEA need technical
+artefacts</td>
+<td><code>COBIT-Evidence</code> &gt; tiered production + admin jump +
+integrations</td>
+<td>DSS05.02 network security; APO13 enforcement posture; MEA01/02
+conformance views; BAI06/10 change &amp; configuration diffs</td>
+<td>Board culture, competencies, procurement contracts, and
+non-technical COBIT practices require other evidence</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a> · <a href="#framework-mappings">↑
+Framework mappings</a> · <a href="#table-of-contents">↑ Table of
+contents</a></p>
+<h3 id="australian-essential-eight">
+Australian Essential Eight
+</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>Boundaries and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACSC EEMM strategies with per-strategy ML targets</td>
+<td><code>E8-Scope</code> &gt; crown jewels + server classes + admin
+jump zone</td>
+<td>E2/E6 inventory &amp; prioritisation; E5 admin-path enforcement;
+E1/E4 detection-oriented telemetry</td>
+<td>Allowlisting (<strong>E1</strong>), macro policy
+(<strong>E3</strong>), MFA (<strong>E7</strong>), backups
+(<strong>E8</strong>) remain owned by dedicated tooling</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a> · <a href="#framework-mappings">↑
+Framework mappings</a> · <a href="#table-of-contents">↑ Table of
+contents</a></p>
+<h3 id="uk-cyber-essentials-plus">
+UK Cyber Essentials Plus
+</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>Boundaries and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CE Plus in-scope production estate</td>
+<td><code>UK-CE</code> &gt; <code>CE-In-Scope-Production</code> +
+corporate / partner scopes</td>
+<td>CE1 workload firewall narrative; CE2 secure configuration drift; CE5
+patch evidence</td>
+<td>Accredited assessor certifies outcome; perimeter appliance config
+and AV/EDR still required</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a> · <a href="#framework-mappings">↑
+Framework mappings</a> · <a href="#table-of-contents">↑ Table of
+contents</a></p>
+<h3 id="hipaa-security-rule--2025-nprm">
+HIPAA Security Rule — 2025 NPRM
+</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>Boundaries and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ePHI processing systems while planning for <strong>proposed</strong>
+rule changes</td>
+<td><code>HIPAA-NPRM</code> &gt; <code>PHI-Zone</code> default deny vs
+<code>Non-PHI-Enterprise</code> + SIEM archive scope</td>
+<td>§164.312(a)(2)(vi) microsegmentation (<em>proposed</em>); inventory
+&amp; ADM map; vuln backlog; §164.312(b) SIEM/object-store retention
+(<em>proposed</em>)</td>
+<td><strong>NPRM is not final law</strong> — privacy office &amp;
+counsel own interpretation; parallel <strong>current</strong> HIPAA
+compliance until effective</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a> · <a href="#framework-mappings">↑
+Framework mappings</a> · <a href="#table-of-contents">↑ Table of
+contents</a></p>
+<h3 id="mas-trm">
+MAS TRM
+</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>Boundaries and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Singapore financial institution critical systems and outsourced
+service paths</td>
+<td><code>MAS-TRM</code> &gt; <code>Critical-Systems</code>,
+<code>Customer-Data</code>, <code>Security-Services</code>,
+<code>Outsourced-Third-Parties</code></td>
+<td>Critical-system inventory, approved-flow baselines, third-party
+egress, vulnerability, monitoring, and incident evidence</td>
+<td>MAS governance, outsourcing due diligence, BCP/DR, IAM, and
+reporting decisions remain outside CSW</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a> · <a href="#framework-mappings">↑
+Framework mappings</a> · <a href="#table-of-contents">↑ Table of
+contents</a></p>
+<h3 id="apra-cps-234">
+APRA CPS 234
+</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>Boundaries and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Critical information assets and material operations for
+APRA-regulated entities</td>
+<td><code>APRA-CPS234</code> &gt;
+<code>Critical-Information-Assets</code>,
+<code>Material-Operations</code>, <code>Service-Providers</code>,
+<code>Incident-Evidence</code></td>
+<td>Information asset mapping, control testing, service-provider egress,
+and incident scoping evidence</td>
+<td>Formal control testing, APRA notification, supplier assurance, and
+governance remain customer-owned</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a> · <a href="#framework-mappings">↑
+Framework mappings</a> · <a href="#table-of-contents">↑ Table of
+contents</a></p>
+<h3 id="ny-dfs-23-nycrr-part-500">
+NY DFS 23 NYCRR Part 500
+</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>Boundaries and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Covered systems, NPI applications, and third-party service-provider
+access</td>
+<td><code>NYDFS-500</code> &gt; <code>Covered-Systems</code>,
+<code>NPI-Applications</code>, <code>Critical-Operations</code>,
+<code>Third-Party-Service-Providers</code></td>
+<td>Covered workload inventory, least-privilege paths, vulnerability,
+monitoring/testing, and incident evidence</td>
+<td>CISO governance, annual certification, written policies, encryption,
+MFA/IAM, and DFS notifications remain complementary</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a> · <a href="#framework-mappings">↑
+Framework mappings</a> · <a href="#table-of-contents">↑ Table of
+contents</a></p>
+<h3 id="tisax">
+TISAX
+</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>Boundaries and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Automotive prototype, engineering, customer-confidential, and
+supplier/customer connectivity scopes</td>
+<td><code>TISAX</code> &gt; <code>Prototype-Protection</code>,
+<code>Engineering-Systems</code>, <code>Customer-Confidential</code>,
+<code>Supplier-Customer-Egress</code></td>
+<td>VDA ISA-aligned network segregation, supplier/customer egress,
+vulnerability, and logging evidence</td>
+<td>TISAX assessment objectives, physical prototype controls, DLP, IAM,
+and supplier contracts remain complementary</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a> · <a href="#framework-mappings">↑
+Framework mappings</a> · <a href="#table-of-contents">↑ Table of
+contents</a></p>
+<h3 id="nist-sp-800-82">
+NIST SP 800-82
+</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>Boundaries and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OT-adjacent IT systems that support industrial operations</td>
+<td><code>NIST-800-82</code> &gt; <code>OT-Facing-IT</code>,
+<code>Industrial-DMZ</code>, <code>Jump-Hosts</code>,
+<code>Historians</code>, <code>Patch-Repositories</code>,
+<code>Vendor-Access</code></td>
+<td>OT-supporting IT segmentation, remote access, vulnerability,
+monitoring, and incident evidence</td>
+<td>PLC/RTU/IED/HMI visibility and protocol inspection require OT-native
+tools and plant change controls</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a> · <a href="#framework-mappings">↑
+Framework mappings</a> · <a href="#table-of-contents">↑ Table of
+contents</a></p>
+<h3 id="bsi-c5">
+BSI C5
+</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Customer scope anchor</th>
+<th>Suggested CSW scope pattern</th>
+<th>Primary evidence focus</th>
+<th>Boundaries and complementary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cloud service scope, tenant/shared services, customer-data stores,
+and supplier egress</td>
+<td><code>BSI-C5</code> &gt; <code>Cloud-Service-Scope</code>,
+<code>Production-Service</code>, <code>Tenant-Shared-Services</code>,
+<code>Customer-Data-Stores</code>, <code>Supplier-Egress</code></td>
+<td>Cloud workload inventory, communication security, vulnerability
+handling, incident, and shared-service boundary evidence</td>
+<td>C5 attestation, IAM/KMS, CSP controls, backup/DR, portability, and
+shared-responsibility decisions remain outside CSW</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a> · <a href="#framework-mappings">↑
+Framework mappings</a> · <a href="#table-of-contents">↑ Table of
+contents</a></p>
+<h2 id="label-tag-recommendations">Label / Tag Recommendations</h2>
+<h3 id="baseline-labels-for-every-customer">Baseline Labels for Every
+Customer</h3>
+<p>Use a small, consistent baseline across all frameworks. Keep values
+stable and controlled; avoid free-form spelling differences that split
+evidence.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Label key</th>
+<th>Example values</th>
+<th>Why it matters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>app</code></td>
+<td><code>payments-api</code>, <code>ehr-core</code>,
+<code>identity</code></td>
+<td>Groups workloads into application scopes and ADM workspaces</td>
+</tr>
+<tr>
+<td><code>env</code></td>
+<td><code>prod</code>, <code>stage</code>, <code>dev</code>,
+<code>test</code></td>
+<td>Separates production evidence from non-production noise</td>
+</tr>
+<tr>
+<td><code>owner</code></td>
+<td><code>team-payments</code>, <code>clinical-apps</code>,
+<code>platform</code></td>
+<td>Connects policy exceptions and remediation to accountable teams</td>
+</tr>
+<tr>
+<td><code>data_class</code></td>
+<td><code>public</code>, <code>internal</code>,
+<code>confidential</code>, <code>phi</code>, <code>pci</code>,
+<code>cui</code></td>
+<td>Drives regulated data boundaries and evidence queries</td>
+</tr>
+<tr>
+<td><code>compliance</code></td>
+<td><code>hipaa</code>, <code>pci</code>, <code>soc2</code>,
+<code>dora</code>, <code>cmmc</code>, <code>none</code></td>
+<td>Enables framework-specific scopes without duplicating inventory</td>
+</tr>
+<tr>
+<td><code>criticality</code></td>
+<td><code>critical</code>, <code>high</code>, <code>medium</code>,
+<code>low</code></td>
+<td>Supports prioritization, segmentation strictness, and incident
+response</td>
+</tr>
+<tr>
+<td><code>internet_exposed</code></td>
+<td><code>true</code>, <code>false</code></td>
+<td>Helps identify boundary and attack-surface review candidates</td>
+</tr>
+<tr>
+<td><code>third_party</code></td>
+<td><code>none</code>, <code>supplier-name</code>,
+<code>processor-name</code></td>
+<td>Supports supplier egress and business associate / processor
+reviews</td>
+</tr>
+<tr>
+<td><code>region</code></td>
+<td><code>us-east</code>, <code>eu-west</code>,
+<code>site-001</code></td>
+<td>Supports residency, operational ownership, and sector/site
+reporting</td>
+</tr>
+<tr>
+<td><code>lifecycle</code></td>
+<td><code>active</code>, <code>exception</code>,
+<code>decommissioning</code></td>
+<td>Keeps stale workloads and temporary exceptions visible</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a></p>
+<h3 id="framework-specific-labels">Framework-Specific Labels</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Framework</th>
+<th>Additional label keys</th>
+<th>Example values</th>
+<th>Scope-design use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HIPAA</td>
+<td><code>phi_scope</code>, <code>clinical_system</code>,
+<code>baa_partner</code>, <code>ehr_app</code></td>
+<td><code>in-scope</code>, <code>epic</code>,
+<code>clearinghouse-a</code>, <code>true</code></td>
+<td>Build ePHI and partner-egress scopes</td>
+</tr>
+<tr>
+<td>SOC 2</td>
+<td><code>soc2_boundary</code>, <code>trust_service</code>,
+<code>system_component</code></td>
+<td><code>in-scope</code>, <code>security</code>,
+<code>database</code></td>
+<td>Align workloads to the SOC 2 system description</td>
+</tr>
+<tr>
+<td>PCI DSS v4.0</td>
+<td><code>pci_scope</code>, <code>cde_zone</code>,
+<code>card_data_role</code>, <code>qsa_exception</code></td>
+<td><code>cde</code>, <code>cde-connected</code>,
+<code>pan-storage</code>, <code>none</code></td>
+<td>Separate CDE, connected, and out-of-scope validation
+populations</td>
+</tr>
+<tr>
+<td>NIST 800-53</td>
+<td><code>system_id</code>, <code>impact_level</code>,
+<code>control_family</code>, <code>ssp_component</code></td>
+<td><code>sys-001</code>, <code>moderate</code>, <code>ac</code>,
+<code>app-tier</code></td>
+<td>Tie workloads to SSP components and impact-level evidence</td>
+</tr>
+<tr>
+<td>ISO 27001:2022</td>
+<td><code>isms_scope</code>, <code>soa_control</code>,
+<code>asset_type</code>, <code>supplier_related</code></td>
+<td><code>in-scope</code>, <code>a.8.22</code>, <code>database</code>,
+<code>true</code></td>
+<td>Align CSW evidence with the SoA and asset inventory</td>
+</tr>
+<tr>
+<td>CISA ZTMM</td>
+<td><code>zt_pillar</code>, <code>zt_stage_target</code>,
+<code>zt_use_case</code></td>
+<td><code>networks</code>, <code>advanced</code>,
+<code>east-west</code></td>
+<td>Organize evidence by maturity pillar and use case</td>
+</tr>
+<tr>
+<td>FIPS 140</td>
+<td><code>fips_required</code>, <code>crypto_review</code>,
+<code>plaintext_risk</code>, <code>module_owner</code></td>
+<td><code>true</code>, <code>transport</code>, <code>high</code>,
+<code>platform</code></td>
+<td>Identify workloads needing crypto posture review</td>
+</tr>
+<tr>
+<td>NIST 800-207</td>
+<td><code>zta_resource</code>, <code>pep_candidate</code>,
+<code>policy_source</code>, <code>access_pattern</code></td>
+<td><code>protected</code>, <code>csw-workload</code>, <code>adm</code>,
+<code>inter-app</code></td>
+<td>Trace workload resources and enforcement patterns</td>
+</tr>
+<tr>
+<td>NIST 800-207A</td>
+<td><code>zta_component</code>, <code>pdp_analogue</code>,
+<code>pip_signal</code>, <code>pa_workspace</code></td>
+<td><code>pep</code>, <code>csw-policy</code>,
+<code>vuln-context</code>, <code>zta-prod</code></td>
+<td>Support logical-component discussion and traceability</td>
+</tr>
+<tr>
+<td>DORA</td>
+<td><code>dora_ibf</code>, <code>ibf_name</code>,
+<code>ibf_criticality</code>, <code>ict_third_party</code></td>
+<td><code>true</code>, <code>sepa-transfer</code>,
+<code>critical</code>, <code>provider-a</code></td>
+<td>Build IBF and third-party exposure scopes</td>
+</tr>
+<tr>
+<td>NIS2</td>
+<td><code>nis2_entity_type</code>, <code>nis2_service</code>,
+<code>article21_measure</code>, <code>csirt_reportable</code></td>
+<td><code>essential</code>, <code>health-service</code>,
+<code>21-2-b</code>, <code>true</code></td>
+<td>Structure service, measure, and incident evidence</td>
+</tr>
+<tr>
+<td>NERC CIP</td>
+<td><code>cip_scope</code>, <code>bes_support_role</code>,
+<code>eacms</code>, <code>bcsi</code>, <code>ot_facing</code></td>
+<td><code>it-side</code>, <code>jump-host</code>, <code>true</code>,
+<code>false</code>, <code>true</code></td>
+<td>Isolate IT-side BES-supporting systems and access paths</td>
+</tr>
+<tr>
+<td>TSA Pipeline</td>
+<td><code>tsa_scope</code>, <code>ccs_function</code>,
+<code>site</code>, <code>ot_facing</code>,
+<code>vendor_access</code></td>
+<td><code>it-side</code>, <code>historian</code>, <code>site-001</code>,
+<code>true</code>, <code>true</code></td>
+<td>Build site-specific IT/OT and vendor access scopes</td>
+</tr>
+<tr>
+<td>CIS Controls v8.1</td>
+<td><code>cis_control</code>, <code>implementation_group</code>,
+<code>asset_inventory_source</code></td>
+<td><code>control-1</code>, <code>ig2</code>, <code>cmdb</code></td>
+<td>Organize evidence by Safeguard and Implementation Group</td>
+</tr>
+<tr>
+<td>NIST CSF 2.0</td>
+<td><code>csf_function</code>, <code>csf_category</code>,
+<code>profile_scope</code>, <code>target_tier</code></td>
+<td><code>protect</code>, <code>pr.ir</code>,
+<code>core-platform</code>, <code>tier-3</code></td>
+<td>Align evidence with CSF Profile outcomes</td>
+</tr>
+<tr>
+<td>CMMC 2.0</td>
+<td><code>cmmc_level</code>, <code>cui_scope</code>,
+<code>fci_scope</code>, <code>assessment_boundary</code>,
+<code>poam_item</code></td>
+<td><code>l2</code>, <code>in-scope</code>, <code>false</code>,
+<code>cui-enclave</code>, <code>poam-123</code></td>
+<td>Build CUI/FCI boundaries and C3PAO evidence sets</td>
+</tr>
+<tr>
+<td>IEC 62443</td>
+<td><code>zone</code>, <code>conduit</code>, <code>sl-target</code>,
+<code>ics-role</code></td>
+<td><code>cell-a</code>, <code>c-ot-to-mes-01</code>, <code>SL2</code>,
+<code>historian</code></td>
+<td>Align policies to approved cyber zone / conduit drawings</td>
+</tr>
+<tr>
+<td>GDPR</td>
+<td><code>ropa-id</code>, <code>data-class</code>,
+<code>processor</code>, <code>gdpr_scope</code></td>
+<td><code>HR-001</code>, <code>personal</code>,
+<code>payroll-vendor</code>, <code>in</code></td>
+<td>Tie telemetry to RoPA activities and processor egress reviews</td>
+</tr>
+<tr>
+<td>MITRE ATT&amp;CK</td>
+<td><code>attack-surface</code>, <code>mitre_tactic_focus</code>,
+<code>crown_jewel</code></td>
+<td><code>internet-facing</code>, <code>lateral-movement</code>,
+<code>true</code></td>
+<td>Scope detection baselines and containment narratives</td>
+</tr>
+<tr>
+<td>FedRAMP</td>
+<td><code>ssp-component-id</code>, <code>data-impact</code>,
+<code>conmon_cadence</code></td>
+<td><code>web-tier</code>, <code>moderate</code>,
+<code>monthly</code></td>
+<td>Map hosts to SSP attachments and ConMon rhythm</td>
+</tr>
+<tr>
+<td>SWIFT CSCF</td>
+<td><code>swift_zone</code>, <code>swift_role</code>,
+<code>cscf_arch_type</code></td>
+<td><code>secure</code>, <code>smc</code>, <code>A1</code></td>
+<td>Partition secure zone vs adjacent interfaces for CSP folders</td>
+</tr>
+<tr>
+<td>HITRUST CSF</td>
+<td><code>hitrust_prs_ref</code>, <code>assessment_level</code>,
+<code>data-class</code></td>
+<td><code>01.m</code>, <code>i1</code>, <code>phi</code></td>
+<td>Cross-walk exports to MyCSF requirement rows</td>
+</tr>
+<tr>
+<td>NIST 800-171 Rev. 3</td>
+<td><code>cui_scope</code>, <code>cui_role</code>,
+<code>enclave_id</code>, <code>data_class</code></td>
+<td><code>in_scope</code>, <code>stores</code>, <code>ENCLAVE-A</code>,
+<code>cui</code></td>
+<td>Tie workloads to SSP components and CUI handling roles</td>
+</tr>
+<tr>
+<td>CSA CCM v4</td>
+<td><code>ccm_domain_focus</code>, <code>data_class</code>,
+<code>star_service</code></td>
+<td><code>IVS,LOG</code>, <code>pci</code>, <code>SVC-042</code></td>
+<td>Align STAR services to CCM domain evidence</td>
+</tr>
+<tr>
+<td>COBIT 2019</td>
+<td><code>cobit_domain</code>, <code>service_tier</code>,
+<code>owner_team</code></td>
+<td><code>DSS</code>, <code>tier1</code>, <code>platform-ops</code></td>
+<td>Route exports to objective owners</td>
+</tr>
+<tr>
+<td>ACSC Essential Eight</td>
+<td><code>e8_strategy</code>, <code>admin_tier</code>,
+<code>internet_exposed</code></td>
+<td><code>E5</code>, <code>tier0</code>, <code>true</code></td>
+<td>Build per-strategy ML evidence slices</td>
+</tr>
+<tr>
+<td>UK Cyber Essentials Plus</td>
+<td><code>ce-scope</code>, <code>tier</code>, <code>owner</code></td>
+<td><code>in</code>, <code>data</code>, <code>infra-team</code></td>
+<td>Maintain Plus assessment boundary labels</td>
+</tr>
+<tr>
+<td>HIPAA 2025 NPRM</td>
+<td><code>nprm_scope</code>, <code>data_class</code>,
+<code>siem_retention_track</code></td>
+<td><code>2025-planning</code>, <code>ephi</code>,
+<code>24-mo</code></td>
+<td>Track NPRM programme vs current-rule scopes</td>
+</tr>
+<tr>
+<td>MAS TRM</td>
+<td><code>mas_critical_system</code>, <code>outsourcing_provider</code>,
+<code>customer_data_scope</code></td>
+<td><code>true</code>, <code>provider-a</code>,
+<code>in-scope</code></td>
+<td>Build critical-system and third-party egress evidence</td>
+</tr>
+<tr>
+<td>APRA CPS 234</td>
+<td><code>critical_info_asset</code>, <code>material_operation</code>,
+<code>service_provider</code></td>
+<td><code>customer-data</code>, <code>digital-channel</code>,
+<code>provider-a</code></td>
+<td>Tie workloads to critical assets and control-testing owners</td>
+</tr>
+<tr>
+<td>NY DFS 23 NYCRR Part 500</td>
+<td><code>nydfs_covered_system</code>, <code>npi_scope</code>,
+<code>third_party_provider</code></td>
+<td><code>true</code>, <code>npi</code>, <code>processor-a</code></td>
+<td>Separate covered systems and nonpublic-information applications</td>
+</tr>
+<tr>
+<td>TISAX</td>
+<td><code>tisax_scope</code>, <code>prototype_data</code>,
+<code>customer_confidential</code>, <code>supplier_link</code></td>
+<td><code>in-scope</code>, <code>true</code>, <code>oem-a</code>,
+<code>supplier-b</code></td>
+<td>Support VDA ISA assessment slices and supplier/customer egress</td>
+</tr>
+<tr>
+<td>NIST 800-82</td>
+<td><code>ot_facing</code>, <code>purdue_level</code>,
+<code>site</code>, <code>ics_support_role</code></td>
+<td><code>true</code>, <code>3.5</code>, <code>plant-01</code>,
+<code>historian</code></td>
+<td>Label OT-adjacent IT and plant-specific support paths</td>
+</tr>
+<tr>
+<td>BSI C5</td>
+<td><code>c5_scope</code>, <code>tenant_boundary</code>,
+<code>cloud_service</code>, <code>customer_data</code></td>
+<td><code>in-scope</code>, <code>shared-service</code>,
+<code>svc-001</code>, <code>true</code></td>
+<td>Align cloud workload evidence to C5 service boundaries</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">↑ Back to top</a></p>
+<h2 id="workshop-output-checklist">Workshop Output Checklist</h2>
+<p>By the end of a scope-design workshop, capture:</p>
+<ul>
+<li>The customer-owned authoritative inventory source and reconciliation
+owner.</li>
+<li>The CSW scope hierarchy for the selected framework.</li>
+<li>Required baseline labels and framework-specific labels.</li>
+<li>Initial values for regulated data, criticality, owner, and
+environment.</li>
+<li>Known gaps: unsupported workloads, missing connectors,
+uninstrumented OT, unmanaged SaaS, IAM-only controls, physical controls,
+or legal obligations.</li>
+<li>The first ADM / flow-search window and evidence export cadence.</li>
+<li>A named owner for label hygiene and exception review.</li>
+</ul>
+<p><a href="#top">↑ Back to top</a></p>
+<h2 id="customer-conversation-prompt">Customer Conversation Prompt</h2>
+<p>The practical question is not “can CSW map to this framework?” It
+is:</p>
+<blockquote>
+<p>Which workloads, flows, owners, and labels must be correct before the
+mapping becomes evidence a customer can validate with their
+assessor?</p>
+</blockquote>
+<p>Use this guide to answer that question before building dashboards or
+collecting audit packets.</p>
+<p><a href="#top">↑ Back to top</a></p>
+</body>
+</html>

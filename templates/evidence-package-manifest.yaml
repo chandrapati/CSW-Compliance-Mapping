@@ -1,0 +1,51 @@
+# Copy this template into the customer-approved evidence repository.
+# Do not store customer exports, API credentials, or diagnostic bundles here.
+package:
+  package_id: "<customer>-<framework>-<yyyymmdd>"
+  customer: "<customer>"
+  framework:
+    name: "<framework name and edition>"
+    control_ids:
+      - "<control ID>"
+  mapping:
+    repository_version: "<git tag or commit>"
+    review_status: "Draft | SME-reviewed | Customer-reviewed"
+    applicability: "Direct evidence contribution | Supporting evidence contribution | Complementary control required | Out of scope | Validate with SME / assessor"
+    limitation_statement: "<scope, assumption, or complementary-control boundary>"
+  scope:
+    environment: "<production | non-production | named boundary>"
+    workloads: "<workload IDs, application scope, or controlled inventory reference>"
+    collection_window_utc:
+      start: "<ISO-8601 UTC>"
+      end: "<ISO-8601 UTC>"
+    csw_context:
+      tenant: "<tenant reference; do not include secrets>"
+      product_version: "<validated version>"
+      policy_version: "<policy/workspace version if applicable>"
+  classification:
+    handling_class: "<customer-approved classification>"
+    retention: "<period and disposal rule>"
+    storage_location: "<approved evidence repository or system>"
+    access_owner: "<role or team>"
+  artifacts:
+    - artifact_id: "<stable artifact ID>"
+      description: "<what this proves>"
+      source: "<CSW UI export | API | screenshot | log analysis | complementary tool>"
+      collected_by: "<role or approved automation identity>"
+      collected_at_utc: "<ISO-8601 UTC>"
+      file_name: "<artifact filename>"
+      sha256: "<checksum>"
+      redaction_or_transformation: "<none | describe transformation and original location>"
+      related_control_ids:
+        - "<control ID>"
+      evidence_status: "Pass | Partial | Not tested | Confirm with Cisco"
+      limitations: "<sensor coverage, label drift, export lag, simulation-only, or none>"
+  exceptions:
+    - exception_id: "<stable exception ID>"
+      control_id: "<control ID>"
+      scope_and_rationale: "<affected scope and reason>"
+      risk_owner: "<customer role>"
+      compensating_control: "<mitigation and evidence reference>"
+      approval_reference: "<ticket, approval, or risk-acceptance ID>"
+      review_by: "<ISO-8601 date>"
+      status: "Open | Accepted | Remediating | Closed"

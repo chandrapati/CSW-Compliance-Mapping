@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Governance and Evidence Standards</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+:root {
+--fg: #1f2328;
+--fg-muted: #59636e;
+--bg: #ffffff;
+--bg-muted: #f6f8fa;
+--border: #d1d9e0;
+--link: #0969da;
+--link-hover: #0349b4;
+--code-bg: #f6f8fa;
+--accent: #cf222e;
+--max-width: 920px;
+}
+@media (prefers-color-scheme: dark) {
+:root {
+--fg: #e6edf3;
+--fg-muted: #9198a1;
+--bg: #0d1117;
+--bg-muted: #151b23;
+--border: #3d444d;
+--link: #4493f8;
+--link-hover: #6cb6ff;
+--code-bg: #151b23;
+--accent: #ff7b72;
+}
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+margin: 0 auto;
+max-width: var(--max-width);
+padding: 2rem 1.25rem 4rem;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+font-size: 16px;
+line-height: 1.6;
+color: var(--fg);
+background: var(--bg);
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 2rem;
+margin-bottom: 1rem;
+font-weight: 600;
+line-height: 1.25;
+}
+h1 { font-size: 2rem; border-bottom: 1px solid var(--border); padding-bottom: .35rem; }
+h2 { font-size: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: .3rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1rem; }
+h5, h6 { font-size: .875rem; color: var(--fg-muted); }
+p, ul, ol, blockquote, pre, table { margin: 0 0 1rem; }
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+ul, ol { padding-left: 1.6rem; }
+li + li { margin-top: .15rem; }
+blockquote {
+margin: 0 0 1rem;
+padding: .5rem 1rem;
+color: var(--fg-muted);
+border-left: .25rem solid var(--border);
+background: var(--bg-muted);
+border-radius: 0 6px 6px 0;
+}
+code, pre, kbd, samp {
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+font-size: .9em;
+}
+code {
+background: var(--code-bg);
+padding: .15rem .35rem;
+border-radius: 4px;
+}
+pre {
+background: var(--code-bg);
+padding: 1rem;
+border-radius: 6px;
+overflow: auto;
+font-size: .85rem;
+line-height: 1.45;
+}
+pre code { background: transparent; padding: 0; font-size: inherit; }
+table {
+display: block;
+width: 100%;
+overflow: auto;
+border-collapse: collapse;
+}
+th, td {
+border: 1px solid var(--border);
+padding: .5rem .75rem;
+vertical-align: top;
+text-align: left;
+}
+th {
+background: var(--bg-muted);
+font-weight: 600;
+}
+tbody tr:nth-child(2n) { background: var(--bg-muted); }
+hr {
+border: 0;
+height: 1px;
+background: var(--border);
+margin: 2rem 0;
+}
+img { max-width: 100%; height: auto; }
+
+.doc-meta {
+margin: 0 0 2rem;
+padding: .75rem 1rem;
+border: 1px solid var(--border);
+border-radius: 6px;
+background: var(--bg-muted);
+font-size: .9rem;
+color: var(--fg-muted);
+}
+.doc-meta a { font-weight: 500; }
+
+@media print {
+body { max-width: none; padding: 0; color: #000; background: #fff; }
+a { color: #000; text-decoration: underline; }
+pre, code, blockquote { background: #f5f5f5; }
+}
+</style>
+</head>
+<body>
+<div class="doc-meta">Source: <a href="governance-and-evidence-standards.html">governance-and-evidence-standards.md</a> · <a href="../index.html">repository index</a> · Build: 2026-08-10T20:59:53Z UTC · Repository commit: 2cc60f0</div>
+<header id="title-block-header">
+<h1 class="title">Governance and Evidence Standards</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#governance-and-evidence-standards" id="toc-governance-and-evidence-standards">Governance and evidence
+standards</a>
+<ul>
+<li><a href="#use-each-mapping-as-an-evidence-input" id="toc-use-each-mapping-as-an-evidence-input">1. Use each mapping as an
+evidence input</a></li>
+<li><a href="#shared-responsibility" id="toc-shared-responsibility">2.
+Shared responsibility</a></li>
+<li><a href="#evidence-package-standard" id="toc-evidence-package-standard">3. Evidence package standard</a></li>
+<li><a href="#export-privacy-and-secret-handling" id="toc-export-privacy-and-secret-handling">4. Export, privacy, and
+secret handling</a></li>
+<li><a href="#evidence-integrity-and-failure-handling" id="toc-evidence-integrity-and-failure-handling">5. Evidence integrity
+and failure handling</a></li>
+<li><a href="#exception-and-risk-acceptance-register" id="toc-exception-and-risk-acceptance-register">6. Exception and
+risk-acceptance register</a></li>
+<li><a href="#mapping-lifecycle" id="toc-mapping-lifecycle">7. Mapping
+lifecycle</a></li>
+<li><a href="#standard-customer-facing-limitation-statement" id="toc-standard-customer-facing-limitation-statement">8. Standard
+customer-facing limitation statement</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="governance-and-evidence-standards">Governance and evidence
+standards</h1>
+<p>This guide establishes the minimum governance standard for using
+Cisco Secure Workload (CSW) compliance mappings in a customer
+engagement. It is a reusable evidence-engineering aid—not an
+attestation, legal advice, certification opinion, or substitute for a
+customer’s assessor.</p>
+<h2 id="use-each-mapping-as-an-evidence-input">1. Use each mapping as an
+evidence input</h2>
+<p>Every mapped control must have one of these applicability
+outcomes:</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Outcome</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Direct evidence contribution</strong></td>
+<td>CSW produces configuration, telemetry, policy, or audit evidence
+materially relevant to the control.</td>
+</tr>
+<tr>
+<td><strong>Supporting evidence contribution</strong></td>
+<td>CSW evidence supports a control whose complete implementation
+depends on customer processes or other technologies.</td>
+</tr>
+<tr>
+<td><strong>Complementary control required</strong></td>
+<td>CSW may help reduce risk, but another control owner or technology is
+required for the control objective.</td>
+</tr>
+<tr>
+<td><strong>Out of scope</strong></td>
+<td>CSW cannot provide relevant evidence for this control in the agreed
+deployment scope.</td>
+</tr>
+<tr>
+<td><strong>Validate with SME / assessor</strong></td>
+<td>Framework interpretation, product behavior, or scope requires
+current validation before reliance.</td>
+</tr>
+</tbody>
+</table>
+<p>Do not use “fully compliant,” “certified,” “guaranteed,” or
+equivalent language for a CSW mapping. Record the customer’s final
+applicability decision, evidence owner, and assessor feedback.</p>
+<h2 id="shared-responsibility">2. Shared responsibility</h2>
+<p>CSW is one evidence source within a broader control system. Capture
+responsibility for every mapped item.</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Party</th>
+<th>Typical responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Customer control owner</td>
+<td>Defines scope, approves policy/change, retains evidence, accepts
+residual risk, and operates complementary controls.</td>
+</tr>
+<tr>
+<td>Customer cloud/service provider</td>
+<td>Provides platform-level identity, logging, physical, infrastructure,
+and service controls under the applicable shared-responsibility
+model.</td>
+</tr>
+<tr>
+<td>Cisco Secure Workload</td>
+<td>Produces supported workload visibility, policy, configuration, and
+audit evidence within the deployed scope.</td>
+</tr>
+<tr>
+<td>Complementary tools</td>
+<td>Supply CMDB, IAM, SIEM, vulnerability management, EDR, firewall,
+GRC, or OT-specific evidence where CSW does not.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="evidence-package-standard">3. Evidence package standard</h2>
+<p>Use <a href="../templates/evidence-package-manifest.yaml"><code>templates/evidence-package-manifest.yaml</code></a>
+for every evidence package.</p>
+<p>For each artifact, record:</p>
+<ol type="1">
+<li>The mapped framework/control ID and applicability outcome.</li>
+<li>The customer scope, workloads, time window, and CSW product/version
+context.</li>
+<li>Collector, collection time in UTC, evidence source, and SHA-256
+checksum.</li>
+<li>Classification, retention period, storage location, and access
+owner.</li>
+<li>Any limitation: sensor offline, missing label, export delay,
+simulation-only result, or unsupported platform.</li>
+</ol>
+<p>Store raw evidence in the customer-approved repository or evidence
+system—not in this reusable mapping repository.</p>
+<h2 id="export-privacy-and-secret-handling">4. Export, privacy, and
+secret handling</h2>
+<p>CSW flow, process, inventory, policy, and diagnostic exports can
+contain sensitive operational metadata, including hostnames, IP
+addresses, process paths, user-related context, and application
+topology.</p>
+<ul>
+<li>Classify exports under the customer’s information-handling policy
+before collection.</li>
+<li>Minimize fields and time range to the control objective; redact
+where external sharing is necessary.</li>
+<li>Encrypt evidence in transit and at rest using customer-approved
+mechanisms.</li>
+<li>Never commit API keys, API secrets, session tokens, credentials, raw
+diagnostic bundles, or unredacted customer exports to this
+repository.</li>
+<li>Use a customer-approved secret manager or runtime credential
+mechanism for automation.</li>
+<li>Record retention and deletion requirements in the evidence
+manifest.</li>
+</ul>
+<h2 id="evidence-integrity-and-failure-handling">5. Evidence integrity
+and failure handling</h2>
+<p>An export is not automatically defensible evidence. Before marking a
+control contribution as demonstrated, verify:</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Failure mode</th>
+<th>Required response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sensor offline or stale</td>
+<td>Record the coverage gap; reconcile against the workload
+register/CMDB; do not imply continuous coverage.</td>
+</tr>
+<tr>
+<td>Missing or drifted labels</td>
+<td>Correct the label source, capture before/after evidence, and
+document affected policy scope.</td>
+</tr>
+<tr>
+<td>Simulation-only policy</td>
+<td>Mark as design validation, not enforcement proof.</td>
+</tr>
+<tr>
+<td>Enforcement enabled but target version not applied</td>
+<td>Capture the policy-application timestamp before functional
+testing.</td>
+</tr>
+<tr>
+<td>Export lag, parsing error, or incomplete time window</td>
+<td>Recollect or mark evidence partial; retain the limitation in the
+manifest.</td>
+</tr>
+<tr>
+<td>Evidence altered for sharing</td>
+<td>Preserve the original in approved customer storage and record the
+redaction/transformation.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="exception-and-risk-acceptance-register">6. Exception and
+risk-acceptance register</h2>
+<p>Use this minimum record where a mapped control is partial, deferred,
+or compensated:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Required content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Exception ID</td>
+<td>Stable identifier</td>
+</tr>
+<tr>
+<td>Framework/control</td>
+<td>Applicable framework and control ID</td>
+</tr>
+<tr>
+<td>Scope and rationale</td>
+<td>Affected workloads and reason</td>
+</tr>
+<tr>
+<td>Risk owner</td>
+<td>Accountable customer owner</td>
+</tr>
+<tr>
+<td>Compensating control</td>
+<td>Existing mitigation and evidence location</td>
+</tr>
+<tr>
+<td>Expiry/review date</td>
+<td>Time-bound reassessment date</td>
+</tr>
+<tr>
+<td>Approval</td>
+<td>Customer risk/change approver and reference</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>Open, accepted, remediating, or closed</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mapping-lifecycle">7. Mapping lifecycle</h2>
+<p>Review a mapping when any of these changes:</p>
+<ul>
+<li>framework edition, regulator guidance, or assessor
+interpretation;</li>
+<li>CSW product release, supported-platform status, or connector
+behavior;</li>
+<li>customer deployment scope, cloud/provider model, or
+shared-responsibility boundary;</li>
+<li>evidence-source, retention, or data-classification requirement.</li>
+</ul>
+<p>Record material changes in the repository changelog and regenerate
+derived artifacts. Every customer-facing report should identify the
+mapping version, framework edition, CSW version/validation context,
+review status, and disclaimer.</p>
+<h2 id="standard-customer-facing-limitation-statement">8. Standard
+customer-facing limitation statement</h2>
+<blockquote>
+<p>This mapping identifies how Cisco Secure Workload may contribute
+evidence to the listed control objectives within the agreed deployment
+scope. It does not establish compliance, replace customer controls or
+assessor judgment, or constitute legal, regulatory, certification, or
+audit advice. Validate framework interpretation, product behavior, and
+final evidence sufficiency with qualified customer stakeholders and
+assessors.</p>
+</blockquote>
+</body>
+</html>

@@ -15,6 +15,7 @@ import re
 import shutil
 import subprocess
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -26,6 +27,8 @@ DOCS_PAGES = [
     ("docs/compliance-evidence-playbook", "CSW Compliance Evidence Playbook"),
     ("docs/why-these-mappings-matter", "Why these mappings matter"),
     ("docs/audience-and-usage",        "Audience and usage guide"),
+    ("docs/framework-scope-design",    "Framework Scope Design Guide"),
+    ("docs/governance-and-evidence-standards", "Governance and Evidence Standards"),
 ]
 
 FRAMEWORKS = [
@@ -66,6 +69,22 @@ FRAMEWORKS = [
 ]
 
 
+def build_provenance() -> str:
+    """Return a traceable, best-effort build identifier for rendered assets."""
+    try:
+        commit = subprocess.run(
+            ["git", "rev-parse", "--short", "HEAD"],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+    except (OSError, subprocess.CalledProcessError):
+        commit = "unknown"
+    built_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    return f"Build: {built_at} UTC · Repository commit: {commit}"
+
+
 def run_pandoc(input_path: Path, output_path: Path, title: str, source_label: str, source_href: str) -> None:
     """Render a single source (md or docx) to a self-contained HTML file."""
     header = TOOLS / "_inline-header.html"
@@ -77,6 +96,7 @@ def run_pandoc(input_path: Path, output_path: Path, title: str, source_label: st
         f'<div class="doc-meta">'
         f'Source: <a href="{source_href}">{source_label}</a> &middot; '
         f'<a href="../index.html">repository index</a>'
+        f' &middot; {build_provenance()}'
         f'</div>\n',
         encoding="utf-8",
     )
@@ -167,6 +187,7 @@ def build_index(report_html_paths: list[tuple[str, str | None, str | None]]) -> 
         '<p><strong>Repository:</strong> '
         '<a href="https://github.com/chandrapati/CSW-Compliance-Mapping">'
         "chandrapati/CSW-Compliance-Mapping</a></p>\n"
+        f'<p style="font-size:.85rem;color:var(--fg-muted);">{build_provenance()}</p>\n'
         '<h2>Start here</h2>\n'
         '<ul>\n'
         '  <li><a href="README.html">Repository README</a> &mdash; '
@@ -179,6 +200,10 @@ def build_index(report_html_paths: list[tuple[str, str | None, str | None]]) -> 
         " &mdash; conversation-starter questions to ask about your own environment.</li>\n"
         '  <li><a href="docs/audience-and-usage.html">Audience and usage guide</a>'
         " &mdash; who reads what, runbook-vs-report, file formats, and folder layout.</li>\n"
+        '  <li><a href="docs/framework-scope-design.html">Framework Scope Design Guide</a>'
+        " &mdash; workshop patterns for scopes, labels, and evidence boundaries.</li>\n"
+        '  <li><a href="docs/governance-and-evidence-standards.html">Governance and Evidence Standards</a>'
+        " &mdash; applicability, provenance, export handling, and exception management.</li>\n"
         '  <li><a href="INDEX.html">Control-ID Index</a> &mdash; '
         "lookup across all thirty-four frameworks (PCI Req 1.2, HIPAA \u00a7164.312(a)(1), "
         "DORA Art. 9, NIS2 Art. 21(2)(d), NIST AC-4, NERC CIP-005 R1, "
@@ -261,6 +286,7 @@ def main() -> int:
             f'<div class="doc-meta">'
             f'Source: <a href="{src_name}">{src_name}</a> &middot; '
             f'<a href="index.html">repository index</a>'
+            f' &middot; {build_provenance()}'
             f'</div>\n',
             encoding="utf-8",
         )
