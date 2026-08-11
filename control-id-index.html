@@ -1,0 +1,3414 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Control-ID Index</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+:root {
+--fg: #1f2328;
+--fg-muted: #59636e;
+--bg: #ffffff;
+--bg-muted: #f6f8fa;
+--border: #d1d9e0;
+--link: #0969da;
+--link-hover: #0349b4;
+--code-bg: #f6f8fa;
+--accent: #cf222e;
+--max-width: 920px;
+}
+@media (prefers-color-scheme: dark) {
+:root {
+--fg: #e6edf3;
+--fg-muted: #9198a1;
+--bg: #0d1117;
+--bg-muted: #151b23;
+--border: #3d444d;
+--link: #4493f8;
+--link-hover: #6cb6ff;
+--code-bg: #151b23;
+--accent: #ff7b72;
+}
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+margin: 0 auto;
+max-width: var(--max-width);
+padding: 2rem 1.25rem 4rem;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+font-size: 16px;
+line-height: 1.6;
+color: var(--fg);
+background: var(--bg);
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 2rem;
+margin-bottom: 1rem;
+font-weight: 600;
+line-height: 1.25;
+}
+h1 { font-size: 2rem; border-bottom: 1px solid var(--border); padding-bottom: .35rem; }
+h2 { font-size: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: .3rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1rem; }
+h5, h6 { font-size: .875rem; color: var(--fg-muted); }
+p, ul, ol, blockquote, pre, table { margin: 0 0 1rem; }
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+ul, ol { padding-left: 1.6rem; }
+li + li { margin-top: .15rem; }
+blockquote {
+margin: 0 0 1rem;
+padding: .5rem 1rem;
+color: var(--fg-muted);
+border-left: .25rem solid var(--border);
+background: var(--bg-muted);
+border-radius: 0 6px 6px 0;
+}
+code, pre, kbd, samp {
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+font-size: .9em;
+}
+code {
+background: var(--code-bg);
+padding: .15rem .35rem;
+border-radius: 4px;
+}
+pre {
+background: var(--code-bg);
+padding: 1rem;
+border-radius: 6px;
+overflow: auto;
+font-size: .85rem;
+line-height: 1.45;
+}
+pre code { background: transparent; padding: 0; font-size: inherit; }
+table {
+display: block;
+width: 100%;
+overflow: auto;
+border-collapse: collapse;
+}
+th, td {
+border: 1px solid var(--border);
+padding: .5rem .75rem;
+vertical-align: top;
+text-align: left;
+}
+th {
+background: var(--bg-muted);
+font-weight: 600;
+}
+tbody tr:nth-child(2n) { background: var(--bg-muted); }
+hr {
+border: 0;
+height: 1px;
+background: var(--border);
+margin: 2rem 0;
+}
+img { max-width: 100%; height: auto; }
+
+.doc-meta {
+margin: 0 0 2rem;
+padding: .75rem 1rem;
+border: 1px solid var(--border);
+border-radius: 6px;
+background: var(--bg-muted);
+font-size: .9rem;
+color: var(--fg-muted);
+}
+.doc-meta a { font-weight: 500; }
+
+@media print {
+body { max-width: none; padding: 0; color: #000; background: #fff; }
+a { color: #000; text-decoration: underline; }
+pre, code, blockquote { background: #f5f5f5; }
+}
+</style>
+</head>
+<body>
+<div class="doc-meta">Source: <a href="control-id-index.html">INDEX.md</a> · <a href="index.html">repository index</a> · Build: 2026-08-11T04:20:50Z UTC · Repository commit: 463f586</div>
+<header id="title-block-header">
+<h1 class="title">Control-ID Index</h1>
+</header>
+<h1 id="control-id-index">Control-ID Index</h1>
+<p>A lookup index across all thirty-four frameworks in this repository.
+Use it to jump from a specific control / requirement / article to the
+runbook section that explains how Cisco Secure Workload (CSW) supports
+evidence for it.</p>
+<blockquote>
+<p><strong>Linking convention.</strong> Most links point to the runbook
+root rather than a specific anchor — section anchors aren’t stable
+across renderers. Once on the page, your browser’s <em>Find</em>
+(Ctrl/Cmd+F) on the control ID is the fastest way to land in the right
+paragraph.</p>
+</blockquote>
+<blockquote>
+<p><strong>Why no entries for some controls?</strong> A blank cell or
+omission means the control is intentionally outside CSW’s scope (e.g.,
+physical access, training, cryptographic primitives). The relevant
+runbook calls these out explicitly.</p>
+</blockquote>
+<hr />
+<h2 id="quick-start-by-question">Quick start by question</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>If you’re asking…</th>
+<th>Start here</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“How do I prove my segmentation actually works?”</td>
+<td><a href="./PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.html">PCI Req
+1</a>, <a href="./HIPAA/CSW-HIPAA-Technical-Runbook.html">HIPAA
+§164.312(a)(1)</a>, <a href="./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.html">NIST AC-4</a>,
+<a href="./DORA/CSW-DORA-Technical-Runbook.html">DORA Art. 9</a>, <a href="./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.html">NERC CIP-005 R1</a>,
+<a href="./TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.html">TSA SD
+Section III.A</a>, <a href="./IEC-62443/CSW-IEC62443-Technical-Runbook.html">IEC 62443 SR
+5.1–5.4</a>, <a href="./GDPR/CSW-GDPR-Technical-Runbook.html">GDPR Art. 25
+/ Art. 32</a>, <a href="./FedRAMP/CSW-FedRAMP-Technical-Runbook.html">FedRAMP AC-4 /
+SC-7</a>, <a href="./SWIFT-CSCF/CSW-SWIFT-CSCF-Technical-Runbook.html">SWIFT CSCF
+1.1</a>, <a href="./HITRUST-CSF/CSW-HITRUST-Technical-Runbook.html">HITRUST 01.m</a>,
+<a href="./CIS-Controls-v8/CSW-CIS-Technical-Runbook.html">CIS Safeguard
+13.4</a>, <a href="./NIST-CSF-2/CSW-CSF-Technical-Runbook.html">CSF
+PR.IR-01</a>, <a href="./CMMC-2/CSW-CMMC-Technical-Runbook.html">CMMC
+SC.L2-3.13.1 / 3.13.6</a>, <a href="./NIST-800-171/CSW-NIST-800-171-Technical-Runbook.html">NIST 800-171
+03.01.03 / 03.13.06</a>, <a href="./HIPAA-2025-NPRM/CSW-HIPAA-NPRM-Technical-Runbook.html">HIPAA NPRM
+§164.312(a)(2)(vi)</a>, <a href="./UK-Cyber-Essentials/CSW-Cyber-Essentials-Technical-Runbook.html">UK
+CE1</a>, <a href="./AU-Essential-Eight/CSW-Essential-Eight-Technical-Runbook.html">AU
+E5</a>, <a href="./CSA-CCM/CSW-CSA-CCM-Technical-Runbook.html">CSA
+IVS-09</a></td>
+</tr>
+<tr>
+<td>“How do I demonstrate continuous monitoring?”</td>
+<td><a href="./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.html">NIST
+CA-7 / SI-4</a>, <a href="./PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.html">PCI Req 11</a>, <a href="./SOC2/CSW-SOC2-Technical-Runbook.html">SOC 2 CC7.2</a>, <a href="./NIS2/CSW-NIS2-Technical-Runbook.html">NIS2 Art. 21(2)(b)</a>, <a href="./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.html">NERC CIP-007 R4</a>,
+<a href="./TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.html">TSA SD
+Section III.C</a>, <a href="./FedRAMP/CSW-FedRAMP-Technical-Runbook.html">FedRAMP CA-7 /
+SI-4</a>, <a href="./IEC-62443/CSW-IEC62443-Technical-Runbook.html">IEC
+62443 SR 6</a>, <a href="./SWIFT-CSCF/CSW-SWIFT-CSCF-Technical-Runbook.html">SWIFT CSCF
+6.4</a>, <a href="./HITRUST-CSF/CSW-HITRUST-Technical-Runbook.html">HITRUST 09.ab</a>,
+<a href="./CIS-Controls-v8/CSW-CIS-Technical-Runbook.html">CIS Safeguards
+13.1 / 13.6</a>, <a href="./NIST-CSF-2/CSW-CSF-Technical-Runbook.html">CSF
+DE.CM-01 / DE.CM-09</a>, <a href="./CMMC-2/CSW-CMMC-Technical-Runbook.html">CMMC SI.L2-3.14.6</a>, <a href="./COBIT-2019/CSW-COBIT-Technical-Runbook.html">COBIT MEA01 /
+MEA02</a>, <a href="./CSA-CCM/CSW-CSA-CCM-Technical-Runbook.html">CSA
+LOG</a></td>
+</tr>
+<tr>
+<td>“How do I produce an incident-reporting evidence pack?”</td>
+<td><a href="./DORA/CSW-DORA-Technical-Runbook.html">DORA Art. 19</a>, <a href="./NIS2/CSW-NIS2-Technical-Runbook.html">NIS2 Art. 23</a>, <a href="./HIPAA/CSW-HIPAA-Technical-Runbook.html">HIPAA §164.308(a)(6)</a>,
+<a href="./GDPR/CSW-GDPR-Technical-Runbook.html">GDPR Art. 33–34</a>, <a href="./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.html">NERC CIP-008</a>, <a href="./TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.html">TSA CIRP /
+24-hour CISA</a>, <a href="./SWIFT-CSCF/CSW-SWIFT-CSCF-Technical-Runbook.html">SWIFT CSCF
+7.1</a>, <a href="./HITRUST-CSF/CSW-HITRUST-Technical-Runbook.html">HITRUST 11.a /
+11.c</a>, <a href="./CIS-Controls-v8/CSW-CIS-Technical-Runbook.html">CIS
+Control 17</a>, <a href="./NIST-CSF-2/CSW-CSF-Technical-Runbook.html">CSF
+RS.AN-03 / RS.AN-07</a>, <a href="./CMMC-2/CSW-CMMC-Technical-Runbook.html">CMMC IR.L2-3.6.x</a>, <a href="./HIPAA-2025-NPRM/CSW-HIPAA-NPRM-Technical-Runbook.html">HIPAA NPRM
+§164.308(a)(6)</a></td>
+</tr>
+<tr>
+<td>“How do I show my supply chain / third-party exposure?”</td>
+<td><a href="./DORA/CSW-DORA-Technical-Runbook.html">DORA Art. 28</a>, <a href="./NIS2/CSW-NIS2-Technical-Runbook.html">NIS2 Art. 21(2)(d)</a>, <a href="./GDPR/CSW-GDPR-Technical-Runbook.html">GDPR Art. 28</a>, <a href="./ISO-27001-2022/CSW-ISO27001-Technical-Runbook.html">ISO
+A.5.19–A.5.22</a>, <a href="./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.html">NERC CIP-013</a>, <a href="./CIS-Controls-v8/CSW-CIS-Technical-Runbook.html">CIS Control
+15</a>, <a href="./NIST-CSF-2/CSW-CSF-Technical-Runbook.html">CSF GV.SC-04
+/ GV.SC-07</a></td>
+</tr>
+<tr>
+<td>“Where does CSW fit in a Zero Trust architecture?”</td>
+<td><a href="./NIST-800-207/CSW-NIST-800-207-Technical-Runbook.html">NIST
+800-207 Tenets</a>, <a href="./NIST-800-207A/CSW-NIST-800-207A-Technical-Runbook.html">NIST
+800-207A PDP/PEP/PA/PIP</a>, <a href="./CISA-ZeroTrust/CSW-CISA-ZTMM-Technical-Runbook.html">CISA
+ZTMM</a>, <a href="./FedRAMP/CSW-FedRAMP-Technical-Runbook.html">FedRAMP
+AC-4 / SC-7 (workload tier)</a>, <a href="./NIST-CSF-2/CSW-CSF-Technical-Runbook.html">CSF PR.IR /
+PR.AA</a></td>
+</tr>
+<tr>
+<td>“How do I evidence vulnerability management?”</td>
+<td><a href="./PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.html">PCI Req 6,
+11.3</a>, <a href="./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.html">NIST RA-5</a>,
+<a href="./ISO-27001-2022/CSW-ISO27001-Technical-Runbook.html">ISO
+A.8.8</a>, <a href="./NIS2/CSW-NIS2-Technical-Runbook.html">NIS2 Art.
+21(2)(e)</a>, <a href="./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.html">NERC CIP-010 R3</a>,
+<a href="./TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.html">TSA SD
+Section III.D</a>, <a href="./FedRAMP/CSW-FedRAMP-Technical-Runbook.html">FedRAMP RA-5</a>, <a href="./HITRUST-CSF/CSW-HITRUST-Technical-Runbook.html">HITRUST 10.m</a>,
+<a href="./IEC-62443/CSW-IEC62443-Technical-Runbook.html">IEC 62443 SR
+3</a>, <a href="./CIS-Controls-v8/CSW-CIS-Technical-Runbook.html">CIS
+Control 7</a>, <a href="./NIST-CSF-2/CSW-CSF-Technical-Runbook.html">CSF
+ID.RA-01 / ID.RA-05</a>, <a href="./CMMC-2/CSW-CMMC-Technical-Runbook.html">CMMC RA.L2-3.11.2 /
+3.11.3</a>, <a href="./AU-Essential-Eight/CSW-Essential-Eight-Technical-Runbook.html">AU
+E2 / E6</a>, <a href="./UK-Cyber-Essentials/CSW-Cyber-Essentials-Technical-Runbook.html">UK
+CE5</a>, <a href="./CSA-CCM/CSW-CSA-CCM-Technical-Runbook.html">CSA
+TVM</a>, <a href="./HIPAA-2025-NPRM/CSW-HIPAA-NPRM-Technical-Runbook.html">HIPAA NPRM
+§164.308(a)(2)</a></td>
+</tr>
+<tr>
+<td>“How do I evidence IT/OT segmentation on the IT side?”</td>
+<td><a href="./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.html">NERC CIP-005
+R1 (IT-side ESP enclave)</a>, <a href="./TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.html">TSA SD
+Section III.A</a>, <a href="./IEC-62443/CSW-IEC62443-Technical-Runbook.html">IEC 62443 SR 5
+(zones &amp; conduits)</a>, <a href="./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.html">NIST AC-4 /
+SC-7</a></td>
+</tr>
+<tr>
+<td>“How do I map workload telemetry to MITRE ATT&amp;CK?”</td>
+<td><a href="./MITRE-ATTACK/CSW-MITRE-ATTACK-Technical-Runbook.html">TA0001–TA0011,
+TA0040</a></td>
+</tr>
+<tr>
+<td>“How do I evidence a SWIFT secure zone at the workload layer?”</td>
+<td><a href="./SWIFT-CSCF/CSW-SWIFT-CSCF-Technical-Runbook.html">SWIFT
+CSCF 1.1 / 1.4 / 2.1</a></td>
+</tr>
+<tr>
+<td>“How do I evidence asset and software inventory?”</td>
+<td><a href="./CIS-Controls-v8/CSW-CIS-Technical-Runbook.html">CIS
+Controls 1 + 2</a>, <a href="./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.html">NIST CM-8</a>,
+<a href="./NIST-CSF-2/CSW-CSF-Technical-Runbook.html">CSF ID.AM-01 /
+ID.AM-02</a>, <a href="./CMMC-2/CSW-CMMC-Technical-Runbook.html">CMMC
+CM.L2-3.4.1 / 3.4.6</a>, <a href="./HIPAA-2025-NPRM/CSW-HIPAA-NPRM-Technical-Runbook.html">HIPAA NPRM
+§164.308(a)(1)(ii)(A)</a>, <a href="./NIST-800-171/CSW-NIST-800-171-Technical-Runbook.html">NIST 800-171
+03.04.x</a></td>
+</tr>
+<tr>
+<td>“How do I evidence governance to my management body?”</td>
+<td><a href="./DORA/CSW-DORA-Technical-Runbook.html">DORA Art. 5</a>, <a href="./NIS2/CSW-NIS2-Technical-Runbook.html">NIS2 Art. 20</a>, <a href="./NIST-CSF-2/CSW-CSF-Technical-Runbook.html">CSF GV.OV-01/02/03</a>,
+<a href="./SOC2/CSW-SOC2-Technical-Runbook.html">SOC 2 CC4.1</a>, <a href="./COBIT-2019/CSW-COBIT-Technical-Runbook.html">COBIT EDM03 / MEA01 /
+MEA02</a></td>
+</tr>
+<tr>
+<td>“What does CSW look like for a CMMC L2 (CUI) scope?”</td>
+<td><a href="./CMMC-2/CSW-CMMC-Technical-Runbook.html">CMMC AC.L2-3.1.1 /
+3.1.3</a>, <a href="./CMMC-2/CSW-CMMC-Technical-Runbook.html">CMMC
+SC.L2-3.13.1 / 3.13.6</a>, <a href="./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.html">NIST 800-53
+AC-4</a>, <a href="./NIST-800-171/CSW-NIST-800-171-Technical-Runbook.html">NIST 800-171
+Rev. 3</a></td>
+</tr>
+<tr>
+<td>“How do I evidence CCM / STAR segmentation and cloud data
+flows?”</td>
+<td><a href="./CSA-CCM/CSW-CSA-CCM-Technical-Runbook.html">CSA IVS / IAM /
+DSP / TVM</a></td>
+</tr>
+<tr>
+<td>“How do I discuss Singapore MAS TRM technology risk with CSW?”</td>
+<td><a href="./MAS-TRM/CSW-MAS-TRM-Technical-Runbook.html">MAS TRM
+critical systems, outsourcing, monitoring, vulnerability, incident
+evidence</a></td>
+</tr>
+<tr>
+<td>“How do I map APRA CPS 234 critical information assets?”</td>
+<td><a href="./APRA-CPS-234/CSW-APRA-CPS234-Technical-Runbook.html">APRA
+CPS 234 critical information asset segmentation, control testing,
+service-provider visibility</a></td>
+</tr>
+<tr>
+<td>“How do I support NY DFS 23 NYCRR Part 500 evidence?”</td>
+<td><a href="./NY-DFS-23-NYCRR-500/CSW-NYDFS-Technical-Runbook.html">NY
+DFS Part 500 covered systems, NPI applications, monitoring,
+vulnerability, incident support</a></td>
+</tr>
+<tr>
+<td>“How do I position CSW for TISAX / automotive supplier
+assessments?”</td>
+<td><a href="./TISAX/CSW-TISAX-Technical-Runbook.html">TISAX / VDA ISA
+prototype, engineering, customer-confidential workload
+segmentation</a></td>
+</tr>
+<tr>
+<td>“How do I evidence OT-adjacent IT segmentation under NIST
+800-82?”</td>
+<td><a href="./NIST-800-82/CSW-NIST-800-82-Technical-Runbook.html">NIST SP
+800-82 OT-facing IT systems, jump hosts, historians, vendor
+access</a></td>
+</tr>
+<tr>
+<td>“How do I support BSI C5 cloud assurance?”</td>
+<td><a href="./BSI-C5/CSW-BSI-C5-Technical-Runbook.html">BSI C5 cloud
+service scope, tenant/shared-service boundaries, cloud communication
+security</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="hipaa-security-rule">HIPAA Security Rule</h2>
+<p>Source: <a href="./HIPAA/CSW-HIPAA-Technical-Runbook.html"><code>HIPAA/CSW-HIPAA-Technical-Runbook.md</code></a></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Citation</th>
+<th>Topic</th>
+<th>CSW can support evidence for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>§164.306(a)</td>
+<td>General requirements (admin, physical, technical safeguards)</td>
+<td>Workload inventory, segmentation, telemetry baseline</td>
+</tr>
+<tr>
+<td>§164.308(a)(1)(ii)(A)</td>
+<td>Risk analysis</td>
+<td>Workload inventory + ADM dependency graph (where monitored)</td>
+</tr>
+<tr>
+<td>§164.308(a)(1)(ii)(B)</td>
+<td>Risk management</td>
+<td>Label/scope segmentation + drift detection</td>
+</tr>
+<tr>
+<td>§164.308(a)(1)(ii)(D)</td>
+<td>Information system activity review</td>
+<td>Flow + process telemetry (exported to SIEM where integrated)</td>
+</tr>
+<tr>
+<td>§164.308(a)(4)</td>
+<td>Information access management</td>
+<td>Identity/label-based segmentation</td>
+</tr>
+<tr>
+<td>§164.308(a)(6)</td>
+<td>Security incident procedures</td>
+<td>Forensic timeline reconstruction</td>
+</tr>
+<tr>
+<td>§164.312(a)(1)</td>
+<td>Access control</td>
+<td>Workload-level enforcement, deny-by-default</td>
+</tr>
+<tr>
+<td>§164.312(b)</td>
+<td>Audit controls</td>
+<td>Process + flow telemetry; SIEM export when configured</td>
+</tr>
+<tr>
+<td>§164.312(c)(1)</td>
+<td>Integrity</td>
+<td>Process / package change detection</td>
+</tr>
+<tr>
+<td>§164.312(e)(1)</td>
+<td>Transmission security</td>
+<td>Plaintext-protocol DENY enforcement</td>
+</tr>
+<tr>
+<td>§164.314(a)</td>
+<td>Business Associate Agreements (technical companion)</td>
+<td>Egress observation to BA endpoints</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="soc-2-trust-services-criteria">SOC 2 — Trust Services
+Criteria</h2>
+<p>Source: <a href="./SOC2/CSW-SOC2-Technical-Runbook.html"><code>SOC2/CSW-SOC2-Technical-Runbook.md</code></a></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Topic</th>
+<th>CSW can support evidence for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CC6.1</td>
+<td>Logical &amp; physical access controls</td>
+<td>Workload segmentation, deny-by-default policy</td>
+</tr>
+<tr>
+<td>CC6.6</td>
+<td>Restricting access to system resources</td>
+<td>Per-process / per-port enforcement</td>
+</tr>
+<tr>
+<td>CC6.7</td>
+<td>Restricting movement of information</td>
+<td>Egress allow-listing</td>
+</tr>
+<tr>
+<td>CC6.8</td>
+<td>Detecting unauthorised software</td>
+<td>Process inventory, anomaly rules</td>
+</tr>
+<tr>
+<td>CC7.1</td>
+<td>System operations — vulnerability management</td>
+<td>CVE / exposure backlog with prioritisation signals</td>
+</tr>
+<tr>
+<td>CC7.2</td>
+<td>System monitoring</td>
+<td>Flow + process telemetry, SIEM forwarding</td>
+</tr>
+<tr>
+<td>CC7.3</td>
+<td>Incident response</td>
+<td>Forensic export + quarantine policy</td>
+</tr>
+<tr>
+<td>CC7.4</td>
+<td>Recovery from incidents</td>
+<td>Containment evidence + post-recovery diff</td>
+</tr>
+<tr>
+<td>CC8.1</td>
+<td>Change management (technical companion)</td>
+<td>Policy diff history, ADM drift</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="pci-dss-v4.0">PCI DSS v4.0</h2>
+<p>Source: <a href="./PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.html"><code>PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.md</code></a></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Topic</th>
+<th>CSW can support evidence for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Req 1</td>
+<td>Network security controls</td>
+<td>CDE segmentation, simulation→enforce</td>
+</tr>
+<tr>
+<td>Req 1.2.1</td>
+<td>Documented &amp; approved flows</td>
+<td>ADM-derived approved flow inventory</td>
+</tr>
+<tr>
+<td>Req 2</td>
+<td>Secure configurations</td>
+<td>Process / package baseline, drift</td>
+</tr>
+<tr>
+<td>Req 6</td>
+<td>Develop &amp; maintain secure software</td>
+<td>Vulnerability inventory, CI/CD gating</td>
+</tr>
+<tr>
+<td>Req 6.3.3</td>
+<td>Address vulnerabilities per risk ranking</td>
+<td>CVSS + EPSS + reachability prioritisation</td>
+</tr>
+<tr>
+<td>Req 7</td>
+<td>Restrict access by need-to-know</td>
+<td>Identity-based workload segmentation</td>
+</tr>
+<tr>
+<td>Req 10</td>
+<td>Log and monitor all access</td>
+<td>Flow + process telemetry, SIEM export</td>
+</tr>
+<tr>
+<td>Req 10.7.2</td>
+<td>Detect failures of critical controls</td>
+<td>Sensor offline + enforcement gap alerts</td>
+</tr>
+<tr>
+<td>Req 11.3</td>
+<td>Vulnerability scanning</td>
+<td>Exposure insight from CSW-supported assessments — align with the Req
+11 internal / ASV modalities your QSA expects</td>
+</tr>
+<tr>
+<td>Req 11.4</td>
+<td>Network intrusion detection</td>
+<td>Behavioural rules + conversation-graph anomaly</td>
+</tr>
+<tr>
+<td>Req 11.5</td>
+<td>Detect changes/alterations</td>
+<td>Process / package / configuration drift</td>
+</tr>
+<tr>
+<td>Req 12.3.2</td>
+<td>Targeted risk analysis</td>
+<td>CSW vulnerability + ADM data feeds risk analysis</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="nist-sp-800-53-rev-5">NIST SP 800-53 Rev 5</h2>
+<p>Source: <a href="./NIST-800-53/CSW-NIST-800-53-Technical-Runbook.html"><code>NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md</code></a></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Control</th>
+<th>Topic</th>
+<th>CSW can support evidence for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AC-3</td>
+<td>Access enforcement</td>
+<td>Workload-level policy enforcement</td>
+</tr>
+<tr>
+<td>AC-4</td>
+<td>Information flow enforcement</td>
+<td>Segmentation by label/scope</td>
+</tr>
+<tr>
+<td>AC-6</td>
+<td>Least privilege</td>
+<td>Deny-by-default policy + minimal allow</td>
+</tr>
+<tr>
+<td>AU-2 / AU-12</td>
+<td>Auditable events</td>
+<td>Process + flow telemetry</td>
+</tr>
+<tr>
+<td>CA-7</td>
+<td>Continuous monitoring</td>
+<td>Inventory snapshots + ADM drift signalling on whatever cadence you
+operate</td>
+</tr>
+<tr>
+<td>CM-2</td>
+<td>Baseline configuration</td>
+<td>Process / package baseline</td>
+</tr>
+<tr>
+<td>CM-3</td>
+<td>Configuration change control</td>
+<td>Policy diff history</td>
+</tr>
+<tr>
+<td>CM-7</td>
+<td>Least functionality</td>
+<td>Process + port allow-listing</td>
+</tr>
+<tr>
+<td>CM-8</td>
+<td>System component inventory</td>
+<td>Workload inventory reconciled with authoritative CMDB / cloud
+registers</td>
+</tr>
+<tr>
+<td>IR-4</td>
+<td>Incident handling</td>
+<td>Quarantine policy + forensic export</td>
+</tr>
+<tr>
+<td>RA-5</td>
+<td>Vulnerability monitoring &amp; scanning</td>
+<td>Exposure monitoring backlog for workloads CSW observes</td>
+</tr>
+<tr>
+<td>SA-11</td>
+<td>Developer testing &amp; evaluation (technical evidence)</td>
+<td>Pre-deploy vulnerability gating</td>
+</tr>
+<tr>
+<td>SC-7</td>
+<td>Boundary protection</td>
+<td>Egress allow-listing, plaintext-protocol DENY</td>
+</tr>
+<tr>
+<td>SC-13</td>
+<td>Cryptographic protection</td>
+<td>Plaintext-protocol DENY (FIPS-validated modules out of scope)</td>
+</tr>
+<tr>
+<td>SI-4</td>
+<td>System monitoring</td>
+<td>Behavioural rules + SIEM forwarding</td>
+</tr>
+<tr>
+<td>SI-5</td>
+<td>Security alerts, advisories, directives</td>
+<td>Vulnerability dashboards, exploit indicators</td>
+</tr>
+<tr>
+<td>SR-3 / SR-6</td>
+<td>Supply chain controls (technical companion)</td>
+<td>Egress observation to supplier endpoints</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="isoiec-270012022-annex-a">ISO/IEC 27001:2022 — Annex A</h2>
+<p>Source: <a href="./ISO-27001-2022/CSW-ISO27001-Technical-Runbook.html"><code>ISO-27001-2022/CSW-ISO27001-Technical-Runbook.md</code></a></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Annex A</th>
+<th>Topic</th>
+<th>CSW can support evidence for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A.5.7</td>
+<td>Threat intelligence</td>
+<td>Vulnerability + EPSS feed, IOC ingestion</td>
+</tr>
+<tr>
+<td>A.5.19–A.5.22</td>
+<td>Supplier relationships (technical)</td>
+<td>Supplier egress reconciliation</td>
+</tr>
+<tr>
+<td>A.5.23</td>
+<td>Information security for cloud services</td>
+<td>Cloud-account inventory + segmentation</td>
+</tr>
+<tr>
+<td>A.5.30</td>
+<td>ICT readiness for business continuity (technical)</td>
+<td>Containment + segmentation evidence</td>
+</tr>
+<tr>
+<td>A.8.1</td>
+<td>User endpoint devices (workload portion)</td>
+<td>Server / workload inventory baseline</td>
+</tr>
+<tr>
+<td>A.8.8</td>
+<td>Management of technical vulnerabilities</td>
+<td>CVE remediation tracking for workloads under observation</td>
+</tr>
+<tr>
+<td>A.8.9</td>
+<td>Configuration management</td>
+<td>Process / package baseline</td>
+</tr>
+<tr>
+<td>A.8.16</td>
+<td>Monitoring activities</td>
+<td>Behavioural rules + SIEM forwarding</td>
+</tr>
+<tr>
+<td>A.8.20</td>
+<td>Networks security</td>
+<td>Workload-level segmentation</td>
+</tr>
+<tr>
+<td>A.8.21</td>
+<td>Security of network services</td>
+<td>Per-service allow-listing</td>
+</tr>
+<tr>
+<td>A.8.22</td>
+<td>Segregation of networks</td>
+<td>Per-scope segmentation workspaces</td>
+</tr>
+<tr>
+<td>A.8.23</td>
+<td>Web filtering (egress portion)</td>
+<td>Egress allow-listing for HTTP/HTTPS workloads</td>
+</tr>
+<tr>
+<td>A.8.24</td>
+<td>Use of cryptography</td>
+<td>Plaintext-protocol DENY (no crypto primitives)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="cisa-zero-trust-maturity-model-v2.0">CISA Zero Trust Maturity
+Model v2.0</h2>
+<p>Source: <a href="./CISA-ZeroTrust/CSW-CISA-ZTMM-Technical-Runbook.html"><code>CISA-ZeroTrust/CSW-CISA-ZTMM-Technical-Runbook.md</code></a></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Pillar</th>
+<th>Example maturity path (varies by deployment)</th>
+<th>CSW can support evidence for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Identity</td>
+<td>Initial → Advanced</td>
+<td>Identity-aware labels; integration with IdP-fed scopes (where
+deployed)</td>
+</tr>
+<tr>
+<td>Devices</td>
+<td>Initial → Advanced</td>
+<td>Process-level fingerprinting; anomaly detection
+(tuning-dependent)</td>
+</tr>
+<tr>
+<td>Networks</td>
+<td>Often Advanced → Optimal aspiration</td>
+<td>Enforcement / simulation workflows; observability-heavy ADM cadence
+— not an automatic Optimal-tier outcome</td>
+</tr>
+<tr>
+<td>Applications &amp; Workloads</td>
+<td>Traditional → Advanced</td>
+<td>Workload-level policy; vulnerability management views</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>Traditional → Advanced</td>
+<td>Conversation visibility; plaintext-protocol posture (encryption
+primitives still elsewhere)</td>
+</tr>
+</tbody>
+</table>
+<p>Cross-cutting capabilities — Visibility &amp; Analytics; Automation
+&amp; Orchestration; Governance — <em>may</em> map to dashboard, API,
+and policy- as-code workflows <strong>when</strong> customers wire those
+programmes up; the pillars describe outcomes, not a guarantee of
+maturity tier.</p>
+<hr />
+<h2 id="fips-140-140-2-140-3">FIPS 140 (140-2 / 140-3)</h2>
+<p>Source: <a href="./FIPS-140/fips-runbook.html"><code>FIPS-140/fips-runbook.md</code></a></p>
+<p>CSW is <strong>not a FIPS-validated cryptographic module</strong>.
+The runbook describes how CSW can support elements of an organisation’s
+posture toward FIPS — for instance by restricting obvious plaintext
+transports and aligning workload inventory evidence with cryptographic
+usage reviews — alongside <strong>validated libraries and HSMs</strong>
+that actually claim modules. Statements like <em>“every in-scope
+workload only uses validated cryptography”</em> still require
+cryptographic architecture and key custody disciplines outside CSW.</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>CSW position</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cryptographic module validation</td>
+<td>Out of scope — use a FIPS-validated library (OpenSSL FIPS,
+BouncyCastle FIPS)</td>
+</tr>
+<tr>
+<td>Algorithm implementation testing</td>
+<td>Out of scope — handled by NIST CMVP testing laboratory</td>
+</tr>
+<tr>
+<td>Key generation &amp; storage</td>
+<td>Out of scope — use a FIPS-validated HSM</td>
+</tr>
+<tr>
+<td>Module self-tests</td>
+<td>Out of scope — handled by the cryptographic library</td>
+</tr>
+<tr>
+<td>Use of FIPS-validated modules across the estate (programme
+assurance)</td>
+<td><strong>In scope</strong> — workload inventory + plaintext-protocol
+DENY evidence</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="nist-sp-800-207-zero-trust-architecture-seven-tenets">NIST SP
+800-207 — Zero Trust Architecture (Seven Tenets)</h2>
+<p>Source: <a href="./NIST-800-207/CSW-NIST-800-207-Technical-Runbook.html"><code>NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md</code></a></p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Tenet</th>
+<th>CSW can support evidence for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tenet 1 — All data sources &amp; computing services are
+resources</td>
+<td>Workload/asset inventory plus cloud-account context (configured per
+your rollout)</td>
+</tr>
+<tr>
+<td>Tenet 2 — All communication is secured regardless of network
+location</td>
+<td>Plaintext-protocol DENY as one layer — TLS validation / crypto still
+owned elsewhere</td>
+</tr>
+<tr>
+<td>Tenet 3 — Access to individual resources is granted on a per-session
+basis</td>
+<td>Identity- and label-based segmentation per scope</td>
+</tr>
+<tr>
+<td>Tenet 4 — Access is determined by dynamic policy</td>
+<td>ADM-informed policy intents + drift/change signals (with human
+approvals)</td>
+</tr>
+<tr>
+<td>Tenet 5 — Enterprise monitors integrity &amp; posture of all
+assets</td>
+<td>Posture telemetry (packages, CVE, flows)—interpret coverage with
+judgment</td>
+</tr>
+<tr>
+<td>Tenet 6 — All resource authentication &amp; authorisation is dynamic
+&amp; strictly enforced</td>
+<td>Identity-aware segmentation and enforcement at the workload (authn
+stacks still complementary)</td>
+</tr>
+<tr>
+<td>Tenet 7 — Enterprise collects posture information &amp; uses it to
+improve security</td>
+<td>Evidence feeds into SIEM / metrics packs on a cadence you
+configure</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="nist-sp-800-207a-zero-trust-logical-components-pdppeppapip">NIST
+SP 800-207A — Zero Trust Logical Components (PDP/PEP/PA/PIP)</h2>
+<p>Source: <a href="./NIST-800-207A/CSW-NIST-800-207A-Technical-Runbook.html"><code>NIST-800-207A/CSW-NIST-800-207A-Technical-Runbook.md</code></a></p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Component</th>
+<th>CSW role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Policy Decision Point (PDP) — Policy Engine</td>
+<td>CSW Defend segmentation plane evaluates authored policy intents
+<em>(logical PEP/PIP analogue — map to official ZTA artefacts per
+assessor guidance)</em></td>
+</tr>
+<tr>
+<td>Policy Decision Point (PDP) — Policy Administrator</td>
+<td>CSW Workspace administration + change history</td>
+</tr>
+<tr>
+<td>Policy Enforcement Point (PEP)</td>
+<td>CSW agent enforces decisions at the workload</td>
+</tr>
+<tr>
+<td>Policy Information Point (PIP)</td>
+<td>CSW telemetry (vulnerability, process, flow, package) feeds the
+policy decision</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="dora-regulation-eu-20222554">DORA — Regulation (EU)
+2022/2554</h2>
+<blockquote>
+<p><strong>Incident timelines.</strong> The hour-based shorthand in
+Article 19 is widely discussed, but operative deadlines and
+classifications depend on the <strong>Regulatory Technical
+Standards</strong> and supervisory guidance <strong>in force when you
+report</strong>. Confirm against those instruments (and competent
+authority instructions) rather than relying on this index alone.</p>
+</blockquote>
+<p>Source: <a href="./DORA/CSW-DORA-Technical-Runbook.html"><code>DORA/CSW-DORA-Technical-Runbook.md</code></a></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Article</th>
+<th>Topic</th>
+<th>CSW can support evidence for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Art. 5</td>
+<td>Management body accountability</td>
+<td>Quarterly evidence pack to management body</td>
+</tr>
+<tr>
+<td>Art. 6</td>
+<td>ICT risk management framework</td>
+<td>Centralised inventory, policy and detection state</td>
+</tr>
+<tr>
+<td>Art. 8(1)–(6)</td>
+<td>ICT asset inventory</td>
+<td>Workload inventory + ADM dependency graph reconciled with
+authoritative registers</td>
+</tr>
+<tr>
+<td>Art. 9(2)(a)</td>
+<td>Network segmentation</td>
+<td>Important-business-function scopes, simulation→enforce</td>
+</tr>
+<tr>
+<td>Art. 9(2)(b)</td>
+<td>Identification of unauthorised activities</td>
+<td>ADM drift, conversation-graph anomalies</td>
+</tr>
+<tr>
+<td>Art. 9(4)(g)</td>
+<td>Continuous review of segmentation</td>
+<td>Policy diff reports on an agreed supervisory cadence</td>
+</tr>
+<tr>
+<td>Art. 10</td>
+<td>Detection</td>
+<td>Behavioural rules + SIEM forwarding</td>
+</tr>
+<tr>
+<td>Art. 11</td>
+<td>Response and recovery</td>
+<td>Quarantine policy + forensic export bundle</td>
+</tr>
+<tr>
+<td>Art. 13</td>
+<td>Learning and evolving</td>
+<td>Quarterly metrics pack</td>
+</tr>
+<tr>
+<td>Art. 17</td>
+<td>Incident management process</td>
+<td>Forensic timeline reconstruction</td>
+</tr>
+<tr>
+<td>Art. 18</td>
+<td>Classification of incidents</td>
+<td>IBF labels + flow context inform classification</td>
+</tr>
+<tr>
+<td>Art. 19</td>
+<td>Incident reporting (timing per RTS / supervisory guidance)</td>
+<td>Artefact-heavy dossier templates in runbook — separate from
+statutory filing clocks</td>
+</tr>
+<tr>
+<td>Art. 24</td>
+<td>Testing programme</td>
+<td>Vulnerability + scenario test evidence</td>
+</tr>
+<tr>
+<td>Art. 25(1)</td>
+<td>Baseline tests</td>
+<td>CVE dashboard + reachability queries</td>
+</tr>
+<tr>
+<td>Art. 26</td>
+<td>TLPT (every 3 years for significant entities)</td>
+<td>Red-team activity reconstruction</td>
+</tr>
+<tr>
+<td>Art. 28(3)</td>
+<td>Register of Information</td>
+<td>Third-party egress reconciliation</td>
+</tr>
+<tr>
+<td>Art. 28(4)</td>
+<td>Third-party risk monitoring</td>
+<td>Monitored egress patterns reconciled against the Register (where
+integrations exist)</td>
+</tr>
+<tr>
+<td>Art. 30(2)(c)</td>
+<td>Contractual right to monitor</td>
+<td>Technical evidence supporting contractual right</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="nis2-directive-eu-20222555">NIS2 — Directive (EU) 2022/2555</h2>
+<blockquote>
+<p><strong>Incident timelines (national law).</strong> NIS2 Article 23
+phases (24 h / 72 h / ~one month narrative) inherit detail from
+delegated acts plus <strong>your Member State’s transposing
+statute</strong> — confirm operative wording with local counsel /
+competent authority / CSIRT.</p>
+</blockquote>
+<p>Source: <a href="./NIS2/CSW-NIS2-Technical-Runbook.html"><code>NIS2/CSW-NIS2-Technical-Runbook.md</code></a></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Provision</th>
+<th>Topic</th>
+<th>CSW can support evidence for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Art. 20(1)</td>
+<td>Management body accountability</td>
+<td>Quarterly NIS2 pack</td>
+</tr>
+<tr>
+<td>Art. 20(2)</td>
+<td>Management body training</td>
+<td>Pack section commentary as reusable training input</td>
+</tr>
+<tr>
+<td>Art. 21(2)(a)</td>
+<td>Risk analysis &amp; IS-security policies</td>
+<td>Workspace Intents grounded in observed behaviour</td>
+</tr>
+<tr>
+<td>Art. 21(2)(b)</td>
+<td>Incident handling</td>
+<td>Detection rules + SIEM forwarding + 6-artefact dossier</td>
+</tr>
+<tr>
+<td>Art. 21(2)(c)</td>
+<td>Business continuity / backup / crisis</td>
+<td>Containment + forensic preservation only (backups out of scope)</td>
+</tr>
+<tr>
+<td>Art. 21(2)(d)</td>
+<td>Supply chain security</td>
+<td>Supplier egress reconciliation</td>
+</tr>
+<tr>
+<td>Art. 21(2)(e)</td>
+<td>Security in acquisition / dev / maintenance, vuln handling</td>
+<td>Vulnerability inventory + CI/CD gate + CVE-to-attack-path</td>
+</tr>
+<tr>
+<td>Art. 21(2)(f)</td>
+<td>Effectiveness assessment</td>
+<td>Quarterly effectiveness pack</td>
+</tr>
+<tr>
+<td>Art. 21(2)(g)</td>
+<td>Cyber hygiene + training</td>
+<td>Patch &amp; process telemetry (training out of scope)</td>
+</tr>
+<tr>
+<td>Art. 21(2)(h)</td>
+<td>Cryptography / encryption</td>
+<td>Plaintext-protocol DENY (no crypto primitives)</td>
+</tr>
+<tr>
+<td>Art. 21(2)(i)</td>
+<td>HR sec / access control / asset management</td>
+<td>Inventory + label discipline supporting asset-management
+evidence</td>
+</tr>
+<tr>
+<td>Art. 21(2)(j)</td>
+<td>MFA / secured comms</td>
+<td>MFA remains outside CSW; CSW supports authorised
+workload-to-workload segmentation separately</td>
+</tr>
+<tr>
+<td>Art. 23(1)</td>
+<td>24-h early warning</td>
+<td>6-artefact dossier (initial pass)</td>
+</tr>
+<tr>
+<td>Art. 23(2)</td>
+<td>72-h notification</td>
+<td>Same dossier, progressively complete</td>
+</tr>
+<tr>
+<td>Art. 23(3)</td>
+<td>1-month final report</td>
+<td>Same dossier, plus root-cause and remediation</td>
+</tr>
+<tr>
+<td>Art. 32 / 33</td>
+<td>Supervisory measures</td>
+<td>On-demand exports customers can use as inputs to supervisory
+evidence packs</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="nerc-cip-north-american-bulk-electric-system-it-side-mapping">NERC
+CIP — North American Bulk Electric System (IT-side mapping)</h2>
+<blockquote>
+<p><strong>Scope.</strong> CSW addresses the <strong>IT side</strong> of
+the IT/OT boundary — EACMS, jump hosts, vendor-access servers,
+identity/PKI, BCSI hosts. CSW is <strong>not</strong> an Electronic
+Access Point (EAP) and does not enforce on PLCs / RTUs / IEDs / HMIs.
+Pair with your boundary firewall and your OT-aware monitoring stack
+(Cisco Cyber Vision, Claroty, Nozomi, Dragos) for end-to-end coverage.
+Draft v1 — apply SME judgment.</p>
+</blockquote>
+<p>Source: <a href="./NERC-CIP/CSW-NERC-CIP-Technical-Runbook.html"><code>NERC-CIP/CSW-NERC-CIP-Technical-Runbook.md</code></a></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Standard / Requirement</th>
+<th>Topic</th>
+<th>CSW can support evidence for (IT-side)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CIP-002 R1</td>
+<td>BES Cyber System identification</td>
+<td>Inventory + scope labelling for the IT estate supporting BCS</td>
+</tr>
+<tr>
+<td>CIP-003 R1</td>
+<td>Senior Manager accountability</td>
+<td>Quarterly evidence pack covering CIP-005/007/010/013 IT-side
+outputs</td>
+</tr>
+<tr>
+<td>CIP-005 R1</td>
+<td>Electronic Security Perimeter</td>
+<td>IT-side enclave segmentation; deny-by-default to EAP-IP set;
+documented exception list</td>
+</tr>
+<tr>
+<td>CIP-005 R1.5</td>
+<td>Boundary control review</td>
+<td>Quarterly enforcement diff report</td>
+</tr>
+<tr>
+<td>CIP-005 R2</td>
+<td>Interactive Remote Access (IRA)</td>
+<td>Intermediate-system enforcement; per-session flow telemetry; weekly
+IRA-pattern report</td>
+</tr>
+<tr>
+<td>CIP-007 R1</td>
+<td>Ports and services baseline</td>
+<td>Per-workload listening-port inventory with last-flow timestamp</td>
+</tr>
+<tr>
+<td>CIP-007 R2</td>
+<td>Patch management</td>
+<td>Continuous CVE inventory feeding the patch programme</td>
+</tr>
+<tr>
+<td>CIP-007 R3</td>
+<td>Malicious code prevention</td>
+<td>Behavioural rules + simulation→enforcement progression</td>
+</tr>
+<tr>
+<td>CIP-007 R4</td>
+<td>Security event monitoring</td>
+<td>Process + flow telemetry to SIEM with retention</td>
+</tr>
+<tr>
+<td>CIP-008 R1</td>
+<td>Incident response plan</td>
+<td>Six-artefact reconstruction bundle</td>
+</tr>
+<tr>
+<td>CIP-008 R4</td>
+<td>Reportable Cyber Security Incident notification</td>
+<td>Containment evidence + dossier supporting E-ISAC notification</td>
+</tr>
+<tr>
+<td>CIP-010 R1</td>
+<td>Configuration baseline</td>
+<td>Daily software + listening-port baseline with diff and
+disposition</td>
+</tr>
+<tr>
+<td>CIP-010 R1.5</td>
+<td>Unauthorised change monitoring</td>
+<td>Daily diff vs. previous day with disposition column</td>
+</tr>
+<tr>
+<td>CIP-010 R3.1</td>
+<td>Active vulnerability assessment (Highs)</td>
+<td>Per-workload CVE list with CVSS / exploit / EPSS context</td>
+</tr>
+<tr>
+<td>CIP-010 R3.2</td>
+<td>Pre-commissioning VA</td>
+<td>First-sighting CVE inventory before ESP connection</td>
+</tr>
+<tr>
+<td>CIP-011 R1.1</td>
+<td>BCSI access controls</td>
+<td>Egress and access pattern monitoring on
+<code>bes_role=bcsi-host</code> workloads</td>
+</tr>
+<tr>
+<td>CIP-013 R1.2.5</td>
+<td>Vendor remote access</td>
+<td>EACMS egress allowlist scoped to vendor register</td>
+</tr>
+<tr>
+<td>CIP-013 R1.2.6</td>
+<td>Vendor incident coordination</td>
+<td>Vendor-egress flow record for the incident window</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="tsa-pipeline-security-directive-2021-02-series-it-side-mapping">TSA
+Pipeline — Security Directive 2021-02 series (IT-side mapping)</h2>
+<blockquote>
+<p><strong>Scope.</strong> CSW addresses the <strong>IT side</strong> of
+the IT/OT boundary — SCADA jump servers, historians, MES/EAM,
+engineering workstations, vendor-access hosts, identity/PKI. CSW is
+<strong>not</strong> an OT-protocol deep-packet-inspection tool and does
+not enforce on RTUs / flow computers / PLCs / IEDs / HMIs. Pair with
+your IT/OT firewall and your OT-aware sensors. Draft v1 — apply SME
+judgment.</p>
+</blockquote>
+<p>Source: <a href="./TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.html"><code>TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.md</code></a></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>SD provision</th>
+<th>Topic</th>
+<th>CSW can support evidence for (IT-side)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Section II</td>
+<td>Critical Cyber System identification</td>
+<td>Inventory + scope labelling for CSW-managed workloads supporting
+CCS</td>
+</tr>
+<tr>
+<td>Section II</td>
+<td>Cybersecurity Coordinator</td>
+<td>Quarterly evidence pack to the Coordinator</td>
+</tr>
+<tr>
+<td>Section III.A</td>
+<td>Network segmentation (IT/OT)</td>
+<td>Per-site IT-side enclave segmentation; deny-by-default to IT/OT
+boundary firewall</td>
+</tr>
+<tr>
+<td>Section III.A</td>
+<td>Documented data flows</td>
+<td>Observed IT→OT flow inventory + reconciliation against
+architecture</td>
+</tr>
+<tr>
+<td>Section III.A</td>
+<td>New-flow change control</td>
+<td>Continuous monitoring for new IT→OT edges</td>
+</tr>
+<tr>
+<td>Section III.B</td>
+<td>Access control measures</td>
+<td>Workload-level least-privilege; quarterly access review with sunset
+log</td>
+</tr>
+<tr>
+<td>Section III.C</td>
+<td>Continuous monitoring &amp; detection</td>
+<td>Behavioural rules + flow telemetry to SIEM; conversation-graph
+anomalies</td>
+</tr>
+<tr>
+<td>Section III.C</td>
+<td>SIEM integration</td>
+<td>Forwarding configuration to Splunk / QRadar / Sentinel / Cisco
+XDR</td>
+</tr>
+<tr>
+<td>Section III.C</td>
+<td>Detection latency</td>
+<td>Per-CCS-function MTTD report</td>
+</tr>
+<tr>
+<td>Section III.D</td>
+<td>Unpatched-system risk reduction</td>
+<td>Continuous CVE inventory + compensating-control register</td>
+</tr>
+<tr>
+<td>Section III.D</td>
+<td>Patch verification</td>
+<td>Diff report showing patched version + automatic CVE drop</td>
+</tr>
+<tr>
+<td>Cybersecurity Incident Response Plan</td>
+<td>Detection, response, 24-hour CISA reporting</td>
+<td>Six-artefact reconstruction bundle</td>
+</tr>
+<tr>
+<td>Cybersecurity Assessment Plan (CAP)</td>
+<td>Annual implementation assessment</td>
+<td>Per-SD-section evidence pack with prior-period delta</td>
+</tr>
+<tr>
+<td>Cybersecurity Architecture Design Review</td>
+<td>Periodic architecture review</td>
+<td>Workload inventory + dependency graph + observed flow inventory</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="cis-critical-security-controls-v8.1-ig2-lead">CIS Critical
+Security Controls v8.1 (IG2 lead)</h2>
+<blockquote>
+<p><strong>Scope.</strong> CIS Controls v8.1, 18 Controls and ~153
+Safeguards. Default depth is <strong>Implementation Group 2
+(IG2)</strong>; IG1 and IG3 deltas are called out where the work
+materially changes. CSW is direct on six Controls (1, 2, 4, 7, 8, 13)
+and supporting on seven; out of scope on Controls 5 (account mgmt), 9
+(email/web), 11 (data recovery), 14 (training).</p>
+</blockquote>
+<p>Source: <a href="./CIS-Controls-v8/CSW-CIS-Technical-Runbook.html"><code>CIS-Controls-v8/CSW-CIS-Technical-Runbook.md</code></a></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Safeguard</th>
+<th>Topic</th>
+<th>CSW can support evidence for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.1 / 1.5</td>
+<td>Inventory of enterprise assets; passive discovery</td>
+<td>Continuous workload inventory + cloud-orchestrator polling</td>
+</tr>
+<tr>
+<td>1.2</td>
+<td>Address unauthorised assets</td>
+<td>Quarantine policy applied to net-new workloads</td>
+</tr>
+<tr>
+<td>2.1</td>
+<td>Software inventory</td>
+<td>Per-workload package + version inventory</td>
+</tr>
+<tr>
+<td>2.3 / 2.5 / 2.6</td>
+<td>Address unauthorised software; allow-list</td>
+<td>Allow-list deviation alerting + (IG3) behavioural block</td>
+</tr>
+<tr>
+<td>4.1</td>
+<td>Secure configuration process</td>
+<td>Daily baseline + drift report tied to change ticket</td>
+</tr>
+<tr>
+<td>4.4 / 4.6</td>
+<td>Default deny on FW; secure software config</td>
+<td>CSW segmentation enforcement + per-workload listening-port
+inventory</td>
+</tr>
+<tr>
+<td>7.1–7.7</td>
+<td>Continuous vulnerability management</td>
+<td>Continuous CVE inventory + reachability prioritisation + patch SLA
+tracking</td>
+</tr>
+<tr>
+<td>8.2 / 8.5</td>
+<td>Collect audit logs; detailed audit logs</td>
+<td>SIEM forwarding with per-flow + per-process detail</td>
+</tr>
+<tr>
+<td>8.7 / 8.10</td>
+<td>Retain audit logs (≥90 days IG2)</td>
+<td>SIEM retention policy + CSW window</td>
+</tr>
+<tr>
+<td>8.11</td>
+<td>Audit log reviews</td>
+<td>Quarterly review of CSW alert summary</td>
+</tr>
+<tr>
+<td>12.2</td>
+<td>Use secure protocols</td>
+<td>Plaintext-flow detection + DENY enforcement</td>
+</tr>
+<tr>
+<td>12.4</td>
+<td>Architecture diagrams</td>
+<td>ADM dependency export</td>
+</tr>
+<tr>
+<td>13.1 / 13.6</td>
+<td>Centralised monitoring; flow logs</td>
+<td>CSW flow telemetry + SIEM forwarding</td>
+</tr>
+<tr>
+<td>13.2 / 13.3</td>
+<td>Host + network IDS</td>
+<td>Behavioural rule catalogue + anomaly detection</td>
+</tr>
+<tr>
+<td>13.4</td>
+<td>Traffic filtering between segments</td>
+<td>CSW segmentation policy + simulation→enforcement log</td>
+</tr>
+<tr>
+<td>13.5</td>
+<td>Remote-asset access control</td>
+<td>Bastion-source-restricted mgmt protocol allow rules</td>
+</tr>
+<tr>
+<td>13.7–13.10 (IG3)</td>
+<td>HIPS / NIPS / port-level / app-layer filtering</td>
+<td>Behavioural rules + segmentation enforcement</td>
+</tr>
+<tr>
+<td>15.1 / 15.4</td>
+<td>Service provider mgmt (technical lens)</td>
+<td>Vendor-egress observation + reconciliation</td>
+</tr>
+<tr>
+<td>17.1–17.8</td>
+<td>Incident response management</td>
+<td>Six-artefact reconstruction bundle</td>
+</tr>
+<tr>
+<td>18.1 / 18.5</td>
+<td>Penetration testing</td>
+<td>Pre/post reachability + activity reconstruction</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="nist-cybersecurity-framework-2.0-govern-5-functions">NIST
+Cybersecurity Framework 2.0 (Govern + 5 Functions)</h2>
+<blockquote>
+<p><strong>Scope.</strong> CSF 2.0 (Feb 2024) added <strong>Govern
+(GV)</strong> above the existing Identify / Protect / Detect / Respond /
+Recover. CSF wraps control catalogues; this section maps the
+<strong>technical Subcategories</strong> where CSW supplies evidence.
+Direct on ID / PR / DE / RS technical Subcategories; supporting on GV
+(evidence pack) and RC (post-incident diff). Out of scope on physical/
+environmental, backup/recovery execution, and training/HR
+Subcategories.</p>
+</blockquote>
+<p>Source: <a href="./NIST-CSF-2/CSW-CSF-Technical-Runbook.html"><code>NIST-CSF-2/CSW-CSF-Technical-Runbook.md</code></a></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Subcategory</th>
+<th>Topic</th>
+<th>CSW can support evidence for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GV.OV-01 / 02 / 03</td>
+<td>Cybersecurity strategy oversight</td>
+<td>Quarterly evidence pack to management body</td>
+</tr>
+<tr>
+<td>GV.SC-04 / 07 / 09 / 10</td>
+<td>Cybersecurity supply chain (CSCRM)</td>
+<td>Vendor-egress observation + reconciliation + EOL register</td>
+</tr>
+<tr>
+<td>ID.AM-01 / 02 / 03</td>
+<td>Hardware / software / flow inventory</td>
+<td>Continuous workload + ADM dependency + observed-flow inventory</td>
+</tr>
+<tr>
+<td>ID.AM-04</td>
+<td>Supplier service inventory</td>
+<td>Vendor-egress + register reconciliation</td>
+</tr>
+<tr>
+<td>ID.AM-05 / 07</td>
+<td>Asset / data prioritisation and classification</td>
+<td><code>crit_band</code> + <code>data_class</code> labels per
+workload</td>
+</tr>
+<tr>
+<td>ID.AM-08</td>
+<td>Asset lifecycle</td>
+<td>Vendor-EOL flags in software inventory</td>
+</tr>
+<tr>
+<td>ID.RA-01 / 05 / 06</td>
+<td>Vulnerabilities + risk + response</td>
+<td>CVE inventory + reachability prioritisation + remediation
+tracking</td>
+</tr>
+<tr>
+<td>ID.RA-07</td>
+<td>Changes &amp; exceptions</td>
+<td>Drift report + change-ticket attribution</td>
+</tr>
+<tr>
+<td>PR.AA-01 / 05</td>
+<td>Identity-aware access enforcement</td>
+<td>Workload-side enforcement (identity upstream)</td>
+</tr>
+<tr>
+<td>PR.DS-02</td>
+<td>Data-in-transit</td>
+<td>Plaintext-protocol DENY enforcement</td>
+</tr>
+<tr>
+<td>PR.IR-01</td>
+<td>Network protected from unauthorised access</td>
+<td>Workload-level deny-by-default segmentation</td>
+</tr>
+<tr>
+<td>PR.IR-03</td>
+<td>Resilience requirements</td>
+<td>Quarantine policy + segmentation under change control</td>
+</tr>
+<tr>
+<td>PR.PS-01</td>
+<td>Configuration management</td>
+<td>Daily baseline + drift detection</td>
+</tr>
+<tr>
+<td>PR.PS-02</td>
+<td>Software maintained</td>
+<td>Per-workload software inventory + EOL tagging</td>
+</tr>
+<tr>
+<td>PR.PS-04</td>
+<td>Log records generated</td>
+<td>Per-flow + per-process telemetry to SIEM</td>
+</tr>
+<tr>
+<td>PR.PS-05</td>
+<td>Unauthorised software prevented</td>
+<td>Behavioural rules + (IG3) block</td>
+</tr>
+<tr>
+<td>PR.PS-06</td>
+<td>Secure software development</td>
+<td>CVE inventory feeds SDLC</td>
+</tr>
+<tr>
+<td>DE.CM-01</td>
+<td>Networks monitored</td>
+<td>CSW flow telemetry + behavioural rules + SIEM</td>
+</tr>
+<tr>
+<td>DE.CM-03</td>
+<td>Personnel activity monitored</td>
+<td>Process telemetry + identity-aware policy</td>
+</tr>
+<tr>
+<td>DE.CM-06</td>
+<td>External service provider activities monitored</td>
+<td>Vendor-egress observation + drift alerting</td>
+</tr>
+<tr>
+<td>DE.CM-09</td>
+<td>Computing hardware/software monitored</td>
+<td>Per-workload telemetry retention</td>
+</tr>
+<tr>
+<td>DE.AE-02 / 03 / 04 / 06 / 07 / 08</td>
+<td>Adverse event analysis</td>
+<td>Forensic timeline + SIEM correlation + threat intel + impact +
+ticket routing</td>
+</tr>
+<tr>
+<td>RS.MA-01 to 05</td>
+<td>Incident management</td>
+<td>Six-artefact dossier + severity routing</td>
+</tr>
+<tr>
+<td>RS.AN-03 / 06 / 07 / 08</td>
+<td>Incident analysis (root cause, magnitude, integrity)</td>
+<td>Process + flow timeline + dossier with timestamped exports</td>
+</tr>
+<tr>
+<td>RS.MI-01 / 02</td>
+<td>Incident mitigation</td>
+<td>Quarantine policy + compensating-control register</td>
+</tr>
+<tr>
+<td>RC.RP-04 / 05 / 06</td>
+<td>Recovery actions (evidence side)</td>
+<td>Post-recovery segmentation diff + re-baseline</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="cmmc-2.0-cybersecurity-maturity-model-certification-doddib">CMMC
+2.0 (Cybersecurity Maturity Model Certification — DoD/DIB)</h2>
+<blockquote>
+<p><strong>Scope.</strong> Default depth is <strong>Level 2</strong>
+(110 controls = NIST SP 800-171 Rev 2). Level 1 (FAR 52.204-21, 15
+safeguards) and Level 3 (Level 2 + selected NIST 800-172 enhancements)
+are called out in the runbook. CSW is direct on AC, AU, CM, RA, SC, SI
+families; supporting on CA, IA, IR (evidence), MA; out of scope on AT,
+MP, PE, PS. <strong>CMMC L2 assessment is performed by a C3PAO</strong>
+— nothing here substitutes for the SSP, POA&amp;M, or the C3PAO
+engagement.</p>
+</blockquote>
+<p>Source: <a href="./CMMC-2/CSW-CMMC-Technical-Runbook.html"><code>CMMC-2/CSW-CMMC-Technical-Runbook.md</code></a></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Practice</th>
+<th>Topic</th>
+<th>CSW can support evidence for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AC.L1/L2-3.1.1</td>
+<td>Limit system access</td>
+<td>Per-enclave deny-by-default segmentation</td>
+</tr>
+<tr>
+<td>AC.L2-3.1.2</td>
+<td>Limit access to authorised functions</td>
+<td>Allow-list per documented system function</td>
+</tr>
+<tr>
+<td>AC.L2-3.1.3</td>
+<td>Control flow of CUI</td>
+<td>Inter-enclave flow allow-list + reconciliation against SSP</td>
+</tr>
+<tr>
+<td>AC.L2-3.1.20</td>
+<td>Verify external connections</td>
+<td>Egress allowlist + alert on net-new external destinations</td>
+</tr>
+<tr>
+<td>AC.L2-3.1.22</td>
+<td>CUI on publicly-accessible systems</td>
+<td>Internet-reachability query + scope review</td>
+</tr>
+<tr>
+<td>AU.L2-3.3.1</td>
+<td>Audit records</td>
+<td>Per-flow + per-process telemetry to SIEM</td>
+</tr>
+<tr>
+<td>AU.L2-3.3.2</td>
+<td>Action traceability to individual users</td>
+<td>Process attribution + SIEM identity correlation</td>
+</tr>
+<tr>
+<td>AU.L2-3.3.4 / 3.3.5 / 3.3.8</td>
+<td>Alert / correlate / protect logs</td>
+<td>Forwarder health alert + SIEM correlation + RBAC</td>
+</tr>
+<tr>
+<td>AU.L2-3.3.9</td>
+<td>Limit audit-log mgmt functionality</td>
+<td>CSW RBAC for audit-management roles</td>
+</tr>
+<tr>
+<td>CM.L2-3.4.1</td>
+<td>Establish baseline configurations</td>
+<td>Daily snapshot per workload (OS, packages, ports, processes)</td>
+</tr>
+<tr>
+<td>CM.L2-3.4.3 / 3.4.4</td>
+<td>Track and approve changes</td>
+<td>Daily diff + change-ticket attribution</td>
+</tr>
+<tr>
+<td>CM.L2-3.4.6</td>
+<td>Least functionality</td>
+<td>Listening-port + service inventory + 90-day-no-flow review</td>
+</tr>
+<tr>
+<td>CM.L2-3.4.7</td>
+<td>Restrict nonessential programs</td>
+<td>Software allow-list + (L3) behavioural block</td>
+</tr>
+<tr>
+<td>RA.L2-3.11.2</td>
+<td>Vulnerability scanning</td>
+<td>Continuous CVE inventory per CUI workload</td>
+</tr>
+<tr>
+<td>RA.L2-3.11.3</td>
+<td>Remediate vulnerabilities</td>
+<td>Patch SLA + compensating-control register + POA&amp;M linkage</td>
+</tr>
+<tr>
+<td>SC.L2-3.13.1</td>
+<td>Boundary protection</td>
+<td>Per-enclave segmentation enforcement</td>
+</tr>
+<tr>
+<td>SC.L2-3.13.2</td>
+<td>Architectural designs</td>
+<td>ADM-derived as-observed architecture</td>
+</tr>
+<tr>
+<td>SC.L2-3.13.5</td>
+<td>Subnetworks for publicly-accessible components</td>
+<td>Public-component scope isolation</td>
+</tr>
+<tr>
+<td>SC.L2-3.13.6</td>
+<td>Deny by default; permit by exception</td>
+<td>Workload-level deny-by-default (native CSW posture)</td>
+</tr>
+<tr>
+<td>SC.L2-3.13.7</td>
+<td>Prevent split tunneling</td>
+<td>Detective alert on split-tunnel patterns</td>
+</tr>
+<tr>
+<td>SI.L2-3.14.1</td>
+<td>Identify, report, correct system flaws</td>
+<td>CVE inventory + drift + SIEM routing</td>
+</tr>
+<tr>
+<td>SI.L2-3.14.2</td>
+<td>Malicious code protection</td>
+<td>Behavioural rules layered with endpoint AV</td>
+</tr>
+<tr>
+<td>SI.L2-3.14.3</td>
+<td>Monitor security advisories</td>
+<td>Threat-intel-enriched CVE prioritisation</td>
+</tr>
+<tr>
+<td>SI.L2-3.14.6</td>
+<td>Monitor communications</td>
+<td>Flow telemetry + behavioural rules + anomaly detection</td>
+</tr>
+<tr>
+<td>SI.L2-3.14.7</td>
+<td>Identify unauthorised use</td>
+<td>Process telemetry + identity-aware policy</td>
+</tr>
+<tr>
+<td>IR.L2-3.6.1 / 3.6.2 / 3.6.3</td>
+<td>Incident response process</td>
+<td>Six-artefact dossier per CUI-scope incident</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="iec-62443-industrial-automation-control-systems-it-side-mapping">IEC
+62443 — Industrial Automation &amp; Control Systems (IT-side
+mapping)</h2>
+<blockquote>
+<p><strong>Scope.</strong> CSW addresses <strong>servers, VMs,
+containers, and cloud workloads</strong> on the <strong>IT side</strong>
+of the IT/OT boundary and systems that <strong>support</strong> IACS
+(jump hosts, engineering workstations, historians, DMZ brokers). CSW
+does <strong>not</strong> replace OT visibility for Level 0–2 devices —
+pair with <strong>Cisco Cyber Vision</strong>, <strong>Claroty</strong>,
+or equivalent for device-layer evidence.</p>
+</blockquote>
+<p>Source: <a href="./IEC-62443/CSW-IEC62443-Technical-Runbook.html"><code>IEC-62443/CSW-IEC62443-Technical-Runbook.md</code></a></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Topic</th>
+<th>CSW can support evidence for (IT-side / IACS-adjacent)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SR 5.1</td>
+<td>Segmentation / zones</td>
+<td>Scope hierarchy; workspaces; <code>zone</code> /
+<code>conduit</code> labels</td>
+</tr>
+<tr>
+<td>SR 5.2</td>
+<td>Segmentation for zones of differing security requirements</td>
+<td>Tiered scopes by SL labels; stricter workspaces for higher SL-T</td>
+</tr>
+<tr>
+<td>SR 5.3</td>
+<td>Conduit control</td>
+<td>Allowlist rules per conduit; default deny</td>
+</tr>
+<tr>
+<td>SR 5.4</td>
+<td>Covert channel mitigation (IT layer)</td>
+<td>Egress restrictions; flow-volume anomaly reports</td>
+</tr>
+<tr>
+<td>SR 1.1–1.13</td>
+<td>Identification, authentication, access control</td>
+<td>Identity-aware policies (where integrated); admin path lock-down;
+least-privilege allowlists</td>
+</tr>
+<tr>
+<td>SR 3.1–3.9</td>
+<td>System integrity</td>
+<td>Process/binary inventory; drift alerts; vulnerability data</td>
+</tr>
+<tr>
+<td>SR 6.1</td>
+<td>Audit logging support</td>
+<td>Flow + process retention; exports</td>
+</tr>
+<tr>
+<td>SR 6.2</td>
+<td>Continuous monitoring</td>
+<td>Alerts; SIEM forwarders</td>
+</tr>
+<tr>
+<td>SR 7.1–7.8</td>
+<td>Resource availability (DoS awareness)</td>
+<td>Flow volumetrics; session-rate anomalies</td>
+</tr>
+<tr>
+<td>62443-2-1 (technical contributors)</td>
+<td>Security management system — monitoring / IR support</td>
+<td>Dashboards; scheduled exports; forensic drill packages</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="gdpr-regulation-eu-2016679-technical-measures">GDPR — Regulation
+(EU) 2016/679 (technical measures)</h2>
+<blockquote>
+<p><strong>Limitation.</strong> GDPR is a <strong>legal</strong>
+framework — lawful basis, DPIA sign-off, and data-subject rights remain
+with the controller, DPO, and counsel. This section indexes
+<strong>technical security-of-processing</strong> and
+<strong>flow-corroboration</strong> artefacts only.</p>
+</blockquote>
+<p>Source: <a href="./GDPR/CSW-GDPR-Technical-Runbook.html"><code>GDPR/CSW-GDPR-Technical-Runbook.md</code></a></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Provision</th>
+<th>Topic</th>
+<th>CSW can support evidence for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Art. 5(1)(f)</td>
+<td>Integrity &amp; confidentiality</td>
+<td>Segmentation; monitoring; cleartext-path detection; vuln
+visibility</td>
+</tr>
+<tr>
+<td>Art. 25(1–2)</td>
+<td>Data protection by design &amp; by default</td>
+<td>Scopes isolating processing activities; default deny; ADM-driven
+least privilege</td>
+</tr>
+<tr>
+<td>Art. 30</td>
+<td>Records of processing — accuracy of systems &amp; transfers</td>
+<td>ADM &amp; flow telemetry validating documented flows vs RoPA</td>
+</tr>
+<tr>
+<td>Art. 32(1)</td>
+<td>Security of processing (TOMs)</td>
+<td>Path hygiene; segmentation; resilience signals (with complementary
+crypto tools)</td>
+</tr>
+<tr>
+<td>Art. 32(1)(d)</td>
+<td>Testing effectiveness of measures</td>
+<td>Policy drills; simulation reruns</td>
+</tr>
+<tr>
+<td>Art. 33–34</td>
+<td>Breach notification &amp; communication</td>
+<td>Flow + process forensics; scope membership proofs (<em>legal
+finalizes filing</em>)</td>
+</tr>
+<tr>
+<td>Art. 35</td>
+<td>DPIA (technical annex)</td>
+<td>ADM + flow history for necessity / proportionality</td>
+</tr>
+<tr>
+<td>Art. 28</td>
+<td>Processor &amp; sub-processor oversight</td>
+<td>Egress allowlists; alerts on new destinations</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="mitre-attck-enterprise-tactics-techniques">MITRE ATT&amp;CK —
+Enterprise tactics &amp; techniques</h2>
+<blockquote>
+<p><strong>Pairing.</strong> CSW provides <strong>workload
+network/process</strong> telemetry and <strong>segmentation</strong> —
+not full EDR/email/identity coverage. Map tactics with
+<strong>SIEM</strong>, <strong>XDR/EDR</strong>, and identity tooling
+for end-to-end ATT&amp;CK narratives.</p>
+</blockquote>
+<p>Source: <a href="./MITRE-ATTACK/CSW-MITRE-ATTACK-Technical-Runbook.html"><code>MITRE-ATTACK/CSW-MITRE-ATTACK-Technical-Runbook.md</code></a></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Tactic</th>
+<th>Representative techniques (examples)</th>
+<th>CSW can support evidence for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TA0001 Initial Access</td>
+<td>T1190, T1133, T1566*</td>
+<td>Inbound flow anomalies; policy deny logs</td>
+</tr>
+<tr>
+<td>TA0002 Execution</td>
+<td>T1059, T1204, T1047</td>
+<td>Process monitoring; unseen CLI; scripting lineage</td>
+</tr>
+<tr>
+<td>TA0003 Persistence</td>
+<td>T1543, T1547, T1574</td>
+<td>New listeners; package drift</td>
+</tr>
+<tr>
+<td>TA0004 Privilege Escalation</td>
+<td>T1068, T1055</td>
+<td>Privilege context + anomalous children (validate with EDR)</td>
+</tr>
+<tr>
+<td>TA0005 Defense Evasion</td>
+<td>T1027, T1562, T1070</td>
+<td>Baseline drift; new egress</td>
+</tr>
+<tr>
+<td>TA0006 Credential Access</td>
+<td>T1003, T1558, T1110**</td>
+<td>Credential-tool patterns; supporting flow context</td>
+</tr>
+<tr>
+<td>TA0007 Discovery</td>
+<td>T1046, T1018, T1087**</td>
+<td>Scanning / fan-out behaviour from flow telemetry</td>
+</tr>
+<tr>
+<td>TA0008 Lateral Movement</td>
+<td>T1021, T1550</td>
+<td>Microsegmentation blocks; east-west allowlists</td>
+</tr>
+<tr>
+<td>TA0009 Collection</td>
+<td>T1005, T1119</td>
+<td>Internal staging / bulk cross-scope flows</td>
+</tr>
+<tr>
+<td>TA0010 Exfiltration</td>
+<td>T1048, T1020</td>
+<td>Egress anomalies; novel destinations</td>
+</tr>
+<tr>
+<td>TA0011 Command and Control</td>
+<td>T1071, T1095, T1573</td>
+<td>Beaconing candidates (finalize in SIEM)</td>
+</tr>
+<tr>
+<td>TA0040 Impact</td>
+<td>T1486, T1490</td>
+<td>Process anomaly; containment via policy</td>
+</tr>
+</tbody>
+</table>
+<p>*T1566 — post-landing workload evidence only. **Heavy
+identity/directory detail requires IdP / AD / EDR logs.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Technique</th>
+<th>Name</th>
+<th>CSW alignment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T1190</td>
+<td>Exploit Public-Facing Application</td>
+<td>Strong — ingress-tier flow pivot</td>
+</tr>
+<tr>
+<td>T1059.001</td>
+<td>PowerShell</td>
+<td>Medium–strong — process forensics</td>
+</tr>
+<tr>
+<td>T1059.003</td>
+<td>Windows Command Shell</td>
+<td>Medium–strong</td>
+</tr>
+<tr>
+<td>T1574.002</td>
+<td>DLL Side-Loading</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>T1543.003</td>
+<td>Windows Service</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>T1003.001</td>
+<td>LSASS Memory</td>
+<td>Medium — corroborate with EDR</td>
+</tr>
+<tr>
+<td>T1046</td>
+<td>Network Service Scanning</td>
+<td>Strong</td>
+</tr>
+<tr>
+<td>T1021.001</td>
+<td>Remote Desktop Protocol</td>
+<td>Strong</td>
+</tr>
+<tr>
+<td>T1021.002</td>
+<td>SMB/Windows Admin Shares</td>
+<td>Strong</td>
+</tr>
+<tr>
+<td>T1021.004</td>
+<td>SSH</td>
+<td>Strong</td>
+</tr>
+<tr>
+<td>T1048</td>
+<td>Exfiltration Over Alternative Protocol</td>
+<td>Medium–strong</td>
+</tr>
+<tr>
+<td>T1071.001</td>
+<td>Web Protocols</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>T1486</td>
+<td>Data Encrypted for Impact</td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="fedramp-moderate-baseline-workload-evidence">FedRAMP — Moderate
+baseline (workload evidence)</h2>
+<blockquote>
+<p><strong>Note.</strong> CSW as a <strong>product</strong> is not
+itself FedRAMP-authorized — this mapping describes
+<strong>customer-deployed</strong> CSW evidence <strong>inside
+your</strong> authorization boundary. Cross-reference the <a href="./NIST-800-53/">800-53</a> runbook for control-family depth.</p>
+</blockquote>
+<p>Source: <a href="./FedRAMP/CSW-FedRAMP-Technical-Runbook.html"><code>FedRAMP/CSW-FedRAMP-Technical-Runbook.md</code></a></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Control</th>
+<th>Topic</th>
+<th>CSW can support evidence for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AC-4</td>
+<td>Information flow enforcement</td>
+<td>Microsegmentation; ADM-documented flows; policy exports</td>
+</tr>
+<tr>
+<td>AC-3</td>
+<td>Access enforcement</td>
+<td>Workload-level allow/deny</td>
+</tr>
+<tr>
+<td>CA-7</td>
+<td>Continuous monitoring</td>
+<td>Scheduled exports; ConMon attachments</td>
+</tr>
+<tr>
+<td>CM-2</td>
+<td>Baseline configuration</td>
+<td>ADM baseline workspace</td>
+</tr>
+<tr>
+<td>CM-3</td>
+<td>Configuration change control</td>
+<td>Drift alerts → tickets</td>
+</tr>
+<tr>
+<td>CM-8</td>
+<td>System component inventory</td>
+<td>CSW inventory export reconciliation</td>
+</tr>
+<tr>
+<td>RA-5</td>
+<td>Vulnerability monitoring</td>
+<td>CVE + CVSS + EPSS + reachability; POA&amp;M rows</td>
+</tr>
+<tr>
+<td>SC-7</td>
+<td>Boundary protection</td>
+<td>Internal segmentation / host-level boundaries</td>
+</tr>
+<tr>
+<td>SI-4</td>
+<td>System monitoring</td>
+<td>Process + flow telemetry; SIEM ingest</td>
+</tr>
+<tr>
+<td>AU-2 / 3 / 6 / 12</td>
+<td>Audit events &amp; review</td>
+<td>Flow/process records; field mapping</td>
+</tr>
+<tr>
+<td>IR-4</td>
+<td>Incident handling</td>
+<td>Forensic export bundles</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="swift-customer-security-controls-framework-cscf-v2024">SWIFT —
+Customer Security Controls Framework (CSCF v2024)</h2>
+<blockquote>
+<p><strong>M/A labels.</strong> Mandatory (<strong>M</strong>) vs
+Advisory (<strong>A</strong>) vs N/A follows <strong>your</strong>
+official CSCF v2024 applicability row — treat hints below as navigation
+aid only.</p>
+</blockquote>
+<p>Source: <a href="./SWIFT-CSCF/CSW-SWIFT-CSCF-Technical-Runbook.html"><code>SWIFT-CSCF/CSW-SWIFT-CSCF-Technical-Runbook.md</code></a></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>CSCF Ref</th>
+<th>Title (short)</th>
+<th>CSW can support evidence for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.1</td>
+<td>SWIFT environment protection</td>
+<td>Secure-zone segmentation; ADM-backed allowlists</td>
+</tr>
+<tr>
+<td>1.2</td>
+<td>OS privileged account control</td>
+<td>Process + flow visibility for privileged sessions</td>
+</tr>
+<tr>
+<td>1.4</td>
+<td>Restriction of internet access</td>
+<td>DENY secure-zone → Internet at workload layer</td>
+</tr>
+<tr>
+<td>2.1</td>
+<td>Internal data flow security</td>
+<td>ADM + flow telemetry</td>
+</tr>
+<tr>
+<td>2.6</td>
+<td>Operator session confidentiality</td>
+<td>Plaintext protocol detection/blocking</td>
+</tr>
+<tr>
+<td>4.1</td>
+<td>Password policy</td>
+<td><strong>Out of scope</strong> — IdP / directory controls</td>
+</tr>
+<tr>
+<td>5.1</td>
+<td>Logical access control</td>
+<td>Identity-aware policy (where integrated); label-scoped rules</td>
+</tr>
+<tr>
+<td>6.1</td>
+<td>Malware protection</td>
+<td>Process anomaly signals (complement AV/EDR)</td>
+</tr>
+<tr>
+<td>6.4</td>
+<td>Logging &amp; monitoring</td>
+<td>Flow + process telemetry; SIEM export</td>
+</tr>
+<tr>
+<td>7.1</td>
+<td>Cyber incident response planning</td>
+<td>Forensic reconstruction; policy snapshots</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="hitrust-csf-v11-harmonised-requirements">HITRUST CSF — v11
+(harmonised requirements)</h2>
+<blockquote>
+<p><strong>Notation.</strong> <strong>01.m</strong>-style IDs are common
+discussion shorthand — confirm exact <strong>PRS</strong> text in
+<strong>MyCSF</strong> for your assessment. <strong>e1 / i1 /
+r2</strong> depth varies by programme and assessor interpretation.</p>
+</blockquote>
+<p>Source: <a href="./HITRUST-CSF/CSW-HITRUST-Technical-Runbook.html"><code>HITRUST-CSF/CSW-HITRUST-Technical-Runbook.md</code></a></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>HITRUST Ref</th>
+<th>Statement theme (short)</th>
+<th>CSW can support evidence for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01.m</td>
+<td>Segregation in networks</td>
+<td>Microsegmentation; ADM isolation proofs</td>
+</tr>
+<tr>
+<td>01.n</td>
+<td>Network connection control</td>
+<td>Service/port allowlists; denial logs</td>
+</tr>
+<tr>
+<td>01.o</td>
+<td>Network routing control</td>
+<td>Flow visibility of effective paths</td>
+</tr>
+<tr>
+<td>06.d</td>
+<td>Data protection &amp; privacy (technical facets)</td>
+<td>Workload-layer data-flow mapping; isolation</td>
+</tr>
+<tr>
+<td>09.ab</td>
+<td>Monitoring system use</td>
+<td>Continuous flow/process monitoring</td>
+</tr>
+<tr>
+<td>09.ad</td>
+<td>Administrator &amp; operator logs</td>
+<td>Admin-path flow bundles; process context</td>
+</tr>
+<tr>
+<td>10.a</td>
+<td>Security requirements analysis</td>
+<td>ADM + change-review packs</td>
+</tr>
+<tr>
+<td>10.m</td>
+<td>Control of technical vulnerabilities</td>
+<td>CVE + reachability; compensating rules</td>
+</tr>
+<tr>
+<td>11.a</td>
+<td>Reporting information security events</td>
+<td>IR exports + ticketing</td>
+</tr>
+<tr>
+<td>11.c</td>
+<td>Collection of evidence</td>
+<td>Forensic snapshots; hash manifests</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="nist-sp-800-171-rev.-3">NIST SP 800-171 Rev. 3</h2>
+<p>Source: <a href="./NIST-800-171/CSW-NIST-800-171-Technical-Runbook.html"><code>NIST-800-171/CSW-NIST-800-171-Technical-Runbook.md</code></a></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Topic</th>
+<th>CSW can support evidence for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>03.01.02</td>
+<td>Access enforcement</td>
+<td>Scope-based micro-segmentation; deny default with explicit allow;
+policy exports</td>
+</tr>
+<tr>
+<td>03.01.03</td>
+<td>Information flow enforcement for CUI</td>
+<td>Boundary policies CUI↔︎non-CUI; ADM-approved paths</td>
+</tr>
+<tr>
+<td>03.01.05</td>
+<td>Least privilege (incl. network)</td>
+<td>Minimal allow-list; process-scoped visibility</td>
+</tr>
+<tr>
+<td>03.01.12</td>
+<td>Remote access</td>
+<td>Policies for jump hosts / bastions; admin-port flow logs</td>
+</tr>
+<tr>
+<td>03.03.01–03.03.08</td>
+<td>Audit and accountability</td>
+<td>Flow + process telemetry → SIEM; timestamped records; RBAC on
+console</td>
+</tr>
+<tr>
+<td>03.04.01 / 03.04.02</td>
+<td>Baseline configuration; configuration change</td>
+<td>ADM as communication baseline; new flows / listeners flagged</td>
+</tr>
+<tr>
+<td>03.04.08</td>
+<td>Authorized software — allow by exception</td>
+<td>Process / software inventory vs approved list</td>
+</tr>
+<tr>
+<td>03.11.x</td>
+<td>Risk assessment inputs</td>
+<td>CVE + reachability + EPSS-style prioritisation</td>
+</tr>
+<tr>
+<td>03.13.01</td>
+<td>Boundary protection</td>
+<td>Enclave segmentation; internal boundary rules</td>
+</tr>
+<tr>
+<td>03.13.06</td>
+<td>Deny by default / allow by exception</td>
+<td>Workload-level default deny</td>
+</tr>
+<tr>
+<td>03.13.08</td>
+<td>Transmission confidentiality (path hygiene)</td>
+<td>Cleartext detection/blocking; protocol posture narratives</td>
+</tr>
+<tr>
+<td>03.14.01 / 03.14.02 / 03.14.06</td>
+<td>Flaw remediation; malicious code (complementary); system
+monitoring</td>
+<td>Vulnerability exports; process signals + AV pairing; behavioural
+rules</td>
+</tr>
+<tr>
+<td>03.06.x</td>
+<td>Incident handling (technical evidence)</td>
+<td>Forensic export bundle</td>
+</tr>
+<tr>
+<td>03.12.03 / 03.12.05</td>
+<td>Continuous monitoring; information exchange agreements</td>
+<td>Telemetry + policy effectiveness; ADM interface inventory + SSP
+references</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="csa-cloud-controls-matrix-v4.0">CSA Cloud Controls Matrix
+v4.0</h2>
+<p>Source: <a href="./CSA-CCM/CSW-CSA-CCM-Technical-Runbook.html"><code>CSA-CCM/CSW-CSA-CCM-Technical-Runbook.md</code></a></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Domain / objective</th>
+<th>Topic</th>
+<th>CSW can support evidence for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AIS</td>
+<td>Application &amp; interface security</td>
+<td>ADM dependency map; constrained interfaces; approved listener
+inventory</td>
+</tr>
+<tr>
+<td>BCR</td>
+<td>Business continuity &amp; resilience</td>
+<td>Pre/post DR ADM &amp; policy diff; connectivity baselines around
+tests</td>
+</tr>
+<tr>
+<td>CCC</td>
+<td>Change control &amp; configuration management</td>
+<td>Drift detection; inventory deltas; CAB-linked diffs</td>
+</tr>
+<tr>
+<td>DSP</td>
+<td>Data security &amp; privacy lifecycle</td>
+<td>Tier separation; monitored egress; data-flow boundaries</td>
+</tr>
+<tr>
+<td>GRC</td>
+<td>Governance / metrics</td>
+<td>Coverage KPIs; violation trends</td>
+</tr>
+<tr>
+<td>IAM</td>
+<td>Identity &amp; access (technical)</td>
+<td>Identity-aware segmentation; admin-path controls</td>
+</tr>
+<tr>
+<td>IVS (e.g. IVS-09)</td>
+<td>Infrastructure &amp; virtualization / network segmentation</td>
+<td>Micro-segmentation; east-west enforcement reports</td>
+</tr>
+<tr>
+<td>LOG</td>
+<td>Logging &amp; monitoring</td>
+<td>Flow/process telemetry; SIEM feed health</td>
+</tr>
+<tr>
+<td>SEF</td>
+<td>Security incident &amp; forensics</td>
+<td>Timeline reconstruction; process trees</td>
+</tr>
+<tr>
+<td>TVM</td>
+<td>Threat &amp; vulnerability management</td>
+<td>CVE inventory; reachability / exposure context</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="cobit-2019">COBIT 2019</h2>
+<p>Source: <a href="./COBIT-2019/CSW-COBIT-Technical-Runbook.html"><code>COBIT-2019/CSW-COBIT-Technical-Runbook.md</code></a></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Objective / focus area</th>
+<th>Topic</th>
+<th>CSW can support evidence for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>APO13</td>
+<td>Managed security</td>
+<td>Segmentation workspaces; telemetry; vuln exposure views</td>
+</tr>
+<tr>
+<td>DSS01</td>
+<td>Managed operations</td>
+<td>Flow/process monitoring; inventory; operational dashboards</td>
+</tr>
+<tr>
+<td>DSS02</td>
+<td>Managed service requests &amp; incidents</td>
+<td>Forensic search; process context for IR</td>
+</tr>
+<tr>
+<td>DSS05</td>
+<td>Managed security services</td>
+<td>Enforcement logs; segmentation coverage</td>
+</tr>
+<tr>
+<td>DSS05.02</td>
+<td>Network and connectivity security</td>
+<td>ADM snapshots; explicit allow/deny exports</td>
+</tr>
+<tr>
+<td>DSS05.05</td>
+<td>Physical and logical access (logical network)</td>
+<td>Admin-path restriction rules; observed admin flows <em>(IdP/MFA
+complementary)</em></td>
+</tr>
+<tr>
+<td>MEA01</td>
+<td>Managed performance and conformance monitoring</td>
+<td>Conformance dashboards; scheduled exports</td>
+</tr>
+<tr>
+<td>MEA02</td>
+<td>Managed system of internal control</td>
+<td>Drift detection; policy versioning; audit bundles</td>
+</tr>
+<tr>
+<td>BAI06</td>
+<td>Managed IT changes</td>
+<td>Post-change package / listener deltas</td>
+</tr>
+<tr>
+<td>BAI10</td>
+<td>Managed configuration</td>
+<td>Baseline listeners &amp; process sets</td>
+</tr>
+<tr>
+<td>EDM03</td>
+<td>Ensured risk optimization (inputs)</td>
+<td>CVE + reachability prioritisation for risk committees</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="australian-essential-eight-acsc-eemm">Australian Essential Eight
+(ACSC EEMM)</h2>
+<p>Source: <a href="./AU-Essential-Eight/CSW-Essential-Eight-Technical-Runbook.html"><code>AU-Essential-Eight/CSW-Essential-Eight-Technical-Runbook.md</code></a></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Strategy</th>
+<th>Topic</th>
+<th>CSW can support evidence for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E1</td>
+<td>Application control</td>
+<td>Process visibility; execution telemetry; hunt exports <em>with</em>
+allowlist records from endpoint tool</td>
+</tr>
+<tr>
+<td>E2</td>
+<td>Patch applications</td>
+<td>Inventory; CVE + EPSS + exposure</td>
+</tr>
+<tr>
+<td>E3</td>
+<td>Office macro settings</td>
+<td>Limited — egress patterns from Office <em>(not macro policy
+config)</em></td>
+</tr>
+<tr>
+<td>E4</td>
+<td>User application hardening</td>
+<td>Browser/Office network baselines; anomalies</td>
+</tr>
+<tr>
+<td>E5</td>
+<td>Restrict administrative privileges</td>
+<td>Admin-path segmentation; jump-host rules; process visibility</td>
+</tr>
+<tr>
+<td>E6</td>
+<td>Patch operating systems</td>
+<td>OS inventory; CVE mapping</td>
+</tr>
+<tr>
+<td>E7</td>
+<td>Multi-factor authentication</td>
+<td><strong>Out of scope</strong> — IdP evidence</td>
+</tr>
+<tr>
+<td>E8</td>
+<td>Regular backups</td>
+<td>Peripheral flow telemetry only <em>(not immutability / restore
+testing)</em></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="uk-cyber-essentials-plus">UK Cyber Essentials Plus</h2>
+<p>Source: <a href="./UK-Cyber-Essentials/CSW-Cyber-Essentials-Technical-Runbook.html"><code>UK-Cyber-Essentials/CSW-Cyber-Essentials-Technical-Runbook.md</code></a></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Theme</th>
+<th>Topic</th>
+<th>CSW can support evidence for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CE1</td>
+<td>Firewalls &amp; gateways</td>
+<td>Workload micro-segmentation; deny-by-default; ADM-backed rules</td>
+</tr>
+<tr>
+<td>CE2</td>
+<td>Secure configuration</td>
+<td>Software inventory; drift; listener reports</td>
+</tr>
+<tr>
+<td>CE3</td>
+<td>User access control</td>
+<td>Identity-aware policies where integrated; east-west least
+privilege</td>
+</tr>
+<tr>
+<td>CE4</td>
+<td>Malware protection</td>
+<td>Complement AV/EDR — anomaly rules; lateral containment</td>
+</tr>
+<tr>
+<td>CE5</td>
+<td>Security updates</td>
+<td>CVE + EPSS; reachability-ranked backlog</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="hipaa-security-rule-2025-nprm-proposed">HIPAA Security Rule —
+2025 NPRM (proposed)</h2>
+<blockquote>
+<p><strong>Proposed rule.</strong> This section indexes
+<strong>discussed NPRM provisions</strong> — confirm
+<strong>final</strong> regulatory text and effective dates with counsel
+before formal reliance. Parallel compliance with the
+<strong>current</strong> Security Rule applies until amendments are in
+force.</p>
+</blockquote>
+<p>Source: <a href="./HIPAA-2025-NPRM/CSW-HIPAA-NPRM-Technical-Runbook.html"><code>HIPAA-2025-NPRM/CSW-HIPAA-NPRM-Technical-Runbook.md</code></a></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Provision</th>
+<th>Topic</th>
+<th>CSW can support evidence for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>§164.312(a)(2)(vi)</td>
+<td>Network segmentation (<em>proposed mandatory</em>)</td>
+<td>Deny-by-default between ePHI and non-ePHI; ADM-backed rules</td>
+</tr>
+<tr>
+<td>§164.312(a)(1)</td>
+<td>Access control (<em>strengthened</em>)</td>
+<td>Identity-aware segmentation; process-level visibility</td>
+</tr>
+<tr>
+<td>§164.308(a)(1)(ii)(A)</td>
+<td>Technology asset inventory</td>
+<td>Workload discovery; software inventory exports</td>
+</tr>
+<tr>
+<td>§164.308(a)(1)(ii)(B)</td>
+<td>Risk analysis — network map</td>
+<td>ADM + flow topology</td>
+</tr>
+<tr>
+<td>§164.308(a)(2)</td>
+<td>Vulnerability management (<em>proposed</em>)</td>
+<td>CVE + EPSS + reachability</td>
+</tr>
+<tr>
+<td>§164.312(b)</td>
+<td>Audit controls — <em>24-month retention (proposed)</em></td>
+<td>Flow/process telemetry to SIEM / durable archive</td>
+</tr>
+<tr>
+<td>§164.312(e) / NPRM encryption (<em>verify final §</em>)</td>
+<td>Encryption in transit / path hygiene</td>
+<td>Plaintext detection &amp; blocking narratives</td>
+</tr>
+<tr>
+<td>§164.308(a)(6)</td>
+<td>Security incident — timely notification themes</td>
+<td>Forensic flow/process timelines</td>
+</tr>
+<tr>
+<td>§164.306(e)</td>
+<td>Annual compliance assessment (<em>proposed</em>)</td>
+<td>Continuous monitoring artefact cadence</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="mas-technology-risk-management-guidelines">MAS Technology Risk
+Management Guidelines</h2>
+<p>Source: <a href="./MAS-TRM/CSW-MAS-TRM-Technical-Runbook.html"><code>MAS-TRM/CSW-MAS-TRM-Technical-Runbook.md</code></a></p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Topic</th>
+<th>CSW can support evidence for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Critical system inventory</td>
+<td>Workload inventory, labels, application scopes, cloud connector
+context</td>
+</tr>
+<tr>
+<td>Network security</td>
+<td>Workload-level segmentation, deny-by-default policies, approved-flow
+baselines</td>
+</tr>
+<tr>
+<td>Vulnerability management</td>
+<td>CVE/package exposure and reachability-informed prioritisation</td>
+</tr>
+<tr>
+<td>Security monitoring</td>
+<td>Flow/process telemetry and SIEM export</td>
+</tr>
+<tr>
+<td>Incident response</td>
+<td>Affected-workload scoping and flow/process timelines</td>
+</tr>
+<tr>
+<td>Outsourcing / third-party risk</td>
+<td>Supplier egress visibility and approved endpoint mapping</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="apra-cps-234">APRA CPS 234</h2>
+<p>Source: <a href="./APRA-CPS-234/CSW-APRA-CPS234-Technical-Runbook.html"><code>APRA-CPS-234/CSW-APRA-CPS234-Technical-Runbook.md</code></a></p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Topic</th>
+<th>CSW can support evidence for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Information asset identification</td>
+<td>Workload inventory, labels, scopes, and critical information asset
+mapping</td>
+</tr>
+<tr>
+<td>Control implementation</td>
+<td>Segmentation policy, deny-by-default allowlists, and scope-based
+enforcement</td>
+</tr>
+<tr>
+<td>Control testing</td>
+<td>Policy simulation, observed-vs-allowed flow review, and evidence
+exports</td>
+</tr>
+<tr>
+<td>Incident management</td>
+<td>Flow/process timeline and affected workload scoping</td>
+</tr>
+<tr>
+<td>Service-provider management</td>
+<td>Third-party dependency and egress visibility</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="ny-dfs-23-nycrr-part-500">NY DFS 23 NYCRR Part 500</h2>
+<p>Source: <a href="./NY-DFS-23-NYCRR-500/CSW-NYDFS-Technical-Runbook.html"><code>NY-DFS-23-NYCRR-500/CSW-NYDFS-Technical-Runbook.md</code></a></p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Part 500 topic</th>
+<th>CSW can support evidence for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cybersecurity program</td>
+<td>Workload telemetry and segmentation evidence</td>
+</tr>
+<tr>
+<td>Asset inventory</td>
+<td>Covered workload and application-scope inventory</td>
+</tr>
+<tr>
+<td>Access privileges</td>
+<td>Workload communication allowlists and least-privilege policy</td>
+</tr>
+<tr>
+<td>Vulnerability management</td>
+<td>CVE/package exposure and reachability context</td>
+</tr>
+<tr>
+<td>Monitoring and testing</td>
+<td>Flow/process telemetry, policy simulation, and drift review</td>
+</tr>
+<tr>
+<td>Incident response</td>
+<td>Affected-workload and communication timeline</td>
+</tr>
+<tr>
+<td>Third-party service providers</td>
+<td>External dependency and service-provider egress summary</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="tisax-vda-isa">TISAX / VDA ISA</h2>
+<p>Source: <a href="./TISAX/CSW-TISAX-Technical-Runbook.html"><code>TISAX/CSW-TISAX-Technical-Runbook.md</code></a></p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Assessment topic</th>
+<th>CSW can support evidence for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Information classification</td>
+<td>Scope/label mapping to prototype, engineering, and
+customer-confidential workloads</td>
+</tr>
+<tr>
+<td>Access control</td>
+<td>Workload-level communication allowlists</td>
+</tr>
+<tr>
+<td>Network segregation</td>
+<td>Engineering/prototype enclave segmentation and supplier egress</td>
+</tr>
+<tr>
+<td>Vulnerability management</td>
+<td>Workload package/CVE context and reachability</td>
+</tr>
+<tr>
+<td>Logging and monitoring</td>
+<td>Flow/process telemetry and SIEM export</td>
+</tr>
+<tr>
+<td>Supplier connectivity</td>
+<td>Approved customer/supplier endpoints and egress tracking</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="nist-sp-800-82">NIST SP 800-82</h2>
+<p>Source: <a href="./NIST-800-82/CSW-NIST-800-82-Technical-Runbook.html"><code>NIST-800-82/CSW-NIST-800-82-Technical-Runbook.md</code></a></p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>800-82 topic</th>
+<th>CSW can support evidence for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Network segmentation</td>
+<td>Workload policy for OT-facing IT, DMZ brokers, jump hosts,
+historians</td>
+</tr>
+<tr>
+<td>Remote access</td>
+<td>Vendor/jump-host dependency mapping and allowlists</td>
+</tr>
+<tr>
+<td>Asset inventory</td>
+<td>OT-supporting Windows/Linux workload inventory</td>
+</tr>
+<tr>
+<td>Vulnerability management</td>
+<td>CVE/package context for IT workloads supporting OT</td>
+</tr>
+<tr>
+<td>Monitoring and detection</td>
+<td>Flow/process telemetry and SIEM export for OT-adjacent
+workloads</td>
+</tr>
+<tr>
+<td>Incident response</td>
+<td>Communication timeline and containment evidence for IT-side
+systems</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="bsi-c5">BSI C5</h2>
+<p>Source: <a href="./BSI-C5/CSW-BSI-C5-Technical-Runbook.html"><code>BSI-C5/CSW-BSI-C5-Technical-Runbook.md</code></a></p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>C5 topic</th>
+<th>CSW can support evidence for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Asset management</td>
+<td>Workload inventory, cloud connector context, and labels</td>
+</tr>
+<tr>
+<td>Communication security</td>
+<td>Workload segmentation and approved service paths</td>
+</tr>
+<tr>
+<td>Operations</td>
+<td>Baseline dependencies, drift detection, and policy reports</td>
+</tr>
+<tr>
+<td>Vulnerability handling</td>
+<td>Package/CVE exposure and reachability context</td>
+</tr>
+<tr>
+<td>Incident management</td>
+<td>Flow/process timelines and affected workload scoping</td>
+</tr>
+<tr>
+<td>Supplier/customer boundaries</td>
+<td>Tenant/service egress and shared-service communication</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="reverse-lookup-common-csw-capabilities-frameworks">Reverse
+Lookup — common CSW capabilities → frameworks</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>CSW capability</th>
+<th>Frameworks it often supports (apply judgment per deployment)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Workload inventory views</td>
+<td>HIPAA §164.308(a)(1)(ii)(A) · PCI Req 2 · NIST CM-8 · ISO A.8.1 ·
+CISA ZTMM Devices · 800-207 Tenet 1 · DORA Art. 8 · NIS2 Art. 21(2)(i) ·
+NERC CIP-002 R1 · TSA SD Section II · IEC 62443 SR 3 · FedRAMP CM-8 ·
+CIS Safeguard 1.1 · CSF ID.AM-01 · CMMC CM.L2-3.4.1 · HIPAA NPRM
+§164.308(a)(1)(ii)(A) · NIST 800-171 03.04.x · MAS TRM critical systems
+· APRA CPS 234 information assets · NY DFS covered systems · BSI C5
+asset management</td>
+</tr>
+<tr>
+<td>Workload-level segmentation (allow-list / deny-by-default)</td>
+<td>HIPAA §164.312(a)(1) · SOC 2 CC6.1 · PCI Req 1, 7 · NIST AC-3, AC-4,
+SC-7 · ISO A.8.20–A.8.22 · CISA ZTMM Networks · 800-207 Tenets 3, 6 ·
+800-207A PEP · DORA Art. 9 · NIS2 Art. 21(2)(a), (j) · NERC CIP-005 R1 ·
+TSA SD Section III.A · IEC 62443 SR 5 · GDPR Art. 25 / 32 · FedRAMP AC-4
+/ SC-7 · SWIFT CSCF 1.1 · HITRUST 01.m–01.o · CIS Safeguards 4.4, 13.4 ·
+CSF PR.IR-01 · CMMC AC.L2-3.1.1, SC.L2-3.13.1 / 3.13.6 · NIST 800-171
+03.13.06 · HIPAA NPRM §164.312(a)(2)(vi) · UK CE1 · CSA IVS-09 · COBIT
+DSS05.02 · MAS TRM network security · APRA CPS 234 control
+implementation · NY DFS access privileges · TISAX network segregation ·
+NIST 800-82 network segmentation · BSI C5 communication security</td>
+</tr>
+<tr>
+<td>Identity-aware least-privilege between zones
+(e.g. IT-to-OT-adjacent)</td>
+<td>NIST AC-3, AC-6 · 800-207 Tenets 3, 6 · NERC CIP-005 R1 (IT-side) ·
+TSA SD Section III.A / III.B · IEC 62443 SR 1 · SWIFT CSCF 5.1 · CIS
+Safeguard 6.1 · CSF PR.AA-05 · CMMC AC.L2-3.1.2 / 3.1.3 · AU E5 · UK
+CE3</td>
+</tr>
+<tr>
+<td>Interactive remote access termination evidence</td>
+<td>NERC CIP-005 R2 · NIST AC-17 · DORA Art. 9 (telework) · CIS
+Safeguard 13.5 · CMMC AC.L2-3.1.13</td>
+</tr>
+<tr>
+<td>ADM (application dependency mapping)</td>
+<td>PCI Req 1.2.1 · NIST CA-7, CM-2 · ISO A.8.16 · DORA Art. 8(6) · NIS2
+Art. 21(2)(a) · NERC CIP-010 R1.1 · TSA SD Section III.A (documented
+flows) · GDPR Art. 30 (RoPA corroboration) · IEC 62443 SR 5 · FedRAMP
+AC-4 · HITRUST 10.a · CIS Safeguard 12.4 · CSF ID.AM-03 · CMMC
+SC.L2-3.13.2</td>
+</tr>
+<tr>
+<td>Per-workload listening-port inventory + last-flow timestamp</td>
+<td>PCI Req 1.2.6, 2.2.4 · NIST CM-7 · NERC CIP-007 R1 · TSA SD Section
+III.B · CIS Safeguards 4.6, 2.6 · CMMC CM.L2-3.4.6 · UK CE2 · AU E1/E4
+(listener visibility)</td>
+</tr>
+<tr>
+<td>Exposure / vulnerability views + conversational reachability</td>
+<td>PCI Req 6.3.3, 11.3 · NIST RA-5, SI-5 · ISO A.8.8 · DORA Art. 25(1)
+· NIS2 Art. 21(2)(e) · NERC CIP-010 R3 · TSA SD Section III.D · FedRAMP
+RA-5 · IEC 62443 SR 3 · HITRUST 10.m · CIS Safeguards 7.1–7.7 · CSF
+ID.RA-01 / ID.RA-05 · CMMC RA.L2-3.11.2 / 3.11.3 · HIPAA NPRM
+§164.308(a)(2) · CSA TVM · AU E2/E6 · UK CE5 · MAS TRM vulnerability
+management · APRA CPS 234 control testing · NY DFS vulnerability
+management · TISAX vulnerability management · NIST 800-82 vulnerability
+management · BSI C5 vulnerability handling</td>
+</tr>
+<tr>
+<td>Configuration baseline + unauthorised-change detection</td>
+<td>NIST CM-2, CM-3, CM-6 · ISO A.8.9 · NERC CIP-010 R1, R1.5 · CIS
+Safeguard 4.1 · CSF PR.PS-01 / ID.RA-07 · CMMC CM.L2-3.4.1 / 3.4.3 ·
+COBIT BAI06 / BAI10 · CSA CCC</td>
+</tr>
+<tr>
+<td>Process + flow telemetry into SIEM</td>
+<td>HIPAA §164.312(b) · SOC 2 CC7.2 · PCI Req 10 · NIST AU-2, AU-12,
+SI-4 · ISO A.8.16 · DORA Art. 10 · NIS2 Art. 21(2)(b) · NERC CIP-007 R4
+· TSA SD Section III.C · FedRAMP SI-4 / AU-* · IEC 62443 SR 6 · SWIFT
+CSCF 6.4 · HITRUST 09.ab · CIS Safeguards 8.2 / 8.5 / 13.6 · CSF
+DE.CM-01 / DE.CM-09 / PR.PS-04 · CMMC AU.L2-3.3.1 / 3.3.2 / SI.L2-3.14.6
+· NIST 800-171 03.03.x · HIPAA NPRM §164.312(b) (<em>proposed
+retention</em>) · CSA LOG · MAS TRM monitoring · NY DFS
+monitoring/testing · TISAX logging/monitoring · NIST 800-82 monitoring ·
+BSI C5 incident management</td>
+</tr>
+<tr>
+<td>Quarantine policy + forensic export</td>
+<td>HIPAA §164.308(a)(6) · SOC 2 CC7.3, CC7.4 · NIST IR-4 · DORA Art. 11
+· NIS2 Art. 21(2)(b) · NERC CIP-008 · TSA CIRP / 24-hour CISA · GDPR
+Art. 33–34 · SWIFT CSCF 7.1 · HITRUST 11.a / 11.c · CIS Control 17 · CSF
+RS.MI-01 / RS.AN-07 · CMMC IR.L2-3.6.x</td>
+</tr>
+<tr>
+<td>Egress observation + supplier reconciliation</td>
+<td>ISO A.5.19–A.5.22 · NIST SR-3, SR-6 · DORA Art. 28 · NIS2 Art.
+21(2)(d) · GDPR Art. 28 · NERC CIP-013 R1 (vendor remote access on the
+IT side) · CIS Safeguards 15.1 / 15.4 · CSF GV.SC-04 / GV.SC-07 /
+GV.SC-09 · CMMC AC.L2-3.1.20</td>
+</tr>
+<tr>
+<td>Plaintext-protocol DENY enforcement</td>
+<td>HIPAA §164.312(e)(1) · NIST SC-7, SC-13 (programme support) · ISO
+A.8.24 · 800-207 Tenet 2 · NIS2 Art. 21(2)(h) · GDPR Art. 32 · SWIFT
+CSCF 2.6 · FIPS 140 (programme support) · CIS Safeguard 12.2 · CSF
+PR.DS-02</td>
+</tr>
+<tr>
+<td>Quarterly evidence pack to management body / Senior Officer</td>
+<td>DORA Art. 5 · NIS2 Art. 20 · ISO Clause 9.3 (management review
+input) · SOC 2 CC4.1 · NERC CIP-003 R1 · TSA Cybersecurity Coordinator
+role · CSF GV.OV-01 / 02 / 03 · CMMC supports the SSP/POA&amp;M cycle ·
+COBIT MEA01 / EDM03 (technical inputs)</td>
+</tr>
+<tr>
+<td>Annual self-assessment evidence pack</td>
+<td>NIST CA-2 · ISO Clause 9.2 · TSA Cybersecurity Assessment Plan (CAP)
+· CIS IG self-assessment · CMMC L2 self-assessment (where contract
+permits) · HIPAA NPRM §164.306(e) (<em>proposed</em>)</td>
+</tr>
+<tr>
+<td>Behavioural detection + anomaly detection</td>
+<td>NIST SI-4 · DORA Art. 10(2) · NIS2 Art. 21(2)(b) · MITRE ATT&amp;CK
+TA0001–TA0040 · CIS Safeguards 13.2 / 13.3 · CSF DE.AE-02 / DE.AE-07 ·
+CMMC SI.L2-3.14.2 / 3.14.6 · UK CE4 · AU E1/E4</td>
+</tr>
+<tr>
+<td>CUI / regulated-data scope labelling</td>
+<td>HIPAA ePHI tagging · PCI CDE labelling · DORA ICT-asset criticality
+(Art. 8) · CSF ID.AM-05 · CMMC CUI scope (foundational) · NIST 800-171
+<code>cui_scope</code> / enclave labels</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="disclaimer">Disclaimer</h2>
+<p>This index is curated for navigation, not certification. Listing a
+control means that a properly scoped Cisco Secure Workload deployment
+may help you assemble material artefacts aligned with that expectation —
+it does <strong>not</strong> by itself constitute compliance with that
+control or satisfy supervisory filing obligations.</p>
+<p>Consult each framework runbook plus the disclaimer in <a href="./README.html"><code>README.md</code></a> for supervisory reporting
+expectations, product coverage considerations, and out-of-scope
+notes.</p>
+<p><strong>Guidelines.</strong> The tables above summarise typical ways
+teams discuss Cisco Secure Workload alongside each control. They are
+reference points, not prescriptions—use professional judgment in your
+environment and with your assessors. Where mappings use language like
+<em>continuous</em>, <em>always-on</em>, or similar shorthand, that
+reflects typical operating rhythm—calendar it and prioritise refreshes
+using your team’s judgment.</p>
+</body>
+</html>

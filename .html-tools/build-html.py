@@ -137,6 +137,10 @@ def rewrite_links(html_path: Path) -> None:
     new = ABS_REPO_RE.sub('href="', text)
     # Then rewrite .md -> .html on whatever's left.
     new = HREF_MD_RE.sub(r"\1.html\2", new)
+    # The step above turns INDEX.md into INDEX.html, but that page is published
+    # as control-id-index.html to avoid colliding with index.html on
+    # case-insensitive filesystems.
+    new = re.sub(r'href="((?:\.{1,2}/)*)INDEX\.html"', r'href="\1control-id-index.html"', new)
 
     # If a link from inside framework/ now points to "framework/foo" (because
     # the absolute strip left the framework prefix in place), drop the
@@ -204,7 +208,7 @@ def build_index(report_html_paths: list[tuple[str, str | None, str | None]]) -> 
         " &mdash; workshop patterns for scopes, labels, and evidence boundaries.</li>\n"
         '  <li><a href="docs/governance-and-evidence-standards.html">Governance and Evidence Standards</a>'
         " &mdash; applicability, provenance, export handling, and exception management.</li>\n"
-        '  <li><a href="INDEX.html">Control-ID Index</a> &mdash; '
+        '  <li><a href="control-id-index.html">Control-ID Index</a> &mdash; '
         "lookup across all thirty-four frameworks (PCI Req 1.2, HIPAA \u00a7164.312(a)(1), "
         "DORA Art. 9, NIS2 Art. 21(2)(d), NIST AC-4, NERC CIP-005 R1, "
         "TSA SD Section III.A, IEC 62443 SR 5.3, GDPR Art. 32, CIS Safeguard 13.4, CSF PR.IR-01, "
@@ -276,7 +280,10 @@ def main() -> int:
         src = ROOT / src_name
         if not src.exists():
             continue
-        out = ROOT / f"{src.stem}.html"
+        # INDEX.md renders to control-id-index.html rather than INDEX.html:
+        # on case-insensitive filesystems INDEX.html and the index.html landing
+        # page are the same file, so the landing page silently overwrote it.
+        out = ROOT / ("control-id-index.html" if src_name == "INDEX.md" else f"{src.stem}.html")
         title = "Control-ID Index" if src_name == "INDEX.md" else "Cisco Secure Workload \u2014 Compliance Mapping Assets"
         # For top-level files, "back to repo index" shouldn't escape one folder up.
         header = TOOLS / "_inline-header.html"
