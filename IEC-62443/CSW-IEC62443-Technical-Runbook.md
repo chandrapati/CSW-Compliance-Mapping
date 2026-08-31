@@ -1,9 +1,9 @@
 # Cisco Secure Workload — IEC 62443 Compliance Framework
 ## Technical Runbook | Industrial Automation & Control Systems (IACS)
 
-**Version:** 1.0  
+**Version:** 1.1  
 **Use Case:** Fresh Install, Hybrid Environment (On-Prem + Cloud)  
-**Standards anchor:** IEC 62443-3-3 (System security requirements and security levels); IEC 62443-2-1 (Security program requirements for IACS asset owners) — consult your SL-T target and zone/conduit documentation for authoritative control text.
+**Standards anchor:** IEC 62443-3-3 (System security requirements and security levels); IEC 62443-2-1 (Security program requirements for IACS asset owners); IEC 62443-4-1 (Secure product development lifecycle requirements — supplier-side alignment for CSW as a product; see **Section 14**) — consult your SL-T target and zone/conduit documentation for authoritative control text.
 
 ---
 
@@ -13,7 +13,10 @@
 or operations cybersecurity teams, and integrators preparing for
 IEC 62443-aligned assessments, customer security requirements, or
 internal security management system (SMS) evidence for industrial
-environments.
+environments. **Section 14 additionally serves procurement, third-party
+risk management (TPRM), and vendor-assurance reviewers** who need
+evidence that CSW itself is developed under an IEC 62443-4-1-aligned
+secure development lifecycle.
 
 **Scope boundary you must understand before reading further.** Cisco
 Secure Workload (CSW) enforces segmentation, discovers dependencies,
@@ -48,6 +51,11 @@ device-level integrity signals.
 - *IEC 62443-2-1 (security program / operations): Can I produce
   continuous monitoring dashboards and exports that feed our SMS
   without manual spreadsheet reconciliation?*
+- *IEC 62443-4-1 (secure development lifecycle for CSW as a product):
+  For procurement / TPRM review — can Cisco demonstrate that Secure
+  Workload is developed under an SDL aligned to the 4-1 practice areas
+  (SM, SR, SD, SI, SVV, DM, SUM, SG), even where formal SDLA
+  certification is not currently claimed?*
 
 **What you'll need.** Your zone & conduit model (per IEC 62443-3-2 or
 customer ZCRD), Security Level Target (SL-T) per zone, inventory of
@@ -161,6 +169,7 @@ protocol inspection or safety-instrumented logic.
 | **FR 6 / SR 6.1–6.2** — Event monitoring & timely response | SOC runbooks, timelines, ticket exports | Flow + process forensics; alert correlation inputs to SIEM |
 | **FR 7 / SR 7.1–7.8** — Resource availability | SLAs, capacity plans, DoS playbooks | Flow anomaly detection (connection/session volume spikes); early warning on saturation patterns |
 | **62443-2-1** — Security management / operations | KPIs, dashboards, management review | Continuous inventory/policy dashboards; scheduled evidence export |
+| **62443-4-1** — Supplier secure development lifecycle (for CSW as a product) | SDLA questionnaires, SBOM, PSIRT process, CVD policy, patch/vulnerability advisories | Cisco CSDL alignment evidence — see **Section 14** for practice-by-practice mapping and vendor due-diligence checklist |
 
 **Regional or contractual note:** Many asset owners implement 62443
 requirements through customer purchase specifications or national
@@ -570,6 +579,151 @@ perl -pe 's/\b10\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/10.REDACTED.0.0/g' \
 | Deploying only on corporate IT | **OT-adjacent** IT is the compliance-critical tier |
 | Ignoring cloud **shadow IT** paths to plant data | Enable cloud connectors for mirrored historians |
 | Expecting CSW to **replace** OT IDS | Maintain Cyber Vision / Claroty / Nozomi for ICS context |
+
+---
+
+## 14. IEC 62443-4-1 — Cisco's Secure Product Development Lifecycle (CSW as a product)
+
+**Audience shift.** Sections 1–13 help *asset owners* deploy CSW to
+evidence 62443-3-3 / 2-1 controls in their plant. **Section 14 is for
+your procurement, TPRM, and vendor-assurance reviewers** who need to
+understand how the CSW *product* is built — mapping Cisco's Secure
+Development Lifecycle (CSDL) to the eight IEC 62443-4-1 practice areas.
+
+**Alignment, not certification.** Cisco Secure Workload is not currently
+listed with an IEC 62443-4-1 **SDLA** or 62443-4-2 **SSA**
+certification. This mapping demonstrates that CSDL — Cisco's
+enterprise-wide secure development programme — *aligns to the intent
+and practice structure* of 62443-4-1. Where a customer contract or SL-T
+demands a certification claim, escalate to the Cisco account team for
+formal supplier attestation letters or a customer-specific security
+requirements (CSR) response.
+
+### 14.1 SM — Security Management
+
+| 62443-4-1 practice element (summary) | Cisco CSDL alignment | Reviewer can request |
+|---|---|---|
+| **SM-1** Development process | Documented CSDL programme applied across Cisco engineering; product-level tailoring for CSW | CSDL programme overview; product security plan reference |
+| **SM-2** Identification of responsibilities | Product Security Engineering Team (PSET) + PSIRT roles defined for CSW | Org chart / RACI for CSW security roles (under NDA) |
+| **SM-3** Identification of applicability | CSDL scope explicitly covers CSW components (agents, cluster software, cloud connectors) | Scope statement referencing CSW SKUs / release trains |
+| **SM-4** Security expertise | Trained secure-code reviewers, threat modelers, and pen-testers embedded in CSW BU | Training records summary; certification list |
+| **SM-5** Process scoping | Release-gate integration of CSDL steps in CI/CD | Release checklist evidence (redacted) |
+| **SM-6** File integrity | Signed builds, protected artifact repos, chain-of-custody | Code-signing certificate policy summary |
+| **SM-7** Development environment security | Hardened build infrastructure, MFA-gated repos, segmented build networks | Build environment security policy (under NDA) |
+| **SM-8** Continuous improvement | Post-release security retrospectives; PSIRT feedback loop into CSDL | CSDL change log / annual programme review |
+| **SM-9** Controls on private keys | Cisco PKI + HSM-backed signing keys | Key management policy summary |
+| **SM-10** Security-related issue disclosure | Coordinated Vulnerability Disclosure (CVD) via Cisco PSIRT | Link to Cisco PSIRT policy; sample advisory |
+| **SM-11** Process verification | Internal audit of CSDL adherence per release | Most recent internal audit summary (under NDA) |
+| **SM-12** Continuous improvement (metrics) | Vulnerability-density, MTTP, escape-rate KPIs tracked per release train | KPI dashboard extract (aggregate, under NDA) |
+| **SM-13** Supplier-related issues | Third-party component monitoring; SBOM-driven CVE alerts | SBOM sample + monitoring workflow |
+
+### 14.2 SR — Specification of Security Requirements
+
+| 62443-4-1 practice element (summary) | Cisco CSDL alignment | Reviewer can request |
+|---|---|---|
+| **SR-1** Product security context | Documented deployment topology, threat surface, trust boundaries for CSW | CSW deployment-model diagram; boundary description |
+| **SR-2** Threat model | STRIDE-style threat models produced per major release / material change | Threat-model existence attestation (details under NDA) |
+| **SR-3** Product security requirements | Security requirements traceable to threats + regulatory drivers (FIPS, Common Criteria, etc.) | Requirements matrix summary |
+| **SR-4** Product security requirements content | Access control, data protection, session, error handling, resiliency requirements documented | Redacted requirements excerpt |
+| **SR-5** Security requirements review | Reviewed by PSET at each release gate | Gate sign-off template |
+
+### 14.3 SD — Secure by Design
+
+| 62443-4-1 practice element (summary) | Cisco CSDL alignment | Reviewer can request |
+|---|---|---|
+| **SD-1** Secure design principles | Defense in depth, least privilege, secure defaults, fail-secure documented in CSDL | Design principle policy |
+| **SD-2** Defense in depth design | Multi-layer controls: agent → cluster → RBAC → transport → audit | Architecture overview / whitepaper |
+| **SD-3** Security design review | Design review checklist gate; PSET sign-off before implementation | Review checklist template |
+| **SD-4** Secure design best practices | Language-specific secure coding guidance (memory-safe, input validation, crypto libraries) | Secure coding standard reference |
+
+### 14.4 SI — Secure Implementation
+
+| 62443-4-1 practice element (summary) | Cisco CSDL alignment | Reviewer can request |
+|---|---|---|
+| **SI-1** Secure implementation review | Peer review + PSET review of security-critical code paths | Review policy |
+| **SI-2** Secure coding standards | Cisco-wide secure coding standards enforced (per language) | Standard document (under NDA) |
+|  | Static analysis in CI (Coverity, semgrep, or equivalent) with security-severity gating | Tool inventory (aggregate) |
+|  | Approved cryptographic libraries only (FIPS-validated where required) | Approved libraries list summary |
+
+### 14.5 SVV — Security Verification & Validation Testing
+
+| 62443-4-1 practice element (summary) | Cisco CSDL alignment | Reviewer can request |
+|---|---|---|
+| **SVV-1** Security requirements testing | Test cases traced back to SR-3 requirements | Test-plan structure |
+| **SVV-2** Threat mitigation testing | Test cases derived from SR-2 threat model | Threat-driven test summary |
+| **SVV-3** Vulnerability testing | Fuzzing, SAST, DAST, SCA at build/release cadence | Tooling summary + cadence |
+| **SVV-4** Penetration testing | Internal red-team + third-party pen tests per major release | Pen-test attestation (under NDA) |
+| **SVV-5** Independence of testers | PSET testers are independent of feature-dev team; third-party testers external | Independence statement |
+
+### 14.6 DM — Management of Security-Related Issues
+
+| 62443-4-1 practice element (summary) | Cisco CSDL alignment | Reviewer can request |
+|---|---|---|
+| **DM-1** Receiving notifications | Cisco PSIRT — public intake (psirt@cisco.com), researcher liaison, CVD | Link to PSIRT process |
+| **DM-2** Reviewing security-related issues | PSIRT triage + product BU joint assessment | Triage workflow overview |
+| **DM-3** Assessing security-related issues | CVSSv3.1 scoring; exploitability + customer-context factors | Sample advisory showing scoring |
+| **DM-4** Addressing security-related issues | Fix in patch train aligned to severity SLA | Patch cadence + SLA table |
+| **DM-5** Disclosing security-related issues | Cisco Security Advisories published on tools.cisco.com | Sample CSW advisory URL |
+| **DM-6** Periodic review | Portfolio-level trend review by PSIRT | Aggregate KPI summary |
+
+### 14.7 SUM — Security Update Management
+
+| 62443-4-1 practice element (summary) | Cisco CSDL alignment | Reviewer can request |
+|---|---|---|
+| **SUM-1** Security update qualification | Regression + security regression tests before release | Regression suite summary |
+| **SUM-2** Security update documentation | Release notes + advisories describe security fixes | Sample release notes |
+| **SUM-3** Dependent component or OS security update documentation | SBOM + third-party CVE advisories referenced | SBOM sample |
+| **SUM-4** Security update delivery | Cisco Software Central; signed packages | Delivery-mechanism description |
+| **SUM-5** Timely delivery of security patches | Severity-driven SLA (Critical / High / Medium) | SLA table |
+
+### 14.8 SG — Security Guidelines
+
+| 62443-4-1 practice element (summary) | Cisco CSDL alignment | Reviewer can request |
+|---|---|---|
+| **SG-1** Product defense-in-depth | Hardening guides in CSW docs (agent, cluster, connector) | Links to hardening docs |
+| **SG-2** Defense in depth measures expected in the environment | Deployment guides specify required network segmentation, IAM, PKI dependencies | Deployment prerequisites section |
+| **SG-3** Security hardening guidelines | Baseline hardening in installer defaults; documented tuning for high-assurance environments | Hardening guide reference |
+| **SG-4** Secure disposal guidelines | Decommission procedure includes credential rotation, agent removal, cluster wipe | Decommission SOP |
+| **SG-5** Secure operation guidelines | Operator guides (RBAC, audit, backup) | Operator/admin guide links |
+| **SG-6** Account management guidelines | Local + SSO/SAML admin account guidance | SSO integration doc |
+| **SG-7** Documentation review | Docs versioned per release, reviewed by PSET for security-relevant changes | Doc-review checklist |
+
+### 14.9 Recommended vendor due-diligence checklist
+
+Give this list verbatim to your procurement / TPRM analyst. They should
+raise it with the Cisco account team, not with the operations engineer
+who deployed CSW.
+
+- [ ] Cisco statement of CSDL applicability to CSW (product security plan reference)
+- [ ] Cisco PSIRT policy link + sample CSW security advisory (public URL)
+- [ ] Cisco Coordinated Vulnerability Disclosure (CVD) policy
+- [ ] SBOM sample for the CSW release under evaluation
+- [ ] Third-party pen-test attestation letter (under NDA)
+- [ ] Signed-build / code-signing policy summary
+- [ ] FIPS 140 validation status for cryptographic modules used by CSW
+- [ ] Cisco supplier-attestation letter referencing 62443-4-1 practice
+      alignment (if customer contract requires 4-1 language)
+- [ ] Written statement on any current or planned SDLA / SSA
+      certification programme for CSW
+- [ ] Escalation path for customer-specific security requirements (CSR)
+      not covered by standard documentation
+
+### 14.10 Coverage at a glance
+
+| 62443-4-1 practice area | Practice count | CSDL alignment | Public evidence | Under-NDA evidence |
+|---|---|---|---|---|
+| SM — Security Management | 13 | ✅ Full | Partial (policy summaries) | Full (audit + KPI) |
+| SR — Specification of Security Requirements | 5 | ✅ Full | Diagrams only | Full |
+| SD — Secure by Design | 4 | ✅ Full | Architecture whitepaper | Full |
+| SI — Secure Implementation | 2+ | ✅ Full | Coding standard reference | Full |
+| SVV — Security Verification & Validation | 5 | ✅ Full | Testing overview | Attestation letters |
+| DM — Management of Security-Related Issues | 6 | ✅ Full | **Public** (PSIRT + advisories) | Aggregate metrics |
+| SUM — Security Update Management | 5 | ✅ Full | **Public** (Software Central + release notes) | Delivery internals |
+| SG — Security Guidelines | 7 | ✅ Full | **Public** (product docs) | Doc-review process |
+
+**Certification note.** ✅ = practice-level alignment demonstrable via
+CSDL. This is **not** an SDLA certification claim — see the disclaimer
+on the companion Compliance Report.
 
 ---
 
