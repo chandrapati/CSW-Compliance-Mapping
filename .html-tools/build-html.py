@@ -66,6 +66,7 @@ FRAMEWORKS = [
     ("TISAX",         "TISAX / VDA ISA",                             "TISAX/CSW-TISAX-Compliance-Report",          "TISAX/CSW-TISAX-Technical-Runbook"),
     ("NIST-800-82",   "NIST SP 800-82",                              "NIST-800-82/CSW-NIST-800-82-Compliance-Report", "NIST-800-82/CSW-NIST-800-82-Technical-Runbook"),
     ("BSI-C5",        "BSI C5",                                      "BSI-C5/CSW-BSI-C5-Compliance-Report",        "BSI-C5/CSW-BSI-C5-Technical-Runbook"),
+    ("NCSC-CAF",      "UK NCSC Cyber Assessment Framework (CAF v3.2)", "NCSC-CAF/CSW-NCSC-CAF-Compliance-Report",  "NCSC-CAF/CSW-NCSC-CAF-Technical-Runbook"),
 ]
 
 
@@ -185,7 +186,7 @@ def build_index(report_html_paths: list[tuple[str, str | None, str | None]]) -> 
         "</head>\n<body>\n"
         "<h1>Cisco Secure Workload &mdash; Compliance Mapping Assets</h1>\n"
         "<p>Browseable HTML renderings of the customer-facing reports and the matching "
-        "technical runbooks for thirty-four compliance, sector, and zero-trust frameworks. "
+        "technical runbooks for thirty-five compliance, sector, and zero-trust frameworks. "
         "DOCX (editable master), PDF (review copy), and Markdown (runbook source) "
         "remain in the repository and on each framework's GitHub folder page.</p>\n"
         '<p><strong>Repository:</strong> '
@@ -209,7 +210,7 @@ def build_index(report_html_paths: list[tuple[str, str | None, str | None]]) -> 
         '  <li><a href="docs/governance-and-evidence-standards.html">Governance and Evidence Standards</a>'
         " &mdash; applicability, provenance, export handling, and exception management.</li>\n"
         '  <li><a href="control-id-index.html">Control-ID Index</a> &mdash; '
-        "lookup across all thirty-four frameworks (PCI Req 1.2, HIPAA \u00a7164.312(a)(1), "
+        "lookup across all thirty-five frameworks (PCI Req 1.2, HIPAA \u00a7164.312(a)(1), "
         "DORA Art. 9, NIS2 Art. 21(2)(d), NIST AC-4, NERC CIP-005 R1, "
         "TSA SD Section III.A, IEC 62443 SR 5.3, GDPR Art. 32, CIS Safeguard 13.4, CSF PR.IR-01, "
         "CMMC AC.L2-3.1.1, etc.).</li>\n"

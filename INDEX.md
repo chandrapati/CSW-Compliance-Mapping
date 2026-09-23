@@ -40,6 +40,7 @@ supports evidence for it.
 | "How do I position CSW for TISAX / automotive supplier assessments?" | [TISAX / VDA ISA prototype, engineering, customer-confidential workload segmentation](./TISAX/CSW-TISAX-Technical-Runbook.md) |
 | "How do I evidence OT-adjacent IT segmentation under NIST 800-82?" | [NIST SP 800-82 OT-facing IT systems, jump hosts, historians, vendor access](./NIST-800-82/CSW-NIST-800-82-Technical-Runbook.md) |
 | "How do I support BSI C5 cloud assurance?" | [BSI C5 cloud service scope, tenant/shared-service boundaries, cloud communication security](./BSI-C5/CSW-BSI-C5-Technical-Runbook.md) |
+| "How do I evidence UK NIS / CAF principles for OES or GovAssure?" | [UK NCSC CAF v3.2 — Objectives A–D, 14 principles, IGP-oriented evidence pack](./NCSC-CAF/CSW-NCSC-CAF-Technical-Runbook.md) |
 
 ---
 
@@ -836,20 +837,58 @@ Source: [`BSI-C5/CSW-BSI-C5-Technical-Runbook.md`](./BSI-C5/CSW-BSI-C5-Technical
 
 ---
 
+## UK NCSC CAF — Cyber Assessment Framework (OES / GovAssure)
+
+> **Regulatory anchors.** UK NIS Regulations 2018 for Operators of
+> Essential Services (OES) and Relevant Digital Service Providers
+> (RDSPs); Cabinet Office / Government Security Group (GSG) **GovAssure**
+> programme for central-government departments and arm's-length bodies.
+> Competent Authorities include **Ofgem** (Energy), **DWI** (Water),
+> **CAA** (Aviation), **ORR** (Rail), **MCA** (Maritime), **DfT**
+> (broader Transport), **DHSC / NHS England** (Healthcare), **Ofcom**
+> (Digital Infrastructure), and **ICO** (RDSPs) — confirm sector profile
+> and any authority-specific IGP guidance before finalising evidence.
+>
+> **IGP maturity.** CAF principles are evaluated against Indicators of
+> Good Practice at three tiers: **Not Achieved / Partially Achieved /
+> Achieved**. CSW's contribution is optimised for moving A3, B5, C1, C2,
+> and the forensic pillar of D1 from *Partially Achieved* to *Achieved*.
+
+Source: [`NCSC-CAF/CSW-NCSC-CAF-Technical-Runbook.md`](./NCSC-CAF/CSW-NCSC-CAF-Technical-Runbook.md)
+
+| Principle | Objective | CSW can support evidence for |
+|---|---|---|
+| A1 Governance | A — Managing security risk | Board / SMT pack inputs: coverage %, denies count, unresolved exceptions dashboard |
+| A2 Risk management | A | Reachability + attack-surface snapshots per essential-function scope |
+| A3 Asset management | A | **Core** — continuous workload / service inventory across on-prem + cloud; CMDB reconciliation |
+| A4 Supply chain | A | Vendor-egress reconciliation vs. supplier register; jump-host session evidence |
+| B1 Service protection policies & processes | B — Protecting against cyber attack | Enforcement + Denied-Connections telemetry proves policy operates (not aspirational) |
+| B2 Identity & access control | B | Workload-to-workload allowlist; least-priv reach report (does not replace IAM / MFA / PAM) |
+| B3 Data security | B | Plaintext-protocol deny; egress-anomaly detection (does not manage crypto primitives) |
+| B4 System security | B | Process / binary / listener baseline + drift; reachability-weighted CVE report |
+| B5 Resilient networks & systems | B | **Core** — ADM-derived allowlists; IT / IT-OT-DMZ / OT boundary enforcement; per-essential-function microsegmentation |
+| B6 Staff awareness & training | B | Not addressed (organisational / HR) |
+| C1 Security monitoring | C — Detecting cyber security events | **Core** — continuous flow + process telemetry; SIEM forwarding; NTP-verified timestamps |
+| C2 Proactive event discovery | C | Anomaly alerts; reachability-weighted CVE evidence; threat-intel-fed workspace rules |
+| D1 Response & recovery planning | D — Minimising impact of incidents | Forensic pillar — historical flow + process timeline; policy-diff timeline for the incident window (does not replace backup / DR) |
+| D2 Improvements | D | Workspace change log + policy-diff summary feeds post-incident RCA |
+
+---
+
 ## Reverse Lookup — common CSW capabilities → frameworks
 
 | CSW capability | Frameworks it often supports (apply judgment per deployment) |
 |---|---|
-| Workload inventory views | HIPAA §164.308(a)(1)(ii)(A) · PCI Req 2 · NIST CM-8 · ISO A.8.1 · CISA ZTMM Devices · 800-207 Tenet 1 · DORA Art. 8 · NIS2 Art. 21(2)(i) · NERC CIP-002 R1 · TSA SD Section II · IEC 62443 SR 3 · FedRAMP CM-8 · CIS Safeguard 1.1 · CSF ID.AM-01 · CMMC CM.L2-3.4.1 · HIPAA NPRM §164.308(a)(1)(ii)(A) · NIST 800-171 03.04.x · MAS TRM critical systems · APRA CPS 234 information assets · NY DFS covered systems · BSI C5 asset management |
-| Workload-level segmentation (allow-list / deny-by-default) | HIPAA §164.312(a)(1) · SOC 2 CC6.1 · PCI Req 1, 7 · NIST AC-3, AC-4, SC-7 · ISO A.8.20–A.8.22 · CISA ZTMM Networks · 800-207 Tenets 3, 6 · 800-207A PEP · DORA Art. 9 · NIS2 Art. 21(2)(a), (j) · NERC CIP-005 R1 · TSA SD Section III.A · IEC 62443 SR 5 · GDPR Art. 25 / 32 · FedRAMP AC-4 / SC-7 · SWIFT CSCF 1.1 · HITRUST 01.m–01.o · CIS Safeguards 4.4, 13.4 · CSF PR.IR-01 · CMMC AC.L2-3.1.1, SC.L2-3.13.1 / 3.13.6 · NIST 800-171 03.13.06 · HIPAA NPRM §164.312(a)(2)(vi) · UK CE1 · CSA IVS-09 · COBIT DSS05.02 · MAS TRM network security · APRA CPS 234 control implementation · NY DFS access privileges · TISAX network segregation · NIST 800-82 network segmentation · BSI C5 communication security |
+| Workload inventory views | HIPAA §164.308(a)(1)(ii)(A) · PCI Req 2 · NIST CM-8 · ISO A.8.1 · CISA ZTMM Devices · 800-207 Tenet 1 · DORA Art. 8 · NIS2 Art. 21(2)(i) · NERC CIP-002 R1 · TSA SD Section II · IEC 62443 SR 3 · FedRAMP CM-8 · CIS Safeguard 1.1 · CSF ID.AM-01 · CMMC CM.L2-3.4.1 · HIPAA NPRM §164.308(a)(1)(ii)(A) · NIST 800-171 03.04.x · MAS TRM critical systems · APRA CPS 234 information assets · NY DFS covered systems · BSI C5 asset management · **NCSC CAF A3** |
+| Workload-level segmentation (allow-list / deny-by-default) | HIPAA §164.312(a)(1) · SOC 2 CC6.1 · PCI Req 1, 7 · NIST AC-3, AC-4, SC-7 · ISO A.8.20–A.8.22 · CISA ZTMM Networks · 800-207 Tenets 3, 6 · 800-207A PEP · DORA Art. 9 · NIS2 Art. 21(2)(a), (j) · NERC CIP-005 R1 · TSA SD Section III.A · IEC 62443 SR 5 · GDPR Art. 25 / 32 · FedRAMP AC-4 / SC-7 · SWIFT CSCF 1.1 · HITRUST 01.m–01.o · CIS Safeguards 4.4, 13.4 · CSF PR.IR-01 · CMMC AC.L2-3.1.1, SC.L2-3.13.1 / 3.13.6 · NIST 800-171 03.13.06 · HIPAA NPRM §164.312(a)(2)(vi) · UK CE1 · CSA IVS-09 · COBIT DSS05.02 · MAS TRM network security · APRA CPS 234 control implementation · NY DFS access privileges · TISAX network segregation · NIST 800-82 network segmentation · BSI C5 communication security · **NCSC CAF B5** |
 | Identity-aware least-privilege between zones (e.g. IT-to-OT-adjacent) | NIST AC-3, AC-6 · 800-207 Tenets 3, 6 · NERC CIP-005 R1 (IT-side) · TSA SD Section III.A / III.B · IEC 62443 SR 1 · SWIFT CSCF 5.1 · CIS Safeguard 6.1 · CSF PR.AA-05 · CMMC AC.L2-3.1.2 / 3.1.3 · AU E5 · UK CE3 |
 | Interactive remote access termination evidence | NERC CIP-005 R2 · NIST AC-17 · DORA Art. 9 (telework) · CIS Safeguard 13.5 · CMMC AC.L2-3.1.13 |
 | ADM (application dependency mapping) | PCI Req 1.2.1 · NIST CA-7, CM-2 · ISO A.8.16 · DORA Art. 8(6) · NIS2 Art. 21(2)(a) · NERC CIP-010 R1.1 · TSA SD Section III.A (documented flows) · GDPR Art. 30 (RoPA corroboration) · IEC 62443 SR 5 · FedRAMP AC-4 · HITRUST 10.a · CIS Safeguard 12.4 · CSF ID.AM-03 · CMMC SC.L2-3.13.2 |
 | Per-workload listening-port inventory + last-flow timestamp | PCI Req 1.2.6, 2.2.4 · NIST CM-7 · NERC CIP-007 R1 · TSA SD Section III.B · CIS Safeguards 4.6, 2.6 · CMMC CM.L2-3.4.6 · UK CE2 · AU E1/E4 (listener visibility) |
-| Exposure / vulnerability views + conversational reachability | PCI Req 6.3.3, 11.3 · NIST RA-5, SI-5 · ISO A.8.8 · DORA Art. 25(1) · NIS2 Art. 21(2)(e) · NERC CIP-010 R3 · TSA SD Section III.D · FedRAMP RA-5 · IEC 62443 SR 3 · HITRUST 10.m · CIS Safeguards 7.1–7.7 · CSF ID.RA-01 / ID.RA-05 · CMMC RA.L2-3.11.2 / 3.11.3 · HIPAA NPRM §164.308(a)(2) · CSA TVM · AU E2/E6 · UK CE5 · MAS TRM vulnerability management · APRA CPS 234 control testing · NY DFS vulnerability management · TISAX vulnerability management · NIST 800-82 vulnerability management · BSI C5 vulnerability handling |
+| Exposure / vulnerability views + conversational reachability | PCI Req 6.3.3, 11.3 · NIST RA-5, SI-5 · ISO A.8.8 · DORA Art. 25(1) · NIS2 Art. 21(2)(e) · NERC CIP-010 R3 · TSA SD Section III.D · FedRAMP RA-5 · IEC 62443 SR 3 · HITRUST 10.m · CIS Safeguards 7.1–7.7 · CSF ID.RA-01 / ID.RA-05 · CMMC RA.L2-3.11.2 / 3.11.3 · HIPAA NPRM §164.308(a)(2) · CSA TVM · AU E2/E6 · UK CE5 · MAS TRM vulnerability management · APRA CPS 234 control testing · NY DFS vulnerability management · TISAX vulnerability management · NIST 800-82 vulnerability management · BSI C5 vulnerability handling · **NCSC CAF B4 / C2** |
 | Configuration baseline + unauthorised-change detection | NIST CM-2, CM-3, CM-6 · ISO A.8.9 · NERC CIP-010 R1, R1.5 · CIS Safeguard 4.1 · CSF PR.PS-01 / ID.RA-07 · CMMC CM.L2-3.4.1 / 3.4.3 · COBIT BAI06 / BAI10 · CSA CCC |
-| Process + flow telemetry into SIEM | HIPAA §164.312(b) · SOC 2 CC7.2 · PCI Req 10 · NIST AU-2, AU-12, SI-4 · ISO A.8.16 · DORA Art. 10 · NIS2 Art. 21(2)(b) · NERC CIP-007 R4 · TSA SD Section III.C · FedRAMP SI-4 / AU-* · IEC 62443 SR 6 · SWIFT CSCF 6.4 · HITRUST 09.ab · CIS Safeguards 8.2 / 8.5 / 13.6 · CSF DE.CM-01 / DE.CM-09 / PR.PS-04 · CMMC AU.L2-3.3.1 / 3.3.2 / SI.L2-3.14.6 · NIST 800-171 03.03.x · HIPAA NPRM §164.312(b) (*proposed retention*) · CSA LOG · MAS TRM monitoring · NY DFS monitoring/testing · TISAX logging/monitoring · NIST 800-82 monitoring · BSI C5 incident management |
-| Quarantine policy + forensic export | HIPAA §164.308(a)(6) · SOC 2 CC7.3, CC7.4 · NIST IR-4 · DORA Art. 11 · NIS2 Art. 21(2)(b) · NERC CIP-008 · TSA CIRP / 24-hour CISA · GDPR Art. 33–34 · SWIFT CSCF 7.1 · HITRUST 11.a / 11.c · CIS Control 17 · CSF RS.MI-01 / RS.AN-07 · CMMC IR.L2-3.6.x |
+| Process + flow telemetry into SIEM | HIPAA §164.312(b) · SOC 2 CC7.2 · PCI Req 10 · NIST AU-2, AU-12, SI-4 · ISO A.8.16 · DORA Art. 10 · NIS2 Art. 21(2)(b) · NERC CIP-007 R4 · TSA SD Section III.C · FedRAMP SI-4 / AU-* · IEC 62443 SR 6 · SWIFT CSCF 6.4 · HITRUST 09.ab · CIS Safeguards 8.2 / 8.5 / 13.6 · CSF DE.CM-01 / DE.CM-09 / PR.PS-04 · CMMC AU.L2-3.3.1 / 3.3.2 / SI.L2-3.14.6 · NIST 800-171 03.03.x · HIPAA NPRM §164.312(b) (*proposed retention*) · CSA LOG · MAS TRM monitoring · NY DFS monitoring/testing · TISAX logging/monitoring · NIST 800-82 monitoring · BSI C5 incident management · **NCSC CAF C1** |
+| Quarantine policy + forensic export | HIPAA §164.308(a)(6) · SOC 2 CC7.3, CC7.4 · NIST IR-4 · DORA Art. 11 · NIS2 Art. 21(2)(b) · NERC CIP-008 · TSA CIRP / 24-hour CISA · GDPR Art. 33–34 · SWIFT CSCF 7.1 · HITRUST 11.a / 11.c · CIS Control 17 · CSF RS.MI-01 / RS.AN-07 · CMMC IR.L2-3.6.x · **NCSC CAF D1 (forensic pillar)** |
 | Egress observation + supplier reconciliation | ISO A.5.19–A.5.22 · NIST SR-3, SR-6 · DORA Art. 28 · NIS2 Art. 21(2)(d) · GDPR Art. 28 · NERC CIP-013 R1 (vendor remote access on the IT side) · CIS Safeguards 15.1 / 15.4 · CSF GV.SC-04 / GV.SC-07 / GV.SC-09 · CMMC AC.L2-3.1.20 |
 | Plaintext-protocol DENY enforcement | HIPAA §164.312(e)(1) · NIST SC-7, SC-13 (programme support) · ISO A.8.24 · 800-207 Tenet 2 · NIS2 Art. 21(2)(h) · GDPR Art. 32 · SWIFT CSCF 2.6 · FIPS 140 (programme support) · CIS Safeguard 12.2 · CSF PR.DS-02 |
 | Quarterly evidence pack to management body / Senior Officer | DORA Art. 5 · NIS2 Art. 20 · ISO Clause 9.3 (management review input) · SOC 2 CC4.1 · NERC CIP-003 R1 · TSA Cybersecurity Coordinator role · CSF GV.OV-01 / 02 / 03 · CMMC supports the SSP/POA&M cycle · COBIT MEA01 / EDM03 (technical inputs) |
