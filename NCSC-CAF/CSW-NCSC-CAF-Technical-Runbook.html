@@ -1,0 +1,1738 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>UK NCSC CAF — Technical Runbook</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+  <style>
+:root {
+--fg: #1f2328;
+--fg-muted: #59636e;
+--bg: #ffffff;
+--bg-muted: #f6f8fa;
+--border: #d1d9e0;
+--link: #0969da;
+--link-hover: #0349b4;
+--code-bg: #f6f8fa;
+--accent: #cf222e;
+--max-width: 920px;
+}
+@media (prefers-color-scheme: dark) {
+:root {
+--fg: #e6edf3;
+--fg-muted: #9198a1;
+--bg: #0d1117;
+--bg-muted: #151b23;
+--border: #3d444d;
+--link: #4493f8;
+--link-hover: #6cb6ff;
+--code-bg: #151b23;
+--accent: #ff7b72;
+}
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+margin: 0 auto;
+max-width: var(--max-width);
+padding: 2rem 1.25rem 4rem;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+font-size: 16px;
+line-height: 1.6;
+color: var(--fg);
+background: var(--bg);
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 2rem;
+margin-bottom: 1rem;
+font-weight: 600;
+line-height: 1.25;
+}
+h1 { font-size: 2rem; border-bottom: 1px solid var(--border); padding-bottom: .35rem; }
+h2 { font-size: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: .3rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1rem; }
+h5, h6 { font-size: .875rem; color: var(--fg-muted); }
+p, ul, ol, blockquote, pre, table { margin: 0 0 1rem; }
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+ul, ol { padding-left: 1.6rem; }
+li + li { margin-top: .15rem; }
+blockquote {
+margin: 0 0 1rem;
+padding: .5rem 1rem;
+color: var(--fg-muted);
+border-left: .25rem solid var(--border);
+background: var(--bg-muted);
+border-radius: 0 6px 6px 0;
+}
+code, pre, kbd, samp {
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+font-size: .9em;
+}
+code {
+background: var(--code-bg);
+padding: .15rem .35rem;
+border-radius: 4px;
+}
+pre {
+background: var(--code-bg);
+padding: 1rem;
+border-radius: 6px;
+overflow: auto;
+font-size: .85rem;
+line-height: 1.45;
+}
+pre code { background: transparent; padding: 0; font-size: inherit; }
+table {
+display: block;
+width: 100%;
+overflow: auto;
+border-collapse: collapse;
+}
+th, td {
+border: 1px solid var(--border);
+padding: .5rem .75rem;
+vertical-align: top;
+text-align: left;
+}
+th {
+background: var(--bg-muted);
+font-weight: 600;
+}
+tbody tr:nth-child(2n) { background: var(--bg-muted); }
+hr {
+border: 0;
+height: 1px;
+background: var(--border);
+margin: 2rem 0;
+}
+img { max-width: 100%; height: auto; }
+
+.doc-meta {
+margin: 0 0 2rem;
+padding: .75rem 1rem;
+border: 1px solid var(--border);
+border-radius: 6px;
+background: var(--bg-muted);
+font-size: .9rem;
+color: var(--fg-muted);
+}
+.doc-meta a { font-weight: 500; }
+
+@media print {
+body { max-width: none; padding: 0; color: #000; background: #fff; }
+a { color: #000; text-decoration: underline; }
+pre, code, blockquote { background: #f5f5f5; }
+}
+</style>
+</head>
+<body>
+<div class="doc-meta">Source: <a href="CSW-NCSC-CAF-Technical-Runbook.html">CSW-NCSC-CAF-Technical-Runbook.md</a> · <a href="../index.html">repository index</a> · Build: 2026-09-23T18:19:21Z UTC · Repository commit: caf1eb5</div>
+<header id="title-block-header">
+<h1 class="title">UK NCSC CAF — Technical Runbook</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#cisco-secure-workload-uk-ncsc-cyber-assessment-framework-caf" id="toc-cisco-secure-workload-uk-ncsc-cyber-assessment-framework-caf">Cisco
+Secure Workload — UK NCSC Cyber Assessment Framework (CAF)</a>
+<ul>
+<li><a href="#technical-runbook-operators-of-essential-services-govassure" id="toc-technical-runbook-operators-of-essential-services-govassure">Technical
+Runbook | Operators of Essential Services &amp; GovAssure</a></li>
+<li><a href="#readers-guide" id="toc-readers-guide">Reader’s
+Guide</a></li>
+<li><a href="#csw-primer-if-you-are-new-to-cisco-secure-workload" id="toc-csw-primer-if-you-are-new-to-cisco-secure-workload">CSW primer —
+if you are new to Cisco Secure Workload</a></li>
+<li><a href="#universal-evidence-workflow" id="toc-universal-evidence-workflow">Universal evidence workflow</a>
+<ul>
+<li><a href="#phase-1-checklist-coverage" id="toc-phase-1-checklist-coverage">Phase 1 checklist
+(coverage)</a></li>
+<li><a href="#phase-2-checklist-baseline" id="toc-phase-2-checklist-baseline">Phase 2 checklist
+(baseline)</a></li>
+<li><a href="#phase-3-checklist-policy" id="toc-phase-3-checklist-policy">Phase 3 checklist (policy)</a></li>
+<li><a href="#phase-4-checklist-operate" id="toc-phase-4-checklist-operate">Phase 4 checklist (operate)</a></li>
+<li><a href="#what-csw-evidence-does-not-replace" id="toc-what-csw-evidence-does-not-replace">What CSW evidence does not
+replace</a></li>
+</ul></li>
+<li><a href="#csw-effectiveness-for-this-framework" id="toc-csw-effectiveness-for-this-framework">CSW effectiveness for this
+framework</a></li>
+<li><a href="#overview" id="toc-overview">1. Overview</a>
+<ul>
+<li><a href="#caf-structure-and-where-csw-contributes" id="toc-caf-structure-and-where-csw-contributes">1.1 CAF structure and
+where CSW contributes</a></li>
+<li><a href="#regulatory-context-informative" id="toc-regulatory-context-informative">1.2 Regulatory context
+(informative)</a></li>
+</ul></li>
+<li><a href="#pre-deployment-checklist" id="toc-pre-deployment-checklist">2. Pre-Deployment Checklist</a></li>
+<li><a href="#phase-1-it-side-sensor-connector-deployment-days-15" id="toc-phase-1-it-side-sensor-connector-deployment-days-15">3. Phase 1
+— IT-Side Sensor &amp; Connector Deployment (Days 1–5)</a>
+<ul>
+<li><a href="#server-vm-container-agents" id="toc-server-vm-container-agents">3.1 Server / VM / container
+agents</a></li>
+<li><a href="#cloud-hybrid-data-paths" id="toc-cloud-hybrid-data-paths">3.2 Cloud &amp; hybrid data
+paths</a></li>
+<li><a href="#sensor-validation" id="toc-sensor-validation">3.3 Sensor
+validation</a></li>
+</ul></li>
+<li><a href="#phase-2-scope-architecture-for-essential-functions-days-612" id="toc-phase-2-scope-architecture-for-essential-functions-days-612">4.
+Phase 2 — Scope Architecture for Essential Functions (Days 6–12)</a>
+<ul>
+<li><a href="#suggested-scope-architecture" id="toc-suggested-scope-architecture">4.1 Suggested scope
+architecture</a></li>
+<li><a href="#label-strategy" id="toc-label-strategy">4.2 Label
+strategy</a></li>
+<li><a href="#discovery-filters-for-essential-function-candidates" id="toc-discovery-filters-for-essential-function-candidates">4.3
+Discovery filters for essential-function candidates</a></li>
+</ul></li>
+<li><a href="#phase-3-application-dependency-mapping-baseline-days-1328" id="toc-phase-3-application-dependency-mapping-baseline-days-1328">5.
+Phase 3 — Application Dependency Mapping &amp; Baseline (Days 13–28)</a>
+<ul>
+<li><a href="#adm-workspace" id="toc-adm-workspace">5.1 ADM
+workspace</a></li>
+<li><a href="#adm-review-checklist-caf-oriented" id="toc-adm-review-checklist-caf-oriented">5.2 ADM review checklist
+(CAF-oriented)</a></li>
+<li><a href="#baselining-for-integrity-b4-evidence" id="toc-baselining-for-integrity-b4-evidence">5.3 Baselining for
+integrity (B4 evidence)</a></li>
+</ul></li>
+<li><a href="#phase-4-policy-design-enforcement-days-2945" id="toc-phase-4-policy-design-enforcement-days-2945">6. Phase 4 — Policy
+Design &amp; Enforcement (Days 29–45)</a>
+<ul>
+<li><a href="#caf-aligned-policy-framework" id="toc-caf-aligned-policy-framework">6.1 CAF-aligned policy
+framework</a></li>
+<li><a href="#policy-workspace-lifecycle" id="toc-policy-workspace-lifecycle">6.2 Policy workspace
+lifecycle</a></li>
+<li><a href="#enforcement-progression" id="toc-enforcement-progression">6.3 Enforcement progression</a></li>
+</ul></li>
+<li><a href="#phase-5-principle-by-principle-igp-mapping" id="toc-phase-5-principle-by-principle-igp-mapping">7. Phase 5 —
+Principle-by-Principle IGP Mapping</a>
+<ul>
+<li><a href="#objective-a-managing-security-risk" id="toc-objective-a-managing-security-risk">7.1 Objective A — Managing
+Security Risk</a></li>
+<li><a href="#objective-b-protecting-against-cyber-attack" id="toc-objective-b-protecting-against-cyber-attack">7.2 Objective B —
+Protecting Against Cyber Attack</a></li>
+<li><a href="#objective-c-detecting-cyber-security-events" id="toc-objective-c-detecting-cyber-security-events">7.3 Objective C —
+Detecting Cyber Security Events</a></li>
+<li><a href="#objective-d-minimising-the-impact-of-incidents" id="toc-objective-d-minimising-the-impact-of-incidents">7.4 Objective D
+— Minimising the Impact of Incidents</a></li>
+</ul></li>
+<li><a href="#auditor-competent-authority-response-guide" id="toc-auditor-competent-authority-response-guide">8. Auditor /
+Competent-Authority Response Guide</a></li>
+<li><a href="#boundaries-what-csw-does-not-cover" id="toc-boundaries-what-csw-does-not-cover">9. Boundaries — what CSW
+does <strong>not</strong> cover</a></li>
+<li><a href="#common-pitfalls" id="toc-common-pitfalls">10. Common
+pitfalls</a></li>
+<li><a href="#audit-preparation-evidence-export" id="toc-audit-preparation-evidence-export">11. Audit preparation &amp;
+evidence export</a>
+<ul>
+<li><a href="#quarterly-caf-pack-per-essential-function" id="toc-quarterly-caf-pack-per-essential-function">11.1 Quarterly CAF
+pack (per essential function)</a></li>
+<li><a href="#bash-helpers-on-analysis-workstation" id="toc-bash-helpers-on-analysis-workstation">11.2 Bash helpers (on
+analysis workstation)</a></li>
+</ul></li>
+<li><a href="#related-frameworks" id="toc-related-frameworks">Related
+Frameworks</a>
+<ul>
+<li><a href="#appendix-a-sample-essential-function-policy-fragment-illustrative" id="toc-appendix-a-sample-essential-function-policy-fragment-illustrative">Appendix
+A — Sample essential-function policy fragment (illustrative)</a></li>
+<li><a href="#appendix-b-caf-igp-maturity-cheatsheet-csws-contribution" id="toc-appendix-b-caf-igp-maturity-cheatsheet-csws-contribution">Appendix
+B — CAF IGP maturity cheatsheet (CSW’s contribution)</a></li>
+</ul></li>
+<li><a href="#disclaimer" id="toc-disclaimer">Disclaimer</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="cisco-secure-workload-uk-ncsc-cyber-assessment-framework-caf">Cisco
+Secure Workload — UK NCSC Cyber Assessment Framework (CAF)</h1>
+<h2 id="technical-runbook-operators-of-essential-services-govassure">Technical
+Runbook | Operators of Essential Services &amp; GovAssure</h2>
+<p><strong>Version:</strong> 1.0 <strong>Framework:</strong> NCSC Cyber
+Assessment Framework (<strong>CAF v3.2</strong>, published November
+2024) — 4 objectives · 14 principles · Indicators of Good Practice
+(IGPs) with three-tier maturity (Achieved / Partially Achieved / Not
+Achieved) <strong>Use Case:</strong> OES self-assessment or
+regulator-led audit under <strong>NIS Regulations 2018 (UK)</strong>;
+central-government departments / arm’s-length bodies under
+<strong>GovAssure</strong>; voluntary adoption by other CNI
+operators.</p>
+<blockquote>
+<p><strong>Framework version note.</strong> CAF v3.2 is the current
+NCSC-published baseline; sector regulators (Ofgem, Ofcom, DWI, CAA, ORR,
+MCA, DHSC/NHS England) may layer sector-specific profiles or add IGP
+guidance on top. Confirm the profile your Competent Authority uses
+before finalising evidence. This runbook cites CAF principle IDs (A1–D2)
+and IGP themes; specific IGP text is authoritative in the NCSC
+publication.</p>
+<p><strong>Scope boundary.</strong> CSW is a workload-segmentation and
+observability product operating on <strong>servers, VMs, containers, and
+cloud workloads</strong>. Where CAF principles reference OT / ICS field
+devices (PLCs, RTUs, HMIs, IEDs, SCADA controllers) or industrial
+protocols (Modbus, DNP3, S7, OPC UA, BACnet), CSW is
+<strong>not</strong> the enforcement point — pair it with an OT-native
+product (Cisco Cyber Vision, Claroty xDome, Nozomi Networks). CSW’s role
+is to harden the <strong>IT-side workloads</strong> that support
+essential services (jump hosts, historians, engineering workstations,
+IT/OT DMZ workloads, identity/PKI, patch/AV servers, monitoring stacks)
+and to evidence the <strong>IT-side</strong> of the IT/OT boundary.</p>
+<p><strong>CSW UI navigation note.</strong> Cisco does not yet publish
+CAF-specific UI navigation; framework-specific paths are on the product
+roadmap. This runbook describes CSW <em>capabilities</em> and the
+<em>evidence artifacts</em> they produce — those artefacts map to CAF
+IGPs regardless of UI cosmetics.</p>
+</blockquote>
+<hr />
+<h2 id="readers-guide">Reader’s Guide</h2>
+<p><strong>Who this is for.</strong> UK CNI operators — Energy
+(electricity, gas, oil), Water, Transport (air, maritime, rail, road),
+Healthcare (NHS Trusts and their suppliers), Digital Infrastructure
+(DNS, IXPs, TLD registries) — and central-government departments
+preparing for a <strong>GovAssure</strong> third-party CAF assessment.
+Roles served: CISO, CAF lead / GRC, IT and OT engineering, internal
+audit, and consultants running an IGP walk-through with a Competent
+Authority.</p>
+<p><strong>Questions this runbook helps you answer:</strong></p>
+<ul>
+<li><em>A3 Asset Management — Can I produce a continuously refreshed
+inventory of the physical devices, virtual workloads, containers, and
+cloud services supporting an essential function, and evidence coverage
+against my CMDB?</em></li>
+<li><em>B4 System Security / B5 Resilient Networks &amp; Systems — Can I
+demonstrate structural segmentation between IT corporate estate and
+OT/SCADA process networks, and micro-segmentation within IT tiers
+supporting the essential function?</em></li>
+<li><em>C1 Security Monitoring — Can I evidence continuous logging of
+network flows and workload processes with synchronised time, and forward
+telemetry to SIEM/SOAR for retention and correlation?</em></li>
+<li><em>C2 Proactive Event Discovery — Can I show anomaly detection,
+threat hunting inputs, and reachability-weighted vulnerability
+prioritisation for workloads adjacent to essential-function
+systems?</em></li>
+<li><em>D1 Response &amp; Recovery — In an incident, can I reconstruct a
+workload-level timeline (which processes talked to which peers, when, at
+what volume) as forensic input to the CIRP?</em></li>
+<li><em>IGP maturity — Which specific CAF outcomes can we credibly move
+from “Partially Achieved” to “Achieved” by operationalising CSW as the
+continuous-evidence tier?</em></li>
+</ul>
+<p><strong>What you’ll need.</strong> The list of essential functions in
+scope, the NCSC CAF profile your Competent Authority applies, an
+inventory of the IT systems and cloud services supporting each essential
+function, an architecture diagram showing the IT ⇄ IT/OT DMZ ⇄ OT
+boundary (where applicable), your CIRP (Cyber Incident Response Plan),
+and any prior CAF self-assessment or GovAssure report to identify gaps
+CSW should close first.</p>
+<p><strong>Where to start.</strong> Sections 1–2 if you are scoping the
+CSW deployment; sections 3–6 if you are executing the sensor / policy
+phased rollout; section 7 for the principle-by-principle IGP mapping
+(bring this to the Competent Authority conversation); section 8 for the
+audit-response templates; section 9 for boundaries you must not
+oversell.</p>
+<hr />
+<!-- CSW-RUNBOOK-PRIMER:v1 -->
+<h2 id="csw-primer-if-you-are-new-to-cisco-secure-workload">CSW primer —
+if you are new to Cisco Secure Workload</h2>
+<p>Cisco Secure Workload (CSW) is a <strong>workload protection
+platform</strong>. A lightweight <strong>agent</strong> on each
+server/VM/container observes processes and network flows; <strong>cloud
+connectors</strong> add AWS/Azure/GCP inventory where agents are not
+deployed.</p>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 19%" />
+<col style="width: 58%" />
+</colgroup>
+<thead>
+<tr>
+<th>CSW term</th>
+<th>Meaning</th>
+<th>Why compliance teams care</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Scope</strong></td>
+<td>Logical boundary (essential function, CDE, PHI zone, CUI
+enclave)</td>
+<td>Defines the systems you must prove are isolated</td>
+</tr>
+<tr>
+<td><strong>Label / filter</strong></td>
+<td>Tag or query assigning workloads to scopes</td>
+<td>Automates scope membership — reduces drift</td>
+</tr>
+<tr>
+<td><strong>ADM</strong></td>
+<td>Application Dependency Mapping from observed traffic</td>
+<td><strong>Live</strong> network/data-flow diagram for assessors</td>
+</tr>
+<tr>
+<td><strong>Workspace</strong></td>
+<td>Policy container for one scope or application</td>
+<td>Where allow/deny rules are authored</td>
+</tr>
+<tr>
+<td><strong>Monitor → Simulation → Enforce</strong></td>
+<td>Safe rollout sequence</td>
+<td>Simulation = change-board evidence before blocking traffic</td>
+</tr>
+<tr>
+<td><strong>Denied Connections</strong></td>
+<td>Log of flows blocked by policy</td>
+<td>Primary proof that enforcement <strong>operates</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Console areas:</strong> Investigate (inventory, flows, vulns)
+· Defend/Segmentation (policy) · Manage (agents) · Platform (connectors)
+· Administration (audit log)</p>
+<p><strong>Read next:</strong> <a href="../docs/compliance-evidence-playbook.html">Compliance evidence
+playbook</a> (full step-by-step) · <a href="../docs/about-csw.html">About
+CSW</a> (platform intro)</p>
+<hr />
+<h2 id="universal-evidence-workflow">Universal evidence workflow</h2>
+<p>Execute these phases for <strong>this framework’s</strong> compliance
+boundary. Map exports to CAF IGPs in the <strong>principle-by-principle
+mapping</strong> section below.</p>
+<table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 12%" />
+<col style="width: 35%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Goal</th>
+<th>Key CSW actions</th>
+<th>Typical duration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1 — Coverage</strong></td>
+<td>Every in-scope workload in CSW</td>
+<td>Install agents/connectors; apply CAF labels; create scope</td>
+<td>Days 1–10</td>
+</tr>
+<tr>
+<td><strong>2 — Baseline</strong></td>
+<td>Machine-generated flow map</td>
+<td>Run ADM ≥2 weeks; export clusters; app-owner signoff</td>
+<td>Days 11–28</td>
+</tr>
+<tr>
+<td><strong>3 — Policy</strong></td>
+<td>Designed isolation before enforce</td>
+<td>Build workspace; Simulation mode; fix false positives</td>
+<td>Days 29–45</td>
+</tr>
+<tr>
+<td><strong>4 — Operate</strong></td>
+<td>Continuous proof between audits</td>
+<td>Enforce; quarterly export pack; ADM refresh every 90 days</td>
+<td>Ongoing</td>
+</tr>
+</tbody>
+</table>
+<h3 id="phase-1-checklist-coverage">Phase 1 checklist (coverage)</h3>
+<ul class="task-list">
+<li><label><input type="checkbox"></input>In-scope host list reconciled to CSW
+Inventory (100% or documented exceptions)</label></li>
+<li><label><input type="checkbox"></input>Labels applied:
+<code>caf:essential_function=&lt;name&gt;</code>,
+<code>caf:objective=&lt;A|B|C|D&gt;</code>,
+<code>env:&lt;tier&gt;</code>,
+<code>data:&lt;classification&gt;</code></label></li>
+<li><label><input type="checkbox"></input>CSW scope created matching
+essential-function boundary</label></li>
+<li><label><input type="checkbox"></input><strong>Export:</strong> inventory
+CSV + agent status screenshot</label></li>
+</ul>
+<h3 id="phase-2-checklist-baseline">Phase 2 checklist (baseline)</h3>
+<ul class="task-list">
+<li><label><input type="checkbox"></input>ADM running on essential-function
+scope for full business cycle (≥2 weeks)</label></li>
+<li><label><input type="checkbox"></input>Unexpected flows documented (shadow
+IT, vendor egress, cross-function reach)</label></li>
+<li><label><input type="checkbox"></input>Essential-function owners signed
+cluster-to-service mapping</label></li>
+<li><label><input type="checkbox"></input><strong>Export:</strong> ADM diagram
++ flow samples with process context</label></li>
+</ul>
+<h3 id="phase-3-checklist-policy">Phase 3 checklist (policy)</h3>
+<ul class="task-list">
+<li><label><input type="checkbox"></input>Default-deny posture defined for
+essential-function scope</label></li>
+<li><label><input type="checkbox"></input>ADM-imported rules refined;
+Simulation run ≥1 week</label></li>
+<li><label><input type="checkbox"></input>Change tickets for false-positive
+fixes; exception register updated</label></li>
+<li><label><input type="checkbox"></input><strong>Export:</strong> policy
+export + simulation report</label></li>
+</ul>
+<h3 id="phase-4-checklist-operate">Phase 4 checklist (operate)</h3>
+<ul class="task-list">
+<li><label><input type="checkbox"></input>Enforcement enabled on pilot scope;
+negative test recorded in Denied Connections</label></li>
+<li><label><input type="checkbox"></input>Quarterly pack: inventory, policy,
+denies, vulns, audit log (see playbook)</label></li>
+</ul>
+<h3 id="what-csw-evidence-does-not-replace">What CSW evidence does not
+replace</h3>
+<ul>
+<li>Board / executive governance evidence (A1) — organisational, not
+technical.</li>
+<li>Enterprise risk-management methodology and treatment plans (A2) —
+process, not telemetry.</li>
+<li>Supply-chain assurance clauses, supplier audits, and third-party
+contracts (A4) — procurement.</li>
+<li>Written service-protection policies, exception registers, and
+management review (B1) — policy authoring, not enforcement.</li>
+<li>Staff awareness and training programmes (B6) — HR / learning.</li>
+<li>Backup content itself, RTO/RPO testing, and disaster-recovery
+exercises (D1 backup pillar) — CSW contributes forensic reconstruction,
+not restoration.</li>
+<li>Post-incident lessons-learned documentation and management follow-up
+(D2) — process.</li>
+</ul>
+<hr />
+<h2 id="csw-effectiveness-for-this-framework">CSW effectiveness for this
+framework</h2>
+<ul>
+<li><strong>Continuous, machine-generated evidence</strong> for A3
+(asset inventory), B5 (segmentation), C1 (monitoring) — replaces
+spreadsheet-derived asset lists and quarterly firewall samples that IGP
+reviewers routinely find insufficient for “Achieved”.</li>
+<li><strong>Structural IT ⇄ IT/OT DMZ boundary</strong> at the workload
+layer — a foundational B5 outcome that many operators only have at the
+network-perimeter tier and which regulators now expect at the workload /
+host tier.</li>
+<li><strong>Reachability-weighted vulnerability prioritisation</strong>
+(B4 + C2) — turns “we scanned” into “we prioritised by exposure to the
+essential function”.</li>
+<li><strong>Incident-time forensic timeline</strong> (D1) — reconstructs
+workload-to-workload flow + process history without depending on SIEM
+log completeness.</li>
+</ul>
+<p><strong>Compared to manual programmes.</strong> CAF IGPs distinguish
+between <em>documented</em> and <em>continuously verified</em> controls;
+a static Visio diagram plus an annual firewall sample review reads as
+<strong>Partially Achieved</strong> at best. CSW ties evidence to live
+workload behaviour and produces queryable exports on demand — the
+language IGP reviewers look for when awarding
+<strong>Achieved</strong>.</p>
+<hr />
+<h2 id="overview">1. Overview</h2>
+<p>The CAF is a principle-based, outcome-focused framework. It does not
+prescribe technology; it asks whether an operator can
+<strong>demonstrate the outcome</strong>, at a defined level of
+maturity, for the systems supporting each <strong>essential
+function</strong>. That framing has direct implications for tooling
+choice:</p>
+<ul>
+<li>Evidence must be <strong>specific to the essential function</strong>
+— CSW’s <strong>scope</strong> construct maps 1:1 to this notion (label
+workloads by essential function; scope-scoped exports become the
+evidence pack).</li>
+<li>Evidence must be <strong>current</strong> — CAF IGPs frequently
+distinguish “in place” (Partially Achieved) from “regularly tested and
+continuously verified” (Achieved). CSW’s continuous flow + process
+telemetry satisfies the “continuously verified” bar for the outcomes it
+covers.</li>
+<li>Evidence must be <strong>testable</strong> — the Competent Authority
+may request re-execution of a query or a re-export. CSW’s inventory /
+policy / flow queries are reproducible via UI or API.</li>
+</ul>
+<h3 id="caf-structure-and-where-csw-contributes">1.1 CAF structure and
+where CSW contributes</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>CAF Objective</th>
+<th>Principle</th>
+<th>CSW contribution</th>
+<th>Coverage rating</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A — Managing security risk</strong></td>
+<td>A1 Governance</td>
+<td>Inputs to board pack: coverage metrics, denies, unresolved
+exceptions</td>
+<td>Supporting</td>
+</tr>
+<tr>
+<td></td>
+<td>A2 Risk management</td>
+<td>Reachability + attack-surface inputs to threat modelling</td>
+<td>Supporting</td>
+</tr>
+<tr>
+<td></td>
+<td>A3 Asset management</td>
+<td><strong>Primary</strong> — continuous workload/service inventory
+across on-prem + cloud</td>
+<td><strong>Core</strong></td>
+</tr>
+<tr>
+<td></td>
+<td>A4 Supply chain</td>
+<td>Vendor-egress reconciliation vs. supplier register</td>
+<td>Partial</td>
+</tr>
+<tr>
+<td><strong>B — Protecting against cyber attack</strong></td>
+<td>B1 Service protection policies &amp; processes</td>
+<td>Enforcement + drift telemetry proves policies operate</td>
+<td>Supporting</td>
+</tr>
+<tr>
+<td></td>
+<td>B2 Identity &amp; access control</td>
+<td>Workload-to-workload allowlist; least-priv reach evidence (does not
+replace IAM / MFA / PAM)</td>
+<td>Partial</td>
+</tr>
+<tr>
+<td></td>
+<td>B3 Data security</td>
+<td>Enforces protected paths (TLS-only conduits, deny egress); does not
+manage keys/crypto primitives</td>
+<td>Partial</td>
+</tr>
+<tr>
+<td></td>
+<td>B4 System security</td>
+<td>Configuration/process baseline + drift; VA integration for patch
+prioritisation</td>
+<td>Strong</td>
+</tr>
+<tr>
+<td></td>
+<td>B5 Resilient networks &amp; systems</td>
+<td><strong>Primary</strong> — microsegmentation, IT/OT DMZ, ADM-derived
+allowlists</td>
+<td><strong>Core</strong></td>
+</tr>
+<tr>
+<td></td>
+<td>B6 Staff awareness &amp; training</td>
+<td>Out of scope</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>C — Detecting cyber security events</strong></td>
+<td>C1 Security monitoring</td>
+<td><strong>Primary</strong> — continuous flow + process telemetry, SIEM
+forwarding, NTP-locked timestamps</td>
+<td><strong>Core</strong></td>
+</tr>
+<tr>
+<td></td>
+<td>C2 Proactive event discovery</td>
+<td>Anomaly detection; reachability-weighted CVE evidence;
+threat-intel-fed workspace rules</td>
+<td>Strong</td>
+</tr>
+<tr>
+<td><strong>D — Minimising the impact of incidents</strong></td>
+<td>D1 Response &amp; recovery planning</td>
+<td>Forensic flow + process reconstruction; policy diff history; does
+not replace backup/DR</td>
+<td>Partial</td>
+</tr>
+<tr>
+<td></td>
+<td>D2 Improvements</td>
+<td>Historical policy + inventory diffs feed post-incident RCA</td>
+<td>Supporting</td>
+</tr>
+</tbody>
+</table>
+<h3 id="regulatory-context-informative">1.2 Regulatory context
+(informative)</h3>
+<p>CAF is not a law; it is an assessment framework used by regulators
+and departments to demonstrate satisfaction of legal or policy
+duties:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Sector / entity</th>
+<th>Statutory basis</th>
+<th>Competent Authority (representative)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Energy — Electricity, Gas, Oil</td>
+<td>NIS Regulations 2018</td>
+<td><strong>Ofgem</strong> (Great Britain); DfE Northern Ireland</td>
+</tr>
+<tr>
+<td>Water</td>
+<td>NIS Regulations 2018</td>
+<td><strong>DWI</strong> (Drinking Water Inspectorate, England &amp;
+Wales); Scottish / NI equivalents</td>
+</tr>
+<tr>
+<td>Transport — Air</td>
+<td>NIS Regulations 2018</td>
+<td><strong>CAA</strong> (Civil Aviation Authority)</td>
+</tr>
+<tr>
+<td>Transport — Maritime</td>
+<td>NIS Regulations 2018</td>
+<td><strong>MCA</strong> (Maritime and Coastguard Agency)</td>
+</tr>
+<tr>
+<td>Transport — Rail</td>
+<td>NIS Regulations 2018</td>
+<td><strong>ORR</strong> (Office of Rail and Road)</td>
+</tr>
+<tr>
+<td>Transport — Road (strategic road network)</td>
+<td>NIS Regulations 2018</td>
+<td><strong>DfT</strong></td>
+</tr>
+<tr>
+<td>Healthcare</td>
+<td>NIS Regulations 2018</td>
+<td><strong>DHSC</strong> with <strong>NHS England</strong> delegated
+operational role</td>
+</tr>
+<tr>
+<td>Digital Infrastructure (DNS, IXPs, TLD registries)</td>
+<td>NIS Regulations 2018</td>
+<td><strong>Ofcom</strong></td>
+</tr>
+<tr>
+<td>Relevant Digital Service Providers (RDSPs)</td>
+<td>NIS Regulations 2018</td>
+<td><strong>ICO</strong></td>
+</tr>
+<tr>
+<td>UK central government</td>
+<td>Cabinet Office policy</td>
+<td><strong>GSG</strong> (Government Security Group) via
+<strong>GovAssure</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Confirm the specific competent authority and any sector profile
+before finalising your CAF evidence — some regulators publish
+supplementary IGP interpretation guidance.</p>
+<hr />
+<h2 id="pre-deployment-checklist">2. Pre-Deployment Checklist</h2>
+<p>Before deploying CSW sensors for CAF evidence:</p>
+<ul class="task-list">
+<li><label><input type="checkbox"></input><strong>Essential functions defined
+and named</strong> (per NCSC guidance) — CSW scopes will be labelled to
+these names.</label></li>
+<li><label><input type="checkbox"></input><strong>Sector profile
+confirmed</strong> with your Competent Authority (baseline CAF
+vs. sector overlay).</label></li>
+<li><label><input type="checkbox"></input><strong>Systems inventory</strong> —
+list of servers, VMs, containers, cloud services supporting each
+essential function, with owner and criticality.</label></li>
+<li><label><input type="checkbox"></input><strong>IT / OT boundary
+architecture diagram</strong> — for operators with OT estate; identify
+jump hosts, IT/OT DMZ workloads, historians, engineering
+workstations.</label></li>
+<li><label><input type="checkbox"></input><strong>Existing CAF self-assessment
+or GovAssure report</strong> — identify current IGP status per principle
+so you can target the “Partially Achieved → Achieved” moves CSW
+enables.</label></li>
+<li><label><input type="checkbox"></input><strong>Time source</strong> —
+confirm NTP source for all in-scope hosts (CAF C1 IGP explicitly calls
+out synchronised time).</label></li>
+<li><label><input type="checkbox"></input><strong>SIEM / SOAR forwarding
+path</strong> confirmed (CSW will export flow + process telemetry via
+syslog / Kafka / cloud connector).</label></li>
+<li><label><input type="checkbox"></input><strong>Change-management
+approval</strong> for agent install on operational systems (OT-adjacent
+systems will need pilot approval).</label></li>
+</ul>
+<hr />
+<h2 id="phase-1-it-side-sensor-connector-deployment-days-15">3. Phase 1
+— IT-Side Sensor &amp; Connector Deployment (Days 1–5)</h2>
+<p>Objective: land coverage on the workloads that support each essential
+function.</p>
+<h3 id="server-vm-container-agents">3.1 Server / VM / container
+agents</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Linux (RHEL / Ubuntu / Debian / SLES families)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> rpm <span class="at">-ivh</span> tetration-sensor.rpm    <span class="co"># or .deb via dpkg -i</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl status tetsensor</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> tetsensor <span class="at">--status</span>               <span class="co"># confirms cluster registration</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Windows Server</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>msiexec <span class="op">/</span>i tetration-sensor<span class="op">.</span><span class="fu">msi</span> <span class="op">/</span>qn</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">Get-Service</span> tetsensor</span></code></pre></div>
+<p>Deploy in this order:</p>
+<ol type="1">
+<li><strong>IT/OT DMZ workloads</strong> (highest CAF B5 evidence
+value)</li>
+<li><strong>Jump hosts, historians, engineering workstations</strong>
+supporting essential functions</li>
+<li><strong>Identity / PKI / DNS / patch / AV / monitoring
+servers</strong> whose compromise would cascade</li>
+<li><strong>Corporate IT workloads with reach into any of the
+above</strong></li>
+</ol>
+<h3 id="cloud-hybrid-data-paths">3.2 Cloud &amp; hybrid data paths</h3>
+<p>Add cloud connectors for essential-function workloads outside the
+agent footprint:</p>
+<ul>
+<li><strong>AWS</strong>: connector reads VPC flow logs + EC2/EKS/ECS
+inventory</li>
+<li><strong>Azure</strong>: NSG flow logs + VM/VMSS/AKS/App Service
+inventory</li>
+<li><strong>GCP</strong>: VPC flow logs + Compute Engine / GKE / Cloud
+Run inventory</li>
+<li><strong>Kubernetes</strong>: DaemonSet install for on-prem clusters;
+API-based inventory for managed control planes</li>
+</ul>
+<h3 id="sensor-validation">3.3 Sensor validation</h3>
+<ul class="task-list">
+<li><label><input type="checkbox"></input>Every in-scope host visible in CSW
+Inventory</label></li>
+<li><label><input type="checkbox"></input>Flow observations arriving
+(Investigate → Flows, filter by scope)</label></li>
+<li><label><input type="checkbox"></input>Process telemetry arriving
+(Investigate → Processes)</label></li>
+<li><label><input type="checkbox"></input>Time deltas across hosts &lt;1 s
+(NTP-derived), verified in flow timestamps</label></li>
+</ul>
+<hr />
+<h2 id="phase-2-scope-architecture-for-essential-functions-days-612">4.
+Phase 2 — Scope Architecture for Essential Functions (Days 6–12)</h2>
+<p>CAF’s “essential function” concept maps directly to CSW’s
+<strong>scope</strong> hierarchy.</p>
+<h3 id="suggested-scope-architecture">4.1 Suggested scope
+architecture</h3>
+<pre><code>Root
+├── EssentialFn-&lt;Name-1&gt;              # e.g. &quot;Grid-Control&quot;, &quot;Water-Treatment-Site-A&quot;
+│   ├── OT-Support-Tier               # historians, EWS, jump hosts
+│   ├── IT-OT-DMZ                     # brokers, proxies, DMZ workloads
+│   └── EssFn-Cloud-Tier              # SaaS / IaaS backing services
+├── EssentialFn-&lt;Name-2&gt;
+│   └── ...
+├── Shared-Services                   # identity, PKI, DNS, patch, monitoring
+└── Corporate-IT                      # everything else (default-least-privilege into essential fns)</code></pre>
+<h3 id="label-strategy">4.2 Label strategy</h3>
+<p>Apply consistent labels — they drive scope membership, policy
+authorship, and evidence export:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Label</th>
+<th>Values</th>
+<th>Used for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>caf:essential_function</code></td>
+<td><code>&lt;Name&gt;</code> per NCSC definition</td>
+<td>Scope binding; per-function evidence packs</td>
+</tr>
+<tr>
+<td><code>caf:objective</code></td>
+<td><code>A</code>, <code>B</code>, <code>C</code>, <code>D</code>,
+<code>Shared</code></td>
+<td>Reports grouped by CAF objective</td>
+</tr>
+<tr>
+<td><code>caf:tier</code></td>
+<td><code>OT-Support</code>, <code>IT-OT-DMZ</code>, <code>Cloud</code>,
+<code>Shared-Service</code>, <code>Corporate</code></td>
+<td>Tier-specific policy</td>
+</tr>
+<tr>
+<td><code>env</code></td>
+<td><code>prod</code>, <code>preprod</code>, <code>dev</code></td>
+<td>Environmental separation</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>official</code>, <code>official-sensitive</code>,
+<code>secret</code> (per HMG classifications)</td>
+<td>Government-context data labelling</td>
+</tr>
+<tr>
+<td><code>owner</code></td>
+<td>Essential-function owner e-mail / team</td>
+<td>Evidence-pack routing</td>
+</tr>
+</tbody>
+</table>
+<h3 id="discovery-filters-for-essential-function-candidates">4.3
+Discovery filters for essential-function candidates</h3>
+<p>Use CSW’s search / annotation import to pull candidates from your
+CMDB:</p>
+<ul>
+<li>Workloads tagged with essential-function name in ServiceNow /
+equivalent</li>
+<li>Workloads with observed flow to your OT DMZ subnet range</li>
+<li>Workloads hosting historian / SCADA-broker / OPC / Modbus-related
+services (process names, listening ports)</li>
+<li>Cloud workloads with security-group / NSG rules referencing your OT
+/ operational subnets</li>
+</ul>
+<hr />
+<h2 id="phase-3-application-dependency-mapping-baseline-days-1328">5.
+Phase 3 — Application Dependency Mapping &amp; Baseline (Days
+13–28)</h2>
+<h3 id="adm-workspace">5.1 ADM workspace</h3>
+<ul>
+<li>Enable ADM per essential-function scope</li>
+<li>Run for ≥2 weeks covering full business/operational cycle (peak,
+off-peak, batch, backup)</li>
+<li>Export cluster-to-service mapping; walk through with the
+essential-function owner</li>
+</ul>
+<h3 id="adm-review-checklist-caf-oriented">5.2 ADM review checklist
+(CAF-oriented)</h3>
+<ul class="task-list">
+<li><label><input type="checkbox"></input>Every observed inbound / outbound
+flow classified: <strong>expected</strong>, <strong>unexpected but
+justified</strong>, <strong>unexpected — remediate</strong></label></li>
+<li><label><input type="checkbox"></input>Cross-essential-function flows
+explicitly documented (many CAF findings arise from unintended
+cross-function reach)</label></li>
+<li><label><input type="checkbox"></input>Vendor / third-party egress paths
+tagged for A4 (supply chain) reconciliation</label></li>
+<li><label><input type="checkbox"></input>Shadow IT paths surfaced for A3
+completeness</label></li>
+</ul>
+<h3 id="baselining-for-integrity-b4-evidence">5.3 Baselining for
+integrity (B4 evidence)</h3>
+<ul>
+<li><strong>Process inventory</strong> snapshot per host (name, path,
+hash where available, listening ports)</li>
+<li><strong>Binary + package inventory</strong> snapshot per host</li>
+<li><strong>Listening service</strong> inventory per host</li>
+<li>Store these as the reference baseline for future drift alerts</li>
+</ul>
+<hr />
+<h2 id="phase-4-policy-design-enforcement-days-2945">6. Phase 4 — Policy
+Design &amp; Enforcement (Days 29–45)</h2>
+<h3 id="caf-aligned-policy-framework">6.1 CAF-aligned policy
+framework</h3>
+<p>Design segmentation to satisfy B5 IGPs:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Policy tier</th>
+<th>Intent</th>
+<th>CAF principle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Corporate IT → OT-Support</strong></td>
+<td>Deny by default; allow only jump-host path</td>
+<td>B5 (segmentation), B2 (least priv)</td>
+</tr>
+<tr>
+<td><strong>OT-Support → IT/OT DMZ</strong></td>
+<td>Allow only documented conduits (historian pull, patch push)</td>
+<td>B5 (conduit control)</td>
+</tr>
+<tr>
+<td><strong>IT/OT DMZ → OT devices</strong></td>
+<td>Allow only defined protocol paths (Modbus, OPC UA, DNP3) — enforced
+at CSW’s IT boundary and by OT-native tools deeper in</td>
+<td>B5 (structural segmentation)</td>
+</tr>
+<tr>
+<td><strong>Shared Services → Any tier</strong></td>
+<td>Allow only listed services (DNS, NTP, AD, patch, monitoring)</td>
+<td>B2, B4</td>
+</tr>
+<tr>
+<td><strong>Any tier → Internet</strong></td>
+<td>Deny by default; explicit allowlist for updates, threat feeds,
+licence servers</td>
+<td>B3 (exfil prevention), B5</td>
+</tr>
+<tr>
+<td><strong>Vendor / remote-access → Any tier</strong></td>
+<td>Only via broker + jump; log all sessions</td>
+<td>A4, B2, D1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="policy-workspace-lifecycle">6.2 Policy workspace lifecycle</h3>
+<ul>
+<li>Build workspace per essential function</li>
+<li>Import ADM cluster proposals as draft policy</li>
+<li>Run <strong>Simulation</strong> mode ≥1 week; review daily for false
+positives</li>
+<li>Move to <strong>Enforce</strong> after change-board sign-off; record
+a <strong>negative test</strong> (deliberately denied flow) as evidence
+enforcement operates</li>
+</ul>
+<h3 id="enforcement-progression">6.3 Enforcement progression</h3>
+<ol type="1">
+<li>Simulation on essential-function scope</li>
+<li>Enforce on lowest-risk tier (e.g. monitoring readers)</li>
+<li>Enforce on OT-Support tier during agreed change window</li>
+<li>Enforce on IT/OT DMZ after ≥30 days of Simulation with zero
+unexpected denies</li>
+<li>Retain historical policy versions — they are the “policy diff”
+evidence for D1 and D2</li>
+</ol>
+<hr />
+<h2 id="phase-5-principle-by-principle-igp-mapping">7. Phase 5 —
+Principle-by-Principle IGP Mapping</h2>
+<p>Bring this section to the Competent Authority walk-through. Each row
+identifies the CAF principle, the IGP theme CSW addresses, the CSW
+capability that produces the evidence, and the exact artefact you can
+export.</p>
+<h3 id="objective-a-managing-security-risk">7.1 Objective A — Managing
+Security Risk</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>CAF principle</th>
+<th>IGP theme (CSW-addressable)</th>
+<th>CSW capability</th>
+<th>Evidence artefact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A1 Governance</strong></td>
+<td>Board / SMT receives current cyber-risk information</td>
+<td>Coverage %, denies count, unresolved exceptions dashboard</td>
+<td>Quarterly board pack extract (PDF)</td>
+</tr>
+<tr>
+<td><strong>A2 Risk management</strong></td>
+<td>Threats to essential functions are dynamically identified</td>
+<td>Reachability + attack-surface snapshots per essential-function
+scope</td>
+<td>Reachability report + change delta between snapshots</td>
+</tr>
+<tr>
+<td><strong>A3 Asset management</strong></td>
+<td>Continuous, comprehensive inventory of assets supporting essential
+functions</td>
+<td>Workload / service inventory across on-prem + cloud; label
+discipline; CMDB reconciliation</td>
+<td>Inventory CSV + reconciliation report; agent-status report</td>
+</tr>
+<tr>
+<td><strong>A4 Supply chain</strong></td>
+<td>Third-party access to essential-function systems is inventoried and
+monitored</td>
+<td>Vendor-egress observations vs. supplier register; jump-host session
+evidence</td>
+<td>Vendor-egress reconciliation report</td>
+</tr>
+</tbody>
+</table>
+<h3 id="objective-b-protecting-against-cyber-attack">7.2 Objective B —
+Protecting Against Cyber Attack</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>CAF principle</th>
+<th>IGP theme (CSW-addressable)</th>
+<th>CSW capability</th>
+<th>Evidence artefact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>B1 Service protection policies &amp; processes</strong></td>
+<td>Policies are enforced and their operation is tested</td>
+<td>Policy enforcement + Denied-Connections telemetry proves policy is
+not aspirational</td>
+<td>Policy JSON export + denies report per essential function</td>
+</tr>
+<tr>
+<td><strong>B2 Identity &amp; access control</strong></td>
+<td>Least-privilege access to systems supporting essential
+functions</td>
+<td>Workload-to-workload allowlist; deny lateral reach;
+identity-labelled flows when integrated with IAM</td>
+<td>Allowlist policy + flow log with user/process context</td>
+</tr>
+<tr>
+<td><strong>B3 Data security</strong></td>
+<td>Data-in-transit protection &amp; prevention of unauthorised
+exfiltration</td>
+<td>Enforce plaintext-protocol deny; egress-to-Internet allowlist;
+anomaly on data-volume egress</td>
+<td>Policy showing deny for cleartext + egress-anomaly report</td>
+</tr>
+<tr>
+<td><strong>B4 System security</strong></td>
+<td>Hardened configuration; timely patching; unauthorised code
+prevented</td>
+<td>Process / binary / listening-service inventory; drift alerts; VA
+connector for reachability-weighted CVE reports</td>
+<td>Baseline vs. current diff; VA reachability report</td>
+</tr>
+<tr>
+<td><strong>B5 Resilient networks &amp; systems</strong></td>
+<td>Segmentation between IT / OT / corporate networks; microsegmentation
+within tiers</td>
+<td>ADM-derived allowlists; scope hierarchy mirroring essential-function
+tiers; conduit-level rules</td>
+<td>ADM diagram + policy export + Simulation report</td>
+</tr>
+<tr>
+<td><strong>B6 Staff awareness &amp; training</strong></td>
+<td>Out of scope — organisational</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3 id="objective-c-detecting-cyber-security-events">7.3 Objective C —
+Detecting Cyber Security Events</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>CAF principle</th>
+<th>IGP theme (CSW-addressable)</th>
+<th>CSW capability</th>
+<th>Evidence artefact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>C1 Security monitoring</strong></td>
+<td>Continuous logging with synchronised time; SIEM/SOAR
+integration</td>
+<td>Flow + process telemetry retention; syslog / Kafka / cloud connector
+to SIEM; NTP-verified timestamps</td>
+<td>Retention policy screenshot; SIEM ingest sample; NTP drift
+report</td>
+</tr>
+<tr>
+<td><strong>C2 Proactive event discovery</strong></td>
+<td>Anomaly detection; threat hunting; vulnerability scanning</td>
+<td>Behavioural anomaly alerts (new listener, new peer, unusual volume);
+reachability-weighted CVE alerts; threat-intel-fed workspace rules</td>
+<td>Anomaly alert catalog; CVE-reachability report; workspace change
+history</td>
+</tr>
+</tbody>
+</table>
+<h3 id="objective-d-minimising-the-impact-of-incidents">7.4 Objective D
+— Minimising the Impact of Incidents</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>CAF principle</th>
+<th>IGP theme (CSW-addressable)</th>
+<th>CSW capability</th>
+<th>Evidence artefact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>D1 Response &amp; recovery planning</strong></td>
+<td>Incident response is exercised and evidenced; forensic
+reconstruction is possible</td>
+<td>Historical flow + process telemetry; policy diff timeline;
+per-workload change history</td>
+<td>Forensic timeline export; policy-diff report for the incident
+window</td>
+</tr>
+<tr>
+<td><strong>D2 Improvements</strong></td>
+<td>Lessons learned drive control changes</td>
+<td>Policy + inventory diff history feeds RCA; workspace change log
+traces control evolution</td>
+<td>Workspace change log; policy-diff summary per incident</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="auditor-competent-authority-response-guide">8. Auditor /
+Competent-Authority Response Guide</h2>
+<p>When the Competent Authority (Ofgem, DWI, CAA, ORR, MCA, DfT,
+DHSC/NHS England, Ofcom, ICO) or GovAssure assessor asks for
+evidence:</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Authority asks</th>
+<th>You provide</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“Show your inventory of assets supporting essential function
+<em>X</em> as of [date]”</td>
+<td>CSW Inventory snapshot filtered by
+<code>caf:essential_function=X</code>, dated</td>
+</tr>
+<tr>
+<td>“Demonstrate structural segmentation between corporate IT and
+OT”</td>
+<td>Workspace export + ADM diagram + Simulation showing zero allowed
+cross-boundary flows outside documented conduits</td>
+</tr>
+<tr>
+<td>“Provide flow-level evidence for incident [ID] between [t0] and
+[t1]”</td>
+<td>CSW flow + process timeline export scoped to the affected workloads
+for that window</td>
+</tr>
+<tr>
+<td>“Show how B4 patch prioritisation reflects essential-function
+exposure”</td>
+<td>Reachability-weighted CVE report; workspace rules referencing CVE
+feed</td>
+</tr>
+<tr>
+<td>“Show C1 continuous monitoring is operating for essential function
+<em>X</em>”</td>
+<td>Retention screenshot; SIEM ingest proof; NTP-drift report; alerting
+rule catalog</td>
+</tr>
+<tr>
+<td>“Show how policy exceptions are managed and reviewed under B1”</td>
+<td>Exception register + policy workspace change history + management
+review minutes (paired with CSW policy diffs)</td>
+</tr>
+<tr>
+<td>“Show that segmentation policy is <em>tested</em>, not just written
+(Achieved-tier IGP)”</td>
+<td>Simulation report + Denied-Connections evidence + a documented
+negative-test outcome</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="boundaries-what-csw-does-not-cover">9. Boundaries — what CSW
+does <strong>not</strong> cover</h2>
+<ul>
+<li><strong>Level 0–2 OT devices</strong> (PLCs, RTUs, IEDs, drives,
+field instruments) — no CSW agent; pair with Cisco Cyber Vision /
+Claroty / Nozomi for asset discovery, ICS protocol analytics, and
+device-level integrity.</li>
+<li><strong>OT protocols</strong> (Modbus, DNP3, S7, OPC UA, BACnet, IEC
+60870-5) at wire speed — outside CSW’s inspection scope.</li>
+<li><strong>Cryptographic primitives and key management</strong> (B3) —
+CSW may enforce <strong>paths</strong> (TLS-only) but does not replace
+PKI / HSM governance.</li>
+<li><strong>IAM / MFA / PAM</strong> (B2) — CSW consumes identity
+context if integrated; it does not authenticate humans, mint tokens, or
+manage privileged sessions.</li>
+<li><strong>Backups, immutability, RTO/RPO testing</strong> (D1 recovery
+pillar) — CSW contributes forensic evidence, not restoration.</li>
+<li><strong>Board governance, policy authoring, supplier contracting,
+training records</strong> (A1, A2 methodology, A4 procurement, B1
+authoring, B6) — organisational; CSW provides inputs, not the
+process.</li>
+<li><strong>CAF Achieved-status certification</strong> — CAF is not a
+certification scheme; the Competent Authority awards the IGP status. CSW
+evidence <em>supports</em> an Achieved award for the outcomes it covers;
+it does not confer it.</li>
+</ul>
+<hr />
+<h2 id="common-pitfalls">10. Common pitfalls</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Pitfall</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Labelling scopes by team or business unit instead of
+<strong>essential function</strong></td>
+<td>Anchor labels to the NCSC essential-function names your Competent
+Authority has agreed</td>
+</tr>
+<tr>
+<td>Presenting a static architecture diagram as B5 evidence</td>
+<td>Add ADM diagram (behaviour-derived) alongside; regulator asks for
+both</td>
+</tr>
+<tr>
+<td>Treating a scan report as B4 evidence for “prioritised
+patching”</td>
+<td>Pair scan output with reachability-weighted CVE report so priority
+is defensible</td>
+</tr>
+<tr>
+<td>Enforcing before Simulation on OT-adjacent systems</td>
+<td>Simulation ≥30 days on OT-adjacent tier before Enforce; document
+negative test after Enforce</td>
+</tr>
+<tr>
+<td>Missing NTP evidence for C1</td>
+<td>Include NTP source, drift report, and a flow timestamp comparison
+across ≥2 hosts in every C1 pack</td>
+</tr>
+<tr>
+<td>Conflating “policy exists” with “policy operates” for IGP
+Achieved</td>
+<td>Ship Denied-Connections evidence + a documented negative-test
+outcome in every quarterly pack</td>
+</tr>
+<tr>
+<td>Ignoring cross-essential-function reach</td>
+<td>Explicit deny rules between essential-function scopes; ADM must show
+zero cross-reach outside documented conduits</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="audit-preparation-evidence-export">11. Audit preparation &amp;
+evidence export</h2>
+<h3 id="quarterly-caf-pack-per-essential-function">11.1 Quarterly CAF
+pack (per essential function)</h3>
+<ul class="task-list">
+<li><label><input type="checkbox"></input>Inventory CSV filtered by
+<code>caf:essential_function=&lt;X&gt;</code></label></li>
+<li><label><input type="checkbox"></input>Scope-membership screenshot (with
+label filters visible)</label></li>
+<li><label><input type="checkbox"></input>ADM diagram export
+(PDF)</label></li>
+<li><label><input type="checkbox"></input>Policy JSON export</label></li>
+<li><label><input type="checkbox"></input>Denied-Connections report for the
+quarter (with negative-test entry highlighted)</label></li>
+<li><label><input type="checkbox"></input>Reachability-weighted CVE
+report</label></li>
+<li><label><input type="checkbox"></input>Anomaly / new-listener alert
+log</label></li>
+<li><label><input type="checkbox"></input>Workspace change history (policy
+diff timeline)</label></li>
+<li><label><input type="checkbox"></input>NTP-drift report</label></li>
+<li><label><input type="checkbox"></input>SIEM ingest sample proving telemetry
+flow is live</label></li>
+<li><label><input type="checkbox"></input>Cover sheet mapping each artefact to
+CAF principles and IGP maturity claim</label></li>
+</ul>
+<h3 id="bash-helpers-on-analysis-workstation">11.2 Bash helpers (on
+analysis workstation)</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify exported policy archive integrity (after UI download)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sha256sum</span> caf-<span class="op">&lt;</span>essfn<span class="op">&gt;</span>-policy-<span class="pp">*</span>.json.gz</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Redact non-production subnets before sharing with an assessor</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="at">-E</span> <span class="st">&#39;s/10\.99\.[0-9]+\.[0-9]+/10.99.x.x/g&#39;</span> adm-<span class="op">&lt;</span>essfn<span class="op">&gt;</span>.txt <span class="op">&gt;</span> adm-<span class="op">&lt;</span>essfn<span class="op">&gt;</span>.redacted.txt</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a per-principle evidence-index CSV from a manifest</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="at">-F,</span> <span class="st">&#39;NR&gt;1 {print $1&quot;,&quot;$2&quot;,&quot;$3}&#39;</span> evidence-manifest.csv <span class="op">&gt;</span> caf-evidence-index.csv</span></code></pre></div>
+<hr />
+<h2 id="related-frameworks">Related Frameworks</h2>
+<ul>
+<li><a href="../NIS2/CSW-NIS2-Technical-Runbook.html">NIS2 (EU
+2022/2555)</a> — EU parallel to the UK NIS regime; Article 21(2)
+measures overlap heavily with CAF Objectives A–D.</li>
+<li><a href="../NIST-800-82/CSW-NIST-800-82-Technical-Runbook.html">NIST
+SP 800-82 Rev. 3</a> — OT security guidance underpinning the IT/OT
+boundary approach in CAF B5.</li>
+<li><a href="../IEC-62443/CSW-IEC62443-Technical-Runbook.html">IEC
+62443</a> — IACS zones-and-conduits reference used by many CAF operators
+for OT segmentation.</li>
+<li><a href="../NERC-CIP/CSW-NERC-CIP-Technical-Runbook.html">NERC CIP</a>
+— US analogue for BES entities; useful cross-walk if you operate on both
+sides of the Atlantic.</li>
+<li><a href="../NIST-CSF-2/CSW-CSF-Technical-Runbook.html">NIST CSF
+2.0</a> — outcome-based framework with a similar Govern / Identify /
+Protect / Detect / Respond / Recover structure.</li>
+<li><a href="../ISO-27001-2022/CSW-ISO27001-Technical-Runbook.html">ISO/IEC
+27001:2022</a> — ISMS backbone many UK operators already run alongside
+CAF.</li>
+<li><a href="../CISA-ZeroTrust/CSW-CISA-ZTMM-Technical-Runbook.html">CISA
+Zero Trust Maturity Model</a> — pillar-based reference used to
+characterise CAF B2 / B5 maturity.</li>
+<li><a href="../UK-Cyber-Essentials/CSW-Cyber-Essentials-Technical-Runbook.html">UK
+Cyber Essentials</a> — UK baseline control set often paired with CAF for
+supply-chain assurance under A4.</li>
+</ul>
+<hr />
+<h3 id="appendix-a-sample-essential-function-policy-fragment-illustrative">Appendix
+A — Sample essential-function policy fragment (illustrative)</h3>
+<blockquote>
+<p><strong>Do not paste verbatim into production.</strong> Replace scope
+names, addresses, and services with values from your architecture.
+Syntax is conceptual; exact API/UI format follows the CSW product
+version.</p>
+</blockquote>
+<div class="sourceCode" id="cb5"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">workspace</span><span class="kw">:</span><span class="at"> CAF-EssFn-Water-Treatment-Site-A</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mode</span><span class="kw">:</span><span class="at"> simulation</span><span class="co">           # move to enforcement after change-board sign-off + 1 week clean simulation</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">default_action</span><span class="kw">:</span><span class="at"> deny</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rules</span><span class="kw">:</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> historian-pull-from-scada</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">action</span><span class="kw">:</span><span class="at"> allow</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">src_scope</span><span class="kw">:</span><span class="at"> EssFn-Water-Treatment-Site-A/OT-Support-Tier/Historian</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">dst_scope</span><span class="kw">:</span><span class="at"> EssFn-Water-Treatment-Site-A/IT-OT-DMZ/SCADA-Broker</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> tcp/4840</span><span class="co">        # OPC UA</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> tcp/1883</span><span class="co">        # MQTT (documented conduit only)</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> patch-push-from-shared</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">action</span><span class="kw">:</span><span class="at"> allow</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">src_scope</span><span class="kw">:</span><span class="at"> Shared-Services/Patch</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">dst_scope</span><span class="kw">:</span><span class="at"> EssFn-Water-Treatment-Site-A/OT-Support-Tier</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> tcp/443</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">schedule</span><span class="kw">:</span><span class="at"> change-window-only</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> jump-host-admin</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">action</span><span class="kw">:</span><span class="at"> allow</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">src_scope</span><span class="kw">:</span><span class="at"> Shared-Services/Jump-Hosts</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">dst_scope</span><span class="kw">:</span><span class="at"> EssFn-Water-Treatment-Site-A/OT-Support-Tier</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> tcp/22</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> tcp/3389</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> deny-corp-to-essfn</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">action</span><span class="kw">:</span><span class="at"> deny</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">src_scope</span><span class="kw">:</span><span class="at"> Corporate-IT</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">dst_scope</span><span class="kw">:</span><span class="at"> EssFn-Water-Treatment-Site-A</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">log</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co">             # supports C1 evidence and D1 forensic timeline</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> alert-unknown-east-west</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">action</span><span class="kw">:</span><span class="at"> alert</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">src_scope</span><span class="kw">:</span><span class="at"> EssFn-Water-Treatment-Site-A</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">dst_scope</span><span class="kw">:</span><span class="at"> EssFn-Water-Treatment-Site-A</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">match</span><span class="kw">:</span><span class="at"> not_in_conduit_allowlist</span></span></code></pre></div>
+<h3 id="appendix-b-caf-igp-maturity-cheatsheet-csws-contribution">Appendix B
+— CAF IGP maturity cheatsheet (CSW’s contribution)</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Move</th>
+<th>CSW contribution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A3 Partially → Achieved</strong></td>
+<td>Continuous inventory + CMDB reconciliation + agent-coverage
+report</td>
+</tr>
+<tr>
+<td><strong>B5 Partially → Achieved</strong></td>
+<td>ADM diagram (behaviour-derived) + workspace enforcement + Simulation
+clean-run evidence</td>
+</tr>
+<tr>
+<td><strong>C1 Partially → Achieved</strong></td>
+<td>Continuous flow/process telemetry + SIEM ingest proof + NTP drift
+report + retention screenshot</td>
+</tr>
+<tr>
+<td><strong>C2 Partially → Achieved</strong></td>
+<td>Anomaly alert catalog + reachability-weighted CVE report +
+threat-intel-fed workspace rules</td>
+</tr>
+<tr>
+<td><strong>D1 Partially → Achieved (forensic pillar)</strong></td>
+<td>Historical flow + process timeline + policy diff timeline as CIRP
+appendix</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="disclaimer">Disclaimer</h2>
+<p>This runbook maps Cisco Secure Workload capabilities to the outcomes
+described in the UK NCSC Cyber Assessment Framework (CAF v3.2, November
+2024) for the purpose of aiding operator evidence collection. It is
+<strong>not</strong> an NCSC-endorsed certification, is
+<strong>not</strong> a substitute for an independent CAF assessment or
+GovAssure engagement, and does <strong>not</strong> confer any IGP
+maturity status. Awarding of IGP status is the responsibility of the
+operator’s Competent Authority (Ofgem, DWI, CAA, ORR, MCA, DfT, DHSC/NHS
+England, Ofcom, ICO) or GovAssure assessor. Cisco Secure Workload is one
+component of an evidence programme that also depends on organisational
+governance, procurement, HR, business continuity, and training controls
+outside CSW’s technical scope. Confirm your sector profile and any
+Competent Authority-specific guidance before finalising evidence.</p>
+</body>
+</html>

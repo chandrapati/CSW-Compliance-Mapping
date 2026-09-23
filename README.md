@@ -3,7 +3,7 @@
 ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=chandrapati.CSW-Compliance-Mapping&left_text=visitors)
 
 Customer-facing reports and matching technical runbooks that map Cisco
-Secure Workload (CSW) controls to **thirty-four** compliance, sector, and
+Secure Workload (CSW) controls to **thirty-five** compliance, sector, and
 zero-trust frameworks. Every framework folder ships the same set of
 assets: a Markdown technical runbook (the engineering view), a DOCX
 report (the editable customer master), a PDF render of that report,
@@ -18,7 +18,7 @@ and HTML versions of both for browser/mobile reading.
 > **For a CISO / CIO skimming this for the first time.**
 
 - **What this is.** A reference library that maps Cisco Secure Workload
-  (CSW) capabilities to **34 security, regulatory, and zero-trust
+  (CSW) capabilities to **35 security, regulatory, and zero-trust
   frameworks** — so you can see *which* controls CSW helps you evidence,
   and *how*, before committing budget or audit hours.
 - **What you get per framework.** Two paired documents — a **technical
@@ -79,7 +79,7 @@ questions worth walking through against your own environment — see
 
 ![Cisco Secure Workload Compliance Mapping Architecture](csw-compliance-architecture.png)
 
-*The same Secure Workload capabilities — micro-segmentation, process & flow telemetry, software inventory & CVE awareness, forensic flow evidence, and authored workload policy — are mapped, control by control, to 34 compliance and zero-trust frameworks. Each framework folder pairs an engineering runbook with a customer-facing report so the same live evidence answers both the auditor and the incident responder.*
+*The same Secure Workload capabilities — micro-segmentation, process & flow telemetry, software inventory & CVE awareness, forensic flow evidence, and authored workload policy — are mapped, control by control, to 35 compliance and zero-trust frameworks. Each framework folder pairs an engineering runbook with a customer-facing report so the same live evidence answers both the auditor and the incident responder.*
 
 ---
 
@@ -155,14 +155,15 @@ reach for the runbook vs. the report).
 | TISAX / VDA ISA | Automotive prototype and confidential engineering workload segmentation; supplier/customer egress; assessment evidence support | [MD](./TISAX/CSW-TISAX-Technical-Runbook.md) · [PDF](./TISAX/CSW-TISAX-Technical-Runbook.pdf) · [DOCX](./TISAX/CSW-TISAX-Technical-Runbook.docx) · [HTML](./TISAX/CSW-TISAX-Technical-Runbook.html) | [PDF](./TISAX/CSW-TISAX-Compliance-Report.pdf) · [DOCX](./TISAX/CSW-TISAX-Compliance-Report.docx) · [HTML](./TISAX/CSW-TISAX-Compliance-Report.html) |
 | NIST SP 800-82 | OT-adjacent IT segmentation; jump hosts, historians, patch repositories, identity services, vendor access; pair with OT visibility | [MD](./NIST-800-82/CSW-NIST-800-82-Technical-Runbook.md) · [PDF](./NIST-800-82/CSW-NIST-800-82-Technical-Runbook.pdf) · [DOCX](./NIST-800-82/CSW-NIST-800-82-Technical-Runbook.docx) · [HTML](./NIST-800-82/CSW-NIST-800-82-Technical-Runbook.html) | [PDF](./NIST-800-82/CSW-NIST-800-82-Compliance-Report.pdf) · [DOCX](./NIST-800-82/CSW-NIST-800-82-Compliance-Report.docx) · [HTML](./NIST-800-82/CSW-NIST-800-82-Compliance-Report.html) |
 | BSI C5 | Cloud service assurance; tenant/shared-service workload boundaries; cloud communication security; vulnerability and incident evidence | [MD](./BSI-C5/CSW-BSI-C5-Technical-Runbook.md) · [PDF](./BSI-C5/CSW-BSI-C5-Technical-Runbook.pdf) · [DOCX](./BSI-C5/CSW-BSI-C5-Technical-Runbook.docx) · [HTML](./BSI-C5/CSW-BSI-C5-Technical-Runbook.html) | [PDF](./BSI-C5/CSW-BSI-C5-Compliance-Report.pdf) · [DOCX](./BSI-C5/CSW-BSI-C5-Compliance-Report.docx) · [HTML](./BSI-C5/CSW-BSI-C5-Compliance-Report.html) |
+| UK NCSC CAF (v3.2 · OES / GovAssure) | A3 essential-function asset inventory; B5 IT/OT + microsegmentation as ADM-derived allowlists; C1 continuous flow + process telemetry with NTP-verified time; C2 anomaly + reachability-weighted CVE evidence; D1 forensic flow/process timeline for the CIRP. *IT-side scope; OT device layer out of scope.* | [MD](./NCSC-CAF/CSW-NCSC-CAF-Technical-Runbook.md) · [PDF](./NCSC-CAF/CSW-NCSC-CAF-Technical-Runbook.pdf) · [DOCX](./NCSC-CAF/CSW-NCSC-CAF-Technical-Runbook.docx) · [HTML](./NCSC-CAF/CSW-NCSC-CAF-Technical-Runbook.html) | [PDF](./NCSC-CAF/CSW-NCSC-CAF-Compliance-Report.pdf) · [DOCX](./NCSC-CAF/CSW-NCSC-CAF-Compliance-Report.docx) · [HTML](./NCSC-CAF/CSW-NCSC-CAF-Compliance-Report.html) |
 
 > **Quickly find a control?** See [`INDEX.md`](./INDEX.md) for a
-> control-ID-keyed index across all thirty-four frameworks (e.g. *PCI Req
+> control-ID-keyed index across all thirty-five frameworks (e.g. *PCI Req
 > 1.2*, *HIPAA §164.312(a)(1)*, *DORA Art. 9*, *NIS2 Art. 21(2)(d)*,
 > *NIST AC-4*, *NERC CIP-005 R1*, *TSA SD Section III.A*, *IEC 62443 SR 5.3*,
 > *GDPR Art. 32*, *FedRAMP AC-4*, *SWIFT CSCF 1.4*, *HITRUST 01.m*, *MITRE TA0008*,
 > *CIS Safeguard 13.4*, *CSF PR.IR-01*, *CMMC AC.L2-3.1.1*, *NIST 800-171 03.13.06*,
-> *CSA IVS-09*, *COBIT DSS05.02*, *E8 E5*, *UK CE1*, *HIPAA NPRM §164.312(a)(2)(vi)*,
+> *CSA IVS-09*, *COBIT DSS05.02*, *E8 E5*, *UK CE1*, *NCSC CAF B5 / C1*, *HIPAA NPRM §164.312(a)(2)(vi)*,
 > *MAS TRM*, *APRA CPS 234*, *NY DFS 500.03*, *TISAX ISA*, *NIST 800-82*, *BSI C5*).
 
 > **Cross-cutting frameworks scope note (CIS, CSF, CMMC).** These three
@@ -216,7 +217,7 @@ reach for the runbook vs. the report).
 - **[Audience and usage guide](./docs/audience-and-usage.md)** — who
   should lead with which document, runbook-vs-report guidance, file
   format guidance, and the full folder layout.
-- **[`INDEX.md`](./INDEX.md)** — control-ID lookup across all thirty-four
+- **[`INDEX.md`](./INDEX.md)** — control-ID lookup across all thirty-five
   frameworks.
 - **[CSW Epic EHR Microsegmentation Guide](https://github.com/chandrapati/CSW-Epic-Microsegmentation-Guide)** —
   step-by-step practitioner runbook for Epic tier scopes, ADM, Interconnect/HL7
