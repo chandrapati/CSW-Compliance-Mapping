@@ -256,6 +256,9 @@ CSW UI → Investigate → ADM
 - [FIPS 140](../FIPS-140/CSW-FIPS-Technical-Runbook.md) — SC-13 cryptographic-protection requirement for the 800-53 baselines.
 - [HIPAA](../HIPAA/CSW-HIPAA-Technical-Runbook.md) — for healthcare entities that satisfy §164.306 via 800-53 mapping.
 
+
+- [UK NCSC CAF v3.2](../UK-NCSC-CAF/caf-mapping.md) — AC-4 and SC-7 are the reuse path for CAF B5.
+
 ---
 
 *Replace [Customer Name] and bracketed fields before customer delivery.*

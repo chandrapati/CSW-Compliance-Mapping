@@ -19,9 +19,10 @@ or **Not Achieved**.
 
 Cisco Secure Workload (CSW) is a workload-visibility, microsegmentation,
 and east-west security platform. CSW does not satisfy any CAF principle
-on its own — no single product does — but it is a **primary evidence
-source for 6 of the 14 principles** (A2, A3, B1, B4, B5, C1, C2) and a
-supporting source for several more. It is particularly strong for CAF
+on its own — no single product does — but it is a **direct evidence
+source for 7 of the 14 principles** (A2, A3, B1, B4, B5, C1, C2) and a
+supporting source for five more (A1, A4, B3, D1, D2). B2 and B6 are out
+of scope. It is particularly strong for CAF
 Objective B (Protect) and Objective C (Detect), which is exactly where
 network segmentation, host-level visibility, and continuous telemetry
 belong in the CAF model.

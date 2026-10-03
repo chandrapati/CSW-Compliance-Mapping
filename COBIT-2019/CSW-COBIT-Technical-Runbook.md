@@ -470,6 +470,9 @@ Many enterprises map COBIT to ISO/IEC 27001 or NIST SP 800-53. CSW technical evi
 - [ISO/IEC 27001:2022](../ISO-27001-2022/CSW-ISO27001-Technical-Runbook.md) — ISMS audits frequently pair with COBIT governance reviews.
 - [NIST SP 800-207](../NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md) — zero trust architecture patterns underpinning segmentation evidence for **DSS05.02**.
 
+
+- [UK NCSC CAF v3.2](../UK-NCSC-CAF/caf-mapping.md) — APO13 is the reuse path for CAF A1 governance telemetry.
+
 ---
 
 *Document prepared for Cisco customer engagements. Replace bracketed placeholders and tailor scopes to your COBIT assessment boundary before external sharing.*

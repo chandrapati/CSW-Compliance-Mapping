@@ -239,6 +239,9 @@ ISO 27001 requires a risk treatment plan. CSW data feeds directly into this:
 - [DORA (EU 2022/2554)](../DORA/CSW-DORA-Technical-Runbook.md) — financial-sector entities typically certify to ISO 27001 *and* report under DORA.
 - [NIST SP 800-207](../NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md) — the segmentation pattern underneath A.8.20–A.8.23.
 
+
+- [UK NCSC CAF v3.2](../UK-NCSC-CAF/caf-mapping.md) — A.8.20–A.8.22 is the reuse path for CAF B5.
+
 ---
 
 *Replace [Customer Name] and bracketed fields before customer delivery.*

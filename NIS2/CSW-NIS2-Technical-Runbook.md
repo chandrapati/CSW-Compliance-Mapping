@@ -553,6 +553,9 @@ NIS2 overlaps materially with:
   controls give a useful detailed mapping for Article 21(2)(e), (f),
   (i) (see [800-53 runbook](../NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md)).
 
+
+- **UK NCSC CAF v3.2** — Art. 21(2)(a) and (d) are the reuse path for CAF A2 and A4 in a UK NIS OES or GovAssure assessment (see [CAF crosswalk](../UK-NCSC-CAF/caf-mapping.md)).
+
 ---
 
 ## 10. Disclaimer

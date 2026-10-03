@@ -464,6 +464,9 @@ Align CSW retention with **SIEM/ISO/internal policy**. Federal-style programs of
 - [NIST SP 800-207](../NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md) — ZTA segmentation rationale.  
 - [FedRAMP](../FedRAMP/CSW-FedRAMP-Technical-Runbook.md) — federal continuous monitoring overlays.  
 
+
+- [UK NCSC CAF v3.2](../UK-NCSC-CAF/caf-mapping.md) — technique coverage is the reuse path for CAF C2.
+
 ---
 
 *Document prepared for Cisco accounts mapping workload telemetry to MITRE ATT&CK. Replace organization-specific names and parameters before customer delivery.*

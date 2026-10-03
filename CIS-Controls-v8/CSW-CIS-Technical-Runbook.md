@@ -670,6 +670,9 @@ CIS Controls v8.1 maps cleanly to:
   overlap with CIS Safeguards. See
   [ISO 27001 runbook](../ISO-27001-2022/CSW-ISO27001-Technical-Runbook.md).
 
+
+- **UK NCSC CAF v3.2** — Controls 1, 2, 4, 7, and 13 are the reuse path for CAF A3, B4, B5, and C1 (see [CAF crosswalk](../UK-NCSC-CAF/caf-mapping.md)).
+
 ---
 
 ## 15. Disclaimer

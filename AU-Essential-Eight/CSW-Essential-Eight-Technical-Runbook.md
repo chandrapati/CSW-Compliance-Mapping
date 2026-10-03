@@ -408,6 +408,9 @@ find "${TARGET_ROOT}" -type f -print0 | sort -z | xargs -0 sha256sum > "${TARGET
 - [NIST SP 800-207](../NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md) — zero trust segmentation patterns supporting **E5** path restriction.
 - [ISO/IEC 27001:2022](../ISO-27001-2022/CSW-ISO27001-Technical-Runbook.md) — for organizations mapping Essential Eight to broader ISMS audits.
 
+
+- [UK NCSC CAF v3.2](../UK-NCSC-CAF/caf-mapping.md) — E2 and E6 patch evidence is the reuse path for CAF B4.
+
 ---
 
 ## Appendix B — Official References (External)

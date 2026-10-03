@@ -584,6 +584,9 @@ perl -pe 's/\b10\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/10.REDACTED.0.0/g' \
 - [NIST SP 800-207](../NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md) —
   zero trust patterns for conduit enforcement narratives.
 
+
+- [UK NCSC CAF v3.2](../UK-NCSC-CAF/caf-mapping.md) — zones and conduits are the reuse path for CAF B5 on the IT side of an IT/OT boundary.
+
 ---
 
 ### Appendix A — Sample segmentation policy fragment (illustrative YAML-style)

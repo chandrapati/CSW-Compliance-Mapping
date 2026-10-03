@@ -569,6 +569,9 @@ DORA shares substantial control surface with:
   PCI Reqs 1, 7, 10, 11 share evidence (see
   [PCI runbook](../PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.md)).
 
+
+- **UK NCSC CAF v3.2** — Art. 28 and Art. 19 are the reuse path for CAF A4 and D1 (see [CAF crosswalk](../UK-NCSC-CAF/caf-mapping.md)).
+
 ---
 
 ## 14. Disclaimer

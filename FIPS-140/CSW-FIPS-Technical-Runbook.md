@@ -256,6 +256,9 @@ FIPS 140-3 (based on ISO/IEC 19790:2012) replaces 140-2. CSW supports the transi
 - [NIST SP 800-207](../NIST-800-207/CSW-NIST-800-207-Technical-Runbook.md) — Tenet 4 (encryption regardless of network location) sits on the same crypto foundation.
 - [ISO/IEC 27001:2022](../ISO-27001-2022/CSW-ISO27001-Technical-Runbook.md) — Annex A.8.24 cryptographic controls map to FIPS-validated module use.
 
+
+- [UK NCSC CAF v3.2](../UK-NCSC-CAF/caf-mapping.md) — plaintext-protocol deny is the reuse path for CAF B3.
+
 ---
 
 *Replace [Customer Name] and bracketed fields before customer delivery.*

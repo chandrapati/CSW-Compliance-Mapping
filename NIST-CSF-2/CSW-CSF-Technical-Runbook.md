@@ -509,6 +509,9 @@ cross-references in this repository:
   that aligns with CSF 2.0 outcomes. See
   [CISA ZTMM runbook](../CISA-ZeroTrust/CSW-CISA-ZTMM-Technical-Runbook.md).
 
+
+- **UK NCSC CAF v3.2** — CSF outcomes are the reuse language for CAF A–D (see [CAF crosswalk](../UK-NCSC-CAF/caf-mapping.md)).
+
 ---
 
 ## 12. Disclaimer

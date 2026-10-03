@@ -19,6 +19,100 @@ for the customer-facing narrative. See
 
 ---
 
+## Reader's Guide
+
+**Who this is for.** UK NIS Operators of Essential Services and GovAssure
+(Cabinet Office Government Security Group) teams, plus the Cisco SEs and
+compliance engineers preparing CAF evidence for a Competent Authority or a
+GovAssure assessor.
+
+**Questions this runbook helps you answer:**
+
+- *A3 — which workloads are inside the essential function, and which were
+  deliberately left out?*
+- *B5 — what actually enforces segmentation between those workloads, and
+  can I show it still held on a given day?*
+- *B1 — is the policy a document, or is it versioned and enforced?*
+- *C1 — can I produce flow evidence with process context, not a sample of
+  firewall logs?*
+- *B2 and B6 — what must I point to outside CSW?*
+
+**Where to start.** The applicability table below, then Phase 1 if the
+essential-function boundary is not yet a CSW scope. The principle-by-principle
+crosswalk is [caf-mapping.md](./caf-mapping.md).
+
+---
+
+## CSW primer — if you are new to Cisco Secure Workload
+
+Cisco Secure Workload (CSW) is a **workload protection platform**. A lightweight **agent** on each server/VM/container observes processes and network flows; **cloud connectors** add AWS/Azure/GCP inventory where agents are not deployed.
+
+| CSW term | Meaning | Why a CAF assessor cares |
+|----------|---------|--------------------------|
+| **Scope** | Logical boundary for an essential function | The systems the assessment actually covers |
+| **Label** | Tag assigning a workload to that boundary | Shows what was included and what was carved out |
+| **ADM** | Application Dependency Mapping from observed traffic | The live flow diagram behind B5 |
+| **Workspace** | Policy container for one essential function | Where B1 policies are authored and versioned |
+| **Monitor → Simulation → Enforce** | Safe rollout sequence | Simulation is evidence before traffic is blocked |
+| **Denied Connections** | Flows blocked by policy | Proof that B5 enforcement operates |
+
+**Read next:** [Compliance evidence playbook](../docs/compliance-evidence-playbook.md) · [About CSW](../docs/about-csw.md)
+
+---
+
+## Universal evidence workflow
+
+Run these phases on the CAF essential-function boundary. The CAF-specific
+scope tree, labels, and artefact names are in the phases below.
+
+| Phase | Goal | Key CSW actions | Typical duration |
+|-------|------|-----------------|------------------|
+| **1 — Coverage** | Every in-scope workload is visible | Agents or connectors; CAF labels; essential-function scope | Days 1–10 |
+| **2 — Baseline** | Observed flows, not a diagram from memory | ADM for at least two business cycles | Days 11–28 |
+| **3 — Policy** | Designed isolation before enforce | Workspace; Simulation; exception register | Days 29–45 |
+| **4 — Operate** | Evidence between assessments | Enforce; monthly snapshot; quarterly pack | Ongoing |
+
+### What CSW evidence does not replace
+
+Identity and MFA (B2), staff training (B6), encryption and key management,
+backups and restore, perimeter and DDoS controls, and the OT device tier
+still need their own programmes. CSW covers the workload-resident slice:
+inventory, segmentation, flows, process context, vulnerability reachability,
+and change between snapshots.
+
+---
+
+## CSW effectiveness for this framework
+
+Applicability uses the repository standard. **Direct evidence** means CSW
+is a leading source for the technical indicators. It does not mean the
+principle is achieved. **Supporting evidence** means CSW supplements a
+control owned elsewhere. **Out of scope** means point the assessor somewhere
+else.
+
+| Principle | Applicability | What to show |
+|---|---|---|
+| A1 Governance | Supporting evidence | Posture summary for the board pack. Not roles, resourcing, or risk appetite. |
+| A2 Risk management | Direct evidence | Blast-radius, enforcement coverage, and reachability trend between snapshots. |
+| A3 Asset management | Direct evidence | Sensor census, package inventory, and a dated scope snapshot. |
+| A4 Supply chain | Supporting evidence | Observed vendor egress versus the supplier register. |
+| B1 Policies and processes | Direct evidence | Versioned workspace policy and simulation-before-enforce record. |
+| B2 Identity and access | Out of scope | IdP and PAM. ISE can feed identity into policy; it does not replace them. |
+| B3 Data security | Supporting evidence | East-west path control and plaintext-protocol deny. Not encryption or DLP. |
+| B4 System security | Direct evidence | Per-workload CVE and package inventory, plus config drift. |
+| B5 Resilient networks | Direct evidence | In-kernel microsegmentation, denied connections, IT side of an IT/OT boundary. |
+| B6 Staff awareness | Out of scope | Training programme. |
+| C1 Security monitoring | Direct evidence | Continuous flow telemetry with process context and the policy decision. |
+| C2 Proactive discovery | Direct evidence | Forensic events and vulnerability reachability. Pair with threat intelligence and EDR. |
+| D1 Response and recovery | Supporting evidence | Containment and a forensic timeline. Not backup, RTO, or restore. |
+| D2 Improvements | Supporting evidence | Snapshot delta across quarters for the lessons-learned review. |
+
+Seven principles take a direct evidence contribution (A2, A3, B1, B4, B5,
+C1, C2). Five are supporting (A1, A4, B3, D1, D2). Two are out of scope
+(B2, B6).
+
+---
+
 ## 0. Prerequisites
 
 - CSW cluster deployed and reachable; agents installed on all workloads in
@@ -248,6 +342,24 @@ but tailored to a UK assessor conversation:
   Cyber Vision / Claroty / Nozomi / Dragos.
 - **Perimeter / DDoS:** CSW is east-west only. Pair with Secure Firewall
   and DDoS service.
+
+---
+
+## Related frameworks
+
+Reuse the engineering detail already written for the sister control, then
+attach it to the CAF principle in [caf-mapping.md](./caf-mapping.md):
+
+- [NIS2](../NIS2/CSW-NIS2-Technical-Runbook.md) — A2, A4, and incident timelines
+- [ISO/IEC 27001:2022](../ISO-27001-2022/CSW-ISO27001-Technical-Runbook.md) — A.8.20–A.8.22 for B5
+- [NIST CSF 2.0](../NIST-CSF-2/CSW-CSF-Technical-Runbook.md) — outcomes language across A–D
+- [NIST SP 800-53](../NIST-800-53/CSW-NIST-800-53-Technical-Runbook.md) — AC-4 / SC-7 for B5
+- [CIS Controls v8.1](../CIS-Controls-v8/CSW-CIS-Technical-Runbook.md) — inventory, vuln, and monitoring
+- [IEC 62443](../IEC-62443/CSW-IEC-62443-Technical-Runbook.md) — zones and conduits for B5
+- [NIST SP 800-82](../NIST-800-82/CSW-NIST-800-82-Technical-Runbook.md) — IT side of an IT/OT boundary
+- [MITRE ATT&CK](../MITRE-ATTACK/CSW-MITRE-ATTACK-Technical-Runbook.md) — C2
+- [DORA](../DORA/CSW-DORA-Technical-Runbook.md) — supplier egress (A4) and incident dossier (D1)
+- [FIPS 140](../FIPS-140/CSW-FIPS-Technical-Runbook.md) — plaintext-protocol deny for B3
 
 ---
 

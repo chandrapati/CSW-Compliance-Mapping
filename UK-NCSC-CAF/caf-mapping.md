@@ -29,8 +29,9 @@ technical IGPs.
 
 For each principle below, this document identifies:
 
-1. **CSW contribution tier** — ✅ Primary (CSW is a leading evidence source),
-   🟡 Supporting (CSW supplements other controls), ⚪ Out of scope.
+1. **Applicability** — Direct evidence (CSW is a leading evidence source),
+   Supporting evidence (CSW supplements other controls), or Out of scope.
+   The detailed sections below use the same three outcomes.
 2. **Primary existing runbook** inside this repository that already contains
    the relevant engineering detail and control-ID mapping.
 3. **Specific CSW evidence** that an assessor can inspect.
@@ -45,22 +46,28 @@ IEC 62443) rather than duplicate it.
 
 ## Quick-scan table
 
-| CAF | Objective / Principle | Tier | Reuse primarily from |
+| CAF | Objective / Principle | Applicability | Reuse primarily from |
 |---|---|---|---|
-| **A1** | Governance | 🟡 Supporting | [NIST CSF GV.OV / GV.SC](../NIST-CSF-2/), [COBIT APO13](../COBIT-2019/), [ISO 27001 A.5](../ISO-27001-2022/) |
-| **A2** | Risk Management | ✅ Primary | [NIS2 Art. 21(2)(a)](../NIS2/), [NIST CSF ID.RA](../NIST-CSF-2/), [NIST 800-53 RA family](../NIST-800-53/) |
-| **A3** | Asset Management | ✅ Primary | [CIS Controls 1, 2](../CIS-Controls-v8/), [NIST CSF ID.AM](../NIST-CSF-2/), [NIST 800-53 CM-8](../NIST-800-53/) |
-| **A4** | Supply Chain | 🟡 Supporting | [NIS2 Art. 21(2)(d)](../NIS2/), [ISO A.5.19–A.5.22](../ISO-27001-2022/), [DORA Art. 28](../DORA/) |
-| **B1** | Policies & Processes | ✅ Primary | [NIST 800-53 PL family](../NIST-800-53/), [NIST CSF PR.PS](../NIST-CSF-2/), [ISO A.5](../ISO-27001-2022/) |
-| **B2** | Identity & Access | ⚪ Out of scope | — (pair with Cisco ISE / identity platform) |
-| **B3** | Data Security | 🟡 Supporting | [NIST CSF PR.DS](../NIST-CSF-2/), [NIST 800-53 SC family](../NIST-800-53/), [FIPS 140](../FIPS-140/) |
-| **B4** | System Security | ✅ Primary | [CIS Controls 4, 7, 8](../CIS-Controls-v8/), [AU Essential Eight E2/E6](../AU-Essential-Eight/) |
-| **B5** | Resilient Networks & Systems | ✅ **Primary — CSW core** | [NIST 800-53 SC-7/AC-4](../NIST-800-53/), [NIST CSF PR.IR](../NIST-CSF-2/), [CIS Control 13](../CIS-Controls-v8/), [ISO A.8.20–A.8.22](../ISO-27001-2022/), [**IEC 62443 Zones & Conduits**](../IEC-62443/), [NIST 800-82](../NIST-800-82/) |
-| **B6** | Staff Awareness & Training | ⚪ Out of scope | — |
-| **C1** | Security Monitoring | ✅ Primary | [NIST CSF DE.CM / DE.AE](../NIST-CSF-2/), [CIS Control 13](../CIS-Controls-v8/), [NIST 800-53 AU, SI-4](../NIST-800-53/) |
-| **C2** | Proactive Event Discovery | ✅ Primary | [**MITRE ATT&CK runbook**](../MITRE-ATTACK/), [NIST CSF DE.AE](../NIST-CSF-2/), [NIST 800-53 SI-4, RA-5](../NIST-800-53/) |
-| **D1** | Response & Recovery | 🟡 Supporting | [NIST CSF RS / RC](../NIST-CSF-2/), [NIST 800-53 IR, CP families](../NIST-800-53/), [DORA Art. 19](../DORA/) |
-| **D2** | Improvements | 🟡 Supporting | [NIST CSF ID.IM](../NIST-CSF-2/), [NIST 800-53 PM-14](../NIST-800-53/) |
+| **A1** | Governance | Supporting evidence | [NIST CSF GV.OV / GV.SC](../NIST-CSF-2/), [COBIT APO13](../COBIT-2019/), [ISO 27001 A.5](../ISO-27001-2022/) |
+| **A2** | Risk Management | Direct evidence | [NIS2 Art. 21(2)(a)](../NIS2/), [NIST CSF ID.RA](../NIST-CSF-2/), [NIST 800-53 RA family](../NIST-800-53/) |
+| **A3** | Asset Management | Direct evidence | [CIS Controls 1, 2](../CIS-Controls-v8/), [NIST CSF ID.AM](../NIST-CSF-2/), [NIST 800-53 CM-8](../NIST-800-53/) |
+| **A4** | Supply Chain | Supporting evidence | [NIS2 Art. 21(2)(d)](../NIS2/), [ISO A.5.19–A.5.22](../ISO-27001-2022/), [DORA Art. 28](../DORA/) |
+| **B1** | Policies & Processes | Direct evidence | [NIST 800-53 PL family](../NIST-800-53/), [NIST CSF PR.PS](../NIST-CSF-2/), [ISO A.5](../ISO-27001-2022/) |
+| **B2** | Identity & Access | Out of scope | — (pair with an identity platform; ISE can supply the identity assertion) |
+| **B3** | Data Security | Supporting evidence | [NIST CSF PR.DS](../NIST-CSF-2/), [NIST 800-53 SC family](../NIST-800-53/), [FIPS 140](../FIPS-140/) |
+| **B4** | System Security | Direct evidence | [CIS Controls 4, 7, 8](../CIS-Controls-v8/), [AU Essential Eight E2/E6](../AU-Essential-Eight/) |
+| **B5** | Resilient Networks & Systems | Direct evidence | [NIST 800-53 SC-7/AC-4](../NIST-800-53/), [NIST CSF PR.IR](../NIST-CSF-2/), [CIS Control 13](../CIS-Controls-v8/), [ISO A.8.20–A.8.22](../ISO-27001-2022/), [**IEC 62443 Zones & Conduits**](../IEC-62443/), [NIST 800-82](../NIST-800-82/) |
+| **B6** | Staff Awareness & Training | Out of scope | — |
+| **C1** | Security Monitoring | Direct evidence | [NIST CSF DE.CM / DE.AE](../NIST-CSF-2/), [CIS Control 13](../CIS-Controls-v8/), [NIST 800-53 AU, SI-4](../NIST-800-53/) |
+| **C2** | Proactive Event Discovery | Direct evidence | [**MITRE ATT&CK runbook**](../MITRE-ATTACK/), [NIST CSF DE.AE](../NIST-CSF-2/), [NIST 800-53 SI-4, RA-5](../NIST-800-53/) |
+| **D1** | Response & Recovery | Supporting evidence | [NIST CSF RS / RC](../NIST-CSF-2/), [NIST 800-53 IR, CP families](../NIST-800-53/), [DORA Art. 19](../DORA/) |
+| **D2** | Improvements | Supporting evidence | [NIST CSF ID.IM](../NIST-CSF-2/), [NIST 800-53 PM-14](../NIST-800-53/) |
+
+Direct evidence means CSW is a leading source for the technical indicators
+of that principle. Complementary controls are still required before an
+assessor can mark the principle Achieved. Supporting evidence supplements
+a control owned elsewhere. Out of scope means do not cite CSW for that
+principle.
 
 ---
 
@@ -73,7 +80,7 @@ IEC 62443) rather than duplicate it.
 > *Clear organisational leadership, board-level accountability, defined
 > security roles, and adequate resourcing for cyber resilience.*
 
-- **CSW tier:** 🟡 Supporting
+- **Applicability:** Supporting evidence
 - **CSW evidence:** Executive posture summary feeding board/CISO reporting
   (blast-radius score, enforcement coverage %, policy maturity score,
   Critical CVE count, cluster-wide trend across months). This is governance
@@ -89,7 +96,7 @@ IEC 62443) rather than duplicate it.
 > *Continuous identification and mitigation of threats targeting essential
 > functions, moving away from static annual audits to dynamic threat modelling.*
 
-- **CSW tier:** ✅ Primary
+- **Applicability:** Direct evidence
 - **CSW evidence:** Dynamic (not annual) blast-radius scoring; enforcement
   gap % trend; exploitable-CVE counts with CVM intelligence (not raw CVSS);
   per-workload reachability analysis; `cluster_delta` change log between
@@ -105,7 +112,7 @@ IEC 62443) rather than duplicate it.
 > packages, firmware, network circuits, cloud services, and external
 > dependencies supporting essential services.*
 
-- **CSW tier:** ✅ Primary
+- **Applicability:** Direct evidence
 - **CSW evidence:** Real-time sensor census (hostname, OS, agent version,
   interfaces, scope membership); installed-package inventory per workload;
   cluster snapshot JSON retained as point-in-time attestation.
@@ -123,7 +130,7 @@ IEC 62443) rather than duplicate it.
 > *Managing third-party and vendor risk, ensuring suppliers with access to
 > critical systems adhere to equivalent security controls.*
 
-- **CSW tier:** 🟡 Supporting
+- **Applicability:** Supporting evidence
 - **CSW evidence:** Vendor-code presence (installed packages per workload
   filtered by vendor); vendor-tagged egress reconciliation using scope-based
   flow analysis (what *actually* talks to vendor endpoints vs what the
@@ -141,7 +148,7 @@ IEC 62443) rather than duplicate it.
 
 > *Defined, enforced, and continuously tested security policies.*
 
-- **CSW tier:** ✅ Primary
+- **Applicability:** Direct evidence
 - **CSW evidence:** Workspace policies defined and version-controlled in CSW;
   continuous enforcement at the host firewall (nftables on Linux, WFP on
   Windows); every flow decision is a de-facto policy test; ADM version
@@ -156,7 +163,7 @@ IEC 62443) rather than duplicate it.
 > *Strict MFA, role-based least privilege (RBAC), privileged access
 > management (PAM), and automated revocation of inactive accounts.*
 
-- **CSW tier:** ⚪ Out of scope
+- **Applicability:** Out of scope
 - **Reason:** CSW is not an identity platform. CSW does not authenticate
   users, enforce MFA, manage RBAC, or operate PAM.
 - **Pair with:** Enterprise IdP (Entra ID / Okta / Ping) for MFA + lifecycle;
@@ -170,7 +177,7 @@ IEC 62443) rather than duplicate it.
 > *Protection of data at rest, in transit, and in use; robust cryptographic
 > key management; prevention of unauthorised data exfiltration.*
 
-- **CSW tier:** 🟡 Supporting (data in transit + exfiltration)
+- **Applicability:** Supporting evidence (data in transit and exfiltration paths)
 - **CSW evidence:** East-west flow visibility across every workload-to-workload
   pair; segmentation policy preventing unauthorised data paths; insecure-cipher
   agent count (TLS hygiene signal); plaintext-protocol deny policies (see
@@ -189,7 +196,7 @@ IEC 62443) rather than duplicate it.
 > removal of default credentials, and prevention of unauthorised code
 > execution.*
 
-- **CSW tier:** ✅ Primary (vuln management + config visibility)
+- **Applicability:** Direct evidence (vulnerability management and configuration visibility)
 - **CSW evidence:** Per-workload CVE inventory with CVM exploit-intelligence
   enrichment; package inventory for patch targeting; agent-version drift as
   config-baseline signal; process allowlist / policy enforcement blocks
@@ -208,7 +215,7 @@ IEC 62443) rather than duplicate it.
 > Purdue Model / IEC 62443), DDoS mitigation, and high-availability
 > architecture.*
 
-- **CSW tier:** ✅ **Primary — this is the strongest row in the entire repo**
+- **Applicability:** Direct evidence — strongest contribution in this mapping
 - **CSW evidence:**
   - Workload-level microsegmentation enforced in-kernel (nftables Linux,
     WFP Windows) — matches the CAF's "host firewall orchestration, eBPF
@@ -231,7 +238,7 @@ IEC 62443) rather than duplicate it.
 > *Tailored, role-based security training (e.g., specialised awareness for
 > OT operators and systems administrators).*
 
-- **CSW tier:** ⚪ Out of scope
+- **Applicability:** Out of scope
 - **Pair with:** Security awareness platform (KnowBe4 / Proofpoint /
   SANS); role-based training programme.
 
@@ -243,7 +250,7 @@ IEC 62443) rather than duplicate it.
 > (NetFlow/IPFIX/eBPF), firewalls, and authentication events with
 > synchronised network time (NTP).*
 
-- **CSW tier:** ✅ Primary (endpoints + flows)
+- **Applicability:** Direct evidence (endpoints and flows)
 - **CSW evidence:** Continuous per-connection flow telemetry (NetFlow-grade +
   process context + policy decision); agent heartbeats and health; forensics
   event stream; synchronised via cluster NTP; SIEM egress via
@@ -260,7 +267,7 @@ IEC 62443) rather than duplicate it.
 > *Proactive threat hunting, anomaly detection, vulnerability scanning,
 > and threat intelligence ingestion to identify undetected compromises.*
 
-- **CSW tier:** ✅ Primary
+- **Applicability:** Direct evidence
 - **CSW evidence:** MITRE ATT&CK technique coverage via forensics rules
   (see [MITRE ATT&CK runbook](../MITRE-ATTACK/)); vulnerability scanning via
   CVE inventory + CVM exploit intel; policy-violation anomaly detection
@@ -279,7 +286,7 @@ IEC 62443) rather than duplicate it.
 > air-gapped/immutable backups; defined recovery time objectives (RTO) and
 > recovery point objectives (RPO).*
 
-- **CSW tier:** 🟡 Supporting
+- **Applicability:** Supporting evidence
 - **CSW evidence:** Blast-radius containment reduces incident scope;
   ADM policy versions enable rapid rollback of segmentation state;
   per-workload forensic flow history supports IR timeline reconstruction.
@@ -296,7 +303,7 @@ IEC 62443) rather than duplicate it.
 > *Systematic post-incident root-cause analysis and lessons-learned
 > mechanisms to continuously harden defences.*
 
-- **CSW tier:** 🟡 Supporting
+- **Applicability:** Supporting evidence
 - **CSW evidence:** Snapshot history and `cluster_delta` change tracking feed
   "what changed between pre-incident and incident" reconstruction; blast-radius
   and policy-maturity trends over quarters show improvement cadence.

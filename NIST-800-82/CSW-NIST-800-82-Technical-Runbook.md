@@ -372,6 +372,9 @@ Per incident, retain on the IT side:
 - [TSA Pipeline](../TSA-Pipeline/CSW-TSA-Pipeline-Technical-Runbook.md) — for US pipeline operators
 - [IEC 62443](../IEC-62443/CSW-IEC-62443-Technical-Runbook.md) — adjacent OT cybersecurity standard
 
+
+- [UK NCSC CAF v3.2](../UK-NCSC-CAF/caf-mapping.md) — OT-adjacent IT segmentation is the reuse path for CAF B5.
+
 ---
 
 *Document prepared for Cisco industrial / critical-infrastructure engagements. Replace [Customer Name] and any bracketed fields before customer delivery. CSW addresses the IT-side workload boundary only; pair with an OT-native product for OT device coverage.*
