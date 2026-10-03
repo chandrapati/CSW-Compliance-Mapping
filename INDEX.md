@@ -747,12 +747,12 @@ Source: [`UK-NCSC-CAF/caf-mapping.md`](./UK-NCSC-CAF/caf-mapping.md) · [Technic
 | B2 | Identity and access | Out of scope — pair with an identity platform; ISE can supply identity-aware policy |
 | B3 | Data security | East-west path control and plaintext-protocol deny (not encryption or DLP) |
 | B4 | System security | Per-workload CVE and package inventory; config-drift signals |
-| B5 | Resilient networks and systems | Workload microsegmentation, simulation before enforce, IT-side of an IT/OT boundary |
+| B5 | Resilient networks and systems | Segregation evidence for B5.b. Not backups (B5.c), and CAF does not name eBPF or microsegmentation |
 | B6 | Staff awareness and training | Out of scope |
 | C1 | Security monitoring | Continuous flow telemetry with process context and policy decision |
 | C2 | Proactive event discovery | Forensic events and vulnerability reachability, paired with detection content |
 | D1 | Response and recovery | Forensic timeline and containment evidence (recovery programme stays outside CSW) |
-| D2 | Improvements | Trend evidence across snapshots for lessons-learned reviews |
+| D2 | Lessons learned | Snapshot delta a root-cause review can use. Not NIST PM-14 |
 
 ---
 

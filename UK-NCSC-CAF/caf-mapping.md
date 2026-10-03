@@ -2,8 +2,8 @@
 
 **Framework:** UK NCSC Cyber Assessment Framework (CAF) v3.2
 **Applies to:** NIS Regulations (OES) assessments conducted by UK Competent
-Authorities (Ofgem, Ofcom, DWI, CAA, DfT, DHSC) and GovAssure assessments
-administered by the Cabinet Office / Government Security Group (GSG).
+Authorities, including Ofgem, Ofcom, DWI, CAA, DfT and DHSC, and GovAssure
+assessments administered by the Cabinet Office / Government Security Group (GSG).
 **Status:** Draft v1 — SME review required against the current CAF text
 and your assessor's expectations.
 
@@ -29,9 +29,9 @@ technical IGPs.
 
 For each principle below, this document identifies:
 
-1. **Applicability** — Direct evidence (CSW is a leading evidence source),
-   Supporting evidence (CSW supplements other controls), or Out of scope.
-   The detailed sections below use the same three outcomes.
+1. **Applicability** — Direct evidence (material to one contributing
+   outcome; here, B5.b only), Supporting evidence (CSW supplements other
+   controls), or Out of scope. Direct evidence does not mean Achieved.
 2. **Primary existing runbook** inside this repository that already contains
    the relevant engineering detail and control-ID mapping.
 3. **Specific CSW evidence** that an assessor can inspect.
@@ -49,25 +49,27 @@ IEC 62443) rather than duplicate it.
 | CAF | Objective / Principle | Applicability | Reuse primarily from |
 |---|---|---|---|
 | **A1** | Governance | Supporting evidence | [NIST CSF GV.OV / GV.SC](../NIST-CSF-2/), [COBIT APO13](../COBIT-2019/), [ISO 27001 A.5](../ISO-27001-2022/) |
-| **A2** | Risk Management | Direct evidence | [NIS2 Art. 21(2)(a)](../NIS2/), [NIST CSF ID.RA](../NIST-CSF-2/), [NIST 800-53 RA family](../NIST-800-53/) |
-| **A3** | Asset Management | Direct evidence | [CIS Controls 1, 2](../CIS-Controls-v8/), [NIST CSF ID.AM](../NIST-CSF-2/), [NIST 800-53 CM-8](../NIST-800-53/) |
+| **A2** | Risk Management | Supporting evidence | [NIS2 Art. 21(2)(a)](../NIS2/), [NIST CSF ID.RA](../NIST-CSF-2/), [NIST 800-53 RA family](../NIST-800-53/) |
+| **A3** | Asset Management | Supporting evidence | [CIS Controls 1, 2](../CIS-Controls-v8/), [NIST CSF ID.AM](../NIST-CSF-2/), [NIST 800-53 CM-8](../NIST-800-53/) |
 | **A4** | Supply Chain | Supporting evidence | [NIS2 Art. 21(2)(d)](../NIS2/), [ISO A.5.19–A.5.22](../ISO-27001-2022/), [DORA Art. 28](../DORA/) |
-| **B1** | Policies & Processes | Direct evidence | [NIST 800-53 PL family](../NIST-800-53/), [NIST CSF PR.PS](../NIST-CSF-2/), [ISO A.5](../ISO-27001-2022/) |
+| **B1** | Service protection policies, processes and procedures | Supporting evidence | [NIST 800-53 PL family](../NIST-800-53/), [NIST CSF PR.PS](../NIST-CSF-2/), [ISO A.5](../ISO-27001-2022/) |
 | **B2** | Identity & Access | Out of scope | — (pair with an identity platform; ISE can supply the identity assertion) |
 | **B3** | Data Security | Supporting evidence | [NIST CSF PR.DS](../NIST-CSF-2/), [NIST 800-53 SC family](../NIST-800-53/), [FIPS 140](../FIPS-140/) |
-| **B4** | System Security | Direct evidence | [CIS Controls 4, 7, 8](../CIS-Controls-v8/), [AU Essential Eight E2/E6](../AU-Essential-Eight/) |
-| **B5** | Resilient Networks & Systems | Direct evidence | [NIST 800-53 SC-7/AC-4](../NIST-800-53/), [NIST CSF PR.IR](../NIST-CSF-2/), [CIS Control 13](../CIS-Controls-v8/), [ISO A.8.20–A.8.22](../ISO-27001-2022/), [**IEC 62443 Zones & Conduits**](../IEC-62443/), [NIST 800-82](../NIST-800-82/) |
+| **B4** | System Security | Supporting evidence | [CIS Controls 4, 7, 8](../CIS-Controls-v8/), [AU Essential Eight E2/E6](../AU-Essential-Eight/) |
+| **B5** | Resilient Networks & Systems | Direct evidence for B5.b segregation only | [NIST 800-53 SC-7/AC-4](../NIST-800-53/), [NIST CSF PR.IR](../NIST-CSF-2/), [CIS Control 13](../CIS-Controls-v8/), [ISO A.8.20–A.8.22](../ISO-27001-2022/), [IEC 62443 zones and conduits](../IEC-62443/), [NIST 800-82](../NIST-800-82/) |
 | **B6** | Staff Awareness & Training | Out of scope | — |
-| **C1** | Security Monitoring | Direct evidence | [NIST CSF DE.CM / DE.AE](../NIST-CSF-2/), [CIS Control 13](../CIS-Controls-v8/), [NIST 800-53 AU, SI-4](../NIST-800-53/) |
-| **C2** | Proactive Event Discovery | Direct evidence | [**MITRE ATT&CK runbook**](../MITRE-ATTACK/), [NIST CSF DE.AE](../NIST-CSF-2/), [NIST 800-53 SI-4, RA-5](../NIST-800-53/) |
-| **D1** | Response & Recovery | Supporting evidence | [NIST CSF RS / RC](../NIST-CSF-2/), [NIST 800-53 IR, CP families](../NIST-800-53/), [DORA Art. 19](../DORA/) |
-| **D2** | Improvements | Supporting evidence | [NIST CSF ID.IM](../NIST-CSF-2/), [NIST 800-53 PM-14](../NIST-800-53/) |
+| **C1** | Security Monitoring | Supporting evidence | [NIST CSF DE.CM / DE.AE](../NIST-CSF-2/), [CIS Control 13](../CIS-Controls-v8/), [NIST 800-53 AU, SI-4](../NIST-800-53/) |
+| **C2** | Proactive Security Event Discovery | Supporting evidence | [MITRE ATT&CK runbook](../MITRE-ATTACK/), [NIST CSF DE.AE](../NIST-CSF-2/), [NIST 800-53 SI-4, RA-5](../NIST-800-53/) |
+| **D1** | Response and Recovery Planning | Supporting evidence | [NIST CSF RS / RC](../NIST-CSF-2/), [NIST 800-53 IR family](../NIST-800-53/), [DORA Art. 19](../DORA/) |
+| **D2** | Lessons Learned | Supporting evidence | [NIST CSF ID.IM](../NIST-CSF-2/), [NIST 800-53 IR family](../NIST-800-53/) |
 
-Direct evidence means CSW is a leading source for the technical indicators
-of that principle. Complementary controls are still required before an
-assessor can mark the principle Achieved. Supporting evidence supplements
-a control owned elsewhere. Out of scope means do not cite CSW for that
-principle.
+Direct evidence means CSW produces evidence that is material to that
+contributing outcome. It does not mean the principle is Achieved. The only
+direct contribution in this mapping is **B5.b** (segregation of the systems
+that support essential functions). CAF v3.2 does not name microsegmentation,
+eBPF, NetFlow, or IEC 62443. Those are ways to discuss CSW evidence, not
+CAF requirements. Supporting evidence supplements a control owned elsewhere.
+Out of scope means do not cite CSW for that principle.
 
 ---
 
@@ -77,14 +79,14 @@ principle.
 
 #### A1 Governance
 
-> *Clear organisational leadership, board-level accountability, defined
-> security roles, and adequate resourcing for cyber resilience.*
+> *The organisation has appropriate management policies, processes and
+> procedures to govern the security of its network and information systems.*
 
 - **Applicability:** Supporting evidence
-- **CSW evidence:** Executive posture summary feeding board/CISO reporting
-  (blast-radius score, enforcement coverage %, policy maturity score,
-  Critical CVE count, cluster-wide trend across months). This is governance
-  **telemetry**, not governance **structure**.
+- **CSW evidence:** A posture summary (enforcement coverage, open CVE
+  count, and the change between snapshots) can be attached to a board or
+  CISO pack. That is telemetry. It is not the governance structure, roles,
+  or resourcing that A1 requires.
 - **Primary runbook to cite:** [NIST CSF GV.OV / GV.SC](../NIST-CSF-2/) for
   outcomes-based governance language; [COBIT 2019 APO13](../COBIT-2019/)
   for managed-security governance structure.
@@ -93,14 +95,15 @@ principle.
 
 #### A2 Risk Management
 
-> *Continuous identification and mitigation of threats targeting essential
-> functions, moving away from static annual audits to dynamic threat modelling.*
+> *The organisation takes appropriate steps to identify, assess and understand
+> security risks to the network and information systems supporting essential
+> functions, including an overall organisational approach to risk management.*
 
-- **Applicability:** Direct evidence
-- **CSW evidence:** Dynamic (not annual) blast-radius scoring; enforcement
-  gap % trend; exploitable-CVE counts with CVM intelligence (not raw CVSS);
-  per-workload reachability analysis; `cluster_delta` change log between
-  snapshots.
+- **Applicability:** Supporting evidence
+- **CSW evidence:** Enforcement-gap trend, CVE counts tied to workloads,
+  which workloads can reach an affected service, and the change between
+  snapshots. These are inputs to a risk process. They are not the risk
+  assessment.
 - **Primary runbooks:** [NIS2 Art. 21(2)(a)](../NIS2/) risk-analysis mapping;
   [NIST CSF ID.RA](../NIST-CSF-2/); [NIST 800-53 RA family](../NIST-800-53/).
 - **Pairings needed:** Threat intelligence feeds, risk register, risk-tolerance
@@ -108,11 +111,11 @@ principle.
 
 #### A3 Asset Management
 
-> *Comprehensive, real-time inventory of all physical devices, software
-> packages, firmware, network circuits, cloud services, and external
-> dependencies supporting essential services.*
+> *Everything required to deliver, maintain or support the systems necessary
+> for essential functions is understood. That includes data, people and
+> systems, and supporting infrastructure such as power or cooling.*
 
-- **Applicability:** Direct evidence
+- **Applicability:** Supporting evidence
 - **CSW evidence:** Real-time sensor census (hostname, OS, agent version,
   interfaces, scope membership); installed-package inventory per workload;
   cluster snapshot JSON retained as point-in-time attestation.
@@ -127,8 +130,8 @@ principle.
 
 #### A4 Supply Chain
 
-> *Managing third-party and vendor risk, ensuring suppliers with access to
-> critical systems adhere to equivalent security controls.*
+> *The organisation understands and manages security risks that arise
+> because essential functions depend on suppliers and other third parties.*
 
 - **Applicability:** Supporting evidence
 - **CSW evidence:** Vendor-code presence (installed packages per workload
@@ -144,11 +147,13 @@ principle.
 
 ### Objective B — Protecting Against Cyber Attack
 
-#### B1 Service Protection Policies & Processes
+#### B1 Service Protection Policies, Processes and Procedures
 
-> *Defined, enforced, and continuously tested security policies.*
+> *The organisation defines, implements, communicates and enforces appropriate
+> policies, processes and procedures for securing the systems and data that
+> support essential functions.*
 
-- **Applicability:** Direct evidence
+- **Applicability:** Supporting evidence
 - **CSW evidence:** Workspace policies defined and version-controlled in CSW;
   continuous enforcement at the host firewall (nftables on Linux, WFP on
   Windows); every flow decision is a de-facto policy test; ADM version
@@ -160,8 +165,9 @@ principle.
 
 #### B2 Identity & Access Control
 
-> *Strict MFA, role-based least privilege (RBAC), privileged access
-> management (PAM), and automated revocation of inactive accounts.*
+> *Access to the systems that support essential functions is verified,
+> authenticated and authorised. CAF v3.2 places particular weight on
+> remote access, privileged operations, user access levels, and MFA.*
 
 - **Applicability:** Out of scope
 - **Reason:** CSW is not an identity platform. CSW does not authenticate
@@ -174,8 +180,8 @@ principle.
 
 #### B3 Data Security
 
-> *Protection of data at rest, in transit, and in use; robust cryptographic
-> key management; prevention of unauthorised data exfiltration.*
+> *Data stored or transmitted electronically is protected from unauthorised
+> access, modification, or deletion.*
 
 - **Applicability:** Supporting evidence (data in transit and exfiltration paths)
 - **CSW evidence:** East-west flow visibility across every workload-to-workload
@@ -192,15 +198,15 @@ principle.
 
 #### B4 System Security
 
-> *Configuration hardening, timely vulnerability management/patching,
-> removal of default credentials, and prevention of unauthorised code
-> execution.*
+> *Systems critical to essential functions are protected from cyber attack.
+> They are secure by design, the attack surface is kept small, and the
+> essential function should not be lost because one vulnerability is
+> exploited.*
 
-- **Applicability:** Direct evidence (vulnerability management and configuration visibility)
-- **CSW evidence:** Per-workload CVE inventory with CVM exploit-intelligence
-  enrichment; package inventory for patch targeting; agent-version drift as
-  config-baseline signal; process allowlist / policy enforcement blocks
-  unauthorised code paths at the network layer.
+- **Applicability:** Supporting evidence (vulnerability and configuration visibility only)
+- **CSW evidence:** Per-workload CVE and package inventory, and which
+  workloads can reach an affected service. CSW does not patch systems,
+  remove default credentials, or stop unauthorised code from running.
 - **Primary runbooks:** [CIS Controls 4, 7, 8](../CIS-Controls-v8/);
   [NIST CSF PR.PS](../NIST-CSF-2/);
   [AU Essential Eight E2/E6](../AU-Essential-Eight/) for patch cadence.
@@ -208,35 +214,37 @@ principle.
   Satellite); config-baseline tool (CIS Benchmarks via scanner); EDR for
   process-level allow-listing.
 
-#### B5 Resilient Networks & Systems *(CSW core value prop)*
+#### B5 Resilient Networks & Systems
 
-> *Strict network segmentation and microsegmentation (especially separating
-> IT corporate networks from OT/SCADA process control networks via the
-> Purdue Model / IEC 62443), DDoS mitigation, and high-availability
-> architecture.*
+> *Resilience against cyber attack and system failure is built into the
+> design, implementation, operation and management of systems that support
+> essential functions. Contributing outcome B5.b is segregation and
+> resilience of design. B5.c is secured, tested backups.*
 
-- **Applicability:** Direct evidence — strongest contribution in this mapping
+- **Applicability:** Direct evidence for B5.b segregation only
 - **CSW evidence:**
-  - Workload-level microsegmentation enforced in-kernel (nftables Linux,
-    WFP Windows) — matches the CAF's "host firewall orchestration, eBPF
-    in-kernel filtering" language verbatim.
-  - Per-scope policies with ADM-suggested baselines, simulation before
-    enforcement, and continuous verification via rejected-flow logs.
-  - IT-side separation from OT zones (IT-tier of IT/OT boundary; pair with
-    Cisco Cyber Vision / Claroty for the OT tier).
-  - Blast-radius score as a before/after metric for segmentation projects.
+  - Workload policy enforced on the host firewall (nftables on Linux, WFP
+    on Windows) can show that systems supporting an essential function are
+    separated from other business systems, and which flows were denied.
+  - CAF's Achieved IGP for B5.b also expects separate infrastructure,
+    independent administration, no internet services such as browsing and
+    email from those systems, and mitigation of resource and geographic
+    limits. CSW does not prove those.
+  - B5.c backups are outside CSW.
+  - Where an IT/OT boundary exists, CSW covers the IT tier only. Pair with
+    an OT visibility product for the device tier. IEC 62443 is a useful
+    sister mapping; CAF v3.2 does not cite it.
 - **Primary runbooks:** [NIST 800-53 SC-7 / AC-4](../NIST-800-53/);
   [NIST CSF PR.IR](../NIST-CSF-2/); [CIS Control 13](../CIS-Controls-v8/);
   [ISO 27001 A.8.20–A.8.22](../ISO-27001-2022/);
-  [IEC 62443 Zones & Conduits](../IEC-62443/) *(the specific one CAF B5
-  Section 5 cites)*; [NIST 800-82](../NIST-800-82/).
+  [IEC 62443 zones and conduits](../IEC-62443/); [NIST 800-82](../NIST-800-82/).
 - **Pairings needed:** Perimeter / DDoS layer (not CSW); OT-aware DPI
   (Cyber Vision / Claroty / Nozomi / Dragos); HA / BCP architecture.
 
 #### B6 Staff Awareness & Training
 
-> *Tailored, role-based security training (e.g., specialised awareness for
-> OT operators and systems administrators).*
+> *Staff have the awareness, knowledge and skills to carry out their roles
+> and to support the security of the essential function.*
 
 - **Applicability:** Out of scope
 - **Pair with:** Security awareness platform (KnowBe4 / Proofpoint /
@@ -246,32 +254,36 @@ principle.
 
 #### C1 Security Monitoring
 
-> *Continuous logging and monitoring of endpoints, network flows
-> (NetFlow/IPFIX/eBPF), firewalls, and authentication events with
-> synchronised network time (NTP).*
+> *The organisation monitors the security status of the systems supporting
+> essential functions in order to detect potential security problems and to
+> track whether protective measures are still effective. C1.a is monitoring
+> coverage. C1.b is protecting the logs themselves.*
 
-- **Applicability:** Direct evidence (endpoints and flows)
-- **CSW evidence:** Continuous per-connection flow telemetry (NetFlow-grade +
-  process context + policy decision); agent heartbeats and health; forensics
-  event stream; synchronised via cluster NTP; SIEM egress via
-  [Splunk integration](https://github.com/chandrapati/csw-splunk-integration).
+- **Applicability:** Supporting evidence
+- **CSW evidence:** Where agents are installed, CSW records connections with
+  process context and the policy decision. That can feed host-based
+  monitoring under C1.a. CSW is not the log store: C1.b (integrity,
+  retention, access control, and a common time source for the master logs)
+  stays with the logging platform. Authentication monitoring stays with the
+  identity platform.
 - **Primary runbooks:** [NIST CSF DE.CM, DE.AE](../NIST-CSF-2/);
   [CIS Control 13](../CIS-Controls-v8/);
   [NIST 800-53 AU, SI-4](../NIST-800-53/);
-  [NIS2 Art. 21(2)(c)](../NIS2/).
+  [NIS2 Art. 21(2)(b)](../NIS2/).
 - **Pairings needed:** SIEM/SOAR, authentication log sources (IdP), firewall
   logs, UBA.
 
 #### C2 Proactive Event Discovery
 
-> *Proactive threat hunting, anomaly detection, vulnerability scanning,
-> and threat intelligence ingestion to identify undetected compromises.*
+> *The organisation detects malicious activity that affects, or could affect,
+> essential functions even when that activity evades standard signature-based
+> prevent or detect solutions.*
 
-- **Applicability:** Direct evidence
-- **CSW evidence:** MITRE ATT&CK technique coverage via forensics rules
-  (see [MITRE ATT&CK runbook](../MITRE-ATTACK/)); vulnerability scanning via
-  CVE inventory + CVM exploit intel; policy-violation anomaly detection
-  (rejected flows report); process-level behavioural baselines via ADM.
+- **Applicability:** Supporting evidence
+- **CSW evidence:** Observed communication (which systems do and do not
+  talk) and forensic events a detection team can review. CSW is not the
+  hunt programme and is not a vulnerability scanner. See the
+  [MITRE ATT&CK runbook](../MITRE-ATTACK/) when mapping events to techniques.
 - **Primary runbooks:** [MITRE ATT&CK runbook](../MITRE-ATTACK/);
   [NIST CSF DE.AE](../NIST-CSF-2/);
   [NIST 800-53 SI-4, RA-5](../NIST-800-53/).
@@ -280,16 +292,17 @@ principle.
 
 ### Objective D — Minimising the Impact of Incidents
 
-#### D1 Response & Recovery Planning
+#### D1 Response and Recovery Planning
 
-> *Documented, tested disaster recovery and incident response plans;
-> air-gapped/immutable backups; defined recovery time objectives (RTO) and
-> recovery point objectives (RPO).*
+> *The organisation has well-defined and tested incident management,
+> continuity, and containment so that an incident does not stop the
+> essential function for longer than the organisation has planned.*
 
 - **Applicability:** Supporting evidence
-- **CSW evidence:** Blast-radius containment reduces incident scope;
-  ADM policy versions enable rapid rollback of segmentation state;
-  per-workload forensic flow history supports IR timeline reconstruction.
+- **CSW evidence:** A forensic flow history can support an incident
+  timeline, and a previous policy version can be restored. That is
+  containment evidence. It is not the response plan, the exercise, or
+  the restore.
 - **CSW does not do:** Backup, restore, immutable storage, DR orchestration,
   BCP site switchover.
 - **Primary runbooks:** [NIST CSF RS / RC pillars](../NIST-CSF-2/);
@@ -298,17 +311,17 @@ principle.
 - **Pairings needed:** Backup/DR platform (Veeam/Rubrik/Cohesity);
   IR orchestration (SOAR); runbook library; tabletop exercise cadence.
 
-#### D2 Improvements
+#### D2 Lessons Learned
 
-> *Systematic post-incident root-cause analysis and lessons-learned
-> mechanisms to continuously harden defences.*
+> *When an incident occurs, the organisation understands the root causes
+> and uses them to improve protective measures.*
 
 - **Applicability:** Supporting evidence
-- **CSW evidence:** Snapshot history and `cluster_delta` change tracking feed
-  "what changed between pre-incident and incident" reconstruction; blast-radius
-  and policy-maturity trends over quarters show improvement cadence.
+- **CSW evidence:** The difference between snapshots can show what changed
+  around an incident. The lessons-learned process itself sits outside CSW.
 - **Primary runbooks:** [NIST CSF ID.IM](../NIST-CSF-2/);
-  [NIST 800-53 PM-14](../NIST-800-53/).
+  [NIST 800-53 IR family](../NIST-800-53/). PM-14 is testing, training and
+  monitoring, not lessons learned, so it is not the D2 mapping.
 - **Pairings needed:** Formal lessons-learned / post-incident-review process;
   risk-register integration; policy-update workflow.
 
@@ -323,7 +336,7 @@ Honest about scope so assessors don't form false expectations:
 | **B2 Identity & Access entirely** | CSW is not an IAM tool. | IdP + PAM. CSW can consume ISE identity assertions for policy via [ISE integration](https://github.com/chandrapati/csw-ise-integration), but the authentication/authorisation decision lives in ISE. |
 | **B6 Staff training entirely** | Not applicable. | Security awareness platform. |
 | **Data at rest + KMS (B3)** | CSW doesn't touch stored data or keys. | KMS/HSM + storage encryption. |
-| **Backup/restore (D1)** | CSW does not operate backup. | Backup/DR platform. |
+| **Backup and restore (B5.c, and the recovery part of D1)** | CSW does not operate backup. | Backup/DR platform. |
 | **A1 Governance structure** | CSW produces metrics, not org charts or role definitions. | HR + CISO office. |
 | **Perimeter / DDoS** | CSW is east-west, not north-south edge defence. | Secure Firewall / DDoS service. |
 | **OT device tier of B5** | CSW agents run on servers, not PLCs/RTUs. | Cyber Vision / Claroty / Nozomi / Dragos. |
@@ -337,9 +350,8 @@ Honest about scope so assessors don't form false expectations:
   evidence collection steps.
 - **[CSW-UK-NCSC-CAF-Compliance-Report.md](./CSW-UK-NCSC-CAF-Compliance-Report.md)** —
   customer-facing narrative for CISO / exec audiences.
-- **[caf-igp-maturity-scorer.md](./caf-igp-maturity-scorer.md)** — IGP rubric
-  translating CSW KPIs to Achieved / Partially Achieved / Not Achieved per
-  principle.
+- **[caf-igp-maturity-scorer.md](./caf-igp-maturity-scorer.md)** — working
+  checks for the CSW evidence slice. A check does not set the IGP score.
 - **[caf-evidence-pack-template.md](./caf-evidence-pack-template.md)** — what
   to export from CSW per principle for a GovAssure / OES submission.
 

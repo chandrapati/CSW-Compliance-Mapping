@@ -64,7 +64,7 @@ caf-evidence-pack-<yyyy>-Q<n>/
 - CSW cluster: <cluster_label>
 - Pack owner (CSW side): <name, title, team>
 - Pack owner (CAF side): <name, title, team>
-- Competent Authority: <Ofgem | Ofcom | DWI | CAA | DfT | DHSC | GovAssure>
+- Competent Authority: <name, or GovAssure>
 - Prior pack reference: <path or Q-id>
 - Significant changes since prior pack: <summary>
 - Known limitations: <summary — e.g. B2 evidence sits with IdP team>
@@ -118,41 +118,40 @@ find . -type f ! -name MANIFEST.sha256 -exec shasum -a 256 {} \; > MANIFEST.sha2
 - Pointer: `../../kms-and-dlp-evidence/` for data-at-rest + DLP (not CSW).
 
 ### B4_System_Security/
-- `vulnerabilities-<date>.csv` — primary artefact (same as A2; link if dedup allowed).
-- `patch-sla-attainment-<quarter>.md` — Critical ≤30d, High ≤60d attainment %.
+- `vulnerabilities-<date>.csv` — CVE rows tied to workloads.
+- `patch-decisions-<quarter>.md` — which CVEs the patch team accepted, and why. The patch window is the organisation's, not a CAF number.
 - `agent-version-drift-<date>.md` — fleet version distribution.
 - `vulnerable-service-port-deny-policies.md` — summary of CSW policies denying known-vulnerable ports.
 
-### B5_Resilient_Networks/ *(the primary CSW folder)*
+### B5_Resilient_Networks/
 - `policies-all-<date>.json` — enforcement set per scope.
-- `blast-radius-trend-<quarter>.md` — score over quarter, with before/after if a project landed.
-- `scope-isolation-attestation-<date>.md` — explicit "IT scopes X,Y,Z are isolated from OT scopes P,Q,R" statement with supporting flow evidence.
-- `it-ot-boundary-evidence.md` — Purdue / IEC 62443 narrative.
-- `enforcement-coverage-report-<date>.html` — % of in-scope workloads in enforcement mode.
+- `denied-connections-<quarter>.md` — connections denied between essential-function scopes and other business scopes.
+- `segregation-statement-<date>.md` — which scopes are separated, with the denied-connection evidence.
+- `boundary-note.md` — only if an IT/OT split exists. Say what CSW can see on the IT tier. CAF does not require a Purdue model or an IEC 62443 citation.
+- `enforcement-coverage-report-<date>.html` — share of in-scope workloads in enforcement mode.
 - Pointer: `../../ot-visibility-evidence/` for OT device-tier evidence (Cyber Vision / equivalent).
 
 ### B6_Staff_Awareness/
 - `README.md` — explicit statement that CSW does not satisfy B6; pointer to training-platform evidence.
 
 ### C1_Security_Monitoring/
-- `flow-retention-attestation.md` — statement of retention duration + storage location.
-- `siem-integration-attestation.md` — SIEM destination + SOC playbook references.
-- `agent-health-report-<date>.html` — agent heartbeat and health across fleet.
-- `ntp-synchronisation-attestation.md` — cluster NTP source + agent sync confirmation.
+- `flow-retention-attestation.md` — where the monitoring records are kept, and for how long. Retention is a logging-platform duty (C1.b), not a CSW cluster setting.
+- `siem-integration-attestation.md` — where connection records are sent, if they are sent.
+- `agent-health-report-<date>.html` — agent heartbeat and health across the fleet.
+- `log-time-source.md` — the logging platform's common time source. Do not substitute CSW cluster time for this.
 
 ### C2_Proactive_Discovery/
-- `forensics-posture-<date>.html` — MITRE technique coverage across cluster.
+- `forensics-events-<date>.md` — events the detection team reviewed, and which unexpected communications they followed up.
 - `forensics-config-<date>.json` — raw config dump.
-- `mitre-coverage-gaps-<quarter>.md` — gaps identified + new rules added this quarter.
-- `anomaly-review-<quarter>.md` — rejected-flow or forensic-event anomalies that triggered SOC investigation.
+- `unexpected-paths-<quarter>.md` — communications that should not have occurred, and what was done.
 
 ### D1_Response_Recovery/
-- `blast-radius-containment-case-studies/` — any real or tabletop incidents where CSW segmentation limited scope.
-- `adm-rollback-rehearsal-<date>.md` — evidence that ADM version rollback was exercised.
+- `containment-notes/` — exercises or incidents where workload policy limited which systems could talk.
+- `policy-restore-rehearsal-<date>.md` — evidence that a previous policy version was restored in an exercise.
 - `ir-flow-timeline-<incident-id>.md` — if a real incident happened this quarter.
-- Pointer: `../../backup-dr-evidence/` for backup/DR (not CSW).
+- Pointer: `../../backup-dr-evidence/` for backups (B5.c) and restore (not CSW).
 
-### D2_Improvements/
+### D2_Lessons_Learned/
 - `cluster-delta-<quarter>.md` — same artefact as A2; link if dedup allowed.
 - `pir-input-<quarter>.md` — summary of lessons-learned fed back into CSW policy / process from PIR cycles.
 - `policy-changes-attributed-to-pir.md` — specific policy edits traced to PIR findings.
@@ -161,7 +160,7 @@ find . -type f ! -name MANIFEST.sha256 -exec shasum -a 256 {} \; > MANIFEST.sha2
 
 - Explicit list of what this pack does **not** cover and where that
   evidence lives (IdP for B2, training platform for B6, KMS/DLP for B3,
-  backup/DR for D1, perimeter/DDoS for B5, OT visibility for B5).
+  backup/DR for B5.c and D1, perimeter defence for the edge, OT visibility for the device tier).
 - Pairings matrix: for each paired control, named owner + attestation
   reference.
 - Repository disclaimer and SME-review notice.
@@ -199,7 +198,7 @@ find . -type f ! -name MANIFEST.sha256 -exec shasum -a 256 {} \; > MANIFEST.sha2
 ```
 
 Full wrapper left as a Phase 5 deliverable once the content is validated
-with your first Competent Authority / 3PAO cycle.
+with your first Competent Authority or GovAssure cycle.
 
 ---
 

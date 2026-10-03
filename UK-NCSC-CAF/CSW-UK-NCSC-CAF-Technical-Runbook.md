@@ -84,32 +84,31 @@ and change between snapshots.
 
 ## CSW effectiveness for this framework
 
-Applicability uses the repository standard. **Direct evidence** means CSW
-is a leading source for the technical indicators. It does not mean the
-principle is achieved. **Supporting evidence** means CSW supplements a
-control owned elsewhere. **Out of scope** means point the assessor somewhere
-else.
+Applicability uses the repository standard. **Direct evidence** means the
+CSW artefact is material to one contributing outcome. In this mapping that
+is B5.b only. It does not mean the principle is Achieved. **Supporting
+evidence** means CSW supplements a control owned elsewhere. **Out of scope**
+means point the assessor somewhere else.
 
 | Principle | Applicability | What to show |
 |---|---|---|
 | A1 Governance | Supporting evidence | Posture summary for the board pack. Not roles, resourcing, or risk appetite. |
-| A2 Risk management | Direct evidence | Blast-radius, enforcement coverage, and reachability trend between snapshots. |
-| A3 Asset management | Direct evidence | Sensor census, package inventory, and a dated scope snapshot. |
+| A2 Risk management | Supporting evidence | Exposure and enforcement-gap trends for a risk process CSW does not own. |
+| A3 Asset management | Supporting evidence | Sensor census and package inventory. Not people, power, or cooling. |
 | A4 Supply chain | Supporting evidence | Observed vendor egress versus the supplier register. |
-| B1 Policies and processes | Direct evidence | Versioned workspace policy and simulation-before-enforce record. |
+| B1 Service protection policies | Supporting evidence | Versioned workspace policy. Not the full policy, process, and procedure set. |
 | B2 Identity and access | Out of scope | IdP and PAM. ISE can feed identity into policy; it does not replace them. |
 | B3 Data security | Supporting evidence | East-west path control and plaintext-protocol deny. Not encryption or DLP. |
-| B4 System security | Direct evidence | Per-workload CVE and package inventory, plus config drift. |
-| B5 Resilient networks | Direct evidence | In-kernel microsegmentation, denied connections, IT side of an IT/OT boundary. |
+| B4 System security | Supporting evidence | Per-workload CVE and package inventory. Not secure-by-design or patching. |
+| B5 Resilient networks | Direct evidence for B5.b only | Host-firewall segregation and denied connections. Not backups (B5.c). |
 | B6 Staff awareness | Out of scope | Training programme. |
-| C1 Security monitoring | Direct evidence | Continuous flow telemetry with process context and the policy decision. |
-| C2 Proactive discovery | Direct evidence | Forensic events and vulnerability reachability. Pair with threat intelligence and EDR. |
+| C1 Security monitoring | Supporting evidence | Host flow telemetry with process context. Not the log store or authentication logs. |
+| C2 Proactive discovery | Supporting evidence | Unexpected-communication baselines. Pair with threat intelligence and EDR. |
 | D1 Response and recovery | Supporting evidence | Containment and a forensic timeline. Not backup, RTO, or restore. |
-| D2 Improvements | Supporting evidence | Snapshot delta across quarters for the lessons-learned review. |
+| D2 Lessons learned | Supporting evidence | Snapshot delta that a lessons-learned review can use. |
 
-Seven principles take a direct evidence contribution (A2, A3, B1, B4, B5,
-C1, C2). Five are supporting (A1, A4, B3, D1, D2). Two are out of scope
-(B2, B6).
+B5.b is the only direct evidence contribution. Twelve principles are
+supporting. B2 and B6 are out of scope.
 
 ---
 
@@ -225,7 +224,7 @@ for the audit.
 
 ```bash
 python3 cluster_snapshot.py            # A3, A2, B4 (point-in-time inventory + posture)
-python3 generate_vuln_report.py        # B4, A2 (CVE inventory with CVM intel)
+python3 generate_vuln_report.py        # B4, A2 (CVE inventory tied to workloads)
 python3 generate_forensics_report.py   # C2 (MITRE technique coverage)
 python3 download_flows.py --hours 720  # C1 (30-day flow archive)
 python3 generate_executive_report.py \
@@ -321,9 +320,9 @@ but tailored to a UK assessor conversation:
 2. *"Who is your Competent Authority for this programme (Ofgem? DWI? GSG?)
     and what have they flagged in prior assessments?"* → anchors conversation
     in regulator language.
-3. *"Can you show me the current scope-isolation attestation between IT
-    and OT today?"* → opens IEC 62443 / Purdue conversation; CSW is the
-    IT side.
+3. *"Can you show which systems that support the essential function are
+    separated from other business systems, and which connections were
+    denied?"* → this is B5.b. CAF does not ask for a Purdue model.
 4. *"When you need to tell your Competent Authority that control X still
     held last Tuesday, where does that evidence come from?"* → surfaces
     continuous-vs-annual pain, where CSW shines.

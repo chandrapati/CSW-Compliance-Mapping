@@ -10,27 +10,24 @@ Authority relationship owner.
 ## Executive summary
 
 The UK NCSC Cyber Assessment Framework (CAF) is the outcome-based security
-assessment framework used by UK Competent Authorities (Ofgem, Ofcom, DWI,
-CAA, DfT, DHSC) under the NIS Regulations and by the Cabinet Office
+assessment framework used by UK Competent Authorities, including Ofgem,
+Ofcom, DWI, CAA, DfT and DHSC, under the NIS Regulations and by the Cabinet Office
 Government Security Group under GovAssure. It evaluates an organisation
 against **14 Principles** grouped under **4 Objectives**, scored against
 Indicators of Good Practice (IGPs) as **Achieved**, **Partially Achieved**,
 or **Not Achieved**.
 
-Cisco Secure Workload (CSW) is a workload-visibility, microsegmentation,
-and east-west security platform. CSW does not satisfy any CAF principle
-on its own — no single product does — but it is a **direct evidence
-source for 7 of the 14 principles** (A2, A3, B1, B4, B5, C1, C2) and a
-supporting source for five more (A1, A4, B3, D1, D2). B2 and B6 are out
-of scope. It is particularly strong for CAF
-Objective B (Protect) and Objective C (Detect), which is exactly where
-network segmentation, host-level visibility, and continuous telemetry
-belong in the CAF model.
+Cisco Secure Workload (CSW) is a workload-visibility and east-west policy
+platform. CSW does not satisfy any CAF principle on its own. The only
+**direct evidence** contribution is **B5.b**, segregation of the systems
+that support an essential function from other business systems. CSW can
+**support** A1, A2, A3, A4, B1, B3, B4, C1, C2, D1 and D2. B2 and B6 are
+out of scope. CAF v3.2 does not require microsegmentation, eBPF, or
+NetFlow by name.
 
-For a Competent Authority assessment, the practical consequence is that
-CSW output can drive the **"Achieved" vs "Partially Achieved" distinction**
-on technical IGPs because the evidence is **continuously verified**
-(every connection, every day) rather than **sampled annually**.
+For a Competent Authority assessment, CSW output is continuously produced
+evidence an assessor can inspect. It does not, by itself, move a principle
+from Partially Achieved to Achieved.
 
 ---
 
@@ -38,13 +35,11 @@ on technical IGPs because the evidence is **continuously verified**
 
 ### Objective A — Managing Security Risk
 
-- **A2 Risk Management (Primary).** CSW produces a dynamic risk picture:
-  blast-radius score (0–100), enforcement coverage %, exploitable-CVE
-  counts filtered through CVM intelligence, and change deltas between
-  snapshots. The CAF explicitly wants organisations to move "away from
-  static annual audits to dynamic threat modelling" — CSW is on the right
-  side of that transition.
-- **A3 Asset Management (Primary).** Real-time inventory of workloads,
+- **A2 Risk Management (Supporting).** CSW can feed exposure and
+  enforcement-gap trends into a risk process. CAF A2 still requires the
+  organisation's own risk method, decision-makers, and review. It does not
+  say "replace the annual audit with threat modelling."
+- **A3 Asset Management (Supporting).** Inventory of agented workloads,
   installed packages, interface addresses, scope membership, and agent
   posture. Pairs with CMDB/IPAM/cloud-provider sources via CSW connectors.
 - **A1 Governance / A4 Supply Chain (Supporting).** CSW produces
@@ -54,17 +49,17 @@ on technical IGPs because the evidence is **continuously verified**
 
 ### Objective B — Protecting Against Cyber Attack
 
-- **B5 Resilient Networks & Systems (Primary — CSW core).** This is where
-  CSW is strongest. The CAF explicitly cites "Zero-Trust Microsegmentation
-  (host firewall orchestration, eBPF in-kernel filtering)" and "software-
-  defined perimeters, IT/OT DMZs" as the key technical controls for B5
-  — this is a word-for-word description of CSW. For IT/OT separation
-  under the Purdue Model / IEC 62443, CSW handles the IT tier; pair with
-  Cisco Cyber Vision or equivalent for the OT device tier.
-- **B1 Policies & Processes (Primary).** Workspace-based policy authoring
+- **B5 Resilient Networks & Systems (direct evidence for B5.b only).**
+  Host-firewall policy can show segregation between essential-function
+  systems and other business systems, and which connections were denied.
+  CAF Achieved for B5.b also expects separate infrastructure, independent
+  administration, no browsing or email from those systems, and mitigation
+  of resource and geographic limits. B5.c backups are not a CSW control.
+  CAF does not cite eBPF, microsegmentation, or IEC 62443.
+- **B1 Service protection policies (Supporting).** Workspace-based policy authoring
   with ADM-suggested baselines, pre-enforcement simulation, in-kernel
   enforcement, and ADM version history as change log.
-- **B4 System Security (Primary).** Per-workload CVE inventory with
+- **B4 System Security (Supporting).** Per-workload CVE inventory with
   exploit-intelligence prioritisation; package inventory for patch
   targeting; agent-version drift as config-baseline signal.
 - **B3 Data Security (Supporting).** East-west segmentation prevents
@@ -77,12 +72,12 @@ on technical IGPs because the evidence is **continuously verified**
 
 ### Objective C — Detecting Cyber Security Events
 
-- **C1 Security Monitoring (Primary).** Continuous per-connection flow
-  telemetry (NetFlow-grade with process context and policy decision);
-  agent health heartbeats; forensics event stream; SIEM egress via Splunk
-  (or equivalent). Covers the CAF's call for "endpoints, network flows
-  (NetFlow/IPFIX/eBPF), firewalls, and authentication events".
-- **C2 Proactive Event Discovery (Primary).** MITRE ATT&CK technique
+- **C1 Security Monitoring (Supporting).** Where agents are installed, CSW
+  records connections with process context and the policy decision. That
+  can feed C1.a host monitoring. CSW is not the log store (C1.b) and does
+  not cover authentication events. CAF does not name NetFlow, IPFIX, or
+  eBPF.
+- **C2 Proactive Security Event Discovery (Supporting).** MITRE ATT&CK technique
   coverage through CSW forensics rules; vulnerability scanning with
   threat-intel enrichment; anomaly detection via policy-violation
   (rejected-flow) analysis.
@@ -93,8 +88,8 @@ on technical IGPs because the evidence is **continuously verified**
   (limits incident scope) and provides per-connection flow history for
   IR timeline reconstruction. CSW does not operate backup, restore, or
   DR orchestration — pair with your backup/DR platform.
-- **D2 Improvements (Supporting).** Snapshot history and cluster-delta
-  tracking feed quarter-over-quarter improvement narratives.
+- **D2 Lessons Learned (Supporting).** The difference between snapshots
+  can show what changed. The root-cause review sits outside CSW.
 
 ---
 
@@ -102,20 +97,20 @@ on technical IGPs because the evidence is **continuously verified**
 
 A representative CAF journey, year-over-year:
 
-| Principle | Year 0 (baseline) | Year 1 (CSW adopted) | Year 2 (CSW mature) |
+| Principle | Year 0 (baseline) | Year 1 (CSW in place) | Year 2 (CSW evidence in use) |
 |---|---|---|---|
-| A2 | Partially Achieved — annual risk register | Partially Achieved — monthly posture snapshot | Achieved — monthly dynamic risk picture tied to business impact |
-| A3 | Partially Achieved — CMDB only | Achieved — CMDB + live sensor census reconciled |
-| B1 | Partially Achieved — policies on paper | Partially Achieved — authored in CSW, simulated | Achieved — enforced + continuously tested via rejected-flow log |
-| B4 | Partially Achieved — monthly vuln scan | Achieved — CVM-prioritised, workload-contextualised, trended |
-| B5 | Not / Partially Achieved | Partially Achieved — segmentation designed & simulated | Achieved — microsegmentation enforced, blast-radius score ≥85 |
-| C1 | Partially Achieved — firewall logs only | Achieved — endpoint + flow + policy decision telemetry |
-| C2 | Partially Achieved | Achieved — MITRE technique coverage tracked |
-| D1 | Partially Achieved | Partially Achieved — containment improves but DR unchanged |
+| A2 | Risk register only | Posture snapshots exist | Snapshots are used in the risk review. A2 is still the organisation's risk process |
+| A3 | Asset register only | Agent census exists | Census reconciled for workloads CSW can see. People, power, and cooling stay outside CSW |
+| B1 | Policies on paper | Workload policy authored and simulated | Workload policy enforced where intended. The wider policy set stays outside CSW |
+| B4 | Vulnerability list not tied to workloads | CVE list tied to workloads | Reachability used to prioritise patching. Patching itself stays outside CSW |
+| B5.b | Essential-function systems not separated | Segregation designed or simulated | Denied connections show segregation. Physical separation, independent administration, and backups stay outside CSW |
+| C1 | Gateway logs only | Host connection records exist | Monitoring team uses those records. The log store stays outside CSW |
+| C2 | Signature detection only | Communication baseline exists | Unexpected paths are investigated. The hunt programme stays outside CSW |
+| D1 | Response plan not tested with workload evidence | Flow history available | Timeline evidence used in an exercise. Restore stays outside CSW |
 
 The maturity scorer document (see
 [caf-igp-maturity-scorer.md](./caf-igp-maturity-scorer.md)) gives the
-specific CSW KPI thresholds behind each tier shift.
+specific CSW observations behind each row. It does not set the IGP score.
 
 ---
 
@@ -154,8 +149,9 @@ than ignore them.
    [caf-evidence-pack-template.md](./caf-evidence-pack-template.md).
 5. **Pair-up matrix.** Document which pairings (IdP, PAM, DLP, backup,
    training, OT visibility, perimeter) will supply the non-CSW evidence.
-6. **Pre-assessment dry run.** Walk the pack with the CAF Lead Assessor
-   before the formal Competent Authority / 3PAO engagement.
+6. **Pre-assessment dry run.** Walk the pack with the CAF lead before the
+   Competent Authority or GovAssure assessment. GovAssure is not a FedRAMP
+   3PAO review.
 
 ---
 
