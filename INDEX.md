@@ -1,6 +1,6 @@
 # Control-ID Index
 
-A lookup index across all thirty-four frameworks in this repository.
+A lookup index across all thirty-five frameworks in this repository.
 Use it to jump from a specific control / requirement / article to the
 runbook section that explains how Cisco Secure Workload (CSW)
 supports evidence for it.
@@ -40,6 +40,7 @@ supports evidence for it.
 | "How do I position CSW for TISAX / automotive supplier assessments?" | [TISAX / VDA ISA prototype, engineering, customer-confidential workload segmentation](./TISAX/CSW-TISAX-Technical-Runbook.md) |
 | "How do I evidence OT-adjacent IT segmentation under NIST 800-82?" | [NIST SP 800-82 OT-facing IT systems, jump hosts, historians, vendor access](./NIST-800-82/CSW-NIST-800-82-Technical-Runbook.md) |
 | "How do I support BSI C5 cloud assurance?" | [BSI C5 cloud service scope, tenant/shared-service boundaries, cloud communication security](./BSI-C5/CSW-BSI-C5-Technical-Runbook.md) |
+| "How do I evidence UK NCSC CAF for NIS OES or GovAssure?" | [CAF A1–D2 crosswalk](./UK-NCSC-CAF/caf-mapping.md), [Technical runbook](./UK-NCSC-CAF/CSW-UK-NCSC-CAF-Technical-Runbook.md), [IGP scorer](./UK-NCSC-CAF/caf-igp-maturity-scorer.md), [Evidence pack](./UK-NCSC-CAF/caf-evidence-pack-template.md) |
 
 ---
 
@@ -723,6 +724,35 @@ Source: [`UK-Cyber-Essentials/CSW-Cyber-Essentials-Technical-Runbook.md`](./UK-C
 | CE3 | User access control | Identity-aware policies where integrated; east-west least privilege |
 | CE4 | Malware protection | Complement AV/EDR — anomaly rules; lateral containment |
 | CE5 | Security updates | CVE + EPSS; reachability-ranked backlog |
+
+---
+
+## UK NCSC CAF v3.2
+
+> **Draft v1.** For UK NIS Regulations (OES) assessments and GovAssure
+> (Cabinet Office Government Security Group). Confirm the current CAF text
+> and the assessor's expectations before formal reliance. CSW is an evidence
+> source for a subset of Indicators of Good Practice; it does not satisfy a
+> principle by itself.
+
+Source: [`UK-NCSC-CAF/caf-mapping.md`](./UK-NCSC-CAF/caf-mapping.md) · [Technical runbook](./UK-NCSC-CAF/CSW-UK-NCSC-CAF-Technical-Runbook.md) · [Compliance report](./UK-NCSC-CAF/CSW-UK-NCSC-CAF-Compliance-Report.md) · [IGP scorer](./UK-NCSC-CAF/caf-igp-maturity-scorer.md) · [Evidence pack](./UK-NCSC-CAF/caf-evidence-pack-template.md)
+
+| Principle | Topic | CSW can support evidence for |
+|---|---|---|
+| A1 | Governance | Executive posture telemetry for board/CISO reporting (not governance structure) |
+| A2 | Risk management | Blast-radius, enforcement-gap, and reachability trends between snapshots |
+| A3 | Asset management | Sensor census, package inventory, point-in-time cluster snapshot |
+| A4 | Supply chain | Vendor-tagged egress vs. what the contract allows |
+| B1 | Service protection policies | Versioned workspace policies and host-firewall enforcement |
+| B2 | Identity and access | Out of scope — pair with an identity platform; ISE can supply identity-aware policy |
+| B3 | Data security | East-west path control and plaintext-protocol deny (not encryption or DLP) |
+| B4 | System security | Per-workload CVE and package inventory; config-drift signals |
+| B5 | Resilient networks and systems | Workload microsegmentation, simulation before enforce, IT-side of an IT/OT boundary |
+| B6 | Staff awareness and training | Out of scope |
+| C1 | Security monitoring | Continuous flow telemetry with process context and policy decision |
+| C2 | Proactive event discovery | Forensic events and vulnerability reachability, paired with detection content |
+| D1 | Response and recovery | Forensic timeline and containment evidence (recovery programme stays outside CSW) |
+| D2 | Improvements | Trend evidence across snapshots for lessons-learned reviews |
 
 ---
 
