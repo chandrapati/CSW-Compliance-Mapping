@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.11" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>CISA Zero Trust Maturity Model — Compliance Report</title>
+  <title>CISA-ZeroTrust — Compliance Report</title>
   <style>
 
 html {
@@ -39,7 +39,6 @@ background-color: white;
 body {
 background-color: transparent;
 color: black;
-font-size: 12pt;
 }
 p, h2, h3 {
 orphans: 3;
@@ -154,8 +153,12 @@ padding-left: 0;
 text-decoration: none;
 }
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 
 ul.task-list[class]{list-style: none;}
@@ -165,7 +168,6 @@ width: 0.8em;
 margin: 0 0.8em 0.2em -1.6em;
 vertical-align: middle;
 }
-.display.math{display: block; text-align: center; margin: 0.5rem auto;}
 </style>
   <style>
 :root {
@@ -292,13 +294,14 @@ pre, code, blockquote { background: #f5f5f5; }
 </style>
 </head>
 <body>
-<div class="doc-meta">Source: <a href="CSW-CISA-ZTMM-Compliance-Report.docx">CSW-CISA-ZTMM-Compliance-Report.docx</a> · <a href="../index.html">repository index</a> · Build: 2026-08-11T04:20:40Z UTC · Repository commit: 463f586</div>
+<div class="doc-meta">Source: <a href="CSW-CISA-ZTMM-Compliance-Report.docx">CSW-CISA-ZTMM-Compliance-Report.docx</a> · <a href="../index.html">repository index</a> · Build: 2026-10-05T17:59:27Z UTC · Repository commit: 8fe7ae4</div>
 <header id="title-block-header">
-<h1 class="title">CISA Zero Trust Maturity Model — Compliance
-Report</h1>
+<h1 class="title">CISA-ZeroTrust — Compliance Report</h1>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
+<li><a href="#how-to-read-the-coverage-words" id="toc-how-to-read-the-coverage-words">How to read the coverage
+words</a></li>
 <li><a href="#executive-summary" id="toc-executive-summary"><strong>Executive Summary</strong></a>
 <ul>
 <li><a href="#pillar-coverage-maturity-achievable" id="toc-pillar-coverage-maturity-achievable"><strong>Pillar Coverage
@@ -327,6 +330,7 @@ Evidence Package</strong></a></li>
 <p><strong>CISCO SECURE WORKLOAD</strong></p>
 <p><strong>CISA Zero Trust Maturity Model</strong></p>
 <p>Zero Trust Maturity Model v2.0 — CSW Pillar Mapping</p>
+<hr />
 <p>Prepared for: [Customer Name]</p>
 <p>Prepared by: Cisco Systems, Inc.</p>
 <p>Date: [Month Year] | Version 1.0 | Cisco Confidential</p>
@@ -343,6 +347,19 @@ Zero Trust Maturity Model v2.0 (2023)</strong></p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-to-read-the-coverage-words">How to read the coverage
+words</h2>
+<p><strong>Full Coverage</strong> on the older reports means Secure
+Workload can produce that row&#39;s artifact. It does not mean the control
+is met.</p>
+<p><strong>Partial Coverage</strong> means file that export next to
+another control.</p>
+<p><strong>Evidence Required</strong> means Secure Workload has no
+record. The customer files the contract, the analysis, or the HR or
+physical-security evidence.</p>
+<p><strong>Direct, Supporting, and Out of scope</strong> on the newer
+reports are the same idea in different words. Direct is still evidence,
+not a pass.</p>
 <h1 id="executive-summary"><strong>Executive Summary</strong></h1>
 <p>The CISA Zero Trust Maturity Model (ZTMM) v2.0 defines maturity
 across five pillars: Identity, Devices, Networks, Applications &amp;
@@ -376,43 +393,39 @@ Achievable</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Networks</strong></td>
-<td style="text-align: center;">Primary</td>
-<td style="text-align: center;">Advanced → Optimal</td>
-<td style="text-align: center;">Micro-segmentation, encryption
-enforcement, continuous ADM</td>
+<td>Primary</td>
+<td>Advanced → Optimal</td>
+<td>Micro-segmentation, encryption enforcement, continuous ADM</td>
 <td style="text-align: center;"><strong>Full Coverage</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Applications &amp;
 Workloads</strong></td>
-<td style="text-align: center;">Primary</td>
-<td style="text-align: center;">Advanced → Optimal</td>
-<td style="text-align: center;">Workload identity, least-privilege
-policy, vulnerability management</td>
+<td>Primary</td>
+<td>Advanced → Optimal</td>
+<td>Workload identity, least-privilege policy, vulnerability
+management</td>
 <td style="text-align: center;"><strong>Full Coverage</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Data</strong></td>
-<td style="text-align: center;">Supporting</td>
-<td style="text-align: center;">Initial → Advanced</td>
-<td style="text-align: center;">Data flow visibility, encryption
-enforcement, access logging</td>
+<td>Supporting</td>
+<td>Initial → Advanced</td>
+<td>Data flow visibility, encryption enforcement, access logging</td>
 <td style="text-align: center;"><strong>Full Coverage</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Identity</strong></td>
-<td style="text-align: center;">Supporting</td>
-<td style="text-align: center;">Initial → Advanced</td>
-<td style="text-align: center;">Identity-verified access path
-enforcement via policy</td>
+<td>Supporting</td>
+<td>Initial → Advanced</td>
+<td>Identity-verified access path enforcement via policy</td>
 <td style="text-align: center;"><strong>Partial Coverage</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Devices</strong></td>
-<td style="text-align: center;">Supporting</td>
-<td style="text-align: center;">Initial → Advanced</td>
-<td style="text-align: center;">OS fingerprint + process hash workload
-identity</td>
+<td>Supporting</td>
+<td>Initial → Advanced</td>
+<td>OS fingerprint + process hash workload identity</td>
 <td style="text-align: center;"><strong>Partial Coverage</strong></td>
 </tr>
 </tbody>
@@ -441,112 +454,101 @@ Primary CSW Domain</strong></h2>
 <tr>
 <td style="text-align: center;"><strong>Networks</strong></td>
 <td colspan="2" style="text-align: center;">Traditional → Initial</td>
-<td style="text-align: center;">Traffic Visibility</td>
-<td style="text-align: center;">Establish initial network traffic
-visibility</td>
-<td style="text-align: center;">ADM deployed; all workload flows
-documented; scope hierarchy defined</td>
+<td>Traffic Visibility</td>
+<td>Establish initial network traffic visibility</td>
+<td>ADM deployed; all workload flows documented; scope hierarchy
+defined</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Networks</strong></td>
 <td colspan="2" style="text-align: center;">Initial → Advanced</td>
-<td style="text-align: center;">Micro-Segmentation</td>
-<td style="text-align: center;">Enforce workload-level network
-segmentation</td>
-<td style="text-align: center;">Allowlist policies enforced;
-default-deny inbound; encryption compliance</td>
+<td>Micro-Segmentation</td>
+<td>Enforce workload-level network segmentation</td>
+<td>Allowlist policies enforced; default-deny inbound; encryption
+compliance</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Networks</strong></td>
 <td colspan="2" style="text-align: center;">Advanced → Optimal</td>
-<td style="text-align: center;">Dynamic Policy</td>
-<td style="text-align: center;">Continuously validate and dynamically
-adjust network policies</td>
-<td style="text-align: center;">Continuous ADM re-runs; API-driven
-policy updates; ML anomaly detection</td>
+<td>Dynamic Policy</td>
+<td>Continuously validate and dynamically adjust network policies</td>
+<td>Continuous ADM re-runs; API-driven policy updates; ML anomaly
+detection</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Networks</strong></td>
 <td colspan="2" style="text-align: center;">Advanced → Optimal</td>
-<td style="text-align: center;">Encryption Enforcement</td>
-<td style="text-align: center;">Encrypt all network traffic between
-workloads</td>
-<td style="text-align: center;">Detect/block non-encrypted flows;
-enforce TLS-only paths across all scopes</td>
+<td>Encryption Enforcement</td>
+<td>Encrypt all network traffic between workloads</td>
+<td>Detect/block non-encrypted flows; enforce TLS-only paths across all
+scopes</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Apps &amp;
 Workloads</strong></td>
 <td colspan="2" style="text-align: center;">Traditional → Initial</td>
-<td style="text-align: center;">Workload Inventory</td>
-<td style="text-align: center;">Establish inventory of all application
-workloads</td>
-<td style="text-align: center;">CSW inventory provides real-time
-workload asset catalog across hybrid environments</td>
+<td>Workload Inventory</td>
+<td>Establish inventory of all application workloads</td>
+<td>CSW inventory provides real-time workload asset catalog across
+hybrid environments</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Apps &amp;
 Workloads</strong></td>
 <td colspan="2" style="text-align: center;">Initial → Advanced</td>
-<td style="text-align: center;">Workload Identity</td>
-<td style="text-align: center;">Enforce workload identity-based access
-controls</td>
-<td style="text-align: center;">Process hash + OS fingerprint + network
-identity — not just IP address</td>
+<td>Workload Identity</td>
+<td>Enforce workload identity-based access controls</td>
+<td>Process hash + OS fingerprint + network identity — not just IP
+address</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Apps &amp;
 Workloads</strong></td>
 <td colspan="2" style="text-align: center;">Advanced → Optimal</td>
-<td style="text-align: center;">Continuous Validation</td>
-<td style="text-align: center;">Continuously validate workload access
-footprint</td>
-<td style="text-align: center;">90-day ADM re-runs;
-vulnerability-triggered policy review; drift detection</td>
+<td>Continuous Validation</td>
+<td>Continuously validate workload access footprint</td>
+<td>90-day ADM re-runs; vulnerability-triggered policy review; drift
+detection</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Data</strong></td>
 <td colspan="2" style="text-align: center;">Traditional → Initial</td>
-<td style="text-align: center;">Data Flow Visibility</td>
-<td style="text-align: center;">Establish visibility into data
-movement</td>
-<td style="text-align: center;">ADM reveals all data flow paths across
-on-prem and cloud environments</td>
+<td>Data Flow Visibility</td>
+<td>Establish visibility into data movement</td>
+<td>ADM reveals all data flow paths across on-prem and cloud
+environments</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Data</strong></td>
 <td colspan="2" style="text-align: center;">Initial → Advanced</td>
-<td style="text-align: center;">Data Access Logging</td>
-<td style="text-align: center;">Log all access to sensitive data</td>
-<td style="text-align: center;">Full flow + process telemetry on
-sensitive data scopes; forensic export</td>
+<td>Data Access Logging</td>
+<td>Log all access to sensitive data</td>
+<td>Full flow + process telemetry on sensitive data scopes; forensic
+export</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Data</strong></td>
 <td colspan="2" style="text-align: center;">Advanced → Optimal</td>
-<td style="text-align: center;">Encryption Compliance</td>
-<td style="text-align: center;">Enforce encryption for sensitive data in
-transit</td>
-<td style="text-align: center;">Protocol-level flow analysis; block
-plaintext; enforce HTTPS/SFTP/LDAPS</td>
+<td>Encryption Compliance</td>
+<td>Enforce encryption for sensitive data in transit</td>
+<td>Protocol-level flow analysis; block plaintext; enforce
+HTTPS/SFTP/LDAPS</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Identity</strong></td>
 <td colspan="2" style="text-align: center;">Supporting</td>
-<td style="text-align: center;">Identity-Verified Paths</td>
-<td style="text-align: center;">Enforce access only through
-identity-verified paths</td>
-<td style="text-align: center;">CSW enforces that only identity-verified
-systems (LDAPS/Kerberos) can reach sensitive workloads</td>
+<td>Identity-Verified Paths</td>
+<td>Enforce access only through identity-verified paths</td>
+<td>CSW enforces that only identity-verified systems (LDAPS/Kerberos)
+can reach sensitive workloads</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Devices</strong></td>
 <td colspan="2" style="text-align: center;">Supporting</td>
-<td style="text-align: center;">Device Fingerprinting</td>
-<td style="text-align: center;">Identify and authenticate devices
-accessing resources</td>
-<td style="text-align: center;">OS fingerprint + process hash provides
-workload-level device identity in CSW</td>
+<td>Device Fingerprinting</td>
+<td>Identify and authenticate devices accessing resources</td>
+<td>OS fingerprint + process hash provides workload-level device
+identity in CSW</td>
 </tr>
 </tbody>
 </table>
@@ -557,8 +559,6 @@ Traditional to Initial (Weeks 1–4)</strong></h2>
 <ul>
 <li><p>Deploy CSW sensors on all on-prem workloads; connect cloud
 accounts via CSW cloud connectors</p></li>
-</ul>
-<ul>
 <li><p>Run Application Dependency Mapping (ADM) to establish complete
 traffic baseline</p></li>
 <li><p>Define scope hierarchy aligned to ZTMM pillar boundaries</p></li>
@@ -609,57 +609,57 @@ Evidence Package</strong></h1>
 <tr>
 <td style="text-align: center;"><strong>ADM traffic
 baseline</strong></td>
-<td style="text-align: center;">Investigate → ADM</td>
-<td style="text-align: center;">Networks, Apps</td>
+<td>Investigate → ADM</td>
+<td>Networks, Apps</td>
 <td style="text-align: center;"><strong>Initial</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Enforcement policy
 export</strong></td>
-<td style="text-align: center;">Defend → Policy Workspaces</td>
-<td style="text-align: center;">Networks, Apps</td>
+<td>Defend → Policy Workspaces</td>
+<td>Networks, Apps</td>
 <td style="text-align: center;"><strong>Advanced</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Encryption compliance
 report</strong></td>
-<td style="text-align: center;">Flow Search (protocol filter)</td>
-<td style="text-align: center;">Networks, Data</td>
+<td>Flow Search (protocol filter)</td>
+<td>Networks, Data</td>
 <td style="text-align: center;"><strong>Advanced</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Anomaly detection
 log</strong></td>
-<td style="text-align: center;">Alerts → Dashboard</td>
-<td style="text-align: center;">Networks</td>
+<td>Alerts → Dashboard</td>
+<td>Networks</td>
 <td style="text-align: center;"><strong>Advanced</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Vulnerability
 report</strong></td>
-<td style="text-align: center;">Investigate → Vulnerability</td>
-<td style="text-align: center;">Apps &amp; Workloads</td>
+<td>Investigate → Vulnerability</td>
+<td>Apps &amp; Workloads</td>
 <td style="text-align: center;"><strong>Advanced</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Continuous ADM
 comparison</strong></td>
-<td style="text-align: center;">ADM re-run vs baseline</td>
-<td style="text-align: center;">Networks, Apps</td>
+<td>ADM re-run vs baseline</td>
+<td>Networks, Apps</td>
 <td style="text-align: center;"><strong>Optimal</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>API policy automation
 log</strong></td>
-<td style="text-align: center;">CSW API audit log</td>
-<td style="text-align: center;">Networks</td>
+<td>CSW API audit log</td>
+<td>Networks</td>
 <td style="text-align: center;"><strong>Optimal</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Workload inventory
 export</strong></td>
-<td style="text-align: center;">Manage → Inventory</td>
-<td style="text-align: center;">Devices, Apps</td>
+<td>Manage → Inventory</td>
+<td>Devices, Apps</td>
 <td style="text-align: center;"><strong>Initial</strong></td>
 </tr>
 </tbody>

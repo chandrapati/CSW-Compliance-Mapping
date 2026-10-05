@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.11" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>CSA CCM v4 — Compliance Report</title>
+  <title>CSA-CCM — Compliance Report</title>
   <style>
 
 html {
@@ -39,7 +39,6 @@ background-color: white;
 body {
 background-color: transparent;
 color: black;
-font-size: 12pt;
 }
 p, h2, h3 {
 orphans: 3;
@@ -154,8 +153,12 @@ padding-left: 0;
 text-decoration: none;
 }
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 
 ul.task-list[class]{list-style: none;}
@@ -165,7 +168,6 @@ width: 0.8em;
 margin: 0 0.8em 0.2em -1.6em;
 vertical-align: middle;
 }
-.display.math{display: block; text-align: center; margin: 0.5rem auto;}
 </style>
   <style>
 :root {
@@ -292,9 +294,9 @@ pre, code, blockquote { background: #f5f5f5; }
 </style>
 </head>
 <body>
-<div class="doc-meta">Source: <a href="CSW-CSA-CCM-Compliance-Report.docx">CSW-CSA-CCM-Compliance-Report.docx</a> · <a href="../index.html">repository index</a> · Build: 2026-08-11T04:20:46Z UTC · Repository commit: 463f586</div>
+<div class="doc-meta">Source: <a href="CSW-CSA-CCM-Compliance-Report.docx">CSW-CSA-CCM-Compliance-Report.docx</a> · <a href="../index.html">repository index</a> · Build: 2026-10-05T17:59:28Z UTC · Repository commit: 8fe7ae4</div>
 <header id="title-block-header">
-<h1 class="title">CSA CCM v4 — Compliance Report</h1>
+<h1 class="title">CSA-CCM — Compliance Report</h1>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
@@ -305,6 +307,8 @@ Workload - CSA CCM Compliance Report</a>
 Report</a></li>
 <li><a href="#framework-version-note" id="toc-framework-version-note">Framework Version Note</a></li>
 <li><a href="#csw-ui-navigation-note" id="toc-csw-ui-navigation-note">CSW UI Navigation Note</a></li>
+<li><a href="#how-to-read-the-coverage-words" id="toc-how-to-read-the-coverage-words">How to read the coverage
+words</a></li>
 <li><a href="#executive-summary" id="toc-executive-summary">Executive
 Summary</a></li>
 <li><a href="#suggested-csw-scope-pattern" id="toc-suggested-csw-scope-pattern">Suggested CSW Scope
@@ -356,6 +360,19 @@ artifacts</em> they produce. The technical runbook
 (<code>CSW-CSA-CCM-Technical-Runbook.md</code>) in this folder contains
 the deeper engineering detail.</p>
 <hr />
+<h2 id="how-to-read-the-coverage-words">How to read the coverage
+words</h2>
+<p><strong>Full Coverage</strong> on the older reports means Secure
+Workload can produce that row&#39;s artifact. It does not mean the control
+is met.</p>
+<p><strong>Partial Coverage</strong> means file that export next to
+another control.</p>
+<p><strong>Evidence Required</strong> means Secure Workload has no
+record. The customer files the contract, the analysis, or the HR or
+physical-security evidence.</p>
+<p><strong>Direct, Supporting, and Out of scope</strong> on the newer
+reports are the same idea in different words. Direct is still evidence,
+not a pass.</p>
 <h2 id="executive-summary">Executive Summary</h2>
 <p>Cisco Secure Workload (CSW) supports a defined subset of this
 framework. The strongest customer story is not that CSW “certifies”

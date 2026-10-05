@@ -871,6 +871,16 @@ Cisco does not yet publish framework-specific CSW UI navigation for this standar
 
 ---
 
+## How to read the coverage words
+
+**Full Coverage** on the older reports means Secure Workload can produce that row's artifact. It does not mean the control is met.
+
+**Partial Coverage** means file that export next to another control.
+
+**Evidence Required** means Secure Workload has no record. The customer files the contract, the analysis, or the HR or physical-security evidence.
+
+**Direct**, **Supporting**, and **Out of scope** on the newer reports are the same idea in different words. Direct is still evidence, not a pass.
+
 ## Executive Summary
 
 Cisco Secure Workload (CSW) supports a defined subset of this framework. The strongest customer story is not that CSW "certifies" compliance; it is that CSW turns workload communication and inventory into evidence that the customer, the customer's compliance team, and the customer's assessor can review. This report describes which framework topics CSW supports, which it does not, what evidence artifacts CSW produces, and how often the customer should collect them. CSW does **not** replace the customer's governance, policy, or assessor judgement, and this report is **not** a control attestation.

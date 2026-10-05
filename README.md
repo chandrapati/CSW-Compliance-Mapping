@@ -197,6 +197,8 @@ reach for the runbook vs. the report).
 
 ## Read next
 
+- **[Gartner reading guide](./docs/gartner-reading-guide.md)** —
+  how to walk each report and runbook, including what Full Coverage, Partial Coverage, Evidence Required, Direct, and Supporting mean in the room.
 - **[Compliance evidence playbook](./docs/compliance-evidence-playbook.md)** —
   **start here if you are new to CSW** — universal 4-phase evidence programme,
   console map, quarterly export pack, and CSW effectiveness vs. manual audits.

@@ -7,6 +7,16 @@ Authority relationship owner.
 
 ---
 
+## How to read the coverage words
+
+**Full Coverage** on the older reports means Secure Workload can produce that row's artifact. It does not mean the control is met.
+
+**Partial Coverage** means file that export next to another control.
+
+**Evidence Required** means Secure Workload has no record. The customer files the contract, the analysis, or the HR or physical-security evidence.
+
+**Direct**, **Supporting**, and **Out of scope** on the newer reports are the same idea in different words. Direct is still evidence, not a pass. In this CAF report, direct evidence is B5.b only. Direct evidence does not mean Achieved.
+
 ## Executive summary
 
 The UK NCSC Cyber Assessment Framework (CAF) is the outcome-based security

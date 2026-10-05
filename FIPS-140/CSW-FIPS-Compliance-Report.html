@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.11" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>FIPS 140 — Compliance Report</title>
+  <title>FIPS-140 — Compliance Report</title>
   <style>
 
 html {
@@ -39,7 +39,6 @@ background-color: white;
 body {
 background-color: transparent;
 color: black;
-font-size: 12pt;
 }
 p, h2, h3 {
 orphans: 3;
@@ -154,8 +153,12 @@ padding-left: 0;
 text-decoration: none;
 }
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 
 ul.task-list[class]{list-style: none;}
@@ -165,7 +168,6 @@ width: 0.8em;
 margin: 0 0.8em 0.2em -1.6em;
 vertical-align: middle;
 }
-.display.math{display: block; text-align: center; margin: 0.5rem auto;}
 </style>
   <style>
 :root {
@@ -292,12 +294,14 @@ pre, code, blockquote { background: #f5f5f5; }
 </style>
 </head>
 <body>
-<div class="doc-meta">Source: <a href="CSW-FIPS-Compliance-Report.docx">CSW-FIPS-Compliance-Report.docx</a> · <a href="../index.html">repository index</a> · Build: 2026-08-11T04:20:40Z UTC · Repository commit: 463f586</div>
+<div class="doc-meta">Source: <a href="CSW-FIPS-Compliance-Report.docx">CSW-FIPS-Compliance-Report.docx</a> · <a href="../index.html">repository index</a> · Build: 2026-10-05T17:59:28Z UTC · Repository commit: 8fe7ae4</div>
 <header id="title-block-header">
-<h1 class="title">FIPS 140 — Compliance Report</h1>
+<h1 class="title">FIPS-140 — Compliance Report</h1>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
+<li><a href="#how-to-read-the-coverage-words" id="toc-how-to-read-the-coverage-words">How to read the coverage
+words</a></li>
 <li><a href="#executive-summary-csw-role" id="toc-executive-summary-csw-role"><strong>Executive Summary &amp; CSW
 Role</strong></a>
 <ul>
@@ -319,6 +323,7 @@ Evidence Package</strong></a></li>
 <p><strong>CISCO SECURE WORKLOAD</strong></p>
 <p><strong>FIPS 140-2/3 Compliance Framework</strong></p>
 <p>Cryptographic Module Enforcement — CSW-Relevant Scope</p>
+<hr />
 <p>Prepared for: [Customer Name]</p>
 <p>Prepared by: Cisco Systems, Inc.</p>
 <p>Date: [Month Year] | Version 1.0 | Cisco Confidential</p>
@@ -335,6 +340,19 @@ Evidence Package</strong></a></li>
 </tr>
 </tbody>
 </table>
+<h2 id="how-to-read-the-coverage-words">How to read the coverage
+words</h2>
+<p><strong>Full Coverage</strong> on the older reports means Secure
+Workload can produce that row&#39;s artifact. It does not mean the control
+is met.</p>
+<p><strong>Partial Coverage</strong> means file that export next to
+another control.</p>
+<p><strong>Evidence Required</strong> means Secure Workload has no
+record. The customer files the contract, the analysis, or the HR or
+physical-security evidence.</p>
+<p><strong>Direct, Supporting, and Out of scope</strong> on the newer
+reports are the same idea in different words. Direct is still evidence,
+not a pass.</p>
 <h1 id="executive-summary-csw-role"><strong>Executive Summary &amp; CSW
 Role</strong></h1>
 <p>FIPS 140-2/3 is the US federal standard for cryptographic module
@@ -368,98 +386,96 @@ Summary</strong></h2>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Detection</strong></td>
-<td style="text-align: center;">Non-FIPS Protocols</td>
-<td style="text-align: center;">Plain HTTP (port 80)</td>
-<td style="text-align: center;">Flow telemetry protocol filter
-identifies unencrypted HTTP traffic from sensitive workloads</td>
+<td>Non-FIPS Protocols</td>
+<td>Plain HTTP (port 80)</td>
+<td>Flow telemetry protocol filter identifies unencrypted HTTP traffic
+from sensitive workloads</td>
 <td style="text-align: center;"><strong>Full Coverage</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Detection</strong></td>
-<td style="text-align: center;">Non-FIPS Protocols</td>
-<td style="text-align: center;">Plain FTP (port 21)</td>
-<td style="text-align: center;">Flow telemetry flags unencrypted file
-transfers from regulated environments</td>
+<td>Non-FIPS Protocols</td>
+<td>Plain FTP (port 21)</td>
+<td>Flow telemetry flags unencrypted file transfers from regulated
+environments</td>
 <td style="text-align: center;"><strong>Full Coverage</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Detection</strong></td>
-<td style="text-align: center;">Non-FIPS Protocols</td>
-<td style="text-align: center;">Telnet (port 23)</td>
-<td style="text-align: center;">Flow telemetry detects legacy
-unencrypted remote access sessions</td>
+<td>Non-FIPS Protocols</td>
+<td>Telnet (port 23)</td>
+<td>Flow telemetry detects legacy unencrypted remote access
+sessions</td>
 <td style="text-align: center;"><strong>Full Coverage</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Detection</strong></td>
-<td style="text-align: center;">Non-FIPS Protocols</td>
-<td style="text-align: center;">Plain LDAP (port 389)</td>
-<td style="text-align: center;">Detects non-encrypted directory service
-access; enforces LDAPS migration</td>
+<td>Non-FIPS Protocols</td>
+<td>Plain LDAP (port 389)</td>
+<td>Detects non-encrypted directory service access; enforces LDAPS
+migration</td>
 <td style="text-align: center;"><strong>Full Coverage</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Detection</strong></td>
-<td style="text-align: center;">Non-FIPS Protocols</td>
-<td style="text-align: center;">SNMPv1/v2 (port 161)</td>
-<td style="text-align: center;">Identifies non-encrypted network
-management; enforces SNMPv3</td>
+<td>Non-FIPS Protocols</td>
+<td>SNMPv1/v2 (port 161)</td>
+<td>Identifies non-encrypted network management; enforces SNMPv3</td>
 <td style="text-align: center;"><strong>Full Coverage</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Enforcement</strong></td>
-<td style="text-align: center;">Protocol Policy</td>
-<td style="text-align: center;">Block Non-Compliant Protocols</td>
-<td style="text-align: center;">CSW policy blocks all identified
-non-FIPS-compliant protocols at workload level</td>
+<td>Protocol Policy</td>
+<td>Block Non-Compliant Protocols</td>
+<td>CSW policy blocks all identified non-FIPS-compliant protocols at
+workload level</td>
 <td style="text-align: center;"><strong>Full Coverage</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Enforcement</strong></td>
-<td style="text-align: center;">Access Control</td>
-<td style="text-align: center;">Crypto Service Boundary</td>
-<td style="text-align: center;">FIPS-Boundary scope restricts HSM/KMS
-access to approved workloads only</td>
+<td>Access Control</td>
+<td>Crypto Service Boundary</td>
+<td>FIPS-Boundary scope restricts HSM/KMS access to approved workloads
+only</td>
 <td style="text-align: center;"><strong>Full Coverage</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Audit</strong></td>
-<td style="text-align: center;">Telemetry</td>
-<td style="text-align: center;">Crypto Service Access Log</td>
-<td style="text-align: center;">Full flow audit trail for all
-connections to FIPS-validated cryptographic services</td>
+<td>Telemetry</td>
+<td>Crypto Service Access Log</td>
+<td>Full flow audit trail for all connections to FIPS-validated
+cryptographic services</td>
 <td style="text-align: center;"><strong>Full Coverage</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Audit</strong></td>
-<td style="text-align: center;">Process Monitoring</td>
-<td style="text-align: center;">Crypto Library Inventory</td>
-<td style="text-align: center;">Process monitoring identifies workloads
-using non-validated crypto libraries</td>
+<td>Process Monitoring</td>
+<td>Crypto Library Inventory</td>
+<td>Process monitoring identifies workloads using non-validated crypto
+libraries</td>
 <td style="text-align: center;"><strong>Full Coverage</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Boundary</strong></td>
-<td style="text-align: center;">Scope Isolation</td>
-<td style="text-align: center;">FIPS Module Boundary</td>
-<td style="text-align: center;">CSW scope defines and enforces network
-boundary around FIPS-validated crypto infrastructure</td>
+<td>Scope Isolation</td>
+<td>FIPS Module Boundary</td>
+<td>CSW scope defines and enforces network boundary around
+FIPS-validated crypto infrastructure</td>
 <td style="text-align: center;"><strong>Full Coverage</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Supplementary</strong></td>
-<td style="text-align: center;">Not in CSW Scope</td>
-<td style="text-align: center;">Module Validation (CMVP)</td>
-<td style="text-align: center;">Cryptographic module validation is
-performed by NIST-approved laboratories</td>
+<td>Not in CSW Scope</td>
+<td>Module Validation (CMVP)</td>
+<td>Cryptographic module validation is performed by NIST-approved
+laboratories</td>
 <td style="text-align: center;"><strong>Supplementary</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Supplementary</strong></td>
-<td style="text-align: center;">Not in CSW Scope</td>
-<td style="text-align: center;">Key Generation &amp; Storage</td>
-<td style="text-align: center;">Key lifecycle management requires
-FIPS-validated HSM hardware</td>
+<td>Not in CSW Scope</td>
+<td>Key Generation &amp; Storage</td>
+<td>Key lifecycle management requires FIPS-validated HSM hardware</td>
 <td style="text-align: center;"><strong>Supplementary</strong></td>
 </tr>
 </tbody>
@@ -492,50 +508,50 @@ Replacement</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>HTTP</strong></td>
-<td style="text-align: center;">80</td>
-<td colspan="2" style="text-align: center;">No encryption</td>
-<td style="text-align: center;">Flow telemetry protocol filter</td>
-<td style="text-align: center;">HTTPS (port 443)</td>
+<td>80</td>
+<td colspan="2">No encryption</td>
+<td>Flow telemetry protocol filter</td>
+<td>HTTPS (port 443)</td>
 <td style="text-align: center;"><strong>Full Coverage</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>FTP</strong></td>
-<td style="text-align: center;">21</td>
-<td colspan="2" style="text-align: center;">No encryption</td>
-<td style="text-align: center;">Flow telemetry port filter</td>
-<td style="text-align: center;">SFTP/FTPS (port 22/990)</td>
+<td>21</td>
+<td colspan="2">No encryption</td>
+<td>Flow telemetry port filter</td>
+<td>SFTP/FTPS (port 22/990)</td>
 <td style="text-align: center;"><strong>Full Coverage</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Telnet</strong></td>
-<td style="text-align: center;">23</td>
-<td colspan="2" style="text-align: center;">No encryption</td>
-<td style="text-align: center;">Flow telemetry port filter</td>
-<td style="text-align: center;">SSH with FIPS ciphers (port 22)</td>
+<td>23</td>
+<td colspan="2">No encryption</td>
+<td>Flow telemetry port filter</td>
+<td>SSH with FIPS ciphers (port 22)</td>
 <td style="text-align: center;"><strong>Full Coverage</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Plain LDAP</strong></td>
-<td style="text-align: center;">389</td>
-<td colspan="2" style="text-align: center;">No encryption</td>
-<td style="text-align: center;">Flow telemetry port filter</td>
-<td style="text-align: center;">LDAPS (port 636)</td>
+<td>389</td>
+<td colspan="2">No encryption</td>
+<td>Flow telemetry port filter</td>
+<td>LDAPS (port 636)</td>
 <td style="text-align: center;"><strong>Full Coverage</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>SNMPv1/v2</strong></td>
-<td style="text-align: center;">161</td>
-<td colspan="2" style="text-align: center;">No encryption</td>
-<td style="text-align: center;">Flow telemetry port filter</td>
-<td style="text-align: center;">SNMPv3 (port 162)</td>
+<td>161</td>
+<td colspan="2">No encryption</td>
+<td>Flow telemetry port filter</td>
+<td>SNMPv3 (port 162)</td>
 <td style="text-align: center;"><strong>Full Coverage</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>TLS 1.0/1.1</strong></td>
-<td style="text-align: center;">443</td>
-<td colspan="2" style="text-align: center;">Non-approved version</td>
-<td style="text-align: center;">Process + flow analysis</td>
-<td style="text-align: center;">TLS 1.2+ with FIPS cipher suites</td>
+<td>443</td>
+<td colspan="2">Non-approved version</td>
+<td>Process + flow analysis</td>
+<td>TLS 1.2+ with FIPS cipher suites</td>
 <td style="text-align: center;"><strong>Partial Coverage</strong></td>
 </tr>
 </tbody>
@@ -547,8 +563,6 @@ cryptographic infrastructure:</p>
 <ul>
 <li><p>Create dedicated FIPS-Boundary scope containing HSM cluster,
 crypto services, and KMS endpoints</p></li>
-</ul>
-<ul>
 <li><p>Apply default-deny inbound policy — only explicitly approved
 workloads may access crypto services</p></li>
 <li><p>Log all connections to FIPS-Boundary scope with full process
@@ -575,38 +589,36 @@ Evidence Package</strong></h1>
 <tr>
 <td style="text-align: center;"><strong>Non-FIPS protocol flow
 report</strong></td>
-<td style="text-align: center;">Investigate → Flow Search (port
-filter)</td>
-<td style="text-align: center;">Protocol compliance</td>
+<td>Investigate → Flow Search (port filter)</td>
+<td>Protocol compliance</td>
 <td style="text-align: center;"><strong>Weekly</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>FIPS-Boundary access
 log</strong></td>
-<td style="text-align: center;">Investigate → Flow Search (scope
-filter)</td>
-<td style="text-align: center;">Module boundary</td>
+<td>Investigate → Flow Search (scope filter)</td>
+<td>Module boundary</td>
 <td style="text-align: center;"><strong>Continuous</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Crypto service process
 audit</strong></td>
-<td style="text-align: center;">Investigate → Process Search</td>
-<td style="text-align: center;">Module usage</td>
+<td>Investigate → Process Search</td>
+<td>Module usage</td>
 <td style="text-align: center;"><strong>Monthly</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Protocol enforcement
 policy</strong></td>
-<td style="text-align: center;">Defend → Policy Analysis</td>
-<td style="text-align: center;">Protocol enforcement</td>
+<td>Defend → Policy Analysis</td>
+<td>Protocol enforcement</td>
 <td style="text-align: center;"><strong>Monthly</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>HSM/KMS access
 audit</strong></td>
-<td style="text-align: center;">Flow Search → FIPS-Boundary scope</td>
-<td style="text-align: center;">Key management audit</td>
+<td>Flow Search → FIPS-Boundary scope</td>
+<td>Key management audit</td>
 <td style="text-align: center;"><strong>Continuous</strong></td>
 </tr>
 </tbody>

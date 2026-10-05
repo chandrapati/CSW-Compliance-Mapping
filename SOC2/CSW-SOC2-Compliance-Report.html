@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.11" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>SOC 2 Type II — Compliance Report</title>
+  <title>SOC2 — Compliance Report</title>
   <style>
 
 html {
@@ -39,7 +39,6 @@ background-color: white;
 body {
 background-color: transparent;
 color: black;
-font-size: 12pt;
 }
 p, h2, h3 {
 orphans: 3;
@@ -154,8 +153,12 @@ padding-left: 0;
 text-decoration: none;
 }
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 
 ul.task-list[class]{list-style: none;}
@@ -165,7 +168,6 @@ width: 0.8em;
 margin: 0 0.8em 0.2em -1.6em;
 vertical-align: middle;
 }
-.display.math{display: block; text-align: center; margin: 0.5rem auto;}
 </style>
   <style>
 :root {
@@ -292,12 +294,14 @@ pre, code, blockquote { background: #f5f5f5; }
 </style>
 </head>
 <body>
-<div class="doc-meta">Source: <a href="CSW-SOC2-Compliance-Report.docx">CSW-SOC2-Compliance-Report.docx</a> · <a href="../index.html">repository index</a> · Build: 2026-08-11T04:20:39Z UTC · Repository commit: 463f586</div>
+<div class="doc-meta">Source: <a href="CSW-SOC2-Compliance-Report.docx">CSW-SOC2-Compliance-Report.docx</a> · <a href="../index.html">repository index</a> · Build: 2026-10-05T17:59:31Z UTC · Repository commit: 8fe7ae4</div>
 <header id="title-block-header">
-<h1 class="title">SOC 2 Type II — Compliance Report</h1>
+<h1 class="title">SOC2 — Compliance Report</h1>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
+<li><a href="#how-to-read-the-coverage-words" id="toc-how-to-read-the-coverage-words">How to read the coverage
+words</a></li>
 <li><a href="#executive-summary" id="toc-executive-summary"><strong>Executive Summary</strong></a>
 <ul>
 <li><a href="#coverage-summary" id="toc-coverage-summary"><strong>Coverage Summary</strong></a></li>
@@ -321,6 +325,7 @@ Recommendations</strong></a></li>
 <p><strong>CISCO SECURE WORKLOAD</strong></p>
 <p><strong>SOC 2 Compliance Framework</strong></p>
 <p>Trust Services Criteria — Type II</p>
+<hr />
 <p>Prepared for: [Customer Name]</p>
 <p>Prepared by: Cisco Systems, Inc.</p>
 <p>Date: [Month Year] | Version 1.0 | Cisco Confidential</p>
@@ -337,6 +342,19 @@ Type II (AICPA Trust Services Criteria)</strong></p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-to-read-the-coverage-words">How to read the coverage
+words</h2>
+<p><strong>Full Coverage</strong> on the older reports means Secure
+Workload can produce that row&#39;s artifact. It does not mean the control
+is met.</p>
+<p><strong>Partial Coverage</strong> means file that export next to
+another control.</p>
+<p><strong>Evidence Required</strong> means Secure Workload has no
+record. The customer files the contract, the analysis, or the HR or
+physical-security evidence.</p>
+<p><strong>Direct, Supporting, and Out of scope</strong> on the newer
+reports are the same idea in different words. Direct is still evidence,
+not a pass.</p>
 <h1 id="executive-summary"><strong>Executive Summary</strong></h1>
 <p>SOC 2 Type II audits evaluate whether security controls operated
 effectively over a defined audit period (typically 6–12 months). Cisco
@@ -365,99 +383,93 @@ micro-segmentation, vulnerability detection, and forensic telemetry.</p>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Security (CC6)</strong></td>
-<td style="text-align: center;">CC6.1</td>
-<td style="text-align: center;">Logical Access Controls</td>
-<td style="text-align: center;">Restrict logical access to systems</td>
-<td style="text-align: center;">Workload-level allowlist policies;
-default-deny inbound; process-level access logging</td>
+<td>CC6.1</td>
+<td>Logical Access Controls</td>
+<td>Restrict logical access to systems</td>
+<td>Workload-level allowlist policies; default-deny inbound;
+process-level access logging</td>
 <td style="text-align: center;"><strong>Full Coverage</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Security (CC6)</strong></td>
-<td style="text-align: center;">CC6.6</td>
-<td style="text-align: center;">Network &amp; Infrastructure</td>
-<td style="text-align: center;">Network controls restrict unauthorized
-access</td>
-<td style="text-align: center;">ADM maps all communication paths;
-micro-segmentation enforces least-privilege</td>
+<td>CC6.6</td>
+<td>Network &amp; Infrastructure</td>
+<td>Network controls restrict unauthorized access</td>
+<td>ADM maps all communication paths; micro-segmentation enforces
+least-privilege</td>
 <td style="text-align: center;"><strong>Full Coverage</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Security (CC6)</strong></td>
-<td style="text-align: center;">CC6.7</td>
-<td style="text-align: center;">Transmission Controls</td>
-<td style="text-align: center;">Protect confidential data in
-transit</td>
-<td style="text-align: center;">Detect/block HTTP, FTP, plain LDAP;
-enforce HTTPS/SFTP/LDAPS across all scopes</td>
+<td>CC6.7</td>
+<td>Transmission Controls</td>
+<td>Protect confidential data in transit</td>
+<td>Detect/block HTTP, FTP, plain LDAP; enforce HTTPS/SFTP/LDAPS across
+all scopes</td>
 <td style="text-align: center;"><strong>Full Coverage</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Security (CC7)</strong></td>
-<td style="text-align: center;">CC7.1</td>
-<td style="text-align: center;">Vulnerability Detection</td>
-<td style="text-align: center;">Identify and address
-vulnerabilities</td>
-<td style="text-align: center;">Continuous CVE scanning with CVSS
-scoring on all in-scope workloads</td>
+<td>CC7.1</td>
+<td>Vulnerability Detection</td>
+<td>Identify and address vulnerabilities</td>
+<td>Continuous CVE scanning with CVSS scoring on all in-scope
+workloads</td>
 <td style="text-align: center;"><strong>Full Coverage</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Security (CC7)</strong></td>
-<td style="text-align: center;">CC7.2</td>
-<td style="text-align: center;">System Monitoring</td>
-<td style="text-align: center;">Monitor system components for
-anomalies</td>
-<td style="text-align: center;">Real-time flow + process telemetry;
-anomaly detection; sensor health monitoring</td>
+<td>CC7.2</td>
+<td>System Monitoring</td>
+<td>Monitor system components for anomalies</td>
+<td>Real-time flow + process telemetry; anomaly detection; sensor health
+monitoring</td>
 <td style="text-align: center;"><strong>Full Coverage</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Security (CC7)</strong></td>
-<td style="text-align: center;">CC7.3</td>
-<td style="text-align: center;">Security Event Evaluation</td>
-<td style="text-align: center;">Evaluate and respond to security
-events</td>
-<td style="text-align: center;">Forensic telemetry enables full incident
-reconstruction; alert export to SIEM</td>
+<td>CC7.3</td>
+<td>Security Event Evaluation</td>
+<td>Evaluate and respond to security events</td>
+<td>Forensic telemetry enables full incident reconstruction; alert
+export to SIEM</td>
 <td style="text-align: center;"><strong>Full Coverage</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Security (CC8)</strong></td>
-<td style="text-align: center;">CC8.1</td>
-<td style="text-align: center;">Change Management</td>
-<td style="text-align: center;">Control changes to infrastructure and
-systems</td>
-<td style="text-align: center;">Policy workspace versioning; ADM
-baseline comparison detects drift</td>
+<td>CC8.1</td>
+<td>Change Management</td>
+<td>Control changes to infrastructure and systems</td>
+<td>Policy workspace versioning; ADM baseline comparison detects
+drift</td>
 <td style="text-align: center;"><strong>Full Coverage</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Security (CC9)</strong></td>
-<td style="text-align: center;">CC9.1</td>
-<td style="text-align: center;">Risk Mitigation</td>
-<td style="text-align: center;">Identify and mitigate risks</td>
-<td style="text-align: center;">Vulnerability data + ADM attack surface
-feeds risk register; compensating controls</td>
+<td>CC9.1</td>
+<td>Risk Mitigation</td>
+<td>Identify and mitigate risks</td>
+<td>Vulnerability data + ADM attack surface feeds risk register;
+compensating controls</td>
 <td style="text-align: center;"><strong>Full Coverage</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Availability (A1)</strong></td>
-<td style="text-align: center;">A1.1</td>
-<td style="text-align: center;">Availability Monitoring</td>
-<td style="text-align: center;">Monitor system availability</td>
-<td style="text-align: center;">Sensor health monitoring; workload
-telemetry continuity; offline agent alerts</td>
+<td>A1.1</td>
+<td>Availability Monitoring</td>
+<td>Monitor system availability</td>
+<td>Sensor health monitoring; workload telemetry continuity; offline
+agent alerts</td>
 <td style="text-align: center;"><strong>Full Coverage</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Confidentiality
 (C1)</strong></td>
-<td style="text-align: center;">C1.1</td>
-<td style="text-align: center;">Confidential Info Protection</td>
-<td style="text-align: center;">Protect confidential information</td>
-<td style="text-align: center;">Confidential data scope isolation;
-encryption enforcement; access audit logging</td>
+<td>C1.1</td>
+<td>Confidential Info Protection</td>
+<td>Protect confidential information</td>
+<td>Confidential data scope isolation; encryption enforcement; access
+audit logging</td>
 <td style="text-align: center;"><strong>Full Coverage</strong></td>
 </tr>
 </tbody>
@@ -505,56 +517,56 @@ requirements:</p>
 <tr>
 <td style="text-align: center;"><strong>Access control policy
 export</strong></td>
-<td style="text-align: center;">Defend → Policy Workspaces</td>
-<td style="text-align: center;">CC6.1</td>
+<td>Defend → Policy Workspaces</td>
+<td>CC6.1</td>
 <td style="text-align: center;"><strong>Per audit request</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Policy violation
 log</strong></td>
-<td style="text-align: center;">Alerts → Triggered Events</td>
-<td style="text-align: center;">CC6.1, CC6.6</td>
+<td>Alerts → Triggered Events</td>
+<td>CC6.1, CC6.6</td>
 <td style="text-align: center;"><strong>Monthly export</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Vulnerability scan
 report</strong></td>
-<td style="text-align: center;">Investigate → Vulnerability</td>
-<td style="text-align: center;">CC7.1, CC9.1</td>
+<td>Investigate → Vulnerability</td>
+<td>CC7.1, CC9.1</td>
 <td style="text-align: center;"><strong>Weekly</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Network flow audit
 log</strong></td>
-<td style="text-align: center;">Investigate → Flow Search</td>
-<td style="text-align: center;">CC6.7, CC7.2</td>
+<td>Investigate → Flow Search</td>
+<td>CC6.7, CC7.2</td>
 <td style="text-align: center;"><strong>Continuous</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Anomaly alert log</strong></td>
-<td style="text-align: center;">Alerts → Dashboard</td>
-<td style="text-align: center;">CC7.2, CC7.3</td>
+<td>Alerts → Dashboard</td>
+<td>CC7.2, CC7.3</td>
 <td style="text-align: center;"><strong>Monthly</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>ADM application
 map</strong></td>
-<td style="text-align: center;">Investigate → ADM</td>
-<td style="text-align: center;">CC6.6, CC8.1</td>
+<td>Investigate → ADM</td>
+<td>CC6.6, CC8.1</td>
 <td style="text-align: center;"><strong>Quarterly</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Sensor health
 report</strong></td>
-<td style="text-align: center;">Manage → Agents</td>
-<td style="text-align: center;">CC7.2, A1.1</td>
+<td>Manage → Agents</td>
+<td>CC7.2, A1.1</td>
 <td style="text-align: center;"><strong>Monthly</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Policy change audit
 trail</strong></td>
-<td style="text-align: center;">Policy workspace history</td>
-<td style="text-align: center;">CC8.1</td>
+<td>Policy workspace history</td>
+<td>CC8.1</td>
 <td style="text-align: center;"><strong>Per change</strong></td>
 </tr>
 </tbody>
@@ -565,8 +577,6 @@ Recommendations</strong></h1>
 <li><p>Enable full flow telemetry retention from Day 1 — SOC 2 Type II
 requires evidence across the entire audit period (6–12 months
 minimum)</p></li>
-</ul>
-<ul>
 <li><p>Configure alert export to SIEM for centralized evidence
 collection and automated review</p></li>
 <li><p>Run ADM before enforcement — document the approved baseline
