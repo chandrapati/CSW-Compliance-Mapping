@@ -166,20 +166,28 @@ America. The standards apply to Registered Entities and to the BES
 Cyber Systems they own or operate. The current standards in scope for
 this runbook are:
 
-| Standard | Topic | CSW relevance |
-|---|---|---|
-| CIP-002 | BES Cyber System Categorization | Inventory + scope labelling supporting categorisation evidence |
-| CIP-003 | Security Management Controls | Quarterly evidence pack to CIP Senior Manager |
-| CIP-004 | Personnel & Training | Out of scope — HR/training process |
-| CIP-005 | Electronic Security Perimeters & IRA | **Direct** — segmentation, EAP enforcement, IRA termination evidence |
-| CIP-006 | Physical Security | Out of scope — physical/PACS process |
-| CIP-007 | System Security Management | **Direct** — ports/services, malicious code, security event monitoring |
-| CIP-008 | Incident Reporting & Response | Forensic flow + process telemetry for incident reconstruction |
-| CIP-009 | Recovery Plans | Policy/baseline export for DR; out-of-scope for active recovery |
-| CIP-010 | Configuration Change Management & VA | **Direct** — baseline, drift, vulnerability assessment |
-| CIP-011 | Information Protection (BCSI) | Egress monitoring on BCSI-hosting systems |
-| CIP-013 | Supply Chain Risk Management | Vendor-system egress visibility on the IT side |
-| CIP-014 | Physical Security (transmission) | Out of scope — physical/CCTV |
+| Standard | Topic | Coverage | What to file |
+|---|---|---|---|
+| CIP-002 | BES Cyber System Categorization | Partial Coverage | Labelled inventory next to the Attachment 1 decision. Secure Workload does not rate High, Medium, or Low. |
+| CIP-003 | Security Management Controls | Partial Coverage | Quarterly IT-side pack for the CIP Senior Manager. Policies and the Senior Manager designation stay with the entity. |
+| CIP-004 | Personnel & Training | Evidence Required | Background checks, training, and access revocation. No Secure Workload artifact. |
+| CIP-005 | Electronic Security Perimeters & IRA | Partial Coverage | Deny-by-default up to the EAP, plus per-session IRA flows. The EAP firewall, session encryption, and MFA stay outside Secure Workload. |
+| CIP-006 | Physical Security | Evidence Required | Physical security perimeter and visitor logs. No Secure Workload artifact. |
+| CIP-007 R1 | Ports and Services | Full Coverage | Listening-port inventory with process and last-flow time, dated at least quarterly, tied to the baseline. |
+| CIP-007 R2 | Patch Management | Partial Coverage | CVE and package list. The evaluation, the patch source, and the install record stay with the patch programme. |
+| CIP-007 R3–R4 | Malicious code and security events | Partial Coverage | Behavioural-rule record and SIEM telemetry. Endpoint anti-malware and the alert-review log stay with those owners. |
+| CIP-007 R5 | System access control | Partial Coverage | Policy limiting which workloads can reach authentication services. Accounts, passwords, and MFA stay with identity. |
+| CIP-008 | Incident Reporting & Response | Partial Coverage | Six-artefact reconstruction bundle. The response plan, the test, and the E-ISAC notice stay with the entity. |
+| CIP-009 | Recovery Plans | Partial Coverage | Policy and baseline export as a known-good IT-side state. Backup execution and the recovery test stay with DR. |
+| CIP-010 R1 | Configuration baseline and change | Full Coverage | Daily software and listening-port baseline, diff, and disposition against the change ticket. |
+| CIP-010 R3 | Vulnerability assessment | Partial Coverage | Per-workload CVE inventory. The active assessment method, cadence, and mitigation record stay with the entity. |
+| CIP-011 | Information Protection (BCSI) | Partial Coverage | Egress report for BCSI-host workloads. Classification, storage, and disposal stay with the information-protection programme. |
+| CIP-012 | Communications between Control Centers | Partial Coverage | Observed paths and an allowlist for instrumented control-center workloads that exchange real-time data. The CIP-012 plan and link protection stay with the entity. Secure Workload does not encrypt that link. |
+| CIP-013 | Supply Chain Risk Management | Partial Coverage | Vendor-egress flows reconciled to the vendor register. The supply-chain plan and contract clauses stay with procurement. |
+| CIP-014 | Physical Security (transmission) | Evidence Required | Transmission-station physical security. No Secure Workload artifact. |
+| CIP-015 | Internal network security monitoring | Partial Coverage | East-west flow and process telemetry on instrumented IT-side hosts. Confirm the effective date for the entity's impact rating. OT segments still need the OT monitoring stack. |
+
+**How to read the coverage column.** Full Coverage means the export from instrumented IT-side workloads is the artifact for that requirement. Partial Coverage means Secure Workload supplies one slice and the entity files it beside another control. Evidence Required means Secure Workload produces no record for that requirement. None of these ratings is a finding that the Registered Entity is compliant.
 
 **Where CSW fits — the short version.** CSW is the segmentation and
 visibility layer for the **IT estate** that surrounds, supports, and
@@ -646,12 +654,15 @@ Step 4: For cloud-hosted BCSI (CIP-011-3 R1.2 scope), use CSW Cloud
 | CIP-007 R2 | Patch management | Vulnerability dashboard with CVE/CVSS/EPSS context (§8.2) |
 | CIP-007 R3 | Malicious code prevention | Behavioural rules + simulation→enforce policy (§6) |
 | CIP-007 R4 | Security event monitoring | Process + flow telemetry to SIEM with retention (§6) |
+| CIP-007 R5 | System access control | Policy limiting workload paths to authentication services. Accounts and MFA stay with identity |
 | CIP-008 R1 | Incident response plan | Six-artefact reconstruction bundle (§7) |
 | CIP-008 R4 | Reportable incident notification | Containment evidence + dossier supports E-ISAC notification |
 | CIP-010 R1 | Configuration baseline | Daily software + ports baseline + diff (§8.1) |
 | CIP-010 R3 | Vulnerability assessment | Continuous CVE inventory + cadence-based export (§8.2) |
 | CIP-011 R1 | BCSI protection | Egress and access monitoring on BCSI-hosts (§10) |
+| CIP-012 R1 | Control-center communications | Observed flows and an allowlist between instrumented control-center workloads. Link protection and the CIP-012 plan stay with the entity |
 | CIP-013 R1 | Supply chain risk | Vendor-egress allowlist + register reconciliation (§9) |
+| CIP-015 | Internal network security monitoring | East-west flow and process telemetry on instrumented IT-side hosts. Confirm applicability and effective date before citing it in an audit |
 
 ---
 

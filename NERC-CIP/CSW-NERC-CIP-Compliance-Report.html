@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.11" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Cisco Secure Workload — Compliance Mapping Series" />
   <title>NERC CIP (Bulk Electric System) — Compliance Report</title>
@@ -40,7 +40,6 @@ background-color: white;
 body {
 background-color: transparent;
 color: black;
-font-size: 12pt;
 }
 p, h2, h3 {
 orphans: 3;
@@ -155,8 +154,12 @@ padding-left: 0;
 text-decoration: none;
 }
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 
 ul.task-list[class]{list-style: none;}
@@ -166,7 +169,6 @@ width: 0.8em;
 margin: 0 0.8em 0.2em -1.6em;
 vertical-align: middle;
 }
-.display.math{display: block; text-align: center; margin: 0.5rem auto;}
 </style>
   <style>
 :root {
@@ -293,7 +295,7 @@ pre, code, blockquote { background: #f5f5f5; }
 </style>
 </head>
 <body>
-<div class="doc-meta">Source: <a href="CSW-NERC-CIP-Compliance-Report.docx">CSW-NERC-CIP-Compliance-Report.docx</a> · <a href="../index.html">repository index</a> · Build: 2026-08-11T04:20:41Z UTC · Repository commit: 463f586</div>
+<div class="doc-meta">Source: <a href="CSW-NERC-CIP-Compliance-Report.docx">CSW-NERC-CIP-Compliance-Report.docx</a> · <a href="../index.html">repository index</a> · Build: 2026-10-05T17:44:08Z UTC · Repository commit: caf1eb5</div>
 <header id="title-block-header">
 <h1 class="title">NERC CIP (Bulk Electric System) — Compliance
 Report</h1>
@@ -314,6 +316,7 @@ Workload — NERC CIP Compliance Mapping</a>
 Summary</a></li>
 <li><a href="#compliance-posture-summary" id="toc-compliance-posture-summary">2. Compliance Posture
 Summary</a></li>
+<li><a href="#control-coverage-summary" id="toc-control-coverage-summary">Control Coverage Summary</a></li>
 <li><a href="#mapping-table-nerc-cip-requirement-csw-capability-evidence-artefact" id="toc-mapping-table-nerc-cip-requirement-csw-capability-evidence-artefact">3.
 Mapping Table — NERC CIP Requirement → CSW Capability → Evidence
 Artefact</a></li>
@@ -538,14 +541,221 @@ allowlisting</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Posture takeaway.</strong> CSW provides direct coverage on
-six of the fourteen standards (CIP-005, CIP-007, CIP-008, CIP-010,
-CIP-013) on the IT side, supporting evidence on three more, and is
-structurally out of scope on the remaining five (HR, physical,
-OT-device-layer controls). This is consistent with CSW’s positioning as
-a workload- protection platform: it does the IT-side jobs well and
-explicitly defers OT-device and physical/HR scope to the appropriate
-owners.</p>
+<p><strong>Posture takeaway.</strong> The table above is the
+programme-role view: Direct, Supporting, or out of scope. It leaves out
+CIP-007 R5 (system access control), CIP-012 (communications between
+Control Centers), and CIP-015 (internal network security monitoring).
+The Control Coverage Summary below is the evidence view for every
+in-scope requirement, including those three. Full Coverage is CIP-007 R1
+and CIP-010 R1 on instrumented IT-side workloads. Partial Coverage is
+where Secure Workload supplies one slice and another control completes
+the requirement. Evidence Required, with no Secure Workload artifact, is
+CIP-004, CIP-006, and CIP-014.</p>
+<h2 id="control-coverage-summary">Control Coverage Summary</h2>
+<p>Use this table when an auditor asks what Secure Workload can put in
+the evidence file for each requirement. The ratings apply to IT-side
+workloads in the agreed scope that have a reporting sensor. They are
+evidence contributions. They are not a finding that the Registered
+Entity is compliant, and they do not make Secure Workload an Electronic
+Access Point or an OT control.</p>
+<strong>Full Coverage.</strong> On instrumented IT-side workloads,
+export the artifact named in the row and file it against that
+requirement.
+<strong>Partial Coverage.</strong> Secure Workload covers the slice in
+“What Secure Workload produces.” File that export next to the record in
+“What the entity still files.”
+<strong>Evidence Required.</strong> Secure Workload does not produce the
+record. The entity files the document from the programme that owns it.
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><strong>Standard</strong></th>
+<th><strong>What Secure Workload produces</strong></th>
+<th><strong>What the entity still files</strong></th>
+<th><strong>Coverage</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CIP-002</td>
+<td>Labelled inventory (impact, BCS id, ESP membership) that mirrors the
+categorisation register.</td>
+<td>The High, Medium, or Low decision against Attachment 1.</td>
+<td>Partial Coverage</td>
+</tr>
+<tr>
+<td>CIP-003</td>
+<td>Quarterly IT-side pack for the CIP Senior Manager: policy, ports,
+baseline, and vendor egress.</td>
+<td>The policies, the Senior Manager designation, and the
+delegations.</td>
+<td>Partial Coverage</td>
+</tr>
+<tr>
+<td>CIP-004</td>
+<td>No personnel record.</td>
+<td>Background checks, training, and access revocation.</td>
+<td>Evidence Required</td>
+</tr>
+<tr>
+<td>CIP-005 R1</td>
+<td>Deny-by-default from corporate IT up to the EAP address set, and the
+exception list.</td>
+<td>The EAP firewall configuration. Secure Workload is not the
+Electronic Access Point.</td>
+<td>Partial Coverage</td>
+</tr>
+<tr>
+<td>CIP-005 R2</td>
+<td>Per-session flows from the Intermediate System for the audit
+window.</td>
+<td>Session encryption and multi-factor authentication on the
+Intermediate System.</td>
+<td>Partial Coverage</td>
+</tr>
+<tr>
+<td>CIP-006</td>
+<td>No physical-security record.</td>
+<td>The physical security perimeter, badge access, and visitor
+logs.</td>
+<td>Evidence Required</td>
+</tr>
+<tr>
+<td>CIP-007 R1</td>
+<td>Listening-port inventory with the bound process and the last-flow
+time, dated at least quarterly.</td>
+<td>Tie each listener to the documented baseline.</td>
+<td>Full Coverage</td>
+</tr>
+<tr>
+<td>CIP-007 R2</td>
+<td>CVE and package list for software installed on the workload.</td>
+<td>The evaluation window, the patch source, and the install record.
+Secure Workload does not install the patch.</td>
+<td>Partial Coverage</td>
+</tr>
+<tr>
+<td>CIP-007 R3</td>
+<td>Behavioural-rule catalogue and the simulation-to-enforce
+record.</td>
+<td>The endpoint anti-malware product and its logs.</td>
+<td>Partial Coverage</td>
+</tr>
+<tr>
+<td>CIP-007 R4</td>
+<td>Process and flow telemetry forwarded to the SIEM.</td>
+<td>The alert procedure, the review log, and the retention
+attestation.</td>
+<td>Partial Coverage</td>
+</tr>
+<tr>
+<td>CIP-007 R5</td>
+<td>Policy that limits which workloads can reach the authentication
+services. This requirement was not in the posture table above.</td>
+<td>Account inventory, passwords, and multi-factor authentication.</td>
+<td>Partial Coverage</td>
+</tr>
+<tr>
+<td>CIP-008</td>
+<td>Six-artefact reconstruction bundle for the incident window: flows,
+processes, policy verdicts, and hosts touched.</td>
+<td>The response plan, the plan test, and the E-ISAC notification.</td>
+<td>Partial Coverage</td>
+</tr>
+<tr>
+<td>CIP-009</td>
+<td>Policy workspace and configuration baseline as a known-good IT-side
+state.</td>
+<td>Backup execution and the recovery test.</td>
+<td>Partial Coverage</td>
+</tr>
+<tr>
+<td>CIP-010 R1</td>
+<td>Daily software and listening-port baseline, the diff, and a
+disposition against the change ticket.</td>
+<td>The change ticket itself. A change seen here and absent from a
+ticket is the unauthorised-change candidate.</td>
+<td>Full Coverage</td>
+</tr>
+<tr>
+<td>CIP-010 R3</td>
+<td>Per-workload CVE inventory.</td>
+<td>The entity&#39;s active assessment method, the cadence by impact rating,
+and the mitigation record.</td>
+<td>Partial Coverage</td>
+</tr>
+<tr>
+<td>CIP-011</td>
+<td>Egress and access-pattern report for hosts labelled as BCSI
+hosts.</td>
+<td>Classification, storage, transit, and disposal of BES Cyber System
+Information.</td>
+<td>Partial Coverage</td>
+</tr>
+<tr>
+<td>CIP-012</td>
+<td>Observed paths, and an allowlist, for instrumented control-center
+workloads that exchange real-time assessment or monitoring data. This
+standard was not in the posture table above.</td>
+<td>Identification of that real-time data, the protection method on the
+control-center link, and the CIP-012 plan. Secure Workload does not
+encrypt that link.</td>
+<td>Partial Coverage</td>
+</tr>
+<tr>
+<td>CIP-013</td>
+<td>Vendor-egress flows reconciled to the vendor register, and the
+allowlist on electronic access systems.</td>
+<td>The supply-chain risk plan and the vendor contract clauses.</td>
+<td>Partial Coverage</td>
+</tr>
+<tr>
+<td>CIP-014</td>
+<td>No physical-security record.</td>
+<td>Transmission-station physical security.</td>
+<td>Evidence Required</td>
+</tr>
+<tr>
+<td>CIP-015</td>
+<td>East-west flow and process telemetry on instrumented IT-side hosts,
+as an input to internal network security monitoring. Confirm the
+effective date for the entity&#39;s impact rating before an audit cites this
+row.</td>
+<td>Monitoring on OT segments and on hosts with no sensor.</td>
+<td>Partial Coverage</td>
+</tr>
+<tr>
+<td>CIP-007 R5 (system access control)</td>
+<td>Policy restricting which workloads can reach authentication
+services</td>
+<td>Authentication-path policy export, filed with the identity-system
+account and MFA evidence</td>
+<td></td>
+</tr>
+<tr>
+<td>CIP-012 R1 (control-center communications)</td>
+<td>Observed flows and an allowlist between instrumented control-center
+workloads that carry real-time data</td>
+<td>Flow export and allowlist, filed with the CIP-012 plan and the
+link-protection record</td>
+<td></td>
+</tr>
+<tr>
+<td>CIP-015 (internal network security monitoring)</td>
+<td>East-west flow and process telemetry on instrumented IT-side
+hosts</td>
+<td>Telemetry export for the monitored segment, after the entity
+confirms CIP-015 applies</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h2 id="mapping-table-nerc-cip-requirement-csw-capability-evidence-artefact">3.
 Mapping Table — NERC CIP Requirement → CSW Capability → Evidence
 Artefact</h2>
@@ -684,6 +894,19 @@ ticket</td>
 <td>Vendor-egress flow record for any incident window</td>
 <td>Per-incident vendor flow extract</td>
 </tr>
+<tr>
+<td>CIP-012 link protection</td>
+<td>Control-center communications owner</td>
+<td>Identification of real-time data and protection of the
+control-center link. Secure Workload shows the path; it does not encrypt
+it.</td>
+</tr>
+<tr>
+<td>CIP-015 on OT segments</td>
+<td>OT/ICS team</td>
+<td>Internal network security monitoring on segments with no Secure
+Workload sensor, including Level 0–2 networks.</td>
+</tr>
 </tbody>
 </table>
 <h2 id="out-of-scope-and-complementary-controls">4. Out-of-Scope and
@@ -770,8 +993,6 @@ programme:</p>
 ratings and the EACMS / PACS-supporting / BCSI-host tier definition
 before starting CSW scope design. CSW labels mirror this taxonomy; bad
 inputs produce bad evidence.</li>
-</ol>
-<ol type="1">
 <li><strong>Pilot on the EACMS tier first.</strong> Jump hosts,
 vendor-access hosts, AD, PKI, and patch repositories give the
 highest-value wins (CIP-005 R1 IT-side, CIP-005 R2 IRA evidence, CIP-007

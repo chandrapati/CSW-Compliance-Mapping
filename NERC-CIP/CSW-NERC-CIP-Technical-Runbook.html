@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.11" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>NERC CIP (Bulk Electric System) — Technical Runbook</title>
   <style>
@@ -39,7 +39,6 @@ background-color: white;
 body {
 background-color: transparent;
 color: black;
-font-size: 12pt;
 }
 p, h2, h3 {
 orphans: 3;
@@ -154,8 +153,12 @@ padding-left: 0;
 text-decoration: none;
 }
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 
 ul.task-list[class]{list-style: none;}
@@ -165,7 +168,6 @@ width: 0.8em;
 margin: 0 0.8em 0.2em -1.6em;
 vertical-align: middle;
 }
-.display.math{display: block; text-align: center; margin: 0.5rem auto;}
 </style>
   <style>
 :root {
@@ -292,7 +294,7 @@ pre, code, blockquote { background: #f5f5f5; }
 </style>
 </head>
 <body>
-<div class="doc-meta">Source: <a href="CSW-NERC-CIP-Technical-Runbook.html">CSW-NERC-CIP-Technical-Runbook.md</a> · <a href="../index.html">repository index</a> · Build: 2026-08-11T04:20:42Z UTC · Repository commit: 463f586</div>
+<div class="doc-meta">Source: <a href="CSW-NERC-CIP-Technical-Runbook.html">CSW-NERC-CIP-Technical-Runbook.md</a> · <a href="../index.html">repository index</a> · Build: 2026-10-05T17:44:09Z UTC · Repository commit: caf1eb5</div>
 <header id="title-block-header">
 <h1 class="title">NERC CIP (Bulk Electric System) — Technical
 Runbook</h1>
@@ -628,83 +630,157 @@ Systems they own or operate. The current standards in scope for this
 runbook are:</p>
 <table>
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
 </colgroup>
 <thead>
 <tr>
 <th>Standard</th>
 <th>Topic</th>
-<th>CSW relevance</th>
+<th>Coverage</th>
+<th>What to file</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>CIP-002</td>
 <td>BES Cyber System Categorization</td>
-<td>Inventory + scope labelling supporting categorisation evidence</td>
+<td>Partial Coverage</td>
+<td>Labelled inventory next to the Attachment 1 decision. Secure
+Workload does not rate High, Medium, or Low.</td>
 </tr>
 <tr>
 <td>CIP-003</td>
 <td>Security Management Controls</td>
-<td>Quarterly evidence pack to CIP Senior Manager</td>
+<td>Partial Coverage</td>
+<td>Quarterly IT-side pack for the CIP Senior Manager. Policies and the
+Senior Manager designation stay with the entity.</td>
 </tr>
 <tr>
 <td>CIP-004</td>
 <td>Personnel &amp; Training</td>
-<td>Out of scope — HR/training process</td>
+<td>Evidence Required</td>
+<td>Background checks, training, and access revocation. No Secure
+Workload artifact.</td>
 </tr>
 <tr>
 <td>CIP-005</td>
 <td>Electronic Security Perimeters &amp; IRA</td>
-<td><strong>Direct</strong> — segmentation, EAP enforcement, IRA
-termination evidence</td>
+<td>Partial Coverage</td>
+<td>Deny-by-default up to the EAP, plus per-session IRA flows. The EAP
+firewall, session encryption, and MFA stay outside Secure Workload.</td>
 </tr>
 <tr>
 <td>CIP-006</td>
 <td>Physical Security</td>
-<td>Out of scope — physical/PACS process</td>
+<td>Evidence Required</td>
+<td>Physical security perimeter and visitor logs. No Secure Workload
+artifact.</td>
 </tr>
 <tr>
-<td>CIP-007</td>
-<td>System Security Management</td>
-<td><strong>Direct</strong> — ports/services, malicious code, security
-event monitoring</td>
+<td>CIP-007 R1</td>
+<td>Ports and Services</td>
+<td>Full Coverage</td>
+<td>Listening-port inventory with process and last-flow time, dated at
+least quarterly, tied to the baseline.</td>
+</tr>
+<tr>
+<td>CIP-007 R2</td>
+<td>Patch Management</td>
+<td>Partial Coverage</td>
+<td>CVE and package list. The evaluation, the patch source, and the
+install record stay with the patch programme.</td>
+</tr>
+<tr>
+<td>CIP-007 R3–R4</td>
+<td>Malicious code and security events</td>
+<td>Partial Coverage</td>
+<td>Behavioural-rule record and SIEM telemetry. Endpoint anti-malware
+and the alert-review log stay with those owners.</td>
+</tr>
+<tr>
+<td>CIP-007 R5</td>
+<td>System access control</td>
+<td>Partial Coverage</td>
+<td>Policy limiting which workloads can reach authentication services.
+Accounts, passwords, and MFA stay with identity.</td>
 </tr>
 <tr>
 <td>CIP-008</td>
 <td>Incident Reporting &amp; Response</td>
-<td>Forensic flow + process telemetry for incident reconstruction</td>
+<td>Partial Coverage</td>
+<td>Six-artefact reconstruction bundle. The response plan, the test, and
+the E-ISAC notice stay with the entity.</td>
 </tr>
 <tr>
 <td>CIP-009</td>
 <td>Recovery Plans</td>
-<td>Policy/baseline export for DR; out-of-scope for active recovery</td>
+<td>Partial Coverage</td>
+<td>Policy and baseline export as a known-good IT-side state. Backup
+execution and the recovery test stay with DR.</td>
 </tr>
 <tr>
-<td>CIP-010</td>
-<td>Configuration Change Management &amp; VA</td>
-<td><strong>Direct</strong> — baseline, drift, vulnerability
-assessment</td>
+<td>CIP-010 R1</td>
+<td>Configuration baseline and change</td>
+<td>Full Coverage</td>
+<td>Daily software and listening-port baseline, diff, and disposition
+against the change ticket.</td>
+</tr>
+<tr>
+<td>CIP-010 R3</td>
+<td>Vulnerability assessment</td>
+<td>Partial Coverage</td>
+<td>Per-workload CVE inventory. The active assessment method, cadence,
+and mitigation record stay with the entity.</td>
 </tr>
 <tr>
 <td>CIP-011</td>
 <td>Information Protection (BCSI)</td>
-<td>Egress monitoring on BCSI-hosting systems</td>
+<td>Partial Coverage</td>
+<td>Egress report for BCSI-host workloads. Classification, storage, and
+disposal stay with the information-protection programme.</td>
+</tr>
+<tr>
+<td>CIP-012</td>
+<td>Communications between Control Centers</td>
+<td>Partial Coverage</td>
+<td>Observed paths and an allowlist for instrumented control-center
+workloads that exchange real-time data. The CIP-012 plan and link
+protection stay with the entity. Secure Workload does not encrypt that
+link.</td>
 </tr>
 <tr>
 <td>CIP-013</td>
 <td>Supply Chain Risk Management</td>
-<td>Vendor-system egress visibility on the IT side</td>
+<td>Partial Coverage</td>
+<td>Vendor-egress flows reconciled to the vendor register. The
+supply-chain plan and contract clauses stay with procurement.</td>
 </tr>
 <tr>
 <td>CIP-014</td>
 <td>Physical Security (transmission)</td>
-<td>Out of scope — physical/CCTV</td>
+<td>Evidence Required</td>
+<td>Transmission-station physical security. No Secure Workload
+artifact.</td>
+</tr>
+<tr>
+<td>CIP-015</td>
+<td>Internal network security monitoring</td>
+<td>Partial Coverage</td>
+<td>East-west flow and process telemetry on instrumented IT-side hosts.
+Confirm the effective date for the entity’s impact rating. OT segments
+still need the OT monitoring stack.</td>
 </tr>
 </tbody>
 </table>
+<p><strong>How to read the coverage column.</strong> Full Coverage means
+the export from instrumented IT-side workloads is the artifact for that
+requirement. Partial Coverage means Secure Workload supplies one slice
+and the entity files it beside another control. Evidence Required means
+Secure Workload produces no record for that requirement. None of these
+ratings is a finding that the Registered Entity is compliant.</p>
 <p><strong>Where CSW fits — the short version.</strong> CSW is the
 segmentation and visibility layer for the <strong>IT estate</strong>
 that surrounds, supports, and crosses the boundary into ESPs. The Cyber
@@ -1160,6 +1236,12 @@ Table — NERC CIP Standard → CSW Capability</h2>
 <td>Process + flow telemetry to SIEM with retention (§6)</td>
 </tr>
 <tr>
+<td>CIP-007 R5</td>
+<td>System access control</td>
+<td>Policy limiting workload paths to authentication services. Accounts
+and MFA stay with identity</td>
+</tr>
+<tr>
 <td>CIP-008 R1</td>
 <td>Incident response plan</td>
 <td>Six-artefact reconstruction bundle (§7)</td>
@@ -1185,9 +1267,23 @@ Table — NERC CIP Standard → CSW Capability</h2>
 <td>Egress and access monitoring on BCSI-hosts (§10)</td>
 </tr>
 <tr>
+<td>CIP-012 R1</td>
+<td>Control-center communications</td>
+<td>Observed flows and an allowlist between instrumented control-center
+workloads. Link protection and the CIP-012 plan stay with the
+entity</td>
+</tr>
+<tr>
 <td>CIP-013 R1</td>
 <td>Supply chain risk</td>
 <td>Vendor-egress allowlist + register reconciliation (§9)</td>
+</tr>
+<tr>
+<td>CIP-015</td>
+<td>Internal network security monitoring</td>
+<td>East-west flow and process telemetry on instrumented IT-side hosts.
+Confirm applicability and effective date before citing it in an
+audit</td>
 </tr>
 </tbody>
 </table>
