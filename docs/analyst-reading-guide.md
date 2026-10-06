@@ -1,10 +1,10 @@
-# Reading the compliance library with Gartner
+# Analyst reading guide — walking the compliance library
 
-Use this when walking Gartner through
-[chandrapati/CSW-Compliance-Mapping](https://github.com/chandrapati/CSW-Compliance-Mapping).
+Use this when walking an industry analyst or reviewer through
+[chandrapati/CSW-Compliance-Reference-Designs](https://github.com/chandrapati/CSW-Compliance-Reference-Designs).
 It explains each report and runbook at the point a reader can misread the coverage label.
 
-This library is a field mapping maintained for customer conversations. It is an evidence map, not a Cisco corporate attestation, not a certification, and not a Gartner submission. Several older PDFs still say “Prepared by: Cisco Systems, Inc.” and “Cisco Confidential.” Say that those covers are templates. The current position is in the repository disclaimer: SME review is still required, and the mapping does not establish compliance.
+This library is a field mapping maintained for customer conversations. It is an evidence map, not a Cisco corporate attestation, not a certification, and not an analyst submission. Several older PDFs still say “Prepared by: Cisco Systems, Inc.” and “Cisco Confidential.” Say that those covers are templates. The current position is in the repository disclaimer: SME review is still required, and the mapping does not establish compliance.
 
 ## What to say first
 

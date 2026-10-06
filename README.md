@@ -35,7 +35,9 @@ and HTML versions of both for browser/mobile reading.
 - **Where to start.** New to CSW → [compliance evidence
   playbook](./docs/compliance-evidence-playbook.md). Hunting a specific
   control → [`INDEX.md`](./INDEX.md). Choosing a framework → the
-  [asset library](#asset-library) table below.
+  [asset library](#asset-library) table below. Want one framework in its
+  own shareable repo → the [per-framework reference
+  designs](#per-framework-reference-designs) index.
 - **Read this before relying on it.** These mappings are **informational
   reference only** — not legal, audit, or completeness advice. They
   require **SME review** against current official sources and your
@@ -82,6 +84,92 @@ questions worth walking through against your own environment — see
 *The same Secure Workload capabilities — micro-segmentation, process & flow telemetry, software inventory & CVE awareness, forensic flow evidence, and authored workload policy — are mapped, control by control, to 34 compliance and zero-trust frameworks. Each framework folder pairs an engineering runbook with a customer-facing report so the same live evidence answers both the auditor and the incident responder.*
 
 ---
+
+## Per-framework reference designs
+
+Prefer a focused, shareable repo for a single framework? Every one of the
+**34 frameworks** below now has its own standalone **Reference Design**
+repo, built to the same template so an evaluator can pick up any one of
+them and know exactly what they are looking at:
+
+- a hero overview and a **coverage snapshot** — Direct / Supporting / Evidence Required;
+- a **reference architecture** diagram and an **evidence-flow** diagram (rendered natively on GitHub);
+- a **step-by-step CSW build** — scopes → ADM → Monitor → Simulate → Enforce;
+- a **requirement-by-requirement evidence table** naming the exact CSW export per control;
+- a **POV / validation plan** and an **evidence checklist**; and
+- the customer-facing **compliance report** (PDF / DOCX / HTML) with official framework citations.
+
+> This repository stays the **full library + umbrella index**; the
+> per-framework repos are the lightweight front-ends you can hand to one
+> customer, assessor, or evaluator. The coverage language is deliberately
+> conservative — **Direct** evidence is still evidence, not a pass, and
+> every design calls out where another control owner still has to file.
+
+### Payments &amp; financial services
+| Framework | What you build &amp; evidence |
+|---|---|
+| [PCI DSS v4.0](https://github.com/chandrapati/CSW-PCI-DSS-Reference-Design) | CDE segmentation simulate→enforce, plus Req 1/11 evidence inputs to validate with your QSA |
+| [SOC 2 Type II](https://github.com/chandrapati/CSW-SOC2-Reference-Design) | Continuous CC6/CC7 operating-effectiveness evidence instead of point-in-time samples |
+| [DORA (EU 2022/2554)](https://github.com/chandrapati/CSW-DORA-Reference-Design) | Art. 8/9 segmentation &amp; inventory and Art. 19 ICT-incident dossiers for EU financial entities |
+| [NY DFS Part 500](https://github.com/chandrapati/CSW-NYDFS-Reference-Design) | Covered-system segmentation, NPI scope, and third-party egress evidence |
+| [MAS TRM](https://github.com/chandrapati/CSW-MAS-TRM-Reference-Design) | Singapore critical-system segmentation, outsourcing egress, and incident support |
+| [APRA CPS 234](https://github.com/chandrapati/CSW-APRA-CPS234-Reference-Design) | Critical information-asset segmentation and control-testing evidence |
+| [SWIFT CSCF](https://github.com/chandrapati/CSW-SWIFT-CSCF-Reference-Design) | Secure-zone isolation, operator-session integrity, and mandatory-control mapping |
+
+### Healthcare
+| Framework | What you build &amp; evidence |
+|---|---|
+| [HIPAA Security Rule](https://github.com/chandrapati/CSW-HIPAA-Reference-Design) | ePHI workload isolation and §164.312 technical-safeguard evidence |
+| [HIPAA 2025 NPRM](https://github.com/chandrapati/CSW-HIPAA-NPRM-Reference-Design) | *Proposed* mandatory segmentation, asset inventory, and breach-timeline design |
+| [HITRUST CSF v11](https://github.com/chandrapati/CSW-HITRUST-Reference-Design) | Harmonized HIPAA+ISO+NIST+PCI control evidence for e1 / i1 / r2 |
+
+### US federal &amp; defense
+| Framework | What you build &amp; evidence |
+|---|---|
+| [NIST SP 800-53 Rev 5](https://github.com/chandrapati/CSW-NIST-800-53-Reference-Design) | AC-4 flow enforcement, CA-7 continuous monitoring, CM baseline/change evidence |
+| [NIST SP 800-171 Rev 3](https://github.com/chandrapati/CSW-NIST-800-171-Reference-Design) | CUI enclave isolation and 03.13 flow control underpinning CMMC Level 2 |
+| [FedRAMP (Moderate)](https://github.com/chandrapati/CSW-FedRAMP-Reference-Design) | ConMon evidence and POA&amp;M inputs on the 800-53 Moderate baseline |
+| [CMMC 2.0](https://github.com/chandrapati/CSW-CMMC-Reference-Design) | Level-2 CUI-scope segmentation and AC/AU/CM/SC/SI evidence |
+| [FIPS 140](https://github.com/chandrapati/CSW-FIPS-Reference-Design) | Plaintext-protocol DENY enforcement and programme-level crypto-posture visibility |
+
+### Zero trust
+| Framework | What you build &amp; evidence |
+|---|---|
+| [CISA Zero Trust Maturity Model](https://github.com/chandrapati/CSW-CISA-ZTMM-Reference-Design) | Networks and Applications &amp; Workloads pillar Initial→Advanced maturity path |
+| [NIST SP 800-207](https://github.com/chandrapati/CSW-NIST-800-207-Reference-Design) | Workload-side evidence for ZTA tenets 2/3/5/6 and PEP placement |
+| [NIST SP 800-207A](https://github.com/chandrapati/CSW-NIST-800-207A-Reference-Design) | CSW as PDP/PEP/PIP mapping for cloud-native ZTA components |
+
+### Cloud assurance
+| Framework | What you build &amp; evidence |
+|---|---|
+| [ISO/IEC 27001:2022](https://github.com/chandrapati/CSW-ISO27001-Reference-Design) | A.8.20–A.8.22 segregation and A.8.16 monitoring evidence |
+| [CSA CCM v4](https://github.com/chandrapati/CSW-CSA-CCM-Reference-Design) | Cloud workload segmentation and IVS/DSP isolation for STAR |
+| [BSI C5](https://github.com/chandrapati/CSW-BSI-C5-Reference-Design) | Tenant / shared-service boundaries and incident evidence for cloud providers |
+
+### Industrial &amp; OT (IT-side)
+| Framework | What you build &amp; evidence |
+|---|---|
+| [IEC 62443 (IACS)](https://github.com/chandrapati/CSW-IEC62443-Reference-Design) | Zones &amp; conduits segmentation on the IT side of the IACS boundary |
+| [NIST SP 800-82](https://github.com/chandrapati/CSW-NIST-800-82-Reference-Design) | OT-adjacent IT segmentation — jump hosts, historians, vendor access |
+| [NERC CIP](https://github.com/chandrapati/CSW-NERC-CIP-Reference-Design) | IT-side ESP/EACMS hardening plus ports / baseline / VA evidence (BES) |
+| [TSA Pipeline](https://github.com/chandrapati/CSW-TSA-Pipeline-Reference-Design) | IT-side IT/OT segmentation and CIRP / CAP evidence packs |
+
+### Governance &amp; cross-framework
+| Framework | What you build &amp; evidence |
+|---|---|
+| [NIST CSF 2.0](https://github.com/chandrapati/CSW-CSF-Reference-Design) | Govern plus ID / PR / DE / RS Subcategory evidence pack |
+| [CIS Controls v8.1](https://github.com/chandrapati/CSW-CIS-Reference-Design) | Direct on Controls 1/2/4/7/8/13 with IG1→IG3 deltas |
+| [COBIT 2019](https://github.com/chandrapati/CSW-COBIT-Reference-Design) | DSS05 / APO13 / MEA conformance and change/config evidence |
+| [MITRE ATT&amp;CK (Enterprise)](https://github.com/chandrapati/CSW-MITRE-ATTACK-Reference-Design) | Tactic-by-tactic detection/prevention mapping and SOC integration |
+
+### Regional &amp; sector
+| Framework | What you build &amp; evidence |
+|---|---|
+| [GDPR (EU 2016/679)](https://github.com/chandrapati/CSW-GDPR-Reference-Design) | Art. 32 security-of-processing, Art. 30 data-flow, Art. 33/34 breach timeline |
+| [NIS2 (EU 2022/2555)](https://github.com/chandrapati/CSW-NIS2-Reference-Design) | Art. 21(2) risk-management and Art. 23 24h/72h/1-month incident dossier |
+| [Australian Essential Eight](https://github.com/chandrapati/CSW-Essential-Eight-Reference-Design) | ML1–ML3 maturity and patch prioritisation via CVE + EPSS |
+| [UK Cyber Essentials Plus](https://github.com/chandrapati/CSW-Cyber-Essentials-Reference-Design) | Workload firewall, secure configuration, and patch evidence |
+| [TISAX / VDA ISA](https://github.com/chandrapati/CSW-TISAX-Reference-Design) | Automotive prototype / engineering workload segmentation and supplier egress |
 
 ## Customer design aids
 
@@ -197,8 +285,9 @@ reach for the runbook vs. the report).
 
 ## Read next
 
-- **[Gartner reading guide](./docs/gartner-reading-guide.md)** —
-  how to walk each report and runbook, including what Full Coverage, Partial Coverage, Evidence Required, Direct, and Supporting mean in the room.
+- **[Analyst reading guide](./docs/analyst-reading-guide.md)** —
+  how to walk each report and runbook with an analyst or reviewer,
+  including what Direct, Supporting, and Evidence Required mean in the room.
 - **[Compliance evidence playbook](./docs/compliance-evidence-playbook.md)** —
   **start here if you are new to CSW** — universal 4-phase evidence programme,
   console map, quarterly export pack, and CSW effectiveness vs. manual audits.
@@ -227,7 +316,7 @@ reach for the runbook vs. the report).
   HIPAA and HITRUST runbooks in this repo.
 
 Once GitHub Pages is enabled, the same content is also browseable at
-`https://chandrapati.github.io/CSW-Compliance-Mapping/` (landing page
+`https://chandrapati.github.io/CSW-Compliance-Reference-Designs/` (landing page
 [`index.html`](./index.html)).
 
 ## Licensing
@@ -330,7 +419,7 @@ Learning paths, reference material, and day-2 tooling:
 | Resource | Description | Best for |
 |----------|-------------|---------|
 | [📘 User Education](https://github.com/chandrapati/CSW-User-Education) | Onboarding guides, concept explainers, and curated video library | New CSW users |
-| [📘 Compliance Mapping](https://github.com/chandrapati/CSW-Compliance-Mapping) | Map CSW controls to NIST, PCI-DSS, HIPAA, CIS | Compliance & audit |
+| [📘 Compliance Reference Designs](https://github.com/chandrapati/CSW-Compliance-Reference-Designs) | Reference designs + assessor-ready reports mapping CSW to 34 frameworks | Compliance & audit |
 | [📘 Tenant Insights](https://github.com/chandrapati/CSW-Tenant-Insights) | Tenant-level reporting and analytics | Visibility metrics |
 | [📘 Operations Toolkit](https://github.com/chandrapati/CSW-Operations-Toolkit) | Day-2 ops scripts: health checks, reporting, policy analysis | Ongoing operations |
 | [📄 Supported OS & Compatibility Matrix](https://www.cisco.com/c/m/en_us/products/security/secure-workload-compatibility-matrix.html) | Cisco's authoritative list of supported agent operating systems, external systems, and connector requirements | Platform planning & prerequisites |
