@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc 3.11" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>CSA-CCM — Compliance Report</title>
+  <title>CSA CCM v4 — Compliance Report</title>
   <style>
 
 html {
@@ -286,17 +286,35 @@ color: var(--fg-muted);
 }
 .doc-meta a { font-weight: 500; }
 
+th {
+background: #003366;
+color: #ffffff;
+border-color: #003366;
+}
+thead th { background: #003366; color: #ffffff; }
+td.cov-direct { background: #107C41; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+td.cov-supporting { background: #C55A11; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+td.cov-evidence { background: #808080; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+
 @media print {
 body { max-width: none; padding: 0; color: #000; background: #fff; }
 a { color: #000; text-decoration: underline; }
 pre, code, blockquote { background: #f5f5f5; }
+th { background: #003366 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-direct { background: #107C41 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-supporting { background: #C55A11 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-evidence { background: #808080 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
 </style>
 </head>
 <body>
-<div class="doc-meta">Source: <a href="CSW-CSA-CCM-Compliance-Report.docx">CSW-CSA-CCM-Compliance-Report.docx</a> · <a href="../index.html">repository index</a> · Build: 2026-10-05T17:59:28Z UTC · Repository commit: 8fe7ae4</div>
+<div class="doc-meta">Source: <a href="CSW-CSA-CCM-Compliance-Report.docx">CSW-CSA-CCM-Compliance-Report.docx</a> · <a href="../index.html">repository index</a> · Build: 2026-10-06T03:17:49Z UTC · Repository commit: fe71f19</div>
 <header id="title-block-header">
-<h1 class="title">CSA-CCM — Compliance Report</h1>
+<h1 class="title">CSA CCM v4 — Compliance Report</h1>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
@@ -307,8 +325,8 @@ Workload - CSA CCM Compliance Report</a>
 Report</a></li>
 <li><a href="#framework-version-note" id="toc-framework-version-note">Framework Version Note</a></li>
 <li><a href="#csw-ui-navigation-note" id="toc-csw-ui-navigation-note">CSW UI Navigation Note</a></li>
-<li><a href="#how-to-read-the-coverage-words" id="toc-how-to-read-the-coverage-words">How to read the coverage
-words</a></li>
+<li><a href="#how-to-read-the-coverage-column" id="toc-how-to-read-the-coverage-column">How to read the Coverage
+column</a></li>
 <li><a href="#executive-summary" id="toc-executive-summary">Executive
 Summary</a></li>
 <li><a href="#suggested-csw-scope-pattern" id="toc-suggested-csw-scope-pattern">Suggested CSW Scope
@@ -360,19 +378,27 @@ artifacts</em> they produce. The technical runbook
 (<code>CSW-CSA-CCM-Technical-Runbook.md</code>) in this folder contains
 the deeper engineering detail.</p>
 <hr />
-<h2 id="how-to-read-the-coverage-words">How to read the coverage
-words</h2>
-<p><strong>Full Coverage</strong> on the older reports means Secure
-Workload can produce that row&#39;s artifact. It does not mean the control
-is met.</p>
-<p><strong>Partial Coverage</strong> means file that export next to
-another control.</p>
-<p><strong>Evidence Required</strong> means Secure Workload has no
-record. The customer files the contract, the analysis, or the HR or
-physical-security evidence.</p>
-<p><strong>Direct, Supporting, and Out of scope</strong> on the newer
-reports are the same idea in different words. Direct is still evidence,
-not a pass.</p>
+<h2 id="how-to-read-the-coverage-column">How to read the Coverage
+column</h2>
+<p>Every report in this set uses the same three coverage words. Coverage
+describes <strong>what evidence CSW produces</strong> for a topic — it
+never means the control is passed.</p>
+<p><strong>Direct</strong> — Secure Workload produces the primary
+evidence artifact for that topic (segmentation, policy, flow/process
+telemetry, inventory, vulnerability + reachability, forensic
+reconstruction). Direct is still evidence, not an attestation.</p>
+<p><strong>Supporting</strong> — Secure Workload contributes an input
+that feeds or complements another control, tool, or process
+(e.g. detection input only, reconciled against an external register, one
+log source among several).</p>
+<p><strong>Evidence Required</strong> — Secure Workload has no record
+for this topic. The customer supplies the contract, the analysis, or the
+HR / physical-security evidence from another control.</p>
+<blockquote>
+<p>The Coverage ratings in the topic map below are machine-derived from
+each row’s wording and are flagged for SE review before customer
+use.</p>
+</blockquote>
 <h2 id="executive-summary">Executive Summary</h2>
 <p>Cisco Secure Workload (CSW) supports a defined subset of this
 framework. The strongest customer story is not that CSW “certifies”
@@ -423,40 +449,47 @@ workspace</li>
 Capability Map</h2>
 <table style="width:85%;">
 <colgroup>
-<col style="width: 28%" />
-<col style="width: 28%" />
-<col style="width: 28%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
 </colgroup>
 <thead>
 <tr>
-<th>Framework topic</th>
-<th>CSW capability</th>
-<th>Evidence artifact</th>
+<th><strong>Framework topic</strong></th>
+<th><strong>Coverage</strong></th>
+<th><strong>CSW capability</strong></th>
+<th><strong>Evidence artifact</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>IVS - Infrastructure and Virtualization Security</td>
+<td class="cov-direct"><strong>Direct</strong></td>
 <td>Policy workspace + tenant-boundary deny enforcement</td>
 <td>Workspace snapshot + cross-tenant violation log</td>
 </tr>
 <tr>
 <td>DSP - Data Security (segmentation)</td>
+<td class="cov-direct"><strong>Direct</strong></td>
 <td>Workload-to-workload allowlist between data-protection scopes</td>
 <td>Workspace snapshot + observed-vs-approved flow comparison</td>
 </tr>
 <tr>
 <td>TVM - Threat and Vulnerability Management</td>
+<td class="cov-direct"><strong>Direct</strong></td>
 <td>Reachability-weighted CVE on cloud workloads</td>
 <td>Prioritised remediation list with compensating-control register</td>
 </tr>
 <tr>
 <td>LOG - Logging and Monitoring</td>
+<td class="cov-direct"><strong>Direct</strong></td>
 <td>Continuous flow + process telemetry; alerts</td>
 <td>Alert and anomaly log scoped to CSA-CCM</td>
 </tr>
 <tr>
 <td>SEF - Incident Management / Forensics</td>
+<td class="cov-direct"><strong>Direct</strong></td>
 <td>Forensic flow + process search</td>
 <td>Investigation pack with timeline and tenant-impact scoping</td>
 </tr>
@@ -476,10 +509,10 @@ risk appetite.</p>
 </colgroup>
 <thead>
 <tr>
-<th>Topic</th>
-<th>What to collect</th>
-<th>CSW source</th>
-<th>Suggested cadence</th>
+<th><strong>Topic</strong></th>
+<th><strong>What to collect</strong></th>
+<th><strong>CSW source</strong></th>
+<th><strong>Suggested cadence</strong></th>
 </tr>
 </thead>
 <tbody>

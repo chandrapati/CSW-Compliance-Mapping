@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.11" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>CSW Compliance Evidence Playbook</title>
   <style>
@@ -39,7 +39,6 @@ background-color: white;
 body {
 background-color: transparent;
 color: black;
-font-size: 12pt;
 }
 p, h2, h3 {
 orphans: 3;
@@ -154,8 +153,12 @@ padding-left: 0;
 text-decoration: none;
 }
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 
 ul.task-list[class]{list-style: none;}
@@ -165,7 +168,6 @@ width: 0.8em;
 margin: 0 0.8em 0.2em -1.6em;
 vertical-align: middle;
 }
-.display.math{display: block; text-align: center; margin: 0.5rem auto;}
 
 html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
@@ -349,15 +351,33 @@ color: var(--fg-muted);
 }
 .doc-meta a { font-weight: 500; }
 
+th {
+background: #003366;
+color: #ffffff;
+border-color: #003366;
+}
+thead th { background: #003366; color: #ffffff; }
+td.cov-direct { background: #107C41; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+td.cov-supporting { background: #C55A11; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+td.cov-evidence { background: #808080; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+
 @media print {
 body { max-width: none; padding: 0; color: #000; background: #fff; }
 a { color: #000; text-decoration: underline; }
 pre, code, blockquote { background: #f5f5f5; }
+th { background: #003366 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-direct { background: #107C41 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-supporting { background: #C55A11 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-evidence { background: #808080 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
 </style>
 </head>
 <body>
-<div class="doc-meta">Source: <a href="compliance-evidence-playbook.html">compliance-evidence-playbook.md</a> · <a href="../index.html">repository index</a> · Build: 2026-08-11T04:20:49Z UTC · Repository commit: 463f586</div>
+<div class="doc-meta">Source: <a href="compliance-evidence-playbook.html">compliance-evidence-playbook.md</a> · <a href="../index.html">repository index</a> · Build: 2026-10-06T03:17:54Z UTC · Repository commit: fe71f19</div>
 <header id="title-block-header">
 <h1 class="title">CSW Compliance Evidence Playbook</h1>
 </header>

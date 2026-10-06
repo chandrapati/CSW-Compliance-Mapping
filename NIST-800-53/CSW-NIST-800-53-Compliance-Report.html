@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc 3.11" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>NIST-800-53 — Compliance Report</title>
+  <title>NIST SP 800-53 Rev 5 — Compliance Report</title>
   <style>
 
 html {
@@ -286,22 +286,40 @@ color: var(--fg-muted);
 }
 .doc-meta a { font-weight: 500; }
 
+th {
+background: #003366;
+color: #ffffff;
+border-color: #003366;
+}
+thead th { background: #003366; color: #ffffff; }
+td.cov-direct { background: #107C41; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+td.cov-supporting { background: #C55A11; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+td.cov-evidence { background: #808080; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+
 @media print {
 body { max-width: none; padding: 0; color: #000; background: #fff; }
 a { color: #000; text-decoration: underline; }
 pre, code, blockquote { background: #f5f5f5; }
+th { background: #003366 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-direct { background: #107C41 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-supporting { background: #C55A11 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-evidence { background: #808080 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
 </style>
 </head>
 <body>
-<div class="doc-meta">Source: <a href="CSW-NIST-800-53-Compliance-Report.docx">CSW-NIST-800-53-Compliance-Report.docx</a> · <a href="../index.html">repository index</a> · Build: 2026-10-05T17:59:30Z UTC · Repository commit: 8fe7ae4</div>
+<div class="doc-meta">Source: <a href="CSW-NIST-800-53-Compliance-Report.docx">CSW-NIST-800-53-Compliance-Report.docx</a> · <a href="../index.html">repository index</a> · Build: 2026-10-06T03:17:41Z UTC · Repository commit: fe71f19</div>
 <header id="title-block-header">
-<h1 class="title">NIST-800-53 — Compliance Report</h1>
+<h1 class="title">NIST SP 800-53 Rev 5 — Compliance Report</h1>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#how-to-read-the-coverage-words" id="toc-how-to-read-the-coverage-words">How to read the coverage
-words</a></li>
+<li><a href="#how-to-read-the-coverage-column" id="toc-how-to-read-the-coverage-column">How to read the Coverage
+column</a></li>
 <li><a href="#executive-summary" id="toc-executive-summary"><strong>Executive Summary</strong></a>
 <ul>
 <li><a href="#control-coverage-by-family" id="toc-control-coverage-by-family"><strong>Control Coverage by
@@ -333,19 +351,23 @@ Package</strong></a></li>
 </tr>
 </tbody>
 </table>
-<h2 id="how-to-read-the-coverage-words">How to read the coverage
-words</h2>
-<p><strong>Full Coverage</strong> on the older reports means Secure
-Workload can produce that row&#39;s artifact. It does not mean the control
-is met.</p>
-<p><strong>Partial Coverage</strong> means file that export next to
-another control.</p>
+<h2 id="how-to-read-the-coverage-column">How to read the Coverage
+column</h2>
+<p><strong>Direct</strong> means Secure Workload produces the primary
+evidence artifact for that row — segmentation, policy, flow and process
+telemetry, inventory, vulnerability and reachability, or forensic
+reconstruction. Direct is still evidence, not an attestation.</p>
+<p><strong>Supporting</strong> means Secure Workload contributes an
+input that feeds or complements another control, tool, or process —
+detection input only, reconciled against an external register, or one
+log source among several.</p>
 <p><strong>Evidence Required</strong> means Secure Workload has no
-record. The customer files the contract, the analysis, or the HR or
-physical-security evidence.</p>
-<p><strong>Direct, Supporting, and Out of scope</strong> on the newer
-reports are the same idea in different words. Direct is still evidence,
-not a pass.</p>
+record for that row. The customer supplies the contract, the analysis,
+or the HR / physical-security evidence from another control.</p>
+<p>Every report in this set now uses the same three coverage words —
+Direct, Supporting, and Evidence Required. Coverage describes what
+evidence Secure Workload produces; it never means the control is
+passed.</p>
 <h1 id="executive-summary"><strong>Executive Summary</strong></h1>
 <p>NIST SP 800-53 Rev 5 provides the comprehensive security control
 catalog for federal information systems and is widely adopted in
@@ -355,7 +377,7 @@ addressed: Access Control (AC), Audit &amp; Accountability (AU),
 Configuration Management (CM), Incident Response (IR), Risk Assessment
 (RA), System &amp; Communications Protection (SC), and System &amp;
 Information Integrity (SI).</p>
-<p>CSW achieves Full Coverage across all 18 mapped controls through
+<p>CSW achieves Direct coverage across all 18 mapped controls through
 workload-level policy enforcement, continuous telemetry, vulnerability
 management, and forensic investigation capabilities.</p>
 <h2 id="control-coverage-by-family"><strong>Control Coverage by
@@ -385,7 +407,7 @@ Family</strong></h2>
 <td>Enforce approved authorizations for logical access</td>
 <td>Micro-segmentation enforces allowlist policies at workload level;
 default deny</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>AC</strong></td>
@@ -394,7 +416,7 @@ default deny</td>
 <td>Control information flows between systems</td>
 <td>ADM maps all flows; policy blocks unauthorized data paths across all
 environments</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>AC</strong></td>
@@ -403,7 +425,7 @@ environments</td>
 <td>Employ least privilege for access to system resources</td>
 <td>Workload-scoped policies grant minimum required network access per
 service</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>AC</strong></td>
@@ -412,7 +434,7 @@ service</td>
 <td>Establish usage restrictions for remote access</td>
 <td>Jump-host enforcement; remote admin paths explicitly defined and
 logged</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>AU</strong></td>
@@ -421,7 +443,7 @@ logged</td>
 <td>Identify the types of events the system is capable of logging</td>
 <td>Full network flow + process telemetry on all monitored
 workloads</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>AU</strong></td>
@@ -430,7 +452,7 @@ workloads</td>
 <td>Ensure audit records contain sufficient information</td>
 <td>5-tuple flows + process name + user context + timestamp + policy
 action</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>AU</strong></td>
@@ -438,7 +460,7 @@ action</td>
 <td>Audit Record Review</td>
 <td>Review and analyze system audit records</td>
 <td>Alert export to SIEM; anomaly detection for automated review</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>AU</strong></td>
@@ -447,7 +469,7 @@ action</td>
 <td>Provide audit record generation capability</td>
 <td>Continuous logging; configurable retention (recommend 3 years for
 federal)</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>CM</strong></td>
@@ -456,7 +478,7 @@ federal)</td>
 <td>Develop and maintain baseline configurations</td>
 <td>ADM establishes approved communication baseline per application
 cluster</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>CM</strong></td>
@@ -464,7 +486,7 @@ cluster</td>
 <td>Least Functionality</td>
 <td>Configure the system to provide only essential capabilities</td>
 <td>Block non-approved services via port-level policy enforcement</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>CM</strong></td>
@@ -473,7 +495,7 @@ cluster</td>
 <td>Develop and maintain an inventory of system components</td>
 <td>CSW inventory provides real-time workload asset catalog across
 hybrid environments</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>IR</strong></td>
@@ -482,7 +504,7 @@ hybrid environments</td>
 <td>Implement an incident handling capability</td>
 <td>Forensic telemetry enables full incident reconstruction; process +
 network context</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>IR</strong></td>
@@ -491,7 +513,7 @@ network context</td>
 <td>Track and document security incidents</td>
 <td>Real-time anomaly alerts; policy violation events; SIEM
 integration</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>RA</strong></td>
@@ -499,7 +521,7 @@ integration</td>
 <td>Vulnerability Monitoring</td>
 <td>Monitor and scan for vulnerabilities in the system</td>
 <td>Continuous CVE scanning with CVSS scoring on all workloads</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>SC</strong></td>
@@ -508,7 +530,7 @@ integration</td>
 <td>Monitor and control communications at system boundaries</td>
 <td>Micro-segmentation enforces east-west boundaries; ADM validates
 boundary integrity</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>SC</strong></td>
@@ -517,7 +539,7 @@ boundary integrity</td>
 <td>Implement cryptographic mechanisms to protect transmissions</td>
 <td>Detect and block unencrypted sensitive data flows; enforce encrypted
 protocols</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>SI</strong></td>
@@ -526,7 +548,7 @@ protocols</td>
 <td>Identify, report, and correct information system flaws</td>
 <td>Continuous vulnerability scan; prioritized remediation +
 compensating controls</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>SI</strong></td>
@@ -535,7 +557,7 @@ compensating controls</td>
 <td>Monitor the system to detect attacks and unauthorized access</td>
 <td>Full telemetry with anomaly detection; behavioral baseline deviation
 alerting</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 </tbody>
 </table>
@@ -566,7 +588,7 @@ Mode</strong></td>
 <td colspan="2">ADM + monitoring; simulation policies</td>
 <td>6 months</td>
 <td>Simulation (alert-only)</td>
-<td style="text-align: center;"><strong>Partial Coverage</strong></td>
+<td style="text-align: center;" class="cov-supporting"><strong>Supporting</strong></td>
 </tr>
 <tr>
 <td colspan="2" style="text-align: center;"><strong>Moderate</strong></td>
@@ -574,15 +596,15 @@ Mode</strong></td>
 alerting</td>
 <td>1 year</td>
 <td>Enforcement on sensitive scopes</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td colspan="2" style="text-align: center;"><strong>High</strong></td>
 <td colspan="2">ADM + full enforcement; process-level monitoring; SIEM
 integration</td>
 <td>3 years</td>
-<td>Full enforcement all scopes</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td class="cov-direct">Full enforcement all scopes</td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 </tbody>
 </table>

@@ -839,12 +839,41 @@ def render_table(headers: list[str], rows: list[tuple[str, ...]]) -> str:
     return "\n".join([header_line, sep_line, *body_lines])
 
 
+def derive_coverage(capability: str, artifact: str) -> str:
+    """Heuristic coverage rating for a topic row, derived from the row text.
+
+    These ratings are machine-derived from each row's capability/artifact wording
+    and are FLAGGED FOR SE REVIEW. Rule of thumb:
+      - "Supporting" when CSW evidence feeds/complements another control or tool
+        (detection-only, input-to, reconciled-against-register, one-log-source,
+        does-not-deploy/install, recoverability input).
+      - "Direct" otherwise (CSW produces the primary artifact: segmentation,
+        policy, flow/process telemetry, inventory, vulnerability+reachability,
+        forensic reconstruction).
+    Coverage never means "the control is passed" — only that CSW produces evidence.
+    """
+    s = f"{capability} {artifact}".lower()
+    supporting_markers = (
+        "detection input only", "input only", "input to", "feeds the", "feeds ",
+        "complements", "reconciled against", "recoverability", "one log source",
+        "does not deploy", "does not install", "scoping input", "register reconcil",
+        "not the recovery", "layered with", "complement",
+    )
+    if any(m in s for m in supporting_markers):
+        return "Supporting"
+    return "Direct"
+
+
 def report_markdown(item: dict) -> str:
     in_scope_md = "\n".join(f"- {entry}" for entry in item["in_scope"])
     out_of_scope_md = "\n".join(f"- {entry}" for entry in item["out_of_scope"])
+    topic_rows = [
+        (topic, derive_coverage(cap, art), cap, art)
+        for (topic, cap, art) in item["topic_map"]
+    ]
     topic_table = render_table(
-        ["Framework topic", "CSW capability", "Evidence artifact"],
-        item["topic_map"],
+        ["Framework topic", "Coverage", "CSW capability", "Evidence artifact"],
+        topic_rows,
     )
     evidence_table = render_table(
         ["Topic", "What to collect", "CSW source", "Suggested cadence"],
@@ -871,15 +900,17 @@ Cisco does not yet publish framework-specific CSW UI navigation for this standar
 
 ---
 
-## How to read the coverage words
+## How to read the Coverage column
 
-**Full Coverage** on the older reports means Secure Workload can produce that row's artifact. It does not mean the control is met.
+Every report in this set uses the same three coverage words. Coverage describes **what evidence CSW produces** for a topic — it never means the control is passed.
 
-**Partial Coverage** means file that export next to another control.
+**Direct** — Secure Workload produces the primary evidence artifact for that topic (segmentation, policy, flow/process telemetry, inventory, vulnerability + reachability, forensic reconstruction). Direct is still evidence, not an attestation.
 
-**Evidence Required** means Secure Workload has no record. The customer files the contract, the analysis, or the HR or physical-security evidence.
+**Supporting** — Secure Workload contributes an input that feeds or complements another control, tool, or process (e.g. detection input only, reconciled against an external register, one log source among several).
 
-**Direct**, **Supporting**, and **Out of scope** on the newer reports are the same idea in different words. Direct is still evidence, not a pass.
+**Evidence Required** — Secure Workload has no record for this topic. The customer supplies the contract, the analysis, or the HR / physical-security evidence from another control.
+
+> The Coverage ratings in the topic map below are machine-derived from each row's wording and are flagged for SE review before customer use.
 
 ## Executive Summary
 
@@ -1046,10 +1077,11 @@ def main() -> int:
         folder.mkdir(parents=True, exist_ok=True)
         markdown = report_markdown(item)
         stem = folder / str(item["stem"])
-        print(f"report -> {stem.relative_to(ROOT)}.docx/.html/.pdf")
+        print(f"report (docx source) -> {stem.relative_to(ROOT)}.docx")
+        # DOCX is the source of truth. Table styling (standardize-reports.py),
+        # PDF (LibreOffice) and HTML (build-html.py) are produced downstream so
+        # every framework in the set is rendered through one consistent pipeline.
         run_pandoc(markdown, stem.with_suffix(".docx"), "docx", str(item["title"]))
-        run_pandoc(markdown, stem.with_suffix(".html"), "html5", str(item["title"]))
-        write_simple_pdf(plain_text(markdown), stem.with_suffix(".pdf"))
     return 0
 
 

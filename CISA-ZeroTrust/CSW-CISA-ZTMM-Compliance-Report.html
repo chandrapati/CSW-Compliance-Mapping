@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc 3.11" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>CISA-ZeroTrust — Compliance Report</title>
+  <title>CISA Zero Trust Maturity Model — Compliance Report</title>
   <style>
 
 html {
@@ -286,22 +286,41 @@ color: var(--fg-muted);
 }
 .doc-meta a { font-weight: 500; }
 
+th {
+background: #003366;
+color: #ffffff;
+border-color: #003366;
+}
+thead th { background: #003366; color: #ffffff; }
+td.cov-direct { background: #107C41; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+td.cov-supporting { background: #C55A11; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+td.cov-evidence { background: #808080; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+
 @media print {
 body { max-width: none; padding: 0; color: #000; background: #fff; }
 a { color: #000; text-decoration: underline; }
 pre, code, blockquote { background: #f5f5f5; }
+th { background: #003366 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-direct { background: #107C41 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-supporting { background: #C55A11 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-evidence { background: #808080 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
 </style>
 </head>
 <body>
-<div class="doc-meta">Source: <a href="CSW-CISA-ZTMM-Compliance-Report.docx">CSW-CISA-ZTMM-Compliance-Report.docx</a> · <a href="../index.html">repository index</a> · Build: 2026-10-05T17:59:27Z UTC · Repository commit: 8fe7ae4</div>
+<div class="doc-meta">Source: <a href="CSW-CISA-ZTMM-Compliance-Report.docx">CSW-CISA-ZTMM-Compliance-Report.docx</a> · <a href="../index.html">repository index</a> · Build: 2026-10-06T03:17:42Z UTC · Repository commit: fe71f19</div>
 <header id="title-block-header">
-<h1 class="title">CISA-ZeroTrust — Compliance Report</h1>
+<h1 class="title">CISA Zero Trust Maturity Model — Compliance
+Report</h1>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#how-to-read-the-coverage-words" id="toc-how-to-read-the-coverage-words">How to read the coverage
-words</a></li>
+<li><a href="#how-to-read-the-coverage-column" id="toc-how-to-read-the-coverage-column">How to read the Coverage
+column</a></li>
 <li><a href="#executive-summary" id="toc-executive-summary"><strong>Executive Summary</strong></a>
 <ul>
 <li><a href="#pillar-coverage-maturity-achievable" id="toc-pillar-coverage-maturity-achievable"><strong>Pillar Coverage
@@ -347,19 +366,23 @@ Zero Trust Maturity Model v2.0 (2023)</strong></p>
 </tr>
 </tbody>
 </table>
-<h2 id="how-to-read-the-coverage-words">How to read the coverage
-words</h2>
-<p><strong>Full Coverage</strong> on the older reports means Secure
-Workload can produce that row&#39;s artifact. It does not mean the control
-is met.</p>
-<p><strong>Partial Coverage</strong> means file that export next to
-another control.</p>
+<h2 id="how-to-read-the-coverage-column">How to read the Coverage
+column</h2>
+<p><strong>Direct</strong> means Secure Workload produces the primary
+evidence artifact for that row — segmentation, policy, flow and process
+telemetry, inventory, vulnerability and reachability, or forensic
+reconstruction. Direct is still evidence, not an attestation.</p>
+<p><strong>Supporting</strong> means Secure Workload contributes an
+input that feeds or complements another control, tool, or process —
+detection input only, reconciled against an external register, or one
+log source among several.</p>
 <p><strong>Evidence Required</strong> means Secure Workload has no
-record. The customer files the contract, the analysis, or the HR or
-physical-security evidence.</p>
-<p><strong>Direct, Supporting, and Out of scope</strong> on the newer
-reports are the same idea in different words. Direct is still evidence,
-not a pass.</p>
+record for that row. The customer supplies the contract, the analysis,
+or the HR / physical-security evidence from another control.</p>
+<p>Every report in this set now uses the same three coverage words —
+Direct, Supporting, and Evidence Required. Coverage describes what
+evidence Secure Workload produces; it never means the control is
+passed.</p>
 <h1 id="executive-summary"><strong>Executive Summary</strong></h1>
 <p>The CISA Zero Trust Maturity Model (ZTMM) v2.0 defines maturity
 across five pillars: Identity, Devices, Networks, Applications &amp;
@@ -396,7 +419,7 @@ Achievable</strong></td>
 <td>Primary</td>
 <td>Advanced → Optimal</td>
 <td>Micro-segmentation, encryption enforcement, continuous ADM</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Applications &amp;
@@ -405,28 +428,28 @@ Workloads</strong></td>
 <td>Advanced → Optimal</td>
 <td>Workload identity, least-privilege policy, vulnerability
 management</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Data</strong></td>
-<td>Supporting</td>
+<td class="cov-supporting">Supporting</td>
 <td>Initial → Advanced</td>
 <td>Data flow visibility, encryption enforcement, access logging</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Identity</strong></td>
-<td>Supporting</td>
+<td class="cov-supporting">Supporting</td>
 <td>Initial → Advanced</td>
 <td>Identity-verified access path enforcement via policy</td>
-<td style="text-align: center;"><strong>Partial Coverage</strong></td>
+<td style="text-align: center;" class="cov-supporting"><strong>Supporting</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Devices</strong></td>
-<td>Supporting</td>
+<td class="cov-supporting">Supporting</td>
 <td>Initial → Advanced</td>
 <td>OS fingerprint + process hash workload identity</td>
-<td style="text-align: center;"><strong>Partial Coverage</strong></td>
+<td style="text-align: center;" class="cov-supporting"><strong>Supporting</strong></td>
 </tr>
 </tbody>
 </table>
@@ -536,7 +559,7 @@ HTTPS/SFTP/LDAPS</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Identity</strong></td>
-<td colspan="2" style="text-align: center;">Supporting</td>
+<td colspan="2" style="text-align: center;" class="cov-supporting">Supporting</td>
 <td>Identity-Verified Paths</td>
 <td>Enforce access only through identity-verified paths</td>
 <td>CSW enforces that only identity-verified systems (LDAPS/Kerberos)
@@ -544,7 +567,7 @@ can reach sensitive workloads</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Devices</strong></td>
-<td colspan="2" style="text-align: center;">Supporting</td>
+<td colspan="2" style="text-align: center;" class="cov-supporting">Supporting</td>
 <td>Device Fingerprinting</td>
 <td>Identify and authenticate devices accessing resources</td>
 <td>OS fingerprint + process hash provides workload-level device

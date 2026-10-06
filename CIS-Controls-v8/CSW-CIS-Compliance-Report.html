@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc 3.11" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Cisco Secure Workload — Compliance Mapping Series" />
-  <title>CIS-Controls-v8 — Compliance Report</title>
+  <title>CIS Critical Security Controls v8.1 — Compliance Report</title>
   <style>
 
 html {
@@ -287,17 +287,36 @@ color: var(--fg-muted);
 }
 .doc-meta a { font-weight: 500; }
 
+th {
+background: #003366;
+color: #ffffff;
+border-color: #003366;
+}
+thead th { background: #003366; color: #ffffff; }
+td.cov-direct { background: #107C41; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+td.cov-supporting { background: #C55A11; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+td.cov-evidence { background: #808080; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+
 @media print {
 body { max-width: none; padding: 0; color: #000; background: #fff; }
 a { color: #000; text-decoration: underline; }
 pre, code, blockquote { background: #f5f5f5; }
+th { background: #003366 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-direct { background: #107C41 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-supporting { background: #C55A11 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-evidence { background: #808080 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
 </style>
 </head>
 <body>
-<div class="doc-meta">Source: <a href="CSW-CIS-Compliance-Report.docx">CSW-CIS-Compliance-Report.docx</a> · <a href="../index.html">repository index</a> · Build: 2026-10-05T17:59:27Z UTC · Repository commit: 8fe7ae4</div>
+<div class="doc-meta">Source: <a href="CSW-CIS-Compliance-Report.docx">CSW-CIS-Compliance-Report.docx</a> · <a href="../index.html">repository index</a> · Build: 2026-10-06T03:17:45Z UTC · Repository commit: fe71f19</div>
 <header id="title-block-header">
-<h1 class="title">CIS-Controls-v8 — Compliance Report</h1>
+<h1 class="title">CIS Critical Security Controls v8.1 — Compliance
+Report</h1>
 <p class="subtitle">Cisco Secure Workload | IG2-Lead Mapping with
 IG1/IG3 Deltas</p>
 <p class="author">Cisco Secure Workload — Compliance Mapping Series</p>
@@ -311,8 +330,8 @@ Contents</a></li>
 Secure Workload — CIS Controls v8.1 Compliance Mapping</a>
 <ul>
 <li><a href="#how-to-read-this-report" id="toc-how-to-read-this-report">How to read this report</a></li>
-<li><a href="#how-to-read-the-coverage-words" id="toc-how-to-read-the-coverage-words">How to read the coverage
-words</a></li>
+<li><a href="#how-to-read-the-coverage-column" id="toc-how-to-read-the-coverage-column">How to read the Coverage
+column</a></li>
 <li><a href="#executive-summary" id="toc-executive-summary">1. Executive
 Summary</a></li>
 <li><a href="#compliance-posture-summary" id="toc-compliance-posture-summary">2. Compliance Posture
@@ -349,19 +368,23 @@ Controls v8.1 Technical Runbook</em> walks through deployment, scope
 labelling per IG, and the per-Safeguard implementation steps. Read this
 report for the audit-narrative view; read the runbook for the deployment
 view.</p>
-<h2 id="how-to-read-the-coverage-words">How to read the coverage
-words</h2>
-<p><strong>Full Coverage</strong> on the older reports means Secure
-Workload can produce that row&#39;s artifact. It does not mean the control
-is met.</p>
-<p><strong>Partial Coverage</strong> means file that export next to
-another control.</p>
+<h2 id="how-to-read-the-coverage-column">How to read the Coverage
+column</h2>
+<p><strong>Direct</strong> means Secure Workload produces the primary
+evidence artifact for that row — segmentation, policy, flow and process
+telemetry, inventory, vulnerability and reachability, or forensic
+reconstruction. Direct is still evidence, not an attestation.</p>
+<p><strong>Supporting</strong> means Secure Workload contributes an
+input that feeds or complements another control, tool, or process —
+detection input only, reconciled against an external register, or one
+log source among several.</p>
 <p><strong>Evidence Required</strong> means Secure Workload has no
-record. The customer files the contract, the analysis, or the HR or
-physical-security evidence.</p>
-<p><strong>Direct, Supporting, and Out of scope</strong> on the newer
-reports are the same idea in different words. Direct is still evidence,
-not a pass.</p>
+record for that row. The customer supplies the contract, the analysis,
+or the HR / physical-security evidence from another control.</p>
+<p>Every report in this set now uses the same three coverage words —
+Direct, Supporting, and Evidence Required. Coverage describes what
+evidence Secure Workload produces; it never means the control is
+passed.</p>
 <h2 id="executive-summary">1. Executive Summary</h2>
 <p>CIS Controls v8.1 organises 18 Controls and ~153 Safeguards by
 Implementation Group (IG1 / IG2 / IG3). CSW directly addresses six of
@@ -408,120 +431,120 @@ training stacks for those.</p>
 </colgroup>
 <thead>
 <tr>
-<th>Control</th>
-<th>Title</th>
-<th>Coverage</th>
-<th>CSW contribution (IG2 default)</th>
+<th><strong>Control</strong></th>
+<th><strong>Title</strong></th>
+<th><strong>Coverage</strong></th>
+<th><strong>CSW contribution (IG2 default)</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1</td>
 <td>Inventory and Control of Enterprise Assets</td>
-<td>Direct</td>
+<td class="cov-direct"><strong>Direct</strong></td>
 <td>Continuous workload + cloud asset inventory; quarantine policy for
 net-new</td>
 </tr>
 <tr>
 <td>2</td>
 <td>Inventory and Control of Software Assets</td>
-<td>Direct</td>
+<td class="cov-direct"><strong>Direct</strong></td>
 <td>Per-workload package inventory; allow-list deviation alerting</td>
 </tr>
 <tr>
 <td>3</td>
 <td>Data Protection</td>
-<td>Supporting</td>
+<td class="cov-supporting"><strong>Supporting</strong></td>
 <td>Egress observation (DLP remains primary)</td>
 </tr>
 <tr>
 <td>4</td>
 <td>Secure Configuration of Enterprise Assets and Software</td>
-<td>Direct</td>
+<td class="cov-direct"><strong>Direct</strong></td>
 <td>Daily baseline + drift report tied to change ticket</td>
 </tr>
 <tr>
 <td>5</td>
 <td>Account Management</td>
-<td>Out of scope</td>
+<td class="cov-evidence"><strong>Evidence Required</strong></td>
 <td>Identity / PAM tooling</td>
 </tr>
 <tr>
 <td>6</td>
 <td>Access Control Management</td>
-<td>Supporting</td>
+<td class="cov-supporting"><strong>Supporting</strong></td>
 <td>Workload-side enforcement; identity is upstream</td>
 </tr>
 <tr>
 <td>7</td>
 <td>Continuous Vulnerability Management</td>
-<td>Direct</td>
+<td class="cov-direct"><strong>Direct</strong></td>
 <td>Continuous CVE inventory + reachability-aware prioritisation</td>
 </tr>
 <tr>
 <td>8</td>
 <td>Audit Log Management</td>
-<td>Direct</td>
+<td class="cov-direct"><strong>Direct</strong></td>
 <td>Per-flow + per-process telemetry to SIEM</td>
 </tr>
 <tr>
 <td>9</td>
 <td>Email and Web Browser Protections</td>
-<td>Out of scope</td>
+<td class="cov-evidence"><strong>Evidence Required</strong></td>
 <td>Email / web stack</td>
 </tr>
 <tr>
 <td>10</td>
 <td>Malware Defenses</td>
-<td>Supporting</td>
+<td class="cov-supporting"><strong>Supporting</strong></td>
 <td>Behavioural rules layered with endpoint AV</td>
 </tr>
 <tr>
 <td>11</td>
 <td>Data Recovery</td>
-<td>Out of scope</td>
+<td class="cov-evidence"><strong>Evidence Required</strong></td>
 <td>Backup product</td>
 </tr>
 <tr>
 <td>12</td>
 <td>Network Infrastructure Management</td>
-<td>Supporting</td>
+<td class="cov-supporting"><strong>Supporting</strong></td>
 <td>Workload-side complement to network team config</td>
 </tr>
 <tr>
 <td>13</td>
 <td>Network Monitoring and Defense</td>
-<td>Direct</td>
+<td class="cov-direct"><strong>Direct</strong></td>
 <td>East-west visibility, segmentation, behavioural detection</td>
 </tr>
 <tr>
 <td>14</td>
 <td>Security Awareness and Skills Training</td>
-<td>Out of scope</td>
+<td class="cov-evidence"><strong>Evidence Required</strong></td>
 <td>HR / training</td>
 </tr>
 <tr>
 <td>15</td>
 <td>Service Provider Management</td>
-<td>Supporting</td>
+<td class="cov-supporting"><strong>Supporting</strong></td>
 <td>Vendor-egress observation (contractual is upstream)</td>
 </tr>
 <tr>
 <td>16</td>
 <td>Application Software Security</td>
-<td>Supporting</td>
+<td class="cov-supporting"><strong>Supporting</strong></td>
 <td>CVE inventory feeds the SDLC</td>
 </tr>
 <tr>
 <td>17</td>
 <td>Incident Response Management</td>
-<td>Direct (evidence)</td>
+<td class="cov-direct"><strong>Direct (evidence)</strong></td>
 <td>Six-artefact reconstruction bundle</td>
 </tr>
 <tr>
 <td>18</td>
 <td>Penetration Testing</td>
-<td>Supporting</td>
+<td class="cov-supporting"><strong>Supporting</strong></td>
 <td>Pre/post reachability + activity reconstruction</td>
 </tr>
 </tbody>
@@ -542,10 +565,10 @@ Mapping Table — CIS Safeguard → CSW Capability → Evidence Artefact</h2>
 </colgroup>
 <thead>
 <tr>
-<th>Safeguard</th>
-<th>Topic (abbreviated)</th>
-<th>CSW capability</th>
-<th>Evidence artefact (audit-ready)</th>
+<th><strong>Safeguard</strong></th>
+<th><strong>Topic (abbreviated)</strong></th>
+<th><strong>CSW capability</strong></th>
+<th><strong>Evidence artefact (audit-ready)</strong></th>
 </tr>
 </thead>
 <tbody>
@@ -737,9 +760,9 @@ reference the noted complementary controls.</p>
 </colgroup>
 <thead>
 <tr>
-<th>Control</th>
-<th>Owner</th>
-<th>Complementary control</th>
+<th><strong>Control</strong></th>
+<th><strong>Owner</strong></th>
+<th><strong>Complementary control</strong></th>
 </tr>
 </thead>
 <tbody>

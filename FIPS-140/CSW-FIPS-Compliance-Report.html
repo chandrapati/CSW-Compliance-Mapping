@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc 3.11" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>FIPS-140 — Compliance Report</title>
+  <title>FIPS 140 — Compliance Report</title>
   <style>
 
 html {
@@ -286,22 +286,40 @@ color: var(--fg-muted);
 }
 .doc-meta a { font-weight: 500; }
 
+th {
+background: #003366;
+color: #ffffff;
+border-color: #003366;
+}
+thead th { background: #003366; color: #ffffff; }
+td.cov-direct { background: #107C41; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+td.cov-supporting { background: #C55A11; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+td.cov-evidence { background: #808080; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+
 @media print {
 body { max-width: none; padding: 0; color: #000; background: #fff; }
 a { color: #000; text-decoration: underline; }
 pre, code, blockquote { background: #f5f5f5; }
+th { background: #003366 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-direct { background: #107C41 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-supporting { background: #C55A11 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-evidence { background: #808080 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
 </style>
 </head>
 <body>
-<div class="doc-meta">Source: <a href="CSW-FIPS-Compliance-Report.docx">CSW-FIPS-Compliance-Report.docx</a> · <a href="../index.html">repository index</a> · Build: 2026-10-05T17:59:28Z UTC · Repository commit: 8fe7ae4</div>
+<div class="doc-meta">Source: <a href="CSW-FIPS-Compliance-Report.docx">CSW-FIPS-Compliance-Report.docx</a> · <a href="../index.html">repository index</a> · Build: 2026-10-06T03:17:42Z UTC · Repository commit: fe71f19</div>
 <header id="title-block-header">
-<h1 class="title">FIPS-140 — Compliance Report</h1>
+<h1 class="title">FIPS 140 — Compliance Report</h1>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#how-to-read-the-coverage-words" id="toc-how-to-read-the-coverage-words">How to read the coverage
-words</a></li>
+<li><a href="#how-to-read-the-coverage-column" id="toc-how-to-read-the-coverage-column">How to read the Coverage
+column</a></li>
 <li><a href="#executive-summary-csw-role" id="toc-executive-summary-csw-role"><strong>Executive Summary &amp; CSW
 Role</strong></a>
 <ul>
@@ -340,19 +358,23 @@ Evidence Package</strong></a></li>
 </tr>
 </tbody>
 </table>
-<h2 id="how-to-read-the-coverage-words">How to read the coverage
-words</h2>
-<p><strong>Full Coverage</strong> on the older reports means Secure
-Workload can produce that row&#39;s artifact. It does not mean the control
-is met.</p>
-<p><strong>Partial Coverage</strong> means file that export next to
-another control.</p>
+<h2 id="how-to-read-the-coverage-column">How to read the Coverage
+column</h2>
+<p><strong>Direct</strong> means Secure Workload produces the primary
+evidence artifact for that row — segmentation, policy, flow and process
+telemetry, inventory, vulnerability and reachability, or forensic
+reconstruction. Direct is still evidence, not an attestation.</p>
+<p><strong>Supporting</strong> means Secure Workload contributes an
+input that feeds or complements another control, tool, or process —
+detection input only, reconciled against an external register, or one
+log source among several.</p>
 <p><strong>Evidence Required</strong> means Secure Workload has no
-record. The customer files the contract, the analysis, or the HR or
-physical-security evidence.</p>
-<p><strong>Direct, Supporting, and Out of scope</strong> on the newer
-reports are the same idea in different words. Direct is still evidence,
-not a pass.</p>
+record for that row. The customer supplies the contract, the analysis,
+or the HR / physical-security evidence from another control.</p>
+<p>Every report in this set now uses the same three coverage words —
+Direct, Supporting, and Evidence Required. Coverage describes what
+evidence Secure Workload produces; it never means the control is
+passed.</p>
 <h1 id="executive-summary-csw-role"><strong>Executive Summary &amp; CSW
 Role</strong></h1>
 <p>FIPS 140-2/3 is the US federal standard for cryptographic module
@@ -390,7 +412,7 @@ Summary</strong></h2>
 <td>Plain HTTP (port 80)</td>
 <td>Flow telemetry protocol filter identifies unencrypted HTTP traffic
 from sensitive workloads</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Detection</strong></td>
@@ -398,7 +420,7 @@ from sensitive workloads</td>
 <td>Plain FTP (port 21)</td>
 <td>Flow telemetry flags unencrypted file transfers from regulated
 environments</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Detection</strong></td>
@@ -406,7 +428,7 @@ environments</td>
 <td>Telnet (port 23)</td>
 <td>Flow telemetry detects legacy unencrypted remote access
 sessions</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Detection</strong></td>
@@ -414,14 +436,14 @@ sessions</td>
 <td>Plain LDAP (port 389)</td>
 <td>Detects non-encrypted directory service access; enforces LDAPS
 migration</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Detection</strong></td>
 <td>Non-FIPS Protocols</td>
 <td>SNMPv1/v2 (port 161)</td>
 <td>Identifies non-encrypted network management; enforces SNMPv3</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Enforcement</strong></td>
@@ -429,7 +451,7 @@ migration</td>
 <td>Block Non-Compliant Protocols</td>
 <td>CSW policy blocks all identified non-FIPS-compliant protocols at
 workload level</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Enforcement</strong></td>
@@ -437,7 +459,7 @@ workload level</td>
 <td>Crypto Service Boundary</td>
 <td>FIPS-Boundary scope restricts HSM/KMS access to approved workloads
 only</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Audit</strong></td>
@@ -445,7 +467,7 @@ only</td>
 <td>Crypto Service Access Log</td>
 <td>Full flow audit trail for all connections to FIPS-validated
 cryptographic services</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Audit</strong></td>
@@ -453,7 +475,7 @@ cryptographic services</td>
 <td>Crypto Library Inventory</td>
 <td>Process monitoring identifies workloads using non-validated crypto
 libraries</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Boundary</strong></td>
@@ -461,7 +483,7 @@ libraries</td>
 <td>FIPS Module Boundary</td>
 <td>CSW scope defines and enforces network boundary around
 FIPS-validated crypto infrastructure</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Supplementary</strong></td>
@@ -512,7 +534,7 @@ Replacement</strong></td>
 <td colspan="2">No encryption</td>
 <td>Flow telemetry protocol filter</td>
 <td>HTTPS (port 443)</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>FTP</strong></td>
@@ -520,7 +542,7 @@ Replacement</strong></td>
 <td colspan="2">No encryption</td>
 <td>Flow telemetry port filter</td>
 <td>SFTP/FTPS (port 22/990)</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Telnet</strong></td>
@@ -528,7 +550,7 @@ Replacement</strong></td>
 <td colspan="2">No encryption</td>
 <td>Flow telemetry port filter</td>
 <td>SSH with FIPS ciphers (port 22)</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Plain LDAP</strong></td>
@@ -536,7 +558,7 @@ Replacement</strong></td>
 <td colspan="2">No encryption</td>
 <td>Flow telemetry port filter</td>
 <td>LDAPS (port 636)</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>SNMPv1/v2</strong></td>
@@ -544,7 +566,7 @@ Replacement</strong></td>
 <td colspan="2">No encryption</td>
 <td>Flow telemetry port filter</td>
 <td>SNMPv3 (port 162)</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>TLS 1.0/1.1</strong></td>
@@ -552,7 +574,7 @@ Replacement</strong></td>
 <td colspan="2">Non-approved version</td>
 <td>Process + flow analysis</td>
 <td>TLS 1.2+ with FIPS cipher suites</td>
-<td style="text-align: center;"><strong>Partial Coverage</strong></td>
+<td style="text-align: center;" class="cov-supporting"><strong>Supporting</strong></td>
 </tr>
 </tbody>
 </table>

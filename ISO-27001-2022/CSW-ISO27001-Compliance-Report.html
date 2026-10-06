@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc 3.11" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>ISO-27001-2022 — Compliance Report</title>
+  <title>ISO/IEC 27001:2022 — Compliance Report</title>
   <style>
 
 html {
@@ -286,22 +286,40 @@ color: var(--fg-muted);
 }
 .doc-meta a { font-weight: 500; }
 
+th {
+background: #003366;
+color: #ffffff;
+border-color: #003366;
+}
+thead th { background: #003366; color: #ffffff; }
+td.cov-direct { background: #107C41; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+td.cov-supporting { background: #C55A11; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+td.cov-evidence { background: #808080; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+
 @media print {
 body { max-width: none; padding: 0; color: #000; background: #fff; }
 a { color: #000; text-decoration: underline; }
 pre, code, blockquote { background: #f5f5f5; }
+th { background: #003366 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-direct { background: #107C41 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-supporting { background: #C55A11 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-evidence { background: #808080 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
 </style>
 </head>
 <body>
-<div class="doc-meta">Source: <a href="CSW-ISO27001-Compliance-Report.docx">CSW-ISO27001-Compliance-Report.docx</a> · <a href="../index.html">repository index</a> · Build: 2026-10-05T17:59:29Z UTC · Repository commit: 8fe7ae4</div>
+<div class="doc-meta">Source: <a href="CSW-ISO27001-Compliance-Report.docx">CSW-ISO27001-Compliance-Report.docx</a> · <a href="../index.html">repository index</a> · Build: 2026-10-06T03:17:41Z UTC · Repository commit: fe71f19</div>
 <header id="title-block-header">
-<h1 class="title">ISO-27001-2022 — Compliance Report</h1>
+<h1 class="title">ISO/IEC 27001:2022 — Compliance Report</h1>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#how-to-read-the-coverage-words" id="toc-how-to-read-the-coverage-words">How to read the coverage
-words</a></li>
+<li><a href="#how-to-read-the-coverage-column" id="toc-how-to-read-the-coverage-column">How to read the Coverage
+column</a></li>
 <li><a href="#executive-summary" id="toc-executive-summary"><strong>Executive Summary</strong></a>
 <ul>
 <li><a href="#annex-a-control-coverage" id="toc-annex-a-control-coverage"><strong>Annex A Control
@@ -333,19 +351,23 @@ Package</strong></a></li>
 </tr>
 </tbody>
 </table>
-<h2 id="how-to-read-the-coverage-words">How to read the coverage
-words</h2>
-<p><strong>Full Coverage</strong> on the older reports means Secure
-Workload can produce that row&#39;s artifact. It does not mean the control
-is met.</p>
-<p><strong>Partial Coverage</strong> means file that export next to
-another control.</p>
+<h2 id="how-to-read-the-coverage-column">How to read the Coverage
+column</h2>
+<p><strong>Direct</strong> means Secure Workload produces the primary
+evidence artifact for that row — segmentation, policy, flow and process
+telemetry, inventory, vulnerability and reachability, or forensic
+reconstruction. Direct is still evidence, not an attestation.</p>
+<p><strong>Supporting</strong> means Secure Workload contributes an
+input that feeds or complements another control, tool, or process —
+detection input only, reconciled against an external register, or one
+log source among several.</p>
 <p><strong>Evidence Required</strong> means Secure Workload has no
-record. The customer files the contract, the analysis, or the HR or
-physical-security evidence.</p>
-<p><strong>Direct, Supporting, and Out of scope</strong> on the newer
-reports are the same idea in different words. Direct is still evidence,
-not a pass.</p>
+record for that row. The customer supplies the contract, the analysis,
+or the HR / physical-security evidence from another control.</p>
+<p>Every report in this set now uses the same three coverage words —
+Direct, Supporting, and Evidence Required. Coverage describes what
+evidence Secure Workload produces; it never means the control is
+passed.</p>
 <h1 id="executive-summary"><strong>Executive Summary</strong></h1>
 <p>ISO/IEC 27001:2022 restructured Annex A from 114 controls to 93
 controls across four themes: Organizational, People, Physical, and
@@ -386,7 +408,7 @@ Requirement</strong></td>
 <td>Collect and analyze information about threats</td>
 <td>CVE vulnerability data provides threat-informed risk posture across
 all workloads</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>A.5 Organizational</strong></td>
@@ -395,7 +417,7 @@ all workloads</td>
 <td>Establish controls for cloud service security</td>
 <td>Cloud connectors enforce unified policy across AWS, Azure, and GCP
 workloads</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>A.5 Organizational</strong></td>
@@ -404,7 +426,7 @@ workloads</td>
 <td>Manage information security incidents</td>
 <td>Forensic telemetry supports root cause analysis and incident
 timeline reconstruction</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>A.5 Organizational</strong></td>
@@ -413,7 +435,7 @@ timeline reconstruction</td>
 <td>Prepare ICT systems for business continuity</td>
 <td>Policy workspace backup; simulation mode for DR testing; redundant
 sensor architecture</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>A.5 Organizational</strong></td>
@@ -422,7 +444,7 @@ sensor architecture</td>
 <td>Document operating procedures for information processing</td>
 <td>ADM-generated dependency maps serve as documented network operating
 procedures</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>A.8 Technological</strong></td>
@@ -431,7 +453,7 @@ procedures</td>
 <td>Record events and generate evidence</td>
 <td>Full network + process telemetry; configurable retention;
 tamper-resistant storage</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>A.8 Technological</strong></td>
@@ -440,7 +462,7 @@ tamper-resistant storage</td>
 <td>Monitor networks and systems for anomalous behavior</td>
 <td>Real-time anomaly detection; policy violation alerting; SIEM
 integration</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>A.8 Technological</strong></td>
@@ -449,7 +471,7 @@ integration</td>
 <td>Control software installation on operational systems</td>
 <td>Process hash monitoring detects unauthorized software
 installations</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>A.8 Technological</strong></td>
@@ -458,7 +480,7 @@ installations</td>
 <td>Protect networks and network devices</td>
 <td>Micro-segmentation enforces network security at workload level
 across hybrid environments</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>A.8 Technological</strong></td>
@@ -467,7 +489,7 @@ across hybrid environments</td>
 <td>Secure network services</td>
 <td>ADM maps all network services; policy enforces approved services
 only</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>A.8 Technological</strong></td>
@@ -476,7 +498,7 @@ only</td>
 <td>Segregate networks based on information classification</td>
 <td>Scope-based isolation: PHI, CDE, production, development, partner
 environments</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>A.8 Technological</strong></td>
@@ -484,7 +506,7 @@ environments</td>
 <td>Web Filtering</td>
 <td>Filter access to external websites</td>
 <td>Block unauthorized outbound web access from sensitive scopes</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>A.8 Technological</strong></td>
@@ -493,7 +515,7 @@ environments</td>
 <td>Test security during development and acceptance</td>
 <td>ADM baseline comparison pre/post deployment detects new
 communication paths</td>
-<td style="text-align: center;"><strong>Partial Coverage</strong></td>
+<td style="text-align: center;" class="cov-supporting"><strong>Supporting</strong></td>
 </tr>
 </tbody>
 </table>
@@ -522,39 +544,39 @@ Intelligence</strong></td>
 <td>A.5.7</td>
 <td>Continuous CVE scanning provides workload-level threat
 intelligence</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Cloud Services
 Security</strong></td>
 <td>A.5.23</td>
 <td>Cloud connectors enforce policy on AWS/Azure/GCP workloads</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>ICT Readiness for
 BC</strong></td>
 <td>A.5.30</td>
 <td>Policy workspace export for DR; simulation mode for BC testing</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Web Filtering</strong></td>
 <td>A.8.23</td>
 <td>Block unauthorized outbound from sensitive scopes</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Secure Coding</strong></td>
 <td>A.8.28</td>
 <td>Process hash monitoring detects unexpected code execution</td>
-<td style="text-align: center;"><strong>Partial Coverage</strong></td>
+<td style="text-align: center;" class="cov-supporting"><strong>Supporting</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Data Masking</strong></td>
 <td>A.8.11</td>
 <td>Enforce encrypted paths; detect plaintext sensitive data flows</td>
-<td style="text-align: center;"><strong>Partial Coverage</strong></td>
+<td style="text-align: center;" class="cov-supporting"><strong>Supporting</strong></td>
 </tr>
 </tbody>
 </table>

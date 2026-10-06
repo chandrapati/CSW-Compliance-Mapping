@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc 3.11" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>SOC2 — Compliance Report</title>
+  <title>SOC 2 Type II — Compliance Report</title>
   <style>
 
 html {
@@ -286,22 +286,40 @@ color: var(--fg-muted);
 }
 .doc-meta a { font-weight: 500; }
 
+th {
+background: #003366;
+color: #ffffff;
+border-color: #003366;
+}
+thead th { background: #003366; color: #ffffff; }
+td.cov-direct { background: #107C41; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+td.cov-supporting { background: #C55A11; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+td.cov-evidence { background: #808080; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+
 @media print {
 body { max-width: none; padding: 0; color: #000; background: #fff; }
 a { color: #000; text-decoration: underline; }
 pre, code, blockquote { background: #f5f5f5; }
+th { background: #003366 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-direct { background: #107C41 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-supporting { background: #C55A11 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-evidence { background: #808080 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
 </style>
 </head>
 <body>
-<div class="doc-meta">Source: <a href="CSW-SOC2-Compliance-Report.docx">CSW-SOC2-Compliance-Report.docx</a> · <a href="../index.html">repository index</a> · Build: 2026-10-05T17:59:31Z UTC · Repository commit: 8fe7ae4</div>
+<div class="doc-meta">Source: <a href="CSW-SOC2-Compliance-Report.docx">CSW-SOC2-Compliance-Report.docx</a> · <a href="../index.html">repository index</a> · Build: 2026-10-06T03:17:40Z UTC · Repository commit: fe71f19</div>
 <header id="title-block-header">
-<h1 class="title">SOC2 — Compliance Report</h1>
+<h1 class="title">SOC 2 Type II — Compliance Report</h1>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#how-to-read-the-coverage-words" id="toc-how-to-read-the-coverage-words">How to read the coverage
-words</a></li>
+<li><a href="#how-to-read-the-coverage-column" id="toc-how-to-read-the-coverage-column">How to read the Coverage
+column</a></li>
 <li><a href="#executive-summary" id="toc-executive-summary"><strong>Executive Summary</strong></a>
 <ul>
 <li><a href="#coverage-summary" id="toc-coverage-summary"><strong>Coverage Summary</strong></a></li>
@@ -342,19 +360,23 @@ Type II (AICPA Trust Services Criteria)</strong></p>
 </tr>
 </tbody>
 </table>
-<h2 id="how-to-read-the-coverage-words">How to read the coverage
-words</h2>
-<p><strong>Full Coverage</strong> on the older reports means Secure
-Workload can produce that row&#39;s artifact. It does not mean the control
-is met.</p>
-<p><strong>Partial Coverage</strong> means file that export next to
-another control.</p>
+<h2 id="how-to-read-the-coverage-column">How to read the Coverage
+column</h2>
+<p><strong>Direct</strong> means Secure Workload produces the primary
+evidence artifact for that row — segmentation, policy, flow and process
+telemetry, inventory, vulnerability and reachability, or forensic
+reconstruction. Direct is still evidence, not an attestation.</p>
+<p><strong>Supporting</strong> means Secure Workload contributes an
+input that feeds or complements another control, tool, or process —
+detection input only, reconciled against an external register, or one
+log source among several.</p>
 <p><strong>Evidence Required</strong> means Secure Workload has no
-record. The customer files the contract, the analysis, or the HR or
-physical-security evidence.</p>
-<p><strong>Direct, Supporting, and Out of scope</strong> on the newer
-reports are the same idea in different words. Direct is still evidence,
-not a pass.</p>
+record for that row. The customer supplies the contract, the analysis,
+or the HR / physical-security evidence from another control.</p>
+<p>Every report in this set now uses the same three coverage words —
+Direct, Supporting, and Evidence Required. Coverage describes what
+evidence Secure Workload produces; it never means the control is
+passed.</p>
 <h1 id="executive-summary"><strong>Executive Summary</strong></h1>
 <p>SOC 2 Type II audits evaluate whether security controls operated
 effectively over a defined audit period (typically 6–12 months). Cisco
@@ -388,7 +410,7 @@ micro-segmentation, vulnerability detection, and forensic telemetry.</p>
 <td>Restrict logical access to systems</td>
 <td>Workload-level allowlist policies; default-deny inbound;
 process-level access logging</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Security (CC6)</strong></td>
@@ -397,7 +419,7 @@ process-level access logging</td>
 <td>Network controls restrict unauthorized access</td>
 <td>ADM maps all communication paths; micro-segmentation enforces
 least-privilege</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Security (CC6)</strong></td>
@@ -406,7 +428,7 @@ least-privilege</td>
 <td>Protect confidential data in transit</td>
 <td>Detect/block HTTP, FTP, plain LDAP; enforce HTTPS/SFTP/LDAPS across
 all scopes</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Security (CC7)</strong></td>
@@ -415,7 +437,7 @@ all scopes</td>
 <td>Identify and address vulnerabilities</td>
 <td>Continuous CVE scanning with CVSS scoring on all in-scope
 workloads</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Security (CC7)</strong></td>
@@ -424,7 +446,7 @@ workloads</td>
 <td>Monitor system components for anomalies</td>
 <td>Real-time flow + process telemetry; anomaly detection; sensor health
 monitoring</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Security (CC7)</strong></td>
@@ -433,7 +455,7 @@ monitoring</td>
 <td>Evaluate and respond to security events</td>
 <td>Forensic telemetry enables full incident reconstruction; alert
 export to SIEM</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Security (CC8)</strong></td>
@@ -442,7 +464,7 @@ export to SIEM</td>
 <td>Control changes to infrastructure and systems</td>
 <td>Policy workspace versioning; ADM baseline comparison detects
 drift</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Security (CC9)</strong></td>
@@ -451,7 +473,7 @@ drift</td>
 <td>Identify and mitigate risks</td>
 <td>Vulnerability data + ADM attack surface feeds risk register;
 compensating controls</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Availability (A1)</strong></td>
@@ -460,7 +482,7 @@ compensating controls</td>
 <td>Monitor system availability</td>
 <td>Sensor health monitoring; workload telemetry continuity; offline
 agent alerts</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Confidentiality
@@ -470,7 +492,7 @@ agent alerts</td>
 <td>Protect confidential information</td>
 <td>Confidential data scope isolation; encryption enforcement; access
 audit logging</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 </tbody>
 </table>

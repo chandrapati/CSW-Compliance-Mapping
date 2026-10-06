@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc 3.11" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>HIPAA — Compliance Report</title>
+  <title>HIPAA Security Rule — Compliance Report</title>
   <style>
 
 html {
@@ -286,22 +286,40 @@ color: var(--fg-muted);
 }
 .doc-meta a { font-weight: 500; }
 
+th {
+background: #003366;
+color: #ffffff;
+border-color: #003366;
+}
+thead th { background: #003366; color: #ffffff; }
+td.cov-direct { background: #107C41; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+td.cov-supporting { background: #C55A11; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+td.cov-evidence { background: #808080; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+
 @media print {
 body { max-width: none; padding: 0; color: #000; background: #fff; }
 a { color: #000; text-decoration: underline; }
 pre, code, blockquote { background: #f5f5f5; }
+th { background: #003366 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-direct { background: #107C41 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-supporting { background: #C55A11 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-evidence { background: #808080 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
 </style>
 </head>
 <body>
-<div class="doc-meta">Source: <a href="CSW-HIPAA-Compliance-Report.docx">CSW-HIPAA-Compliance-Report.docx</a> · <a href="../index.html">repository index</a> · Build: 2026-10-05T17:59:28Z UTC · Repository commit: 8fe7ae4</div>
+<div class="doc-meta">Source: <a href="CSW-HIPAA-Compliance-Report.docx">CSW-HIPAA-Compliance-Report.docx</a> · <a href="../index.html">repository index</a> · Build: 2026-10-06T03:17:40Z UTC · Repository commit: fe71f19</div>
 <header id="title-block-header">
-<h1 class="title">HIPAA — Compliance Report</h1>
+<h1 class="title">HIPAA Security Rule — Compliance Report</h1>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#how-to-read-the-coverage-words" id="toc-how-to-read-the-coverage-words">How to read the coverage
-words</a></li>
+<li><a href="#how-to-read-the-coverage-column" id="toc-how-to-read-the-coverage-column">How to read the Coverage
+column</a></li>
 <li><a href="#executive-summary" id="toc-executive-summary"><strong>Executive Summary</strong></a>
 <ul>
 <li><a href="#compliance-posture-summary" id="toc-compliance-posture-summary"><strong>Compliance Posture
@@ -352,19 +370,23 @@ Security Rule (45 CFR Part 164)</strong></p>
 </tr>
 </tbody>
 </table>
-<h2 id="how-to-read-the-coverage-words">How to read the coverage
-words</h2>
-<p><strong>Full Coverage</strong> on the older reports means Secure
-Workload can produce that row&#39;s artifact. It does not mean the control
-is met.</p>
-<p><strong>Partial Coverage</strong> means file that export next to
-another control.</p>
+<h2 id="how-to-read-the-coverage-column">How to read the Coverage
+column</h2>
+<p><strong>Direct</strong> means Secure Workload produces the primary
+evidence artifact for that row — segmentation, policy, flow and process
+telemetry, inventory, vulnerability and reachability, or forensic
+reconstruction. Direct is still evidence, not an attestation.</p>
+<p><strong>Supporting</strong> means Secure Workload contributes an
+input that feeds or complements another control, tool, or process —
+detection input only, reconciled against an external register, or one
+log source among several.</p>
 <p><strong>Evidence Required</strong> means Secure Workload has no
-record. The customer files the contract, the analysis, or the HR or
-physical-security evidence.</p>
-<p><strong>Direct, Supporting, and Out of scope</strong> on the newer
-reports are the same idea in different words. Direct is still evidence,
-not a pass.</p>
+record for that row. The customer supplies the contract, the analysis,
+or the HR / physical-security evidence from another control.</p>
+<p>Every report in this set now uses the same three coverage words —
+Direct, Supporting, and Evidence Required. Coverage describes what
+evidence Secure Workload produces; it never means the control is
+passed.</p>
 <h1 id="executive-summary"><strong>Executive Summary</strong></h1>
 <p>Healthcare organizations face escalating regulatory obligations under
 the HIPAA Security Rule to protect electronic Protected Health
@@ -395,26 +417,26 @@ Summary</strong></h2>
 §164.308</strong></td>
 <td>Risk analysis, access management, incident response, contingency
 planning, evaluation</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Physical Safeguards
 §164.310</strong></td>
 <td>Workload isolation and access boundary enforcement</td>
-<td style="text-align: center;"><strong>Partial Coverage</strong></td>
+<td style="text-align: center;" class="cov-supporting"><strong>Supporting</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Technical Safeguards
 §164.312</strong></td>
 <td>Access controls, audit controls, integrity, authentication,
 encryption in transit</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Organizational Requirements
 §164.314</strong></td>
 <td>Business Associate scope definition, third-party access control</td>
-<td style="text-align: center;"><strong>Evidence Required</strong></td>
+<td style="text-align: center;" class="cov-evidence"><strong>Evidence Required</strong></td>
 </tr>
 </tbody>
 </table>
@@ -507,7 +529,7 @@ to the corresponding CSW capability and implementation approach.</p>
 identity.</td>
 <td>CSW ADM captures process-user context per workload. Anomaly
 detection alerts on shared or generic credential usage patterns.</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;">Technical</td>
@@ -517,7 +539,7 @@ detection alerts on shared or generic credential usage patterns.</td>
 emergency.</td>
 <td>Break-glass policy workspace configured in CSW with alert-only mode.
 Emergency IP ranges defined with expanded but audited access.</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;">Technical</td>
@@ -527,7 +549,7 @@ Emergency IP ranges defined with expanded but audited access.</td>
 containing ePHI.</td>
 <td>CSW retains full network flow and process telemetry. Flow search
 enables retrospective audit of any ePHI workload interaction.</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;">Technical</td>
@@ -536,7 +558,7 @@ enables retrospective audit of any ePHI workload interaction.</td>
 <td>Protect ePHI from improper alteration or destruction.</td>
 <td>CSW policy enforcement blocks unauthorized write-path access.
 Process hash verification detects workload tampering.</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;">Technical</td>
@@ -546,7 +568,7 @@ Process hash verification detects workload tampering.</td>
 claimed.</td>
 <td>CSW enforces LDAPS/Kerberos-only paths to ePHI systems. Unencrypted
 LDAP (port 389) blocked via policy.</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;">Technical</td>
@@ -556,7 +578,7 @@ LDAP (port 389) blocked via policy.</td>
 appropriate.</td>
 <td>CSW detects unencrypted protocols (HTTP, FTP, plain LDAP) on
 PHI-Zone workloads. Policy enforces HTTPS/SFTP/LDAPS.</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;">Administrative</td>
@@ -567,7 +589,7 @@ and vulnerabilities to ePHI.</td>
 <td>CSW vulnerability detection provides continuous CVE assessment on
 all PHI-Zone workloads. CVSS-scored reports exportable for risk register
 input.</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;">Administrative</td>
@@ -576,7 +598,7 @@ input.</td>
 <td>Implement procedures for authorizing access to ePHI.</td>
 <td>CSW scope-based policies define which workloads can access ePHI
 systems. Policy changes require approved workflow.</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;">Administrative</td>
@@ -587,7 +609,7 @@ identifying and responding to suspected incidents.</td>
 <td>CSW anomaly detection and policy violation alerts provide real-time
 incident detection. Forensic telemetry supports full incident
 reconstruction.</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;">Administrative</td>
@@ -597,7 +619,7 @@ reconstruction.</td>
 containing ePHI.</td>
 <td>CSW policy workspaces exportable for DR purposes. Backup policy sets
 maintained for recovery scenarios.</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;">Administrative</td>
@@ -607,7 +629,7 @@ maintained for recovery scenarios.</td>
 implemented security measures.</td>
 <td>CSW compliance dashboard provides ongoing posture evaluation.
 Quarterly ADM re-runs detect policy drift.</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;">Organizational</td>
@@ -617,7 +639,7 @@ Quarterly ADM re-runs detect policy drift.</td>
 will appropriately safeguard ePHI.</td>
 <td>CSW defines External-Partners scope with restricted policy. All BA
 network access flows through audited, policy-enforced paths.</td>
-<td style="text-align: center;"><strong>Evidence Required</strong></td>
+<td style="text-align: center;" class="cov-evidence"><strong>Evidence Required</strong></td>
 </tr>
 </tbody>
 </table>
