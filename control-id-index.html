@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.11" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>Control-ID Index</title>
   <style>
@@ -39,7 +39,6 @@ background-color: white;
 body {
 background-color: transparent;
 color: black;
-font-size: 12pt;
 }
 p, h2, h3 {
 orphans: 3;
@@ -154,8 +153,12 @@ padding-left: 0;
 text-decoration: none;
 }
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 
 ul.task-list[class]{list-style: none;}
@@ -165,7 +168,6 @@ width: 0.8em;
 margin: 0 0.8em 0.2em -1.6em;
 vertical-align: middle;
 }
-.display.math{display: block; text-align: center; margin: 0.5rem auto;}
 </style>
   <style>
 :root {
@@ -284,20 +286,38 @@ color: var(--fg-muted);
 }
 .doc-meta a { font-weight: 500; }
 
+th {
+background: #003366;
+color: #ffffff;
+border-color: #003366;
+}
+thead th { background: #003366; color: #ffffff; }
+td.cov-direct { background: #107C41; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+td.cov-supporting { background: #C55A11; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+td.cov-evidence { background: #808080; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+
 @media print {
 body { max-width: none; padding: 0; color: #000; background: #fff; }
 a { color: #000; text-decoration: underline; }
 pre, code, blockquote { background: #f5f5f5; }
+th { background: #003366 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-direct { background: #107C41 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-supporting { background: #C55A11 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-evidence { background: #808080 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
 </style>
 </head>
 <body>
-<div class="doc-meta">Source: <a href="control-id-index.html">INDEX.md</a> · <a href="index.html">repository index</a> · Build: 2026-08-11T04:20:50Z UTC · Repository commit: 463f586</div>
+<div class="doc-meta">Source: <a href="control-id-index.html">INDEX.md</a> · <a href="index.html">repository index</a> · Build: 2026-10-06T03:17:55Z UTC · Repository commit: fe71f19</div>
 <header id="title-block-header">
 <h1 class="title">Control-ID Index</h1>
 </header>
 <h1 id="control-id-index">Control-ID Index</h1>
-<p>A lookup index across all thirty-four frameworks in this repository.
+<p>A lookup index across all thirty-five frameworks in this repository.
 Use it to jump from a specific control / requirement / article to the
 runbook section that explains how Cisco Secure Workload (CSW) supports
 evidence for it.</p>
@@ -496,6 +516,13 @@ access</a></td>
 <td><a href="./BSI-C5/CSW-BSI-C5-Technical-Runbook.html">BSI C5 cloud
 service scope, tenant/shared-service boundaries, cloud communication
 security</a></td>
+</tr>
+<tr>
+<td>“How do I evidence UK NCSC CAF for NIS OES or GovAssure?”</td>
+<td><a href="./UK-NCSC-CAF/caf-mapping.html">CAF A1–D2 crosswalk</a>, <a href="./UK-NCSC-CAF/CSW-UK-NCSC-CAF-Technical-Runbook.html">Technical
+runbook</a>, <a href="./UK-NCSC-CAF/caf-igp-maturity-scorer.html">IGP
+scorer</a>, <a href="./UK-NCSC-CAF/caf-evidence-pack-template.html">Evidence
+pack</a></td>
 </tr>
 </tbody>
 </table>
@@ -2919,6 +2946,115 @@ privilege</td>
 <td>CE5</td>
 <td>Security updates</td>
 <td>CVE + EPSS; reachability-ranked backlog</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="uk-ncsc-caf-v3.2">UK NCSC CAF v3.2</h2>
+<blockquote>
+<p><strong>Draft v1.</strong> For UK NIS Regulations (OES) assessments
+and GovAssure (Cabinet Office Government Security Group). Confirm the
+current CAF text and the assessor’s expectations before formal reliance.
+CSW is an evidence source for a subset of Indicators of Good Practice;
+it does not satisfy a principle by itself.</p>
+</blockquote>
+<p>Source: <a href="./UK-NCSC-CAF/caf-mapping.html"><code>UK-NCSC-CAF/caf-mapping.md</code></a>
+· <a href="./UK-NCSC-CAF/CSW-UK-NCSC-CAF-Technical-Runbook.html">Technical
+runbook</a> · <a href="./UK-NCSC-CAF/CSW-UK-NCSC-CAF-Compliance-Report.html">Compliance
+report</a> · <a href="./UK-NCSC-CAF/caf-igp-maturity-scorer.html">IGP
+scorer</a> · <a href="./UK-NCSC-CAF/caf-evidence-pack-template.html">Evidence pack</a></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Principle</th>
+<th>Topic</th>
+<th>CSW can support evidence for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A1</td>
+<td>Governance</td>
+<td>Executive posture telemetry for board/CISO reporting (not governance
+structure)</td>
+</tr>
+<tr>
+<td>A2</td>
+<td>Risk management</td>
+<td>Blast-radius, enforcement-gap, and reachability trends between
+snapshots</td>
+</tr>
+<tr>
+<td>A3</td>
+<td>Asset management</td>
+<td>Sensor census, package inventory, point-in-time cluster
+snapshot</td>
+</tr>
+<tr>
+<td>A4</td>
+<td>Supply chain</td>
+<td>Vendor-tagged egress vs. what the contract allows</td>
+</tr>
+<tr>
+<td>B1</td>
+<td>Service protection policies</td>
+<td>Versioned workspace policies and host-firewall enforcement</td>
+</tr>
+<tr>
+<td>B2</td>
+<td>Identity and access</td>
+<td>Out of scope — pair with an identity platform; ISE can supply
+identity-aware policy</td>
+</tr>
+<tr>
+<td>B3</td>
+<td>Data security</td>
+<td>East-west path control and plaintext-protocol deny (not encryption
+or DLP)</td>
+</tr>
+<tr>
+<td>B4</td>
+<td>System security</td>
+<td>Per-workload CVE and package inventory; config-drift signals</td>
+</tr>
+<tr>
+<td>B5</td>
+<td>Resilient networks and systems</td>
+<td>Segregation evidence for B5.b. Not backups (B5.c), and CAF does not
+name eBPF or microsegmentation</td>
+</tr>
+<tr>
+<td>B6</td>
+<td>Staff awareness and training</td>
+<td>Out of scope</td>
+</tr>
+<tr>
+<td>C1</td>
+<td>Security monitoring</td>
+<td>Continuous flow telemetry with process context and policy
+decision</td>
+</tr>
+<tr>
+<td>C2</td>
+<td>Proactive event discovery</td>
+<td>Forensic events and vulnerability reachability, paired with
+detection content</td>
+</tr>
+<tr>
+<td>D1</td>
+<td>Response and recovery</td>
+<td>Forensic timeline and containment evidence (recovery programme stays
+outside CSW)</td>
+</tr>
+<tr>
+<td>D2</td>
+<td>Lessons learned</td>
+<td>Snapshot delta a root-cause review can use. Not NIST PM-14</td>
 </tr>
 </tbody>
 </table>

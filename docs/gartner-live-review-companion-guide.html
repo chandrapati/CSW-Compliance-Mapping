@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.11" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>CSW Compliance — Gartner Live Review Companion Guide</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+</style>
+  <style>
+:root {
+--fg: #1f2328;
+--fg-muted: #59636e;
+--bg: #ffffff;
+--bg-muted: #f6f8fa;
+--border: #d1d9e0;
+--link: #0969da;
+--link-hover: #0349b4;
+--code-bg: #f6f8fa;
+--accent: #cf222e;
+--max-width: 920px;
+}
+@media (prefers-color-scheme: dark) {
+:root {
+--fg: #e6edf3;
+--fg-muted: #9198a1;
+--bg: #0d1117;
+--bg-muted: #151b23;
+--border: #3d444d;
+--link: #4493f8;
+--link-hover: #6cb6ff;
+--code-bg: #151b23;
+--accent: #ff7b72;
+}
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+margin: 0 auto;
+max-width: var(--max-width);
+padding: 2rem 1.25rem 4rem;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+font-size: 16px;
+line-height: 1.6;
+color: var(--fg);
+background: var(--bg);
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 2rem;
+margin-bottom: 1rem;
+font-weight: 600;
+line-height: 1.25;
+}
+h1 { font-size: 2rem; border-bottom: 1px solid var(--border); padding-bottom: .35rem; }
+h2 { font-size: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: .3rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1rem; }
+h5, h6 { font-size: .875rem; color: var(--fg-muted); }
+p, ul, ol, blockquote, pre, table { margin: 0 0 1rem; }
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+ul, ol { padding-left: 1.6rem; }
+li + li { margin-top: .15rem; }
+blockquote {
+margin: 0 0 1rem;
+padding: .5rem 1rem;
+color: var(--fg-muted);
+border-left: .25rem solid var(--border);
+background: var(--bg-muted);
+border-radius: 0 6px 6px 0;
+}
+code, pre, kbd, samp {
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+font-size: .9em;
+}
+code {
+background: var(--code-bg);
+padding: .15rem .35rem;
+border-radius: 4px;
+}
+pre {
+background: var(--code-bg);
+padding: 1rem;
+border-radius: 6px;
+overflow: auto;
+font-size: .85rem;
+line-height: 1.45;
+}
+pre code { background: transparent; padding: 0; font-size: inherit; }
+table {
+display: block;
+width: 100%;
+overflow: auto;
+border-collapse: collapse;
+}
+th, td {
+border: 1px solid var(--border);
+padding: .5rem .75rem;
+vertical-align: top;
+text-align: left;
+}
+th {
+background: var(--bg-muted);
+font-weight: 600;
+}
+tbody tr:nth-child(2n) { background: var(--bg-muted); }
+hr {
+border: 0;
+height: 1px;
+background: var(--border);
+margin: 2rem 0;
+}
+img { max-width: 100%; height: auto; }
+
+.doc-meta {
+margin: 0 0 2rem;
+padding: .75rem 1rem;
+border: 1px solid var(--border);
+border-radius: 6px;
+background: var(--bg-muted);
+font-size: .9rem;
+color: var(--fg-muted);
+}
+.doc-meta a { font-weight: 500; }
+
+@media print {
+body { max-width: none; padding: 0; color: #000; background: #fff; }
+a { color: #000; text-decoration: underline; }
+pre, code, blockquote { background: #f5f5f5; }
+}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">CSW Compliance — Gartner Live Review Companion
+Guide</h1>
+</header>
+<h1 id="csw-compliance-mapping--live-gartner-review-companion-guide">CSW
+Compliance Mapping — Live Gartner Review Companion Guide</h1>
+<p><strong>For:</strong> Nadir · <strong>Use:</strong> keep this open on
+a second screen during the live Gartner call
+<strong>Showcasing:</strong> PCI DSS v4.0 · NERC CIP · HIPAA Security
+Rule compliance reports <strong>Golden rule for the whole call:</strong>
+<em>CSW turns workload communication and inventory into
+<strong>evidence</strong> an assessor can review. It does
+<strong>not</strong> certify or &quot;make you&quot; compliant.</em> Say this
+early; it is what earns analyst credibility.</p>
+<hr />
+<h2 id="0-pre-call-setup-do-this-5-minutes-before">0. Pre-call setup (do
+this 5 minutes before)</h2>
+<ul>
+<li>Open these files in this order, in separate tabs:
+<ol type="1">
+<li><code>index.html</code> (the landing page — shows the full
+34-framework library)</li>
+<li><code>PCI-DSS-v4/CSW-PCI-DSS-Compliance-Report.pdf</code></li>
+<li><code>NERC-CIP/CSW-NERC-CIP-Compliance-Report.pdf</code></li>
+<li><code>HIPAA/CSW-HIPAA-Compliance-Report.pdf</code></li>
+<li>One <strong>Technical Runbook</strong> (e.g.
+<code>PCI-DSS-v4/CSW-PCI-DSS-Technical-Runbook.pdf</code>) to prove
+depth if asked</li>
+</ol></li>
+<li>Have the <strong>coverage legend</strong> (Section 2) visible — you
+will be asked what the colors mean.</li>
+<li>Share the <strong>specific tab</strong>, not the whole desktop. Zoom
+to ~125% so tables are readable on the analyst&#39;s screen.</li>
+<li>Have one sentence ready if screen-share fails: &quot;The library maps CSW
+evidence to 34 frameworks; I&#39;ll walk three.&quot;</li>
+</ul>
+<hr />
+<h2 id="1-opening-frame-6090-seconds-say-this-once">1. Opening frame
+(60–90 seconds, say this once)</h2>
+<blockquote>
+<p>&quot;This is a Cisco Secure Workload compliance-mapping library —
+<strong>34 frameworks</strong>, each with two documents: a
+<strong>customer-facing report</strong> for compliance and audit teams,
+and a <strong>technical runbook</strong> for the engineers. Every
+framework ships as editable DOCX, a review PDF, and browsable HTML.</p>
+<p>The honest positioning — and the part your clients care about — is
+this: CSW doesn&#39;t certify compliance. It turns
+<strong>workload-to-workload communication, inventory, and vulnerability
+data into assessor-ready evidence</strong>, mapped control-by-control,
+with a suggested collection cadence. The assessor still makes the call;
+we make their evidence trivial to produce.&quot;</p>
+</blockquote>
+<p>Why this wins with Gartner: analysts reward <strong>honest scope
+boundaries</strong> over &quot;compliance-in-a-box&quot; claims. Lead with the
+limitation and you own the room.</p>
+<hr />
+<h2 id="2-the-coverage-legend-explain-before-the-first-table">2. The
+coverage legend (explain before the first table)</h2>
+<p>Every report color-codes each control row by how much evidence CSW
+produces:</p>
+<table>
+<thead>
+<tr>
+<th>Label</th>
+<th>Means</th>
+<th>Color</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Direct</strong> / <strong>Full Coverage</strong></td>
+<td>CSW produces the primary evidence artifact for this control</td>
+<td>Green</td>
+</tr>
+<tr>
+<td><strong>Supporting</strong> / <strong>Partial Coverage</strong></td>
+<td>CSW produces evidence that sits <em>next to</em> another
+control/tool</td>
+<td>Amber</td>
+</tr>
+<tr>
+<td><strong>Evidence Required</strong> / <strong>Out of
+scope</strong></td>
+<td>CSW has no record; the customer evidences it elsewhere (policy, HR,
+physical, crypto, identity)</td>
+<td>Red</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Say explicitly:</strong> &quot;Green means CSW <em>produces the
+artifact</em> — <strong>not</strong> that the control is automatically
+passed. That distinction is deliberate.&quot;</p>
+<hr />
+<h2 id="3-report-walkthroughs--open--show--say--expect">3. Report
+walkthroughs — Open → Show → Say → Expect</h2>
+<h3 id="3a-pci-dss-v40-5-min">3A. PCI DSS v4.0 <em>(≈5 min)</em></h3>
+<p><strong>Open:</strong>
+<code>CSW-PCI-DSS-Compliance-Report.pdf</code></p>
+<p><strong>Show 1 — Control Coverage Summary table.</strong>
+<em>Say:</em> &quot;CSW directly supports the five requirements most cited in
+PCI findings — <strong>Req 1 network controls, 6 vulnerability mgmt, 7
+access, 10 logging/monitoring, 11 security testing</strong>.
+Workload-level micro-segmentation isolates the CDE at the OS, not just
+the perimeter — which is the QSA&#39;s main lateral-movement concern.&quot;</p>
+<p><strong>Show 2 — CDE scope segmentation table</strong> (CDE /
+CDE-Connected / Out-of-Scope / Third-Party Processors). <em>Say:</em>
+&quot;This is how we scope the cardholder data environment and <em>prove</em>
+isolation with ADM — default-deny inbound, allowlist-only outbound.&quot;</p>
+<p><strong>Show 3 — QSA Evidence Package table.</strong> <em>Say:</em>
+&quot;Every row is an export a QSA can request directly — policy export, flow
+logs, vuln reports — with a frequency. That&#39;s the time-saver.&quot;</p>
+<p><strong>Honest boundary (say it):</strong> &quot;Req 3/4 encryption, Req 8
+identity/MFA, Req 9 physical, Req 12 policy are <strong>Evidence
+Required</strong> — not CSW. We show that in red.&quot;</p>
+<h3 id="3b-nerc-cip-5-min--the-itot-framing-is-everything">3B. NERC CIP
+<em>(≈5 min — the IT/OT framing is everything)</em></h3>
+<p><strong>Open:</strong>
+<code>CSW-NERC-CIP-Compliance-Report.pdf</code></p>
+<p><strong>Show 1 — Compliance Posture Summary</strong> (CIP-002 →
+CIP-014). <em>Say:</em> &quot;Critical framing: CSW is the
+<strong>IT-side</strong> evidence engine. It is <strong>Direct</strong>
+on <strong>CIP-005 electronic security perimeter (IT-side), CIP-007
+ports/services &amp; monitoring, and CIP-010 configuration baseline
+&amp; vuln assessment</strong> — the audit-heavy ones. It is
+<strong>Supporting</strong> on CIP-002/003/009/011, and <strong>Out of
+scope</strong> for CIP-004 personnel, CIP-006/014 physical.&quot;</p>
+<p><strong>Show 2 — Control Coverage Summary</strong> (what CSW produces
+/ what the entity still files). <em>Say:</em> &quot;CIP-010 is the standout —
+a <strong>daily software and listening-port baseline with diff and
+disposition</strong>. A change seen here with no change ticket is your
+unauthorized-change candidate.&quot;</p>
+<p><strong>Honest boundary (say it, unprompted):</strong> &quot;CSW is
+<strong>not</strong> the Electronic Access Point firewall, and it does
+<strong>not</strong> touch the <strong>OT device layer</strong> — PLCs,
+RTUs, protocols like DNP3/Modbus. That&#39;s an OT-native tool like
+<strong>Cyber Vision</strong>. CSW covers the IT-side workloads:
+historians, jump hosts, the IT/OT DMZ.&quot; <em>(This honesty is exactly
+what a Gartner analyst is probing for.)</em></p>
+<h3 id="3c-hipaa-security-rule-5-min">3C. HIPAA Security Rule <em>(≈5
+min)</em></h3>
+<p><strong>Open:</strong>
+<code>CSW-HIPAA-Compliance-Report.pdf</code></p>
+<p><strong>Show 1 — Compliance Posture Summary:</strong> Administrative
+§164.308 <strong>Full</strong>, Physical §164.310
+<strong>Partial</strong>, Technical §164.312 <strong>Full</strong>,
+Organizational §164.314 <strong>Evidence Required</strong>.</p>
+<p><strong>Show 2 — HIPAA Control Mapping Detail (Technical Safeguards
+§164.312).</strong> <em>Say:</em> &quot;At the ePHI tier CSW maps cleanly:
+<strong>audit controls</strong> (full flow + process telemetry),
+<strong>integrity</strong>, <strong>authentication</strong> (enforces
+LDAPS/Kerberos-only, blocks plain LDAP 389), and
+<strong>encryption-in-transit detection</strong> — we flag
+HTTP/FTP/plain-LDAP on the PHI zone.&quot;</p>
+<p><strong>Show 3 — Evidence Collection &amp; Audit Readiness
+table.</strong> <em>Say:</em> &quot;Eight evidence artifacts, each tied to a
+HIPAA control and a cadence — this is the audit-readiness kit.&quot;</p>
+<p><strong>Honest boundary (say it):</strong> &quot;§164.314 Business
+Associate contracts, physical safeguards, and encryption
+<em>enforcement</em> are <strong>Evidence Required</strong> — CSW
+<strong>detects</strong> plaintext but doesn&#39;t encrypt; identity and
+BAAs live elsewhere.&quot;</p>
+<hr />
+<h2 id="4-gartner-specific-angles-weave-in-where-natural">4.
+Gartner-specific angles (weave in where natural)</h2>
+<ul>
+<li><strong>Breadth + consistency:</strong> 34 frameworks on one
+evidence model — including zero-trust (<strong>NIST 800-207, CISA
+ZTMM</strong>), sector (NERC, TSA, IEC 62443), and regional (DORA, NIS2,
+APRA, MAS).</li>
+<li><strong>Two-audience design:</strong> report for GRC/auditors,
+runbook for engineers — same control spine, different depth.</li>
+<li><strong>Continuous vs point-in-time:</strong> evidence is produced
+continuously (flows, policy drift), replacing once-a-year sampling.</li>
+<li><strong>Alignment to Gartner&#39;s microsegmentation guidance:</strong>
+OS-level, identity-/label-based segmentation; ADM → simulation → enforce
+lifecycle.</li>
+</ul>
+<hr />
+<h2 id="5-likely-analyst-questions--crisp-answers">5. Likely analyst
+questions — crisp answers</h2>
+<ul>
+<li><strong>&quot;Does this certify compliance?&quot;</strong> → &quot;No. It produces
+assessor-ready evidence inputs; the qualified assessor determines
+status.&quot;</li>
+<li><strong>&quot;How is this better than a written mapping?&quot;</strong> →
+&quot;Each row ties to a live CSW export with a cadence, plus a paired
+engineering runbook, consistent across 34 frameworks.&quot;</li>
+<li><strong>&quot;NERC — what about OT?&quot;</strong> → &quot;IT-side only by design;
+pair with Cyber Vision for the OT device layer. We state that explicitly
+in the report.&quot;</li>
+<li><strong>&quot;Agent coverage gaps?&quot;</strong> → &quot;Anything we can&#39;t
+instrument goes on a documented <em>cannot-instrument register</em> —
+which is itself audit evidence.&quot;</li>
+<li><strong>&quot;Encryption?&quot;</strong> → &quot;CSW detects plaintext flows; it
+does not enforce encryption. Shown as Evidence Required.&quot;</li>
+<li><strong>&quot;How current are the mappings?&quot;</strong> → &quot;Each report has
+a version note; validate against the version the customer is assessed
+under.&quot;</li>
+<li><strong>&quot;Enforcement risk in production?&quot;</strong> → &quot;ADM builds the
+policy, run in <strong>simulation ≥2 weeks</strong>, then enforce. No
+big-bang.&quot;</li>
+</ul>
+<hr />
+<h2 id="6-close--ask-last-60-seconds">6. Close / ask (last 60
+seconds)</h2>
+<blockquote>
+<p>&quot;The goal is to make microsegmentation evidence a non-event for
+compliance teams across whatever framework a client is assessed
+against.&quot;</p>
+</blockquote>
+<p><strong>Ask Gartner for:</strong> (1) feedback on framework
+coverage/gaps worth adding, (2) whether this fits relevant research
+(microsegmentation, CNAPP/CWPP, zero-trust), (3) intros to clients who
+keep asking &quot;prove segmentation for my audit.&quot;</p>
+<hr />
+<h2 id="7-timing--guardrails">7. Timing &amp; guardrails</h2>
+<p><strong>For a 25–30 min slot:</strong> 2 min open · 5 min PCI · 5 min
+NERC · 5 min HIPAA · 2 min breadth · ~6–8 min Q&amp;A.</p>
+<p><strong>Do:</strong> lead with the evidence-not-certification line;
+name the red/out-of-scope rows out loud; keep to three reports.
+<strong>Don&#39;t say:</strong> &quot;CSW makes you PCI/HIPAA/NERC compliant,&quot;
+&quot;replaces your QSA/auditor,&quot; or &quot;covers OT.&quot; <strong>Do say:</strong>
+&quot;produces assessor-ready evidence,&quot; &quot;complements
+identity/crypto/physical controls,&quot; &quot;IT-side.&quot;</p>
+<p><em>Disclaimer to have ready: these reports are informational
+planning aids, not legal/audit/certification advice; validate mappings
+against the official framework text and the customer&#39;s assessed
+version.</em></p>
+</body>
+</html>

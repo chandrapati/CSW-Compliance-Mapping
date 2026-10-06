@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc 3.11" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>NIST-800-207 — Compliance Report</title>
+  <title>NIST SP 800-207 (ZTA Seven Tenets) — Compliance Report</title>
   <style>
 
 html {
@@ -286,22 +286,41 @@ color: var(--fg-muted);
 }
 .doc-meta a { font-weight: 500; }
 
+th {
+background: #003366;
+color: #ffffff;
+border-color: #003366;
+}
+thead th { background: #003366; color: #ffffff; }
+td.cov-direct { background: #107C41; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+td.cov-supporting { background: #C55A11; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+td.cov-evidence { background: #808080; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+
 @media print {
 body { max-width: none; padding: 0; color: #000; background: #fff; }
 a { color: #000; text-decoration: underline; }
 pre, code, blockquote { background: #f5f5f5; }
+th { background: #003366 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-direct { background: #107C41 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-supporting { background: #C55A11 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-evidence { background: #808080 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
 </style>
 </head>
 <body>
-<div class="doc-meta">Source: <a href="CSW-NIST-800-207-Compliance-Report.docx">CSW-NIST-800-207-Compliance-Report.docx</a> · <a href="../index.html">repository index</a> · Build: 2026-10-05T17:59:30Z UTC · Repository commit: 8fe7ae4</div>
+<div class="doc-meta">Source: <a href="CSW-NIST-800-207-Compliance-Report.docx">CSW-NIST-800-207-Compliance-Report.docx</a> · <a href="../index.html">repository index</a> · Build: 2026-10-06T03:17:42Z UTC · Repository commit: fe71f19</div>
 <header id="title-block-header">
-<h1 class="title">NIST-800-207 — Compliance Report</h1>
+<h1 class="title">NIST SP 800-207 (ZTA Seven Tenets) — Compliance
+Report</h1>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#how-to-read-the-coverage-words" id="toc-how-to-read-the-coverage-words">How to read the coverage
-words</a></li>
+<li><a href="#how-to-read-the-coverage-column" id="toc-how-to-read-the-coverage-column">How to read the Coverage
+column</a></li>
 <li><a href="#executive-summary" id="toc-executive-summary"><strong>Executive Summary</strong></a>
 <ul>
 <li><a href="#zta-tenet-coverage-summary" id="toc-zta-tenet-coverage-summary"><strong>ZTA Tenet Coverage
@@ -359,19 +378,23 @@ Roadmap</strong></a></li>
 </tr>
 </tbody>
 </table>
-<h2 id="how-to-read-the-coverage-words">How to read the coverage
-words</h2>
-<p><strong>Full Coverage</strong> on the older reports means Secure
-Workload can produce that row&#39;s artifact. It does not mean the control
-is met.</p>
-<p><strong>Partial Coverage</strong> means file that export next to
-another control.</p>
+<h2 id="how-to-read-the-coverage-column">How to read the Coverage
+column</h2>
+<p><strong>Direct</strong> means Secure Workload produces the primary
+evidence artifact for that row — segmentation, policy, flow and process
+telemetry, inventory, vulnerability and reachability, or forensic
+reconstruction. Direct is still evidence, not an attestation.</p>
+<p><strong>Supporting</strong> means Secure Workload contributes an
+input that feeds or complements another control, tool, or process —
+detection input only, reconciled against an external register, or one
+log source among several.</p>
 <p><strong>Evidence Required</strong> means Secure Workload has no
-record. The customer files the contract, the analysis, or the HR or
-physical-security evidence.</p>
-<p><strong>Direct, Supporting, and Out of scope</strong> on the newer
-reports are the same idea in different words. Direct is still evidence,
-not a pass.</p>
+record for that row. The customer supplies the contract, the analysis,
+or the HR / physical-security evidence from another control.</p>
+<p>Every report in this set now uses the same three coverage words —
+Direct, Supporting, and Evidence Required. Coverage describes what
+evidence Secure Workload produces; it never means the control is
+passed.</p>
 <h1 id="executive-summary"><strong>Executive Summary</strong></h1>
 <p>NIST SP 800-207 defines Zero Trust Architecture (ZTA) as a set of
 cybersecurity paradigms that move defenses from static, network-based
@@ -404,47 +427,47 @@ Summary</strong></h2>
 <td style="text-align: center;">Tenet 1 — All data sources and computing
 services are resources</td>
 <td>Workload discovery and inventory across hybrid environments</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;">Tenet 2 — All communication is secured
 regardless of network location</td>
 <td>Encrypted protocol enforcement, unencrypted flow detection</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;">Tenet 3 — Access to individual
 enterprise resources is granted on a per-session basis</td>
 <td>Workload-level allowlist policies, session-scoped access
 enforcement</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;">Tenet 4 — Access to resources is
 determined by dynamic policy</td>
 <td>ADM-derived policies, API-driven dynamic policy updates</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;">Tenet 5 — Enterprise monitors and
 measures integrity and security posture of all assets</td>
 <td>Continuous vulnerability scanning, process hash verification,
 telemetry</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;">Tenet 6 — All resource authentication
 and authorization is dynamic and strictly enforced</td>
 <td>Encrypted auth path enforcement (LDAPS/Kerberos), unauthenticated
 access blocking</td>
-<td style="text-align: center;"><strong>Partial Coverage</strong></td>
+<td style="text-align: center;" class="cov-supporting"><strong>Supporting</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;">Tenet 7 — Enterprise collects
 information about current state of assets and uses it to improve
 security posture</td>
 <td>Full flow + process telemetry, ADM baseline, SIEM integration</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 </tbody>
 </table>
@@ -746,7 +769,7 @@ Provider (IdP), SSO platform, and/or Cisco Secure Access (ZTNA).</td>
 <p><em>Evidence generated: Authentication path enforcement log (LDAPS
 policy), unauthenticated access alert log, process-identity flow
 report.</em></p>
-<p><em>Note: Tenet 6 is Partial Coverage because CSW enforces the
+<p><em>Note: Tenet 6 is Supporting coverage because CSW enforces the
 network path to authentication systems but does not itself perform
 identity provider functions. Pair with Cisco Secure Access or equivalent
 ZTNA for full coverage.</em></p>
@@ -833,7 +856,7 @@ Description</strong></td>
 based on device posture and identity.</td>
 <td>CSW software sensor on each workload enforces network policy and
 collects posture data. Primary CSW deployment model.</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;">Enclave-Based ZTA</td>
@@ -842,7 +865,7 @@ gateway. Intra-enclave traffic is implicitly trusted.</td>
 <td>CSW replaces implicit intra-enclave trust with workload-level
 micro-segmentation. ADM validates all intra-enclave flows — no assumed
 trust within zones.</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;">Resource Portal-Based ZTA</td>
@@ -851,7 +874,7 @@ which proxies requests to backend resources.</td>
 <td>CSW protects backend resources behind the portal. Enforces that only
 the portal can reach backend workloads. Detects any bypass of the portal
 path.</td>
-<td style="text-align: center;"><strong>Full Coverage</strong></td>
+<td style="text-align: center;" class="cov-direct"><strong>Direct</strong></td>
 </tr>
 </tbody>
 </table>

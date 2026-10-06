@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc 3.11" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Cisco Secure Workload — Compliance Mapping Series" />
-  <title>NIST-CSF-2 — Compliance Report</title>
+  <title>NIST Cybersecurity Framework 2.0 — Compliance Report</title>
   <style>
 
 html {
@@ -287,17 +287,36 @@ color: var(--fg-muted);
 }
 .doc-meta a { font-weight: 500; }
 
+th {
+background: #003366;
+color: #ffffff;
+border-color: #003366;
+}
+thead th { background: #003366; color: #ffffff; }
+td.cov-direct { background: #107C41; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+td.cov-supporting { background: #C55A11; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+td.cov-evidence { background: #808080; color: #fff; font-weight: 600; text-align: center; white-space: nowrap; }
+
 @media print {
 body { max-width: none; padding: 0; color: #000; background: #fff; }
 a { color: #000; text-decoration: underline; }
 pre, code, blockquote { background: #f5f5f5; }
+th { background: #003366 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-direct { background: #107C41 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-supporting { background: #C55A11 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
+td.cov-evidence { background: #808080 !important; color: #fff !important;
+-webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
 </style>
 </head>
 <body>
-<div class="doc-meta">Source: <a href="CSW-CSF-Compliance-Report.docx">CSW-CSF-Compliance-Report.docx</a> · <a href="../index.html">repository index</a> · Build: 2026-10-05T17:59:31Z UTC · Repository commit: 8fe7ae4</div>
+<div class="doc-meta">Source: <a href="CSW-CSF-Compliance-Report.docx">CSW-CSF-Compliance-Report.docx</a> · <a href="../index.html">repository index</a> · Build: 2026-10-06T03:17:45Z UTC · Repository commit: fe71f19</div>
 <header id="title-block-header">
-<h1 class="title">NIST-CSF-2 — Compliance Report</h1>
+<h1 class="title">NIST Cybersecurity Framework 2.0 — Compliance
+Report</h1>
 <p class="subtitle">Cisco Secure Workload | Govern, Identify, Protect,
 Detect, Respond, Recover</p>
 <p class="author">Cisco Secure Workload — Compliance Mapping Series</p>
@@ -311,8 +330,8 @@ Contents</a></li>
 Secure Workload — NIST CSF 2.0 Compliance Mapping</a>
 <ul>
 <li><a href="#how-to-read-this-report" id="toc-how-to-read-this-report">How to read this report</a></li>
-<li><a href="#how-to-read-the-coverage-words" id="toc-how-to-read-the-coverage-words">How to read the coverage
-words</a></li>
+<li><a href="#how-to-read-the-coverage-column" id="toc-how-to-read-the-coverage-column">How to read the Coverage
+column</a></li>
 <li><a href="#executive-summary" id="toc-executive-summary">1. Executive
 Summary</a></li>
 <li><a href="#compliance-posture-summary" id="toc-compliance-posture-summary">2. Compliance Posture
@@ -351,19 +370,23 @@ Technical Runbook</em> walks through CSW deployment per Profile / Tier,
 and the Subcategory-by-Subcategory implementation steps. Read this
 report for the audit-narrative view; read the runbook for the deployment
 view.</p>
-<h2 id="how-to-read-the-coverage-words">How to read the coverage
-words</h2>
-<p><strong>Full Coverage</strong> on the older reports means Secure
-Workload can produce that row&#39;s artifact. It does not mean the control
-is met.</p>
-<p><strong>Partial Coverage</strong> means file that export next to
-another control.</p>
+<h2 id="how-to-read-the-coverage-column">How to read the Coverage
+column</h2>
+<p><strong>Direct</strong> means Secure Workload produces the primary
+evidence artifact for that row — segmentation, policy, flow and process
+telemetry, inventory, vulnerability and reachability, or forensic
+reconstruction. Direct is still evidence, not an attestation.</p>
+<p><strong>Supporting</strong> means Secure Workload contributes an
+input that feeds or complements another control, tool, or process —
+detection input only, reconciled against an external register, or one
+log source among several.</p>
 <p><strong>Evidence Required</strong> means Secure Workload has no
-record. The customer files the contract, the analysis, or the HR or
-physical-security evidence.</p>
-<p><strong>Direct, Supporting, and Out of scope</strong> on the newer
-reports are the same idea in different words. Direct is still evidence,
-not a pass.</p>
+record for that row. The customer supplies the contract, the analysis,
+or the HR / physical-security evidence from another control.</p>
+<p>Every report in this set now uses the same three coverage words —
+Direct, Supporting, and Evidence Required. Coverage describes what
+evidence Secure Workload produces; it never means the control is
+passed.</p>
 <h2 id="executive-summary">1. Executive Summary</h2>
 <p>CSF 2.0 organises cybersecurity outcomes across six Functions, 22
 Categories, and 106 Subcategories. CSW is the workload-tier evidence
@@ -413,46 +436,46 @@ upstream identity decisions).</p>
 </colgroup>
 <thead>
 <tr>
-<th>Function</th>
-<th>Coverage</th>
-<th>CSW contribution</th>
+<th><strong>Function</strong></th>
+<th><strong>Coverage</strong></th>
+<th><strong>CSW contribution</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Govern (GV)</td>
-<td>Supporting</td>
+<td class="cov-supporting"><strong>Supporting</strong></td>
 <td>Quarterly evidence pack; vendor-egress observation feeding
 GV.SC</td>
 </tr>
 <tr>
 <td>Identify (ID)</td>
-<td>Direct</td>
+<td class="cov-direct"><strong>Direct</strong></td>
 <td>ID.AM: continuous workload + flow + software inventory. ID.RA:
 continuous CVE + reachability + drift evidence</td>
 </tr>
 <tr>
 <td>Protect (PR)</td>
-<td>Direct</td>
+<td class="cov-direct"><strong>Direct</strong></td>
 <td>PR.IR: segmentation enforcement. PR.PS: baseline + drift + SIEM +
 behavioural rules. PR.AA / PR.DS: supporting (workload-side enforcement
 of upstream identity, plaintext DENY)</td>
 </tr>
 <tr>
 <td>Detect (DE)</td>
-<td>Direct</td>
+<td class="cov-direct"><strong>Direct</strong></td>
 <td>DE.CM: workload telemetry + behavioural rules + anomaly detection.
 DE.AE: forensic timeline + SIEM correlation + threat intel</td>
 </tr>
 <tr>
 <td>Respond (RS)</td>
-<td>Direct</td>
+<td class="cov-direct"><strong>Direct</strong></td>
 <td>RS.MA / RS.AN: six-artefact dossier + severity routing + magnitude
 estimate. RS.MI: quarantine policy templates</td>
 </tr>
 <tr>
 <td>Recover (RC)</td>
-<td>Supporting</td>
+<td class="cov-supporting"><strong>Supporting</strong></td>
 <td>Pre-incident segmentation export available for re-application;
 post-recovery diff = evidence of new normal</td>
 </tr>
@@ -478,10 +501,10 @@ Artefact</h2>
 </colgroup>
 <thead>
 <tr>
-<th>Subcategory</th>
-<th>Topic</th>
-<th>CSW capability</th>
-<th>Evidence artefact (audit-ready)</th>
+<th><strong>Subcategory</strong></th>
+<th><strong>Topic</strong></th>
+<th><strong>CSW capability</strong></th>
+<th><strong>Evidence artefact (audit-ready)</strong></th>
 </tr>
 </thead>
 <tbody>
@@ -781,9 +804,9 @@ reference the noted complementary controls.</p>
 </colgroup>
 <thead>
 <tr>
-<th>Subcategory</th>
-<th>Owner</th>
-<th>Complementary control</th>
+<th><strong>Subcategory</strong></th>
+<th><strong>Owner</strong></th>
+<th><strong>Complementary control</strong></th>
 </tr>
 </thead>
 <tbody>

@@ -121,6 +121,45 @@ def run_pandoc(input_path: Path, output_path: Path, title: str, source_label: st
     before_body.unlink(missing_ok=True)
 
 
+TD_RE = re.compile(r"<td([^>]*)>(.*?)</td>", re.DOTALL)
+TAG_RE = re.compile(r"<[^>]+>")
+
+
+def _classify_status(text: str) -> str | None:
+    t = TAG_RE.sub("", text).strip().lower()
+    if not t or len(t) > 30:
+        return None
+    if re.match(r"^(evidence required|out of scope|out-of-scope|not applicable|n/a|none)\b", t):
+        return "evidence"
+    if re.match(r"^(direct|full coverage|full)\b", t):
+        return "direct"
+    if re.match(r"^(supporting|partial coverage|partial)\b", t):
+        return "supporting"
+    return None
+
+
+def colorize_status_cells(html_path: Path) -> None:
+    """Add cov-* classes to coverage/status <td> cells so the HTML matches the
+    color-coded PDF look (green=Direct, amber=Supporting, grey=Evidence Required)."""
+    text = html_path.read_text(encoding="utf-8")
+
+    def repl(m: re.Match) -> str:
+        attrs, inner = m.group(1), m.group(2)
+        cls = _classify_status(inner)
+        if not cls:
+            return m.group(0)
+        klass = f"cov-{cls}"
+        if "class=" in attrs:
+            attrs = re.sub(r'class="([^"]*)"', lambda a: f'class="{a.group(1)} {klass}"', attrs)
+        else:
+            attrs = f'{attrs} class="{klass}"'
+        return f"<td{attrs}>{inner}</td>"
+
+    new = TD_RE.sub(repl, text)
+    if new != text:
+        html_path.write_text(new, encoding="utf-8")
+
+
 HREF_MD_RE = re.compile(r'(href="[^"]+?)\.md(["#])')
 ABS_REPO_RE = re.compile(r'href="(?:\.\./)+(?:[^"/]+/)*?_csw-compliance-mapping-staging/')
 
@@ -248,6 +287,7 @@ def main() -> int:
             run_pandoc(report_docx, report_html, f"{fw_label} \u2014 Compliance Report",
                        report_docx.name, report_docx.name)
             rewrite_links(report_html)
+            colorize_status_cells(report_html)
             report_href = str(report_html.relative_to(ROOT))
 
         runbook_href: str | None = None
