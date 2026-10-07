@@ -1,13 +1,14 @@
-# Cisco Secure Workload — Compliance Mapping Assets
+# Cisco Secure Workload — Compliance Reference Designs & Reports
 
 ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=chandrapati.CSW-Compliance-Mapping&left_text=visitors)
 
-Customer-facing reports and matching technical runbooks that map Cisco
+Customer-facing reports and matching **reference designs** that map Cisco
 Secure Workload (CSW) controls to **thirty-four** compliance, sector, and
 zero-trust frameworks. Every framework folder ships the same set of
-assets: a Markdown technical runbook (the engineering view), a DOCX
-report (the editable customer master), a PDF render of that report,
-and HTML versions of both for browser/mobile reading.
+assets: a Markdown **reference design** (the engineering view — architecture
+intent, configuration steps, sample policies, and the exact evidence
+exports), a DOCX report (the editable customer master), a PDF render of
+that report, and HTML versions of both for browser/mobile reading.
 
 > **New here?** Read [Background — What is Cisco Secure Workload?](./docs/about-csw.md)
 > for a one-page intro to the platform itself, then come back to pick a
@@ -21,10 +22,13 @@ and HTML versions of both for browser/mobile reading.
   (CSW) capabilities to **34 security, regulatory, and zero-trust
   frameworks** — so you can see *which* controls CSW helps you evidence,
   and *how*, before committing budget or audit hours.
-- **What you get per framework.** Two paired documents — a **technical
-  runbook** (the engineering view: configuration steps, sample policies,
-  exact evidence exports) and a **customer-facing report** (the narrative
-  built on that work) — each in Markdown, DOCX, PDF, and HTML.
+- **What you get per framework.** Two paired documents — a **reference
+  design** (the engineering view: architecture intent, configuration
+  steps, sample policies, and the exact evidence exports) and a
+  **customer-facing report** (the assessor-ready narrative built on that
+  work) — each in Markdown, DOCX, PDF, and HTML. Each framework also has
+  its own standalone [Reference Design repo](#per-framework-reference-designs)
+  with a full CSW build guide, per-control evidence table, and POV plan.
 - **The core idea.** CSW turns live workload behaviour — *who talks to
   whom, on which port, via which process, and what changed* — into
   micro-segmentation, drift tracking, and forensic-grade flow evidence.
@@ -81,7 +85,7 @@ questions worth walking through against your own environment — see
 
 ![Cisco Secure Workload Compliance Mapping Architecture](csw-compliance-architecture.png)
 
-*The same Secure Workload capabilities — micro-segmentation, process & flow telemetry, software inventory & CVE awareness, forensic flow evidence, and authored workload policy — are mapped, control by control, to 34 compliance and zero-trust frameworks. Each framework folder pairs an engineering runbook with a customer-facing report so the same live evidence answers both the auditor and the incident responder.*
+*The same Secure Workload capabilities — micro-segmentation, process & flow telemetry, software inventory & CVE awareness, forensic flow evidence, and authored workload policy — are mapped, control by control, to 34 compliance and zero-trust frameworks. Each framework folder pairs an engineering reference design with a customer-facing report so the same live evidence answers both the auditor and the incident responder.*
 
 ---
 
@@ -198,16 +202,16 @@ scope, and shared-responsibility model.
 ## Asset library
 
 **Coverage** highlights what each framework section addresses so the
-whole library can be scanned in one view. The **Runbook** column comes
-first because the runbook is what proves the mapping is real and not
-marketing — it shows the actual configuration steps, sample policies,
-and evidence collection. The **Report** column is the customer-facing
-narrative built on top of that work. Format links open the asset
-directly; pick whichever fits the conversation you're in (see the
+whole library can be scanned in one view. The **Reference design** column
+comes first because the reference design is what proves the mapping is real
+and not marketing — it shows the actual architecture intent, configuration
+steps, sample policies, and evidence collection. The **Report** column is the
+customer-facing narrative built on top of that work. Format links open the
+asset directly; pick whichever fits the conversation you're in (see the
 [audience and usage guide](./docs/audience-and-usage.md) for when to
-reach for the runbook vs. the report).
+reach for the reference design vs. the report).
 
-| Framework | Coverage | Runbook | Report |
+| Framework | Coverage | Reference design | Report |
 |---|---|---|---|
 | HIPAA Security Rule | ePHI workload isolation; investigation-supporting telemetry; BAA technical boundary evidence | [MD](./HIPAA/CSW-HIPAA-Technical-Runbook.md) · [PDF](./HIPAA/CSW-HIPAA-Technical-Runbook.pdf) · [DOCX](./HIPAA/CSW-HIPAA-Technical-Runbook.docx) · [HTML](./HIPAA/CSW-HIPAA-Technical-Runbook.html) | [PDF](./HIPAA/CSW-HIPAA-Compliance-Report.pdf) · [DOCX](./HIPAA/CSW-HIPAA-Compliance-Report.docx) · [HTML](./HIPAA/CSW-HIPAA-Compliance-Report.html) |
 | SOC 2 Type II | Continuous CC6.x evidence (vs point-in-time samples); CC7 incident artefacts; customer due-diligence proofs | [MD](./SOC2/CSW-SOC2-Technical-Runbook.md) · [PDF](./SOC2/CSW-SOC2-Technical-Runbook.pdf) · [DOCX](./SOC2/CSW-SOC2-Technical-Runbook.docx) · [HTML](./SOC2/CSW-SOC2-Technical-Runbook.html) | [PDF](./SOC2/CSW-SOC2-Compliance-Report.pdf) · [DOCX](./SOC2/CSW-SOC2-Compliance-Report.docx) · [HTML](./SOC2/CSW-SOC2-Compliance-Report.html) |
@@ -260,11 +264,11 @@ reach for the runbook vs. the report).
 > this library. CIS Controls v8.1 is a prioritised subset of NIST
 > 800-53; CSF 2.0 is an outcomes wrapper that cites 800-53 (and others)
 > as Informative References; CMMC 2.0 Level 2 *is* NIST 800-171, which
-> is itself a tailored subset of 800-53. Read the standalone runbook
+> is itself a tailored subset of 800-53. Read the standalone reference design
 > when you need the framework-native narrative (assessor language,
 > IG/Level/Profile structure, format evidence comes in);
 > cross-reference the [800-53](./NIST-800-53/) and
-> [800-207](./NIST-800-207/) runbooks for the deeper control rationale.
+> [800-207](./NIST-800-207/) reference designs for the deeper control rationale.
 > All three are **draft v1** and require SME review before being relied
 > upon in a formal compliance engagement (CMMC L2 specifically requires
 > a C3PAO assessment regardless).
@@ -280,13 +284,13 @@ reach for the runbook vs. the report).
 > Electronic Access Point (NERC) or as an OT-protocol DPI tool; pair
 > with your boundary firewall and your OT-aware monitoring stack
 > (Cisco Cyber Vision, Claroty, Nozomi, Dragos) for end-to-end
-> coverage. Both runbooks and reports are **draft v1** and require SME
+> coverage. Both reference designs and reports are **draft v1** and require SME
 > review before being relied upon in a formal compliance engagement.
 
 ## Read next
 
 - **[Analyst reading guide](./docs/analyst-reading-guide.md)** —
-  how to walk each report and runbook with an analyst or reviewer,
+  how to walk each report and reference design with an analyst or reviewer,
   including what Direct, Supporting, and Evidence Required mean in the room.
 - **[Compliance evidence playbook](./docs/compliance-evidence-playbook.md)** —
   **start here if you are new to CSW** — universal 4-phase evidence programme,
@@ -306,14 +310,14 @@ reach for the runbook vs. the report).
   cyber-insurance / ransomware supplemental honestly (what CSW covers vs.
   what to pair).
 - **[Audience and usage guide](./docs/audience-and-usage.md)** — who
-  should lead with which document, runbook-vs-report guidance, file
+  should lead with which document, reference-design-vs-report guidance, file
   format guidance, and the full folder layout.
 - **[`INDEX.md`](./INDEX.md)** — control-ID lookup across all thirty-five
   frameworks.
 - **[CSW Epic EHR Microsegmentation Guide](https://github.com/chandrapati/CSW-Epic-Microsegmentation-Guide)** —
-  step-by-step practitioner runbook for Epic tier scopes, ADM, Interconnect/HL7
+  step-by-step practitioner guide for Epic tier scopes, ADM, Interconnect/HL7
   policy, enforcement, and HIPAA quarterly evidence — pairs directly with the
-  HIPAA and HITRUST runbooks in this repo.
+  HIPAA and HITRUST reference designs in this repo.
 
 Once GitHub Pages is enabled, the same content is also browseable at
 `https://chandrapati.github.io/CSW-Compliance-Reference-Designs/` (landing page
