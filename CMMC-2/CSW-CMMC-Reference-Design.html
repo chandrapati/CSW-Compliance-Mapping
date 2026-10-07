@@ -312,7 +312,7 @@ td.cov-evidence { background: #808080 !important; color: #fff !important;
 </style>
 </head>
 <body>
-<div class="doc-meta">Source: <a href="CSW-CMMC-Reference-Design.html">CSW-CMMC-Reference-Design.md</a> · <a href="../index.html">repository index</a> · Build: 2026-10-06T03:17:46Z UTC · Repository commit: fe71f19</div>
+<div class="doc-meta">Source: <a href="CSW-CMMC-Reference-Design.html">CSW-CMMC-Reference-Design.md</a> · <a href="../index.html">repository index</a> · Build: 2026-10-07T17:30:33Z UTC · Repository commit: a630820</div>
 <header id="title-block-header">
 <h1 class="title">CMMC 2.0 — Reference Design</h1>
 </header>
@@ -322,8 +322,8 @@ td.cov-evidence { background: #808080 !important; color: #fff !important;
 Secure Workload — CMMC 2.0 (Cybersecurity Maturity Model
 Certification)</a>
 <ul>
-<li><a href="#technical-reference design-level-2-lead-with-level-1-level-3-deltas" id="toc-technical-reference design-level-2-lead-with-level-1-level-3-deltas">Technical
-Reference design | Level 2 Lead, with Level 1 / Level 3 Deltas</a></li>
+<li><a href="#reference-design-level-2-lead-with-level-1-level-3-deltas" id="toc-reference-design-level-2-lead-with-level-1-level-3-deltas">Reference
+Design | Level 2 Lead, with Level 1 / Level 3 Deltas</a></li>
 <li><a href="#readers-guide" id="toc-readers-guide">Reader’s
 Guide</a></li>
 <li><a href="#csw-primer-if-you-are-new-to-cisco-secure-workload" id="toc-csw-primer-if-you-are-new-to-cisco-secure-workload">CSW primer —
@@ -449,8 +449,8 @@ Related Frameworks</a></li>
 <h1 id="cisco-secure-workload-cmmc-2.0-cybersecurity-maturity-model-certification">Cisco
 Secure Workload — CMMC 2.0 (Cybersecurity Maturity Model
 Certification)</h1>
-<h2 id="technical-reference design-level-2-lead-with-level-1-level-3-deltas">Technical
-Reference design | Level 2 Lead, with Level 1 / Level 3 Deltas</h2>
+<h2 id="reference-design-level-2-lead-with-level-1-level-3-deltas">Reference
+Design | Level 2 Lead, with Level 1 / Level 3 Deltas</h2>
 <p><strong>Version:</strong> 1.0 (draft — pending SME review) |
 <strong>Standard:</strong> CMMC 2.0 (final rule effective December 16,
 2024) | <strong>Audience:</strong> DoD contractors and subcontractors
@@ -463,10 +463,10 @@ cloud) supporting the CUI/FCI scope</p>
 organisations that hold or are seeking DoD contracts subject to DFARS
 252.204-7012 (safeguarding CUI), or to the broader DFARS 252.204-7021
 CMMC clause once it appears in your contracts. The default depth in this
-reference design is written for <strong>CMMC Level 2</strong> because that’s
-where the bulk of the technical work — and the bulk of CSW alignment —
-lives. Level 1 and Level 3 deltas are called out where the work
-materially changes.</p>
+reference design is written for <strong>CMMC Level 2</strong> because
+that’s where the bulk of the technical work — and the bulk of CSW
+alignment — lives. Level 1 and Level 3 deltas are called out where the
+work materially changes.</p>
 <p><strong>Why CMMC and not just NIST 800-171 or 800-53?</strong> CMMC
 2.0 doesn’t invent new controls. It is the DoD’s <em>certification</em>
 mechanism that your organisation has implemented the controls already
@@ -484,7 +484,8 @@ selected subset of NIST SP 800-172 enhanced security requirements.
 Government-led assessment. Required for the highest-criticality
 contracts.</li>
 </ul>
-<p><strong>Questions this reference design helps you answer:</strong></p>
+<p><strong>Questions this reference design helps you
+answer:</strong></p>
 <ul>
 <li><em>AC.L2-3.1.1 / 3.1.2 (Limit access; restrict to authorised
 functions): can I produce evidence that workload-level access is
@@ -525,10 +526,10 @@ section 6 for RA (vulnerability assessments); section 7 for SC (boundary
 protection); section 8 for SI (system &amp; information integrity).</p>
 <p><strong>Important.</strong> CMMC 2.0 assessment is performed by a
 Certified Third- Party Assessor Organisation (C3PAO) for Level 2
-certified-assessed scope. Nothing in this reference design substitutes for the
-SSP, POA&amp;M, or the C3PAO engagement. CSW can support evidence for
-many technical practices the C3PAO evaluates, subject to CUI scope,
-implementation, and assessor judgment.</p>
+certified-assessed scope. Nothing in this reference design substitutes
+for the SSP, POA&amp;M, or the C3PAO engagement. CSW can support
+evidence for many technical practices the C3PAO evaluates, subject to
+CUI scope, implementation, and assessor judgment.</p>
 <hr />
 <!-- CSW-RUNBOOK-PRIMER:v1 -->
 <h2 id="csw-primer-if-you-are-new-to-cisco-secure-workload">CSW primer —
@@ -1558,20 +1559,22 @@ architectural pattern that can support many SC/AC control objectives at
 depth. See <a href="../NIST-800-207/CSW-NIST-800-207-Reference-Design.html">800-207
 reference design</a>.</li>
 <li><strong>NIST CSF 2.0</strong> — the outcomes wrapper that cites
-800-171 as Informative References under PR/DE/RS Subcategories. See <a href="../NIST-CSF-2/CSW-CSF-Reference-Design.html">CSF reference design</a>.</li>
+800-171 as Informative References under PR/DE/RS Subcategories. See <a href="../NIST-CSF-2/CSW-CSF-Reference-Design.html">CSF reference
+design</a>.</li>
 <li><strong>CIS Controls v8.1</strong> — many CIS Safeguards align
-directly with 800-171 practices. See <a href="../CIS-Controls-v8/CSW-CIS-Reference-Design.html">CIS
-reference design</a>.</li>
+directly with 800-171 practices. See <a href="../CIS-Controls-v8/CSW-CIS-Reference-Design.html">CIS reference
+design</a>.</li>
 <li><strong>DFARS 252.204-7012</strong> — the contractual basis for
-CMMC; the technical content sits in NIST 800-171 which this reference design
-addresses.</li>
+CMMC; the technical content sits in NIST 800-171 which this reference
+design addresses.</li>
 </ul>
 <hr />
 <h2 id="disclaimer">15. Disclaimer</h2>
-<p>This reference design is <strong>draft v1</strong> describing how Cisco Secure
-Workload capabilities can support a CMMC 2.0 programme at Level 2 (with
-Level 1 and Level 3 deltas). It is <strong>not</strong> legal or
-compliance advice and does not constitute a finding of compliance.</p>
+<p>This reference design is <strong>draft v1</strong> describing how
+Cisco Secure Workload capabilities can support a CMMC 2.0 programme at
+Level 2 (with Level 1 and Level 3 deltas). It is <strong>not</strong>
+legal or compliance advice and does not constitute a finding of
+compliance.</p>
 <p>Specifically:</p>
 <ul>
 <li>The DoD publishes the authoritative CMMC 2.0 text at
@@ -1582,8 +1585,8 @@ authoritative assessment guidance. Always validate against the
 Part 170) and against any DoD class deviations.</li>
 <li>CMMC Level 2 assessment is performed by a Certified Third-Party
 Assessor Organisation (C3PAO) or, for limited contracts, by
-self-assessment. Nothing in this reference design substitutes for the SSP,
-POA&amp;M, or the C3PAO engagement.</li>
+self-assessment. Nothing in this reference design substitutes for the
+SSP, POA&amp;M, or the C3PAO engagement.</li>
 <li>Mapping a CSW capability to a 800-171 practice does not by itself
 satisfy the practice. The C3PAO will look for a documented process,
 evidence cadence, and management review behind the technical

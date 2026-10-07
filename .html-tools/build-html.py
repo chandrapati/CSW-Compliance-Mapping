@@ -204,7 +204,7 @@ def build_index(report_html_paths: list[tuple[str, str | None, str | None]]) -> 
             f'<a href="{report_html}">Report</a>' if report_html else "—"
         )
         runbook_cell = (
-            f'<a href="{runbook_html}">Runbook</a>' if runbook_html else "—"
+            f'<a href="{runbook_html}">Reference design</a>' if runbook_html else "—"
         )
         rows.append(
             f"    <tr>"
@@ -219,22 +219,22 @@ def build_index(report_html_paths: list[tuple[str, str | None, str | None]]) -> 
         '<html lang="en">\n<head>\n'
         '<meta charset="utf-8">\n'
         '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
-        "<title>Cisco Secure Workload &mdash; Compliance Mapping</title>\n"
+        "<title>Cisco Secure Workload &mdash; Compliance Reference Designs &amp; Reports</title>\n"
         f"<style>\n{CSS.read_text()}\n</style>\n"
         "</head>\n<body>\n"
-        "<h1>Cisco Secure Workload &mdash; Compliance Mapping Assets</h1>\n"
+        "<h1>Cisco Secure Workload &mdash; Compliance Reference Designs &amp; Reports</h1>\n"
         "<p>Browseable HTML renderings of the customer-facing reports and the matching "
-        "technical runbooks for thirty-four compliance, sector, and zero-trust frameworks. "
-        "DOCX (editable master), PDF (review copy), and Markdown (runbook source) "
+        "reference designs for thirty-four compliance, sector, and zero-trust frameworks. "
+        "DOCX (editable master), PDF (review copy), and Markdown (reference-design source) "
         "remain in the repository and on each framework's GitHub folder page.</p>\n"
         '<p><strong>Repository:</strong> '
-        '<a href="https://github.com/chandrapati/CSW-Compliance-Mapping">'
-        "chandrapati/CSW-Compliance-Mapping</a></p>\n"
+        '<a href="https://github.com/chandrapati/CSW-Compliance-Reference-Designs">'
+        "chandrapati/CSW-Compliance-Reference-Designs</a></p>\n"
         f'<p style="font-size:.85rem;color:var(--fg-muted);">{build_provenance()}</p>\n'
         '<h2>Start here</h2>\n'
         '<ul>\n'
         '  <li><a href="README.html">Repository README</a> &mdash; '
-        "compliance-mapping focus, asset library, scope notes, and disclaimer.</li>\n"
+        "reference-design focus, asset library, scope notes, and disclaimer.</li>\n"
         '  <li><a href="docs/about-csw.html">Background &mdash; What is Cisco Secure Workload?</a>'
         " &mdash; one-page intro to the platform.</li>\n"
         '  <li><a href="docs/compliance-evidence-playbook.html">CSW Compliance Evidence Playbook</a>'
@@ -242,7 +242,7 @@ def build_index(report_html_paths: list[tuple[str, str | None, str | None]]) -> 
         '  <li><a href="docs/why-these-mappings-matter.html">Why these mappings matter</a>'
         " &mdash; conversation-starter questions to ask about your own environment.</li>\n"
         '  <li><a href="docs/audience-and-usage.html">Audience and usage guide</a>'
-        " &mdash; who reads what, runbook-vs-report, file formats, and folder layout.</li>\n"
+        " &mdash; who reads what, reference-design-vs-report, file formats, and folder layout.</li>\n"
         '  <li><a href="docs/framework-scope-design.html">Framework Scope Design Guide</a>'
         " &mdash; workshop patterns for scopes, labels, and evidence boundaries.</li>\n"
         '  <li><a href="docs/governance-and-evidence-standards.html">Governance and Evidence Standards</a>'
@@ -255,7 +255,7 @@ def build_index(report_html_paths: list[tuple[str, str | None, str | None]]) -> 
         "</ul>\n"
         '<h2>Frameworks</h2>\n'
         '<table>\n'
-        '<thead><tr><th>Framework</th><th>Customer report</th><th>Technical runbook</th></tr></thead>\n'
+        '<thead><tr><th>Framework</th><th>Customer report</th><th>Reference design</th></tr></thead>\n'
         '<tbody>\n'
         + "\n".join(rows)
         + "\n</tbody>\n</table>\n"
@@ -295,7 +295,7 @@ def main() -> int:
             print(f"SKIP runbook (missing): {runbook_md}")
         else:
             print(f"  runbook -> {runbook_html.relative_to(ROOT)}")
-            run_pandoc(runbook_md, runbook_html, f"{fw_label} \u2014 Technical Runbook",
+            run_pandoc(runbook_md, runbook_html, f"{fw_label} \u2014 Reference Design",
                        runbook_md.name, runbook_md.name)
             rewrite_links(runbook_html)
             runbook_href = str(runbook_html.relative_to(ROOT))
@@ -324,7 +324,7 @@ def main() -> int:
         # on case-insensitive filesystems INDEX.html and the index.html landing
         # page are the same file, so the landing page silently overwrote it.
         out = ROOT / ("control-id-index.html" if src_name == "INDEX.md" else f"{src.stem}.html")
-        title = "Control-ID Index" if src_name == "INDEX.md" else "Cisco Secure Workload \u2014 Compliance Mapping Assets"
+        title = "Control-ID Index" if src_name == "INDEX.md" else "Cisco Secure Workload \u2014 Compliance Reference Designs & Reports"
         # For top-level files, "back to repo index" shouldn't escape one folder up.
         header = TOOLS / "_inline-header.html"
         header.write_text(f'<style>\n{CSS.read_text()}\n</style>\n', encoding="utf-8")

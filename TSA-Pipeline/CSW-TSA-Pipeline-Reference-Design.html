@@ -312,18 +312,18 @@ td.cov-evidence { background: #808080 !important; color: #fff !important;
 </style>
 </head>
 <body>
-<div class="doc-meta">Source: <a href="CSW-TSA-Pipeline-Reference-Design.html">CSW-TSA-Pipeline-Reference-Design.md</a> · <a href="../index.html">repository index</a> · Build: 2026-10-06T03:17:45Z UTC · Repository commit: fe71f19</div>
+<div class="doc-meta">Source: <a href="CSW-TSA-Pipeline-Reference-Design.html">CSW-TSA-Pipeline-Reference-Design.md</a> · <a href="../index.html">repository index</a> · Build: 2026-10-07T17:30:32Z UTC · Repository commit: a630820</div>
 <header id="title-block-header">
-<h1 class="title">TSA Pipeline Security Directive — Technical
-Reference design</h1>
+<h1 class="title">TSA Pipeline Security Directive — Reference
+Design</h1>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
 <li><a href="#cisco-secure-workload-tsa-pipeline-security" id="toc-cisco-secure-workload-tsa-pipeline-security">Cisco Secure
 Workload — TSA Pipeline Security</a>
 <ul>
-<li><a href="#technical-reference design-owners-and-operators-of-tsa-designated-natural-gas-hazardous-liquid-pipelines" id="toc-technical-reference design-owners-and-operators-of-tsa-designated-natural-gas-hazardous-liquid-pipelines">Technical
-Reference design | Owners and Operators of TSA-Designated Natural Gas / Hazardous
+<li><a href="#reference-design-owners-and-operators-of-tsa-designated-natural-gas-hazardous-liquid-pipelines" id="toc-reference-design-owners-and-operators-of-tsa-designated-natural-gas-hazardous-liquid-pipelines">Reference
+Design | Owners and Operators of TSA-Designated Natural Gas / Hazardous
 Liquid Pipelines</a></li>
 <li><a href="#readers-guide" id="toc-readers-guide">Reader’s
 Guide</a></li>
@@ -374,28 +374,28 @@ Related Frameworks</a></li>
 </nav>
 <h1 id="cisco-secure-workload-tsa-pipeline-security">Cisco Secure
 Workload — TSA Pipeline Security</h1>
-<h2 id="technical-reference design-owners-and-operators-of-tsa-designated-natural-gas-hazardous-liquid-pipelines">Technical
-Reference design | Owners and Operators of TSA-Designated Natural Gas / Hazardous
+<h2 id="reference-design-owners-and-operators-of-tsa-designated-natural-gas-hazardous-liquid-pipelines">Reference
+Design | Owners and Operators of TSA-Designated Natural Gas / Hazardous
 Liquid Pipelines</h2>
 <p><strong>Version:</strong> 1.0 (draft — pending SME review) |
 <strong>Standard:</strong> TSA Security Directive Pipeline-2021-02
 series (current revision; the SD has been republished as 02A, 02B, 02C,
-and 02D as TSA has updated the requirements; this reference design is generic to
-the current effective version) and Security Directive Pipeline-2021-01
-series for incident reporting | <strong>Audience:</strong> Pipeline
-owner/operators designated by TSA as Critical Pipeline owner/operators,
-and the cybersecurity teams supporting them |
-<strong>Environment:</strong> IT estate supporting OT (corporate IT,
-engineering workstations, SCADA jump servers, historian/MES,
-vendor-access servers — <em>not</em> the pipeline OT control devices
-themselves)</p>
+and 02D as TSA has updated the requirements; this reference design is
+generic to the current effective version) and Security Directive
+Pipeline-2021-01 series for incident reporting |
+<strong>Audience:</strong> Pipeline owner/operators designated by TSA as
+Critical Pipeline owner/operators, and the cybersecurity teams
+supporting them | <strong>Environment:</strong> IT estate supporting OT
+(corporate IT, engineering workstations, SCADA jump servers,
+historian/MES, vendor-access servers — <em>not</em> the pipeline OT
+control devices themselves)</p>
 <hr />
 <h2 id="readers-guide">Reader’s Guide</h2>
 <p><strong>Who this is for.</strong> TSA-designated owner/operators of
 natural gas and oil/hazardous liquid pipelines and their cybersecurity,
-IT, and OT operations teams. The reference design is also useful for pipeline
-operators not currently TSA-designated who want to align proactively
-with the SD framework.</p>
+IT, and OT operations teams. The reference design is also useful for
+pipeline operators not currently TSA-designated who want to align
+proactively with the SD framework.</p>
 <p><strong>Scope boundary you must understand before reading
 further.</strong> Cisco Secure Workload (CSW) is a workload-protection
 and segmentation platform for <strong>IT estate</strong> — servers,
@@ -408,7 +408,8 @@ operations — engineering workstations, SCADA jump servers, historian
 databases, MES/EAM systems, vendor remote-access hosts, identity/PKI
 services, and the corporate IT systems that interact with Critical Cyber
 Systems on the IT side.</p>
-<p><strong>Questions this reference design helps you answer:</strong></p>
+<p><strong>Questions this reference design helps you
+answer:</strong></p>
 <ul>
 <li><em>Section II — Critical Cyber System identification: do I have a
 current inventory of every IT system that supports pipeline operations,
@@ -450,11 +451,11 @@ evidence; section 9 if vendor and third-party visibility is the open
 item.</p>
 <p><strong>Important.</strong> TSA SDs are issued under TSA’s regulatory
 authority; designated owner/operators are required to comply. Nothing in
-this reference design substitutes for the responsible Senior Cybersecurity
-Officer’s accountability under the SD or for the formal TSA inspection
-response. CSW gives the responsible officer technical evidence inputs
-for the operator’s compliance programme; it does not substitute for the
-designated security programme.</p>
+this reference design substitutes for the responsible Senior
+Cybersecurity Officer’s accountability under the SD or for the formal
+TSA inspection response. CSW gives the responsible officer technical
+evidence inputs for the operator’s compliance programme; it does not
+substitute for the designated security programme.</p>
 <hr />
 <!-- CSW-RUNBOOK-PRIMER:v1 -->
 <h2 id="csw-primer-if-you-are-new-to-cisco-secure-workload">CSW primer —
@@ -1178,8 +1179,8 @@ reference design</a>.</li>
 but worth pairing externally)</em> — guide to OT security; CSW addresses
 the IT estate around the OT footprint that 800-82 describes.</li>
 <li><strong>NERC CIP</strong> — sister sector framework for the bulk
-electric system; identical IT-side patterns apply. See <a href="../NERC-CIP/CSW-NERC-CIP-Reference-Design.html">NERC CIP
-reference design</a>.</li>
+electric system; identical IT-side patterns apply. See <a href="../NERC-CIP/CSW-NERC-CIP-Reference-Design.html">NERC CIP reference
+design</a>.</li>
 <li><strong>ISO/IEC 27001:2022</strong> — entities operating under ISO
 27001 can re-use Annex A.8 evidence. See <a href="../ISO-27001-2022/CSW-ISO27001-Reference-Design.html">ISO 27001
 reference design</a>.</li>
@@ -1190,11 +1191,11 @@ reference design</a>.</li>
 </ul>
 <hr />
 <h2 id="disclaimer">14. Disclaimer</h2>
-<p>This reference design is <strong>draft v1</strong> describing how Cisco Secure
-Workload capabilities can support a TSA Pipeline Security Directive
-cybersecurity programme on the <strong>IT side</strong> of the IT/OT
-boundary. It is <strong>not</strong> legal or regulatory advice and does
-not constitute a finding of compliance.</p>
+<p>This reference design is <strong>draft v1</strong> describing how
+Cisco Secure Workload capabilities can support a TSA Pipeline Security
+Directive cybersecurity programme on the <strong>IT side</strong> of the
+IT/OT boundary. It is <strong>not</strong> legal or regulatory advice
+and does not constitute a finding of compliance.</p>
 <p>Specifically:</p>
 <ul>
 <li>TSA Security Directives are issued and revised by the Transportation
@@ -1204,8 +1205,8 @@ the <strong>current effective revision</strong> available from TSA,
 against your inspector’s current guidance, and against any subsequent
 rulemaking that supersedes the SD.</li>
 <li>Designation as a Critical Pipeline owner/operator is a TSA
-determination. Nothing in this reference design substitutes for that designation
-analysis.</li>
+determination. Nothing in this reference design substitutes for that
+designation analysis.</li>
 <li>CSW does not enforce policy on RTUs, flow computers, PLCs, IEDs,
 HMIs, or any other OT device, and is not certified as an OT- protocol
 deep-packet-inspection or architecture review tool.</li>

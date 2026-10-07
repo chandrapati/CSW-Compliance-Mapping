@@ -377,10 +377,10 @@ td.cov-evidence { background: #808080 !important; color: #fff !important;
 </style>
 </head>
 <body>
-<div class="doc-meta">Source: <a href="CSW-HIPAA-NPRM-Reference-Design.html">CSW-HIPAA-NPRM-Reference-Design.md</a> · <a href="../index.html">repository index</a> · Build: 2026-10-06T03:17:51Z UTC · Repository commit: fe71f19</div>
+<div class="doc-meta">Source: <a href="CSW-HIPAA-NPRM-Reference-Design.html">CSW-HIPAA-NPRM-Reference-Design.md</a> · <a href="../index.html">repository index</a> · Build: 2026-10-07T17:30:38Z UTC · Repository commit: a630820</div>
 <header id="title-block-header">
-<h1 class="title">HIPAA Security Rule — 2025 NPRM — Technical
-Reference design</h1>
+<h1 class="title">HIPAA Security Rule — 2025 NPRM — Reference
+Design</h1>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
@@ -388,8 +388,8 @@ Reference design</h1>
 Secure Workload — HIPAA Security Rule (<strong>2025 NPRM</strong>)
 Alignment</a>
 <ul>
-<li><a href="#technical-reference design-proposed-rule-not-final-law" id="toc-technical-reference design-proposed-rule-not-final-law">Reference Design
-| Proposed Rule — <strong>Not Final Law</strong></a></li>
+<li><a href="#reference-design-proposed-rule-not-final-law" id="toc-reference-design-proposed-rule-not-final-law">Reference Design |
+Proposed Rule — <strong>Not Final Law</strong></a></li>
 <li><a href="#readers-guide" id="toc-readers-guide">Reader’s
 Guide</a></li>
 <li><a href="#csw-primer-if-you-are-new-to-cisco-secure-workload" id="toc-csw-primer-if-you-are-new-to-cisco-secure-workload">CSW primer —
@@ -411,7 +411,7 @@ framework</a></li>
 <ul>
 <li><a href="#current-rule-vs.-nprm-operational-implications" id="toc-current-rule-vs.-nprm-operational-implications">1.1 “Current
 rule” vs. NPRM (operational implications)</a></li>
-<li><a href="#relationship-to-the-existing-hipaa-technical-reference design" id="toc-relationship-to-the-existing-hipaa-technical-reference design">1.2
+<li><a href="#relationship-to-the-existing-hipaa-reference-design" id="toc-relationship-to-the-existing-hipaa-reference-design">1.2
 Relationship to the existing HIPAA reference design</a></li>
 </ul></li>
 <li><a href="#pre-deployment-checklist" id="toc-pre-deployment-checklist">2. Pre-Deployment Checklist</a></li>
@@ -502,8 +502,8 @@ fragment</a></li>
 <h1 id="cisco-secure-workload-hipaa-security-rule-2025-nprm-alignment">Cisco
 Secure Workload — HIPAA Security Rule (<strong>2025 NPRM</strong>)
 Alignment</h1>
-<h2 id="technical-reference design-proposed-rule-not-final-law">Reference Design
-| Proposed Rule — <strong>Not Final Law</strong></h2>
+<h2 id="reference-design-proposed-rule-not-final-law">Reference Design |
+Proposed Rule — <strong>Not Final Law</strong></h2>
 <p><strong>Version:</strong> 1.0<br />
 <strong>Basis of mapping:</strong> HHS <strong>Notice of Proposed
 Rulemaking (NPRM)</strong> updates to the HIPAA Security Rule (published
@@ -526,7 +526,8 @@ modernisation, security architects who must
 <strong>mandatory network segmentation</strong>), and compliance
 officers who need a <strong>crosswalk</strong> from <strong>today’s
 rule</strong> to the <strong>NPRM</strong>.</p>
-<p><strong>Questions this reference design helps you answer:</strong></p>
+<p><strong>Questions this reference design helps you
+answer:</strong></p>
 <ul>
 <li><em>If <strong>network segmentation</strong> becomes
 <strong>required</strong> (no longer merely addressable), what
@@ -564,9 +565,9 @@ audits?</em> (<strong>§164.306(e)</strong>)</li>
 </ul>
 <p><strong>What you’ll need.</strong> Your organisation’s
 <strong>current HIPAA</strong> compliance baseline (see the
-<strong>existing CSW HIPAA reference design</strong> below), ePHI data-flow
-documentation, SIEM / log retention architecture, and legal review of
-the <strong>final</strong> rule when published.</p>
+<strong>existing CSW HIPAA reference design</strong> below), ePHI
+data-flow documentation, SIEM / log retention architecture, and legal
+review of the <strong>final</strong> rule when published.</p>
 <p><strong>Where to start.</strong> Section 1 (<strong>NPRM vs current
 rule</strong> quick reference); sections 2–4 for deployment; sections
 5–7 for policy; section 8 for <strong>control mapping</strong>; section
@@ -836,11 +837,11 @@ evidence speed</strong></td>
 </tr>
 </tbody>
 </table>
-<h3 id="relationship-to-the-existing-hipaa-technical-reference design">1.2
+<h3 id="relationship-to-the-existing-hipaa-reference-design">1.2
 Relationship to the existing HIPAA reference design</h3>
 <p>For controls that <strong>do not change</strong> materially in the
-NPRM, the detailed phased guidance in the <strong>current-rule
-reference design</strong> remains authoritative for CSW deployment patterns:</p>
+NPRM, the detailed phased guidance in the <strong>current-rule reference
+design</strong> remains authoritative for CSW deployment patterns:</p>
 <p><strong>Primary cross-reference:</strong> <a href="../HIPAA/CSW-HIPAA-Reference-Design.html"><code>../HIPAA/CSW-HIPAA-Reference-Design.md</code></a></p>
 <table>
 <colgroup>
@@ -859,35 +860,35 @@ reference design</strong> remains authoritative for CSW deployment patterns:</p>
 <tr>
 <td>ePHI zone architecture, PHI labelling, ADM for clinical apps</td>
 <td>§1–§5 overview + <strong>segmentation headline</strong></td>
-<td><a href="../HIPAA/CSW-HIPAA-Reference-Design.html">HIPAA reference design
-§4–§5</a></td>
+<td><a href="../HIPAA/CSW-HIPAA-Reference-Design.html">HIPAA reference
+design §4–§5</a></td>
 </tr>
 <tr>
 <td>Policy workspace patterns (simulation → enforcement)</td>
 <td>§6–§7</td>
-<td><a href="../HIPAA/CSW-HIPAA-Reference-Design.html">HIPAA reference design
-§6</a></td>
+<td><a href="../HIPAA/CSW-HIPAA-Reference-Design.html">HIPAA reference
+design §6</a></td>
 </tr>
 <tr>
 <td>Vulnerability management</td>
 <td>§5–§6, §8</td>
-<td><a href="../HIPAA/CSW-HIPAA-Reference-Design.html">HIPAA reference design
-§8</a></td>
+<td><a href="../HIPAA/CSW-HIPAA-Reference-Design.html">HIPAA reference
+design §8</a></td>
 </tr>
 <tr>
 <td>Monitoring &amp; forensic exports</td>
 <td>§7–§10</td>
-<td><a href="../HIPAA/CSW-HIPAA-Reference-Design.html">HIPAA reference design
-§9–§10</a></td>
+<td><a href="../HIPAA/CSW-HIPAA-Reference-Design.html">HIPAA reference
+design §9–§10</a></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Practice:</strong> Treat the <strong>HIPAA reference design</strong>
-as the <strong>implementation backbone</strong>; treat <strong>this NPRM
-reference design</strong> as the <strong>delta tracker + evidence
-adjustments</strong> (especially <strong>segmentation</strong>,
-<strong>24-month logs</strong>, <strong>inventory</strong>, <strong>vuln
-programme</strong>).</p>
+<p><strong>Practice:</strong> Treat the <strong>HIPAA reference
+design</strong> as the <strong>implementation backbone</strong>; treat
+<strong>this NPRM reference design</strong> as the <strong>delta tracker
++ evidence adjustments</strong> (especially
+<strong>segmentation</strong>, <strong>24-month logs</strong>,
+<strong>inventory</strong>, <strong>vuln programme</strong>).</p>
 <hr />
 <h2 id="pre-deployment-checklist">2. Pre-Deployment Checklist</h2>
 <p>Before expanding CSW for <strong>NPRM readiness</strong>:</p>
@@ -915,8 +916,8 @@ discussions arise)</label></li>
 <hr />
 <h2 id="phase-1-sensor-deployment-days-15">3. Phase 1 — Sensor
 deployment (Days 1–5)</h2>
-<p>Follow the <strong>HIPAA reference design</strong> steps verbatim for install
-patterns; repeat here for continuity.</p>
+<p>Follow the <strong>HIPAA reference design</strong> steps verbatim for
+install patterns; repeat here for continuity.</p>
 <h3 id="on-premises">3.1 On-premises</h3>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Linux (RHEL/CentOS/Ubuntu family)</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rpm</span> <span class="at">-ivh</span> tet-sensor-<span class="op">&lt;</span>version<span class="op">&gt;</span>.rpm    <span class="co"># RHEL/CentOS</span></span>
@@ -1405,9 +1406,8 @@ months</strong></td>
 <li><a href="../HITRUST-CSF/CSW-HITRUST-Reference-Design.html">HITRUST
 CSF</a> — common healthcare vehicle <strong>mapped to
 HIPAA</strong></li>
-<li><a href="../NIST-800-53/CSW-NIST-800-53-Reference-Design.html">NIST
-SP 800-53</a> — control depth for <strong>hybrid</strong>
-programmes</li>
+<li><a href="../NIST-800-53/CSW-NIST-800-53-Reference-Design.html">NIST SP
+800-53</a> — control depth for <strong>hybrid</strong> programmes</li>
 <li><a href="../NIST-800-207/CSW-NIST-800-207-Reference-Design.html">NIST
 SP 800-207</a> — zero-trust patterns under
 <strong>segmentation</strong></li>

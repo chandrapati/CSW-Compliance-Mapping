@@ -312,18 +312,18 @@ td.cov-evidence { background: #808080 !important; color: #fff !important;
 </style>
 </head>
 <body>
-<div class="doc-meta">Source: <a href="CSW-CIS-Reference-Design.html">CSW-CIS-Reference-Design.md</a> · <a href="../index.html">repository index</a> · Build: 2026-10-06T03:17:45Z UTC · Repository commit: fe71f19</div>
+<div class="doc-meta">Source: <a href="CSW-CIS-Reference-Design.html">CSW-CIS-Reference-Design.md</a> · <a href="../index.html">repository index</a> · Build: 2026-10-07T17:30:32Z UTC · Repository commit: a630820</div>
 <header id="title-block-header">
-<h1 class="title">CIS Critical Security Controls v8.1 — Technical
-Reference design</h1>
+<h1 class="title">CIS Critical Security Controls v8.1 — Reference
+Design</h1>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
 <li><a href="#cisco-secure-workload-cis-critical-security-controls-v8.1" id="toc-cisco-secure-workload-cis-critical-security-controls-v8.1">Cisco
 Secure Workload — CIS Critical Security Controls v8.1</a>
 <ul>
-<li><a href="#technical-reference design-implementation-group-2-lead-with-ig1-ig3-deltas" id="toc-technical-reference design-implementation-group-2-lead-with-ig1-ig3-deltas">Technical
-Reference design | Implementation Group 2 Lead, with IG1 / IG3 Deltas</a></li>
+<li><a href="#reference-design-implementation-group-2-lead-with-ig1-ig3-deltas" id="toc-reference-design-implementation-group-2-lead-with-ig1-ig3-deltas">Reference
+Design | Implementation Group 2 Lead, with IG1 / IG3 Deltas</a></li>
 <li><a href="#readers-guide" id="toc-readers-guide">Reader’s
 Guide</a></li>
 <li><a href="#csw-primer-if-you-are-new-to-cisco-secure-workload" id="toc-csw-primer-if-you-are-new-to-cisco-secure-workload">CSW primer —
@@ -375,8 +375,8 @@ Related Frameworks</a></li>
 </nav>
 <h1 id="cisco-secure-workload-cis-critical-security-controls-v8.1">Cisco
 Secure Workload — CIS Critical Security Controls v8.1</h1>
-<h2 id="technical-reference design-implementation-group-2-lead-with-ig1-ig3-deltas">Technical
-Reference design | Implementation Group 2 Lead, with IG1 / IG3 Deltas</h2>
+<h2 id="reference-design-implementation-group-2-lead-with-ig1-ig3-deltas">Reference
+Design | Implementation Group 2 Lead, with IG1 / IG3 Deltas</h2>
 <p><strong>Version:</strong> 1.0 (draft — pending SME review) |
 <strong>Standard:</strong> CIS Critical Security Controls v8.1 |
 <strong>Audience:</strong> Security teams adopting or maintaining CIS
@@ -401,7 +401,8 @@ compress the universe to 18 Controls and ~153 Safeguards, rank-ordered
 by what defends against actual attacks first. Many programmes use CIS as
 the “what to do this year” view and 800-53 as the “what to satisfy in
 the contract” view.</p>
-<p><strong>Questions this reference design helps you answer:</strong></p>
+<p><strong>Questions this reference design helps you
+answer:</strong></p>
 <ul>
 <li><em>Control 1 (Inventory of Enterprise Assets) and Control 2
 (Inventory of Software Assets): can I produce a current inventory of
@@ -650,8 +651,8 @@ sensitivity</td>
 </table>
 <p>A given Safeguard ID (e.g. <code>1.1</code>) is the same across IGs;
 what changes is whether it’s in scope and the rigour expected. This
-reference design leads with IG2 expectations and notes IG1/IG3 deltas where the
-work materially changes.</p>
+reference design leads with IG2 expectations and notes IG1/IG3 deltas
+where the work materially changes.</p>
 <p><strong>Where CSW fits across the 18 Controls:</strong></p>
 <table>
 <colgroup>
@@ -1400,14 +1401,14 @@ Guide</h2>
 controls. See <a href="../NIST-800-53/CSW-NIST-800-53-Reference-Design.html">800-53
 reference design</a>.</p></li>
 <li><p><strong>NIST CSF 2.0</strong> — CIS Safeguards are commonly cited
-as Informative References under CSF subcategories. See <a href="../NIST-CSF-2/CSW-CSF-Reference-Design.html">CSF
-reference design</a>.</p></li>
+as Informative References under CSF subcategories. See <a href="../NIST-CSF-2/CSW-CSF-Reference-Design.html">CSF reference
+design</a>.</p></li>
 <li><p><strong>CMMC 2.0 (Level 2)</strong> — both inherit heavily from
-NIST 800-171 / 800-53. See <a href="../CMMC-2/CSW-CMMC-Reference-Design.html">CMMC
-reference design</a>.</p></li>
+NIST 800-171 / 800-53. See <a href="../CMMC-2/CSW-CMMC-Reference-Design.html">CMMC reference
+design</a>.</p></li>
 <li><p><strong>PCI DSS v4.0</strong> — many Reqs (1, 2, 7, 10, 11) align
-directly with CIS Controls 4, 6, 8, 13. See <a href="../PCI-DSS-v4/CSW-PCI-DSS-Reference-Design.html">PCI
-reference design</a>.</p></li>
+directly with CIS Controls 4, 6, 8, 13. See <a href="../PCI-DSS-v4/CSW-PCI-DSS-Reference-Design.html">PCI reference
+design</a>.</p></li>
 <li><p><strong>ISO/IEC 27001:2022</strong> — Annex A controls have
 substantial overlap with CIS Safeguards. See <a href="../ISO-27001-2022/CSW-ISO27001-Reference-Design.html">ISO 27001
 reference design</a>.</p></li>
@@ -1416,10 +1417,10 @@ are the reuse path for CAF A3, B4, B5, and C1 (see <a href="../UK-NCSC-CAF/caf-m
 </ul>
 <hr />
 <h2 id="disclaimer">15. Disclaimer</h2>
-<p>This reference design is <strong>draft v1</strong> describing how Cisco Secure
-Workload capabilities can support a CIS Critical Security Controls v8.1
-programme. It is <strong>not</strong> legal or compliance advice and
-does not constitute a finding of compliance.</p>
+<p>This reference design is <strong>draft v1</strong> describing how
+Cisco Secure Workload capabilities can support a CIS Critical Security
+Controls v8.1 programme. It is <strong>not</strong> legal or compliance
+advice and does not constitute a finding of compliance.</p>
 <p>Specifically:</p>
 <ul>
 <li>CIS publishes the authoritative Safeguard text and IG mapping at
